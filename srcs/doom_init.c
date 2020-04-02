@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 15:57:46 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 21:29:23 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	set_lines(t_doom *doom)
 	doom->sidedef[0].start.y = 0;
 	doom->sidedef[0].end.x = 0;
 	doom->sidedef[0].end.y = 1000;
-	doom->sidedef[0].sector = 1;
+	doom->sidedef[0].sector = 2;
 	doom->sidedef[0].opp = NULL;
-	doom->sidedef[0].opp_sector = -1;
+	doom->sidedef[0].opp_sector = 0;
 
 	doom->sidedef[1].start.x = 0;
 	doom->sidedef[1].start.y = 1000;
 	doom->sidedef[1].end.x = 1000;
 	doom->sidedef[1].end.y = 1000;
-	doom->sidedef[1].sector = 1;
+	doom->sidedef[1].sector = 2;
 	doom->sidedef[1].opp = NULL;
-	doom->sidedef[1].opp_sector = -1;
+	doom->sidedef[1].opp_sector = 0;
 
 	doom->sidedef[2].start.x = 1000;
 	doom->sidedef[2].start.y = 1000;
@@ -36,7 +36,7 @@ void	set_lines(t_doom *doom)
 	doom->sidedef[2].end.y = 0;
 	doom->sidedef[2].sector = 1;
 	doom->sidedef[2].opp = NULL;
-	doom->sidedef[2].opp_sector = -1;
+	doom->sidedef[2].opp_sector = 0;
 
 	doom->sidedef[3].start.x = 1000;
 	doom->sidedef[3].start.y = 0;
@@ -44,15 +44,23 @@ void	set_lines(t_doom *doom)
 	doom->sidedef[3].end.y = 0;
 	doom->sidedef[3].sector = 1;
 	doom->sidedef[3].opp = NULL;
-	doom->sidedef[3].opp_sector = -1;
+	doom->sidedef[3].opp_sector = 0;
 	
-	doom->sidedef[4].start.x = 100;
-	doom->sidedef[4].start.y = 100;
-	doom->sidedef[4].end.x = 600;
-	doom->sidedef[4].end.y = 600;
+	doom->sidedef[4].start.x = 0;
+	doom->sidedef[4].start.y = 0;
+	doom->sidedef[4].end.x = 1000;
+	doom->sidedef[4].end.y = 1000;
 	doom->sidedef[4].sector = 1;
-	doom->sidedef[4].opp = NULL;
-	doom->sidedef[4].opp_sector = -1;
+	doom->sidedef[4].opp = &doom->sidedef[5];
+	doom->sidedef[4].opp_sector = 2;
+
+	doom->sidedef[5].start.x = 0;
+	doom->sidedef[5].start.y = 0;
+	doom->sidedef[5].end.x = 1000;
+	doom->sidedef[5].end.y = 1000;
+	doom->sidedef[5].sector = 2;
+	doom->sidedef[5].opp = &doom->sidedef[4];
+	doom->sidedef[5].opp_sector = 2;
 }
 
 void doom_init(t_doom *doom)

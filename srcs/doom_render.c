@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 18:19:38 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 21:38:07 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	doom_render(t_doom *doom)
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		sector = doom->curr_sector;
 		ray.plane_x = x;
-		sidedef_render(doom, ray, sector, sector);
+		sidedef_render(doom, ray, sector);
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 20:55:04 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 21:39:32 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double		sidedef_intersection_distance(t_ray ray, \
 	return (distance);
 }
 
-void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void		sidedef_render(t_doom *doom, t_ray ray, int prev_sector)
 {
 	t_point			intersect;
 	t_sidedef		near_sidedef;
@@ -51,8 +51,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 
 	x = 0;
 	min_distance = INFINITY;
-	sector = 0;
-	while (x < 5) //sidedefs in sector//
+	while (x < 6) //sidedefs in sector//
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->sidedef[x], &intersect);
@@ -64,10 +63,10 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
-	if (near_sidedef.opp_sector != -1 && near_sidedef.sector != prev_sector)
+	if (near_sidedef.opp_sector != 0 && near_sidedef.opp_sector != prev_sector)
 	{
 		prev_sector = near_sidedef.sector;
-		sidedef_render(doom, ray, near_sidedef.opp_sector, near_sidedef.sector);
+		sidedef_render(doom, ray, near_sidedef.opp_sector);
 	}
 	draw_sidedef(doom, near_sidedef, ray.plane_x);
 }

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 17:55:01 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 21:37:14 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct			s_doom {
 	SDL_Surface			*surface;
 	SDL_Event			event;
 	t_sector			sector[1];
-    t_sidedef			sidedef[5]; 
+    t_sidedef			sidedef[6]; 
 	t_point				pos;
 	t_event				own_event;
 	int					curr_sector;
@@ -112,7 +112,7 @@ void					game_loop(t_doom *doom);
 void					doom_render(t_doom *doom);
 void					doom_input(t_doom *doom);
 void					sidedef_render(t_doom *doom, t_ray ray,\
-							int sector, int prev_sector);
+							int prev_sector);
 void					draw_sidedef(t_doom *doom, t_sidedef sidedef, int x);
 
 t_point					line_intersection(t_point start1, t_point delta1,
