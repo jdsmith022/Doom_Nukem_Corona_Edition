@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/01 20:43:23 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 15:58:26 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void		draw_column(t_doom *doom, t_intersect intersect, int x)
 	int	wall_height;
 	t_column wall;
 
-	intersect.obj_dist *= cos(doom->ray_angle * x - FOV / 2);
-	wall_height = doom->sector_1.height_ceiling - doom->sector_1.height_floor;
+
+	intersect.obj_dist *= cos(doom->ray_adjacent * x - FOV / 2);
+	wall_height = doom->sector[0].height_ceiling - doom->sector[0].height_floor;
 	collum_wall_height = wall_height / intersect.obj_dist * doom->dist_to_plane;
 	wall.y_start = HEIGHT / 2 - collum_wall_height / 2;
 	wall.y_end = HEIGHT / 2 + collum_wall_height / 2;

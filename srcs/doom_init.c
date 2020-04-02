@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 11:55:18 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 15:57:46 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ void doom_init(t_doom *doom)
 	set_lines(doom);
 	doom->esc = 0;
 	doom->dir_angle = 90;
-	doom->ray_angle = FOV / WIDTH;
+	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 300;
 	doom->pos.y = 500;
 	doom->max_ray = 10000;
-	doom->sector_1.height_ceiling = 64;
-	doom->sector_1.height_floor = 0;
+	doom->curr_sector = 0;
+	doom->sector[0].height_ceiling = 64;
+	doom->sector[0].height_floor = 0;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 }

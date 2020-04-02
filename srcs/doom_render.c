@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 13:36:27 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 15:58:33 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ double			clamp_angle(double angle)
 void	doom_render(t_doom *doom)
 {
 	int		x;
-	double	angle;
-	t_line ray;
+	int		sector;
+	t_line 	ray;
 
 	x = 0;
-	angle = doom->dir_angle - (FOV / 2);
+	ray.angle = doom->dir_angle - (FOV / 2);
 	ray.start = doom->pos;
 	while (x < WIDTH)
 	{
-		angle = clamp_angle(angle);
-		ray.end.x = ray.start.x + doom->max_ray * cos(angle);
-		ray.end.y = ray.start.y + doom->max_ray * sin(angle);
-		sidedef_render(doom, ray, angle, 1, x);
-		angle += doom->ray_angle;
+		ray.angle = clamp_angle(ray.angle);
+		ray.end.x = ray.start.x + doom->max_ray * cos(ray.angle);
+		ray.end.y = ray.start.y + doom->max_ray * sin(ray.angle);
+		sector = doom->curr_sector;
+		sidedef_render(doom, ray, sector, x);
+		ray.angle += doom->ray_adjacent;
 		x++;
 	}
 

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 11:54:52 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 15:45:31 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	move_player_position(t_doom *doom, int sym)
 		doom->pos.x -= SPEED * cos(doom->dir_angle);
 		doom->pos.y -= SPEED * sin(doom->dir_angle);
 	}
+	//update_curr_sector(doom); //send message to update sector
 }
 
 void	doom_mouse_motion(t_doom *doom, SDL_MouseMotionEvent *motion)

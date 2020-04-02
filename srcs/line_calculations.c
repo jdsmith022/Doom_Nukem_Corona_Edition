@@ -6,14 +6,14 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 12:09:58 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 13:15:13 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 15:42:57 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-t_intersect		line_intersection(t_point start2, t_point delta2,
-						t_point start1, t_point delta1)
+t_intersect		line_intersection(t_point start1, t_point delta1,
+						t_point start2, t_point delta2)
 {
 	t_intersect		intersect;
 	double			denominator;
@@ -48,14 +48,29 @@ t_point			line_delta(t_point start, t_point end)
 	return (delta);
 }
 
-double		point_distance(t_point p1,
-						t_point p2, double angle)
+double		point_distance(t_point point1,
+						t_point point2, double angle)
 {
 	double			distance;
 
-	if (fabs(p1.x - p2.x) > fabs(p1.y - (int)p2.y))
-		distance = (p1.x - p2.x) / cos(angle);
+	if (fabs(point1.x - point2.x) > fabs(point1.y - (int)point2.y))
+		distance = (point1.x - point2.x) / cos(angle);
 	else
-		distance = (p1.y - p2.y) / sin(angle);
+		distance = (point1.y - point2.y) / sin(angle);
+	return (distance);
+}
+
+double		line_intersection_distance(t_line line1, \
+	t_line line2, double angle, t_intersect *intersect)
+{
+	double			distance;
+	t_point			line1_delta;
+	t_point			line2_delta;
+
+	line1_delta = line_delta(line1.start, line1.end);
+	line2_delta = line_delta(line2.start, line2.end);
+	*intersect = line_intersection(line1.start, line1_delta,\
+	line2.start, line2_delta);
+	distance = point_distance(intersect->point, line1.start, angle);
 	return (distance);
 }

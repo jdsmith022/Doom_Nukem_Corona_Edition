@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 13:22:16 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 15:57:23 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,109 +29,99 @@
 
 # define SPEED 20
 
-typedef struct		s_point {
-    double			x;
-    double			y;
-}					t_point;
+typedef struct			s_point {
+    double				x;
+    double				y;
+}						t_point;
 
-typedef struct		s_event {
-	int				mouse_press;
-	int				hold_angle;
-	int				hold_x;
-}					t_event;
+typedef struct			s_line {
+    t_point				start;
+    t_point				end;
+	double				angle;
+}						t_line;
 
-typedef struct		s_intersect {
-	t_point			point;
-	int				texture;
-	char			direction;
-	double			obj_dist;
-	int				sector;
-	int				opp_sector;
-}					t_intersect;
+typedef struct			s_event {
+	int					mouse_press;
+	int					hold_angle;
+	int					hold_x;
+}						t_event;
 
-
-typedef struct		s_sidedef {
-	t_point			start;
-    t_point			end;
-	int				action;
-	int				sector;
-	struct s_sidedef		*opp;
-	int				opp_sector;
-	double			offset_x;
-	double			offset_y;
-	char			*texture_1;
-	char			*texture_2;
-	char			*texture_3;
-}					t_sidedef;
-
-typedef struct		s_sector {
-	int				id;
-	int				height_floor;
-	int				height_ceiling;
-	int				light_level;
-	char			*texture_ceiling;
-	char			*texture_floor;
-}					t_sector;
-
-typedef struct		s_line {
-    t_point			start;
-    t_point			end;
-
-}					t_line;
-
-typedef struct		s_column
+typedef struct			s_column
 {
-	double			y_start;
-	double			y_end;
-	int				texture;
-	int				height;
-	double			offset;
-	int				x;
-}					t_column;
+	double				y_start;
+	double				y_end;
+	int					texture;
+	int					height;
+	double				offset;
+	int					x;
+}						t_column;
 
-typedef struct		s_form
-{
-	int				a_ray;
-	int				b_ray;
-	int				c_ray;
-	int				a_obj;
-	int				b_obj;
-	int				c_obj;
-	double			delta_x;
-	double			delta_y;
-}					t_form;
+typedef struct			s_intersect {
+	t_point				point;
+	int					texture;
+	char				direction;
+	double				obj_dist;
+	int					sector;
+	int					opp_sector;
+}						t_intersect;
 
-typedef struct		s_doom {
-    SDL_Window		*window;
-	SDL_Renderer 	*renderer;
-	SDL_Surface		*surface;
-	SDL_Event		event;
-    t_sidedef		sidedef[10]; 
-	t_sector		sector_1;
-	int				esc;
-	double			dir_angle;
-	int				wall_width;
-	double			wall_height;
-	int				obj_height;
-	double			max_ray;
-	double			dist_to_plane;
-	double			ray_angle;
-	t_point			pos;
-	t_event			own_event;
-}					t_doom;
+typedef struct			s_sidedef {
+	t_point				start;
+    t_point				end;
+	int					action;
+	int					sector;
+	struct s_sidedef	*opp;
+	int					opp_sector;
+	double				offset_x;
+	double				offset_y;
+	char				*texture_1;
+	char				*texture_2;
+	char				*texture_3;
+}						t_sidedef;
+
+typedef struct			s_sector {
+	int					id;
+	int					height_floor;
+	int					height_ceiling;
+	int					light_level;
+	char				*texture_ceiling;
+	char				*texture_floor;
+}						t_sector;
+
+typedef struct			s_doom {
+    SDL_Window			*window;
+	SDL_Renderer 		*renderer;
+	SDL_Surface			*surface;
+	SDL_Event			event;
+	t_sector			sector[1];
+    t_sidedef			sidedef[5]; 
+	t_point				pos;
+	t_event				own_event;
+	int					curr_sector;
+	int					esc;
+	double				dir_angle;
+	double				ray_adjacent;
+	int					wall_width;
+	double				wall_height;
+	int					obj_height;
+	double				max_ray;
+	double				dist_to_plane;
+}						t_doom;
 
 
-int					main(void);
-void				doom_init(t_doom *doom);
-void				game_loop(t_doom *doom);
-void				doom_render(t_doom *doom);
-void				doom_input(t_doom *doom);
-void				sidedef_render(t_doom *doom, t_line ray, double angle, int sector, int column);
-void				draw_column(t_doom *doom, t_intersect intersect, int x);
+int						main(void);
+void					doom_init(t_doom *doom);
+void					game_loop(t_doom *doom);
+void					doom_render(t_doom *doom);
+void					doom_input(t_doom *doom);
+void					sidedef_render(t_doom *doom, t_line ray, int sector, int column);
+void					draw_column(t_doom *doom, t_intersect intersect, int x);
 
-t_intersect			line_intersection(t_point start1, t_point delta1,
-						t_point start2, t_point delta2);
-t_point				line_delta(t_point start, t_point end);
-double				point_distance(t_point p1, t_point p2, double angle);
+t_intersect				line_intersection(t_point start1, t_point delta1,
+							t_point start2, t_point delta2);
+t_point					line_delta(t_point start, t_point end);
+double					point_distance(t_point p1, t_point p2, double angle);
+double					line_intersection_distance(t_line line1, \
+							t_line line2, double angle, t_intersect *intersect);
 
 #endif
