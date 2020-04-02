@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/01 21:21:26 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 11:38:03 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
+
+# define SPEED 20
 
 typedef struct		s_point {
     int				x;
