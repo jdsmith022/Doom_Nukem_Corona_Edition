@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 11:38:03 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 13:22:16 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define SPEED 20
 
 typedef struct		s_point {
-    int				x;
-    int				y;
+    double			x;
+    double			y;
 }					t_point;
 
 typedef struct		s_event {
@@ -41,8 +41,7 @@ typedef struct		s_event {
 }					t_event;
 
 typedef struct		s_intersect {
-	double			x;
-	double			y;
+	t_point			point;
 	int				texture;
 	char			direction;
 	double			obj_dist;
@@ -127,7 +126,12 @@ void				doom_init(t_doom *doom);
 void				game_loop(t_doom *doom);
 void				doom_render(t_doom *doom);
 void				doom_input(t_doom *doom);
-void				find_sidedef(t_doom *doom, t_line ray, double angle, int sector, int column);
+void				sidedef_render(t_doom *doom, t_line ray, double angle, int sector, int column);
 void				draw_column(t_doom *doom, t_intersect intersect, int x);
+
+t_intersect			line_intersection(t_point start1, t_point delta1,
+						t_point start2, t_point delta2);
+t_point				line_delta(t_point start, t_point end);
+double				point_distance(t_point p1, t_point p2, double angle);
 
 #endif

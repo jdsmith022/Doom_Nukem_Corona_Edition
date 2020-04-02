@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/01 21:49:24 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 13:36:27 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	doom_render(t_doom *doom)
 		angle = clamp_angle(angle);
 		ray.end.x = ray.start.x + doom->max_ray * cos(angle);
 		ray.end.y = ray.start.y + doom->max_ray * sin(angle);
-		find_sidedef(doom, ray, angle, 1, x);
+		sidedef_render(doom, ray, angle, 1, x);
 		angle += doom->ray_angle;
 		x++;
 	}

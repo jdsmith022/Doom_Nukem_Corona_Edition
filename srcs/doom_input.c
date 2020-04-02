@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 11:49:12 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 11:54:52 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,17 @@
 void	move_player_position(t_doom *doom, int sym)
 {
 	double radian;
-	double reverse_radian;
-	//double move_angle;
 
 	radian = 90 * PI / 180;
-	reverse_radian = 180 * PI / 180;
 	if (sym == SDLK_a )
 	{
 		doom->pos.x += SPEED * cos(doom->dir_angle - radian);
 		doom->pos.y += SPEED * sin(doom->dir_angle - radian);
-		//move_angle = doom->dir_angle + radian * reverse_radian;
-
 	}
 	if (sym == SDLK_d)
 	{
 		doom->pos.x += SPEED * cos(doom->dir_angle + radian);
 		doom->pos.y += SPEED * sin(doom->dir_angle + radian);
-		//move_angle = doom->dir_angle - radian * reverse_radian;
 	}
 	if (sym == SDLK_w)
 	{
@@ -85,7 +79,6 @@ void	doom_mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 
 void	doom_key_input(t_doom *doom, SDL_KeyboardEvent *key)
 {
-	printf("here\n");
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->esc = 1;
 	if (key->keysym.sym == SDLK_a || key->keysym.sym == SDLK_d\

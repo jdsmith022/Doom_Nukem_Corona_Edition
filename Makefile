@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou          #+#    #+#                 #
-#    Updated: 2020/04/02 11:13:32 by Malou         ########   odam.nl          #
+#    Updated: 2020/04/02 13:22:42 by Malou         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SDL_FLAGS = `sdl2-config --cflags --libs`
 
 SRCS = ./srcs/
 
-SRCS_FILES = main doom_init game_loop doom_render find_sidedef draw_column doom_input
+SRCS_FILES = main doom_init game_loop doom_render sidedef_render draw_column \
+			 doom_input line_calculations
 
 C_FILES = $(SRCS_FILES:%=$(SRCS)%.c)
 

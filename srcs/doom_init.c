@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/01 21:48:13 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 11:55:18 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,6 @@ void doom_init(t_doom *doom)
 	SDL_Init(SDL_INIT_VIDEO);
 	doom->window = SDL_CreateWindow("Doom", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
 	doom->surface = SDL_GetWindowSurface(doom->window);
-	doom->renderer = NULL;
-	//doom->window = NULL;
-	//SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, 0, &doom->window, &doom->renderer);
-	//SDL_RenderClear(doom->renderer);
 	set_lines(doom);
 	doom->esc = 0;
 	doom->dir_angle = 90;
