@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 18:20:05 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 21:13:51 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		put_pixel(t_doom *doom, int x, int y, int color)
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 		pixels[(y * WIDTH) + x] = (Uint32)color;
 }
-
 
 void		draw_sidedef(t_doom *doom, t_sidedef sidedef, int x)
 {
@@ -45,7 +44,7 @@ void		draw_sidedef(t_doom *doom, t_sidedef sidedef, int x)
 		else if (y > sidedef_top && y < sidedef_bottom)
 			put_pixel(doom, x, y, 0xdcedc1);
 		else
-			put_pixel(doom, x, y, 0xffa500);
+			put_pixel(doom, x, y, 0xffa500);	
 		y++;
 	}
 }
