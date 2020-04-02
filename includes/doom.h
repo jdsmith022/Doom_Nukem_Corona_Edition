@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 15:57:23 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 17:55:01 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ typedef struct			s_point {
 typedef struct			s_line {
     t_point				start;
     t_point				end;
-	double				angle;
 }						t_line;
+
+typedef struct			s_ray {
+	t_line				line;
+	double				angle;
+	double				plane_x;
+}						t_ray;
 
 typedef struct			s_event {
 	int					mouse_press;
@@ -56,15 +61,6 @@ typedef struct			s_column
 	int					x;
 }						t_column;
 
-typedef struct			s_intersect {
-	t_point				point;
-	int					texture;
-	char				direction;
-	double				obj_dist;
-	int					sector;
-	int					opp_sector;
-}						t_intersect;
-
 typedef struct			s_sidedef {
 	t_point				start;
     t_point				end;
@@ -77,6 +73,7 @@ typedef struct			s_sidedef {
 	char				*texture_1;
 	char				*texture_2;
 	char				*texture_3;
+	double				distance;
 }						t_sidedef;
 
 typedef struct			s_sector {
@@ -114,14 +111,13 @@ void					doom_init(t_doom *doom);
 void					game_loop(t_doom *doom);
 void					doom_render(t_doom *doom);
 void					doom_input(t_doom *doom);
-void					sidedef_render(t_doom *doom, t_line ray, int sector, int column);
-void					draw_column(t_doom *doom, t_intersect intersect, int x);
+void					sidedef_render(t_doom *doom, t_ray ray,\
+							int sector, int prev_sector);
+void					draw_sidedef(t_doom *doom, t_sidedef sidedef, int x);
 
-t_intersect				line_intersection(t_point start1, t_point delta1,
+t_point					line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point					line_delta(t_point start, t_point end);
 double					point_distance(t_point p1, t_point p2, double angle);
-double					line_intersection_distance(t_line line1, \
-							t_line line2, double angle, t_intersect *intersect);
 
 #endif

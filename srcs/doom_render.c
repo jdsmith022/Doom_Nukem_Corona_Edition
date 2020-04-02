@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 15:58:33 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 18:19:38 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ void	doom_render(t_doom *doom)
 {
 	int		x;
 	int		sector;
-	t_line 	ray;
+	t_ray 	ray;
 
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);
-	ray.start = doom->pos;
+	ray.line.start = doom->pos;
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);
-		ray.end.x = ray.start.x + doom->max_ray * cos(ray.angle);
-		ray.end.y = ray.start.y + doom->max_ray * sin(ray.angle);
+		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
+		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		sector = doom->curr_sector;
-		sidedef_render(doom, ray, sector, x);
+		ray.plane_x = x;
+		sidedef_render(doom, ray, sector, sector);
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}
-
 }

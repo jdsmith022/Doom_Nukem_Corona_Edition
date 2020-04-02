@@ -6,46 +6,68 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 15:52:31 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/02 17:55:26 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-void		sidedef_render(t_doom *doom, t_line ray, int sector, int column)
+t_sidedef		set_sidedef_properties(t_point intersect, double distance,\
+	t_sidedef curr_sidedef)
 {
-	t_intersect		intersect;
-	t_intersect		min_intersect;
-	t_line			side;
+	t_sidedef sidedef;
+	
+	sidedef.offset_x = intersect.x;
+	sidedef.offset_y = intersect.y;
+	sidedef.distance = distance;
+	sidedef.sector = curr_sidedef.sector;
+	sidedef.opp_sector = curr_sidedef.opp_sector;
+	return (sidedef);
+}
+
+double		sidedef_intersection_distance(t_ray ray, \
+	t_sidedef sidef, t_point *intersect)
+{
+	double			distance;
+	t_point			ray_delta;
+	t_point			sidedef_delta;
+
+
+	ray_delta = line_delta(ray.line.start, ray.line.end);
+	sidedef_delta = line_delta(sidef.start, sidef.end);
+	*intersect = line_intersection(ray.line.start, ray_delta,\
+	sidef.start, sidedef_delta);
+	distance = point_distance(*intersect, ray.line.start, ray.angle);
+	return (distance);
+}
+
+void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
+{
+	t_point			intersect;
+	t_sidedef		near_sidedef;
 	double			distance;
 	double			min_distance;
-	int				prev_sector;
 	int				x;
 
 	x = 0;
-	sector = 1;
-	prev_sector = 1;
 	min_distance = INFINITY;
+	sector = 0;
 	while (x < 5) //sidedefs in sector//
 	{
-		side.start = doom->sidedef[x].start;
-		side.end = doom->sidedef[x].end;
-		distance = line_intersection_distance(ray, side, ray.angle , &intersect);
+		distance = sidedef_intersection_distance(ray,\
+			doom->sidedef[x], &intersect);
 		if (distance < min_distance)
 		{
 			min_distance = distance;
-			min_intersect.point.x = intersect.point.x;
-			min_intersect.point.y = intersect.point.y;
-			min_intersect.obj_dist = distance;
-			min_intersect.sector = doom->sidedef[x].sector;
-			min_intersect.opp_sector = doom->sidedef[x].opp_sector;
+			near_sidedef = set_sidedef_properties(intersect,\
+				distance, doom->sidedef[x]);
 		}
 		x++;
 	}
-	if (min_intersect.opp_sector != -1 && min_intersect.sector != prev_sector)
+	if (near_sidedef.opp_sector != -1 && near_sidedef.sector != prev_sector)
 	{
-		prev_sector = min_intersect.sector;
-		sidedef_render(doom, ray, min_intersect.opp_sector, column);
+		prev_sector = near_sidedef.sector;
+		sidedef_render(doom, ray, near_sidedef.opp_sector, near_sidedef.sector);
 	}
-	draw_column(doom, min_intersect, column);
+	draw_sidedef(doom, near_sidedef, ray.plane_x);
 }
