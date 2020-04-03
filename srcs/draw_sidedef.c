@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 21:56:12 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 13:22:20 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void		draw_sidedef(t_doom *doom, t_sidedef sidedef, int x)
 	Uint32	color;
 	Uint32 *pixels;
 
+
 	y = 0;
+	pixels = doom->surface->pixels;
 	id = sidedef.sector;
 	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	sidedef_height = doom->sector[0].height_ceiling - doom->sector[0].height_floor;
@@ -40,7 +42,7 @@ void		draw_sidedef(t_doom *doom, t_sidedef sidedef, int x)
 	sidedef_top = HEIGHT / 2 - sidedef_height / 2;
 	sidedef_bottom = HEIGHT / 2 + sidedef_height / 2;
 	slice = sidedef_height / 3;
-	pixels = doom->surface->pixels;
+
 	while (y < HEIGHT)
 	{
 		while (y <= sidedef_top)
@@ -51,10 +53,14 @@ void		draw_sidedef(t_doom *doom, t_sidedef sidedef, int x)
 		color = 0xdcedc1;
 		while (y > sidedef_top && y < sidedef_bottom)
 		{
-			if (sidedef.opp_sector != 0)
-				put_pixel(doom, x, y, 0xfffff);
-			else
+			if (sidedef.opp_sector == -1)
 				put_pixel(doom, x, y, color);
+			if (sidedef.opp_sector != -1)
+			{
+					color = pixels[(y * WIDTH) + x];
+					color += 50;
+					put_pixel(doom, x, y, color);
+			}
 			y++;
 			
 		}

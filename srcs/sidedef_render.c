@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/02 21:39:32 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 13:07:18 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,21 @@ t_sidedef		set_sidedef_properties(t_point intersect, double distance,\
 }
 
 double		sidedef_intersection_distance(t_ray ray, \
-	t_sidedef sidef, t_point *intersect)
+	t_sidedef sidedef, t_point *intersect)
 {
 	double			distance;
 	t_point			ray_delta;
 	t_point			sidedef_delta;
 
-
 	ray_delta = line_delta(ray.line.start, ray.line.end);
-	sidedef_delta = line_delta(sidef.start, sidef.end);
+	sidedef_delta = line_delta(sidedef.start, sidedef.end);
 	*intersect = line_intersection(ray.line.start, ray_delta,\
-	sidef.start, sidedef_delta);
+	sidedef.start, sidedef_delta);
 	distance = point_distance(*intersect, ray.line.start, ray.angle);
 	return (distance);
 }
 
-void		sidedef_render(t_doom *doom, t_ray ray, int prev_sector)
+void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	t_point			intersect;
 	t_sidedef		near_sidedef;
@@ -51,22 +50,23 @@ void		sidedef_render(t_doom *doom, t_ray ray, int prev_sector)
 
 	x = 0;
 	min_distance = INFINITY;
-	while (x < 6) //sidedefs in sector//
+	while (x < 3) //sidedefs in sector//
 	{
 		distance = sidedef_intersection_distance(ray,\
-			doom->sidedef[x], &intersect);
-		if (distance < min_distance)
+			doom->sector[sector].sidedef[x], &intersect);
+		if (distance < min_distance && doom->sector[sector].sidedef[x].opp_sector != prev_sector)
 		{
 			min_distance = distance;
 			near_sidedef = set_sidedef_properties(intersect,\
-				distance, doom->sidedef[x]);
+				distance, doom->sector[sector].sidedef[x]);
 		}
 		x++;
 	}
-	if (near_sidedef.opp_sector != 0 && near_sidedef.opp_sector != prev_sector)
+	//if (near_sidedef.sector == 1)
+	//	printf("%f, %f - %f, %f\n", near_sidedef.start.x, near_sidedef.start.y, near_sidedef.end.x, near_sidedef.end.y);
+	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 	{
-		prev_sector = near_sidedef.sector;
-		sidedef_render(doom, ray, near_sidedef.opp_sector);
+		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 	}
 	draw_sidedef(doom, near_sidedef, ray.plane_x);
 }
