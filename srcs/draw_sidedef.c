@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 22:45:17 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 22:55:43 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int 
 		else
 			color = 0x088da5;
 		put_pixel(doom, x, y, color);
-		y++;	
+		y++;
 	}
 }
