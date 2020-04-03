@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 13:07:18 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 13:35:27 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
-	//if (near_sidedef.sector == 1)
-	//	printf("%f, %f - %f, %f\n", near_sidedef.start.x, near_sidedef.start.y, near_sidedef.end.x, near_sidedef.end.y);
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
-	{
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-	}
 	draw_sidedef(doom, near_sidedef, ray.plane_x);
 }
