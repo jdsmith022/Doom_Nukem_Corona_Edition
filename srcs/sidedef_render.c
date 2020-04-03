@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 13:35:27 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 18:16:39 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	}
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-	draw_sidedef(doom, near_sidedef, ray.plane_x);
+	project_on_plane(doom, near_sidedef, ray.plane_x);
 }

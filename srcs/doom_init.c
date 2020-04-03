@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 11:19:50 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 17:56:23 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	set_lines(t_doom *doom)
 	doom->sector[1].sidedef[1].opp = NULL;
 	doom->sector[1].sidedef[1].opp_sector = -1;
 
-
 	doom->sector[1].sidedef[2].start.x = 0;
 	doom->sector[1].sidedef[2].start.y = 0;
 	doom->sector[1].sidedef[2].end.x = 1000;
@@ -80,6 +79,6 @@ void doom_init(t_doom *doom)
 	doom->sector[0].height_ceiling = 64;
 	doom->sector[0].height_floor = 0;
 	doom->sector[1].height_ceiling = 64;
-	doom->sector[1].height_floor = 0;
+	doom->sector[1].height_floor = 20;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 }

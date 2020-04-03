@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 13:22:20 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 22:45:17 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,50 +21,70 @@ void		put_pixel(t_doom *doom, int x, int y, int color)
 		pixels[(y * WIDTH) + x] = (Uint32)color;
 }
 
-void		draw_sidedef(t_doom *doom, t_sidedef sidedef, int x)
+void		draw_floor(t_doom *doom, int sector, int x, int y)
 {
-	int		y;
-	int 	id;
-	int 	sidedef_height;
-	int		sidedef_top;
-	int		sidedef_bottom;
-	int		slice;
-	Uint32	color;
-	Uint32 *pixels;
-
-
-	y = 0;
-	pixels = doom->surface->pixels;
-	id = sidedef.sector;
-	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
-	sidedef_height = doom->sector[0].height_ceiling - doom->sector[0].height_floor;
-	sidedef_height = sidedef_height / sidedef.distance * doom->dist_to_plane;
-	sidedef_top = HEIGHT / 2 - sidedef_height / 2;
-	sidedef_bottom = HEIGHT / 2 + sidedef_height / 2;
-	slice = sidedef_height / 3;
-
+	Uint32 	color;
+	
 	while (y < HEIGHT)
 	{
-		while (y <= sidedef_top)
-		{
-			put_pixel(doom, x, y, 0x5B2C6F);
-			y++;
-		}
-		color = 0xdcedc1;
-		while (y > sidedef_top && y < sidedef_bottom)
-		{
-			if (sidedef.opp_sector == -1)
-				put_pixel(doom, x, y, color);
-			if (sidedef.opp_sector != -1)
-			{
-					color = pixels[(y * WIDTH) + x];
-					color += 50;
-					put_pixel(doom, x, y, color);
-			}
-			y++;
-			
-		}
-		put_pixel(doom, x, y, 0xffa500);	
+		if (sector == 1)
+			color = 0xffa500;
+		else
+			color = 0x8b0000;
+		put_pixel(doom, x, y, color);
+		y++;	
+	}
+}
+
+void		draw_ceiling(t_doom *doom, int sidedef_top, int sector, int x)
+{
+	int y;
+
+	y = 0;
+	sector = 0;
+	while (y < sidedef_top)
+	{
+		put_pixel(doom, x, y, 0x5B2C6F);
 		y++;
+	}
+}
+
+void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+{
+	int y;
+	Uint32 color;
+	Uint32 *pixels;
+
+	y = plane.sidedef_top;
+	sidedef.action = 0;
+	pixels = doom->surface->pixels;
+	while (y <= plane.sidedef_bottom)
+	{
+		if (y < plane.mid_textur_bottom)
+			color = pixels[(y * WIDTH) + x];
+		if (y >= plane.mid_textur_bottom && y <= plane.mid_textur_bottom + 2)
+			color = 0x000000;
+		else if (y > plane.mid_textur_bottom + 2)
+			color = 0xffa500;
+		put_pixel(doom, x, y, color);
+		y++;
+	}
+}
+
+void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+{
+	int		y;
+	int		color;
+
+	y = plane.sidedef_top;
+	color = 0xdcedc1;
+	while (y <= plane.sidedef_bottom)
+	{
+		if (sidedef.sector == 0)
+			color = 0xdcedc1;
+		else
+			color = 0x088da5;
+		put_pixel(doom, x, y, color);
+		y++;	
 	}
 }

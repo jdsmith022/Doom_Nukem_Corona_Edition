@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 13:04:20 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/03 21:43:33 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,14 @@ typedef struct			s_event {
 	int					hold_x;
 }						t_event;
 
-typedef struct			s_column
+typedef struct			s_plane
 {
-	double				y_start;
-	double				y_end;
-	int					texture;
-	int					height;
-	double				offset;
-	int					x;
-}						t_column;
+	double				sidedef_top;
+	double				sidedef_bottom;
+	double				sidedef_height;
+	double				mid_texture_top;
+	double				mid_textur_bottom;
+}						t_plane;
 
 typedef struct			s_sidedef {
 	t_point				start;
@@ -113,7 +112,13 @@ void					doom_render(t_doom *doom);
 void					doom_input(t_doom *doom);
 void					sidedef_render(t_doom *doom, t_ray ray,\
 							int sector, int prev_sector);
-void					draw_sidedef(t_doom *doom, t_sidedef sidedef, int x);
+void					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+
+void					draw_ceiling(t_doom *doom, int sidedef_top, int sector, int x);
+void					draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
+void					draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
+void					draw_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
+void					draw_floor(t_doom *doom, int sector, int x, int y);
 
 t_point					line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
