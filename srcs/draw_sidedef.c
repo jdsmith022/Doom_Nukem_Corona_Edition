@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 22:55:43 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/06 12:58:06 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		draw_floor(t_doom *doom, int sector, int x, int y)
 		if (sector == 1)
 			color = 0xffa500;
 		else
-			color = 0x8b0000;
+			color = 0xffa500;
 		put_pixel(doom, x, y, color);
 		y++;	
 	}
@@ -65,7 +65,7 @@ void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 		if (y >= plane.mid_textur_bottom && y <= plane.mid_textur_bottom + 2)
 			color = 0x000000;
 		else if (y > plane.mid_textur_bottom + 2)
-			color = 0xffa500;
+			color = 0x8b0000;
 		put_pixel(doom, x, y, color);
 		y++;
 	}
@@ -80,7 +80,7 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int 
 	color = 0xdcedc1;
 	while (y <= plane.sidedef_bottom)
 	{
-		if (sidedef.sector == 0)
+		if (sidedef.sector == 5)
 			color = 0xdcedc1;
 		else
 			color = 0x088da5;
