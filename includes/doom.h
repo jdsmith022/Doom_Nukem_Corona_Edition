@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 12:39:07 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/06 15:12:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 # include "../libft/libft.h"
 # include "../sdl/includes/SDL.h"
+
+# define INIT_ERR	"error: initialization of SDL"
+# define MALLOC_ERR "error: malloc"
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -87,7 +90,7 @@ typedef struct			s_sector {
 }						t_sector;
 
 typedef struct			s_doom {
-    SDL_Window			*window;
+  SDL_Window			*window;
 	SDL_Renderer 		*renderer;
 	SDL_Surface			*surface;
 	SDL_Event			event;
@@ -126,4 +129,6 @@ t_point					line_intersection(t_point start1, t_point delta1,
 t_point					line_delta(t_point start, t_point end);
 double					point_distance(t_point p1, t_point p2, double angle);
 
+void    				doom_exit_success(t_doom *doom);
+void  				  doom_exit_failure(t_doom *doom, const char *exit_message);
 #endif

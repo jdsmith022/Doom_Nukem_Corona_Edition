@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 14:56:13 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 10:55:07 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/06 15:36:51 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void 	doom_sound(t_doom *doom)
 
 void	game_loop(t_doom *doom)
 {
-	while (doom->esc == 0)
+	while (doom->esc == 0) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
-		doom_render(doom);
 		doom_input(doom);
+		doom_render(doom);
 		doom_sound(doom);
 		doom_gui(doom);
 		SDL_UpdateWindowSurface(doom->window);

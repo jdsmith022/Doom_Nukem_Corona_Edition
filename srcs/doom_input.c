@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 21:17:35 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 12:39:30 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/06 15:12:10 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	doom_input(t_doom *doom)
 		if (event.type == SDL_KEYDOWN)
 			doom_key_input(doom, &event.key);
 		if (event.type == SDL_QUIT)
-            doom->esc = 1;
+			doom_exit_success(doom);
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 			doom_mouse_press(doom, &event.button);
 		if (event.type == SDL_MOUSEMOTION)

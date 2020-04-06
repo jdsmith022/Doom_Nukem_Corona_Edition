@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 12:54:26 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/06 15:03:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,17 @@ void	set_lines(t_doom *doom)
 
 void doom_init(t_doom *doom)
 {
-	SDL_Init(SDL_INIT_VIDEO);
-	doom->window = SDL_CreateWindow("Doom", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
-	doom->surface = SDL_GetWindowSurface(doom->window);
+	if (SDL_Init(SDL_INIT_VIDEO) == 0) // check what to init
+	{
+		doom->window = SDL_CreateWindow("Doom", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
+			if (doom->window == NULL) 
+		    doom_exit_failure(doom, MALLOC_ERR);
+		doom->surface = SDL_GetWindowSurface(doom->window);
+		if (doom->surface == NULL) 
+		    doom_exit_failure(doom, MALLOC_ERR);
+	}
+	else
+		doom_exit_failure(doom, INIT_ERR);
 	set_lines(doom);
 	doom->esc = 0;
 	doom->dir_angle = 180;
