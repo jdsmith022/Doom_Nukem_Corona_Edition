@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 22:44:34 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/06 14:49:32 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,19 @@ t_plane		set_plane_properties(t_doom *doom, t_sidedef sidedef, int x)
 	t_plane 	plane;
 	int			id;
 	double		floor_corr;
+	double		sidedef_height;
 
 	id = sidedef.sector;
 	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	ft_bzero(&plane, sizeof(plane));
-	plane.sidedef_height = doom->sector[id].height_ceiling -\
+	sidedef_height = doom->sector[id].height_ceiling -\
 		doom->sector[id].height_floor;
-	plane.sidedef_height = plane.sidedef_height / sidedef.distance *\
+	sidedef_height = sidedef_height / sidedef.distance *\
 		 doom->dist_to_plane;
 	floor_corr = doom->sector[id].height_floor - 0;
 	floor_corr = floor_corr / sidedef.distance * doom->dist_to_plane;
-	plane.sidedef_top =  (HEIGHT / 2 - (plane.sidedef_height + floor_corr) / 2);
-	plane.sidedef_bottom = HEIGHT / 2 + plane.sidedef_height / 2;
+	plane.sidedef_top =  (HEIGHT / 2 - (sidedef_height + floor_corr) / 2);
+	plane.sidedef_bottom = HEIGHT / 2 + sidedef_height / 2;
 	set_properties_portal(doom, &plane, sidedef, sidedef.opp_sector);
 	return (plane);
 }
