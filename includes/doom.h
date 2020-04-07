@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/07 12:20:30 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/07 17:24:32 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,12 @@ t_point					line_intersection(t_point start1, t_point delta1,
 t_point					line_delta(t_point start, t_point end);
 double					point_distance(t_point p1, t_point p2, double angle);
 
-void					move_player_position(t_doom *doom, int sym);
+void 					move_position_forwards(t_doom *doom);
+void 					move_position_backwards(t_doom *doom);
+void 					move_position_left(t_doom *doom);
+void					move_position_right(t_doom *doom);
+int						movement_collision(t_doom *doom, t_line move);
+t_point					check_line_intersection(t_line move, t_sidedef sidedef);
 
 void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 21:17:35 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/07 10:55:45 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/07 17:13:05 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,15 @@ void	doom_key_input(t_doom *doom, SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->esc = 1;
-	if (key->keysym.sym == SDLK_a || key->keysym.sym == SDLK_d\
-			|| key->keysym.sym == SDLK_w || key->keysym.sym == SDLK_s)
-		move_player_position(doom, key->keysym.sym);
+	else if (key->keysym.sym == SDLK_w)
+		move_position_forwards(doom);
+	else if (key->keysym.sym == SDLK_s)
+		move_position_backwards(doom);
+	else if (key->keysym.sym == SDLK_a)
+		move_position_left(doom);
+	else if (key->keysym.sym == SDLK_d)
+		move_position_right(doom);
+	printf("doom sector %d\n", doom->curr_sector);
 }
 
 void	doom_input(t_doom *doom)
