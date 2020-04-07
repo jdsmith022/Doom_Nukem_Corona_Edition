@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/06 15:38:08 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
+/*   Updated: 2020/04/07 12:20:30 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct			s_sector {
 }						t_sector;
 
 typedef struct			s_doom {
-  SDL_Window			*window;
+  	SDL_Window			*window;
 	SDL_Renderer 		*renderer;
 	SDL_Surface			*surface;
 	SDL_Event			event;
@@ -128,6 +128,8 @@ t_point					line_intersection(t_point start1, t_point delta1,
 t_point					line_delta(t_point start, t_point end);
 double					point_distance(t_point p1, t_point p2, double angle);
 
-void    				doom_exit_success(t_doom *doom);
-void  				  doom_exit_failure(t_doom *doom, const char *exit_message);
+void					move_player_position(t_doom *doom, int sym);
+
+void					doom_exit_success(t_doom *doom);
+void					doom_exit_failure(t_doom *doom, const char *exit_message);
 #endif

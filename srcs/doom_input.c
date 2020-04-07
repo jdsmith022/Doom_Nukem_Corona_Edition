@@ -5,40 +5,12 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/06 15:12:10 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/04/01 21:17:35 by Malou          #+#    #+#                */
+/*   Updated: 2020/04/07 10:55:45 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
-
-void	move_player_position(t_doom *doom, int sym)
-{
-	double radian;
-
-	radian = 90 * PI / 180;
-	if (sym == SDLK_a )
-	{
-		doom->pos.x += SPEED * cos(doom->dir_angle - radian);
-		doom->pos.y += SPEED * sin(doom->dir_angle - radian);
-	}
-	if (sym == SDLK_d)
-	{
-		doom->pos.x += SPEED * cos(doom->dir_angle + radian);
-		doom->pos.y += SPEED * sin(doom->dir_angle + radian);
-	}
-	if (sym == SDLK_w)
-	{
-		doom->pos.x += SPEED * cos(doom->dir_angle);
-		doom->pos.y += SPEED * sin(doom->dir_angle);
-	}
-	if (sym == SDLK_s)
-	{
-		doom->pos.x -= SPEED * cos(doom->dir_angle);
-		doom->pos.y -= SPEED * sin(doom->dir_angle);
-	}
-	//update_curr_sector(doom); //send message to update sector
-}
 
 void	doom_mouse_motion(t_doom *doom, SDL_MouseMotionEvent *motion)
 {
@@ -96,7 +68,7 @@ void	doom_input(t_doom *doom)
 		if (event.type == SDL_KEYDOWN)
 			doom_key_input(doom, &event.key);
 		if (event.type == SDL_QUIT)
-			doom_exit_success(doom);
+            doom->esc = 1;
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 			doom_mouse_press(doom, &event.button);
 		if (event.type == SDL_MOUSEMOTION)
