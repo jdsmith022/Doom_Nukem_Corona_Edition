@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/07 17:23:58 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/08 12:54:53 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		movement_collision(t_doom *doom, t_line move)
 			else if (sidedef.opp_sector != -1)
 			{
 				doom->curr_sector = sidedef.opp_sector;
-				if (move.end.x == intersect.x || move.end.y == intersect.y)
+				if (move.end.x == intersect.x && move.end.y == intersect.y)
 					return (1);
 			}
 			return (0);
@@ -70,7 +70,7 @@ void	move_position_right(t_doom *doom)
 		if (collision == 1)
 		{
 			doom->pos.x += 5 * cos(doom->dir_angle - qt_radian);
-			doom->pos.y += 5* sin(doom->dir_angle - qt_radian);
+			doom->pos.y += 5 * sin(doom->dir_angle - qt_radian);
 		}
 
 	}

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 12:58:06 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/08 12:58:44 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 	pixels = doom->surface->pixels;
 	while (y <= plane.sidedef_bottom)
 	{
-		if (y < plane.mid_textur_bottom)
+		if (y < plane.mid_texture_bottom)
 			color = pixels[(y * WIDTH) + x];
-		if (y >= plane.mid_textur_bottom && y <= plane.mid_textur_bottom + 2)
+		if (y >= plane.mid_texture_bottom && y <= plane.mid_texture_bottom + 2)
 			color = 0x000000;
-		else if (y > plane.mid_textur_bottom + 2)
+		else if (y > plane.mid_texture_bottom + 2)
 			color = 0x8b0000;
 		put_pixel(doom, x, y, color);
 		y++;

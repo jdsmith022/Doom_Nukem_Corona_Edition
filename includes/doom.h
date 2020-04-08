@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/07 17:24:32 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/08 12:58:03 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct			s_plane
 	double				sidedef_top;
 	double				sidedef_bottom;
 	double				mid_texture_top;
-	double				mid_textur_bottom;
+	double				mid_texture_bottom;
 }						t_plane;
 
 typedef struct			s_sidedef {

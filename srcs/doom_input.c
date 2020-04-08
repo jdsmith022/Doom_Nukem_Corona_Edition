@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/07 17:13:05 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/08 12:54:41 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	doom_key_input(t_doom *doom, SDL_KeyboardEvent *key)
 		move_position_left(doom);
 	else if (key->keysym.sym == SDLK_d)
 		move_position_right(doom);
-	printf("doom sector %d\n", doom->curr_sector);
 }
 
 void	doom_input(t_doom *doom)

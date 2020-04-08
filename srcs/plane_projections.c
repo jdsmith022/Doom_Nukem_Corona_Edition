@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/03 18:17:10 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 14:49:32 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/08 13:01:57 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void		set_properties_portal(t_doom *doom, t_plane *plane,\
 	height_opp_sector = height_opp_sector / sidedef.distance *\
 		doom->dist_to_plane;
 	plane->mid_texture_top = (HEIGHT / 2 - height_opp_sector / 2);
-	plane->mid_textur_bottom = (HEIGHT / 2 + height_opp_sector / 2);
+	if (plane->mid_texture_top < 0)
+		plane->mid_texture_top = 0;
+	plane->mid_texture_bottom = (HEIGHT / 2 + height_opp_sector / 2);
+	if (plane->mid_texture_bottom > HEIGHT)
+		plane->mid_texture_bottom = HEIGHT;
 }
 
 t_plane		set_plane_properties(t_doom *doom, t_sidedef sidedef, int x)
@@ -42,7 +46,11 @@ t_plane		set_plane_properties(t_doom *doom, t_sidedef sidedef, int x)
 	floor_corr = doom->sector[id].height_floor - 0;
 	floor_corr = floor_corr / sidedef.distance * doom->dist_to_plane;
 	plane.sidedef_top =  (HEIGHT / 2 - (sidedef_height + floor_corr) / 2);
+	if (plane.sidedef_bottom < 0)
+		plane.sidedef_top = 0;
 	plane.sidedef_bottom = HEIGHT / 2 + sidedef_height / 2;
+	if (plane.sidedef_bottom > HEIGHT)
+		plane.sidedef_bottom = HEIGHT;
 	set_properties_portal(doom, &plane, sidedef, sidedef.opp_sector);
 	return (plane);
 }
