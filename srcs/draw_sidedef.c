@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 18:40:59 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 12:58:06 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/07 11:38:29 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/doom.h"
+#include "../includes/doom.h"
 
 void		put_pixel(t_doom *doom, int x, int y, int color)
 {
@@ -23,8 +23,8 @@ void		put_pixel(t_doom *doom, int x, int y, int color)
 
 void		draw_floor(t_doom *doom, int sector, int x, int y)
 {
-	Uint32 	color;
-	
+	Uint32	color;
+
 	while (y < HEIGHT)
 	{
 		if (sector == 1)
@@ -32,7 +32,7 @@ void		draw_floor(t_doom *doom, int sector, int x, int y)
 		else
 			color = 0xffa500;
 		put_pixel(doom, x, y, color);
-		y++;	
+		y++;
 	}
 }
 
@@ -49,11 +49,12 @@ void		draw_ceiling(t_doom *doom, int sidedef_top, int sector, int x)
 	}
 }
 
-void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void		draw_portal_sidedef(t_doom *doom, t_plane plane,
+				t_sidedef sidedef, int x)
 {
-	int y;
-	Uint32 color;
-	Uint32 *pixels;
+	Uint32	color;
+	Uint32	*pixels;
+	int		y;
 
 	y = plane.sidedef_top;
 	sidedef.action = 0;
@@ -71,7 +72,8 @@ void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 	}
 }
 
-void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void		draw_onesided_sidedef(t_doom *doom, t_plane plane,
+				t_sidedef sidedef, int x)
 {
 	int		y;
 	int		color;

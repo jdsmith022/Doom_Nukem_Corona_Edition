@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/06 15:38:08 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/08 16:17:49 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct			s_plane
 
 typedef struct			s_sidedef {
 	t_point				start;
-    t_point				end;
+	t_point				end;
 	int					action;
 	int					sector;
 	struct s_sidedef	*opp;
@@ -80,7 +80,7 @@ typedef struct			s_sidedef {
 typedef struct			s_sector {
 	int					id;
 	int					n_sidedefs;
-	t_sidedef			sidedef[5]; 
+	t_sidedef			sidedef[5];
 	int					height_floor;
 	int					height_ceiling;
 	int					light_level;
@@ -89,10 +89,11 @@ typedef struct			s_sector {
 }						t_sector;
 
 typedef struct			s_doom {
-  SDL_Window			*window;
-	SDL_Renderer 		*renderer;
+	SDL_Window			*window;
+	SDL_Renderer		*renderer;
 	SDL_Surface			*surface;
 	SDL_Event			event;
+	SDL_Surface			**textures;
 	t_sector			sector[3];
 	t_point				pos;
 	t_event				own_event;
@@ -106,7 +107,6 @@ typedef struct			s_doom {
 	double				max_ray;
 	double				dist_to_plane;
 }						t_doom;
-
 
 int						main(void);
 void					doom_init(t_doom *doom);
@@ -130,4 +130,6 @@ double					point_distance(t_point p1, t_point p2, double angle);
 
 void    				doom_exit_success(t_doom *doom);
 void  				  doom_exit_failure(t_doom *doom, const char *exit_message);
+
+void					load_textures(t_doom *doom);
 #endif
