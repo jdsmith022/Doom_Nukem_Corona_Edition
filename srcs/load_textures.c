@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:07:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/04/08 16:35:55 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/11 13:39:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void		load_png(t_doom *doom, int fd)
 		doom_exit_failure(doom, MALLOC_ERR);
 	while (index < nb_textures)
 	{
-		doom->textures[index] = SDL_CreateRGBSurfaceWithFormat(0, w, h, 64, SDL_PIXELFORMAT_ARGB32);
 		if (read(fd, &w, sizeof(int)) < 0 || read(fd, &h, sizeof(h) < 0))
 			doom_exit_failure(doom, MALLOC_ERR);
+		doom->textures[index] = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL_PIXELFORMAT_ARGB8888);
 		if (doom->textures[index] == NULL)
 			doom_exit_failure(doom, MALLOC_ERR);
 		if (read(fd, doom->textures[index]->pixels, w * h * 4) < 0)
