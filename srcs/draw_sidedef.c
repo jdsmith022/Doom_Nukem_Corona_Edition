@@ -6,22 +6,29 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/11 14:21:20 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/11 17:01:43 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 #include <stdio.h>
 
-static void		put_text(t_doom *doom, size_t index, Uint32 pixel)
+static void		put_text(t_doom *doom, int x, int y, size_t index, Uint8 *pixel_dex)
 {
 	Uint32 *pixels;
 	Uint32 *text;
 
 	pixels = doom->surface->pixels;
 	text = doom->textures[0]->pixels;
-	// printf("%d\n", [0]);
-	pixels[index] = pixel;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		pixels[index] = pixel_dex[0];
+		index++;
+		pixels[index] = pixel_dex[1];
+		index++;
+		pixels[index] = pixel_dex[2];
+	}
+
 }
 
 void		put_pixel(t_doom *doom, int x, int y, Uint32 color)
@@ -88,22 +95,22 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane,
 				t_sidedef sidedef, int x)
 {
 	int		y;
-	// int		bpp;
+	Uint8 *pixel_dex;
+	int		bpp;
 	size_t	index;
-	// int		height;
-	Uint32	pixels;
-	int		real_y;
-	int		real_x;
+	Uint8	*pixels;
 
-	y = plane.sidedef_top;
-	real_x = doom->textures[0]->w * x;
-	real_y = doom->textures[0]->h * y;
 	(void)sidedef;
+	y = plane.sidedef_top;
+	pixels = doom->textures[0]->pixels;
 	while (y <= plane.sidedef_bottom)
 	{
-		pixels = ((Uint32 *)doom->textures[0]->pixels)[real_x + real_y * doom->textures[0]->w];
-		index = (x + y * WIDTH);
-		put_text(doom, index, pixels);
+		bpp = doom->textures[0]->format->BytesPerPixel;
+		index = (y * doom->textures[0]->pitch) + (x * bpp / 8);
+		printf("%zu\n", index);
+		pixel_dex = (Uint8 *)(pixels + y * doom->textures[0]->pitch + (int)sidedef.offset_x * bpp / 8);
+		// printf("%d\n", pixel_dex);
+		put_text(doom, x, y, index, pixel_dex);
 		y++;
 	}
 }
