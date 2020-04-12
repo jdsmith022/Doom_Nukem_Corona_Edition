@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 12:54:53 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/12 18:02:20 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,16 @@ void	move_position_right(t_doom *doom)
 	int		collision;
 
 	qt_radian = 90 * PI / 180;
-	movement.end.x = doom->pos.x + SPEED * cos(doom->dir_angle - qt_radian);
-	movement.end.y = doom->pos.y + SPEED * sin(doom->dir_angle - qt_radian);
+	movement.end.x = doom->pos.x + SPEED * cos(doom->dir_angle + qt_radian);
+	movement.end.y = doom->pos.y + SPEED * sin(doom->dir_angle + qt_radian);
 	collision = movement_collision(doom, movement);
 	if (collision == 0 || collision == 1)
 	{
 		doom->pos = movement.end;
 		if (collision == 1)
 		{
-			doom->pos.x += 5 * cos(doom->dir_angle - qt_radian);
-			doom->pos.y += 5 * sin(doom->dir_angle - qt_radian);
+			doom->pos.x += 5 * cos(doom->dir_angle + qt_radian);
+			doom->pos.y += 5 * sin(doom->dir_angle + qt_radian);
 		}
 
 	}
@@ -83,16 +83,16 @@ void move_position_left(t_doom *doom)
 	int		collision;
 
 	qt_radian = 90 * PI / 180;
-	movement.end.x = doom->pos.x + SPEED * cos(doom->dir_angle + qt_radian);
-	movement.end.y = doom->pos.y + SPEED * sin(doom->dir_angle + qt_radian);
+	movement.end.x = doom->pos.x + SPEED * cos(doom->dir_angle - qt_radian);
+	movement.end.y = doom->pos.y + SPEED * sin(doom->dir_angle - qt_radian);
 	collision = movement_collision(doom, movement);
 	if (collision == 0 || collision == 1)
 	{
 		doom->pos = movement.end;
 		if (collision == 1)
 		{
-			doom->pos.x += 5 * cos(doom->dir_angle + qt_radian);
-			doom->pos.y += 5 * sin(doom->dir_angle + qt_radian);
+			doom->pos.x += 5 * cos(doom->dir_angle - qt_radian);
+			doom->pos.y += 5 * sin(doom->dir_angle - qt_radian);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 12:20:52 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/12 17:57:55 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	t_sidedef		near_sidedef;
 	double			distance;
 	double			min_distance;
-	int				x;
+	int		x;
 
 	x = 0;
 	min_distance = INFINITY;
