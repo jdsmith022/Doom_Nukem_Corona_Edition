@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/06 14:52:44 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/11 12:53:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_sidedef		set_sidedef_properties(t_point intersect, double distance,\
 	t_sidedef curr_sidedef)
 {
 	t_sidedef sidedef;
-	
+
 	sidedef.offset_x = intersect.x;
 	sidedef.offset_y = intersect.y;
 	sidedef.distance = distance;

@@ -6,14 +6,14 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/11 17:01:43 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/11 17:15:45 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 #include <stdio.h>
 
-static void		put_text(t_doom *doom, int x, int y, size_t index, Uint8 *pixel_dex)
+static void		put_text(t_doom *doom, int x, int y, size_t index, Uint32 *pixel_dex)
 {
 	Uint32 *pixels;
 	Uint32 *text;
@@ -95,21 +95,22 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane,
 				t_sidedef sidedef, int x)
 {
 	int		y;
-	Uint8 *pixel_dex;
+	Uint32 *pixel_dex;
 	int		bpp;
 	size_t	index;
-	Uint8	*pixels;
+	Uint32	*pixels;
 
 	(void)sidedef;
 	y = plane.sidedef_top;
 	pixels = doom->textures[0]->pixels;
+	bpp = doom->textures[0]->format->BytesPerPixel;
 	while (y <= plane.sidedef_bottom)
 	{
-		bpp = doom->textures[0]->format->BytesPerPixel;
-		index = (y * doom->textures[0]->pitch) + (x * bpp / 8);
+		index = (y * doom->textures[0]->w) + (x * bpp);
 		printf("%zu\n", index);
-		pixel_dex = (Uint8 *)(pixels + y * doom->textures[0]->pitch + (int)sidedef.offset_x * bpp / 8);
+		// pixel_dex = (Uint8 *)(pixels + y * doom->textures[0]->pitch + (int)sidedef.offset_x * bpp / 8);
 		// printf("%d\n", pixel_dex);
+		pixel_dex = (Uint32 *)((pixels + y * doom->textures[0]->pitch) + ((int)sidedef.offset_x * bpp / 8));
 		put_text(doom, x, y, index, pixel_dex);
 		y++;
 	}
