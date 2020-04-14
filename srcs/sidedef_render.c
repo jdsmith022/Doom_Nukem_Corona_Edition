@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/14 11:26:03 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/14 11:49:46 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	while (x < doom->sector[sector].n_sidedefs + doom->sector[sector].i_sidedefs) //sidedefs in sector//
 	{
 		distance = sidedef_intersection_distance(ray, doom->sidedef[x], &intersect);
-		printf("renden?\n");
 		if (distance < min_distance && doom->sidedef[x].opp_sector != prev_sector)
 		{
 			min_distance = distance;
