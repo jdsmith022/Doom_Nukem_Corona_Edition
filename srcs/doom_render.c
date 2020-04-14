@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 16:54:18 by Malou          #+#    #+#                */
-/*   Updated: 2020/04/03 11:46:44 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
+/*   Updated: 2020/04/14 11:21:01 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	doom_render(t_doom *doom)
 		ray.angle = clamp_angle(ray.angle);
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
-		sector = doom->curr_sector;
+		sector = doom->i_sector;
 		ray.plane_x = x;
 		sidedef_render(doom, ray, sector, sector);
 		ray.angle += doom->ray_adjacent;

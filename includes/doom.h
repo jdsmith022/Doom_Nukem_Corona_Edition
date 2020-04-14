@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 12:58:03 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/14 11:18:56 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct			s_sidedef {
     t_point				end;
 	int					action;
 	int					sector;
-	struct s_sidedef	*opp;
+	int					opp_sidedef;
 	int					opp_sector;
 	double				offset_x;
 	double				offset_y;
@@ -80,7 +80,7 @@ typedef struct			s_sidedef {
 typedef struct			s_sector {
 	int					id;
 	int					n_sidedefs;
-	t_sidedef			sidedef[5]; 
+	int					i_sidedefs;
 	int					height_floor;
 	int					height_ceiling;
 	int					light_level;
@@ -94,9 +94,10 @@ typedef struct			s_doom {
 	SDL_Surface			*surface;
 	SDL_Event			event;
 	t_sector			sector[3];
+	t_sidedef			sidedef[12];
 	t_point				pos;
 	t_event				own_event;
-	int					curr_sector;
+	int					i_sector;
 	int					esc;
 	double				dir_angle;
 	double				ray_adjacent;
