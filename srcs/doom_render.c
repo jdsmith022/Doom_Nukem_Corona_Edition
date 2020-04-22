@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/14 11:21:01 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/22 13:06:54 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ double			clamp_angle(double angle)
 void	doom_render(t_doom *doom)
 {
 	int		x;
-	int		sector;
 	t_ray 	ray;
 
 	x = 0;
@@ -36,9 +35,8 @@ void	doom_render(t_doom *doom)
 		ray.angle = clamp_angle(ray.angle);
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
-		sector = doom->i_sector;
 		ray.plane_x = x;
-		sidedef_render(doom, ray, sector, sector);
+		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}

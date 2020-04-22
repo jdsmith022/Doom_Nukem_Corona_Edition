@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/21 18:23:17 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/22 13:27:15 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct			s_doom {
 	SDL_Surface			*surface;
 	SDL_Event			event;
 	t_sector			sector[3];
-	t_sidedef			sidedef[12];
+	t_sidedef			sidedef[13];
 	t_point				pos;
 	t_event				own_event;
 	int					i_sector;
