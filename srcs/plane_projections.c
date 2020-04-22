@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/22 12:23:11 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/22 12:33:02 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void		set_properties_portal(t_doom *doom, t_sidedef sidedef,\
 	plane->mid_texture_top = ((mid_top >= 0) ? mid_top : 0);
 	mid_bottom = (int)(HEIGHT / 2 + height_opp_sector / 2);
 	plane->mid_texture_bottom = ((mid_bottom < HEIGHT) ? mid_bottom : (HEIGHT - 1));
-	printf("%d & %d\n", plane->mid_texture_bottom, plane->mid_texture_top);
 }
 
 
