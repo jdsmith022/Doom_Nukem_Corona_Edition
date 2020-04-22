@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/14 11:28:10 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/21 18:52:19 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,106 +14,119 @@
 
 void	set_lines(t_sidedef *sidedef)
 {
-	sidedef[0].start.x = 0;
-	sidedef[0].start.y = 0;
-	sidedef[0].end.x = 200;
-	sidedef[0].end.y = 0;
+	sidedef[0].id = 0;
+	sidedef[0].line.start.x = 0;
+	sidedef[0].line.start.y = 0;
+	sidedef[0].line.end.x = 200;
+	sidedef[0].line.end.y = 0;
 	sidedef[0].sector = 0;
 	sidedef[0].opp_sidedef = -1;
 	sidedef[0].opp_sector = -1;
 
-	sidedef[1].start.x = 200;
-	sidedef[1].start.y = 0;
-	sidedef[1].end.x = 200;
-	sidedef[1].end.y = 250;
+	sidedef[1].id = 1;
+	sidedef[1].line.start.x = 200;
+	sidedef[1].line.start.y = 0;
+	sidedef[1].line.end.x = 200;
+	sidedef[1].line.end.y = 250;
 	sidedef[1].sector = 0;
 	sidedef[1].opp_sidedef = 8;
 	sidedef[1].opp_sector = 1;
 
-	sidedef[2].start.x = 200;
-	sidedef[2].start.y = 250;
-	sidedef[2].end.x = 200;
-	sidedef[2].end.y = 500;
+	sidedef[2].id = 2;
+	sidedef[2].line.start.x = 200;
+	sidedef[2].line.start.y = 250;
+	sidedef[2].line.end.x = 200;
+	sidedef[2].line.end.y = 500;
 	sidedef[2].sector = 0;
 	sidedef[2].opp_sidedef = -1;
 	sidedef[2].opp_sector = -1;
 	
-	sidedef[3].start.x = 200;
-	sidedef[3].start.y = 500;
-	sidedef[3].end.x = 0;
-	sidedef[3].end.y = 500;
+	sidedef[3].id = 3;
+	sidedef[3].line.start.x = 200;
+	sidedef[3].line.start.y = 500;
+	sidedef[3].line.end.x = 0;
+	sidedef[3].line.end.y = 500;
 	sidedef[3].sector = 0;
 	sidedef[3].opp_sidedef = -1;
 	sidedef[3].opp_sector = -1;
 
-	sidedef[4].start.x = 0;
-	sidedef[4].start.y = 500;
-	sidedef[4].end.x = 0;
-	sidedef[4].end.y = 0;
+	sidedef[4].id = 4;
+	sidedef[4].line.start.x = 0;
+	sidedef[4].line.start.y = 500;
+	sidedef[4].line.end.x = 0;
+	sidedef[4].line.end.y = 0;
 	sidedef[4].sector = 0;
 	sidedef[4].opp_sidedef = -1;
 	sidedef[4].opp_sector = -1;
 	
-	sidedef[5].start.x = 200;
-	sidedef[5].start.y = 0;
-	sidedef[5].end.x = 300;
-	sidedef[5].end.y = 0;
+	sidedef[5].id = 5;
+	sidedef[5].line.start.x = 200;
+	sidedef[5].line.start.y = 0;
+	sidedef[5].line.end.x = 300;
+	sidedef[5].line.end.y = 0;
 	sidedef[5].sector = 1;
 	sidedef[5].opp_sidedef = -1;
 	sidedef[5].opp_sector = -1;
 
-	sidedef[6].start.x = 300;
-	sidedef[6].start.y = 0;
-	sidedef[6].end.x = 300;
-	sidedef[6].end.y = 250;
+	sidedef[6].id = 6;
+	sidedef[6].line.start.x = 300;
+	sidedef[6].line.start.y = 0;
+	sidedef[6].line.end.x = 300;
+	sidedef[6].line.end.y = 250;
 	sidedef[6].sector = 1;
 	sidedef[6].opp_sidedef = 12;
 	sidedef[6].opp_sector = 2;
 
-	sidedef[7].start.x = 300;
-	sidedef[7].start.y = 250;
-	sidedef[7].end.x = 200;
-	sidedef[7].end.y = 250;
+	sidedef[7].id = 7;
+	sidedef[7].line.start.x = 300;
+	sidedef[7].line.start.y = 250;
+	sidedef[7].line.end.x = 200;
+	sidedef[7].line.end.y = 250;
 	sidedef[7].sector = 1;
 	sidedef[7].opp_sidedef = -1;
 	sidedef[7].opp_sector = -1;
 
-	sidedef[8].start.x = 200;
-	sidedef[8].start.y = 250;
-	sidedef[8].end.x = 200;
-	sidedef[8].end.y = 0;
+	sidedef[8].id = 8;
+	sidedef[8].line.start.x = 200;
+	sidedef[8].line.start.y = 250;
+	sidedef[8].line.end.x = 200;
+	sidedef[8].line.end.y = 0;
 	sidedef[8].sector = 1;
 	sidedef[8].opp_sidedef = 1;
 	sidedef[8].opp_sector = 0;
 
-	sidedef[9].start.x = 300;
-	sidedef[9].start.y = 0;
-	sidedef[9].end.x = 500;
-	sidedef[9].end.y = 0;
+	sidedef[9].id = 9;
+	sidedef[9].line.start.x = 300;
+	sidedef[9].line.start.y = 0;
+	sidedef[9].line.end.x = 500;
+	sidedef[9].line.end.y = 0;
 	sidedef[9].sector = 2;
 	sidedef[9].opp_sidedef = -1;
 	sidedef[9].opp_sector = -1;
 
-	sidedef[10].start.x = 500;
-	sidedef[10].start.y = 0;
-	sidedef[10].end.x = 500;
-	sidedef[10].end.y = 250;
+	sidedef[10].id = 10;
+	sidedef[10].line.start.x = 500;
+	sidedef[10].line.start.y = 0;
+	sidedef[10].line.end.x = 500;
+	sidedef[10].line.end.y = 250;
 	sidedef[10].sector = 2;
 	sidedef[10].opp_sidedef = -1;
 	sidedef[10].opp_sector = -1;
 
-	sidedef[11].start.x = 500;
-	sidedef[11].start.y = 250;
-	sidedef[11].end.x = 300;
-	sidedef[11].end.y = 250;
+	sidedef[11].id = 11;
+	sidedef[11].line.start.x = 500;
+	sidedef[11].line.start.y = 250;
+	sidedef[11].line.end.x = 300;
+	sidedef[11].line.end.y = 250;
 	sidedef[11].sector = 2;
 	sidedef[11].opp_sidedef = -1;
 	sidedef[11].opp_sector = -1;
 
-	sidedef[12].start.x = 300;
-	sidedef[12].start.y = 250;
-	sidedef[12].end.x = 300;
-	sidedef[12].end.y = 0;
+	sidedef[12].id = 12;
+	sidedef[12].line.start.x = 300;
+	sidedef[12].line.start.y = 250;
+	sidedef[12].line.end.x = 300;
+	sidedef[12].line.end.y = 0;
 	sidedef[12].sector = 2;
 	sidedef[12].opp_sidedef = 6;
 	sidedef[12].opp_sector = 1;
@@ -144,13 +157,18 @@ void doom_init(t_doom *doom)
 	doom->sector[0].height_floor = 0;
 	doom->sector[0].i_sidedefs = 0;
 	doom->sector[0].n_sidedefs = 5;
+	doom->sector[0].slope_id = -1;
 	doom->sector[1].height_ceiling = 64;
 	doom->sector[1].height_floor = 20;
 	doom->sector[1].i_sidedefs = 5;
 	doom->sector[1].n_sidedefs = 4;
+	//doom->sector[1].slope_id = 6;
+	//doom->sector[1].slope_angle = (90 - 21.801) * (PI / 180); //tan-1(height floor hinging sector / lenght of slope) 
+	doom->sector[1].slope_id = -1;
 	doom->sector[2].height_ceiling = 64;
 	doom->sector[2].height_floor = 40;
 	doom->sector[2].i_sidedefs = 9;
 	doom->sector[2].n_sidedefs = 4;
+	doom->sector[2].slope_id = -1;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 }

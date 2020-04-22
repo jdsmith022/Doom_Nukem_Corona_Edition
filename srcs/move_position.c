@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/14 11:20:30 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/21 18:23:30 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_point	check_line_intersection(t_line move, t_sidedef sidedef)
 	t_point sidedef_delta;
 
 	move_delta = line_delta(move.start, move.end);
-	sidedef_delta = line_delta(sidedef.start, sidedef.end);
+	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
-	sidedef.start, sidedef_delta);
+	sidedef.line.start, sidedef_delta);
 	return (intersect);
 }
 
@@ -98,7 +98,7 @@ void move_position_left(t_doom *doom)
 	}
 }
 
-void move_position_backwards(t_doom *doom)
+void move_position_backward(t_doom *doom)
 {
 	t_line 	movement;
 	int 	collision;
@@ -119,7 +119,7 @@ void move_position_backwards(t_doom *doom)
 }
 
 
-void move_position_forwards(t_doom *doom)
+void move_position_forward(t_doom *doom)
 {
 	t_line 	movement;
 	int 	collision;

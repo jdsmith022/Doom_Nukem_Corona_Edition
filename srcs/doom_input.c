@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 12:54:41 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/21 18:33:45 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	doom_key_input(t_doom *doom, SDL_KeyboardEvent *key)
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->esc = 1;
 	else if (key->keysym.sym == SDLK_w)
-		move_position_forwards(doom);
+		move_position_forward(doom);
 	else if (key->keysym.sym == SDLK_s)
-		move_position_backwards(doom);
+		move_position_backward(doom);
 	else if (key->keysym.sym == SDLK_a)
 		move_position_left(doom);
 	else if (key->keysym.sym == SDLK_d)

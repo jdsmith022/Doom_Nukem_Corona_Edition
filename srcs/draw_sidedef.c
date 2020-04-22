@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 12:58:44 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/21 18:43:22 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,6 @@ void		put_pixel(t_doom *doom, int x, int y, int color)
 	pixels = doom->surface->pixels;
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 		pixels[(y * WIDTH) + x] = (Uint32)color;
-}
-
-void		draw_floor(t_doom *doom, int sector, int x, int y)
-{
-	Uint32 	color;
-	
-	while (y < HEIGHT)
-	{
-		if (sector == 1)
-			color = 0xffa500;
-		else
-			color = 0xffa500;
-		put_pixel(doom, x, y, color);
-		y++;	
-	}
-}
-
-void		draw_ceiling(t_doom *doom, int sidedef_top, int sector, int x)
-{
-	int y;
-
-	y = 0;
-	sector = 0;
-	while (y < sidedef_top)
-	{
-		put_pixel(doom, x, y, 0x5B2C6F);
-		y++;
-	}
 }
 
 void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)

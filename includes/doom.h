@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/14 11:18:56 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/21 18:23:17 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,16 @@ typedef struct			s_event {
 
 typedef struct			s_plane
 {
-	double				sidedef_top;
-	double				sidedef_bottom;
-	double				mid_texture_top;
-	double				mid_texture_bottom;
+	int					sidedef_top;
+	int					sidedef_bottom;
+	int					mid_texture_top;
+	int					mid_texture_bottom;
+	t_point				intersect;
 }						t_plane;
 
 typedef struct			s_sidedef {
-	t_point				start;
-    t_point				end;
+	int					id;
+	t_line				line;
 	int					action;
 	int					sector;
 	int					opp_sidedef;
@@ -84,6 +85,8 @@ typedef struct			s_sector {
 	int					height_floor;
 	int					height_ceiling;
 	int					light_level;
+	int					slope_id;
+	int					slope_angle;
 	char				*texture_ceiling;
 	char				*texture_floor;
 }						t_sector;
@@ -116,21 +119,25 @@ void					doom_render(t_doom *doom);
 void					doom_input(t_doom *doom);
 void					sidedef_render(t_doom *doom, t_ray ray,\
 							int sector, int prev_sector);
-void					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+void					project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect);
+void					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+							int x, t_plane *plane);
 
-void					draw_ceiling(t_doom *doom, int sidedef_top, int sector, int x);
 void					draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
-void					draw_floor(t_doom *doom, int sector, int x, int y);
+void					draw_ceiling(t_doom *doom, int x, int sidedef_top);
+void					draw_floor(t_doom *doom, int x, int y);
+void					put_pixel(t_doom *doom, int x, int y, int color);
 
 t_point					line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point					line_delta(t_point start, t_point end);
 double					point_distance(t_point p1, t_point p2, double angle);
+double					point_line_distance(t_point point, t_line line);
 
-void 					move_position_forwards(t_doom *doom);
-void 					move_position_backwards(t_doom *doom);
+void 					move_position_forward(t_doom *doom);
+void 					move_position_backward(t_doom *doom);
 void 					move_position_left(t_doom *doom);
 void					move_position_right(t_doom *doom);
 int						movement_collision(t_doom *doom, t_line move);
