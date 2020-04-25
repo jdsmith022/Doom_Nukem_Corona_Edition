@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/22 13:27:15 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/24 16:15:37 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct			s_sector {
 
 typedef struct			s_doom {
   	SDL_Window			*window;
-	SDL_Renderer 		*renderer;
+	//SDL_Renderer 		*renderer;
 	SDL_Surface			*surface;
 	SDL_Event			event;
 	t_sector			sector[3];
