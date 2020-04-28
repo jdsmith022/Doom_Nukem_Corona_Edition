@@ -6,21 +6,23 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:34:53 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 16:19:46 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/28 15:03:29 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-int     main(void)
+int	main(void)
 {
-	t_doom 	doom;
-	
+	t_doom	doom;
+
 	//load_maps();
 	//init_struct();
 	//init_message_bus();
-	load_textures(&doom);
 	doom_init(&doom);
+	load_textures(&doom);
+	//load_default(); //loads default settings ie menu, player settings
+	//init_sound();
 	//init_HUD/UI
 	game_loop(&doom);
 	return (0);

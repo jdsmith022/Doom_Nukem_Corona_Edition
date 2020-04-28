@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/08 16:17:49 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/28 15:37:58 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct			s_event {
 typedef struct			s_plane
 {
 	double				sidedef_top;
+	double				sidedef_height;
 	double				sidedef_bottom;
 	double				mid_texture_top;
 	double				mid_textur_bottom;
