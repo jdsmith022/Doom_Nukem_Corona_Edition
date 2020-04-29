@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/24 16:15:37 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/29 12:43:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct			s_plane
 	int					sidedef_bottom;
 	int					mid_texture_top;
 	int					mid_texture_bottom;
+	double			sidedef_height;
 	t_point				intersect;
 }						t_plane;
 
@@ -95,6 +96,7 @@ typedef struct			s_doom {
   	SDL_Window			*window;
 	//SDL_Renderer 		*renderer;
 	SDL_Surface			*surface;
+	SDL_Surface		**textures;
 	SDL_Event			event;
 	t_sector			sector[3];
 	t_sidedef			sidedef[13];
@@ -145,4 +147,6 @@ t_point					check_line_intersection(t_line move, t_sidedef sidedef);
 
 void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
+
+void		load_textures (t_doom *doom);
 #endif

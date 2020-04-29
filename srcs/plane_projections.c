@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/22 12:33:02 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/29 12:51:11 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,16 @@ void		set_properties_portal(t_doom *doom, t_sidedef sidedef,\
 void		set_properties_height(t_doom *doom, t_sidedef sidedef,\
 	t_sector sector, t_plane *plane)
 {
-	double		sidedef_height;
 	double		floor_diff;		
 	int			sidedef_top;
 	int			sidedef_bottom;	
 
-	sidedef_height = sector.height_ceiling - sector.height_floor;
-	sidedef_height = sidedef_height / sidedef.distance * doom->dist_to_plane;
+	plane->sidedef_height = sector.height_ceiling - sector.height_floor;
+	plane->sidedef_height = plane->sidedef_height / sidedef.distance * doom->dist_to_plane;
 	floor_diff = sector.height_floor / sidedef.distance * doom->dist_to_plane;
-	sidedef_top = (int)(HEIGHT / 2 - (sidedef_height + floor_diff) / 2);
+	sidedef_top = (int)(HEIGHT / 2 - (plane->sidedef_height + floor_diff) / 2);
 	plane->sidedef_top = ((sidedef_top >= 0) ? sidedef_top : 0);
-	sidedef_bottom = (int)(HEIGHT / 2 + sidedef_height / 2);
+	sidedef_bottom = (int)(HEIGHT / 2 + plane->sidedef_height / 2);
 	plane->sidedef_bottom = ((sidedef_bottom < HEIGHT) ? sidedef_bottom : (HEIGHT - 1));
 }
 
