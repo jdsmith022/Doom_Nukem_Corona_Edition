@@ -6,26 +6,47 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/29 12:41:03 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/29 13:02:41 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/doom.h"
+#include "../includes/doom.h"
+#include <stdio.h>
 
-void		put_pixel(t_doom *doom, int x, int y, int color)
+static void		put_text(t_doom *doom, int x, int y, size_t index, Uint32 pixel_dex)
+{
+	Uint32 *pixels;
+	Uint32 *text;
+
+	pixels = doom->surface->pixels;
+	text = doom->textures[0]->pixels;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		pixels[index] = text[pixel_dex];
+		index++;
+		pixel_dex++;
+		pixels[index] = text[pixel_dex];
+		index++;
+		pixel_dex++;
+		pixels[index] = text[pixel_dex];
+	}
+
+}
+
+void		put_pixel(t_doom *doom, int x, int y, Uint32 color)
 {
 	Uint32 *pixels;
 
 	pixels = doom->surface->pixels;
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-		pixels[(y * WIDTH) + x] = (Uint32)color;
+		pixels[(y * WIDTH) + x] = color;
 }
 
 void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 {
-	int y;
-	Uint32 color;
-	Uint32 *pixels;
+	Uint32	color;
+	Uint32	*pixels;
+	int		y;
 
 	y = plane.sidedef_top;
 	sidedef.action = 0;

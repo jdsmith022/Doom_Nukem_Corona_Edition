@@ -6,12 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/25 12:59:14 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/29 13:02:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
-
 
 double			clamp_angle(double angle)
 {

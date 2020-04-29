@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/22 13:28:34 by Malou         ########   odam.nl         */
+/*   Updated: 2020/04/29 13:03:09 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_sidedef		set_properties_sidedef(t_point intersect, double distance,\
 	t_sidedef curr_sidedef)
 {
 	t_sidedef sidedef;
-	
+
 	sidedef.offset_x = intersect.x;
 	sidedef.offset_y = intersect.y;
 	sidedef.distance = distance;
