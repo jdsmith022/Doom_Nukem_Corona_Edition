@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/29 12:58:52 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/04/29 13:09:51 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct			s_doom {
   	SDL_Window			*window;
 	//SDL_Renderer 		*renderer;
 	SDL_Surface			*surface;
-	SDL_Surface		**textures;
 	SDL_Event			event;
 	SDL_Surface			**textures;
 	t_sector			sector[3];
@@ -130,7 +129,7 @@ void					draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int
 void					draw_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_ceiling(t_doom *doom, int x, int sidedef_top);
 void					draw_floor(t_doom *doom, int x, int y);
-void					put_pixel(t_doom *doom, int x, int y, int color);
+void					put_pixel(t_doom *doom, int x, int y, Uint32 color);
 
 t_point					line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
@@ -148,12 +147,5 @@ t_point					check_line_intersection(t_line move, t_sidedef sidedef);
 void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
 
-<<<<<<< HEAD
 void		load_textures (t_doom *doom);
-=======
-void    				doom_exit_success(t_doom *doom);
-void  				  doom_exit_failure(t_doom *doom, const char *exit_message);
-
-void					load_textures(t_doom *doom);
->>>>>>> e923f2811a21af298fbe59e9ede450687240a907
 #endif

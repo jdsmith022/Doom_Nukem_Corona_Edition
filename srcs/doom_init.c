@@ -6,11 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2020/04/21 18:52:19 by Malou         ########   odam.nl         */
-=======
-/*   Updated: 2020/04/11 13:55:31 by jessicasmit   ########   odam.nl         */
->>>>>>> e923f2811a21af298fbe59e9ede450687240a907
+/*   Updated: 2020/04/29 13:07:44 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,12 +152,7 @@ void doom_init(t_doom *doom)
 	doom->pos.x = 50;
 	doom->pos.y = 100;
 	doom->max_ray = 10000;
-<<<<<<< HEAD
 	doom->i_sector = 0;
-=======
-	doom->curr_sector = 0;
-	doom->wall_height = 64;
->>>>>>> e923f2811a21af298fbe59e9ede450687240a907
 	doom->sector[0].height_ceiling = 64;
 	doom->sector[0].height_floor = 0;
 	doom->sector[0].i_sidedefs = 0;
