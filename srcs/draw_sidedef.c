@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/02 15:26:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/02 16:56:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,18 @@ static void		put_text(t_doom *doom, int x, int y, size_t index, Uint32 pixel_dex
 	char *pixels;
 	char *text;
 
+	(void)index;
 	pixels = doom->surface->pixels;
 	text = doom->textures[0]->pixels;
-	printf("textw: %d\n", doom->textures[0]->w);
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
 		pixels[index] = text[pixel_dex];
-		// index++;
-		// pixel_dex++;
-		printf("here\n");
-		// pixels[index] = text[pixel_dex];
-		// index++;
-		// pixel_dex++;
-		// pixels[index] = text[pixel_dex];
+		index++;
+		pixel_dex++;
+		pixels[index] = text[pixel_dex];
+		index++;
+		pixel_dex++;
+		pixels[index] = text[pixel_dex];
 	}
 }
 
@@ -78,12 +77,9 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int 
 
 	while (y <= plane.sidedef_bottom)
 	{
-		index = (y * doom->surface->pitch) + (x * bpp); // x is zero?
-		printf("index: %zu\n", index);
-		wall_y = (doom->wall_height / (plane.sidedef_height)) * (y - plane.sidedef_top);
-		printf("wall: %f\n", wall_y);
+		index = (y * doom->surface->pitch) + (x * bpp);
+		wall_y = (double)(doom->wall_height / plane.sidedef_height) * (y - plane.sidedef_top);
 		pixel_dex = (wall_y * doom->textures[0]->pitch) + ((int)sidedef.offset_x * doom->textures[0]->format->BytesPerPixel);
-		printf("pixel_dex: %d\n", pixel_dex);
 		put_text(doom, x, y, index, pixel_dex);
 		y++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:07:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/05/02 15:25:28 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/02 16:25:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,29 @@ void		load_bmp(t_doom *doom, int fd)
 {
 
 	size_t nb_textures; //put into struct -> info taken while reading maps
-	int w;
-	int h;
+	// int w;
+	// int h;
 	size_t index;
 
+	(void)fd;
 	nb_textures = 1;
 	index = 0;
-	doom->textures = (SDL_Surface**)ft_memalloc(sizeof(SDL_Surface*) * nb_textures); // allocating space for struct
+	doom->textures = (SDL_Surface**)malloc(sizeof(SDL_Surface*) * nb_textures); // allocating space for struct
 	if (doom->textures == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
-	while (index < nb_textures)
-	{
-		if (read(fd, &w, sizeof(int)) < 0 || read(fd, &h, sizeof(int) < 0))
-			doom_exit_failure(doom, MALLOC_ERR);
-		doom->textures[index] = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL_PIXELFORMAT_ARGB8888);
-		if (doom->textures[index] == NULL)
-			doom_exit_failure(doom, MALLOC_ERR);
-		printf("text: %d\n", doom->textures[index]->w);
-		if ((read(fd, doom->textures[index]->pixels, w * h * 4)) < 0)
-			doom_exit_failure(doom, MALLOC_ERR);
-		index++;
-	}
+	doom->textures[index] = SDL_LoadBMP("./textures/WALL03_1.bmp");
+	// while (index < nb_textures)
+	// {
+	// 	if (read(fd, &w, sizeof(int)) < 0 || read(fd, &h, sizeof(int) < 0))
+	// 		doom_exit_failure(doom, MALLOC_ERR);
+	// 	doom->textures[index] = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL_PIXELFORMAT_ARGB8888);
+	// 	if (doom->textures[index] == NULL)
+	// 		doom_exit_failure(doom, MALLOC_ERR);
+	// 	printf("text: %d\n", doom->textures[index]->w);
+	// 	if ((read(fd, doom->textures[index]->pixels, w * h * 4)) < 0)
+	// 		doom_exit_failure(doom, MALLOC_ERR);
+	// 	index++;
+	// }
 }
 
 void		load_textures (t_doom *doom)
@@ -47,4 +49,5 @@ void		load_textures (t_doom *doom)
 	if (fd < 0)
 		doom_exit_failure(doom, MALLOC_ERR);
 	load_bmp(doom, fd);
+
 }
