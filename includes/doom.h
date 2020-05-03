@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/02 17:04:29 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/03 10:37:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
+# define WALL_ERR	"error: SDL_Surface wall texture error"
+# define READ_ERR	"error: read error"
+
 
 # define WIDTH 800
 # define HEIGHT 600
