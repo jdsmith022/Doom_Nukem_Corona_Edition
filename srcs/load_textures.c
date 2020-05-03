@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:07:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/05/03 10:40:47 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/03 11:05:24 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void		load_bmp(t_doom *doom, int fd)
 	doom->textures = (SDL_Surface**)malloc(sizeof(SDL_Surface*) * nb_textures); // allocating space for struct
 	if (doom->textures == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
+	read(fd, &nb_textures, sizeof(int));
 	// doom->textures[index] = SDL_LoadBMP("./textures/WALL03_1.bmp");
 	while (index < nb_textures)
 	{
+		lseek(fd, doom->textures[index], SEEK_SET);
 		if (read(fd, &w, sizeof(int)) < 0 || read(fd, &h, sizeof(int) < 0))
 			doom_exit_failure(doom, MALLOC_ERR);
-		h = 1;
 		doom->textures[index] = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
 		if (doom->textures[index] == NULL)
 			doom_exit_failure(doom, MALLOC_ERR);
