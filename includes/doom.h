@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/03 10:37:56 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/06 14:34:19 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct			s_sidedef {
 	t_line				line;
 	int					action;
 	int					sector;
+	t_point				sidedef_delta;
 	int					opp_sidedef;
 	int					opp_sector;
 	double				offset_x;
@@ -110,7 +111,7 @@ typedef struct			s_doom {
 	double				dir_angle;
 	double				ray_adjacent;
 	int					wall_width;
-	double				wall_height;
+	int					wall_height;
 	int					obj_height;
 	double				max_ray;
 	double				dist_to_plane;
