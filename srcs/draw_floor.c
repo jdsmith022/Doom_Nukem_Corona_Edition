@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/11 13:56:28 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/11 14:34:03 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,21 @@ void	draw_row(t_doom *doom, int x, int y, t_plane plane)
 	t_point		text;
 
 	(void)plane;
-	dist = (double)32 / (y - HEIGHT / 2) * doom->dist_to_plane;
-	dist /= cos(doom->angle);
+	// dist = (double)32 / (y - HEIGHT / 2) * doom->dist_to_plane;
+	// dist /= cos(doom->angle);
+		dist = (double)HEIGHT / (2 * (double)y - (double)HEIGHT);
+
 	floor_x = dist * cos(doom->angle) + doom->pos.x;
 	floor_y = dist * sin(doom->angle) + doom->pos.y;
+	// floor_x = doom->pos.x + (plane.intersect.x * cos(doom->angle) * dist);
+	// floor_y = doom->pos.y + (plane.intersect.x * sin(doom->angle) * dist);
+
 	// floor_x = dist / doom->dist_to_plane * plane.intersect.x + (1 - (dist / doom->dist_to_plane)) * doom->pos.x;
 	// floor_y = dist / doom->dist_to_plane * plane.intersect.y + (1 - (dist / doom->dist_to_plane)) * doom->pos.y;
 	text.x = (int)(floor_x * 64) % 64;
 	text.y = (int)(floor_y * 64) % 64;
 	put_row(doom, x, y, text);
 }
-
 
 // void		draw_ceiling(t_doom *doom, int x, int sidedef_top)
 // {

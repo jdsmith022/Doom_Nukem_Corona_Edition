@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/11 14:12:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/11 14:18:51 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,3 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int 
 		y++;
 	}
 }
-
-// void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
-// {
-// 	int		y;
-// 	int		color;
-
-// 	y = plane.sidedef_top;
-// 	color = 0xdcedc1;
-// 		printf("x: %d\n", x);
-// 		printf("y: %d\n", y);
-// 	while (y <= plane.sidedef_bottom)
-// 	{
-// 		if (sidedef.sector == 5)
-// 			color = 0xdcedc1;
-// 		else
-// 			color = 0x088da5;
-// 		put_pixel(doom, x, y, color);
-// 		y++;
-// 	}
-// }
