@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/21 18:54:37 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/11 13:39:03 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void		set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 		plane->sidedef_bottom = plane->mid_texture_bottom;
 	else if (sidedef.id != opp_side)
 		plane->sidedef_bottom = calculate_slope_position(doom, sidedef, plane);
-
 	height_diff = (HEIGHT / 2) / (plane->sidedef_bottom - HEIGHT / 2);
 	floor_dist = sidedef.distance * height_diff;
 	floor_dist = cos(doom->ray_adjacent / (x - FOV / 2));

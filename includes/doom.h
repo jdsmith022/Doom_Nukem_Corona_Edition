@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/06 14:34:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/11 12:03:30 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct			s_doom {
 	int					i_sector;
 	int					esc;
 	double				dir_angle;
+	double				angle;
 	double				ray_adjacent;
 	int					wall_width;
 	int					wall_height;
@@ -152,4 +153,5 @@ void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
 
 void		load_textures (t_doom *doom);
+void	draw_row(t_doom *doom, int x, int y, t_plane plane);
 #endif

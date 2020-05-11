@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/06 14:45:25 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/11 14:12:41 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,11 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int 
 	(void)sidedef;
 	y = plane.sidedef_top;
 	bpp = doom->surface->format->BytesPerPixel;
-
 	while (y <= plane.sidedef_bottom)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		wall_y = (double)(doom->wall_height / plane.sidedef_height) * (y - plane.sidedef_top);
-		pixel_dex = (wall_y * doom->textures[0]->pitch) + ((int)sidedef.offset_x * doom->textures[0]->format->BytesPerPixel);
+		pixel_dex = ((int)wall_y * doom->textures[0]->pitch) + ((int)sidedef.offset_x * doom->textures[0]->format->BytesPerPixel);
 		put_text(doom, x, y, index, pixel_dex);
 		y++;
 	}
