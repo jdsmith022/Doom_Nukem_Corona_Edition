@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/12 17:49:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 18:00:16 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_ceiling(t_doom *doom, int x, int y)
 	addr_dex = (y * doom->surface->pitch) + (x * doom->surface->format->BytesPerPixel);
 	dist = (doom->wall_height - (double)32) / ((HEIGHT / 2) - y);
 	dist *= doom->dist_to_plane;
-	// tru_dist = dist * (dist / cos(doom->angle));
+	dist *= cos(doom->ray_adjacent / (x - FOV / 2));
 	floor.x = dist * cos(doom->angle);
 	floor.y = dist * sin(doom->angle);
 	floor.x += doom->pos.x;
@@ -62,7 +62,7 @@ void	draw_floor(t_doom *doom, int x, int y)
 	addr_dex = (y * doom->surface->pitch) + (x * doom->surface->format->BytesPerPixel);
 	dist = (double)32 / (y - (HEIGHT / 2));
 	dist *= doom->dist_to_plane;
-	// tru_dist = dist * (dist / cos(doom->angle));
+	dist *= cos(doom->ray_adjacent / (x - FOV / 2));
 	floor.x = dist * cos(doom->angle);
 	floor.y = dist * sin(doom->angle);
 	floor.x += doom->pos.x;
