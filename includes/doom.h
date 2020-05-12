@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/12 17:39:30 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 18:58:14 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,9 @@ void					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 void					draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
-void					draw_ceiling(t_doom *doom, int x, int sidedef_top);
-void					draw_floor(t_doom *doom, int x, int y);
+void					draw_ceiling(t_doom *doom, t_plane plane, int x);
+
+void					draw_floor(t_doom *doom, t_plane plane, int x);
 void					put_pixel(t_doom *doom, int x, int y, Uint32 color);
 
 t_point					line_intersection(t_point start1, t_point delta1,
@@ -153,6 +154,6 @@ void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
 
 void					load_textures (t_doom *doom);
-void					draw_floor(t_doom *doom, int x, int y);
-void					draw_ceilng(t_doom *doom, int x, int y);
+// void					draw_floor(t_doom *doom, int x, int y);
+void					draw_ceiling(t_doom *doom, t_plane plane, int x);
 #endif

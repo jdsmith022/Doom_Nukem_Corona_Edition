@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/12 17:48:30 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 18:58:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,12 @@ void	project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
 	t_plane plane;
 	int y;
 
-	y = 0;
 	set_properties_plane(doom, &plane, sidedef, x);
 	plane.intersect = intersect;
+	draw_ceiling(doom, plane, x);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
-	y = plane.sidedef_top;
-	while (y >= 0)
-	{
-		draw_ceiling(doom, x, y);
-		y--;
-	}
-	y = plane.sidedef_bottom;
-	while (y < HEIGHT)
-	{
-		draw_floor(doom, x, y);
-		y++;
-	}
+	draw_floor(doom, plane, x);
 }
