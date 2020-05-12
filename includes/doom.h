@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/11 12:03:30 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 16:29:06 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,5 @@ void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
 
 void		load_textures (t_doom *doom);
-void	draw_row(t_doom *doom, int x, int y, t_plane plane);
+void	draw_row(t_doom *doom, int x, int y, t_plane plane, t_sidedef sidedef);
 #endif

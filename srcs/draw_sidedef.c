@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/11 14:18:51 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 17:00:10 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-void		put_pixel(t_doom *doom, int x, int y, Uint32 color)
+void					put_pixel(t_doom *doom, int x, int y, Uint32 color)
 {
 	Uint32 *pixels;
 
@@ -21,7 +21,8 @@ void		put_pixel(t_doom *doom, int x, int y, Uint32 color)
 		pixels[(y * WIDTH) + x] = color;
 }
 
-void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void					draw_portal_sidedef(t_doom *doom, t_plane plane, 
+								t_sidedef sidedef, int x)
 {
 	Uint32	color;
 	Uint32	*pixels;
@@ -43,12 +44,12 @@ void		draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 	}
 }
 
-static void		put_text(t_doom *doom, int x, int y, size_t index, Uint32 pixel_dex)
+static void		put_text(t_doom *doom, int x, int y, size_t index, 
+									Uint32 pixel_dex)
 {
 	char *pixels;
 	char *text;
 
-	(void)index;
 	pixels = doom->surface->pixels;
 	text = doom->textures[0]->pixels;
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
@@ -63,7 +64,8 @@ static void		put_text(t_doom *doom, int x, int y, size_t index, Uint32 pixel_dex
 	}
 }
 
-void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void				draw_onesided_sidedef(t_doom *doom, t_plane plane, 
+							t_sidedef sidedef, int x)
 {
 	int			y;
 	Uint32	pixel_dex;
@@ -78,7 +80,8 @@ void		draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int 
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		wall_y = (double)(doom->wall_height / plane.sidedef_height) * (y - plane.sidedef_top);
-		pixel_dex = ((int)wall_y * doom->textures[0]->pitch) + ((int)sidedef.offset_x * doom->textures[0]->format->BytesPerPixel);
+		pixel_dex = ((int)wall_y * doom->textures[0]->pitch) + \
+			((int)sidedef.offset_x * doom->textures[0]->format->BytesPerPixel);
 		put_text(doom, x, y, index, pixel_dex);
 		y++;
 	}

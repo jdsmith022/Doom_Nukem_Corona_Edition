@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/11 14:15:26 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 17:33:18 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		set_properties_height(t_doom *doom, t_sidedef sidedef,\
 	int			sidedef_top;
 	int			sidedef_bottom;	
 
-	// plane->sidedef_height = sector.height_ceiling - sector.height_floor;
 	plane->sidedef_height = doom->wall_height / sidedef.distance * doom->dist_to_plane;
 	floor_diff = sector.height_floor / sidedef.distance * doom->dist_to_plane;
 	sidedef_top = (int)(HEIGHT / 2 - (plane->sidedef_height + floor_diff) / 2);
@@ -74,8 +73,8 @@ void	project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	while (y < HEIGHT)
 	{
-		if ((y > plane.sidedef_bottom && y < HEIGHT) || (y < plane.sidedef_top))
-			draw_row(doom, x, y, plane);
+		if ((y > plane.sidedef_bottom && y < HEIGHT) //|| (y < plane.sidedef_top))
+			draw_row(doom, x, y, plane, sidedef);
 		y++;
 	}
 }
