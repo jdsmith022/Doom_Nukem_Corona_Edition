@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/12 16:29:06 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/12 17:39:30 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ t_point					check_line_intersection(t_line move, t_sidedef sidedef);
 void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
 
-void		load_textures (t_doom *doom);
-void	draw_row(t_doom *doom, int x, int y, t_plane plane, t_sidedef sidedef);
+void					load_textures (t_doom *doom);
+void					draw_floor(t_doom *doom, int x, int y);
+void					draw_ceilng(t_doom *doom, int x, int y);
 #endif
