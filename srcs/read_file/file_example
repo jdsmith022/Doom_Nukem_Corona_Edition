@@ -1,0 +1,43 @@
+0; name of map
+1: texture library
+how many textures?
+texture names
+3:object library
+how many sprites?
+sprite names
+3: sectors
+how many sectors?
+how many walls?
+how many objects?
+sectors[]
+light
+height of floor
+texture of floor
+slope of floor
+height of ceiling
+texture of ceiling
+slope of ceiling
+lines in sector
+portal/line
+vector start(x,y)
+vector end (x,y)
+action flag
+texture number/name(3)
+vector on the other side of wall
+objects in sector
+name
+vector location(x,y)
+action
+amount of textures[]
+angle facting
+texture
+4:moving sprites
+how many moving sprites
+moving sprites[]:
+id linked to sprites library
+name
+vector location(x,y)
+action flag
+amount of textures[]
+angle facting
+texture

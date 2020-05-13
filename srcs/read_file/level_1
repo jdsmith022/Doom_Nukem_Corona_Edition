@@ -1,0 +1,54 @@
+#texture library
+1
+bibi
+#object library
+2
+baba
+bobob
+#how many sectors?
+1
+#how many walls?
+1
+#how many objects?
+1
+#sectors[0]
+10
+0
+10
+30
+0
+10
+1
+#wall[0]
+1
+0
+8
+10
+10
+19
+4
+0
+0
+0
+-1
+1
+1
+1
+1
+1
+1
+11
+1
+baba
+5
+2
+9
+2
+0
+1
+1
+1
+1
+1
+1
+1
