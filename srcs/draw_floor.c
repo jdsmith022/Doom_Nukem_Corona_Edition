@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 16:52:27 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 16:55:38 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,31 +82,3 @@ void	draw_floor(t_doom *doom, int x, t_plane plane)
 		y++;
 	}
 }
-
-
-// void		draw_ceiling(t_doom *doom, int x, int sidedef_top)
-// {
-// 	int y;
-
-// 	y = 0;
-// 	while (y < sidedef_top)
-// 	{
-// 		put_pixel(doom, x, y, 0x5B2C6F);
-// 		y++;
-// 	}
-// }
-
-// void		draw_floor(t_doom *doom, int x, t_plane plane)
-// {
-// 	Uint32 	color;
-// 	int y;
-
-// 	y = plane.vertical_bottom;
-	
-// 	while (y < HEIGHT)
-// 	{
-// 		color = 0xffa500;
-// 		put_pixel(doom, x, y, color);
-// 		y++;	
-// 	}
-// }
