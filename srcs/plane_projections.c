@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 16:54:16 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 17:29:03 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		set_properties_height(t_doom *doom, t_sidedef sidedef,\
 	// double		floor_diff;		
 	int			sidedef_top;
 	int			sidedef_bottom;	
-	int			ceiling_height;
+	// int			ceiling_height;
 	// int			sidedef_height;
 
 	//walls
@@ -51,6 +51,16 @@ void		set_properties_height(t_doom *doom, t_sidedef sidedef,\
 	// ceiling_height = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 	// sidedef_top = (int)(HEIGHT / 2 - (plane->sidedef_height + ceiling_height) / 2);
 	// plane->vertical_top = ((sidedef_top >= 0) ? sidedef_top : 0);
+
+
+	// int cur_height;
+	// double		height_opp_sector;
+
+	// cur_height = sector.height_floor;
+	// 	height_opp_sector = doom->sector[sidedef.opp_sector].height_ceiling -\
+	// 	doom->sector[sidedef.opp_sector].height_floor;
+	// height_opp_sector = height_opp_sector / sidedef.distance *\
+	// 	doom->dist_to_plane;
 	sidedef_bottom = (int)(HEIGHT / 2 + (plane->sidedef_height - plane->floor_diff) / 2);
 	plane->vertical_bottom = ((sidedef_bottom < HEIGHT) ? sidedef_bottom : (HEIGHT - 1));
 	// plane->vertical_bottom += plane->floor_diff;
@@ -81,5 +91,10 @@ void	project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
+	//draw for floor only of same height, then start draw again for different floor height
+	//while you can still see sectors
+		//calculate y bottom for sector
+		//draw_floor
+		//look st next vixible sector
 	draw_floor(doom, x, plane);
 }
