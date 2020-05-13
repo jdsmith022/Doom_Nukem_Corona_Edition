@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 18:51:20 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/13 18:55:49 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct			s_sector {
 	int					id;
 	int					n_sidedefs;
 	int					i_sidedefs;
-	int					height_loor;
+	int					height_floor;
 	int					height_ceiling;
 	int					light_level;
 	int					slope_id;

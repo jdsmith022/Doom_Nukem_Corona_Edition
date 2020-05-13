@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/22 12:33:02 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/13 18:56:32 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void		set_properties_plane(t_doom *doom, t_plane *plane, t_sidedef sidedef, int 
 	set_properties_height(doom, sidedef, sector, plane);
 	if (sidedef.opp_sector != -1)
 		set_properties_portal(doom, sidedef, sidedef.opp_sector, plane);
-	if (sector.slope_id != -1)
-		set_properties_slope(doom, sidedef, x, plane);
 }
 
 void	project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
