@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 12:35:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 16:52:27 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	row_calculations(t_doom *doom, double dist, size_t addr_dex)
 	put_row(doom, addr_dex, wall_index);
 }
 
-void	draw_ceiling(t_doom *doom, int y, int x)
+void	draw_ceiling(t_doom *doom, int x, int y)
 {
 	double	dist;
 	size_t	addr_dex;
@@ -58,26 +58,55 @@ void	draw_ceiling(t_doom *doom, int y, int x)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->wall_height - (double)32) / ((HEIGHT / 2) - y) * doom->dist_to_plane;
-		dist *= cos(doom->ray_adjacent / (x - FOV / 2));
+		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y--;
 	}
 }
 
-void	draw_floor(t_doom *doom, int y, int x)
+void	draw_floor(t_doom *doom, int x, t_plane plane)
 {
 	double	dist;
 	size_t	addr_dex;
 	Uint8	bpp;
+	int y;
 
+	y = plane.vertical_bottom;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = (double)32 / (y - (HEIGHT / 2)) * doom->dist_to_plane;
-		dist *= cos(doom->ray_adjacent / (x - FOV / 2));
+		dist = ((double)32) / (y - (HEIGHT / 2)) * doom->dist_to_plane ;
+		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y++;
 	}
-
 }
+
+
+// void		draw_ceiling(t_doom *doom, int x, int sidedef_top)
+// {
+// 	int y;
+
+// 	y = 0;
+// 	while (y < sidedef_top)
+// 	{
+// 		put_pixel(doom, x, y, 0x5B2C6F);
+// 		y++;
+// 	}
+// }
+
+// void		draw_floor(t_doom *doom, int x, t_plane plane)
+// {
+// 	Uint32 	color;
+// 	int y;
+
+// 	y = plane.vertical_bottom;
+	
+// 	while (y < HEIGHT)
+// 	{
+// 		color = 0xffa500;
+// 		put_pixel(doom, x, y, color);
+// 		y++;	
+// 	}
+// }

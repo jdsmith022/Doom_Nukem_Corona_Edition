@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 12:30:03 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 15:09:51 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct			s_plane
 	int					mid_texture_top;
 	int					mid_texture_bottom;
 	double				sidedef_height;
+	int					vertical_top;//need?
+	int					vertical_bottom;
+	int					floor_diff;
 	t_point				intersect;
 }						t_plane;
 
@@ -132,9 +135,8 @@ void					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 void					draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void					draw_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
-void					draw_ceiling(t_doom *doom, int y, int x);
-
-void					draw_floor(t_doom *doom, int y, int x);
+void					draw_ceiling(t_doom *doom, int x, int y);
+void					draw_floor(t_doom *doom, int x, t_plane plane);
 void					put_pixel(t_doom *doom, int x, int y, Uint32 color);
 
 t_point					line_intersection(t_point start1, t_point delta1,

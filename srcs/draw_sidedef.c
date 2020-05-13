@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/12 18:02:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 16:33:54 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void				draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	size_t	index;
 	double	wall_y;
 
-	(void)sidedef;
 	y = plane.sidedef_top;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y <= plane.sidedef_bottom)
