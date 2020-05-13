@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 18:32:38 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/13 18:51:20 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ typedef struct			s_sidedef {
 	int					opp_sector;
 	double				offset_x;
 	double				offset_y;
-	int					*texture_1;
-	int					*texture_2;
-	int					*texture_3;
+	int					txt_1;
+	int					txt_2;
+	int					txt_3;
 	double				distance;
 }						t_sidedef;
 
@@ -82,13 +82,13 @@ typedef struct			s_sector {
 	int					id;
 	int					n_sidedefs;
 	int					i_sidedefs;
-	int					height_floor;
+	int					height_loor;
 	int					height_ceiling;
 	int					light_level;
 	int					slope_id;
 	int					slope_angle;
-	char				*texture_ceiling;
-	char				*texture_floor;
+	int					txt_ceiling;
+	int					txt_floor;
 }						t_sector;
 
 typedef struct			s_doom {

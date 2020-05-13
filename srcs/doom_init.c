@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/21 18:52:19 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/13 18:51:49 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,9 @@ void doom_init(t_doom *doom)
 	doom->sector[1].height_floor = 20;
 	doom->sector[1].i_sidedefs = 5;
 	doom->sector[1].n_sidedefs = 4;
-	//doom->sector[1].slope_id = 6;
-	//doom->sector[1].slope_angle = (90 - 21.801) * (PI / 180); //tan-1(height floor hinging sector / lenght of slope) 
-	doom->sector[1].slope_id = -1;
+	doom->sector[1].slope_id = 6;
+	doom->sector[1].slope_angle = 21.80140949 * (PI / 180); //tan-1(height floor hinging sector / lenght of floor) 
+	//doom->sector[1].slope_id = -1;
 	doom->sector[2].height_ceiling = 64;
 	doom->sector[2].height_floor = 40;
 	doom->sector[2].i_sidedefs = 9;
