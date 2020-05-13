@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 12:25:51 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 12:35:41 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ static void	row_calculations(t_doom *doom, double dist, size_t addr_dex)
 	put_row(doom, addr_dex, wall_index);
 }
 
-void	draw_ceiling(t_doom *doom, t_plane plane, int x)
+void	draw_ceiling(t_doom *doom, int y, int x)
 {
 	double	dist;
 	size_t	addr_dex;
 	Uint8	bpp;
-	int y;
 
-	y = plane.sidedef_top;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y >= 0)
 	{
@@ -66,14 +64,12 @@ void	draw_ceiling(t_doom *doom, t_plane plane, int x)
 	}
 }
 
-void	draw_floor(t_doom *doom, t_plane plane, int x)
+void	draw_floor(t_doom *doom, int y, int x)
 {
 	double	dist;
 	size_t	addr_dex;
 	Uint8	bpp;
-	int		y;
 
-	y = plane.sidedef_bottom;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
