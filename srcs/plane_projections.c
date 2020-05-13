@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/12 18:58:23 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/13 11:38:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void		set_properties_plane(t_doom *doom, t_plane *plane, t_sidedef sidedef, int 
 void	project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
 {
 	t_plane plane;
-	int y;
 
 	set_properties_plane(doom, &plane, sidedef, x);
 	plane.intersect = intersect;
