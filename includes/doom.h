@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/24 16:15:37 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/13 18:32:38 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ typedef struct			s_sidedef {
 	int					opp_sector;
 	double				offset_x;
 	double				offset_y;
-	char				*texture_1;
-	char				*texture_2;
-	char				*texture_3;
+	int					*texture_1;
+	int					*texture_2;
+	int					*texture_3;
 	double				distance;
 }						t_sidedef;
 
