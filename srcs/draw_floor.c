@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 17:26:54 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/18 18:23:57 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	draw_floor(t_doom *doom, int x, t_plane plane)
 	Uint8	bpp;
 	int y;
 
-	y = plane.vertical_bottom;
+	y = plane.floor_start;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{

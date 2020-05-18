@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 17:27:00 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/18 18:24:08 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ typedef struct			s_plane
 	int					mid_texture_top;
 	int					mid_texture_bottom;
 	double				sidedef_height;
-	int					vertical_top;//need?
-	int					vertical_bottom;
-	int					floor_diff;
+	int					ceiling_start;//need?
+	int					floor_start;
 	t_point				intersect;
 }						t_plane;
 
