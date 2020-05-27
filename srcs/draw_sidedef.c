@@ -6,11 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/21 18:43:22 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/26 17:51:53 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/doom.h"
+#include "../includes/doom.h"
 
 void		put_pixel(t_doom *doom, int x, int y, int color)
 {

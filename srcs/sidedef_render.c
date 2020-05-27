@@ -6,17 +6,17 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/22 13:28:34 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/26 17:07:42 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-t_sidedef		set_properties_sidedef(t_point intersect, double distance,\
+t_sidedef	set_properties_sidedef(t_point intersect, double distance,\
 	t_sidedef curr_sidedef)
 {
-	t_sidedef sidedef;
-	
+	t_sidedef	sidedef;
+
 	sidedef.offset_x = intersect.x;
 	sidedef.offset_y = intersect.y;
 	sidedef.distance = distance;
@@ -29,9 +29,9 @@ t_sidedef		set_properties_sidedef(t_point intersect, double distance,\
 double		sidedef_intersection_distance(t_ray ray, \
 	t_sidedef sidedef, t_point *intersect)
 {
-	double			distance;
-	t_point			ray_delta;
-	t_point			sidedef_delta;
+	double		distance;
+	t_point		ray_delta;
+	t_point		sidedef_delta;
 
 	ray_delta = line_delta(ray.line.start, ray.line.end);
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
@@ -43,15 +43,16 @@ double		sidedef_intersection_distance(t_ray ray, \
 
 void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
-	t_point			intersect;
-	t_sidedef		near_sidedef;
-	double			distance;
-	double			min_distance;
-	int				x;
+	t_point		intersect;
+	t_sidedef	near_sidedef;
+	double		distance;
+	double		min_distance;
+	int			x;
 
 	x = doom->sector[sector].i_sidedefs;
 	min_distance = INFINITY;
-	while (x < doom->sector[sector].n_sidedefs + doom->sector[sector].i_sidedefs)
+	while (x < doom->sector[sector].n_sidedefs +\
+		doom->sector[sector].i_sidedefs)
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->sidedef[x], &intersect);

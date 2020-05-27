@@ -6,12 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/25 13:16:52 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/26 17:02:27 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
-
 
 t_point	check_line_intersection(t_line move, t_sidedef sidedef)
 {
@@ -30,11 +29,11 @@ int		movement_collision(t_doom *doom, t_line move)
 {
 	int			x;
 	t_point		intersect;
-	t_sidedef 	sidedef;
+	t_sidedef	sidedef;
 
 	x = doom->sector[doom->i_sector].i_sidedefs;
 	while (x < doom->sector[doom->i_sector].n_sidedefs\
-		 + doom->sector[doom->i_sector].i_sidedefs)
+		+ doom->sector[doom->i_sector].i_sidedefs)
 	{
 		sidedef = doom->sidedef[x];
 		intersect = check_line_intersection(move, sidedef);
@@ -57,7 +56,7 @@ int		movement_collision(t_doom *doom, t_line move)
 
 void	move_position_right(t_doom *doom)
 {
-	t_line movement;
+	t_line	movement;
 	double	qt_radian;
 	int		collision;
 
@@ -74,13 +73,12 @@ void	move_position_right(t_doom *doom)
 			doom->pos.x += 5 * cos(doom->dir_angle + qt_radian);
 			doom->pos.y += 5 * sin(doom->dir_angle + qt_radian);
 		}
-
 	}
 }
 
-void move_position_left(t_doom *doom)
+void	move_position_left(t_doom *doom)
 {
-	t_line movement;
+	t_line	movement;
 	double	qt_radian;
 	int		collision;
 
@@ -100,10 +98,10 @@ void move_position_left(t_doom *doom)
 	}
 }
 
-void move_position_backward(t_doom *doom)
+void	move_position_backward(t_doom *doom)
 {
-	t_line 	movement;
-	int 	collision;
+	t_line	movement;
+	int		collision;
 
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x - SPEED * cos(doom->dir_angle);
@@ -120,11 +118,10 @@ void move_position_backward(t_doom *doom)
 	}
 }
 
-
-void move_position_forward(t_doom *doom)
+void	move_position_forward(t_doom *doom)
 {
-	t_line 	movement;
-	int 	collision;
+	t_line	movement;
+	int		collision;
 
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x + SPEED * cos(doom->dir_angle);
@@ -132,13 +129,11 @@ void move_position_forward(t_doom *doom)
 	collision = movement_collision(doom, movement);
 	if (collision == 0 || collision == 1)
 	{
-			doom->pos = movement.end;
-			if (collision == 1)
-			{
-				doom->pos.x += 5 * cos(doom->dir_angle);
-				doom->pos.y += 5 * sin(doom->dir_angle);
-			}
+		doom->pos = movement.end;
+		if (collision == 1)
+		{
+			doom->pos.x += 5 * cos(doom->dir_angle);
+			doom->pos.y += 5 * sin(doom->dir_angle);
+		}
 	}
 }
-
-

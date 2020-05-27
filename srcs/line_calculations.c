@@ -6,12 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 12:09:58 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/15 18:14:03 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/26 16:59:05 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
-
 
 t_point		line_intersection(t_point start1, t_point delta1,
 						t_point start2, t_point delta2)
@@ -65,11 +64,11 @@ double		point_line_distance(t_point point, t_line line)
 {
 	double	denominator;
 	t_point	delta;
-	double 	distance;
+	double	distance;
 
 	delta = line_delta(line.start, line.end);
 	denominator = sqrt(pow(delta.y, 2) + pow(delta.x, 2));
-	distance = delta.y * point.x - delta.x * point.y + line.end.x * line.start.y\
-		- line.end.y * line.start.x / denominator;
+	distance = delta.y * point.x - delta.x * point.y +\
+	line.end.x * line.start.y - line.end.y * line.start.x / denominator;
 	return (distance);
 }

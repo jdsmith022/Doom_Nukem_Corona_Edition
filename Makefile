@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/05/13 18:53:31 by Malou         ########   odam.nl          #
+#    Updated: 2020/05/27 14:26:51 by Malou         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ SDL_FLAGS = `sdl2-config --cflags --libs`
 
 SRCS = ./srcs/
 
-SRCS_FILES = main doom_init game_loop doom_render sidedef_render \
+SRCS_FILES = main sdl_init doom_init game_loop doom_render sidedef_render \
 	plane_projections draw_sidedef draw_floor \
-	doom_input line_calculations move_position exit
+	doom_input line_calculations move_position move_position_vertical \
+	exit
 
 C_FILES = $(SRCS_FILES:%=$(SRCS)%.c)
 

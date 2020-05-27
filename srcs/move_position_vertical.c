@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   draw_floor.c                                       :+:    :+:            */
+/*   move_position_vertical.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/26 18:59:48 by Malou         ########   odam.nl         */
+/*   Created: 2020/05/26 18:18:41 by Malou         #+#    #+#                 */
+/*   Updated: 2020/05/26 18:45:15 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-void		draw_ceiling(t_doom *doom, int x, int sidedef_top)
+void	position_jump(t_doom *doom)
 {
-	int y;
+	int		height;
+	int		i;
 
-	y = 0;
-	while (y < sidedef_top)
+	height = doom->player_height;
+	i = 0;
+	while (i < 180)
 	{
-		put_pixel(doom, x, y, 0x5B2C6F);
-		y++;
+		doom->player_height = height + sin(i - PI /180);
+		i++;
 	}
-}
-
-void		draw_floor(t_doom *doom, int x, int y)
-{
-	Uint32	color;
-
-	while (y < HEIGHT)
-	{
-		color = 0xffa500;
-		put_pixel(doom, x, y, color);
-		y++;
-	}
+	doom->player_height = height;
 }

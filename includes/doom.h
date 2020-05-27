@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 18:55:49 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/27 14:47:21 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # include "../libft/libft.h"
 # include "../sdl/includes/SDL.h"
+
+# define NAME "Doom Nukem Corona Edition"
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
@@ -93,13 +95,13 @@ typedef struct			s_sector {
 
 typedef struct			s_doom {
   	SDL_Window			*window;
-	//SDL_Renderer 		*renderer;
 	SDL_Surface			*surface;
 	SDL_Event			event;
 	t_sector			sector[3];
 	t_sidedef			sidedef[13];
 	t_point				pos;
 	t_event				own_event;
+	int					player_height;
 	int					i_sector;
 	int					esc;
 	double				dir_angle;
@@ -114,6 +116,7 @@ typedef struct			s_doom {
 
 int						main(void);
 void					doom_init(t_doom *doom);
+int						sdl_init(t_doom *doom);
 void					game_loop(t_doom *doom);
 void					doom_render(t_doom *doom);
 void					doom_input(t_doom *doom);
@@ -142,6 +145,8 @@ void 					move_position_left(t_doom *doom);
 void					move_position_right(t_doom *doom);
 int						movement_collision(t_doom *doom, t_line move);
 t_point					check_line_intersection(t_line move, t_sidedef sidedef);
+
+void					position_jump(t_doom *doom);
 
 void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);

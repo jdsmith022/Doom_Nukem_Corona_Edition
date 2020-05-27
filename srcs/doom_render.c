@@ -6,12 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/25 12:59:14 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/26 17:08:23 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
-
 
 double			clamp_angle(double angle)
 {
@@ -25,7 +24,7 @@ double			clamp_angle(double angle)
 void	doom_render(t_doom *doom)
 {
 	int		x;
-	t_ray 	ray;
+	t_ray	ray;
 
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);

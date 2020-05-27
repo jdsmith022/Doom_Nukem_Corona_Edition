@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/13 18:51:49 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/27 14:48:31 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,19 +132,10 @@ void	set_lines(t_sidedef *sidedef)
 	sidedef[12].opp_sector = 1;
 }
 
-void doom_init(t_doom *doom)
+void 	doom_init(t_doom *doom)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) == 0) // check what to init
-	{
-		doom->window = SDL_CreateWindow("Doom", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
-			if (doom->window == NULL) 
-		    doom_exit_failure(doom, MALLOC_ERR);
-		doom->surface = SDL_GetWindowSurface(doom->window);
-		if (doom->surface == NULL) 
-		    doom_exit_failure(doom, MALLOC_ERR);
-	}
-	else
-		doom_exit_failure(doom, INIT_ERR);
+	if (sdl_init(doom) != 0)
+		doom_exit_failure(doom, "unable to initialize SDL\n");
 	set_lines(doom->sidedef);
 	doom->esc = 0;
 	doom->dir_angle = 180;
@@ -153,12 +144,13 @@ void doom_init(t_doom *doom)
 	doom->pos.y = 100;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
+	doom->player_height = 200;
 	doom->sector[0].height_ceiling = 64;
 	doom->sector[0].height_floor = 0;
 	doom->sector[0].i_sidedefs = 0;
 	doom->sector[0].n_sidedefs = 5;
 	doom->sector[0].slope_id = -1;
-	doom->sector[1].height_ceiling = 64;
+	doom->sector[1].height_ceiling = 80;
 	doom->sector[1].height_floor = 20;
 	doom->sector[1].i_sidedefs = 5;
 	doom->sector[1].n_sidedefs = 4;
