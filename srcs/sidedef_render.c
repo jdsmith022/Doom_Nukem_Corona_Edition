@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/18 11:30:34 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/27 13:43:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_sidedef		set_properties_sidedef(t_point intersect, double distance,\
 	t_sidedef sidedef;
 	
 	// if (curr_sidedef.sidedef_delta.y > intersect.x)
-	// 	sidedef.offset_x = rounder(intersect.y) % doom->wall_width;
+	// 	sidedef.offset_x = rounder(intersect.y) % doom->texture_width;
 	// else
-	// 	sidedef.offset_x = rounder(intersect.x) % doom->wall_width;
+	// 	sidedef.offset_x = rounder(intersect.x) % doom->texture_width;
 	sidedef.offset_x = intersect.x;
 	sidedef.offset_y = intersect.y;
 	sidedef.distance = distance;

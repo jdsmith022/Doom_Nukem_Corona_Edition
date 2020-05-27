@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/25 13:16:52 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/26 19:51:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,12 +132,12 @@ void move_position_forward(t_doom *doom)
 	collision = movement_collision(doom, movement);
 	if (collision == 0 || collision == 1)
 	{
-			doom->pos = movement.end;
-			if (collision == 1)
-			{
-				doom->pos.x += 5 * cos(doom->dir_angle);
-				doom->pos.y += 5 * sin(doom->dir_angle);
-			}
+		doom->pos = movement.end;
+		if (collision == 1)
+		{
+			doom->pos.x += 5 * cos(doom->dir_angle);
+			doom->pos.y += 5 * sin(doom->dir_angle);
+		}
 	}
 }
 

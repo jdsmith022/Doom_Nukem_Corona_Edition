@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:07:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/05/11 12:09:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/27 17:54:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@ void		load_bmp(t_doom *doom, int fd)
 	// size_t	filesize;
 
 	(void)fd;
-	nb_textures = 1;
+	nb_textures = 2;
 	index = 0;
 	doom->textures = (SDL_Surface**)malloc(sizeof(SDL_Surface*) * nb_textures); // allocating space for struct
 	if (doom->textures == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
-	doom->textures[index] = SDL_LoadBMP("./textures/WALL03_1.bmp");
+	doom->textures[0] = SDL_LoadBMP("./textures/WALL03_1.bmp");
+	doom->textures[1] = SDL_LoadBMP("./textures/WALL03_7.bmp");
+	// doom->textures[1] = SDL_LoadBMP("./textures/WALL03_1.bmp");
 	// while (index < nb_textures)
 	// {
 	// 	if (fread(&w, sizeof(int), 1, fd) < 0)
 	// 		doom_exit_failure(doom, MALLOC_ERR);
-	// 	// fd = lseek(fd, 0, SEEK_SET);
+	// 	// fd = lseek(fd, 0, SEEK_SET);./
 	// 	if (fread(&h, sizeof(int), 1, fd) < 0)
 	// 		doom_exit_failure(doom, MALLOC_ERR);
 	// 	if (h == 0)

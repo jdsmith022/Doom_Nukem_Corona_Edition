@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/18 18:23:57 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/27 18:20:58 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-static void	put_row(t_doom *doom, size_t addr_dex, size_t index)
+static void	put_row(t_doom *doom, size_t addr_dex, size_t texture_dex)
 {
 	size_t row_dex = 0; //wont' be needed
 	char *pixels;
@@ -20,20 +20,20 @@ static void	put_row(t_doom *doom, size_t addr_dex, size_t index)
 
 	pixels = doom->surface->pixels;
 	textures = doom->textures[row_dex]->pixels;
-	pixels[addr_dex] = textures[index];
+	pixels[addr_dex] = textures[texture_dex];
 	addr_dex++;
-	index++;
-	pixels[addr_dex] = textures[index];
+	texture_dex++;
+	pixels[addr_dex] = textures[texture_dex];
 	addr_dex++;
-	index++;
-	pixels[addr_dex] = textures[index];
+	texture_dex++;
+	pixels[addr_dex] = textures[texture_dex];
 }
 
 static void	row_calculations(t_doom *doom, double dist, size_t addr_dex)
 {
 	t_point	texture;
 	t_point	floor;
-	size_t	wall_index;
+	size_t	texture_dex;
 	Uint8	bpp;
 
 	bpp = doom->textures[0]->format->BytesPerPixel;
@@ -41,10 +41,10 @@ static void	row_calculations(t_doom *doom, double dist, size_t addr_dex)
 	floor.y = dist * sin(doom->angle);
 	floor.x += doom->pos.x;
 	floor.y += doom->pos.y;
-	texture.x = (int)floor.x % 64;
-	texture.y = (int)floor.y % 64;
-	wall_index = ((texture.y * doom->textures[0]->pitch) + (texture.x * bpp));
-	put_row(doom, addr_dex, wall_index);
+	texture.x = (int)floor.x % doom->texture_width;
+	texture.y = (int)floor.y % doom->texture_height;	
+	texture_dex = ((texture.y * doom->textures[0]->pitch) + (texture.x * bpp));
+	put_row(doom, addr_dex, texture_dex);
 }
 
 void	draw_ceiling(t_doom *doom, int x, int y)
@@ -54,29 +54,33 @@ void	draw_ceiling(t_doom *doom, int x, int y)
 	Uint8	bpp;
 
 	bpp = doom->surface->format->BytesPerPixel;
+	(void)doom;
 	while (y >= 0)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->wall_height - (double)32) / ((HEIGHT / 2) - y) * doom->dist_to_plane;
+		dist = (doom->texture_height - doom->player_height) / ((HEIGHT / 2) - y) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y--;
 	}
 }
 
-void	draw_floor(t_doom *doom, int x, t_plane plane)
+void	draw_floor(t_doom *doom, int x, t_plane plane, t_sector sector)
 {
 	double	dist;
 	size_t	addr_dex;
 	Uint8	bpp;
-	int y;
-
+	int 	y;
+	int		height;
+	
+	(void)sector;
 	y = plane.floor_start;
+	height = HEIGHT - doom->floor;
 	bpp = doom->surface->format->BytesPerPixel;
-	while (y < HEIGHT)
+	while (y < HEIGHT) //need to draw to sector size not height
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = ((double)32) / (y - (HEIGHT / 2)) * doom->dist_to_plane ;
+		dist = doom->player_height / (y - (height / 2)) * ( doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y++;

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/18 17:46:53 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/27 18:15:26 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,14 +147,15 @@ void doom_init(t_doom *doom)
 		doom_exit_failure(doom, INIT_ERR);
 	set_lines(doom->sidedef);
 	doom->esc = 0;
-	doom->dir_angle = 180;
+	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 50;
 	doom->pos.y = 100;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
-	doom->wall_height = 64;
-	doom->wall_width = 64;
+	doom->texture_height = 64;
+	doom->texture_width = 64;
+	
 	doom->sector[0].height_ceiling = 64;
 	doom->sector[0].height_floor = 0;
 	doom->sector[0].i_sidedefs = 0;
@@ -168,10 +169,11 @@ void doom_init(t_doom *doom)
 	//doom->sector[1].slope_angle = (90 - 21.801) * (PI / 180); //tan-1(height floor hinging sector / lenght of slope) 
 	doom->sector[1].slope_id = -1;
 	doom->sector[2].height_ceiling = 64;
-	doom->sector[2].height_floor = 40;
+	doom->sector[2].height_floor = 20;
 	doom->sector[2].i_sidedefs = 9;
 	doom->sector[2].n_sidedefs = 4;
 	doom->sector[2].slope_id = -1;
 	
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
+	doom->player_height = doom->texture_height / 2;
 }
