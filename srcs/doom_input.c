@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/26 18:40:26 by Malou         ########   odam.nl         */
+/*   Updated: 2020/05/28 15:40:38 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	doom_key_input(t_doom *doom, SDL_KeyboardEvent *key)
 	else if (key->keysym.sym == SDLK_d)
 		move_position_right(doom);
 	else if (key->keysym.sym == SDLK_SPACE)
-		position_jump(doom);
+		doom->player_height += 10;
 	else if (key->keysym.sym == SDLK_DOWN)
 		doom->player_height -= 10;
 }
