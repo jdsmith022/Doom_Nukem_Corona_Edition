@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/27 13:43:59 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/30 13:15:09 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,17 +110,17 @@ typedef struct			s_doom {
 	t_point				pos;
 	t_event				own_event;
 	int					i_sector;
-	int					esc;
-	double				dir_angle;
+	int					esc; 
 	double				angle;
-	double				ray_adjacent;
-	int					texture_width;
-	int					texture_height;
-	int					obj_height;
+	double				dir_angle;
 	double				max_ray;
-	double				floor;
-	double				player_height;
 	double				dist_to_plane;
+	double				ray_adjacent;
+	int					texture_width; //need to store width and height of each texture in their struct
+	int					texture_height; //need to store width and height of each texture in their struct
+	int					obj_height;
+	double				height_diff; // store in texture struct? this will be the different of height for floor and ceiling
+	double				player_height; //player height and pos in struct called player?
 }						t_doom;
 
 int						main(void);

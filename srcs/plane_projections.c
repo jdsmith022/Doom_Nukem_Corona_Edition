@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/27 18:14:33 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/30 15:32:46 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,13 @@ static void		set_floor_properties(t_doom *doom, t_plane *plane,
 	int	floor_width;
 	
 	floor_width = doom->texture_width / sidedef.distance * doom->dist_to_plane;
-	doom->floor =  sector.height_floor / sidedef.distance * doom->dist_to_plane;
-	floor_start = (int)(HEIGHT / 2 + (floor_width - doom->floor) / 2);
+	doom->height_diff =  sector.height_floor / sidedef.distance * doom->dist_to_plane;
+	floor_start = (int)(HEIGHT / 2 + (floor_width - doom->height_diff) / 2);
 	plane->floor_start = ((floor_start < HEIGHT) ? floor_start : (HEIGHT - 1));
+	// doom->height_diff /= ((sidedef.distance + doom->height_diff) * doom->dist_to_plane);
+	// doom->player_height += sector.height_floor;
+	doom->height_diff =  sector.height_floor / sidedef.distance * doom->dist_to_plane;
+
 	// floor_end = (int)(HEIGHT / 2 + ( - ) / 2);;
 	// plane->floor_end = ((floor_end > HEIGHT) ? floor_end : (HEIGHT - 1));
 }

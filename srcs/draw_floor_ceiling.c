@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   draw_floor.c                                       :+:    :+:            */
+/*   draw_floor_ceiling.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/27 18:20:58 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/05/30 15:51:35 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,21 @@ void	draw_floor(t_doom *doom, int x, t_plane plane, t_sector sector)
 	
 	(void)sector;
 	y = plane.floor_start;
-	height = HEIGHT - doom->floor;
+	// if (plane.mid_texture_top != 0)
+	// 	height = plane.mid_texture_bottom - doom->height_diff;
+	// else
+		height = HEIGHT - (doom->height_diff);
+	// printf("height diff: %f\n", doom->height_diff);
 	bpp = doom->surface->format->BytesPerPixel;
-	while (y < HEIGHT) //need to draw to sector size not height
+	// if (sector.height_floor != 0)
+
+	while (y < HEIGHT) //need to draw to sector size not bottom of screen (a lot of pixel overwritting happening)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_height / (y - (height / 2)) * ( doom->dist_to_plane);
+		dist = doom->player_height / (y - (height / 2)) * (doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y++;
 	}
+	// printf("dist: %f, sector-height: %d\n", dist, sector.height_floor);
 }
