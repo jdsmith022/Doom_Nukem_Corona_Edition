@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/05/27 14:26:51 by Malou         ########   odam.nl          #
+#    Updated: 2020/05/31 18:23:43 by Malou         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,18 @@ SDL = ./sdl/
 
 SDL_FLAGS = `sdl2-config --cflags --libs`
 
-SRCS = ./srcs/
+CORE = ./srcs/core/
+EVENTS = ./srcs/events/
+RENDER = ./srcs/render/
 
-SRCS_FILES = main sdl_init doom_init game_loop doom_render sidedef_render \
-	plane_projections draw_sidedef draw_floor \
-	doom_input line_calculations move_position move_position_vertical \
-	exit
+CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
+				exit
+EVENTS_FILES = key_events mouse_events move_position move_position2
+RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
+				draw_floor
 
-C_FILES = $(SRCS_FILES:%=$(SRCS)%.c)
+C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
+	$(RENDER_FILES:%=$(RENDER)%.c)
 
 O_FILES = $(C_FILES:%.c=%.o)
 
