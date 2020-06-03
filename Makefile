@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/05/30 13:12:16 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/06/03 12:35:08 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ clean :
 	@make clean -C $(LIBFT)
 	@rm -f $(O_FILES)
 	@rm -f *#
+	@rm -f *.o
 	@rm -f *~
 	@rm -f *.DS_Store
 	@rm -Rf .vscode

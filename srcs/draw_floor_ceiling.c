@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/30 15:51:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/03 12:37:45 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ void	draw_ceiling(t_doom *doom, int x, int y)
 	double	dist;
 	size_t	addr_dex;
 	Uint8	bpp;
+	int		height;
 
 	bpp = doom->surface->format->BytesPerPixel;
+	height = (HEIGHT + doom->player_height) / 2;
 	(void)doom;
 	while (y >= 0)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->texture_height - doom->player_height) / ((HEIGHT / 2) - y) * doom->dist_to_plane;
+		dist = doom->player_height / (height - y) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y--;
@@ -75,21 +77,14 @@ void	draw_floor(t_doom *doom, int x, t_plane plane, t_sector sector)
 	
 	(void)sector;
 	y = plane.floor_start;
-	// if (plane.mid_texture_top != 0)
-	// 	height = plane.mid_texture_bottom - doom->height_diff;
-	// else
-		height = HEIGHT - (doom->height_diff);
-	// printf("height diff: %f\n", doom->height_diff);
+	height = (HEIGHT - doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
-	// if (sector.height_floor != 0)
-
 	while (y < HEIGHT) //need to draw to sector size not bottom of screen (a lot of pixel overwritting happening)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_height / (y - (height / 2)) * (doom->dist_to_plane);
+		dist = doom->player_height / (y - height) * (doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y++;
 	}
-	// printf("dist: %f, sector-height: %d\n", dist, sector.height_floor);
 }

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 12:48:31 by jesmith        #+#    #+#                */
-/*   Updated: 2020/02/17 19:21:40 by mminkjan      ########   odam.nl         */
+/*   Created: 2019/01/13 12:48:31 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/06/03 12:46:03 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int					ft_count_if(char **tab, int (*f)(char *));
 void				ft_foreach(int *tab, int length, void (*f)(int));
 int					*ft_range(int min, int max);
 int					ft_sqrt(int nb);
+int					rounder(double dbl);
 int					ft_recursive_factorial(int nb);
 void				ft_div_mod(int a, int b, int *div, int *mod);
 void				ft_swap(int *a, int *b);

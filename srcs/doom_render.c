@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/30 16:05:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/03 12:16:21 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ void	doom_render(t_doom *doom)
 		doom->angle += doom->ray_adjacent;
 		x++;
 	}
-	printf("player_height %f\n", doom->player_height);
 	doom->player_height = player_height;
 }

@@ -30,7 +30,7 @@ SRCS := lstmap lstdelone lstiter lstadd lstnew islower \
 		div_mod swap is_negative print_alphabet \
 		print_numbers strclen ull_length atoi_base \
 		itoa_base exit isnumber_base has_prefix isdigit_base \
-		iswhitespace
+		iswhitespace rounder
 
 CFILES := $(SRCS:%=./ft_%.c) get_next_line.c
 
@@ -66,8 +66,10 @@ $(NAME):
 
 clean:
 	@/bin/rm -f $(SRCO) *~
+	@/bin/rm -f $(SRCO) *.o
 
 fclean:
 	@/bin/rm -f $(SRCO) libft.a
+	@/bin/rm -f $(SRCO) *.a
 
 re: fclean all

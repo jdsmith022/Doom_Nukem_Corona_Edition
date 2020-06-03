@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/27 18:27:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/03 10:53:27 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (pixel.y * doom->surface->pitch) + (pixel.x * bpp);
-	wall_y = (double)(doom->texture_height / plane.sidedef_height) \
-		* (pixel.y - plane.sidedef_top);
+	wall_y = (double)(doom->texture_height / plane.sidedef_height)	* (pixel.y - plane.sidedef_top);
 	bpp = doom->textures[tex_dex]->format->BytesPerPixel;
-	pixel_dex = ((int)wall_y * doom->textures[tex_dex]->pitch) + \
-		((int)sidedef.offset_x * bpp);
+	pixel_dex = ((int)wall_y * doom->textures[tex_dex]->pitch) + ((int)sidedef.offset * bpp);
 	put_texture(doom, pixel, index, pixel_dex, tex_dex);
 }
 
@@ -79,7 +77,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 			put_protal_pixel(doom, pixel);
 		// if (pixel.y >= plane.mid_texture_bottom && pixel.y <= plane.mid_texture_bottom + 2)
 		// 	color = 0x000000;
-		if (pixel.y > plane.mid_texture_bottom + 2)
+		if (pixel.y > plane.mid_texture_bottom)
 			find_texture_index(doom, pixel, plane, sidedef, tex_dex);
 		pixel.y++;
 	}

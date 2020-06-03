@@ -6,29 +6,32 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/27 13:43:59 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/03 12:46:19 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-// static int		rounder(double dbl)
-// {
-// 	int rounded;
+static void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef, 
+										t_point intersect, t_doom *doom)
+{
+	t_point start;
+	t_point end;
 
-// 	rounded = (int)(dbl + 0.5);
-// 	return (rounded);
-// }
+	start = curr_sidedef.line.start;
+	end = curr_sidedef.line.end;
+	if (start.x == end.x && (start.y > end.y || start.y < end.y))
+		sidedef->offset = rounder(intersect.y) % doom->texture_width;
+	else if (start.y == end.y && (start.x > end.x || start.x < end.x))
+		sidedef->offset = rounder(intersect.x) % doom->texture_width;
+}
 
 t_sidedef		set_properties_sidedef(t_point intersect, double distance,\
-	t_sidedef curr_sidedef)
+	t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef sidedef;
 	
-	// if (curr_sidedef.sidedef_delta.y > intersect.x)
-	// 	sidedef.offset_x = rounder(intersect.y) % doom->texture_width;
-	// else
-	// 	sidedef.offset_x = rounder(intersect.x) % doom->texture_width;
+	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.offset_x = intersect.x;
 	sidedef.offset_y = intersect.y;
 	sidedef.distance = distance;
@@ -38,7 +41,7 @@ t_sidedef		set_properties_sidedef(t_point intersect, double distance,\
 	return (sidedef);
 }
 
-double		sidedef_intersection_distance(t_ray ray, \
+static double		sidedef_intersection_distance(t_ray ray, \
 	t_sidedef sidedef, t_point *intersect)
 {
 	double			distance;
@@ -72,7 +75,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		{
 			min_distance = distance;
 			near_sidedef = set_properties_sidedef(intersect,\
-				distance, doom->sidedef[x]);
+				distance, doom->sidedef[x], doom);
 		}
 		x++;
 	}
