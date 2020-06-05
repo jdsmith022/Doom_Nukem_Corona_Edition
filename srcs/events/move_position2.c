@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/26 18:18:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 18:18:28 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/05 20:36:05 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int		movement_collision(t_doom *doom, t_line move)
 				doom->i_sector = sidedef.opp_sector;
 				if (move.end.x == intersect.x && move.end.y == intersect.y)
 					return (1);
+				return (0);
 			}
-			return (0);
 		}
 		x++;
 	}

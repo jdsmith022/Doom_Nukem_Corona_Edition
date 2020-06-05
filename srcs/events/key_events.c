@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 18:19:57 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/05 20:57:29 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	key_input(t_doom *doom, SDL_KeyboardEvent *key, time_t dt)
+void	key_input(t_doom *doom, SDL_KeyboardEvent *key, double dt)
 {
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->is_running = FALSE;

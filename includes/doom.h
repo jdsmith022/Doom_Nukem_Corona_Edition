@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 18:30:20 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/05 21:05:05 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define MOVE_SPEED 200
+# define MOVE_SPEED 500
 # define CAM_SPEED 20
 
 typedef struct		s_point {
@@ -124,24 +124,24 @@ int					main(void);
 void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
 void				game_loop(t_doom *doom);
-void				doom_update(t_doom *doom, time_t dt_time);
+void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 
 /*events functions*/
 void				key_input(t_doom *doom, SDL_KeyboardEvent *key,\
-						time_t dt);
+						double dt);
 void				mouse_press(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				mouse_release(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				camera_movement(t_doom *doom,\
-						SDL_MouseMotionEvent *motion, time_t dt);
-void				position_movement_f(t_doom *doom, time_t dt);
-void				position_movement_b(t_doom *doom, time_t dt);
-void				position_movement_l(t_doom *doom, time_t dt);
-void				position_movement_r(t_doom *doom, time_t dt);
+						SDL_MouseMotionEvent *motion, double dt);
+void				position_movement_f(t_doom *doom, double dt);
+void				position_movement_b(t_doom *doom, double dt);
+void				position_movement_l(t_doom *doom, double dt);
+void				position_movement_r(t_doom *doom, double dt);
 int					movement_collision(t_doom *doom, t_line move);
 t_point				check_line_intersection(t_line move, t_sidedef sidedef);
 void				jump_player(t_doom *doom);

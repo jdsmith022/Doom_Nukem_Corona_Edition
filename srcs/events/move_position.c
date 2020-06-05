@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 18:29:42 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/05 21:21:34 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	position_movement_r(t_doom *doom, time_t dt)
+void	position_movement_r(t_doom *doom, double dt)
 {
 	t_line	movement;
 	double	qt_radian;
@@ -25,7 +25,7 @@ void	position_movement_r(t_doom *doom, time_t dt)
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
 		sin(doom->dir_angle + qt_radian);
 	collision = movement_collision(doom, movement);
-	if (collision == 0 || collision == 1)
+	if (collision != -1)
 	{
 		doom->pos = movement.end;
 		if (collision == 1)
@@ -36,7 +36,7 @@ void	position_movement_r(t_doom *doom, time_t dt)
 	}
 }
 
-void	position_movement_l(t_doom *doom, time_t dt)
+void	position_movement_l(t_doom *doom, double dt)
 {
 	t_line	movement;
 	double	qt_radian;
@@ -49,7 +49,7 @@ void	position_movement_l(t_doom *doom, time_t dt)
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
 		sin(doom->dir_angle - qt_radian);
 	collision = movement_collision(doom, movement);
-	if (collision == 0 || collision == 1)
+	if (collision != -1)
 	{
 		doom->pos = movement.end;
 		if (collision == 1)
@@ -60,7 +60,7 @@ void	position_movement_l(t_doom *doom, time_t dt)
 	}
 }
 
-void	position_movement_b(t_doom *doom, time_t dt)
+void	position_movement_b(t_doom *doom, double dt)
 {
 	t_line	movement;
 	int		collision;
@@ -69,7 +69,7 @@ void	position_movement_b(t_doom *doom, time_t dt)
 	movement.end.x = doom->pos.x - (MOVE_SPEED * dt) * cos(doom->dir_angle);
 	movement.end.y = doom->pos.y - (MOVE_SPEED * dt) * sin(doom->dir_angle);
 	collision = movement_collision(doom, movement);
-	if (collision == 0 || collision == 1)
+	if (collision != -1)
 	{
 		doom->pos = movement.end;
 		if (collision == 1)
@@ -80,7 +80,7 @@ void	position_movement_b(t_doom *doom, time_t dt)
 	}
 }
 
-void	position_movement_f(t_doom *doom, time_t dt)
+void	position_movement_f(t_doom *doom, double dt)
 {
 	t_line	movement;
 	int		collision;
@@ -89,7 +89,7 @@ void	position_movement_f(t_doom *doom, time_t dt)
 	movement.end.x = doom->pos.x + (MOVE_SPEED * dt) * cos(doom->dir_angle);
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) * sin(doom->dir_angle);
 	collision = movement_collision(doom, movement);
-	if (collision == 0 || collision == 1)
+	if (collision != -1)
 	{
 		doom->pos = movement.end;
 		if (collision == 1)

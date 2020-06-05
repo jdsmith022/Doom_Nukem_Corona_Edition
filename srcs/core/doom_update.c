@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 18:21:33 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/05 20:56:41 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	doom_update(t_doom *doom, time_t dt)
+void	doom_update(t_doom *doom, double dt)
 {
 	SDL_Event event;
 

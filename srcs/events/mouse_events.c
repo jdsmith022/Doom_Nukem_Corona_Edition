@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 18:21:01 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/05 21:00:34 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	camera_movement(t_doom *doom, SDL_MouseMotionEvent *motion, time_t dt)
+void	camera_movement(t_doom *doom, SDL_MouseMotionEvent *motion, double dt)
 {
 	double radian;
 
