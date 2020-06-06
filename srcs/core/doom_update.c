@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/05 20:56:41 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/06 18:20:07 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	doom_update(t_doom *doom, double dt)
 		if (event.type == SDL_MOUSEBUTTONUP)
 			mouse_release(doom, &event.button);
 	}
+	if (doom->own_event.jump == 1)
+		jump_player(doom, dt);
 }

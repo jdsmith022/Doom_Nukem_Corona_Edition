@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/05 21:05:05 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/06 18:51:29 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
+# define PLAYER_HEIGHT 100
 # define MOVE_SPEED 500
 # define CAM_SPEED 20
+# define GRAVITY -0.5
+# define VELOCITY 12
 
 typedef struct		s_point {
 	double			x;
@@ -59,6 +62,9 @@ typedef struct		s_event {
 	int				mouse_press;
 	int				hold_angle;
 	int				hold_x;
+	int				jump;
+	int				step_down;
+	double			velocity;
 }					t_event;
 
 typedef struct		s_plane
@@ -110,6 +116,7 @@ typedef struct		s_doom {
 	int				wall_height_std;
 	int				player_height;
 	int				i_sector;
+	int				prev_sector;
 	double			dir_angle;
 	double			ray_adjacent;
 	int				wall_width;
@@ -144,7 +151,7 @@ void				position_movement_l(t_doom *doom, double dt);
 void				position_movement_r(t_doom *doom, double dt);
 int					movement_collision(t_doom *doom, t_line move);
 t_point				check_line_intersection(t_line move, t_sidedef sidedef);
-void				jump_player(t_doom *doom);
+void				jump_player(t_doom *doom, double dt);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\

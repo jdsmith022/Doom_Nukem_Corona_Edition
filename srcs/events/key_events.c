@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/05 20:57:29 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/06 18:42:49 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	key_input(t_doom *doom, SDL_KeyboardEvent *key, double dt)
 	else if (key->keysym.sym == SDLK_DOWN)
 		doom->player_height -= 10;
 	else if (key->keysym.sym == SDLK_SPACE)
-		jump_player(doom);
+		doom->own_event.jump = 1;
 }
