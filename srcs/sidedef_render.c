@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/03 12:46:19 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
+/*   Updated: 2020/06/06 18:41:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 			near_sidedef = set_properties_sidedef(intersect,\
 				distance, doom->sidedef[x], doom);
 		}
+		doom->stripe_distance[ray.plane_x] = distance;
 		x++;
 	}
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)

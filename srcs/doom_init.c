@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/27 18:15:26 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
+/*   Updated: 2020/06/06 14:07:12 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void doom_init(t_doom *doom)
 		doom_exit_failure(doom, INIT_ERR);
 	set_lines(doom->sidedef);
 	doom->esc = 0;
-	doom->dir_angle = 90;
+	doom->dir_angle = 180;
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 50;
 	doom->pos.y = 100;

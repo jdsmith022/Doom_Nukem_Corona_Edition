@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/02 12:09:58 by Malou         #+#    #+#                 */
-/*   Updated: 2020/04/15 18:14:03 by Malou         ########   odam.nl         */
+/*   Created: 2020/04/02 12:09:58 by Malou          #+#    #+#                */
+/*   Updated: 2020/06/06 19:06:15 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ double		point_distance(t_point point1,
 	double			distance;
 
 	if (fabs(point1.x - point2.x) > fabs(point1.y - (int)point2.y))
-		distance = (point1.x - point2.x) / cos(angle);
+		distance = fabs((point1.x - point2.x) / cos(angle));
 	else
-		distance = (point1.y - point2.y) / sin(angle);
+		distance = fabs((point1.y - point2.y) / sin(angle));
 	return (distance);
 }
 

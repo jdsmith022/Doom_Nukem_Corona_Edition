@@ -5,8 +5,8 @@
 #                                                      +:+                     #
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/03 12:35:08 by jessicasmit   ########   odam.nl          #
+#    Created: 2020/04/01 13:24:04 by Malou          #+#    #+#                 #
+#    Updated: 2020/06/06 17:18:15 by rsteigen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = ./srcs/
 
 SRCS_FILES = main doom_init game_loop doom_render sidedef_render \
 	plane_projections slope_projections draw_sidedef draw_floor_ceiling \
-	doom_input line_calculations move_position exit load_textures
+	doom_input line_calculations move_position exit load_textures \
+	sprite_init sprite_check
 
 C_FILES = $(SRCS_FILES:%=$(SRCS)%.c)
 

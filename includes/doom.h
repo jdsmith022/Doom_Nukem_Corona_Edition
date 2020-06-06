@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/03 10:52:01 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
+/*   Updated: 2020/06/06 17:20:24 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,40 @@
 
 # define SPEED 20
 
+# define TOTAL_TEX 2
+# define TOTAL_SPRITE 4
+
 typedef struct			s_point {
     double				x;
     double				y;
 }						t_point;
+
 
 typedef struct			s_line {
     t_point				start;
     t_point				end;
 }						t_line;
 
+typedef struct			s_sprite {
+	int					index;						//start index
+	int					amount;						//which side is viewed
+	t_point				pos;
+	double				size;
+	t_line				line;
+	double				angle;			//what is the angle on the map
+	int					action;
+	int					block;						//can the player walk through it or not
+	int					sector;
+	double				sprite_x;					//x cord translated to viewer space
+	double				sprite_y;					//y cord translated to viewer space
+	int					visible;
+	double				distance;
+}						t_sprite;
+
 typedef struct			s_ray {
 	t_line				line;
 	double				angle;
-	double				plane_x;
+	int					plane_x;
 }						t_ray;
 
 typedef struct			s_event {
@@ -89,6 +109,8 @@ typedef struct			s_sidedef {
 
 typedef struct			s_sector {
 	int					id;
+	int					n_sprites;		//amount of sprites, maybe not neccesarry since the sprites have sidedefs
+	int					i_sprites;		//index sprites
 	int					n_sidedefs;
 	int					i_sidedefs;
 	int					height_floor;
@@ -110,6 +132,8 @@ typedef struct			s_doom {
 	t_sidedef			sidedef[13];
 	t_point				pos;
 	t_event				own_event;
+	SDL_Surface			*sprite_image[TOTAL_TEX];
+	t_sprite			sprite[TOTAL_SPRITE];
 	int					i_sector;
 	int					esc; 
 	double				angle;
@@ -122,6 +146,7 @@ typedef struct			s_doom {
 	int					obj_height;
 	double				height_diff; // store in texture struct? this will be the different of height for floor and ceiling
 	double				player_height; //player height and pos in struct called player?
+	double				stripe_distance[WIDTH]; //distance of each painted stripe on screen, to decide if stripe of sprite is drawn
 }						t_doom;
 
 int						main(void);
@@ -159,4 +184,9 @@ void					doom_exit_success(t_doom *doom);
 void					doom_exit_failure(t_doom *doom, const char *exit_message);
 
 void					load_textures (t_doom *doom);
+
+//sprites
+void					sprite_init(t_doom *doom);
+void					sprite_check(t_doom *doom, t_ray ray);
+
 #endif

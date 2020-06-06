@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/26 19:51:59 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/04/07 10:54:54 by Malou          #+#    #+#                */
+/*   Updated: 2020/06/06 15:15:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,3 @@ void move_position_forward(t_doom *doom)
 		}
 	}
 }
-
-
