@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/26 18:18:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/07 17:43:20 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/07 18:16:45 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ void	jump_player(t_doom *doom, double dt)
 {
 	static double	duration = 1;
 	double			og_height;
+	int				jumpheight;
 
 	doom->own_event.jump = 1;
-	og_height = PLAYER_HEIGHT + doom->sector[doom->i_sector].height_floor;
 	duration += dt;
-	doom->player_height += (int)(doom->own_event.velocity * duration);
+	og_height = PLAYER_HEIGHT + doom->sector[doom->i_sector].height_floor;
+	jumpheight = (int)(doom->own_event.velocity * duration);
+	doom->player_height += jumpheight;
 	doom->own_event.velocity += GRAVITY * duration;
-	if (doom->player_height <= og_height + doom->own_event.floor_diff && doom->own_event.velocity * duration < 0)
+	if (doom->player_height <= og_height + doom->own_event.floor_diff && jumpheight < 0)
 	{
 		doom->own_event.velocity = VELOCITY;
 		doom->player_height = og_height + doom->own_event.floor_diff;
