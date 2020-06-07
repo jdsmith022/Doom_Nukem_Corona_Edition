@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/06 17:34:33 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/07 17:21:06 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,15 @@ void	set_lines(t_sidedef *sidedef)
 	sidedef[12].opp_sector = 1;
 }
 
+void	doom_init_events(t_event *event)
+{
+	event->jump = FALSE;
+	event->velocity = VELOCITY;
+	event->floor_diff = 0;
+	event->step_down = FALSE;
+	event->jump = FALSE;
+}
+
 void 	doom_init(t_doom *doom)
 {
 	if (sdl_init(doom) != 0)
@@ -164,6 +173,5 @@ void 	doom_init(t_doom *doom)
 	doom->sector[2].n_sidedefs = 4;
 	doom->sector[2].slope_id = -1;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	doom->own_event.jump = 0;
-	doom->own_event.velocity = VELOCITY;
+	doom_init_events(&doom->own_event);
 }

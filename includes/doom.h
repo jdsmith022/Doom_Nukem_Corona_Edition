@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/06 18:51:29 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/07 17:11:46 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define FOV 60 * (PI / 180)
 
 # define PLAYER_HEIGHT 100
-# define MOVE_SPEED 500
+# define MOVE_SPEED 200
 # define CAM_SPEED 20
 # define GRAVITY -0.5
 # define VELOCITY 12
@@ -62,8 +62,13 @@ typedef struct		s_event {
 	int				mouse_press;
 	int				hold_angle;
 	int				hold_x;
-	int				jump;
+	int				cam_move_f;
+	int				cam_move_b;
+	int				cam_move_l;
+	int				cam_move_r;
+	int				floor_diff;
 	int				step_down;
+	int				jump;
 	double			velocity;
 }					t_event;
 
@@ -137,21 +142,20 @@ void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 
 /*events functions*/
-void				key_input(t_doom *doom, SDL_KeyboardEvent *key,\
-						double dt);
+void				key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key);
+void				key_release(t_event *event, SDL_KeyboardEvent *key);
+void				key_handler(t_doom *doom, t_event *event, double dt);
 void				mouse_press(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				mouse_release(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				camera_movement(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
-void				position_movement_f(t_doom *doom, double dt);
-void				position_movement_b(t_doom *doom, double dt);
-void				position_movement_l(t_doom *doom, double dt);
-void				position_movement_r(t_doom *doom, double dt);
-int					movement_collision(t_doom *doom, t_line move);
-t_point				check_line_intersection(t_line move, t_sidedef sidedef);
+void				cam_move_fb(t_doom *doom, double dt, int direction);
+void				cam_move_rl(t_doom *doom, double dt, int direction);
+int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
+void				step_down(t_doom *doom, double dt);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
