@@ -6,11 +6,22 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/26 18:18:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/07 18:16:45 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/10 19:33:21 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+void	bend_down(t_doom *doom)
+{
+	int		og_height;
+
+	og_height = 100 + doom->sector[doom->i_sector].height_floor;
+	if (doom->player_height >= 0 && doom->own_event.bend == 1)
+		doom->player_height -= 20;
+	else if (doom->player_height < og_height && doom->own_event.bend == FALSE)
+		doom->player_height += 20;
+}
 
 void	step_down(t_doom *doom, double dt)
 {

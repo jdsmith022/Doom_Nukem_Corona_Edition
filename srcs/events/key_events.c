@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/07 16:50:00 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/10 19:11:34 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	key_handler(t_doom *doom, t_event *event, double dt)
 		jump_player(doom, dt);
 	if (event->step_down == TRUE)
 		step_down(doom, dt);
+	if (event->bend == TRUE || doom->player_height < 100 + doom->sector[doom->i_sector].height_floor)
+		bend_down(doom);
 }
 
 void	key_release(t_event *event, SDL_KeyboardEvent *key)
@@ -38,6 +40,8 @@ void	key_release(t_event *event, SDL_KeyboardEvent *key)
 		event->cam_move_l = FALSE;
 	else if (key->keysym.sym == SDLK_d)
 		event->cam_move_r = FALSE;
+	if (key->keysym.sym == SDLK_x)
+		event->bend = FALSE;
 }
 
 void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
@@ -53,5 +57,7 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	else if (key->keysym.sym == SDLK_d)
 		event->cam_move_r = TRUE;
 	if (key->keysym.sym == SDLK_SPACE)
-		event->jump = 1;
+		event->jump = TRUE;
+	if (key->keysym.sym == SDLK_x)
+		event->bend = 1;
 }

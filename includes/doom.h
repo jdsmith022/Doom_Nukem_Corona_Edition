@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/07 17:11:46 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/10 14:33:40 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct		s_event {
 	int				floor_diff;
 	int				step_down;
 	int				jump;
+	int				bend;
 	double			velocity;
 }					t_event;
 
@@ -156,6 +157,7 @@ void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
+void				bend_down(t_doom *doom);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
