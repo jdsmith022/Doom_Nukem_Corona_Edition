@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 21:17:35 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/10 19:23:03 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/11 12:48:25 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	doom_update(t_doom *doom, double dt)
 			mouse_press(doom, &event.button);
 		if (event.type == SDL_MOUSEBUTTONUP)
 			mouse_release(doom, &event.button);
-		if (event.type == SDL_MOUSEMOTION)
-			camera_movement(doom, &event.motion, dt);
+		if (event.type == SDL_MOUSEMOTION && doom->own_event.mouse_press == 1)
+			move_cam_direction(doom, &event.motion, dt);
 	}
 	key_handler(doom, &doom->own_event, dt);
 }

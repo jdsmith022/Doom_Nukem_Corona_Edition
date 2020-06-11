@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/10 14:33:40 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/11 13:19:40 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 # define PLAYER_HEIGHT 100
 # define MOVE_SPEED 200
-# define CAM_SPEED 20
+# define CAM_SPEED 0.7
 # define GRAVITY -0.5
 # define VELOCITY 12
 
@@ -71,6 +71,8 @@ typedef struct		s_event {
 	int				jump;
 	int				bend;
 	double			velocity;
+	SDL_bool		rel_mouse;
+	SDL_bool		outside_mouse;
 }					t_event;
 
 typedef struct		s_plane
@@ -152,6 +154,7 @@ void				mouse_release(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				camera_movement(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
+void				move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion, double dt);
 void				cam_move_fb(t_doom *doom, double dt, int direction);
 void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
