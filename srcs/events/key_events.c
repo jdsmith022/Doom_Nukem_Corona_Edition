@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/10 19:38:03 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/11 18:33:24 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,8 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		event->jump = TRUE;
 	if (key->keysym.sym == SDLK_x)
 		event->bend = 1;
+	if (key->keysym.sym == SDLK_UP)
+		event->y_pitch += 10;
+	if (key->keysym.sym == SDLK_DOWN)
+		event->y_pitch -= 10;
 }
