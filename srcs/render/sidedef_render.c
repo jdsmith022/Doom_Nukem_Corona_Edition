@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 13:48:58 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/14 19:09:24 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
+		// if (sector == 1)
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x], &intersect);
 		if (distance < min_distance &&\
@@ -65,6 +66,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
+	printf("%d -- %d -- %d\n", sector, near_sidedef.opp_sector, doom->lib.sector[sector].i_sidedefs);
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 	project_on_plane(doom, near_sidedef, ray.plane_x, intersect);

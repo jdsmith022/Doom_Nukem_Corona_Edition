@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/12 12:46:24 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/14 18:22:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	radian = PI / 180;
 	dir_x = 1;
 	dir_y = 1;
-	printf("%d\n", motion->xrel);
+	// printf("%d\n", motion->xrel);
 	if (motion->xrel < 0)
 		dir_x = -1;
 	if (motion->yrel < 0)

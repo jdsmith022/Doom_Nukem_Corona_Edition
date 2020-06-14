@@ -1,10 +1,13 @@
 0; name of map
+
 1: texture library
 how many textures?
 texture names
+
 3:object library
 how many sprites?
 sprite names
+
 3: sectors
 how many sectors?
 how many walls?
@@ -27,7 +30,6 @@ vector end (x,y)
 action flag
 texture number/name(3)
 sidedef id
-opp sector
 
 objects in sector
 name
@@ -36,6 +38,7 @@ action
 amount of textures[]
 angle facting
 texture
+
 4:moving sprites
 how many moving sprites
 moving sprites[]:

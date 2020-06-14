@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 13:45:11 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/14 15:59:19 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void 	doom_init(t_doom *doom)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
-	doom->dir_angle = 180;
+	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 50;
 	doom->pos.y = 100;

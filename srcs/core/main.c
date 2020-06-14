@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:34:53 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 14:09:55 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/14 17:56:32 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	main(void)
 	//load_maps();
 	//init_struct();
 	//init_message_bus();
-	main2();
-	// doom_init(&doom);
+	doom.lib = main2();
+	doom_init(&doom);
 	//load_default(); //loads default settings ie menu, player settings
 	//init_HUD/UI
-	// game_loop(&doom);
+	game_loop(&doom);
 	return (0);
 }

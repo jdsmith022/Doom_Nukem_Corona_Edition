@@ -11,7 +11,7 @@ int     open_file(char *filename)
 		error("file can't open", 0);
     return (fd);
 }
-int     main2(void)
+t_lib     main2(void)
 {
     t_lib col_lib;
     int      fd;
@@ -30,5 +30,5 @@ int     main2(void)
     // parsed_list = parse(list, len); //this is called cursing or something
     // bytecode = create_bytecode(parsed_list);
     // printf("%s\n", parsed_list);
-    return (0);
+    return (col_lib);
 }

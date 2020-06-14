@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 14:39:43 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/14 18:40:33 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,\
 	height_floor = doom->lib.sector[opp_sector].height_floor /\
 		sidedef.distance * doom->dist_to_plane;
 	mid_top = (int)((HEIGHT / 2 + doom->player_height)\
-		- (height_standard / 2) - (height_opp_sector - height_standard) - doom->own_event.y_pitch);
+		- (height_standard / 2) - (height_standard - height_opp_sector) - doom->own_event.y_pitch);
 	plane->mid_texture_top = ((mid_top >= 0) ? mid_top : 0);
 	mid_bottom = (int)((HEIGHT / 2 + doom->player_height)\
 		+ (height_standard / 2) - height_floor - doom->own_event.y_pitch);
@@ -52,7 +52,7 @@ void	set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,\
 	height_floor = sector.height_floor /\
 		sidedef.distance * doom->dist_to_plane;
 	sidedef_top = (int)((HEIGHT / 2 + doom->player_height) -\
-		(height_standard / 2) - (height_sidedef - height_standard) - doom->own_event.y_pitch);
+		(height_standard / 2) - (height_standard -height_sidedef) - doom->own_event.y_pitch);
 	plane->sidedef_top = ((sidedef_top >= 0) ? sidedef_top : 0);
 	sidedef_bottom = (int)((HEIGHT / 2 + doom->player_height)\
 		+ (height_standard / 2) - height_floor - doom->own_event.y_pitch);

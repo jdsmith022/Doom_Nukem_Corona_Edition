@@ -215,19 +215,19 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
             k++;
             j++;
         }
-        wall_int =  wall_int + col_lib->sector[i].i_sidedefs;
+        wall_int =  wall_int + col_lib->sector[i].n_sidedefs; //check this is correct
         get_line(&line, fd, "the object number can not be read", 1);
         col_lib->sector[i].n_objects = ft_atoi(line);
         free(line);
         col_lib->sector[i].i_objects = obj_int;
         j = 0;
-        while (j < col_lib->sector[i].n_sidedefs)
+        while (j < col_lib->sector[i].n_objects)
         {
             col_lib->sprites[k] = object_inf(fd, i);
             l++;
             j++;
         }
-        obj_int =  obj_int + col_lib->sector[i].i_objects;
+        obj_int =  obj_int + j; //check this is correct when objs is available
         i++;
     }
     j = 0;
