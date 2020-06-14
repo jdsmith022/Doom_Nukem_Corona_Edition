@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/14 14:16:02 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/06/14 19:36:12 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ O_FILES = $(C_FILES:%.c=%.o)
 
 HEADERS = includes/doom.h
 
-ADD_FILES = Makefile
+ADD_FILES = Makefile textures
 
 all: $(NAME)
 
