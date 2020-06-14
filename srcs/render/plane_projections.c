@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 17:45:26 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/11 18:29:09 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,\
 	height_floor = doom->sector[opp_sector].height_floor /\
 		sidedef.distance * doom->dist_to_plane;
 	mid_top = (int)((HEIGHT / 2 + doom->player_height)\
-		- (height_standard / 2) - (height_opp_sector - height_standard));
+		- (height_standard / 2) - (height_opp_sector - height_standard) - doom->own_event.y_pitch);
 	plane->mid_texture_top = ((mid_top >= 0) ? mid_top : 0);
 	mid_bottom = (int)((HEIGHT / 2 + doom->player_height)\
-		+ (height_standard / 2) - height_floor);
+		+ (height_standard / 2) - height_floor - doom->own_event.y_pitch);
 	plane->mid_texture_bottom = ((mid_bottom < HEIGHT) ?\
 		mid_bottom : (HEIGHT - 1));
 }
@@ -52,10 +52,10 @@ void	set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,\
 	height_floor = sector.height_floor /\
 		sidedef.distance * doom->dist_to_plane;
 	sidedef_top = (int)((HEIGHT / 2 + doom->player_height) -\
-		(height_standard / 2) - (height_sidedef - height_standard));
+		(height_standard / 2) - (height_sidedef - height_standard) - doom->own_event.y_pitch);
 	plane->sidedef_top = ((sidedef_top >= 0) ? sidedef_top : 0);
 	sidedef_bottom = (int)((HEIGHT / 2 + doom->player_height)\
-		+ (height_standard / 2) - height_floor);
+		+ (height_standard / 2) - height_floor - doom->own_event.y_pitch);
 	plane->sidedef_bottom = ((sidedef_bottom < HEIGHT ?\
 		sidedef_bottom : (HEIGHT - 1)));
 	if (sidedef.opp_sector != -1)

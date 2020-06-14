@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/10 21:21:58 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/11 18:32:58 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void	doom_init_events(t_event *event)
 	event->floor_diff = 0;
 	event->step_down = FALSE;
 	event->jump = FALSE;
+	event->y_pitch = 0;
 }
 
 void 	doom_init(t_doom *doom)

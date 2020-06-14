@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/11 13:21:09 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/12 12:46:24 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,26 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	double dt)
 {
 	double	radian;
-	int		cam_direction;
+	int		dir_x;
+	int		dir_y;
 
 	radian = PI / 180;
-	cam_direction = doom->own_event.hold_x - motion->x;
-	doom->dir_angle -= CAM_SPEED * cam_direction * dt;
+	dir_x = 1;
+	dir_y = 1;
+	printf("%d\n", motion->xrel);
+	if (motion->xrel < 0)
+		dir_x = -1;
+	if (motion->yrel < 0)
+		dir_y = -1;
+	if (motion->yrel < 1)
+		doom->dir_angle += CAM_SPEED * dir_x * dt;
+	//doom->own_event.y_pitch += CAM_SPEED * dir_y * dt;
 	if (doom->dir_angle < 0)
 		doom->dir_angle += 360 * radian;
 	if (doom->dir_angle > 360 * radian)
 		doom->dir_angle -= 360 * radian;
 	doom->own_event.hold_x = motion->x;
+	doom->own_event.hold_y = motion->y;
 }
 
 void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)

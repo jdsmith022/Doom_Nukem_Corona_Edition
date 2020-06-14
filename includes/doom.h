@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/11 13:19:40 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/11 18:35:14 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 # define PLAYER_HEIGHT 100
 # define MOVE_SPEED 200
-# define CAM_SPEED 0.7
+# define CAM_SPEED 5
 # define GRAVITY -0.5
 # define VELOCITY 12
 
@@ -62,6 +62,7 @@ typedef struct		s_event {
 	int				mouse_press;
 	int				hold_angle;
 	int				hold_x;
+	int				hold_y;
 	int				cam_move_f;
 	int				cam_move_b;
 	int				cam_move_l;
@@ -71,8 +72,7 @@ typedef struct		s_event {
 	int				jump;
 	int				bend;
 	double			velocity;
-	SDL_bool		rel_mouse;
-	SDL_bool		outside_mouse;
+	int				y_pitch;
 }					t_event;
 
 typedef struct		s_plane
