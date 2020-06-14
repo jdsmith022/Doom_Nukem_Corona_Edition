@@ -1,11 +1,10 @@
-#include "doom_nukem.h"
+#include "../../includes/doom.h"
 #include <stdio.h>
 
 t_sector  *save_sectors(int fd, int *len)
 {
     t_sector    *sect;
     char        *line;
-    int         ret;
 
     get_line(&line, fd, "the amount of sectors is not specified or can not be read", 1);
     *len = ft_atoi(line);
@@ -19,7 +18,6 @@ t_sidedef  *save_walls(int fd)
     t_sidedef   *walls;
     char        *line;
     int         len;
-    int         ret;
 
     get_line(&line, fd, "the amount of walls is not specified or can not be read", 1);
     len = ft_atoi(line);
@@ -33,7 +31,6 @@ t_object  *save_sprites(int fd)
     t_object   *sprites;
     char        *line;
     int         len;
-    int         ret;
 
     get_line(&line, fd, "the amount of stationary sprites is not specified or can not be read", 1);
     len = ft_atoi(line);
@@ -42,17 +39,16 @@ t_object  *save_sprites(int fd)
     return (sprites);
 }
 
-t_exture   *save_img(int fd)
+t_texture   *save_img(int fd)
 {
-    int ret;
     int i;
     char *line;
     int len;
-    t_exture *lib;
+    t_texture *lib;
  
     get_line(&line, fd, "the amount of textures is not specified or can not be read", 1);
     len = ft_atoi(line);
-    lib = (t_exture*)ft_memalloc(sizeof(t_exture) * len);
+    lib = (t_texture*)ft_memalloc(sizeof(t_texture) * len);
     i = 0;
     while (i < len)
     {

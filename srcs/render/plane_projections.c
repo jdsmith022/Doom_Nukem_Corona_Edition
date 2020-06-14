@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/11 18:29:09 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/14 14:39:43 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,\
 
 	height_standard = doom->wall_height_std /\
 		sidedef.distance * doom->dist_to_plane;
-	height_opp_sector = doom->sector[opp_sector].height_ceiling /\
+	height_opp_sector = doom->lib.sector[opp_sector].height_ceiling /\
 		sidedef.distance * doom->dist_to_plane;
-	height_floor = doom->sector[opp_sector].height_floor /\
+	height_floor = doom->lib.sector[opp_sector].height_floor /\
 		sidedef.distance * doom->dist_to_plane;
 	mid_top = (int)((HEIGHT / 2 + doom->player_height)\
 		- (height_standard / 2) - (height_opp_sector - height_standard) - doom->own_event.y_pitch);
@@ -68,7 +68,7 @@ t_plane	set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	t_plane		plane;
 	t_sector	sector;
 
-	sector = doom->sector[sidedef.sector];
+	sector = doom->lib.sector[sidedef.sector];
 	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	ft_bzero(&plane, sizeof(plane));
 	plane.intersect = intersect;

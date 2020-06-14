@@ -9,6 +9,7 @@ sprite names
 how many sectors?
 how many walls?
 how many objects?
+
 sectors[]
 light
 height of floor
@@ -18,12 +19,16 @@ height of ceiling
 texture of ceiling
 slope of ceiling
 lines in sector
+sector id
+
 portal/line
 vector start(x,y)
 vector end (x,y)
 action flag
 texture number/name(3)
-vector on the other side of wall
+sidedef id
+opp sector
+
 objects in sector
 name
 vector location(x,y)

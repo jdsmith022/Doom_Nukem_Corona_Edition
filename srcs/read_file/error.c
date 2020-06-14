@@ -1,4 +1,4 @@
-#include "doom_nukem.h"
+#include "../../includes/doom.h"
 #include <stdio.h> //replace for ft_printf before handing in
 
 void    int_check(char *line, char *er, int line_num)
@@ -7,7 +7,7 @@ void    int_check(char *line, char *er, int line_num)
     int check;
 
     i = 0;
-    while(i < ft_strlen(line))
+    while(i < (int)ft_strlen(line))
     {
         check = ft_isdigit(line[i]);
         if (check == 0)

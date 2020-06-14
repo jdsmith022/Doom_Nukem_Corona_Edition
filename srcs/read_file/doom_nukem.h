@@ -98,15 +98,15 @@ typedef struct			s_sector {
 	int					texture_floor;
 }						t_sector;
 
-typedef struct	s_lib{
-	t_exture *tex_lib;
-	t_exture *obj_lib;
-	t_sector *sector;
-	t_sidedef *walls;
-	t_object *sprites;
-	int		n_mov_sprites;
-	t_m_object *mov_sprites;
-}				t_lib;
+typedef struct			s_lib{
+	t_exture			*tex_lib;
+	t_exture 			*obj_lib;
+	t_sector 			*sector;
+	t_sidedef 			*walls;
+	t_object 			*sprites;
+	int					n_mov_sprites;
+	t_m_object 			*mov_sprites;
+}						t_lib;
 
 
 t_exture   *save_img(int fd);

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/07 17:12:07 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/14 13:48:58 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int		movement_collision(t_doom *doom, t_line move)
 	t_point		intersect;
 	t_sidedef	sidedef;
 
-	x = doom->sector[doom->i_sector].i_sidedefs;
-	while (x < doom->sector[doom->i_sector].n_sidedefs\
-		+ doom->sector[doom->i_sector].i_sidedefs)
+	x = doom->lib.sector[doom->i_sector].i_sidedefs;
+	while (x < doom->lib.sector[doom->i_sector].n_sidedefs\
+		+ doom->lib.sector[doom->i_sector].i_sidedefs)
 	{
-		sidedef = doom->sidedef[x];
+		sidedef = doom->lib.sidedef[x];
 		intersect = check_line_intersection(move, sidedef);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
 		{

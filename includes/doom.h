@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/11 18:35:14 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/14 13:51:50 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # define TRUE 1
 # define FALSE 0
+
+#define NUM_LEVELS 1
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
@@ -75,6 +77,38 @@ typedef struct		s_event {
 	int				y_pitch;
 }					t_event;
 
+typedef struct		s_texture {
+	int 			width;
+	int 			height;
+	char			*address;
+	int				b_p_p;
+	int				size_line;
+	int				endian;
+	int				repeat;
+	int				max_repeat;
+}					t_texture;
+
+typedef struct		s_m_object{
+	int				n_textures;
+	int*			textures;
+	int*			face_ang;
+	char*			name;
+	int				action;
+	t_line*			movement;
+	// t_line			height;
+	int				speed;
+	int				spawn_time;
+}					t_m_object;
+
+typedef struct		s_object{
+	int				n_textures;
+	int*			textures;
+	int*			face_ang;
+	char*			name;
+	int				action;
+	t_line			location;
+}					t_object;
+
 typedef struct		s_plane
 {
 	int				sidedef_top;
@@ -103,22 +137,34 @@ typedef struct		s_sector {
 	int				id;
 	int				n_sidedefs;
 	int				i_sidedefs;
-	int				height_floor;
-	int				height_ceiling;
+	int				n_objects;
+	int				i_objects;
 	int				light_level;
 	int				slope_id;
-	int				slope_angle;
+	int				slope_ceiling;
+	int				slope_floor;
+	int				height_ceiling;
+	int				height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
 }					t_sector;
+
+typedef struct			s_lib{
+	t_texture			*tex_lib;
+	t_texture 			*obj_lib;
+	t_sector 			*sector;
+	t_sidedef 			*sidedef;
+	t_object 			*sprites;
+	int					n_mov_sprites;
+	t_m_object 			*mov_sprites;
+}						t_lib;
 
 typedef struct		s_doom {
 	int				is_running;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
-	t_sector		sector[3];
-	t_sidedef		sidedef[13];
+	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
 	int				wall_height_std;
@@ -143,6 +189,16 @@ void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
+
+/*read functions*/
+t_texture			*save_img(int fd);
+void				error(char *error, int line_num);
+t_sector			*save_sectors(int fd, int *len);
+t_sidedef			*save_walls(int fd);
+t_object			*save_sprites(int fd);
+int					main2(void);
+void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
+int					get_line(char **line, int fd, char *error, int is_num);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key);

@@ -1,4 +1,4 @@
- #include "doom_nukem.h"
+ #include "../../includes/doom.h"
 
  #include <stdio.h>
 
@@ -13,17 +13,19 @@ void        add_inf_to_sect(t_sector *sector, char *line, int i)
     if (i == 1)
         sector->height_floor = safe;
     if (i == 2)
-        sector->texture_floor = safe;
+        sector->txt_floor = safe;
     if (i == 3)
         sector->slope_floor = safe;
     if (i == 4)
         sector->height_ceiling = safe;
     if (i == 5)
-        sector->texture_ceiling = safe;
+        sector->txt_ceiling = safe;
     if (i == 6)
         sector->slope_ceiling = safe;
     if (i == 7)
         sector->n_sidedefs = safe;
+    if (i == 8)
+        sector->id = safe;
 }
 
 t_sector   sector_inf(int fd)
@@ -33,7 +35,7 @@ t_sector   sector_inf(int fd)
     t_sector sector;
 
     i = 0;
-    while (i < 8)
+    while (i < 9)
     {
         get_line(&line, fd, "sector informations does not exist", 1);
         add_inf_to_sect(&sector, line, i);
@@ -46,32 +48,31 @@ t_sector   sector_inf(int fd)
 void        add_inf_to_line(t_sidedef *wall, int i, int safe)
 {
     if (i == 0)
-        wall->portal = safe; //can only be one or two
+        wall->opp_sector = safe;
     if (i == 1)
-        wall->start.x = safe;
+        wall->line.start.x = safe;
     if (i == 2)
-        wall->start.y = safe;
+        wall->line.start.y = safe;
     if (i == 3)
-        wall->end.x = safe;
+        wall->line.end.x = safe;
     if (i == 4)
-        wall->end.y = safe;
+        wall->line.end.y = safe;
     if (i == 5)
         wall->action = safe;
     if (i == 6)
-        wall->texture_1 = safe;
+        wall->txt_1 = safe;
     if (i == 7)
-        wall->texture_2 = safe;
+        wall->txt_2 = safe;
     if (i == 8)
-        wall->texture_3 = safe;
+        wall->txt_3 = safe;
     if (i == 9)
-        wall->opp = safe;
+        wall->id = safe;
 }
 
 t_sidedef   wall_inf(int fd, int sector)
 {
     int i;
     char    *line;
-    int     ret;
     t_sidedef wall;
     int     safe;
 
@@ -121,11 +122,11 @@ t_object   object_inf(int fd, int sector)
 {
     int i;
     char    *line;
-    int     ret;
     t_object sprite;
     int     safe;
 
     i = 0;
+    (void)sector;
     sprite.n_textures = 0;
     while (i < 6 + sprite.n_textures)
     {
@@ -169,10 +170,10 @@ t_m_object   mov_object_inf(int fd, int sector)
 {
     int i;
     char    *line;
-    int     ret;
     t_m_object m_sprite;
     int     safe;
 
+    (void)sector;
     i = 0;
     m_sprite.n_textures = 0;
     while (i < 5 + m_sprite.n_textures)
@@ -196,7 +197,6 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
     int l;
     int wall_int;
     int obj_int;
-    int ret;
     char *line;
 
     i = 0;
@@ -208,20 +208,18 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
     {
         col_lib->sector[i] = sector_inf(fd);
         j = 0;
-        col_lib->sector[i].start_walls = wall_int;
-        col_lib->sector[i].end_walls = wall_int + col_lib->sector[i].start_walls; 
+        col_lib->sector[i].i_sidedefs = wall_int;
         while (j < col_lib->sector[i].n_sidedefs)
         {
-            col_lib->walls[k] = wall_inf(fd, i);
+            col_lib->sidedef[k] = wall_inf(fd, i);
             k++;
             j++;
         }
-        wall_int =  wall_int + col_lib->sector[i].start_walls;
+        wall_int =  wall_int + col_lib->sector[i].i_sidedefs;
         get_line(&line, fd, "the object number can not be read", 1);
         col_lib->sector[i].n_objects = ft_atoi(line);
         free(line);
-        col_lib->sector[i].start_obj = obj_int;
-        col_lib->sector[i].end_obj = obj_int + col_lib->sector[i].start_obj; 
+        col_lib->sector[i].i_objects = obj_int;
         j = 0;
         while (j < col_lib->sector[i].n_sidedefs)
         {
@@ -229,7 +227,7 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
             l++;
             j++;
         }
-        obj_int =  obj_int + col_lib->sector[i].start_obj;
+        obj_int =  obj_int + col_lib->sector[i].i_objects;
         i++;
     }
     j = 0;
@@ -241,5 +239,6 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
         col_lib->mov_sprites[j] = mov_object_inf(fd, j);
         j++;
     }
-    wall_int =  wall_int + col_lib->sector[i].start_walls;
+    wall_int =  wall_int + col_lib->sector[i].i_sidedefs;
+
 }
