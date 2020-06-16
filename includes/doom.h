@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/16 17:49:02 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/16 19:38:14 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define PLAYER_HEIGHT 100
+# define PLAYER_HEIGHT 32
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
 # define GRAVITY -0.5
@@ -118,6 +118,7 @@ typedef struct		s_plane
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
+	int				height_standard;
 	t_point			intersect;
 }					t_plane;
 
@@ -130,7 +131,7 @@ typedef struct		s_sidedef {
 	int				opp_sector;
 	double			offset_x;
 	double			offset_y;
-	double			offset;
+	double				offset;
 	int				txt_1;
 	int				txt_2;
 	int				txt_3;
