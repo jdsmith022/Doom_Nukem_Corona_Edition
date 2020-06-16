@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/16 17:21:53 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/06/16 18:00:02 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
-				draw_floor
+				draw_floor load_textures
 READ_FILES = add_info_to_lib error read_file main2
 
 C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
@@ -56,6 +56,7 @@ $(NAME) : $(O_FILES)
 
 clean :
 	@make clean -C $(LIBFT)
+	@make clean -C $(BMP)
 	@rm -f $(O_FILES)
 	@rm -f *#
 	@rm -f *~
@@ -64,6 +65,7 @@ clean :
 
 fclean : clean
 	@make fclean -C $(LIBFT)
+	@make fclean -C $(BMP)
 	@rm -f $(NAME)
 
 re : fclean all
