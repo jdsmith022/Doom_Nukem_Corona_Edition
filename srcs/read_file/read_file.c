@@ -39,27 +39,32 @@ t_object  *save_sprites(int fd)
     return (sprites);
 }
 
-t_texture   *save_img(int fd)
+t_bmp   *save_img(int map_fd)
 {
-    int i;
-    char *line;
-    int len;
-    t_texture *lib;
- 
-    get_line(&line, fd, "the amount of textures is not specified or can not be read", 1);
+    int     i;
+    char    *line;
+    int     len;
+    t_bmp   *images;
+    int     fd;
+
+    get_line(&line, map_fd, "the amount of textures is not specified or can not be read", 1);
     len = ft_atoi(line);
-    lib = (t_texture*)ft_memalloc(sizeof(t_texture) * len);
-    i = 0;
+    images = (t_bmp *)ft_memalloc(sizeof(t_bmp) * len);
+    i = 0;w
+    printf("LENGTH : %d\n", len);
     while (i < len)
     {
-        get_line(&line, fd, "not enough texture names", 0);
-		// data->textures[i].img = mlx_xpm_file_to_image(&data->textures[i].xvar,\
-		// line, &data->textures[i].width, &data->textures[i].height);
-		// if (data->textures[i].img == NULL)
-		// 	error("texture does not exist", fd);
-		// data->textures[i].address = mlx_get_data_addr(data->textures[i].img, &data->textures[i].b_p_p, &data->textures[i].size_line, &data->textures[i].endian);
+        get_line(&line, map_fd, "not enough texture names", 0);
+        fd = open(line, O_RDONLY);
+        printf("FD : %d\n", fd);
+        if (fd < 0){
+            i++;
+            continue ;
+        }
+        images[i] = read_bmp(fd);
+        print_meta_data(images[i].info);
 		free(line);
 		i++;
     }
-    return (lib);
+    return (images);
 }

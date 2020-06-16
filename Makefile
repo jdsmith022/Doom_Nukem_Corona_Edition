@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/14 19:36:12 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/06/16 17:21:53 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = doom
 FLAGS = -Wall -Wextra -Werror -o
 
 LIBFT = ./libft2/libft
+
+BMP = ./bmp/
 
 SDL = ./sdl/
 
@@ -48,7 +50,8 @@ all: $(NAME)
 
 $(NAME) : $(O_FILES)
 	@make re -C $(LIBFT)
-	@gcc -I $(LIBFT) -L $(LIBFT) -lft $(C_FILES) $(FLAGS) $(NAME) $(SDL_FLAGS)
+	@make re -C $(BMP)
+	@gcc -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a -lft $(C_FILES) $(FLAGS) $(NAME) $(SDL_FLAGS)
 	@rm -f $(O_FILES)
 
 clean :
@@ -66,7 +69,7 @@ fclean : clean
 re : fclean all
 
 add : fclean
-	@git add $(LIBFT) $(C_FILES) $(HEADERS) $(ADD_FILES) $(SDL)
+	@git add $(LIBFT) $(C_FILES) $(HEADERS) $(ADD_FILES) $(SDL) $(BMP)
 	@git status
 
 push :

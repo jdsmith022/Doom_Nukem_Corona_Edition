@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 15:33:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/16 15:21:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <time.h>
 
 # include "../libft/libft.h"
+#include "../bmp/srcs/bmp.h"
+
 # include "../sdl/includes/SDL.h"
 
 # define NAME "Doom Nukem Corona Edition"
@@ -150,8 +152,8 @@ typedef struct		s_sector {
 }					t_sector;
 
 typedef struct			s_lib{
-	t_texture			*tex_lib;
-	t_texture 			*obj_lib;
+	t_bmp			*tex_lib;
+	t_bmp 			*obj_lib;
 	t_sector 			*sector;
 	t_sidedef 			*sidedef;
 	t_object 			*sprites;
@@ -191,7 +193,7 @@ void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 
 /*read functions*/
-t_texture			*save_img(int fd);
+t_bmp			*save_img(int fd);
 void				error(char *error, int line_num);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
