@@ -50,13 +50,12 @@ t_bmp   *save_img(int map_fd)
     get_line(&line, map_fd, "the amount of textures is not specified or can not be read", 1);
     len = ft_atoi(line);
     images = (t_bmp *)ft_memalloc(sizeof(t_bmp) * len);
-    i = 0;w
-    printf("LENGTH : %d\n", len);
+    i = 0;
+
     while (i < len)
     {
         get_line(&line, map_fd, "not enough texture names", 0);
         fd = open(line, O_RDONLY);
-        printf("FD : %d\n", fd);
         if (fd < 0){
             i++;
             continue ;
