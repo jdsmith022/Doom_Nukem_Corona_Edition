@@ -20,4 +20,4 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "removed binary"
 
-re: fclean all 
+re: fclean all

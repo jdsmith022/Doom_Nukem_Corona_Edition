@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/16 18:00:02 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/06/17 18:18:21 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = doom
 
 FLAGS = -Wall -Wextra -Werror -o
 
-LIBFT = ./libft2/libft
+LIBFT = ./libft/
 
 BMP = ./bmp/
 

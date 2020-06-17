@@ -11,6 +11,7 @@ int     open_file(char *filename)
 		error("file can't open", 0);
     return (fd);
 }
+
 void     main2(t_doom *doom)
 {
     int      fd;
@@ -19,8 +20,8 @@ void     main2(t_doom *doom)
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
     fd = open_file("srcs/read_file/new_level");
-    doom->lib.tex_lib = save_img(fd, doom);
-    doom->lib.obj_lib = save_img(fd, doom);
+    doom->lib.tex_lib = save_img(fd);
+    doom->lib.obj_lib = save_img(fd);
     doom->lib.sector = save_sectors(fd, &len);
     doom->lib.sidedef = save_walls(fd);
     doom->lib.sprites = save_sprites(fd);
