@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/16 18:00:02 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/06/17 20:10:19 by elkanfrank    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ all: $(NAME)
 $(NAME) : $(O_FILES)
 	@make re -C $(LIBFT)
 	@make re -C $(BMP)
-	@gcc -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a -lft $(C_FILES) $(FLAGS) $(NAME) $(SDL_FLAGS)
+	@gcc -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lft $(C_FILES) $(FLAGS) $(NAME) $(SDL_FLAGS)
 	@rm -f $(O_FILES)
 
 clean :
