@@ -7,18 +7,18 @@ void				exit_with_error(const char *message){
 
 void				print_meta_data(t_bmp_info info)
 {
-	printf("\ninfo size : %u\n", info.info_size);
-	printf("width     : %u\n", info.width);
-	printf("height    : %u\n", info.height);
-	printf("planes    : %u\n", info.planes);
-	printf("bpp       : %u\n", info.bits_per_pixel);
-	printf("comp      : %u\n", info.compression);
-	printf("img size  : %u\n", info.img_size);
+	ft_printf("\ninfo size : %u\n", info.info_size);
+	ft_printf("width     : %u\n", info.width);
+	ft_printf("height    : %u\n", info.height);
+	ft_printf("planes    : %u\n", info.planes);
+	ft_printf("bpp       : %u\n", info.bits_per_pixel);
+	ft_printf("comp      : %u\n", info.compression);
+	ft_printf("img size  : %u\n", info.img_size);
 }
 
 void				print_pixel(t_pixel pixel)
 {
-	printf("( %u ", (unsigned int)pixel.red);
-	printf("%u ", (unsigned int)pixel.green);
-	printf("%u )", (unsigned int)pixel.blue);
+	ft_printf("( %u ", (unsigned int)pixel.red);
+	ft_printf("%u ", (unsigned int)pixel.green);
+	ft_printf("%u )", (unsigned int)pixel.blue);
 }

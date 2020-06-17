@@ -56,7 +56,7 @@ typedef struct		s_bmp_info
 typedef struct		s_bmp
 {
 	t_bmp_info		info;
-	t_pixel			**pixels;
+	t_pixel			*pixels;
 }					t_bmp;
 
 #pragma pack(pop)
@@ -65,6 +65,6 @@ void				print_bytes(uint8_t *bytes, unsigned int len);
 void				print_meta_data(t_bmp_info info);
 void				print_pixel(t_pixel pixel);
 void				exit_with_error(const char *message);
-t_bmp				read_bmp(int fd);
+t_bmp				read_bmp(int fd);	
 
 #endif
