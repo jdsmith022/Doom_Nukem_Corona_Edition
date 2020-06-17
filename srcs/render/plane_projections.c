@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 13:19:43 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 17:14:15 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,37 +35,34 @@ static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 					t_sector sector, t_plane *plane)
 {
-	// double		height_sidedef;
 	// double		height_floor;
 	int			sidedef_top;
 	int			sidedef_bottom;
 	int			div_height_standard;
 
 	(void)sector;
-	plane->height_standard = 64 / sidedef.distance * doom->dist_to_plane;
-
+	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
 	div_height_standard = plane->height_standard / 2;
 
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 
 	// height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
 
-	sidedef_top = (int)((HEIGHT + 32) / 2 - div_height_standard);// - doom->own_event.y_pitch);
-
+	sidedef_top = (int)((HEIGHT + doom->player_height) / 2 - div_height_standard) - doom->own_event.y_pitch;
 	plane->sidedef_top = ((sidedef_top >= 0) ? sidedef_top : 0);
-
-	sidedef_bottom = (int)((HEIGHT + 32) / 2 + div_height_standard);// - doom->own_event.y_pitch);
-
+	sidedef_bottom = (int)((HEIGHT + doom->player_height) / 2 + div_height_standard) - doom->own_event.y_pitch;
 	plane->sidedef_bottom = ((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 	if (sidedef.opp_sector != -1)
 		set_properties_plane_portal(doom, sidedef, sidedef.opp_sector, plane);
 }
 
 static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
-					t_plane *plane)
+					t_plane *plane, int x)
 {
 	t_sector	sector;
 
+	ft_bzero(plane, sizeof(plane));
+	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 }
@@ -75,10 +72,8 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef,
 {
 	t_plane		plane;
 
-	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
-	ft_bzero(&plane, sizeof(plane));
+	set_properties_plane(doom, sidedef, &plane, x);
 	plane.intersect = intersect;
-	set_properties_plane(doom, sidedef, &plane);
 	draw_ceiling(doom, x, plane.sidedef_top);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);

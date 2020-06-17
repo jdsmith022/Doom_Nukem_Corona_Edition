@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 13:23:23 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 17:05:13 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct		s_plane
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
-	int				height_standard;
+	double			height_standard;
 	t_point			intersect;
 }					t_plane;
 
@@ -155,8 +155,8 @@ typedef struct		s_sector {
 }					t_sector;
 
 typedef struct		s_lib{
-	t_bmp			*tex_lib;
-	t_bmp 			*obj_lib;
+	SDL_Surface		**tex_lib;
+	SDL_Surface 	**obj_lib;
 	t_sector 		*sector;
 	t_sidedef 		*sidedef;
 	t_object 		*sprites;
@@ -195,14 +195,15 @@ void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
+void	      		doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 
 /*read functions*/
-t_bmp			*save_img(int fd, t_doom *doom);
+SDL_Surface			**save_img(int fd);
 void				error(char *error, int line_num);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
 t_object			*save_sprites(int fd);
-void					main2(t_doom *doom);
+void				main2(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 

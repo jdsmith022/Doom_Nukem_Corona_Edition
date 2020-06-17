@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 13:18:47 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 16:21:38 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
-	printf("here\n");
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
