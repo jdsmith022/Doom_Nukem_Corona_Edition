@@ -6,20 +6,20 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/16 19:52:37 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 12:13:44 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
 static void		put_texture(t_doom *doom, t_point pixel, size_t index,
-					Uint32 pixel_dex, int tex_dex)
+					Uint32 pixel_dex)
 {
 	char *pixels;
 	char *text;
 
 	pixels = doom->surface->pixels;
-	text = doom->textures[tex_dex]->pixels;
+	text = doom->textures[1]->pixels;
 	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
 	{
 		pixels[index] = text[pixel_dex];
@@ -45,22 +45,22 @@ static void		put_protal_pixel(t_doom *doom, t_point pixel)
 }
 
 static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
-					t_sidedef sidedef, int tex_dex)
+					t_sidedef sidedef)
 {
 	Uint32	pixel_dex;
-	int		bpp;
 	size_t	index;
-	int	wall_y;
+	double	wall_y;
+	int		bpp;
 
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (pixel.y * doom->surface->pitch) + (pixel.x * bpp);
 
-	wall_y = (doom->wall_height_std / plane.height_standard) * (int)(pixel.y - plane.sidedef_top);
+	wall_y = (double)(doom->wall_height_std / plane.height_standard) * (pixel.y - plane.sidedef_top);
 
-	bpp = doom->textures[tex_dex]->format->BytesPerPixel;
+	bpp = doom->textures[1]->format->BytesPerPixel;
 
-	pixel_dex = (wall_y * doom->textures[tex_dex]->pitch) + ((int)sidedef.offset * bpp);
-	put_texture(doom, pixel, index, pixel_dex, tex_dex);
+	pixel_dex = (wall_y * doom->textures[1]->pitch) + ((int)sidedef.offset * bpp);
+	put_texture(doom, pixel, index, pixel_dex);
 }
 
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
@@ -68,7 +68,6 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 {
 	Uint32	*pixels;
 	t_point	pixel;
-	int		tex_dex = 1;
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
@@ -78,7 +77,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 		if (pixel.y < plane.mid_texture_bottom)
 			put_protal_pixel(doom, pixel);
 		if (pixel.y > plane.mid_texture_bottom)
-			find_texture_index(doom, pixel, plane, sidedef, tex_dex);
+			find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}
 }
@@ -87,16 +86,14 @@ void				draw_onesided_sidedef(t_doom *doom, t_plane plane,
 							t_sidedef sidedef, int x)
 {
 	t_point	pixel;
-	int		tex_dex = 1;
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	while (pixel.y <= plane.sidedef_bottom)
 	{
-		find_texture_index(doom, pixel, plane, sidedef, tex_dex);
+		find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}
-	printf("offset: %f\n", sidedef.offset);
 }
 
 

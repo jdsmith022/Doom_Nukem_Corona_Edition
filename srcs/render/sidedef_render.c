@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/16 22:31:07 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 12:02:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-static int		rounded(double dbl)
+static int			rounded(double dbl)
 {
 	int rounded;
 
@@ -20,8 +20,8 @@ static int		rounded(double dbl)
 	return (rounded);
 }
 
-static void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
-										t_point intersect, t_doom *doom)
+static void			set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+						t_point intersect, t_doom *doom)
 {
 	t_point start;
 	t_point end;
@@ -34,8 +34,8 @@ static void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 		sidedef->offset = rounded(intersect.x) % doom->wall_height_std;
 }
 
-t_sidedef	set_properties_sidedef(t_point intersect, double distance,\
-	t_sidedef curr_sidedef, t_doom *doom)
+static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
+						t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef	sidedef;
 
@@ -47,8 +47,8 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,\
 	return (sidedef);
 }
 
-double		sidedef_intersection_distance(t_ray ray, \
-	t_sidedef sidedef, t_point *intersect)
+static double		sidedef_intersection_distance(t_ray ray,
+						t_sidedef sidedef, t_point *intersect)
 {
 	double		distance;
 	t_point		ray_delta;
@@ -62,7 +62,8 @@ double		sidedef_intersection_distance(t_ray ray, \
 	return (distance);
 }
 
-void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void				sidedef_render(t_doom *doom, t_ray ray, int sector,
+						int prev_sector)
 {
 	t_point		intersect;
 	t_sidedef	near_sidedef;
@@ -75,7 +76,6 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
-		// if (sector == 1)
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x], &intersect);
 		if (distance < min_distance &&\
@@ -87,7 +87,6 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
-	// printf("%d -- %d -- %d\n", sector, near_sidedef.opp_sector, doom->lib.sector[sector].i_sidedefs);
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 	project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
