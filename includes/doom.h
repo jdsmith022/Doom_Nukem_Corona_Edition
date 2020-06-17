@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 11:55:20 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 13:23:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,15 +154,15 @@ typedef struct		s_sector {
 	int				txt_floor;
 }					t_sector;
 
-typedef struct			s_lib{
+typedef struct		s_lib{
 	t_bmp			*tex_lib;
 	t_bmp 			*obj_lib;
-	t_sector 			*sector;
-	t_sidedef 			*sidedef;
-	t_object 			*sprites;
-	int					n_mov_sprites;
-	t_m_object 			*mov_sprites;
-}						t_lib;
+	t_sector 		*sector;
+	t_sidedef 		*sidedef;
+	t_object 		*sprites;
+	int				n_mov_sprites;
+	t_m_object 		*mov_sprites;
+}					t_lib;
 
 typedef struct		s_doom {
 	int				is_running;
@@ -197,12 +197,12 @@ void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 
 /*read functions*/
-t_bmp			*save_img(int fd);
+t_bmp			*save_img(int fd, t_doom *doom);
 void				error(char *error, int line_num);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
 t_object			*save_sprites(int fd);
-t_lib					main2(void);
+void					main2(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 

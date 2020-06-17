@@ -39,7 +39,7 @@ t_object  *save_sprites(int fd)
     return (sprites);
 }
 
-t_bmp   *save_img(int map_fd)
+t_bmp   *save_img(int map_fd, t_doom *doom)
 {
     int     i;
     char    *line;
@@ -50,6 +50,7 @@ t_bmp   *save_img(int map_fd)
     get_line(&line, map_fd, "the amount of textures is not specified or can not be read", 1);
     len = ft_atoi(line);
     images = (t_bmp *)ft_memalloc(sizeof(t_bmp) * len);
+    doom->textures = (SDL_Surface**)malloc(sizeof(SDL_Surface*) * len);
     i = 0;
     while (i < len)
     {
@@ -60,6 +61,9 @@ t_bmp   *save_img(int map_fd)
             continue ;
         }
         images[i] = read_bmp(fd);
+        doom->textures[i] = SDL_CreateRGBSurface(0, (int)images[i].info.width, (int)images[i].info.height, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
+        if (doom->textures[i] == NULL)
+            doom_exit_failure(doom, MALLOC_ERR);
         print_meta_data(images[i].info);
 		free(line);
 		i++;

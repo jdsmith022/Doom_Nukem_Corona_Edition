@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:07:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/06/16 19:15:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/17 13:06:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void		load_textures (t_doom *doom)
 {
+
 	size_t nb_textures;
 	size_t index;
 
