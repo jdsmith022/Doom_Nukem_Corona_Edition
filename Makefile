@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/06/17 20:10:19 by elkanfrank    ########   odam.nl          #
+#    Updated: 2020/06/20 13:27:10 by nde-wild      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ CORE = ./srcs/core/
 EVENTS = ./srcs/events/
 RENDER = ./srcs/render/
 READ = ./srcs/read_file/
+GAME_EDITOR = ./srcs/game_editor/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
@@ -33,9 +34,11 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor load_textures
 READ_FILES = add_info_to_lib error read_file main2
+GAME_EDITOR_FILES = game_editor
 
 C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
-	$(RENDER_FILES:%=$(RENDER)%.c) $(READ_FILES:%=$(READ)%.c)
+	 $(RENDER_FILES:%=$(RENDER)%.c) $(READ_FILES:%=$(READ)%.c) \
+	 $(GAME_EDITOR_FILES:%=$(GAME_EDITOR)%.c)
 
 O_FILES = $(C_FILES:%.c=%.o)
 

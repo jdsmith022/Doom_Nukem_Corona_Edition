@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 13:46:10 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/20 13:24:45 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		event->y_pitch += 10;
 	if (key->keysym.sym == SDLK_DOWN)
 		event->y_pitch -= 10;
+	if (key->keysym.sym == SDLK_m && doom->game_editor == FALSE)
+	{
+		doom->game_editor = TRUE;
+		open_game_editor(doom);
+	}
+	if (key->keysym.sym == SDLK_m && doom->game_editor == TRUE)
+		doom->game_editor = TRUE;
 }
