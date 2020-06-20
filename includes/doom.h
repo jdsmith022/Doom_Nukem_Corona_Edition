@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:18:17 by Malou          #+#    #+#                */
-/*   Updated: 2020/06/06 17:20:24 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
+/*   Updated: 2020/06/10 15:50:31 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,14 @@ typedef struct			s_sprite {
 	int					action;
 	int					block;						//can the player walk through it or not
 	int					sector;
+	double				width;
+	double				height;
 	double				sprite_x;					//x cord translated to viewer space
 	double				sprite_y;					//y cord translated to viewer space
 	int					visible;
 	double				distance;
+	int					screen_left_x;
+	int					screen_right_x;
 }						t_sprite;
 
 typedef struct			s_ray {
@@ -110,7 +114,7 @@ typedef struct			s_sidedef {
 typedef struct			s_sector {
 	int					id;
 	int					n_sprites;		//amount of sprites, maybe not neccesarry since the sprites have sidedefs
-	int					i_sprites;		//index sprites
+	int					i_sprites;		//index sprites, maybe not necessary
 	int					n_sidedefs;
 	int					i_sidedefs;
 	int					height_floor;
@@ -134,6 +138,7 @@ typedef struct			s_doom {
 	t_event				own_event;
 	SDL_Surface			*sprite_image[TOTAL_TEX];
 	t_sprite			sprite[TOTAL_SPRITE];
+	int					visible_sprites;
 	int					i_sector;
 	int					esc; 
 	double				angle;
@@ -188,5 +193,7 @@ void					load_textures (t_doom *doom);
 //sprites
 void					sprite_init(t_doom *doom);
 void					sprite_check(t_doom *doom, t_ray ray);
+void					sprite_render(t_doom *doom);
+int						*sort_sprite_array(t_sprite *sprite, int total);
 
 #endif

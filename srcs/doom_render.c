@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 16:54:18 by Malou          #+#    #+#                */
-/*   Updated: 2020/06/06 16:07:07 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
+/*   Updated: 2020/06/11 11:07:16 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	doom_render(t_doom *doom)
 		ray.angle = doom->angle;
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(doom->angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(doom->angle);
+		
 		ray.plane_x = x;
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
 		sprite_check(doom, ray);

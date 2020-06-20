@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/06/06 12:44:57 by rsteigen       #+#    #+#                */
-/*   Updated: 2020/06/06 17:45:35 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/06/06 12:44:57 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/06/07 18:21:52 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			set_sprites(t_sprite *sprite)
 	sprite[0].pos.y = 50;
 	sprite[0].sector = 1;
 	sprite[0].action = 0;
-	sprite[0].size = 5;
+	sprite[0].size = 8;
 	sprite[0].visible = 0;
 	sprite[0].line.start.x = sprite[0].pos.x - sprite[0].size;
 	sprite[0].line.start.y = sprite[0].pos.y - sprite[0].size;
@@ -33,7 +33,7 @@ void			set_sprites(t_sprite *sprite)
 	sprite[1].pos.y = 50;
 	sprite[1].sector = 2;
 	sprite[1].action = 0;
-	sprite[1].size = 5;
+	sprite[1].size = 8;
 	sprite[1].visible = 0;
 	sprite[1].line.start.x = sprite[1].pos.x - sprite[1].size;
 	sprite[1].line.start.y = sprite[1].pos.y - sprite[1].size;
@@ -46,7 +46,7 @@ void			set_sprites(t_sprite *sprite)
 	sprite[2].pos.y = 225;
 	sprite[2].sector = 1;
 	sprite[2].action = 0;
-	sprite[2].size = 5;
+	sprite[2].size = 8;
 	sprite[2].visible = 0;
 	sprite[2].line.start.x = sprite[2].pos.x - sprite[2].size;
 	sprite[2].line.start.y = sprite[2].pos.y - sprite[2].size;
@@ -59,7 +59,7 @@ void			set_sprites(t_sprite *sprite)
 	sprite[3].pos.y = 400;
 	sprite[3].sector = 0;
 	sprite[3].action = 0;
-	sprite[3].size = 5;
+	sprite[3].size = 8;
 	sprite[3].visible = 0;
 	sprite[3].line.start.x = sprite[3].pos.x - sprite[3].size;
 	sprite[3].line.start.y = sprite[3].pos.y - sprite[3].size;

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:45:11 by Malou          #+#    #+#                */
-/*   Updated: 2020/06/06 14:07:12 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
+/*   Updated: 2020/06/07 17:12:11 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ void doom_init(t_doom *doom)
 	doom->i_sector = 0;
 	doom->texture_height = 64;
 	doom->texture_width = 64;
+	doom->visible_sprites = 0;
 	
 	doom->sector[0].height_ceiling = 64;
 	doom->sector[0].height_floor = 0;

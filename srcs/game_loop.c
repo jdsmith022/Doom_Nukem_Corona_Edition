@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/26 19:58:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/07 16:43:31 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	game_loop(t_doom *doom)
 	{
 		doom_input(doom);
 		doom_render(doom);
+		sprite_render(doom); //is this the best place??
 		doom_sound(doom);
 		doom_gui(doom);
 		SDL_UpdateWindowSurface(doom->window);

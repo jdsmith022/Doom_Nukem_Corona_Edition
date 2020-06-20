@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/06/06 16:07:32 by rsteigen       #+#    #+#                */
-/*   Updated: 2020/06/06 17:51:05 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/06/06 16:07:32 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/06/07 15:03:33 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void		sprite_check(t_doom *doom, t_ray ray)
 		{
 			printf("intersect x: %f\n", intersect.x);
 			printf("intersect y: %f\n", intersect.y);
+			doom->visible_sprites++;
 			doom->sprite[i].visible = 1;
 			doom->sprite[i].distance = point_distance(doom->pos, doom->sprite[i].pos, ray.angle);
 			printf("sprite %d is visible\ndistance to player: %f\n", i, doom->sprite[i].distance);
