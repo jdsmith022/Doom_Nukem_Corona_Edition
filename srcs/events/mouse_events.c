@@ -6,11 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/20 18:31:46 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/06/23 15:51:31 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+#include <stdio.h>
 
 void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	double dt)
@@ -51,4 +53,6 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 		doom->own_event.hold_x = button->x;
 		doom->own_event.mouse_press = 1;
 	}
+	if (doom->game_editor == TRUE)
+		add_sidedef(doom, button->x, button->y);
 }

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/20 13:21:41 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/06/23 14:21:04 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,17 @@ typedef struct			s_lib{
 	t_m_object 			*mov_sprites;
 }						t_lib;
 
+typedef struct		s_gamedesign{
+		t_sector	*sector;
+		int			s_len;
+		int			s_size;
+		t_sidedef	*sidedef;
+		int			w_len;
+		int			w_size;
+
+}
+					t_gamedesign;
+
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
@@ -184,6 +195,7 @@ typedef struct		s_doom {
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
+	t_gamedesign	game_design;
 }					t_doom;
 
 /*core functions*/
@@ -251,4 +263,5 @@ void				load_textures(t_doom *doom);
 /*game editor*/
 
 void    open_game_editor(t_doom *doom);
+void	add_sidedef(t_doom *doom, int x, int y);
 #endif
