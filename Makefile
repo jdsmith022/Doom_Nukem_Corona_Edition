@@ -34,7 +34,7 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor load_textures
 READ_FILES = add_info_to_lib error read_file main2
-GAME_EDITOR_FILES = game_editor
+GAME_EDITOR_FILES = game_editor draw_bar
 
 C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
 	 $(RENDER_FILES:%=$(RENDER)%.c) $(READ_FILES:%=$(READ)%.c) \
@@ -54,7 +54,7 @@ all: $(NAME)
 $(NAME) : $(O_FILES)
 	@make re -C $(LIBFT)
 	@make re -C $(BMP)
-	@gcc -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lft $(C_FILES) $(FLAGS) $(NAME) $(SDL_FLAGS)
+	@gcc -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a -lft $(C_FILES) $(FLAGS) $(NAME) $(SDL_FLAGS)
 	@rm -f $(O_FILES)
 
 clean :

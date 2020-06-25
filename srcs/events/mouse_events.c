@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../game_editor/game_editor.h"
 
 #include <stdio.h>
 
@@ -46,6 +47,36 @@ void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 		doom->own_event.mouse_press = 0;
 }
 
+void	game_editor_clicks(t_doom *doom, int x, int y)
+{
+	// if (x > MINUS_X && x < MINUS_X + FRAME_WIDTH && y > MINUS_Y && y < MINUS_Y + FRAME_HEIGHT)
+	// 	add_sector(doom);
+	if (x > PLUS_X && x < PLUS_X + FRAME_WIDTH && y > PLUS_Y && y < PLUS_Y + FRAME_HEIGHT)
+			add_sector(doom);
+	else if (x > D_45_X && x < D_45_X + FRAME_WIDTH && y > D_45_Y && y < D_45_Y + FRAME_HEIGHT)
+		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = 45;
+	else if (x > D_M45_X && x < D_M45_X + FRAME_WIDTH && y > D_M45_Y && y < D_M45_Y + FRAME_HEIGHT)
+		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = -45;
+	else if (x > STRAIGHT_X && x < STRAIGHT_X + FRAME_WIDTH && y > STRAIGHT_Y && y < STRAIGHT_Y + FRAME_HEIGHT)
+		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = 0;
+	else if (x > AR_LEFT_X && x < AR_LEFT_X + FRAME_WIDTH && y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT)
+	{
+		if (doom->game_design.cur_sec > 0)
+			doom->game_design.cur_sec--;
+	}
+	else if (x > AR_RIGHT_X && x < AR_RIGHT_X + FRAME_WIDTH && y > AR_RIGHT_Y && y < AR_RIGHT_Y + FRAME_HEIGHT)
+	{
+		if (doom->game_design.cur_sec < doom->game_design.s_len)
+			doom->game_design.cur_sec++;
+	}
+	else if (x > BAR_X && x < BAR_X + BAR_LEN && y > BAR_Y && y < BAR_Y + BAR_HEIGHT)
+	{
+		doom->game_design.sector[doom->game_design.cur_sec].height_floor = (float)(x - BAR_X) / BAR_LEN * BAR_DIFF + BAR_MIN;
+	}
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF)
+		add_sidedef(doom, x, y);
+}
+
 void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 {
 	if (button->button == SDL_BUTTON_LEFT)
@@ -54,5 +85,5 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 		doom->own_event.mouse_press = 1;
 	}
 	if (doom->game_editor == TRUE)
-		add_sidedef(doom, button->x, button->y);
+		game_editor_clicks(doom, button->x, button->y);
 }
