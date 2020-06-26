@@ -3,6 +3,36 @@
 
 #include <stdio.h>
 
+void		del_sector(t_doom *doom)
+{
+	int i;
+	int n_sidedef;
+
+
+	i = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs;
+	while (i < doom->game_design.w_len - doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
+	{
+		doom->game_design.sidedef[i] = doom->game_design.sidedef[i + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs];
+		i++;
+	}
+	printf("%i %i\n", doom->game_design.w_len, doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs);
+	doom->game_design.w_len -= doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs;
+	printf("%i\n", doom->game_design.w_len);
+	i = doom->game_design.cur_sec;
+	n_sidedef = doom->game_design.sector[i].n_sidedefs;
+	while (i < doom->game_design.s_len)
+	{
+		doom->game_design.sector[i] = doom->game_design.sector[i + 1];
+		doom->game_design.sector[i].i_sidedefs -= n_sidedef;
+		printf("hello\n");
+		i++;
+	}
+	if (doom->game_design.cur_sec == doom->game_design.s_len)
+		doom->game_design.cur_sec--;
+	doom->game_design.s_len--;
+	doom->game_design.cur_sd = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1;
+}
+
 t_sector *cpy_sector(t_sector *sector, int *s_size)
 {
 	t_sector	*new;
@@ -34,6 +64,27 @@ void	add_sector(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].height_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].i_sidedefs = doom->game_design.w_len;
 		doom->game_design.sector[doom->game_design.s_len].n_sidedefs = 0;
+}
+
+void		del_sidedef(t_doom *doom)
+{
+	int i;
+
+	i = doom->game_design.cur_sec + 1;
+	while (i <= doom->game_design.s_len)
+	{
+		doom->game_design.sector[i].i_sidedefs--;
+		i++;
+	}
+	i = doom->game_design.cur_sd;
+	while (i < doom->game_design.w_len - 1)
+	{
+		doom->game_design.sidedef[i] = doom->game_design.sidedef[i + 1];
+		i++;
+	}
+	doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs--;
+	doom->game_design.w_len--;
+	doom->game_design.cur_sd--;
 }
 
 t_sidedef *cpy_sidedef(t_sidedef *sidedef, int *w_size)
@@ -107,6 +158,8 @@ void	add_sidedef(t_doom *doom, int x, int y)
 			i++;
 		}
 		doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs++;
+
+		doom->game_design.cur_sd = doom->game_design.cur_sec != doom->game_design.s_len ? doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs : doom->game_design.w_len;
 		doom->game_design.w_len++;
 		start = 0;
 	}
@@ -132,11 +185,18 @@ void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 	(void)*pixels;
 	while ((int)i < abs(x_dif) + abs(y_dif))
 	{
-		pixels[0][((int)y * WIDTH) + (int)x] = 0x8c3cde6;
-		pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0x8c3cde6;
-		// pixels[0][((int)(y + 2) * WIDTH) + (int)x] = 0x8c3cde6;
-		pixels[0][((int)y * WIDTH) + (int)x + 1] = 0x8c3cde6;
-		// pixels[0][((int)y * WIDTH) + (int)x + 2] = 0x8c3cde6;
+		if (doom->game_design.cur_sd != b)
+		{
+			pixels[0][((int)y * WIDTH) + (int)x] = 0x8c3cde6;
+			pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0x8c3cde6;
+			pixels[0][((int)y * WIDTH) + (int)x + 1] = 0x8c3cde6;
+		}
+		else
+		{
+			pixels[0][((int)y * WIDTH) + (int)x] = 0xff4287f5;
+			pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0xff4287f5;
+			pixels[0][((int)y * WIDTH) + (int)x + 1] = 0xff4287f5;
+		}
 		x += x_steps;
 		y += y_steps;
 		i += fabs(x_steps) + fabs(y_steps);
@@ -173,6 +233,7 @@ void    open_game_editor(t_doom *doom)
 		doom->game_design.s_size = 2;
 		doom->game_design.s_len = 0;
 		doom->game_design.cur_sec = 0;
+		doom->game_design.cur_sd = -1;
 		doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].slope_ceiling = 0;
 		doom->game_design.sector[doom->game_design.s_len].height_ceiling = 0;
@@ -207,6 +268,9 @@ void    open_game_editor(t_doom *doom)
 	put_images(&pixels, D_M45_X, D_M45_Y, d_m45);
 	put_images(&pixels, AR_LEFT_X, AR_LEFT_Y, arrow_left);
 	put_images(&pixels, AR_RIGHT_X, AR_RIGHT_Y, arrow_right);
+	put_images(&pixels, AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left);
+	put_images(&pixels, AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right);
+	put_images(&pixels, CROSS_X, CROSS_Y, cross);
 	draw_bar(&pixels, BAR_X, BAR_Y, BAR_LEN);
 	draw_bar_point(&pixels, doom, BAR_X, BAR_Y, BAR_LEN);
 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)

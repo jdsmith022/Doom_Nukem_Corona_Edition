@@ -170,7 +170,8 @@ typedef struct		s_gamedesign{
 		t_sidedef	*sidedef;
 		int			w_len;
 		int			w_size;
-
+		int			cur_sec;
+		int			cur_sd;
 }
 					t_gamedesign;
 
@@ -264,4 +265,9 @@ void				load_textures(t_doom *doom);
 
 void    open_game_editor(t_doom *doom);
 void	add_sidedef(t_doom *doom, int x, int y);
+void	del_sidedef(t_doom *doom);
+void	add_sector(t_doom *doom);
+void	del_sector(t_doom *doom);
+void    draw_bar(Uint32 **pixels, int x, int y, int len);
+void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
 #endif
