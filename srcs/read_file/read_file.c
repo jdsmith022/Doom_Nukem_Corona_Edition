@@ -59,10 +59,14 @@ static SDL_Surface    **save_img_array(t_bmp *images, char *line, int map_fd, in
 			continue ;
 		}
 		images[index] = read_bmp(fd);
+		// printf("images: %s", images[index].array);
 		lib[index] = SDL_CreateRGBSurface(0, images[index].info.width, images[index].info.height,\
-		//need to make images pixel into a single string
 			32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
-		ft_memcpy(lib[index]->pixels, images[index].pixels, (images[index].info.width * images[index].info.height) * 4);
+		if (lib[index] == NULL)
+			doom_exit_lib_failure(images, MALLOC_ERR);
+		ft_memcpy(lib[index]->pixels, images[index].pixels,\
+			(images[index].info.width * images[index].info.height));
+		printf("lib: %s", lib[index]->pixels);
 		print_meta_data(images[index].info);
 		free(line);
 		index++;

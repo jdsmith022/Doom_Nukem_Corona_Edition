@@ -32,14 +32,20 @@ This struct gets returned by read_bmp() and has all the pixels and a pointer to 
 typedef struct		s_bmp
 {
 	t_bmp_info		info;
-	t_pixel			**pixels;
+	t_pixel			*pixels;
 }					t_bmp;
 
 ```
 
 ## t_bmp_info
 
-This struct has all the info about the image
+This struct contains info about the image
+NOTE: img_size only represents compressed image size. If there is no compression, img_size will be 0.
+to get the actual dimensions of the image in pixels, use:
+
+```
+size = bmp.info.width * bmp.info.height
+```
 
 ```
 typedef struct		s_bmp_info
