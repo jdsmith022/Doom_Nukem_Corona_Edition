@@ -172,6 +172,9 @@ typedef struct		s_gamedesign{
 		int			w_size;
 		int			cur_sec;
 		int			cur_sd;
+		int 		pl_pos;
+		int			pl_x;
+		int			pl_y;
 }
 					t_gamedesign;
 

@@ -74,5 +74,7 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	{
 		doom->lib.sector = doom->game_design.sector; // free og
 		doom->lib.sidedef = doom->game_design.sidedef; //free og
+		doom->pos.x = doom->game_design.pl_x;
+		doom->pos.y = doom->game_design.pl_y;
 	}
 }

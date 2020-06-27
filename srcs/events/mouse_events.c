@@ -97,8 +97,15 @@ void	game_editor_clicks(t_doom *doom, int x, int y)
 		if (doom->game_design.cur_sd >= doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs)
 			del_sidedef(doom);
 	}
-	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF)
+	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
+		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 0)
 		add_sidedef(doom, x, y);
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 1)
+	{
+		doom->game_design.pl_x = x;
+		doom->game_design.pl_y = y;
+	}
 }
 
 void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)

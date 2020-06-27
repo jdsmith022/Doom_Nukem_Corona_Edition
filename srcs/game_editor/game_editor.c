@@ -237,6 +237,7 @@ void    open_game_editor(t_doom *doom)
 		doom->game_design.s_len = 0;
 		doom->game_design.cur_sec = 0;
 		doom->game_design.cur_sd = -1;
+		doom->game_design.pl_pos = 0;
 		doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].slope_ceiling = 0;
 		doom->game_design.sector[doom->game_design.s_len].height_ceiling = 0;
@@ -274,6 +275,7 @@ void    open_game_editor(t_doom *doom)
 	put_images(&pixels, AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left);
 	put_images(&pixels, AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right);
 	put_images(&pixels, CROSS_X, CROSS_Y, cross);
+	put_images(&pixels, CROSS_P_X, CROSS_P_Y, cross);
 	draw_bar(&pixels, BAR_X, BAR_Y, BAR_LEN);
 	draw_bar_point(&pixels, doom, BAR_X, BAR_Y, BAR_LEN);
 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)
