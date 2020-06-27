@@ -149,6 +149,9 @@ void	add_sidedef(t_doom *doom, int x, int y)
 		doom->game_design.sidedef[doom->game_design.w_len].line.end.x = x;
 		doom->game_design.sidedef[doom->game_design.w_len].line.end.y = y;
 		doom->game_design.sidedef[doom->game_design.w_len].id = doom->game_design.w_len;
+		doom->game_design.sidedef[doom->game_design.w_len].sector = doom->game_design.cur_sec;
+		doom->game_design.sidedef[doom->game_design.w_len].opp_sidedef = -1;
+		doom->game_design.sidedef[doom->game_design.w_len].opp_sector = -1;
 		if (doom->game_design.cur_sec != doom->game_design.s_len)
 			mv_sidedef(&doom->game_design.sidedef, doom->game_design.w_len, doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs);
 		i = doom->game_design.cur_sec + 1;
