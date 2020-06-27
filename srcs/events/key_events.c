@@ -72,7 +72,7 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		doom->game_editor = FALSE;
 	if (key->keysym.sym == SDLK_b)
 	{
-		doom->sector = doom->game_editor.sector; // free og
-		doom->sidedef = doom->game_editor.sidedef; //free og
+		doom->lib.sector = doom->game_design.sector; // free og
+		doom->lib.sidedef = doom->game_design.sidedef; //free og
 	}
 }
