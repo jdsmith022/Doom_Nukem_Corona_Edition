@@ -66,7 +66,7 @@ static SDL_Surface    **save_img_array(t_bmp *images, char *line, int map_fd, in
 			doom_exit_lib_failure(images, MALLOC_ERR);
 		ft_memcpy(lib[index]->pixels, images[index].pixels,\
 			(images[index].info.width * images[index].info.height));
-		printf("lib: %s", lib[index]->pixels);
+		// printf("lib: %s", lib[index]->pixels);
 		print_meta_data(images[index].info);
 		free(line);
 		index++;

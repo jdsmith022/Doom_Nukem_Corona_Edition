@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 18:55:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 16:51:39 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct		s_plane
 	int				mid_texture_top;
 	int				mid_texture_bottom;
 	double			height_standard;
+	int				wall_offset;
 	t_point			intersect;
 }					t_plane;
 

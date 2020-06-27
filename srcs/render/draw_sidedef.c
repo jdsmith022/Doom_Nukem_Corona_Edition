@@ -6,29 +6,30 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 17:17:27 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 16:51:50 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-static void		put_texture(t_doom *doom, t_point pixel, size_t index,
+static void		put_texture(t_doom *doom, t_point pixel, Uint32 index,
 					Uint32 pixel_dex)
 {
 	char *pixels;
-	char *text;
+	char *texture;
 
 	pixels = doom->surface->pixels;
-	text = doom->textures[1]->pixels;
+	texture = doom->textures[1]->pixels;
+	(void)pixel;
 	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
 	{
-		pixels[index] = text[pixel_dex];
+		pixels[index] = texture[pixel_dex];
 		index++;
 		pixel_dex++;
-		pixels[index] = text[pixel_dex];
+		pixels[index] = texture[pixel_dex];
 		index++;
 		pixel_dex++;
-		pixels[index] = text[pixel_dex];
+		pixels[index] = texture[pixel_dex];
 	}
 }
 
@@ -48,13 +49,13 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 					t_sidedef sidedef)
 {
 	Uint32	pixel_dex;
-	size_t	index;
+	Uint32	index;
 	double	wall_y;
 	int		bpp;
 
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (pixel.y * doom->surface->pitch) + (pixel.x * bpp);
-	wall_y = (double)(doom->wall_height_std / plane.height_standard)	* (pixel.y - plane.sidedef_top);
+	wall_y = (double)(doom->wall_height_std / plane.height_standard) * ((pixel.y + plane.wall_offset) - plane.sidedef_top);
 	bpp = doom->textures[1]->format->BytesPerPixel;
 	pixel_dex = ((int)wall_y * doom->textures[1]->pitch) + ((int)sidedef.offset * bpp);
 	put_texture(doom, pixel, index, pixel_dex);

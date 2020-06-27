@@ -6,11 +6,23 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 19:12:28 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 16:53:18 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+static void		wall_offset(t_plane *plane, int sidedef_top)
+{
+	plane->wall_offset = 0;
+	if (sidedef_top < 0)
+	{
+		plane->wall_offset = abs(sidedef_top);
+		plane->sidedef_top = 0;
+	}
+	else
+		plane->sidedef_top = sidedef_top;
+}
 
 static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 					int opp_sector, t_plane *plane)
@@ -47,7 +59,6 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	// height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
 	sidedef_top = ((HEIGHT + doom->player_height) / 2 - div_height_std)\
 		- doom->own_event.y_pitch;
-	plane->sidedef_top = ((sidedef_top >= 0) ? sidedef_top : 0);
 	sidedef_bottom = ((HEIGHT + doom->player_height) / 2 + div_height_std)\
 		- doom->own_event.y_pitch;
 	plane->sidedef_bottom = \

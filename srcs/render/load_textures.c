@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:07:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/06/25 12:08:47 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 15:15:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void		load_textures (t_doom *doom)
 	if (doom->textures == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	doom->textures[0] = SDL_LoadBMP("./textures/brown_wall.bmp");
-	printf("doom->textures: %s\n", doom->textures[0]->pixels);
+	// printf("doom->textures: %s\n", doom->textures[0]->pixels);
 	doom->textures[1] = SDL_LoadBMP("./textures/dark_stone.bmp");
 }
