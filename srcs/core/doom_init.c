@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 15:59:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 15:39:09 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ void 	doom_init(t_doom *doom)
 	doom->i_sector = 0;
 	doom->player_height = PLAYER_HEIGHT;
 	doom->wall_height_std = 64;
+	doom->lib.sector[0].slope_id = 1;
+	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
 	// doom->sector[0].i_sidedefs = 0;

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 12:09:58 by Malou         #+#    #+#                 */
-/*   Updated: 2020/05/31 17:44:21 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/27 14:28:14 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 t_point		line_intersection(t_point start1, t_point delta1,
 						t_point start2, t_point delta2)
 {
-	t_point			intersect;
-	double			denominator;
-	double			t;
-	double			s;
+	t_point	intersect;
+	double	denominator;
+	double	t;
+	double	s;
 
 	intersect.x = NAN;
 	intersect.y = NAN;
@@ -39,9 +39,9 @@ t_point		line_intersection(t_point start1, t_point delta1,
 	return (intersect);
 }
 
-t_point			line_delta(t_point start, t_point end)
+t_point		line_delta(t_point start, t_point end)
 {
-	t_point			delta;
+	t_point	delta;
 
 	delta.x = end.x - start.x;
 	delta.y = end.y - start.y;
@@ -49,9 +49,9 @@ t_point			line_delta(t_point start, t_point end)
 }
 
 double		point_distance(t_point point1,
-						t_point point2, double angle)
+				t_point point2, double angle)
 {
-	double			distance;
+	double	distance;
 
 	if (fabs(point1.x - point2.x) > fabs(point1.y - (int)point2.y))
 		distance = (point1.x - point2.x) / cos(angle);
@@ -71,4 +71,16 @@ double		point_line_distance(t_point point, t_line line)
 	distance = delta.y * point.x - delta.x * point.y +\
 	line.end.x * line.start.y - line.end.y * line.start.x / denominator;
 	return (distance);
+}
+
+double		points_distance(t_point p1, t_point p2)
+{
+	t_point delta;
+	int		delta_pow_x;
+	int		delta_pow_y;
+
+	delta = line_delta(p1, p2);
+	delta_pow_x = pow(delta.x, 2);
+	delta_pow_y = pow(delta.y, 2);
+	return (sqrt(delta_pow_x + delta_pow_y));
 }
