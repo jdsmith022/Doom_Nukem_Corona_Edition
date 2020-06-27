@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:34:53 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/25 12:39:53 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 12:45:54 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	//init_struct();
 	//init_message_bus();
 	main2(&doom);
-	load_textures(&doom);
+	// load_textures(&doom);
 	doom_init(&doom);
 	//load_default(); //loads default settings ie menu, player settings
 	//init_HUD/UI
