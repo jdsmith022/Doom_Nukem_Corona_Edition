@@ -14,6 +14,7 @@
 
 void	key_handler(t_doom *doom, t_event *event, double dt)
 {
+	(void)dt;
 	if (event->cam_move_f == TRUE)
 		cam_move_fb(doom, dt, MOVE_SPEED);
 	else if (event->cam_move_b == TRUE)
@@ -22,10 +23,10 @@ void	key_handler(t_doom *doom, t_event *event, double dt)
 		cam_move_rl(doom, dt, -90 * PI / 180);
 	else if (event->cam_move_r == TRUE)
 		cam_move_rl(doom, dt, 90 * PI / 180);
-	if (event->jump == TRUE)
-		jump_player(doom, dt);
-	if (event->step_down == TRUE)
-		step_down(doom, dt);
+	// if (event->jump == TRUE)
+	// 	jump_player(doom, dt);
+	// if (event->step_down == TRUE)
+	// 	step_down(doom, dt);
 	if (event->bend == TRUE || \
 		doom->player_height < 100 + doom->lib.sector[doom->i_sector].height_floor)
 		bend_down(doom);
@@ -69,4 +70,9 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		doom->game_editor = TRUE;
 	if (key->keysym.sym == SDLK_n)
 		doom->game_editor = FALSE;
+	if (key->keysym.sym == SDLK_b)
+	{
+		doom->sector = doom->game_editor.sector; // free og
+		doom->sidedef = doom->game_editor.sidedef; //free og
+	}
 }
