@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 18:40:33 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 14:09:18 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_plane	set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	ft_bzero(&plane, sizeof(plane));
 	plane.intersect = intersect;
 	set_properties_plane_sidedef(doom, sidedef, sector, &plane);
+	if (doom->lib.sector[sidedef.sector].slope_id != 0)
+		sector.height_floor = set_properties_slope(doom, sidedef, &plane);
 	return (plane);
 }
 
