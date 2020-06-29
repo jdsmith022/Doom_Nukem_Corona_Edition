@@ -16,9 +16,12 @@ void				print_meta_data(t_bmp_info info)
 	ft_printf("img size  : %u\n", info.img_size);
 }
 
-void				print_pixel(t_pixel pixel)
+void				print_byte(void *byte, uint32_t len)
 {
-	ft_printf("( %u ", (unsigned int)pixel.red);
-	ft_printf("%u ", (unsigned int)pixel.green);
-	ft_printf("%u )", (unsigned int)pixel.blue);
+	while (len > 0)
+	{
+		ft_printf("%x ", *((uint8_t *)byte));
+		byte++;
+		len--;
+	}
 }
