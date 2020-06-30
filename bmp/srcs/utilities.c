@@ -16,9 +16,12 @@ void				print_meta_data(t_bmp_info info)
 	printf("img size  : %u\n", info.img_size);
 }
 
-void				print_pixel(t_pixel pixel)
+void				print_byte(void *byte, uint32_t len)
 {
-	printf("( %u ", (unsigned int)pixel.red);
-	printf("%u ", (unsigned int)pixel.green);
-	printf("%u )", (unsigned int)pixel.blue);
+	while (len > 0)
+	{
+		printf("%x ", *((uint8_t *)byte));
+		byte++;
+		len--;
+	}
 }

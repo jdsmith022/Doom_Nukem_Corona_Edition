@@ -40,11 +40,11 @@ typedef struct		s_bmp
 ## t_bmp_info
 
 This struct contains info about the image
-NOTE: img_size only represents compressed image size. If there is no compression, img_size will be 0.
-to get the actual dimensions of the image in pixels, use:
+NOTE: img_size = total size in bytes of pixels + padding
+If the img dimensions are multiples of 4, there is no padding.
 
 ```
-size = bmp.info.width * bmp.info.height
+img_size = bmp.info.width * (bmp.info.height + padding) * (bits_per_pixel / 8)
 ```
 
 ```

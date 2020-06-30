@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/27 16:53:18 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/27 18:37:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	// height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
 	sidedef_top = ((HEIGHT + doom->player_height) / 2 - div_height_std)\
 		- doom->own_event.y_pitch;
+	wall_offset(plane, sidedef_top);
 	sidedef_bottom = ((HEIGHT + doom->player_height) / 2 + div_height_std)\
 		- doom->own_event.y_pitch;
 	plane->sidedef_bottom = \

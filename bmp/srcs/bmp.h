@@ -9,16 +9,16 @@
 #include <stdint.h>
 #include "../libft/src/libft.h"
 
-#pragma pack(push, 1)
+// #pragma pack(push, 1)
 
-typedef struct		s_pixel
-{
-	uint8_t 		red;
-	uint8_t 		green;
-	uint8_t 		blue;
-}					t_pixel;
+// typedef struct		s_pixel
+// {
+// 	uint8_t 		red;
+// 	uint8_t 		green;
+// 	uint8_t 		blue;
+// }					t_pixel;
 
-#pragma pack(pop)
+// #pragma pack(pop)
 
 #pragma pack(push, 1)
 
@@ -56,14 +56,13 @@ typedef struct		s_bmp_info
 typedef struct		s_bmp
 {
 	t_bmp_info		info;
-	t_pixel			*pixels;
+	void			*pixels;
 }					t_bmp;
 
 #pragma pack(pop)
 
-void				print_bytes(uint8_t *bytes, unsigned int len);
+void				print_byte(void *byte, uint32_t len);
 void				print_meta_data(t_bmp_info info);
-void				print_pixel(t_pixel pixel);
 void				exit_with_error(const char *message);
 t_bmp				read_bmp(int fd);	
 
