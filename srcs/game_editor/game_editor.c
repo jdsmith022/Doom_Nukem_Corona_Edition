@@ -273,8 +273,8 @@ void	draw_portal(t_doom *doom, Uint32 **pixels, int sector)
 		y_dif = (doom->game_design.sidedef[b].line.end.y) - (doom->game_design.sidedef[b].line.start.y);
 		x_steps = (float)x_dif / (float)(abs(x_dif) + abs(y_dif));
 		y_steps = (float)y_dif / (float)(abs(x_dif) + abs(y_dif));
-		x = doom->game_design.sidedef[b].line.start.x - doom->game_design.sector[sector].diff_x;
-		y = doom->game_design.sidedef[b].line.start.y - doom->game_design.sector[sector].diff_y;
+		x = doom->game_design.sidedef[b].line.start.x - doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+		y = doom->game_design.sidedef[b].line.start.y - doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 		i = 0.0;
 		while ((int)i < abs(x_dif) + abs(y_dif))
 		{

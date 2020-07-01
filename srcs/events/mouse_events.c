@@ -22,6 +22,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	int		dir_x;
 	int		dir_y;
 
+	(void)dt;
 	radian = PI / 180;
 	dir_x = 1;
 	dir_y = 1;
@@ -31,7 +32,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	if (motion->yrel < 0)
 		dir_y = -1;
 	if (motion->yrel < 1)
-		doom->dir_angle += CAM_SPEED * dir_x * dt;
+		doom->dir_angle += CAM_SPEED * dir_x * 0.05;
 	//doom->own_event.y_pitch += CAM_SPEED * dir_y * dt;
 	if (doom->dir_angle < 0)
 		doom->dir_angle += 360 * radian;
@@ -127,11 +128,15 @@ void	game_editor_clicks(t_doom *doom, int x, int y)
 	else if (doom->game_design.portal_sec != -1 &&x > AR_RIGHT_SC_X && x < AR_RIGHT_SC_X + FRAME_WIDTH && y > AR_RIGHT_SC_Y && y < AR_RIGHT_SC_Y + FRAME_HEIGHT)	
 		add_portal(doom, 1);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 0)
+	{
+		printf("click\n");
 		add_sidedef(doom, x, y);
+	}
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 1)
 	{
 		doom->game_design.pl_x = x;
 		doom->game_design.pl_y = y;
+		doom->game_design.pl_pos = 0;
 	}
 }
 
