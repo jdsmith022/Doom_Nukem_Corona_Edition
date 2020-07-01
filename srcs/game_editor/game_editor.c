@@ -3,6 +3,94 @@
 
 #include <stdio.h>
 
+int			portal_count(t_sidedef *sidedef, int start, int end)
+{
+	int count;
+
+	count = 0;
+	while (start < end)
+	{
+		if (sidedef[start].opp_sidedef != -1)
+			count++;
+		start++;
+	}
+	return (count);
+}
+
+void		add_portal(t_doom *doom, int dir)
+{
+	static int diff_x;
+	static int diff_y;
+
+	if (dir != 0)
+	{
+		// if (portal_count(doom->game_design.sidedef, doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs, doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs) == 1)
+		// {
+		// 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)
+		// 	{
+		// 		if (x != doom->game_design.cur_sd)
+		// 		{
+		// 			doom->game_design.sidedef[x].line.start.x -= doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+		// 			doom->game_design.sidedef[x].line.start.y -= doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+		// 			doom->game_design.sidedef[x].line.end.x -= doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+		// 			doom->game_design.sidedef[x].line.end.y -= doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+		// 		}
+		// 	}
+		// 	doom->game_design.sector[doom->game_design.cur_sec].diff_x = 0;
+		// 	doom->game_design.sector[doom->game_design.cur_sec].diff_y = 0;
+		// }
+		del_sidedef(doom);
+		doom->game_design.cur_sec += dir;
+		if (doom->game_design.portal_sec == doom->game_design.cur_sec)
+			doom->game_design.cur_sec += dir;
+		if (doom->game_design.cur_sec < 0)
+			doom->game_design.cur_sec = doom->game_design.s_len;
+		if (doom->game_design.cur_sec > doom->game_design.s_len)
+			doom->game_design.cur_sec = 0;
+		if (doom->game_design.portal_sec == doom->game_design.cur_sec)
+			doom->game_design.cur_sec += dir;
+		doom->game_design.sector[doom->game_design.cur_sec].diff_x = diff_x;
+		doom->game_design.sector[doom->game_design.cur_sec].diff_y = diff_y;
+	}
+	else
+	{
+		doom->game_design.portal_sd = doom->game_design.cur_sd;
+		doom->game_design.portal_sec = doom->game_design.cur_sec;
+		doom->game_design.cur_sec = doom->game_design.cur_sec > 0 ? doom->game_design.cur_sec - 1 : doom->game_design.s_len;
+	}
+	add_sidedef(doom,  doom->game_design.sidedef[doom->game_design.portal_sd].line.start.x, doom->game_design.sidedef[doom->game_design.portal_sd].line.start.y);
+	add_sidedef(doom,  doom->game_design.sidedef[doom->game_design.portal_sd].line.end.x, doom->game_design.sidedef[doom->game_design.portal_sd].line.end.y);
+	doom->game_design.sidedef[doom->game_design.portal_sd].opp_sidedef = doom->game_design.cur_sd;
+	doom->game_design.sidedef[doom->game_design.portal_sd].opp_sector = doom->game_design.cur_sec;
+	doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef = doom->game_design.portal_sd;
+	doom->game_design.sidedef[doom->game_design.cur_sd].opp_sector = doom->game_design.portal_sec;
+	diff_x = doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+	diff_y = doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+	doom->game_design.sector[doom->game_design.cur_sec].diff_x = doom->game_design.sector[doom->game_design.portal_sec].diff_x;
+	doom->game_design.sector[doom->game_design.cur_sec].diff_y = doom->game_design.sector[doom->game_design.portal_sec].diff_y;
+	// if (doom->game_design.sector[doom->game_design.cur_sec].diff_x == 0)
+	// {
+	// 	// doom->game_design.sector[doom->game_design.cur_sec].diff_x = 0;
+	// 	// doom->game_design.sector[doom->game_design.cur_sec].diff_y = 0;
+	// 	printf("%i %i \n", doom->game_design.sector[doom->game_design.cur_sec].diff_x, doom->game_design.sector[doom->game_design.cur_sec].diff_y);
+	// 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)
+	// 	{
+	// 		if (x != doom->game_design.cur_sd)
+	// 		{
+	// 			printf("pfr\n");
+	// 			doom->game_design.sidedef[x].line.start.x += doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+	// 			doom->game_design.sidedef[x].line.start.y += doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+	// 			doom->game_design.sidedef[x].line.end.x += doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+	// 			doom->game_design.sidedef[x].line.end.y += doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+	// 		}
+	// 	}
+	// }
+
+		
+
+
+}
+
 void		del_sector(t_doom *doom)
 {
 	int i;
@@ -56,7 +144,6 @@ void	add_sector(t_doom *doom)
 
 		if (doom->game_design.s_len + 1 == doom->game_design.s_size)
 				doom->game_design.sector = cpy_sector(doom->game_design.sector, &doom->game_design.s_size);
-		printf("%i %i\n", doom->game_design.s_len, doom->game_design.s_size);
 		doom->game_design.s_len++;
 		doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].slope_ceiling = 0;
@@ -64,6 +151,9 @@ void	add_sector(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].height_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].i_sidedefs = doom->game_design.w_len;
 		doom->game_design.sector[doom->game_design.s_len].n_sidedefs = 0;
+		doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
+		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
+
 }
 
 void		del_sidedef(t_doom *doom)
@@ -140,14 +230,14 @@ void	add_sidedef(t_doom *doom, int x, int y)
 	{
 		if (doom->game_design.w_size < doom->game_design.w_len + 1)
 				doom->game_design.sidedef = cpy_sidedef(doom->game_design.sidedef, &doom->game_design.w_size);
-		doom->game_design.sidedef[doom->game_design.w_len].line.start.x = x;
-		doom->game_design.sidedef[doom->game_design.w_len].line.start.y = y;
+		doom->game_design.sidedef[doom->game_design.w_len].line.start.x = x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+		doom->game_design.sidedef[doom->game_design.w_len].line.start.y = y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 		start = 1;
 	}
 	else
 	{
-		doom->game_design.sidedef[doom->game_design.w_len].line.end.x = x;
-		doom->game_design.sidedef[doom->game_design.w_len].line.end.y = y;
+		doom->game_design.sidedef[doom->game_design.w_len].line.end.x = x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+		doom->game_design.sidedef[doom->game_design.w_len].line.end.y = y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 		doom->game_design.sidedef[doom->game_design.w_len].id = doom->game_design.w_len;
 		doom->game_design.sidedef[doom->game_design.w_len].sector = doom->game_design.cur_sec;
 		doom->game_design.sidedef[doom->game_design.w_len].opp_sidedef = -1;
@@ -161,10 +251,39 @@ void	add_sidedef(t_doom *doom, int x, int y)
 			i++;
 		}
 		doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs++;
-
 		doom->game_design.cur_sd = doom->game_design.cur_sec != doom->game_design.s_len ? doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs : doom->game_design.w_len;
 		doom->game_design.w_len++;
 		start = 0;
+	}
+}
+
+void	draw_portal(t_doom *doom, Uint32 **pixels, int sector)
+{
+	int 	x_dif;
+	int		y_dif;
+	double	x_steps;
+	double	y_steps;
+	double	i;
+	double	x;
+	double 	y;
+
+	for(int b = doom->game_design.sector[sector].i_sidedefs; b < doom->game_design.sector[sector].i_sidedefs + doom->game_design.sector[sector].n_sidedefs; b++)
+	{
+		x_dif = (doom->game_design.sidedef[b].line.end.x) - (doom->game_design.sidedef[b].line.start.x);
+		y_dif = (doom->game_design.sidedef[b].line.end.y) - (doom->game_design.sidedef[b].line.start.y);
+		x_steps = (float)x_dif / (float)(abs(x_dif) + abs(y_dif));
+		y_steps = (float)y_dif / (float)(abs(x_dif) + abs(y_dif));
+		x = doom->game_design.sidedef[b].line.start.x - doom->game_design.sector[sector].diff_x;
+		y = doom->game_design.sidedef[b].line.start.y - doom->game_design.sector[sector].diff_y;
+		i = 0.0;
+		while ((int)i < abs(x_dif) + abs(y_dif))
+		{
+			if ((int)y * WIDTH + (int)x > 0 && (int)y * WIDTH + (int)x < WIDTH * HEIGHT)
+				pixels[0][((int)y * WIDTH) + (int)x] = 0xff696969;
+			x += x_steps * 2;
+			y += y_steps * 2;
+			i += fabs(x_steps) * 2 + fabs(y_steps) * 2;
+		}
 	}
 }
 
@@ -178,27 +297,38 @@ void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 	double	x;
 	double 	y;
 
-	x_dif = doom->game_design.sidedef[b].line.end.x - doom->game_design.sidedef[b].line.start.x;
-	y_dif = doom->game_design.sidedef[b].line.end.y - doom->game_design.sidedef[b].line.start.y;
+	x_dif = (doom->game_design.sidedef[b].line.end.x) - (doom->game_design.sidedef[b].line.start.x);
+	y_dif = (doom->game_design.sidedef[b].line.end.y) - (doom->game_design.sidedef[b].line.start.y);
 	x_steps = (float)x_dif / (float)(abs(x_dif) + abs(y_dif));
 	y_steps = (float)y_dif / (float)(abs(x_dif) + abs(y_dif));
-	x = doom->game_design.sidedef[b].line.start.x;
-	y = doom->game_design.sidedef[b].line.start.y;
+	x = doom->game_design.sidedef[b].line.start.x - doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+	y = doom->game_design.sidedef[b].line.start.y - doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 	i = 0.0;
 	(void)*pixels;
+	if (doom->game_design.sidedef[b].opp_sidedef != -1)
+			draw_portal(doom, pixels, doom->game_design.sidedef[b].opp_sector);
 	while ((int)i < abs(x_dif) + abs(y_dif))
 	{
-		if (doom->game_design.cur_sd != b)
+		if ((int)y * WIDTH + (int)x > 0 && (int)y * WIDTH + (int)x < WIDTH * HEIGHT)
 		{
-			pixels[0][((int)y * WIDTH) + (int)x] = 0x8c3cde6;
-			pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0x8c3cde6;
-			pixels[0][((int)y * WIDTH) + (int)x + 1] = 0x8c3cde6;
-		}
-		else
-		{
-			pixels[0][((int)y * WIDTH) + (int)x] = 0xff4287f5;
-			pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0xff4287f5;
-			pixels[0][((int)y * WIDTH) + (int)x + 1] = 0xff4287f5;
+			if (doom->game_design.sidedef[b].opp_sidedef != -1 && doom->game_design.cur_sd != b)
+			{
+				pixels[0][((int)y * WIDTH) + (int)x] = 0xffFFA07A;
+				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0xffFFA07A;
+				pixels[0][((int)y * WIDTH) + (int)x + 1] = 0xffFFA07A;
+			}
+			else if (doom->game_design.cur_sd != b)
+			{
+				pixels[0][((int)y * WIDTH) + (int)x] = 0x8c3cde6;
+				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0x8c3cde6;
+				pixels[0][((int)y * WIDTH) + (int)x + 1] = 0x8c3cde6;
+			}
+			else
+			{
+				pixels[0][((int)y * WIDTH) + (int)x] = 0xff4287f5;
+				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0xff4287f5;
+				pixels[0][((int)y * WIDTH) + (int)x + 1] = 0xff4287f5;
+			}
 		}
 		x += x_steps;
 		y += y_steps;
@@ -244,6 +374,11 @@ void    open_game_editor(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].height_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].n_sidedefs = 0;
 		doom->game_design.sector[doom->game_design.s_len].i_sidedefs = 0;
+		doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
+		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
+		doom->game_design.portal_sec = -1;
+		doom->game_design.portal_sd = -1;
+
 
 	}
 	pixels = doom->surface->pixels;
@@ -274,8 +409,19 @@ void    open_game_editor(t_doom *doom)
 	put_images(&pixels, AR_RIGHT_X, AR_RIGHT_Y, arrow_right);
 	put_images(&pixels, AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left);
 	put_images(&pixels, AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right);
+	put_images(&pixels, AR_LEFT_M_X, AR_LEFT_M_Y, arrow_left);
+	put_images(&pixels, AR_RIGHT_M_X, AR_RIGHT_M_Y, arrow_right);
+	put_images(&pixels, AR_UP_M_X, AR_UP_M_Y, arrow_left);
+	put_images(&pixels, AR_DOWN_M_X, AR_DOWN_M_Y, arrow_right);
 	put_images(&pixels, CROSS_X, CROSS_Y, cross);
 	put_images(&pixels, CROSS_P_X, CROSS_P_Y, cross);
+	put_images(&pixels, PORTAL_X, PORTAL_Y, minus);
+	put_images(&pixels, WALL_X, WALL_Y, plus);
+	if (doom->game_design.portal_sec != -1)
+	{
+		put_images(&pixels, AR_LEFT_SC_X, AR_LEFT_SC_Y, arrow_left);
+		put_images(&pixels, AR_RIGHT_SC_X, AR_RIGHT_SC_Y, arrow_right);
+	}
 	draw_bar(&pixels, BAR_X, BAR_Y, BAR_LEN);
 	draw_bar_point(&pixels, doom, BAR_X, BAR_Y, BAR_LEN);
 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)

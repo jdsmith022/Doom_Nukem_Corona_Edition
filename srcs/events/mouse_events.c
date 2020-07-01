@@ -49,6 +49,14 @@ void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 
 void	game_editor_clicks(t_doom *doom, int x, int y)
 {
+	if (doom->game_design.portal_sec != -1 && 
+	((x < AR_LEFT_SC_X || (x > AR_LEFT_SC_X + FRAME_WIDTH && x < AR_RIGHT_SC_X) || x > AR_RIGHT_SC_X + FRAME_WIDTH)
+	|| (y < AR_LEFT_SC_Y || y > AR_LEFT_SC_Y + FRAME_HEIGHT)))
+	{
+		doom->game_design.portal_sec = -1;
+		doom->game_design.portal_sd = -1;
+
+	}
 	if (x > MINUS_X && x < MINUS_X + FRAME_WIDTH && y > MINUS_Y && y < MINUS_Y + FRAME_HEIGHT)
 	{
 		if (doom->game_design.s_len > 0)
@@ -56,6 +64,17 @@ void	game_editor_clicks(t_doom *doom, int x, int y)
 	}
 	else if (x > PLUS_X && x < PLUS_X + FRAME_WIDTH && y > PLUS_Y && y < PLUS_Y + FRAME_HEIGHT)
 			add_sector(doom);
+	else if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
+	{
+		printf("fuck\n");
+		doom->game_design.sector[doom->game_design.cur_sec].diff_x -= 10;
+	}
+	else if (x > AR_LEFT_M_X && x < AR_LEFT_M_X + FRAME_WIDTH && y > AR_LEFT_M_Y && y < AR_LEFT_M_Y + FRAME_HEIGHT)
+		doom->game_design.sector[doom->game_design.cur_sec].diff_x += 10;
+	else if (x > AR_DOWN_M_X && x < AR_DOWN_M_X + FRAME_WIDTH && y > AR_DOWN_M_Y && y < AR_DOWN_M_Y + FRAME_HEIGHT)
+		doom->game_design.sector[doom->game_design.cur_sec].diff_y += 10;
+	else if (x > AR_UP_M_X && x < AR_UP_M_X + FRAME_WIDTH && y > AR_UP_M_Y && y < AR_UP_M_Y + FRAME_HEIGHT)
+		doom->game_design.sector[doom->game_design.cur_sec].diff_y -= 10;
 	else if (x > D_45_X && x < D_45_X + FRAME_WIDTH && y > D_45_Y && y < D_45_Y + FRAME_HEIGHT)
 		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = 45;
 	else if (x > D_M45_X && x < D_M45_X + FRAME_WIDTH && y > D_M45_Y && y < D_M45_Y + FRAME_HEIGHT)
@@ -99,6 +118,14 @@ void	game_editor_clicks(t_doom *doom, int x, int y)
 	}
 	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
 		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
+	else if (x > PORTAL_X && x < PORTAL_X + FRAME_WIDTH && y > PORTAL_Y && y < PORTAL_Y + FRAME_HEIGHT)
+		add_portal(doom, 0);
+	else if (x > WALL_X && x < WALL_X + FRAME_WIDTH && y > WALL_X && y < WALL_X + FRAME_HEIGHT)
+		doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef = -1;
+	else if (doom->game_design.portal_sec != -1 && x > AR_LEFT_SC_X && x < AR_LEFT_SC_X + FRAME_WIDTH && y > AR_LEFT_SC_Y && y < AR_LEFT_SC_Y + FRAME_HEIGHT)
+		add_portal(doom, -1);
+	else if (doom->game_design.portal_sec != -1 &&x > AR_RIGHT_SC_X && x < AR_RIGHT_SC_X + FRAME_WIDTH && y > AR_RIGHT_SC_Y && y < AR_RIGHT_SC_Y + FRAME_HEIGHT)	
+		add_portal(doom, 1);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 0)
 		add_sidedef(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 1)

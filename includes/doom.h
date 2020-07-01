@@ -151,6 +151,8 @@ typedef struct		s_sector {
 	int				height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
+	int				diff_x;
+	int				diff_y;
 }					t_sector;
 
 typedef struct			s_lib{
@@ -172,6 +174,8 @@ typedef struct		s_gamedesign{
 		int			w_size;
 		int			cur_sec;
 		int			cur_sd;
+		int			portal_sd;
+		int			portal_sec;
 		int 		pl_pos;
 		int			pl_x;
 		int			pl_y;
@@ -273,4 +277,5 @@ void	add_sector(t_doom *doom);
 void	del_sector(t_doom *doom);
 void    draw_bar(Uint32 **pixels, int x, int y, int len);
 void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
+void		add_portal(t_doom *doom, int dir);
 #endif
