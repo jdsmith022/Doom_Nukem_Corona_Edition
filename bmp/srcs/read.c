@@ -1,14 +1,24 @@
 #include "bmp.h"
 
-// t_bmp		read_bmp(int fd)
-// Input: valid file descriptor
-// Return: t_bmp struct containing info about the image and a 2d array of pixels in t_bmp.pixels
-
-static bool			end_of_row(uint32_t width, uint32_t current)
+static void			swap_rows(t_bmp *bmp, uint8_t padding)
 {
-	if (current % width == 0)
-		return true;
-	return false;
+	void		*temp;
+	void		*last_row;
+	uint32_t	row_width;
+	uint32_t	i;
+
+	row_width = (bmp->info.width * 3) + padding;
+	temp = ft_memalloc(sizeof(void *) * row_width);
+	i = 0;
+	while (i < bmp->info.height / 2)
+	{
+		last_row = bmp->pixels + (bmp->info.height - (1 + i)) * row_width;
+		ft_memcpy(temp, bmp->pixels + (i * row_width), row_width);
+		ft_memcpy(bmp->pixels + (i * row_width), last_row, row_width);
+		ft_memcpy(last_row, temp, row_width);
+		i++;
+	}
+	free(temp);
 }
 
 static void			read_pixels(t_bmp *bmp, int fd)
@@ -22,6 +32,7 @@ static void			read_pixels(t_bmp *bmp, int fd)
 	bmp->info.img_size += (padding * bmp->info.height);
 	bmp->pixels = (void *)ft_memalloc(bmp->info.img_size); // alloc pixels
 	read(fd, bmp->pixels, bmp->info.img_size);
+	swap_rows(bmp, padding);
 	return ;
 }
 
@@ -38,6 +49,5 @@ t_bmp				read_bmp(int fd)
 	if (bmp.info.bits_per_pixel != 24)
 		exit_with_error("Error: only supports 24bit bmp.\n");
 	read_pixels(&bmp, fd); // Read pixels
-	// swap_rows(&bmp);
 	return bmp;
 }

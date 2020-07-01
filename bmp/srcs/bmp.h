@@ -9,25 +9,14 @@
 #include <stdint.h>
 #include "../libft/src/libft.h"
 
-// #pragma pack(push, 1)
-
-// typedef struct		s_pixel
-// {
-// 	uint8_t 		red;
-// 	uint8_t 		green;
-// 	uint8_t 		blue;
-// }					t_pixel;
-
-// #pragma pack(pop)
-
 #pragma pack(push, 1)
 
 typedef struct		s_bmp_header
 {
-    uint16_t signature;
-    uint32_t size;
-    uint32_t reserved;
-    uint32_t data_offset;
+    uint16_t        signature;
+    uint32_t        size;
+    uint32_t        reserved;
+    uint32_t        data_offset;
 }					t_bmp_header;
 
 #pragma pack(pop)

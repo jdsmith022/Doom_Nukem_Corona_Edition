@@ -2,22 +2,25 @@ NAME = lib_bmp.a
 CFILES = read utilities
 OFILES = $(CFILES:%=.objects/%.o)
 
-all: $(NAME)
+all: .objects $(NAME)
 
 $(NAME): $(OFILES)
-	@ar rc $(NAME) $^
-	@echo "compiled successfully!"
+	@ar rc $@ $^
+	@echo "$@ compiled successfully!"
 
 .objects/%.o: srcs/%.c srcs/bmp.h
-	@mkdir -p .objects
 	@$(CC) -o $@ -c $<
+	@echo "[+] $@"
+
+.objects:
+	@mkdir .objects
 
 clean:
 	@rm -rf .objects
-	@echo "removed ofiles"
+	@echo "cleaned $(OFILES)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "removed binary"
+	@echo "removed $(NAME)"
 
 re: fclean all
