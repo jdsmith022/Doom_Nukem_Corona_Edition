@@ -6,11 +6,20 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 13:43:16 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/16 18:03:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/16 18:12:55 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+void		put_pixel(t_doom *doom, int x, int y, int color)
+{
+	Uint32 *pixels;
+
+	pixels = doom->surface->pixels;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+		pixels[(y * WIDTH) + x] = (Uint32)color;
+}
 
 void		draw_ceiling(t_doom *doom, int x, int sidedef_top)
 {

@@ -2,7 +2,7 @@
 
 #texture library
 1
-textures/sprayGlovedHand.bmp
+textures/brown_wall.bmp
 
 
 #object library
@@ -45,7 +45,7 @@ textures/sprayGlovedHand.bmp
 -1
 0
 0
-1000
+100
 0
 0
 0

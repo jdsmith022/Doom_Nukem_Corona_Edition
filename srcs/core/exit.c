@@ -6,11 +6,18 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/06 15:11:32 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/05/31 17:45:26 by Malou         ########   odam.nl         */
+/*   Updated: 2020/06/17 16:13:21 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+void        doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge)
+{
+    ft_putendl(exit_meassge);
+    ft_bzero(bmp, sizeof(bmp));
+    free(bmp);
+}
 
 static void sdl_free(t_doom *doom)
 {
@@ -26,7 +33,7 @@ static void sdl_free(t_doom *doom)
     }
 }
 
-void    doom_exit_failure(t_doom *doom, const char *exit_message)
+void        doom_exit_failure(t_doom *doom, const char *exit_message)
 {
     ft_putendl(exit_message);
     sdl_free(doom);
@@ -34,7 +41,7 @@ void    doom_exit_failure(t_doom *doom, const char *exit_message)
     exit(EXIT_FAILURE);
 }
 
-void    doom_exit_success(t_doom *doom)
+void        doom_exit_success(t_doom *doom)
 {
     sdl_free(doom);
     ft_bzero(doom, sizeof(doom));
