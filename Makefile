@@ -34,7 +34,7 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor load_textures
 READ_FILES = add_info_to_lib error read_file main2
-GAME_EDITOR_FILES = game_editor draw_bar
+GAME_EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game
 
 C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
 	 $(RENDER_FILES:%=$(RENDER)%.c) $(READ_FILES:%=$(READ)%.c) \

@@ -179,6 +179,7 @@ typedef struct		s_gamedesign{
 		int 		pl_pos;
 		int			pl_x;
 		int			pl_y;
+		int			pl_sec;
 }
 					t_gamedesign;
 
@@ -277,5 +278,6 @@ void	add_sector(t_doom *doom);
 void	del_sector(t_doom *doom);
 void    draw_bar(Uint32 **pixels, int x, int y, int len);
 void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
-void		add_portal(t_doom *doom, int dir);
+void	add_portal(t_doom *doom, int dir);
+void    add_to_game(t_doom *doom);
 #endif
