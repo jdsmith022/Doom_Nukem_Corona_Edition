@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/01 15:51:37 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/03 12:24:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ typedef struct		s_plane
 {
 	int				sidedef_top;
 	int				sidedef_bottom;
+	int				ceiling_start;
+	int				floor_start;
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
@@ -173,13 +175,14 @@ typedef struct		s_doom {
 	t_point			pos;
 	t_event			own_event;
 	int				wall_height_std;
-	int				player_height;
+	double			player_height;
 	int				i_sector;
 	int				prev_sector;
+	double			ray_angle;
 	double			dir_angle;
 	double			ray_adjacent;
-	int				wall_width;
-	double			wall_height;
+	int				texture_width;
+	int				texture_height;
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
@@ -239,7 +242,9 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, int sidedef_top);
+void				draw_texture_ceiling(t_doom *doom, int x, int y);
 void				draw_floor(t_doom *doom, int x, int y);
+void				draw_texture_floor(t_doom *doom, int x, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);

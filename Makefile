@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/01 15:52:28 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/02 12:43:23 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
-				draw_floor slope_projections
+				draw_floor slope_projections textured_floor
 READ_FILES = add_info_to_lib error read_file main2
 
 C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
