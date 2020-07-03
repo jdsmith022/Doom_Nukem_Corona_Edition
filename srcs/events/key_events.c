@@ -23,10 +23,10 @@ void	key_handler(t_doom *doom, t_event *event, double dt)
 		cam_move_rl(doom, dt, -90 * PI / 180);
 	else if (event->cam_move_r == TRUE)
 		cam_move_rl(doom, dt, 90 * PI / 180);
-	// if (event->jump == TRUE)
-	// 	jump_player(doom, dt);
-	// if (event->step_down == TRUE)
-	// 	step_down(doom, dt);
+	if (event->jump == TRUE)
+		jump_player(doom, dt);
+	if (event->step_down == TRUE)
+		step_down(doom, dt);
 	if (event->bend == TRUE || \
 		doom->player_height < 100 + doom->lib.sector[doom->i_sector].height_floor)
 		bend_down(doom);
@@ -72,9 +72,13 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		doom->game_editor = FALSE;
 	if (key->keysym.sym == SDLK_b)
 	{
-		doom->lib.sector = doom->game_design.sector; // free og
-		doom->lib.sidedef = doom->game_design.sidedef; //free og
-		doom->pos.x = doom->game_design.pl_x;
-		doom->pos.y = doom->game_design.pl_y;
+		// for (int x = 0; x <= doom->game_design.w_len; x++)
+		// 	printf("%i %f %f %f %f\n", x, doom->game_design.sidedef[x].line.start.x, doom->game_design.sidedef[x].line.start.y, doom->game_design.sidedef[x].line.end.x, doom->game_design.sidedef[x].line.end.y);
+		// doom->lib.sector = doom->game_design.sector; // free og
+		// doom->lib.sidedef = doom->game_design.sidedef; //free og
+		// doom->pos.x = doom->game_design.pl_x;
+		// doom->pos.y = doom->game_design.pl_y;
+		// doom->i_sector = doom->game_design.pl_sec;
+		add_to_game(doom);
 	}
 }

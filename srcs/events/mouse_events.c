@@ -128,16 +128,20 @@ void	game_editor_clicks(t_doom *doom, int x, int y)
 	else if (doom->game_design.portal_sec != -1 &&x > AR_RIGHT_SC_X && x < AR_RIGHT_SC_X + FRAME_WIDTH && y > AR_RIGHT_SC_Y && y < AR_RIGHT_SC_Y + FRAME_HEIGHT)	
 		add_portal(doom, 1);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 0)
-	{
-		printf("click\n");
 		add_sidedef(doom, x, y);
-	}
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && doom->game_design.pl_pos == 1)
 	{
 		doom->game_design.pl_x = x;
 		doom->game_design.pl_y = y;
+		doom->game_design.pl_sec = doom->game_design.cur_sec;
 		doom->game_design.pl_pos = 0;
 	}
+	for(int x = 0; x < doom->game_design.w_len; x++)
+	{
+		if (doom->game_design.sidedef[x].opp_sidedef != -1)
+			printf("%i %i %i %f %f\n", doom->game_design.sidedef[x].id, doom->game_design.sidedef[x].opp_sidedef, doom->game_design.sidedef[x].opp_sector, doom->game_design.sidedef[x].line.start.x, doom->game_design.sidedef[x].line.end.x);
+	}
+	printf("\n");
 }
 
 void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
