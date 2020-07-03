@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/17 19:10:54 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/03 12:21:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	doom_render(t_doom *doom)
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);
+		doom->ray_angle = ray.angle;
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		ray.plane_x = x;
