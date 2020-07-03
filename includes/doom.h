@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 12:24:28 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/03 13:48:34 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ typedef struct		s_doom {
 	t_point			pos;
 	t_event			own_event;
 	int				wall_height_std;
+	double			player_std_height;
 	double			player_height;
 	int				i_sector;
 	int				prev_sector;

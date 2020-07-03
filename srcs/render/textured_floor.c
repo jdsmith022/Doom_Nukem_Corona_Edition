@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/02 12:38:22 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/03 12:56:25 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/03 13:49:08 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	draw_texture_ceiling(t_doom *doom, int x, int y)
 	Uint8	bpp;
 
 	bpp = doom->surface->format->BytesPerPixel;
-	height = HEIGHT / 2;
+	height = (HEIGHT + doom->player_height) / 2;
 	while (y >= 0)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = (double)doom->player_height / (height - y) * doom->dist_to_plane;
+		dist = (double)doom->player_std_height / (height - y) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y--;
@@ -73,12 +73,12 @@ void	draw_texture_floor(t_doom *doom, int x, int y)
 	Uint8	bpp;
 	int		height;
 
-	height = HEIGHT / 2;
+	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT) //need to draw to sector or height (a lot of pixel overwritting happening)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = 32 / (y - height) * (doom->dist_to_plane);
+		dist = doom->player_std_height / (y - height) * (doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y++;
