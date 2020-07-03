@@ -29,7 +29,7 @@ double	get_timeframe(long *last_frame_time)
 	struct timespec t;
 	double			dt;
 
-	clock_gettime(CLOCK_MONOTONIC_RAW, &t);
+	// clock_gettime(CLOCK_MONOTONIC_RAW, &t);
 	dt = t.tv_nsec - *last_frame_time;
 	dt /= round(1.0e9);
 	if (dt < 0)
@@ -44,9 +44,10 @@ void	game_loop(t_doom *doom)
 	double			dt;
 
 	last_frame_time = 0;
+	dt = 0.05;
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
-		dt = get_timeframe(&last_frame_time);
+		// dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
 		if (doom->game_editor == FALSE)
 		{
