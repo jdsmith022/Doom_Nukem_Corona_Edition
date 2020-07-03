@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   textured_floor.c                                   :+:    :+:            */
+/*   horizonal_texture.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/02 12:38:22 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/03 13:49:08 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/03 14:21:21 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	draw_texture_floor(t_doom *doom, int x, int y)
 
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
-	while (y < HEIGHT) //need to draw to sector or height (a lot of pixel overwritting happening)
+	while (y < HEIGHT)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
 		dist = doom->player_std_height / (y - height) * (doom->dist_to_plane);
