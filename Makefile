@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/04 18:02:22 by elkanfrank    ########   odam.nl          #
+#    Updated: 2020/07/04 19:46:53 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
-				draw_floor slope_projections horizontal_texture put_texture
+				draw_floor_and_ceiling slope_projections put_texture
 READ_FILES = add_info_to_lib error read_file main2
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 					mouse_events_game_editor

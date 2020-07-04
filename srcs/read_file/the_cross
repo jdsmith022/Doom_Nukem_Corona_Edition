@@ -1,9 +1,10 @@
-#albert heijn
+#the cross
 
 #texture library
 2
 textures/brown_wall.bmp
 textures/dark_stone.bmp
+
 
 #object library
 0
@@ -11,9 +12,9 @@ textures/dark_stone.bmp
 
 
 #number of sectors
-3
+5
 #number of walls
-12
+20
 #number of objects
 0
 
@@ -31,34 +32,34 @@ textures/dark_stone.bmp
 
 #sidedefs0
 -1
+300
+0
+600
 0
 0
 0
-200
 0
-1
-1
-1
+0
 0
 
 #sidedefs1
 -1
+600
+0
+600
+300
 0
 0
-100
 0
-1
-1
-1
-1
+0
 1
 
 #sidedefs2
-1
-100
-0
-100
-200
+2
+600
+300
+300
+300
 0
 0
 0
@@ -67,14 +68,14 @@ textures/dark_stone.bmp
 
 #sidedefs3
 -1
+300
+300
+300
 0
-200
-100
-200
 0
-1
-1
-1
+0
+0
+0
 3
 
 #objs in sector
@@ -82,7 +83,7 @@ textures/dark_stone.bmp
 
 #sector[1]
 10
-20
+0
 0
 0
 0
@@ -92,11 +93,11 @@ textures/dark_stone.bmp
 1
 
 #sidedefs
+-2
 0
-100
-0
-100
-200
+300
+300
+300
 0
 0
 0
@@ -104,11 +105,11 @@ textures/dark_stone.bmp
 4
 
 #sidedefs1
--1
-100
-200
+2
 300
-200
+300
+300
+600
 0
 0
 0
@@ -116,11 +117,11 @@ textures/dark_stone.bmp
 5
 
 #sidedefs2
-2
+-1
 300
+600
 0
-300
-200
+600
 0
 0
 0
@@ -129,10 +130,10 @@ textures/dark_stone.bmp
 
 #sidedefs3
 -1
-100
+0
+600
 0
 300
-0
 0
 0
 0
@@ -154,11 +155,11 @@ textures/dark_stone.bmp
 2
 
 #sidedefs
--1
+0
 300
-200
-500
-200
+300
+600
+300
 0
 0
 0
@@ -166,11 +167,11 @@ textures/dark_stone.bmp
 8
 
 #sidedefs1
--1
-500
-200
-500
-0
+3
+600
+300
+600
+600
 0
 0
 0
@@ -178,11 +179,11 @@ textures/dark_stone.bmp
 9
 
 #sidedefs2
-1
+4
+600
+600
 300
-0
-300
-200
+600
 0
 0
 0
@@ -190,16 +191,140 @@ textures/dark_stone.bmp
 10
 
 #sidedefs3
--1
+1
 300
-0
-500
-0
+600
+300
+300
 0
 0
 0
 0
 11
+
+#objs in sector
+0
+
+#sector[3]
+10
+0
+0
+0
+0
+1
+0
+4
+3
+
+#sidedefs
+-1
+600
+300
+900
+300
+0
+0
+0
+0
+12
+
+#sidedefs1
+-1
+900
+300
+900
+600
+0
+0
+0
+0
+13
+
+#sidedefs2
+-1
+900
+600
+600
+600
+0
+0
+0
+0
+14
+
+#sidedefs3
+2
+600
+600
+600
+300
+0
+0
+0
+0
+15
+
+#objs in sector
+0
+
+#sector[4]
+10
+0
+0
+0
+0
+1
+0
+4
+4
+
+#sidedefs
+3
+300
+600
+600
+600
+0
+0
+0
+0
+16
+
+#sidedefs1
+-1
+600
+600
+600
+900
+0
+0
+0
+0
+17
+
+#sidedefs2
+-1
+600
+900
+300
+900
+0
+0
+0
+0
+18
+
+#sidedefs3
+-1
+300
+900
+300
+600
+0
+0
+0
+0
+19
 
 #objs in sector
 0

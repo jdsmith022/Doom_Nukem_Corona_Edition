@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 17:41:33 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/04 19:46:41 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,12 +253,8 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				draw_ceiling(t_doom *doom, int x, int sidedef_top);
-void				draw_texture_ceiling(t_doom *doom, int x,\
-						t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, int y);
-void				draw_texture_floor(t_doom *doom, int x,\
-						t_sector sector, int y);
+void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
