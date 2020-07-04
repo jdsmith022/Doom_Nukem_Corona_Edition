@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:48:34 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/04 13:17:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ typedef struct		s_plane
 {
 	int				sidedef_top;
 	int				sidedef_bottom;
-	int				ceiling_start;
-	int				floor_start;
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
@@ -247,6 +245,8 @@ void				draw_texture_ceiling(t_doom *doom, int x, int y);
 void				draw_floor(t_doom *doom, int x, int y);
 void				draw_texture_floor(t_doom *doom, int x, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
+void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
+						Uint32 pixel_dex);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point				line_delta(t_point start, t_point end);

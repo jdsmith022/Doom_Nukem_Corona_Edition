@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   horizonal_texture.c                                :+:    :+:            */
+/*   horizontal_texture.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/02 12:38:22 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/03 14:21:21 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/04 13:45:50 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-static void	put_row(t_doom *doom, size_t index, size_t pixel_dex)
+static void	put_row(t_doom *doom, Uint32 index, Uint64 pixel_dex)
 {
-    size_t row_dex = 0;
+    Uint32 row_dex = 0;
 	char *pixels;
 	char *texture;
 
@@ -29,11 +29,11 @@ static void	put_row(t_doom *doom, size_t index, size_t pixel_dex)
 	pixels[index] = texture[pixel_dex];
 }
 
-static void	row_calculations(t_doom *doom, double dist, size_t addr_dex)
+static void	row_calculations(t_doom *doom, double dist, Uint32 addr_dex)
 {
 	t_point	texture;
 	t_point	floor;
-	size_t	texture_dex;
+	Uint64	pixel_dex;
 	Uint8	bpp;
 
 	bpp = doom->lib.tex_lib[0]->format->BytesPerPixel;
@@ -43,15 +43,16 @@ static void	row_calculations(t_doom *doom, double dist, size_t addr_dex)
 	floor.y += doom->pos.y;
 	texture.x = (int)floor.x % doom->texture_width;
 	texture.y = (int)floor.y % doom->texture_height;
-	texture_dex = ((texture.y * doom->lib.tex_lib[0]->pitch) + (texture.x * bpp));
-	put_row(doom, addr_dex, texture_dex);
+	pixel_dex = (((int)texture.y * doom->lib.tex_lib[0]->pitch) + ((int)texture.x * bpp));
+	// printf("index: %d\n", pixel_dex);
+	put_row(doom, addr_dex, pixel_dex);
 }
 
 void	draw_texture_ceiling(t_doom *doom, int x, int y)
 {
 	double	dist;
-	size_t	addr_dex;
-	int		height;
+	Uint32	addr_dex;
+	Uint32	height;
 	Uint8	bpp;
 
 	bpp = doom->surface->format->BytesPerPixel;
@@ -59,7 +60,7 @@ void	draw_texture_ceiling(t_doom *doom, int x, int y)
 	while (y >= 0)
 	{
 		addr_dex = (y * doom->surface->pitch) + (x * bpp);
-		dist = (double)doom->player_std_height / (height - y) * doom->dist_to_plane;
+		dist = doom->player_std_height / (height - y) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, addr_dex);
 		y--;
@@ -69,9 +70,9 @@ void	draw_texture_ceiling(t_doom *doom, int x, int y)
 void	draw_texture_floor(t_doom *doom, int x, int y)
 {
 	double	dist;
-	size_t	addr_dex;
+	Uint32	addr_dex;
+	Uint32	height;
 	Uint8	bpp;
-	int		height;
 
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;

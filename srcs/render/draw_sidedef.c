@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 12:55:56 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 13:47:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,6 @@
 // 	*color = ((*color & 0x00ff) >> 16) * (int)dist << 16;
 // 	*color = ((*color & 0x0000ff) >> 8) * (int)dist << 8;./
 // }
-
-static void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
-					Uint32 pixel_dex)
-{
-	char	*pixels;
-	char	*texture;
-
-	pixels = doom->surface->pixels;
-	texture = doom->lib.tex_lib[tex_dex]->pixels;
-	pixels[index] = texture[pixel_dex];
-	index++;
-	pixel_dex++;
-	pixels[index] = texture[pixel_dex];
-	index++;
-	pixel_dex++;
-	pixels[index] = texture[pixel_dex];
-}
 
 static void		put_protal_pixel(t_doom *doom, t_point pixel)
 {
@@ -48,6 +31,23 @@ static void		put_protal_pixel(t_doom *doom, t_point pixel)
 		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
 }
 
+static Uint32		find_sidedef_texture(t_sidedef sidedef, t_point pixel,
+						t_plane plane)
+{
+	Uint32 tex_dex;
+
+	if (sidedef.opp_sector == -1)
+		tex_dex = sidedef.txt_1;
+	else if (pixel.y <= plane.mid_texture_top)
+		tex_dex = sidedef.txt_1;
+	// else if (pixel.y > plane.mid_texture_top &&\
+	// pixel.y < plane.mid_texture_bottom)
+	// 	tex_dex = sidedef.txt_2;
+	else if (pixel.y >= plane.mid_texture_bottom)
+		tex_dex = sidedef.txt_3;
+	return (tex_dex);
+}
+
 static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 					t_sidedef sidedef)
 {
@@ -57,12 +57,12 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	double	wall_y;
 	int		bpp;
 
-	tex_dex = sidedef.txt_3;
+	tex_dex = find_sidedef_texture(sidedef, pixel, plane);
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
 		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top);
-	bpp = doom->lib.tex_lib[0]->format->BytesPerPixel;
+	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = ((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		((int)sidedef.offset * bpp);
 	put_texture(doom, tex_dex, index, pixel_dex);
