@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/04 14:01:15 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:03:13 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	Uint64	pixel_dex;
 	Uint8	bpp;
 
-	bpp = doom->lib.tex_lib[0]->format->BytesPerPixel;
+	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	floor.x = dist * cos(doom->ray_angle);
 	floor.y = dist * sin(doom->ray_angle);
 	floor.x += doom->pos.x;
