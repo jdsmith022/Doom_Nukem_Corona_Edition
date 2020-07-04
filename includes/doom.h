@@ -280,4 +280,5 @@ void    draw_bar(Uint32 **pixels, int x, int y, int len);
 void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
 void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
+void	mouse_press_game_editor(t_doom *doom, int x, int y);
 #endif

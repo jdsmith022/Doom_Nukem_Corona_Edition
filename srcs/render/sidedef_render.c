@@ -50,17 +50,13 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	double		min_distance;
 	int			x;
 
-	// printf("start\n");
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
-				// if (sector == 1)
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x], &intersect);
-		// printf("%i %f %f %f %f\n", x, doom->lib.sidedef[x].line.start.x, doom->lib.sidedef[x].line.start.y, doom->lib.sidedef[x].line.end.x, doom->lib.sidedef[x].line.end.y);
-		// printf("%i %f %i %i\n", x, distance, doom->lib.sidedef[x].opp_sector, prev_sector);
 		if (distance < min_distance &&\
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
@@ -70,17 +66,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
-	// printf("%d -- %d -- %d -- %d\n", sector, near_sidedef.opp_sector, doom->lib.sector[sector].i_sidedefs, prev_sector);
-	// printf("esc %i %i\n", x, near_sidedef.opp_sector);
-	if (min_distance != INFINITY)
-	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
-		{
-			// printf("bf %i %i\n", near_sidedef.opp_sector, near_sidedef.opp_sidedef);
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-			// printf("af %i %i\n", near_sidedef.opp_sector, near_sidedef.opp_sidedef);
-		}
-		// printf("%d -- %d -- %d -- %d\n", sector, near_sidedef.opp_sector, doom->lib.sector[sector].i_sidedefs, prev_sector);
 		project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
-	}
 }
