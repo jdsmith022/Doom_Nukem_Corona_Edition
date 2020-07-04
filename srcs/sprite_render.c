@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/06/10 15:22:44 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/04 12:54:48 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	int		index;
 
 	i = 0;
+	printf("%d\n", doom->visible_sprites);
 	while (i < doom->visible_sprites)
 	{
 		index = sprite_order[i];
@@ -39,8 +40,11 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 		//find position on screen
 		// find_position(doom, index);
 		// draw_stripes(doom, index);
+		// turn visibility off
+		doom->sprite[index].visible = 0;
 		i++;
 	}
+	doom->visible_sprites = 0;
 }
 
 void		sprite_render(t_doom *doom)

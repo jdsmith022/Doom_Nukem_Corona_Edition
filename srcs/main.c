@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 13:34:53 by Malou          #+#    #+#                */
-/*   Updated: 2020/06/06 17:16:51 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/07/04 15:23:14 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/07/04 15:23:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
