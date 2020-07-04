@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 12:38:22 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 13:53:55 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,13 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef,
 				int x, t_point intersect)
 {
 	t_plane		plane;
+	t_sector	sector;
 
+	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, x);
 	plane.intersect = intersect;
 	if (doom->lib.sector[sidedef.sector].height_ceiling == 0)
-		draw_texture_ceiling(doom, x, plane.sidedef_top);
+		draw_texture_ceiling(doom, x, sector, plane.sidedef_top);
 	else
 		draw_ceiling(doom, x, plane.sidedef_top);
 	if (sidedef.opp_sector == -1)
@@ -98,7 +100,7 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef,
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (doom->lib.sector[sidedef.sector].height_floor == 0)
-		draw_texture_floor(doom, x, plane.sidedef_bottom);
+		draw_texture_floor(doom, x, sector, plane.sidedef_bottom);
 	else
 		draw_floor(doom, x, plane.sidedef_bottom);
 }

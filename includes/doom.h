@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 13:17:43 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 13:57:41 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,12 +155,12 @@ typedef struct		s_sector {
 
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
-	SDL_Surface 	**obj_lib;
-	t_sector 		*sector;
-	t_sidedef 		*sidedef;
-	t_object 		*sprites;
+	SDL_Surface		**obj_lib;
+	t_sector		*sector;
+	t_sidedef		*sidedef;
+	t_object		*sprites;
 	int				n_mov_sprites;
-	t_m_object 		*mov_sprites;
+	t_m_object		*mov_sprites;
 }					t_lib;
 
 typedef struct		s_doom {
@@ -197,7 +197,7 @@ void				doom_render(t_doom *doom);
 double				points_distance(t_point p1, t_point p2);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
-void	      		doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 
 /*read functions*/
 SDL_Surface			**save_img(int fd);
@@ -210,7 +210,8 @@ void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 
 /*events functions*/
-void				key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key);
+void				key_press(t_doom *doom, t_event *event,\
+						SDL_KeyboardEvent *key);
 void				key_release(t_event *event, SDL_KeyboardEvent *key);
 void				key_handler(t_doom *doom, t_event *event, double dt);
 void				mouse_press(t_doom *doom,\
@@ -219,7 +220,8 @@ void				mouse_release(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				camera_movement(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
-void				move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion, double dt);
+void				move_cam_direction(t_doom *doom,\
+						SDL_MouseMotionEvent *motion, double dt);
 void				cam_move_fb(t_doom *doom, double dt, int direction);
 void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
@@ -241,9 +243,11 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, int sidedef_top);
-void				draw_texture_ceiling(t_doom *doom, int x, int y);
+void				draw_texture_ceiling(t_doom *doom, int x,\
+						t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, int y);
-void				draw_texture_floor(t_doom *doom, int x, int y);
+void				draw_texture_floor(t_doom *doom, int x,\
+						t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
