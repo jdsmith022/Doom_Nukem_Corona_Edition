@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/04 14:28:09 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:38:49 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	floor.y = dist * sin(doom->ray_angle);
 	floor.x += doom->pos.x;
 	floor.y += doom->pos.y;
-	texture.x = (int)floor.x % doom->texture_width;
-	texture.y = (int)floor.y % doom->texture_height;
+	texture.x = (int)floor.x % doom->lib.tex_lib[tex_dex]->h;
+	texture.y = (int)floor.y % doom->lib.tex_lib[tex_dex]->w;
 	pixel_dex = (((int)texture.y * doom->lib.tex_lib[tex_dex]->pitch)\
 		+ ((int)texture.x * bpp));
 	put_row(doom, tex_dex, index, pixel_dex);
@@ -59,8 +59,6 @@ void			draw_texture_ceiling(t_doom *doom, int x,
 	Uint8	bpp;
 
 	tex_dex = sector.txt_ceiling;
-	doom->texture_height = doom->lib.tex_lib[tex_dex]->h;
-	doom->texture_width = doom->lib.tex_lib[tex_dex]->w;
 	bpp = doom->surface->format->BytesPerPixel;
 	height = (HEIGHT + doom->player_height) / 2;
 	while (y >= 0)

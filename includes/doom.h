@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 14:30:44 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:38:28 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,9 +179,7 @@ typedef struct		s_doom {
 	int				prev_sector;
 	double			ray_angle;
 	double			dir_angle;
-	double			ray_adjacent;
-	int				texture_width;
-	int				texture_height;
+	double			ray_adjacent;;
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
