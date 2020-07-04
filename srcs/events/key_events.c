@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:50:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/04 16:35:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	key_handler(t_doom *doom, t_event *event, double dt)
 	if (event->step_down == TRUE)
 		step_down(doom, dt);
 	if (event->bend == TRUE || \
-		doom->player_height < 100 + doom->lib.sector[doom->i_sector].height_floor)
+		doom->player_height < doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor)
 		bend_down(doom);
 }
 

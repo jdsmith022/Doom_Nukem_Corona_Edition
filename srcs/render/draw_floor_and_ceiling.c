@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   horizontal_texture.c                               :+:    :+:            */
+/*   draw_floor_and_ceiling.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/04 14:03:13 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 17:42:41 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	put_row(doom, tex_dex, index, pixel_dex);
 }
 
-void			draw_texture_ceiling(t_doom *doom, int x,
+void			draw_ceiling(t_doom *doom, int x,
 					t_sector sector, int y)
 {
 	double	dist;
@@ -64,14 +64,15 @@ void			draw_texture_ceiling(t_doom *doom, int x,
 	while (y >= 0)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_std_height / (height - y) * doom->dist_to_plane;
+		dist = (doom->player_std_height - sector.height_ceiling)\
+			/ (height - y) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
 		y--;
 	}
 }
 
-void			draw_texture_floor(t_doom *doom, int x,
+void			draw_floor(t_doom *doom, int x,
 					t_sector sector, int y)
 {
 	double	dist;
@@ -86,7 +87,8 @@ void			draw_texture_floor(t_doom *doom, int x,
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_std_height / (y - height) * (doom->dist_to_plane);
+		dist = (doom->player_std_height - sector.height_floor)\
+			/ (y - height) * (doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
 		y++;
