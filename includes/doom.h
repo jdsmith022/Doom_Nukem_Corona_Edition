@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 13:57:41 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:40:21 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,6 @@ typedef struct		s_event {
 	int				y_pitch;
 }					t_event;
 
-typedef struct		s_texture {
-	int 			width;
-	int 			height;
-	char			*address;
-	int				b_p_p;
-	int				size_line;
-	int				endian;
-	int				repeat;
-	int				max_repeat;
-}					t_texture;
-
 typedef struct		s_m_object{
 	int				n_textures;
 	int*			textures;
@@ -130,7 +119,7 @@ typedef struct		s_sidedef {
 	int				sector;
 	int				opp_sidedef;
 	int				opp_sector;
-	double			offset;
+	int				offset;
 	int				txt_1;
 	int				txt_2;
 	int				txt_3;
@@ -179,9 +168,7 @@ typedef struct		s_doom {
 	int				prev_sector;
 	double			ray_angle;
 	double			dir_angle;
-	double			ray_adjacent;
-	int				texture_width;
-	int				texture_height;
+	double			ray_adjacent;;
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
