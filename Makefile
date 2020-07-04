@@ -35,20 +35,23 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor slope_projections horizontal_texture put_texture
 READ_FILES = add_info_to_lib error read_file main2
-GAME_EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game mouse_events_game_editor
+GAME_EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
+					mouse_events_game_editor
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
 C_FILES_RENDER = $(RENDER_FILES:%=%.c)
 C_FILES_READ = $(READ_FILES:%=%.c)
+C_FILES_GAME_EDITOR = $(GAME_EDITOR_FILES:%=%.c)
 
 O_FILES_CORE = $(CORE_FILES:%=$(CORE).objects/%.o)
 O_FILES_EVENTS = $(EVENTS_FILES:%=$(EVENTS).objects/%.o)
 O_FILES_RENDER = $(RENDER_FILES:%=$(RENDER).objects/%.o)
 O_FILES_READ = $(READ_FILES:%=$(READ).objects/%.o)
+O_FILES_GAME_EDITOR = $(GAME_EDITOR_FILES:%=$(GAME_EDITOR).objects/%.o)
 
-O_FILES_DIRS = $(CORE).objects $(EVENTS).objects $(RENDER).objects $(READ).objects
-O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_RENDER) $(O_FILES_READ)
+O_FILES_DIRS = $(CORE).objects $(EVENTS).objects $(RENDER).objects $(READ).objects $(GAME_EDITOR).objects
+O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_GAME_EDITOR)
 
 HEADERS = includes/doom.h
 ADD_FILES = Makefile textures
