@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 14:40:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 16:11:59 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 # include <math.h>
 # include <fcntl.h>
 # include <time.h>
+# include <stdbool.h>
 
 # include "../libft/libft.h"
-#include "../bmp/srcs/bmp.h"
+# include "../bmp/srcs/bmp.h"
+# include "audio.h"
 
 # include "../sdl/includes/SDL.h"
 
@@ -29,7 +31,7 @@
 # define TRUE 1
 # define FALSE 0
 
-#define NUM_LEVELS 1
+# define NUM_LEVELS 1
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
