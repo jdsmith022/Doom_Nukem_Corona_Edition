@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 12:30:57 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/04 12:54:42 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.sector = curr_sidedef.sector;
 	sidedef.opp_sector = curr_sidedef.opp_sector;
 	sidedef.id = curr_sidedef.id;
+	sidedef.txt_1 = curr_sidedef.txt_1;
+	sidedef.txt_2 = curr_sidedef.txt_2;
+	sidedef.txt_3 = curr_sidedef.txt_3;
 	return (sidedef);
 }
 
