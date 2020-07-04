@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/01 17:45:38 by Malou          #+#    #+#                */
-/*   Updated: 2020/06/06 18:41:57 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
+/*   Updated: 2020/07/04 15:59:29 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 	project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
+	//check sprite ray
 }

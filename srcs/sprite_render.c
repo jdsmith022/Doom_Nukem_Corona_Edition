@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/04 12:54:48 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/04 16:19:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 		printf("height: %f\nwidth: %f\n", doom->sprite[index].height, doom->sprite[index].width);
 
 		//find position on screen
+			//sector portals (niet vergeten, niet opslaan met een muur)
+			//in sidedef render opslaan
 		// find_position(doom, index);
+			//set_wall_properties (plane_projections)
 		// draw_stripes(doom, index);
 		// turn visibility off
 		doom->sprite[index].visible = 0;

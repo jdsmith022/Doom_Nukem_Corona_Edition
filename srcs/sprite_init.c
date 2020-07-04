@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/06 12:44:57 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/06/07 18:21:52 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/04 15:35:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void			set_sprites(t_sprite *sprite)
 	sprite[0].action = 0;
 	sprite[0].size = 8;
 	sprite[0].visible = 0;
+	//size door de helft
 	sprite[0].line.start.x = sprite[0].pos.x - sprite[0].size;
 	sprite[0].line.start.y = sprite[0].pos.y - sprite[0].size;
 	sprite[0].line.end.x = sprite[0].pos.x + sprite[0].size;

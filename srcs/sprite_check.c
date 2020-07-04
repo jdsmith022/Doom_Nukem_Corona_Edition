@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/06 16:07:32 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/06/07 15:03:33 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/04 15:40:45 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void		sprite_check(t_doom *doom, t_ray ray)
 	t_point intersect;
 
 	i = 0;
+	//TOTAL_SPRITES in sector
 	while (i < TOTAL_SPRITE && doom->sprite[i].visible != 1)
 	{
 		ray_delta = line_delta(ray.line.start, ray.line.end);
