@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/04 13:17:09 by jesmith       ########   odam.nl          #
+#    Updated: 2020/06/20 13:27:10 by nde-wild      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ CORE = srcs/core/
 EVENTS = srcs/events/
 RENDER = srcs/render/
 READ = srcs/read_file/
+GAME_EDITOR = srcs/game_editor/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
@@ -34,9 +35,11 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor slope_projections horizontal_texture put_texture
 READ_FILES = add_info_to_lib error read_file main2
+GAME_EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game mouse_events_game_editor
 
 C_FILES = $(CORE_FILES:%=$(CORE)%.c) $(EVENTS_FILES:%=$(EVENTS)%.c) \
-		$(RENDER_FILES:%=$(RENDER)%.c) $(READ_FILES:%=$(READ)%.c)
+		$(RENDER_FILES:%=$(RENDER)%.c) $(READ_FILES:%=$(READ)%.c) \
+		$(GAME_EDITOR:%=$(GAME_EDITOR_FILES)%.c)
 O_FILES = $(C_FILES:%.c=%.o)
 
 HEADERS = includes/doom.h

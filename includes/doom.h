@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 14:40:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/06/23 14:21:04 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ typedef struct		s_sector {
 	int				height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
+	int				diff_x;
+	int				diff_y;
 }					t_sector;
 
 typedef struct		s_lib{
@@ -152,8 +154,27 @@ typedef struct		s_lib{
 	t_m_object		*mov_sprites;
 }					t_lib;
 
+typedef struct		s_gamedesign{
+		t_sector	*sector;
+		int			s_len;
+		int			s_size;
+		t_sidedef	*sidedef;
+		int			w_len;
+		int			w_size;
+		int			cur_sec;
+		int			cur_sd;
+		int			portal_sd;
+		int			portal_sec;
+		int 		pl_pos;
+		int			pl_x;
+		int			pl_y;
+		int			pl_sec;
+}
+					t_gamedesign;
+
 typedef struct		s_doom {
 	int				is_running;
+	int				game_editor;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Surface		**textures;
@@ -172,6 +193,7 @@ typedef struct		s_doom {
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
+	t_gamedesign	game_design;
 }					t_doom;
 
 /*core functions*/
@@ -245,4 +267,17 @@ double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
 
 void				load_textures(t_doom *doom);
+
+/*game editor*/
+
+void    open_game_editor(t_doom *doom);
+void	add_sidedef(t_doom *doom, int x, int y);
+void	del_sidedef(t_doom *doom);
+void	add_sector(t_doom *doom);
+void	del_sector(t_doom *doom);
+void    draw_bar(Uint32 **pixels, int x, int y, int len);
+void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
+void	add_portal(t_doom *doom, int dir);
+void    add_to_game(t_doom *doom);
+void	mouse_press_game_editor(t_doom *doom, int x, int y);
 #endif

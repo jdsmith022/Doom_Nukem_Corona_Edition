@@ -44,9 +44,13 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.sector = curr_sidedef.sector;
 	sidedef.opp_sector = curr_sidedef.opp_sector;
 	sidedef.id = curr_sidedef.id;
+<<<<<<< HEAD
 	sidedef.txt_1 = curr_sidedef.txt_1;
 	sidedef.txt_2 = curr_sidedef.txt_2;
 	sidedef.txt_3 = curr_sidedef.txt_3;
+=======
+
+>>>>>>> gameeditor
 	return (sidedef);
 }
 
@@ -90,7 +94,13 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 		}
 		x++;
 	}
+<<<<<<< HEAD
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 	project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
+=======
+		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
+			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+		project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
+>>>>>>> gameeditor
 }

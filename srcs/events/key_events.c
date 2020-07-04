@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:50:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/06/20 18:22:29 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	key_handler(t_doom *doom, t_event *event, double dt)
 {
+	(void)dt;
 	if (event->cam_move_f == TRUE)
 		cam_move_fb(doom, dt, MOVE_SPEED);
 	else if (event->cam_move_b == TRUE)
@@ -65,4 +66,10 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		event->y_pitch += 10;
 	if (key->keysym.sym == SDLK_DOWN)
 		event->y_pitch -= 10;
+	if (key->keysym.sym == SDLK_m)
+		doom->game_editor = TRUE;
+	if (key->keysym.sym == SDLK_n)
+		doom->game_editor = FALSE;
+	if (key->keysym.sym == SDLK_b)
+		add_to_game(doom);
 }
