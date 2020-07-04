@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 13:57:41 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:30:44 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct		s_event {
 }					t_event;
 
 typedef struct		s_texture {
-	int 			width;
-	int 			height;
+	int				width;
+	int				height;
 	char			*address;
 	int				b_p_p;
 	int				size_line;
@@ -130,7 +130,7 @@ typedef struct		s_sidedef {
 	int				sector;
 	int				opp_sidedef;
 	int				opp_sector;
-	double			offset;
+	int				offset;
 	int				txt_1;
 	int				txt_2;
 	int				txt_3;

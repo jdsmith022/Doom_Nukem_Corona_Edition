@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 13:53:55 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:14:36 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 
 	(void)sector;
 	new_height = (HEIGHT + doom->player_height) / 2;
-	plane->height_standard = doom->texture_height / sidedef.distance * doom->dist_to_plane;
+	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 	// height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
