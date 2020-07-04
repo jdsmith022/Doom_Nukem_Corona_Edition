@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/04 14:38:49 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:40:10 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void			draw_texture_floor(t_doom *doom, int x,
 	Uint8	bpp;
 
 	tex_dex = sector.txt_floor;
-	doom->texture_height = doom->lib.tex_lib[tex_dex]->h;
-	doom->texture_width = doom->lib.tex_lib[tex_dex]->w;
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)

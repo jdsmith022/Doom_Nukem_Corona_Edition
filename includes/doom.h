@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 14:38:28 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/04 14:40:21 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,6 @@ typedef struct		s_event {
 	double			velocity;
 	int				y_pitch;
 }					t_event;
-
-typedef struct		s_texture {
-	int				width;
-	int				height;
-	char			*address;
-	int				b_p_p;
-	int				size_line;
-	int				endian;
-	int				repeat;
-	int				max_repeat;
-}					t_texture;
 
 typedef struct		s_m_object{
 	int				n_textures;
