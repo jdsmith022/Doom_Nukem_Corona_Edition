@@ -6,12 +6,12 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/23 15:51:31 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/07/04 16:55:41 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../game_editor/game_editor.h"
+#include "../editor/game_editor.h"
 
 #include <stdio.h>
 
