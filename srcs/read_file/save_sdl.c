@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/05 16:08:51 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/05 17:09:46 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void			save_bpm_to_sdl(t_bmp *images,
 		doom_exit_lib_failure(images, MALLOC_ERR);
 	ft_memcpy(lib[index]->pixels, images[index].pixels,\
 		(images[index].info.img_size));
-	// print_meta_data(images[index].info);
+	print_meta_data(images[index].info);
 }
 
 SDL_Surface			**save_sky(void)
@@ -74,7 +74,6 @@ static SDL_Surface	**read_from_line(char *line,
 			index++;
 			continue ;
 		}
-		printf("here\n");
 		images[index] = read_bmp(fd);
 		save_bpm_to_sdl(images, lib, index);
 		free(line);

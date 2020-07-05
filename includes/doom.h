@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/05 16:10:10 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/05 17:46:00 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct		s_sidedef {
 	int				opp_sidedef;
 	int				opp_sector;
 	double			offset;
+	int				dir;
 	int				txt_1;
 	int				txt_2;
 	int				txt_3;

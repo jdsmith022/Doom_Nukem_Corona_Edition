@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 12:54:42 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/05 17:45:34 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,15 @@ static void			set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	start = curr_sidedef.line.start;
 	end = curr_sidedef.line.end;
 	if (start.x == end.x || (start.x > end.x && start.y < end.y))
+	{
 		sidedef->offset = rounded(intersect.y) % doom->wall_height_std;
+		sidedef->dir = 0;
+	}
 	else if (start.y == end.y || (start.x < end.x && start.y > end.y))
+	{
 		sidedef->offset = rounded(intersect.x) % doom->wall_height_std;
+		sidedef->dir = 1;
+	}
 }
 
 static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
