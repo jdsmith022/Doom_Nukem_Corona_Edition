@@ -37,6 +37,14 @@ void    mouse_press_sector(t_doom *doom, int x, int y)
 		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = -45;
 	else if (x > STRAIGHT_X && x < STRAIGHT_X + FRAME_WIDTH && y > STRAIGHT_Y && y < STRAIGHT_Y + FRAME_HEIGHT)
 		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = 0;
+	else if (x > HF_X && x < HF_X + HF_LEN && y > HF_Y && y < HF_Y + HF_HEIGHT)
+	{
+		doom->game_design.sector[doom->game_design.cur_sec].height_floor = (float)(x - HF_X) / HF_LEN * HF_DIFF + HF_MIN;
+	}
+	else if (x > HC_X && x < HC_X + HC_LEN && y > HC_Y && y < HC_Y + HC_HEIGHT)
+	{
+		doom->game_design.sector[doom->game_design.cur_sec].height_ceiling = (float)(x - HC_X) / HC_LEN * HC_DIFF + HC_MIN;
+	}
 	else if (x > AR_LEFT_X && x < AR_LEFT_X + FRAME_WIDTH && y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT)
 	{
 		if (doom->game_design.cur_sec > 0)
@@ -66,10 +74,6 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 	{
 		if (doom->game_design.cur_sd <  doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
 			doom->game_design.cur_sd++;	
-	}
-	else if (x > BAR_X && x < BAR_X + BAR_LEN && y > BAR_Y && y < BAR_Y + BAR_HEIGHT)
-	{
-		doom->game_design.sector[doom->game_design.cur_sec].height_floor = (float)(x - BAR_X) / BAR_LEN * BAR_DIFF + BAR_MIN;
 	}
 	else if (x > CROSS_X && x < CROSS_X + FRAME_WIDTH && y > CROSS_Y && y < CROSS_Y + FRAME_HEIGHT)
 	{

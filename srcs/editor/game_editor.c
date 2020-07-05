@@ -186,8 +186,7 @@ void    open_game_editor(t_doom *doom)
 		put_images(&pixels, AR_LEFT_SC_X, AR_LEFT_SC_Y, arrow_left);
 		put_images(&pixels, AR_RIGHT_SC_X, AR_RIGHT_SC_Y, arrow_right);
 	}
-	draw_bar(&pixels, BAR_X, BAR_Y, BAR_LEN);
-	draw_bar_point(&pixels, doom, BAR_X, BAR_Y, BAR_LEN);
+	bars(&pixels, doom);
 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)
 		draw_lines(doom, &pixels, x);
 

@@ -1,3 +1,7 @@
+#ifndef GAME_EDITOR_H
+# define GAME_EDITOR_H
+
+
 #include <stdint.h>
 
 #define FRAME_COUNT 8
@@ -43,13 +47,20 @@
 #define AR_UP_M_Y HEIGHT - FRAME_HEIGHT
 #define AR_DOWN_M_X WIDTH / 2
 #define AR_DOWN_M_Y 0
-#define BAR_MAX 30
-#define BAR_MIN -30
-#define BAR_DIFF 60
-#define BAR_X WIDTH / 5 * 4
-#define BAR_Y HEIGHT / 7
-#define BAR_HEIGHT 5
-#define BAR_LEN (float)(WIDTH / 5)
+#define HF_MAX 30
+#define HF_MIN -30
+#define HF_DIFF 60
+#define HF_X 0
+#define HF_Y HEIGHT / 7 * 2
+#define HF_HEIGHT 5
+#define HF_LEN (float)(WIDTH / 5)
+#define HC_MAX 30
+#define HC_MIN -30
+#define HC_DIFF 60
+#define HC_X 0
+#define HC_Y HEIGHT / 7 * 3
+#define HC_HEIGHT 5
+#define HC_LEN (float)(WIDTH / 5)
 
 enum game_editor_im{plus, minus, straight, d_45, d_m45, arrow_left, arrow_right, cross};
 
@@ -327,3 +338,17 @@ static const uint32_t editor_sprites[FRAME_COUNT][1024] = {
 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000, 0xff800000
 }
 };
+
+typedef struct s_bar
+{
+    int min;
+    int max;
+    int diff;
+    int x;
+    int y;
+    int height;
+    int len;
+    int cur_height;
+}               t_bar;
+
+#endif
