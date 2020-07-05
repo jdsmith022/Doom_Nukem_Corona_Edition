@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/05 13:29:54 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/05 15:38:14 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ void	draw_skybox(t_doom *doom, int x, t_sidedef sidedef, t_plane plane)
 	pixel.x = x;
 	tex_dex = doom->lib.sector[sidedef.sector].txt_ceiling;
 	printf("tex: %d\n", tex_dex);
-	}
 }

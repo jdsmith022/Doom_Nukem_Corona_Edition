@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/05 11:46:50 by jesmith       ########   odam.nl          #
+#    Updated: 2020/07/05 15:43:42 by jesmith       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture draw_skybox
-READ_FILES = add_info_to_lib error read_file main2 
+READ_FILES = add_info_to_lib error read_file main2 save_sdl
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
