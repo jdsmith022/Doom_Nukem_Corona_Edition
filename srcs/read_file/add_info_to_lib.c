@@ -26,6 +26,8 @@ void        add_inf_to_sect(t_sector *sector, char *line, int i)
         sector->n_sidedefs = safe;
     if (i == 8)
         sector->id = safe;
+    if (i == 9)
+        sector->id = safe;
 }
 
 t_sector   sector_inf(int fd)
@@ -35,7 +37,7 @@ t_sector   sector_inf(int fd)
     t_sector sector;
 
     i = 0;
-    while (i < 9)
+    while (i < 10)
     {
         get_line(&line, fd, "sector informations does not exist", 1);
         add_inf_to_sect(&sector, line, i);

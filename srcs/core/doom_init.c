@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 17:40:37 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/05 11:31:18 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ void 	doom_init(t_doom *doom)
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
 	doom->player_height = 32;
+	doom->lib.sector->outside = TRUE; //add to input
 	doom->player_std_height = 32;
 	doom->texture_width = 64;
 	doom->texture_height = 64;

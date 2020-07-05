@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 17:41:45 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/05 13:29:53 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ typedef struct		s_sidedef {
 
 typedef struct		s_sector {
 	int				id;
+	int				outside;
 	int				n_sidedefs;
 	int				i_sidedefs;
 	int				n_objects;
@@ -156,6 +157,7 @@ typedef struct		s_sector {
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
 	SDL_Surface		**obj_lib;
+	SDL_Surface		**sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;
@@ -242,6 +244,8 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
+void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
+						t_plane plane);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);

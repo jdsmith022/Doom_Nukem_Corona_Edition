@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/01 15:43:35 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/03 19:43:49 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/05 13:29:52 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ static SDL_Surface	**read_from_line(t_bmp *images, char *line,
 						int map_fd, int len)
 {
 	SDL_Surface **lib;
-	int         fd;
-	int         index;
+	int			fd;
+	int			index;
 
 	index = 0;
 	lib = (SDL_Surface**)ft_memalloc(sizeof(SDL_Surface*) * len);
@@ -95,11 +95,20 @@ static SDL_Surface	**read_from_line(t_bmp *images, char *line,
 	return (lib);
 }
 
-SDL_Surface         **save_img(int map_fd)
+SDL_Surface			**save_sky(void)
 {
-	t_bmp       *images;
-	char        *line;
-	int         len;
+	char	*line;
+	int		sky_fd;
+
+	sky_fd
+	get_line()
+}
+
+SDL_Surface			**save_img(int map_fd)
+{
+	t_bmp		*images;
+	char		*line;
+	int			len;
 
 	get_line(&line, map_fd,\
 		"the amount of textures is not specified or can not be read", 1);

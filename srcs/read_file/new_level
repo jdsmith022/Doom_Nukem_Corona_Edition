@@ -1,13 +1,13 @@
 #albert heijn
 
 #texture library
-2
+3
 textures/brown_wall.bmp
 textures/dark_stone.bmp
+textures/cloud_skybox.bmp
 
 #object library
 0
-
 
 
 #number of sectors
@@ -24,10 +24,11 @@ textures/dark_stone.bmp
 0
 0
 0
-1
+3
 0
 4
 0
+1
 
 #sidedefs0
 -1
@@ -90,6 +91,7 @@ textures/dark_stone.bmp
 0
 4
 1
+0
 
 #sidedefs
 0
@@ -152,6 +154,7 @@ textures/dark_stone.bmp
 0
 4
 2
+0
 
 #sidedefs
 -1
