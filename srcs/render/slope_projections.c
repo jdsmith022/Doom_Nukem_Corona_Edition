@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/27 15:51:18 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/05 14:36:51 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	t_point		opp_point;
 	double		distance;
 
+	printf("sliidding in\n");
 	sector = doom->lib.sector[sidedef.sector];
 	opp_point = get_biggest_distance(doom, sector, sidedef);
 	if (sidedef.id == sector.slope_id)

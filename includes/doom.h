@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 19:46:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/05 14:31:32 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define PLAYER_HEIGHT 32
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
-# define GRAVITY -0.5
+# define GRAVITY -1.5
 # define VELOCITY 12
 
 typedef struct		s_point {

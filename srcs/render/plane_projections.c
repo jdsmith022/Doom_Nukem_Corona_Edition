@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 19:46:24 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/05 14:40:19 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	int			div_height_std;
 	int			new_height;
 
-	(void)sector;
 	new_height = (HEIGHT + doom->player_height) / 2;
 	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
@@ -63,8 +62,11 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	sidedef_top = (new_height - div_height_std) - doom->own_event.y_pitch;
 	wall_offset(plane, sidedef_top);
 	sidedef_bottom = (new_height + div_height_std) - doom->own_event.y_pitch - height_floor;
-	plane->sidedef_bottom = \
-		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
+	if (sector.slope_id != -1)
+		plane->sidedef_bottom = \
+			((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
+	else
+		plane->sidedef_bottom = set_properties_slope(doom, sidedef, plane);
 	if (sidedef.opp_sector != -1)
 		set_properties_plane_portal(doom, sidedef,\
 			sidedef.opp_sector, plane);
