@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/05 14:31:32 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/05 16:55:20 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	t_point			intersect;
 }					t_sidedef;
 
 typedef struct		s_sector {

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/05 14:40:19 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/05 16:59:02 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,14 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	sidedef_top = (new_height - div_height_std) - doom->own_event.y_pitch;
 	wall_offset(plane, sidedef_top);
 	sidedef_bottom = (new_height + div_height_std) - doom->own_event.y_pitch - height_floor;
-	if (sector.slope_id != -1)
+	if (sector.slope_id == -1)
 		plane->sidedef_bottom = \
 			((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 	else
+	{
 		plane->sidedef_bottom = set_properties_slope(doom, sidedef, plane);
+		printf("%d\n", plane->sidedef_bottom);
+	}
 	if (sidedef.opp_sector != -1)
 		set_properties_plane_portal(doom, sidedef,\
 			sidedef.opp_sector, plane);
@@ -77,7 +80,6 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 {
 	t_sector	sector;
 
-	ft_bzero(plane, sizeof(plane));
 	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
@@ -90,8 +92,8 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef,
 	t_sector	sector;
 
 	sector = doom->lib.sector[sidedef.sector];
-	set_properties_plane(doom, sidedef, &plane, x);
 	plane.intersect = intersect;
+	set_properties_plane(doom, sidedef, &plane, x);
 	draw_ceiling(doom, x, sector, plane.sidedef_top);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);

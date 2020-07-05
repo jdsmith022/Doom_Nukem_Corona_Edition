@@ -6,11 +6,20 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/05 14:44:10 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/05 14:49:11 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+void		put_pixel(t_doom *doom, int x, int y, int color)
+{
+	Uint32 *pixels;
+
+	pixels = doom->surface->pixels;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+		pixels[(y * WIDTH) + x] = (Uint32)color;
+}
 
 static void		put_row(t_doom *doom, Uint32 tex_dex,
 					Uint32 index, Uint64 pixel_dex)
@@ -86,7 +95,7 @@ void			draw_floor(t_doom *doom, int x,
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
-		put_row(doom, x, y, 0x328fa8);
+		put_pixel(doom, x, y, 0x328fa8);
 		// index = (y * doom->surface->pitch) + (x * bpp);
 		// dist = (doom->player_std_height - sector.height_floor)\
 		// 	/ (y - height) * (doom->dist_to_plane);
