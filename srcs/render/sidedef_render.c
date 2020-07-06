@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/06 17:42:52 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 21:05:09 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
+	set_texture_properties(doom, sector);
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
