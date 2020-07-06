@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/06 18:47:51 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 18:49:11 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void		draw_side_textures(t_doom *doom, t_plane plane,
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
-		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top) * 8;
+		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top) * 16;
 	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = ((int)wall_y * doom->lib.sky_lib[tex_dex]->pitch) +\
-		((int)sidedef.offset * bpp) * 8;
+		((int)sidedef.offset * bpp) * 16;
 	put_sky(doom, tex_dex, index, pixel_dex);
 }
 
