@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/06 16:05:37 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 15:47:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,13 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef,
 	// if (sector.outside == TRUE)
 	// 	draw_skybox(doom, x, sidedef, plane);
 	// else
-	draw_ceiling(doom, x, sector, plane.sidedef_top);
-	if (sidedef.opp_sector == -1)
-		draw_onesided_sidedef(doom, plane, sidedef, x);
-	else
-		draw_portal_sidedef(doom, plane, sidedef, x);
-	draw_floor(doom, x, sector, plane.sidedef_bottom);
+	// {
+		draw_ceiling(doom, x, sector, plane.sidedef_top);
+		if (sidedef.opp_sector == -1)
+			draw_onesided_sidedef(doom, plane, sidedef, x);
+		else
+			draw_portal_sidedef(doom, plane, sidedef, x);
+		printf("bro\n");
+		draw_floor(doom, x, sector, plane.sidedef_bottom);
+	// }
 }

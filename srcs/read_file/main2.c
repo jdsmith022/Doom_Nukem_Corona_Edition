@@ -22,7 +22,7 @@ void     main2(t_doom *doom)
     fd = open_file("srcs/read_file/new_level");
     doom->lib.tex_lib = save_img(fd);
     doom->lib.obj_lib = save_img(fd);
-    doom->lib.sky_lib = save_sky();
+    // doom->lib.sky_lib = save_sky();
     doom->lib.sector = save_sectors(fd, &len);
     doom->lib.sidedef = save_walls(fd);
     doom->lib.sprites = save_sprites(fd);

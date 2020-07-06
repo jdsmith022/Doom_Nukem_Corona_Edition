@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/01 15:43:35 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/05 13:29:52 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/06 16:00:57 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,14 @@ static SDL_Surface	**read_from_line(t_bmp *images, char *line,
 	return (lib);
 }
 
-SDL_Surface			**save_sky(void)
-{
-	char	*line;
-	int		sky_fd;
+// SDL_Surface			**save_sky(void)
+// {
+// 	char	*line;
+// 	int		sky_fd;
 
-	sky_fd
-	get_line()
-}
+// 	sky_fd
+// 	get_line()
+// }
 
 SDL_Surface			**save_img(int map_fd)
 {

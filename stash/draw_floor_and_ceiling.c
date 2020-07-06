@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/06 16:10:01 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 16:08:10 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ static void		put_row(t_doom *doom, Uint32 tex_dex,
 	char *texture;
 
 	pixels = doom->surface->pixels;
+	printf("texdex: %d\n", tex_dex);
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
 	pixels[index] = texture[pixel_dex];
 	index++;
 	pixel_dex++;
+	printf("shit\n");
 	pixels[index] = texture[pixel_dex];
 	index++;
 	pixel_dex++;
