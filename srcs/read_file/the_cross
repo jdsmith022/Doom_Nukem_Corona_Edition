@@ -1,8 +1,7 @@
 #the cross
 
 #texture library
-2
-textures/brown_wall.bmp
+1
 textures/dark_stone.bmp
 
 
@@ -25,7 +24,7 @@ textures/dark_stone.bmp
 0
 0
 0
-1
+0
 0
 4
 0
@@ -87,7 +86,7 @@ textures/dark_stone.bmp
 0
 0
 0
-1
+0
 0
 4
 1
@@ -149,7 +148,7 @@ textures/dark_stone.bmp
 0
 0
 0
-1
+0
 0
 4
 2
@@ -211,7 +210,7 @@ textures/dark_stone.bmp
 0
 0
 0
-1
+0
 0
 4
 3
@@ -273,13 +272,13 @@ textures/dark_stone.bmp
 0
 0
 0
-1
+0
 0
 4
 4
 
 #sidedefs
-3
+2
 300
 600
 600
