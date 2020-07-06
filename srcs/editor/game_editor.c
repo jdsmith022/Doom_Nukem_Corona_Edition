@@ -97,6 +97,28 @@ void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 	}
 }
 
+void    put_textures(Uint32 **pixels, int x, int y, SDL_Surface *lib)
+{
+	Uint32 *tex;
+    int save_x;
+    int sx;
+    save_x = x;
+    sx = 0;
+	tex = lib->pixels;
+    while (sx < lib->h * lib->w)
+    {
+		// put_texture(doom, doom->game_design.sector[doom->game_design.cur_sec].txt_floor, (y * WIDTH + x) * 4, sx * 4);
+        pixels[0][((y * WIDTH) + x)] = tex[sx];
+        sx++;
+        x++;
+        if (sx % lib->w == 0)
+        {
+            x = save_x;
+            y++;
+        }
+    }
+}
+
 void	put_images(Uint32 **pixels, int x, int y, int img)
 {
 	int save_x;
@@ -142,8 +164,6 @@ void    open_game_editor(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
 		doom->game_design.portal_sec = -1;
 		doom->game_design.portal_sd = -1;
-
-
 	}
 	pixels = doom->surface->pixels;
 	for (int y = 0; y < HEIGHT; y++)
@@ -181,6 +201,12 @@ void    open_game_editor(t_doom *doom)
 	put_images(&pixels, CROSS_P_X, CROSS_P_Y, cross);
 	put_images(&pixels, PORTAL_X, PORTAL_Y, minus);
 	put_images(&pixels, WALL_X, WALL_Y, plus);
+	put_textures(&pixels, TEX_FL_X, TEX_FL_Y, doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_floor]);
+	put_images(&pixels, AR_LEFT_TF_X, AR_LEFT_TF_Y, arrow_left);
+	put_images(&pixels, AR_RIGHT_TF_X, AR_RIGHT_TF_Y, arrow_right);
+	put_textures(&pixels, TEX_CE_X, TEX_CE_Y, doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling]);
+	put_images(&pixels, AR_LEFT_TC_X, AR_LEFT_TC_Y, arrow_left);
+	put_images(&pixels, AR_RIGHT_TC_X, AR_RIGHT_TC_Y, arrow_right);
 	if (doom->game_design.portal_sec != -1)
 	{
 		put_images(&pixels, AR_LEFT_SC_X, AR_LEFT_SC_Y, arrow_left);

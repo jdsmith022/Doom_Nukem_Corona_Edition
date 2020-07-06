@@ -36,6 +36,7 @@ void		add_portal(t_doom *doom, int dir)
 	doom->game_design.sidedef[doom->game_design.portal_sd].opp_sector = doom->game_design.cur_sec;
 	doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef = doom->game_design.portal_sd;
 	doom->game_design.sidedef[doom->game_design.cur_sd].opp_sector = doom->game_design.portal_sec;
+	doom->game_design.sidedef[doom->game_design.w_len].txt_2 = -1;
 	diff_x = doom->game_design.sector[doom->game_design.cur_sec].diff_x;
 	diff_y = doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 	doom->game_design.sector[doom->game_design.cur_sec].diff_x = doom->game_design.sector[doom->game_design.portal_sec].diff_x;

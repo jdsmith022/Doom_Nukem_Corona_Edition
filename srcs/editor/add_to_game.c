@@ -117,4 +117,6 @@ void    add_to_game(t_doom *doom)
 	    doom->pos.y = doom->game_design.pl_y;
 	    doom->i_sector = doom->game_design.pl_sec;
     }
+	for (int x = 0; x <= doom->game_design.s_len; x++)
+		printf("%i\n", doom->game_design.sector[x].txt_floor);
 }

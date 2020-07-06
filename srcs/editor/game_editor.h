@@ -47,6 +47,18 @@
 #define AR_UP_M_Y HEIGHT - FRAME_HEIGHT
 #define AR_DOWN_M_X WIDTH / 2
 #define AR_DOWN_M_Y 0
+#define AR_LEFT_TF_X 0
+#define AR_LEFT_TF_Y HEIGHT / 7 * 4
+#define TEX_FL_X  SIDEBAR_SECTOR / 3
+#define TEX_FL_Y HEIGHT / 7 * 4
+#define AR_RIGHT_TF_X SIDEBAR_SECTOR - FRAME_WIDTH
+#define AR_RIGHT_TF_Y HEIGHT / 7 * 4
+#define AR_LEFT_TC_X 0
+#define AR_LEFT_TC_Y HEIGHT / 7 * 5
+#define TEX_CE_X  SIDEBAR_SECTOR / 3
+#define TEX_CE_Y HEIGHT / 7 * 5
+#define AR_RIGHT_TC_X SIDEBAR_SECTOR - FRAME_WIDTH
+#define AR_RIGHT_TC_Y HEIGHT / 7 * 5
 #define HF_MAX 30
 #define HF_MIN -30
 #define HF_DIFF 60
