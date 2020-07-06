@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/04 19:46:53 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/06 18:53:24 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,9 @@ fclean: clean
 re: fclean all
 
 add: fclean
-	@git add $(LIBFT) $(C_FILES) $(HEADERS) $(ADD_FILES) $(SDL) $(BMP)
+	@git add $(LIBFT) $(HEADERS) $(ADD_FILES) $(SDL) $(BMP) \
+	$(C_FILES_CORE) $(C_FILES_EVENTS) $(C_FILES_RENDER) $(C_FILES_READ) \
+	$(C_FILES_EDITOR) $(C_FILES_AUDIO)
 	@git status
 
 push:
