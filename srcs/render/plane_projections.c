@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/05 16:59:02 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/06 14:39:02 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,17 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	new_height = (HEIGHT + doom->player_height) / 2;
 	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
+	//if (sidedef.id == 8)
+	//	printf("%d\n", sidedef.id);
+	//if (sector.slope_id != -1)
+	//	sector.height_floor = set_properties_slope(doom, sidedef, plane);
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
 	sidedef_top = (new_height - div_height_std) - doom->own_event.y_pitch;
 	wall_offset(plane, sidedef_top);
 	sidedef_bottom = (new_height + div_height_std) - doom->own_event.y_pitch - height_floor;
-	if (sector.slope_id == -1)
-		plane->sidedef_bottom = \
-			((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
-	else
-	{
-		plane->sidedef_bottom = set_properties_slope(doom, sidedef, plane);
-		printf("%d\n", plane->sidedef_bottom);
-	}
+	plane->sidedef_bottom = \
+		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 	if (sidedef.opp_sector != -1)
 		set_properties_plane_portal(doom, sidedef,\
 			sidedef.opp_sector, plane);

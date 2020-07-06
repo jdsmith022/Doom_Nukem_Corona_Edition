@@ -137,8 +137,8 @@ typedef struct		s_sector {
 	int				i_objects;
 	int				light_level;
 	int				slope_id;
-	int				slope_ceiling;
-	int				slope_floor;
+	double			slope_ceiling;
+	double			slope_floor;
 	int				height_ceiling;
 	int				height_floor;
 	int				txt_ceiling;

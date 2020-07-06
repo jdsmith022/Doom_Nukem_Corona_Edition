@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/05 16:58:16 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/06 15:06:42 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,21 @@ int			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	t_plane *plane)
 {
 	t_sector	sector;
-	//int			opp_side;
+	int			opp_side;
 	t_point		opp_point;
 	double		distance;
 
 	sector = doom->lib.sector[sidedef.sector];
-	opp_point = get_biggest_distance(doom, sector, doom->lib.sidedef[sector.slope_id]);
+	//opp_point = get_biggest_distance(doom, sector, doom->lib.sidedef[sector.slope_id]);
+	distance = 0;
 	if (sidedef.id == sector.slope_id)
 		return (doom->lib.sector[sidedef.sector].height_floor);
-	//opp_side = select_opp_sidedef(sector);
-	//if (sidedef.id == opp_side)
-	//	return (plane->sidedef_bottom);
+	opp_side = select_opp_sidedef(sector);
 	//else if (sidedef.id == sector.slope_id)
 	//	return (doom->lib.sector[sidedef.opp_sector].height_floor);
-	distance = points_distance(sidedef.intersect, opp_point);
+	opp_point = get_opp_point(sidedef, doom->lib.sidedef[opp_side]);
+	if (sidedef.id != opp_side)
+		distance = points_distance(sidedef.intersect, opp_point);
+	//printf("%f\n", tan(sector.slope_floor) * distance);
 	return ((int)(tan(sector.slope_floor) * distance));
 }
