@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 17:36:21 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/06 13:35:27 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	if (motion->yrel < 0)
 		dir_y = -1;
 	if (motion->yrel < 1)
-		doom->dir_angle += CAM_SPEED * dir_x * 0.05;
+		doom->dir_angle += CAM_SPEED * dir_x * dt;
 	//doom->own_event.y_pitch += CAM_SPEED * dir_y * dt;
 	if (doom->dir_angle < 0)
 		doom->dir_angle += 360 * radian;
