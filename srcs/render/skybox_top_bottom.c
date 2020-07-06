@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 14:45:25 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/06 14:48:20 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 17:51:49 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		    draw_sky(t_doom *doom, int x, t_sector sector, int y)
 	tex_dex = 5;
 	bpp = doom->surface->format->BytesPerPixel;
 	height = HEIGHT / 2;
-	while (y >= 0)
+	while (y > 0)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = doom->player_std_height / (height - y) * doom->dist_to_plane;

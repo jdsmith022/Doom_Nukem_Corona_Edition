@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/06 15:43:40 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 18:47:51 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,26 @@ static void		find_side(t_doom *doom, int x, t_sidedef sidedef,
 					t_plane plane)
 {
 	t_point	pixel;
-	t_point	start;
-	t_point end;
 	Uint32	tex_dex;
 	double	dir_angle;
 
 	pixel.x = x;
 	pixel.y = plane.sidedef_top;
-	printf("sidedef.dir= %d	pos: %f, %f intersect: %f, %f\n", sidedef.dir, doom->pos.x, doom->pos.y, plane.intersect.x, plane.intersect.y);
-	while (pixel.y <= plane.sidedef_bottom)
+	if (doom->dir_angle > 6.25)
+			doom->dir_angle *= PI / 180;
+	while (pixel.y < plane.sidedef_bottom)
 	{
 		dir_angle = doom->dir_angle;
-		if (plane.intersect.x > doom->pos.x && sidedef.dir == 0)
-			tex_dex = 0;
-		else if (plane.intersect.x < doom->pos.x && sidedef.dir == 0)
-			tex_dex = 2;
-		else if (plane.intersect.y > doom->pos.y && sidedef.dir == 1)
+		if (dir_angle > 6.25)
+			dir_angle *= PI / 180;
+		if ((dir_angle > PI / 2 && dir_angle < (3 * PI) / 2) && sidedef.dir == 0)
+			tex_dex = 5;
+		else if ((dir_angle > (3 * PI) / 2 || dir_angle < PI / 2) && sidedef.dir == 0)
 			tex_dex = 3;
+		else if (dir_angle > PI && dir_angle <= 2* PI && sidedef.dir == 1)
+			tex_dex = 2;
 		else
-			tex_dex = 4;
+				tex_dex = 4;
 		draw_side_textures(doom, plane, sidedef, pixel, tex_dex);
 		pixel.y++;
 	}

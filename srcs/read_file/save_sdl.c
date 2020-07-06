@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/05 17:09:46 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/06 18:25:10 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ SDL_Surface			**save_sky(void)
 
 	images = malloc_images_lib(6);
 	lib = malloc_sdl_lib(images, 6);
-	sky_fd = open_file("textures/sky_box/meadow_bk.bmp");
+	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
 	images[0] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 0);
 	sky_fd = open_file("textures/sky_box/meadow_dn.bmp");
@@ -48,7 +48,7 @@ SDL_Surface			**save_sky(void)
 	sky_fd = open_file("textures/sky_box/meadow_rt.bmp");
 	images[4] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 4);
-	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
+	sky_fd = open_file("textures/sky_box/meadow_bk.bmp");
 	images[5] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 5);
 	return (lib);

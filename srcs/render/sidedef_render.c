@@ -6,11 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2020/07/06 16:04:59 by jessicasmit   ########   odam.nl         */
-=======
-/*   Updated: 2020/07/05 17:45:34 by jesmith       ########   odam.nl         */
->>>>>>> 7c713f7f1155caa1db223035468954427aaed9bf
+/*   Updated: 2020/07/06 17:42:52 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
