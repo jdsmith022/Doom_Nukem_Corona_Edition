@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 14:39:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/06 17:24:13 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 
 	tex_dex = find_sidedef_texture(doom, sidedef, pixel, plane);
 	bpp = doom->surface->format->BytesPerPixel;
-	index = (pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
-	wall_y = (double)(doom->lib.tex_lib[tex_dex]->h / plane.height_standard) *\
-		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top);
+	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
+	wall_y = (double)(64 / plane.height_standard) *\
+		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
-	pixel_dex = ((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
-		(sidedef.offset * bpp);
+	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
+		(sidedef.offset * bpp));
 	put_texture(doom, tex_dex, index, pixel_dex);
 	//put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
@@ -78,7 +78,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	while (pixel.y <= plane.sidedef_bottom)
+	while (pixel.y < plane.sidedef_bottom)
 	{
 		if (pixel.y < plane.mid_texture_bottom)
 			put_protal_pixel(doom, pixel);
@@ -95,7 +95,7 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
-	while (pixel.y <= plane.sidedef_bottom)
+	while (pixel.y < plane.sidedef_bottom)
 	{
 		find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;

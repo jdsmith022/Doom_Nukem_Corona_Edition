@@ -1,8 +1,9 @@
 #albert heijn
 
 #texture library
-2
+3
 textures/brown_wall.bmp
+textures/dark_stone.bmp
 textures/dark_stone.bmp
 
 #object library
