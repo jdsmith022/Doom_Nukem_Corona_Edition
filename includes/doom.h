@@ -258,7 +258,7 @@ void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
-						Uint32 pixel_dex);
+						Uint64 pixel_dex);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point				line_delta(t_point start, t_point end);
