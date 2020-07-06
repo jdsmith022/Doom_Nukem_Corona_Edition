@@ -3,19 +3,24 @@
 /*                                                        ::::::::            */
 /*   read_file.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/07/01 15:43:35 by jessicasmit   #+#    #+#                 */
 /*   Updated: 2020/07/06 16:00:57 by jessicasmit   ########   odam.nl         */
+=======
+/*   Created: 2020/07/05 15:35:26 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/07/05 15:39:52 by jesmith       ########   odam.nl         */
+>>>>>>> 7c713f7f1155caa1db223035468954427aaed9bf
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-t_sector  		*save_sectors(int fd, int *len)
+t_sector			*save_sectors(int fd, int *len)
 {
-	t_sector    *sect;
-	char        *line;
+	t_sector	*sect;
+	char		*line;
 
 	get_line(&line, fd,\
 		"the amount of sectors is not specified or can not be read", 1);
@@ -25,11 +30,11 @@ t_sector  		*save_sectors(int fd, int *len)
 	return (sect);
 }
 
-t_sidedef  			*save_walls(int fd)
+t_sidedef			*save_walls(int fd)
 {
-	t_sidedef   *walls;
-	char        *line;
-	int         len;
+	t_sidedef	*walls;
+	char		*line;
+	int			len;
 
 	get_line(&line, fd,\
 		"the amount of walls is not specified or can not be read", 1);
@@ -39,11 +44,11 @@ t_sidedef  			*save_walls(int fd)
 	return (walls);
 }
 
-t_object  			*save_sprites(int fd)
+t_object			*save_sprites(int fd)
 {
-	t_object   *sprites;
-	char        *line;
-	int         len;
+	t_object	*sprites;
+	char		*line;
+	int			len;
 
 	get_line(&line, fd,\
 		"the amount of stationary sprites is not specified or can not be read",\

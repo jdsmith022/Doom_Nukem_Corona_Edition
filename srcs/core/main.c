@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:34:53 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 11:56:18 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/05 16:33:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void)
 	//init_struct();
 	//init_message_bus();
 	main2(&doom);
+	printf("sector: %d\n", doom.lib.sector[0].outside);
 	doom_init(&doom);
 	//load_default(); //loads default settings ie menu, player settings
 	//init_HUD/UI

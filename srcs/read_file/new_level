@@ -1,10 +1,13 @@
 #albert heijn
 
 #texture library
-3
+2
 textures/brown_wall.bmp
 textures/dark_stone.bmp
+<<<<<<< HEAD
 textures/dark_stone.bmp
+=======
+>>>>>>> 7c713f7f1155caa1db223035468954427aaed9bf
 
 #object library
 0
@@ -24,11 +27,15 @@ textures/dark_stone.bmp
 0
 0
 0
+<<<<<<< HEAD
 2
+=======
+1
+>>>>>>> 7c713f7f1155caa1db223035468954427aaed9bf
 0
 4
 0
-1
+0
 
 #sidedefs0
 -1

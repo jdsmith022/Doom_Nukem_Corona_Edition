@@ -1,21 +1,19 @@
 #include "../../includes/doom.h"
-#include <stdio.h>
 
-int     open_file(char *filename)
+int		open_file(char *filename)
 {
 	int		fd;
 
-    // printf("hello");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		error("file can't open", 0);
-    return (fd);
+	return (fd);
 }
 
-void     main2(t_doom *doom)
+void	main2(t_doom *doom)
 {
-    int      fd;
-    int     len;
+	int fd;
+	int len;
 
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
