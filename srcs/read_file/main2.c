@@ -19,7 +19,7 @@ void     main2(t_doom *doom)
 
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
-    fd = open_file("srcs/read_file/new_level");
+    fd = open_file("srcs/read_file/the_cross");
     doom->lib.tex_lib = save_img(fd);
     doom->lib.obj_lib = save_img(fd);
     doom->lib.sector = save_sectors(fd, &len);
