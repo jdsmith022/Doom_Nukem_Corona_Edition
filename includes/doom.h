@@ -261,7 +261,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
-void    			set_texture_properties(t_doom *doom, int sector);
+void    			set_texture_properties(t_doom *doom, int sector, int texture);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
@@ -284,8 +284,6 @@ t_point				line_intersection(t_point start1, t_point delta1,
 t_point				line_delta(t_point start, t_point end);
 double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
-
-void				load_textures(t_doom *doom);
 
 /*game editor*/
 

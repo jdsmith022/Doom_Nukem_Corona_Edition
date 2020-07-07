@@ -28,6 +28,7 @@ textures/dark_stone.bmp
 0
 4
 0
+0
 
 #sidedefs0
 -1
@@ -90,9 +91,10 @@ textures/dark_stone.bmp
 0
 4
 1
+0
 
 #sidedefs
--2
+-1
 0
 300
 300
@@ -214,6 +216,7 @@ textures/dark_stone.bmp
 0
 4
 3
+0
 
 #sidedefs
 -1
@@ -276,6 +279,7 @@ textures/dark_stone.bmp
 0
 4
 4
+0
 
 #sidedefs
 2
