@@ -28,7 +28,6 @@ void        add_inf_to_sect(t_sector *sector, char *line, int i)
 		sector->id = safe;
 	if (i == 9)
 		sector->outside = safe;
-	
 }
 
 t_sector   sector_inf(int fd)

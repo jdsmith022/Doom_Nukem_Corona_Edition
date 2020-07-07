@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 11:55:21 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 12:21:26 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 {
 	t_sidedef	sidedef;
 
+	set_texture_properties(doom, doom->lib.sector[curr_sidedef.sector], curr_sidedef.txt_1);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
 	sidedef.sector = curr_sidedef.sector;
@@ -53,6 +54,7 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.txt_1 = curr_sidedef.txt_1;
 	sidedef.txt_2 = curr_sidedef.txt_2;
 	sidedef.txt_3 = curr_sidedef.txt_3;
+	sidedef.intersect = intersect;
 	return (sidedef);
 }
 
@@ -98,5 +100,6 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-	project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
+	printf("inter: %f, %f\n", near_sidedef.intersect.x, near_sidedef.intersect.y);
+	project_on_plane(doom, near_sidedef, ray.plane_x);
 }

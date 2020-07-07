@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 11:31:27 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 12:11:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void		find_side(t_doom *doom, int x, t_sidedef sidedef,
 
 	pixel.x = x;
 	pixel.y = plane.sidedef_top;
-	while (pixel.y < (plane.sidedef_bottom))
+	while (pixel.y < plane.sidedef_bottom)
 	{
 		dir_angle = doom->dir_angle;
 		if (dir_angle > 6.25)
@@ -89,4 +89,5 @@ void	draw_skybox(t_doom *doom, int x, t_sidedef sidedef, t_plane plane)
 	draw_sky(doom, x, sector, (plane.sidedef_top));
 	draw_ground(doom, x, sector, (plane.sidedef_bottom));
 	find_side(doom, x, sidedef, plane);
+	printf("finished\n");
 }

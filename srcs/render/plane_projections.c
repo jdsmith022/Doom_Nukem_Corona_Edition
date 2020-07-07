@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 11:54:36 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 12:21:18 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,16 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 }
 
-void		project_on_plane(t_doom *doom, t_sidedef sidedef,
-				int x, t_point intersect)
+void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 {
 	t_plane		plane;
 	t_sector	sector;
 
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, x);
-	plane.intersect = intersect;
-	set_texture_properties(doom, sidedef.sector, sidedef.txt_1);
+	plane.intersect = sidedef.intersect;
 	if (sector.outside == TRUE)
-	{
 		draw_skybox(doom, x, sidedef, plane);
-	}
 	else
 	{
 		draw_ceiling(doom, x, sector, plane.sidedef_top);

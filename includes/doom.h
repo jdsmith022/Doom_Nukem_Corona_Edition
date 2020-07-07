@@ -131,6 +131,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	t_point			intersect;
 }					t_sidedef;
 
 typedef struct		s_sector {
@@ -259,9 +260,9 @@ void				bend_down(t_doom *doom);
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
-void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
-						t_point intersect);
-void    			set_texture_properties(t_doom *doom, int sector, int texture);
+void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+void    			set_texture_properties(t_doom *doom, t_sector sector,\
+						int texture);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
