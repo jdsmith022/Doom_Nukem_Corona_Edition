@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/06 17:24:13 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 14:08:40 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
 	Uint32 tex_dex;
 
 	if (sidedef.opp_sector == -1)
-		tex_dex = sidedef.txt_1;
+		tex_dex = sidedef.txt_2;
 	else if (pixel.y <= plane.mid_texture_top)
 		tex_dex = sidedef.txt_1;
 	// else if (pixel.y > plane.mid_texture_top &&\

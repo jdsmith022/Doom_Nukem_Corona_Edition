@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 20:40:47 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/07 12:16:13 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 14:11:30 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void    set_texture_properties(t_doom *doom, t_sector sector, int texture)
 {
     if (sector.outside == TRUE)
 	{
-		doom->texture_width = 128;
-		doom->texture_height = 128;
-		doom->wall_height_std = 128;
+		doom->texture_width = 130;
+		doom->texture_height = 130;
+		doom->wall_height_std = 130;
 	}
 	else
 	{
