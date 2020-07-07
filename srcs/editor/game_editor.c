@@ -154,6 +154,8 @@ void    open_game_editor(t_doom *doom)
 		doom->game_design.cur_sd = -1;
 		doom->game_design.pl_pos = 0;
 		doom->game_design.pl_sec = 0;
+		doom->game_design.w_len = 0;
+		doom->game_design.s_len = 0;
 		doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
 		doom->game_design.sector[doom->game_design.s_len].slope_ceiling = 0;
 		doom->game_design.sector[doom->game_design.s_len].height_ceiling = 0;
@@ -164,6 +166,7 @@ void    open_game_editor(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].i_sidedefs = 0;
 		doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
 		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
+		doom->game_design.sector[doom->game_design.s_len].outside = 0;
 		doom->game_design.portal_sec = -1;
 		doom->game_design.portal_sd = -1;
 	}

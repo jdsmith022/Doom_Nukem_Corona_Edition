@@ -236,6 +236,7 @@ int					get_line(char **line, int fd, char *error, int is_num);
 t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 int					open_file(char *filename);
+int					line_num(int i);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
