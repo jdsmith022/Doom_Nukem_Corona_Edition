@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 17:30:24 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 13:58:06 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	doom_gui(t_doom *doom)
 
 void	doom_sound(t_doom *doom)
 {
-	(void)doom;
+	// audio(doom->audio);
 }
 
 double	get_timeframe(long *last_frame_time)

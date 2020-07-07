@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 20:39:35 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 14:21:41 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "../bmp/srcs/bmp.h"
 
 # include "../sdl/includes/SDL.h"
+# include "audio.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -195,6 +196,7 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	t_gamedesign	game_design;
+	t_audio			audio;
 }					t_doom;
 
 /*core functions*/

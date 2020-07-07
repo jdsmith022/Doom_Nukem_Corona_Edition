@@ -1,5 +1,4 @@
 #include "../../includes/doom.h"
-#include "../../includes/audio.h"
 
 // DONE
 // Background music plays
@@ -28,6 +27,8 @@
 
 void	init_audio(t_audio *audio)
 {
+	if (!audio)
+		return ;
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, AUDIO_BUFF) == -1)
     	exit_error(Mix_GetError());
 	Mix_QuerySpec(&audio->sample_rate, &audio->format, &audio->channels);
@@ -37,8 +38,8 @@ void	init_audio(t_audio *audio)
 void	load_audio(t_audio *audio)
 {
 	uint8_t i;
-
 	i = 0;
+	printf("Loading audio...\n");
 	audio->sounds[0] = Mix_LoadWAV(ft_strjoin(AUDIO_PATH, S_FOOTSTEPS));
 	audio->sounds[1] = Mix_LoadWAV(ft_strjoin(AUDIO_PATH, S_UI_1));
 	while (i < NUM_OF_SOUNDS){
@@ -46,52 +47,46 @@ void	load_audio(t_audio *audio)
 			printf("Mix_LoadWAV: %s\n", Mix_GetError());
 		i++;
 	}
+	printf("Loading audio complete\n");
 	Mix_AllocateChannels(2);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	audio->music = Mix_LoadMUS(MU_1);
 }
 
-// int		audio(void)
-// {
-// 	t_sdl		sdl;
-// 	t_audio		audio;
-// 	SDL_Event	event;
+int		audio(t_audio *audio)
+{
+	return 0;
+}
 
-// 	init_sdl(&sdl);
-// 	init_audio(&audio);
-// 	load_audio(&audio);
-// 	load_image(&sdl);
-
-// 	sdl.quit = false;
-// 	const uint8_t *keys;
-// 	// bool key_changed = false;
-// 	keys = SDL_GetKeyboardState(NULL);
-// 	while (!sdl.quit)
-// 	{
-// 		// play_music(audio.music);
-// 		SDL_PollEvent(&event);
-// 		if (event.type == SDL_KEYDOWN){
-// 			keys = SDL_GetKeyboardState(NULL);
-// 			if (keys[SDL_SCANCODE_W]){
-// 				loop_sound(audio.sounds[0], 1);
-// 			} 
-// 			else if (keys[SDL_SCANCODE_SPACE]){
-// 				play_sound(audio.sounds[1], 0);
-// 			}
-// 		}
-// 		else if (event.type == SDL_KEYUP){
-// 			keys = SDL_GetKeyboardState(NULL);
-// 			if (!keys[SDL_SCANCODE_W]){
-// 				pause_sound(audio.sounds[0], 1);
-// 			}
-// 		}
-// 		draw_image(sdl);
-// 		if (event.type == SDL_QUIT)
-// 			sdl.quit = true;
-// 	}
-// 	Mix_CloseAudio();
-// 	SDL_DestroyRenderer(sdl.renderer);
-// 	SDL_DestroyWindow(sdl.window);
-// 	SDL_Quit();
-// 	return (0);
-// }
+	// sdl.quit = false;
+	// const uint8_t *keys;
+	// // bool key_changed = false;
+	// keys = SDL_GetKeyboardState(NULL);
+	// while (!sdl.quit)
+	// {
+	// 	// play_music(audio.music);
+	// 	SDL_PollEvent(&event);
+	// 	if (event.type == SDL_KEYDOWN){
+	// 		keys = SDL_GetKeyboardState(NULL);
+	// 		if (keys[SDL_SCANCODE_W]){
+	// 			loop_sound(audio.sounds[0], 1);
+	// 		} 
+	// 		else if (keys[SDL_SCANCODE_SPACE]){
+	// 			play_sound(audio.sounds[1], 0);
+	// 		}
+	// 	}
+	// 	else if (event.type == SDL_KEYUP){
+	// 		keys = SDL_GetKeyboardState(NULL);
+	// 		if (!keys[SDL_SCANCODE_W]){
+	// 			pause_sound(audio.sounds[0], 1);
+	// 		}
+	// 	}
+	// 	draw_image(sdl);
+	// 	if (event.type == SDL_QUIT)
+	// 		sdl.quit = true;
+	// }
+	// Mix_CloseAudio();
+	// SDL_DestroyRenderer(sdl.renderer);
+	// SDL_DestroyWindow(sdl.window);
+	// SDL_Quit();
+	// return (0);
