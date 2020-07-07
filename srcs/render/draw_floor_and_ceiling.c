@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 14:17:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 18:23:32 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void			draw_ceiling(t_doom *doom, int x,
 	tex_dex = sector.txt_ceiling;
 	bpp = doom->surface->format->BytesPerPixel;
 	height = (HEIGHT + doom->player_height) / 2;
-	while (y > 0)
+	while (y >= 0)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_ceiling)\
@@ -84,7 +84,7 @@ void			draw_floor(t_doom *doom, int x,
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
-	while (y < HEIGHT)
+	while (y <= HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
