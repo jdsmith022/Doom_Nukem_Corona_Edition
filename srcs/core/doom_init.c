@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/04 14:24:15 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/07 11:32:09 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void	doom_init_events(t_event *event)
 	event->y_pitch = 0;
 }
 
+
 void 	doom_init(t_doom *doom)
 {
 	if (sdl_init(doom) != 0)
@@ -150,8 +151,8 @@ void 	doom_init(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 50;
-	doom->pos.y = 100;
+	doom->pos.x = 64;
+	doom->pos.y = 64;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
 	doom->player_height = 32;

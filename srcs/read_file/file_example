@@ -23,6 +23,7 @@ texture of ceiling
 slope of ceiling
 lines in sector
 sector id
+outside
 
 portal/line
 vector start(x,y)

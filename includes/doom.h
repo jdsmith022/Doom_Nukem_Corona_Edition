@@ -10,7 +10,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/06 17:16:25 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/06 21:01:31 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,16 +125,17 @@ typedef struct		s_sidedef {
 	int				sector;
 	int				opp_sidedef;
 	int				opp_sector;
-	int				offset;
+	double			offset;
+	int				dir;
 	int				txt_1;
 	int				txt_2;
 	int				txt_3;
 	double			distance;
-	int				dir;
 }					t_sidedef;
 
 typedef struct		s_sector {
 	int				id;
+	int				outside;
 	int				n_sidedefs;
 	int				i_sidedefs;
 	int				n_objects;
@@ -222,6 +223,9 @@ void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 SDL_Surface			**save_img(int fd);
 SDL_Surface			**save_sky(void);
 void				error(char *error, int line_num);
+int					open_file(char *filename);
+t_bmp				*malloc_images_lib(int len);
+SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
 t_object			*save_sprites(int fd);
@@ -257,6 +261,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
+void    			set_texture_properties(t_doom *doom, int sector);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
@@ -267,8 +272,8 @@ void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 						t_plane plane);
-void			    draw_sky(t_doom *doom, int x, t_sector sector, int y);
 void			    draw_ground(t_doom *doom, int x, t_sector sector, int y);
+void			    draw_sky(t_doom *doom, int x, t_sector sector, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
