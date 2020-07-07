@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:16:49 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/05 16:33:52 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
+# include "../srcs/editor/game_editor.h"
+# include "audio.h"
 
 # include "../sdl/includes/SDL.h"
 
@@ -283,14 +285,15 @@ double				point_line_distance(t_point point, t_line line);
 
 /*game editor*/
 
-void    			open_game_editor(t_doom *doom);
-void				add_sidedef(t_doom *doom, int x, int y);
-void				del_sidedef(t_doom *doom);
-void				add_sector(t_doom *doom);
-void				del_sector(t_doom *doom);
-void    			draw_bar(Uint32 **pixels, int x, int y, int len);
-void    			draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
-void				add_portal(t_doom *doom, int dir);
-void    			add_to_game(t_doom *doom);
-void				mouse_press_game_editor(t_doom *doom, int x, int y);
+void    open_game_editor(t_doom *doom);
+void	add_sidedef(t_doom *doom, int x, int y);
+void	del_sidedef(t_doom *doom);
+void	add_sector(t_doom *doom);
+void	del_sector(t_doom *doom);
+void    draw_bar(Uint32 **pixels, t_bar bar);
+void    draw_bar_point(Uint32 **pixels, t_bar bar);
+void	add_portal(t_doom *doom, int dir);
+void    add_to_game(t_doom *doom);
+void	mouse_press_game_editor(t_doom *doom, int x, int y);
+void    bars(Uint32 **pixels, t_doom *doom);
 #endif

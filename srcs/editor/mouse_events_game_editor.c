@@ -37,6 +37,14 @@ void    mouse_press_sector(t_doom *doom, int x, int y)
 		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = -45;
 	else if (x > STRAIGHT_X && x < STRAIGHT_X + FRAME_WIDTH && y > STRAIGHT_Y && y < STRAIGHT_Y + FRAME_HEIGHT)
 		doom->game_design.sector[doom->game_design.cur_sec].slope_floor = 0;
+	else if (x > HF_X && x < HF_X + HF_LEN && y > HF_Y && y < HF_Y + HF_HEIGHT)
+	{
+		doom->game_design.sector[doom->game_design.cur_sec].height_floor = (float)(x - HF_X) / HF_LEN * HF_DIFF + HF_MIN;
+	}
+	else if (x > HC_X && x < HC_X + HC_LEN && y > HC_Y && y < HC_Y + HC_HEIGHT)
+	{
+		doom->game_design.sector[doom->game_design.cur_sec].height_ceiling = (float)(x - HC_X) / HC_LEN * HC_DIFF + HC_MIN;
+	}
 	else if (x > AR_LEFT_X && x < AR_LEFT_X + FRAME_WIDTH && y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT)
 	{
 		if (doom->game_design.cur_sec > 0)
@@ -58,6 +66,26 @@ void    mouse_press_sector(t_doom *doom, int x, int y)
 		if (doom->game_design.cur_sd > doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1)
 			doom->game_design.cur_sd--;
 	}
+	else if (x > AR_RIGHT_TF_X && x < AR_RIGHT_TF_X + FRAME_WIDTH && y > AR_RIGHT_TF_Y && y < AR_RIGHT_TF_Y + FRAME_HEIGHT)
+	{
+		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_floor + 1])
+		doom->game_design.sector[doom->game_design.cur_sec].txt_floor++;
+	}
+	else if (x > AR_LEFT_TF_X && x < AR_LEFT_TF_X + FRAME_WIDTH && y > AR_LEFT_TF_Y && y < AR_LEFT_TF_Y + FRAME_HEIGHT)
+	{
+		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_floor - 1])
+		doom->game_design.sector[doom->game_design.cur_sec].txt_floor--;
+	}
+	else if (x > AR_RIGHT_TC_X && x < AR_RIGHT_TC_X + FRAME_WIDTH && y > AR_RIGHT_TC_Y && y < AR_RIGHT_TC_Y + FRAME_HEIGHT)
+	{
+		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling + 1]->pixels)
+			doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling++;
+	}
+	else if (x > AR_LEFT_TC_X && x < AR_LEFT_TC_X + FRAME_WIDTH && y > AR_LEFT_TC_Y && y < AR_LEFT_TC_Y + FRAME_HEIGHT)
+	{
+		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling - 1]->pixels)
+			doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling--;
+	}
 }
 
 void    mouse_press_sidedef(t_doom *doom, int x, int y)
@@ -66,10 +94,6 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 	{
 		if (doom->game_design.cur_sd <  doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
 			doom->game_design.cur_sd++;	
-	}
-	else if (x > BAR_X && x < BAR_X + BAR_LEN && y > BAR_Y && y < BAR_Y + BAR_HEIGHT)
-	{
-		doom->game_design.sector[doom->game_design.cur_sec].height_floor = (float)(x - BAR_X) / BAR_LEN * BAR_DIFF + BAR_MIN;
 	}
 	else if (x > CROSS_X && x < CROSS_X + FRAME_WIDTH && y > CROSS_Y && y < CROSS_Y + FRAME_HEIGHT)
 	{
@@ -84,8 +108,39 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 		doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef = -1;
 	else if (doom->game_design.portal_sec != -1 && x > AR_LEFT_SC_X && x < AR_LEFT_SC_X + FRAME_WIDTH && y > AR_LEFT_SC_Y && y < AR_LEFT_SC_Y + FRAME_HEIGHT)
 		add_portal(doom, -1);
-	else if (doom->game_design.portal_sec != -1 &&x > AR_RIGHT_SC_X && x < AR_RIGHT_SC_X + FRAME_WIDTH && y > AR_RIGHT_SC_Y && y < AR_RIGHT_SC_Y + FRAME_HEIGHT)	
+	else if (doom->game_design.portal_sec != -1 && x > AR_RIGHT_SC_X && x < AR_RIGHT_SC_X + FRAME_WIDTH && y > AR_RIGHT_SC_Y && y < AR_RIGHT_SC_Y + FRAME_HEIGHT)	
 		add_portal(doom, 1);
+	else if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1 && x > AR_LEFT_TS1_X && x < AR_LEFT_TS1_X + FRAME_WIDTH && y > AR_LEFT_TS1_Y && y < AR_LEFT_TS1_Y + FRAME_HEIGHT)
+	{
+		//protect
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_1--;
+	}
+	else if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1 && x > AR_RIGHT_TS1_X && x < AR_RIGHT_TS1_X + FRAME_WIDTH && y > AR_RIGHT_TS1_Y && y < AR_RIGHT_TS1_Y + FRAME_HEIGHT)
+	{
+		//protect
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_1++;
+	}
+	else if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && y > AR_LEFT_TS2_Y && y < AR_LEFT_TS2_Y + FRAME_HEIGHT)
+	{
+		//protect
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_2--;
+	}
+	else if (x > AR_RIGHT_TS2_X && x < AR_RIGHT_TS2_X + FRAME_WIDTH && y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT)
+	{
+		//protect
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_2++;
+	}
+	else if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1 && x > AR_LEFT_TS3_X && x < AR_LEFT_TS3_X + FRAME_WIDTH && y > AR_LEFT_TS3_Y && y < AR_LEFT_TS3_Y + FRAME_HEIGHT)
+	{
+		//protect
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_3--;
+	}
+	else if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1 && x > AR_RIGHT_TS3_X && x < AR_RIGHT_TS3_X + FRAME_WIDTH && y > AR_RIGHT_TS3_Y && y < AR_RIGHT_TS3_Y + FRAME_HEIGHT)
+	{
+		//protect
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_3++;
+	}
+	
 }
 
 void	mouse_press_game_editor(t_doom *doom, int x, int y)

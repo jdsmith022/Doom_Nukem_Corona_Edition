@@ -6,18 +6,31 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:26:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/05 14:36:29 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-static int			rounded(double dbl)
+static Uint8		find_slope_line_offset(t_point start, t_point end)
 {
-	int rounded;
+	Uint8 max_x;
+	Uint8 max_y;
+	Uint8 diff;
 
-	rounded = (int)(dbl + 0.5);
-	return (rounded);
+	if (start.x > end.x)
+		max_x = start.x - end.x;
+	else
+		max_x = end.x - start.x;
+	if (start.y > end.y)
+		max_y = start.y - end.y;
+	else
+		max_y = end.y - start.y;
+	if (max_x < max_y)
+		diff = 1;
+	else
+		diff = 2;
+	return (diff);
 }
 
 static void			set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
@@ -25,17 +38,18 @@ static void			set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 {
 	t_point start;
 	t_point end;
+	Uint8	diff;
 
 	start = curr_sidedef.line.start;
 	end = curr_sidedef.line.end;
 	if (start.x == end.x || (start.x > end.x && start.y < end.y))
 	{
-		sidedef->offset = rounded(intersect.y) % doom->wall_height_std;
+		sidedef->offset = ft_rounder(intersect.y) % doom->wall_height_std;
 		sidedef->dir = 0;
 	}
 	else if (start.y == end.y || (start.x < end.x && start.y > end.y))
 	{
-		sidedef->offset = rounded(intersect.x) % doom->wall_height_std;
+		sidedef->offset = ft_rounder(intersect.x) % doom->wall_height_std;
 		sidedef->dir = 1;
 	}
 }

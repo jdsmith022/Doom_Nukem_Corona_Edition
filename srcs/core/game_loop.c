@@ -44,7 +44,7 @@ void	game_loop(t_doom *doom)
 	double			dt;
 
 	last_frame_time = 0;
-	dt = 0.05;
+	dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
 		dt = get_timeframe(&last_frame_time);

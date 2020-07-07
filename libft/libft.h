@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 12:48:31 by jesmith        #+#    #+#                */
-/*   Updated: 2020/02/17 19:21:40 by mminkjan      ########   odam.nl         */
+/*   Created: 2019/01/13 12:48:31 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/07/05 14:36:44 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int					ft_isdigit(int c);
 int					ft_isdigit_base(char c, int base);
 int					ft_iswhitespace(int c);
 void				ft_is_negative(int n);
+int					ft_rounder(double dbl);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
