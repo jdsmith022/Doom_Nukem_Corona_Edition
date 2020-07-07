@@ -1,8 +1,9 @@
 #the cross
 
 #texture library
-1
+2
 textures/dark_stone.bmp
+textures/brown_wall.bmp
 
 
 #object library
@@ -145,7 +146,7 @@ textures/dark_stone.bmp
 #sector[2]
 10
 10
-0
+1
 0
 0
 0

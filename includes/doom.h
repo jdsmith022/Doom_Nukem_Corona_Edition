@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:24:56 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/07 17:35:10 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct		s_plane
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
+	double			height_floor;
 	double			height_standard;
 	int				wall_offset;
 	t_point			intersect;
@@ -140,7 +141,8 @@ typedef struct		s_sector {
 	double			slope_ceiling;
 	double			slope_floor;
 	int				height_ceiling;
-	int				height_floor;
+	double			height_floor;
+	double			slope_height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
 	int				diff_x;
@@ -246,7 +248,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
-int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+double				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector sector, t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
