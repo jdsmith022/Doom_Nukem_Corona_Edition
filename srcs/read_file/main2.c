@@ -1,27 +1,26 @@
 #include "../../includes/doom.h"
-#include <stdio.h>
 
-int     open_file(char *filename)
+int		open_file(char *filename)
 {
 	int		fd;
 
-    // printf("hello");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		error("file can't open", 0);
-    return (fd);
+	return (fd);
 }
 
-void     main2(t_doom *doom)
+void	main2(t_doom *doom)
 {
-    int      fd;
-    int     len;
+	int fd;
+	int len;
 
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
-    fd = open_file("srcs/read_file/new_level");
+    fd = open_file("srcs/read_file/skybox_level");
     doom->lib.tex_lib = save_img(fd);
     doom->lib.obj_lib = save_img(fd);
+    doom->lib.sky_lib = save_sky();
     doom->lib.sector = save_sectors(fd, &len);
     doom->lib.sidedef = save_walls(fd);
     doom->lib.sprites = save_sprites(fd);

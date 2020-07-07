@@ -1,6 +1,10 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
 /*   doom.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
@@ -126,6 +130,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	int				dir;
 }					t_sidedef;
 
 typedef struct		s_sector {
@@ -149,6 +154,7 @@ typedef struct		s_sector {
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
 	SDL_Surface		**obj_lib;
+	SDL_Surface		**sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;
@@ -187,6 +193,8 @@ typedef struct		s_doom {
 	int				wall_height_std;
 	double			player_std_height;
 	double			player_height;
+	int				texture_width;
+	int				texture_height;
 	int				i_sector;
 	int				prev_sector;
 	double			ray_angle;
@@ -212,6 +220,7 @@ void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 
 /*read functions*/
 SDL_Surface			**save_img(int fd);
+SDL_Surface			**save_sky(void);
 void				error(char *error, int line_num);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
@@ -219,6 +228,9 @@ t_object			*save_sprites(int fd);
 void				main2(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
+t_bmp				*malloc_images_lib(int len);
+SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
+int					open_file(char *filename);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
@@ -253,6 +265,10 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
+void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
+						t_plane plane);
+void			    draw_sky(t_doom *doom, int x, t_sector sector, int y);
+void			    draw_ground(t_doom *doom, int x, t_sector sector, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
@@ -268,14 +284,14 @@ void				load_textures(t_doom *doom);
 
 /*game editor*/
 
-void    open_game_editor(t_doom *doom);
-void	add_sidedef(t_doom *doom, int x, int y);
-void	del_sidedef(t_doom *doom);
-void	add_sector(t_doom *doom);
-void	del_sector(t_doom *doom);
-void    draw_bar(Uint32 **pixels, int x, int y, int len);
-void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
-void	add_portal(t_doom *doom, int dir);
-void    add_to_game(t_doom *doom);
-void	mouse_press_game_editor(t_doom *doom, int x, int y);
+void    			open_game_editor(t_doom *doom);
+void				add_sidedef(t_doom *doom, int x, int y);
+void				del_sidedef(t_doom *doom);
+void				add_sector(t_doom *doom);
+void				del_sector(t_doom *doom);
+void    			draw_bar(Uint32 **pixels, int x, int y, int len);
+void    			draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
+void				add_portal(t_doom *doom, int dir);
+void    			add_to_game(t_doom *doom);
+void				mouse_press_game_editor(t_doom *doom, int x, int y);
 #endif
