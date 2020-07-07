@@ -91,14 +91,14 @@ void	box_in_sectors(t_doom *doom)
 		save_y = doom->game_design.sector[i].diff_y;
 		doom->game_design.sector[i].diff_x = 0;
 		doom->game_design.sector[i].diff_y = 0;
-		add_sidedef(doom, diff.start.x, diff.start.y);
-		add_sidedef(doom, diff.end.x, diff.start.y);
-		add_sidedef(doom, diff.start.x, diff.start.y);
-		add_sidedef(doom, diff.start.x, diff.end.y);
-		add_sidedef(doom, diff.end.x, diff.start.y);
-		add_sidedef(doom, diff.end.x, diff.end.y);
-		add_sidedef(doom, diff.end.x, diff.end.y);
-		add_sidedef(doom, diff.start.x, diff.end.y);
+		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+		add_sidedef(doom, diff.end.x - 1, diff.start.y + 1);
+		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+		add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
+		add_sidedef(doom, diff.end.x - 1, diff.start.y + 1);
+		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
+		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
+		add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
 		doom->game_design.sector[i].diff_x = save_x;
 		doom->game_design.sector[i].diff_y = save_y;
 		i++;
@@ -112,11 +112,9 @@ void    add_to_game(t_doom *doom)
 		coor_pos(doom);
 		box_in_sectors(doom);
         doom->lib.sector = doom->game_design.sector; // free og
-	    doom->lib.sidedef = doom->game_design.sidedef; //free og
+	    doom->lib.sidedef = doom->game_design.sidedef; // free og
 	    doom->pos.x = doom->game_design.pl_x;
 	    doom->pos.y = doom->game_design.pl_y;
 	    doom->i_sector = doom->game_design.pl_sec;
     }
-	for (int x = 0; x <= doom->game_design.s_len; x++)
-		printf("%i\n", doom->game_design.sector[x].txt_floor);
 }

@@ -220,17 +220,20 @@ void    open_game_editor(t_doom *doom)
 		put_images(&pixels, PORTAL_X, PORTAL_Y, minus);
 		put_images(&pixels, WALL_X, WALL_Y, plus);
 
-		put_textures(TEX_S1_X, TEX_S1_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
-		put_images(&pixels, AR_LEFT_TS1_X, AR_LEFT_TS1_Y, arrow_left);
-		put_images(&pixels, AR_RIGHT_TS1_X, AR_RIGHT_TS1_Y, arrow_right);
+		if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_2 != -1)
+			put_textures(TEX_S2_X, TEX_S2_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_2, doom);
+		put_images(&pixels, AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left);
+		put_images(&pixels, AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right);
 
 		if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1)
 		{
-			put_textures(TEX_S2_X, TEX_S2_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
-			put_images(&pixels, AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left);
-			put_images(&pixels, AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right);
+			if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_1 != -1)
+				put_textures(TEX_S1_X, TEX_S1_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
+			put_images(&pixels, AR_LEFT_TS1_X, AR_LEFT_TS1_Y, arrow_left);
+			put_images(&pixels, AR_RIGHT_TS1_X, AR_RIGHT_TS1_Y, arrow_right);
 
-			put_textures(TEX_S3_X, TEX_S3_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
+			if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_3 != -1)
+				put_textures(TEX_S3_X, TEX_S3_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_3, doom);
 			put_images(&pixels, AR_LEFT_TS3_X, AR_LEFT_TS3_Y, arrow_left);
 			put_images(&pixels, AR_RIGHT_TS3_X, AR_RIGHT_TS3_Y, arrow_right);
 		}
@@ -243,8 +246,4 @@ void    open_game_editor(t_doom *doom)
 	bars(&pixels, doom);
 	for(int x = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs; x < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs; x++)
 		draw_lines(doom, &pixels, x);
-	printf("%i\n", doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling);
-
-		// for(int x = 0; x < doom->game_design.w_len; x++)
-		// draw_lines(doom, &pixels, x);
 }
