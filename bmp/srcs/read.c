@@ -7,7 +7,7 @@ static void			swap_rows(t_bmp *bmp, uint8_t padding)
 	uint32_t	row_width;
 	uint32_t	i;
 
-	row_width = (bmp->info.width * 3) + padding;
+	row_width = (bmp->info.width * (bmp->info.bits_per_pixel / 8)) + padding;
 	temp = ft_memalloc(sizeof(void *) * row_width);
 	i = 0;
 	while (i < bmp->info.height / 2)
@@ -25,7 +25,7 @@ static void			read_pixels(t_bmp *bmp, int fd)
 {
 	uint8_t			padding;
 
-	padding = ((bmp->info.width * 3) % 4);
+	padding = ((bmp->info.width * bmp->info.bits_per_pixel / 8) % 4);
 	padding = padding ? 4 - padding : padding;
 	bmp->info.img_size = bmp->info.height * bmp->info.width;
 	bmp->info.img_size *= (bmp->info.bits_per_pixel / 8);
@@ -46,8 +46,8 @@ t_bmp				read_bmp(int fd)
 	if (header.signature != 0x4D42)
 		exit_with_error("Error: not a bmp file.\n");
 	read(fd, &(bmp.info), sizeof(t_bmp_info)); // Reads bmp info
-	if (bmp.info.bits_per_pixel != 24)
-		exit_with_error("Error: only supports 24bit bmp.\n");
+	if (bmp.info.bits_per_pixel != 24 && bmp.info.bits_per_pixel != 32)
+		exit_with_error("Error: only supports 24 and 32bit bmp.\n");
 	read_pixels(&bmp, fd); // Read pixels
 	return bmp;
 }
