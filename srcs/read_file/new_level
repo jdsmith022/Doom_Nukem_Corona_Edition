@@ -1,8 +1,9 @@
 #albert heijn
 
 #texture library
-2
+3
 textures/brown_wall.bmp
+textures/dark_stone.bmp
 textures/dark_stone.bmp
 
 #object library
@@ -82,7 +83,7 @@ textures/dark_stone.bmp
 
 #sector[1]
 10
-0
+20
 0
 0
 0
