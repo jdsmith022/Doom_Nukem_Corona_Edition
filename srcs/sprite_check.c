@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/06 16:07:32 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/07/04 15:40:45 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/07 15:20:02 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom.h"
 
-void		sprite_check(t_doom *doom, t_ray ray)
+void		sprite_check(t_doom *doom, t_ray ray, int x)
 {
 	//check line intersection with all not yet visible sprites
 	int		i;
@@ -35,6 +35,7 @@ void		sprite_check(t_doom *doom, t_ray ray)
 			doom->visible_sprites++;
 			doom->sprite[i].visible = 1;
 			doom->sprite[i].distance = point_distance(doom->pos, doom->sprite[i].pos, ray.angle);
+			doom->sprite[i].x = x;
 			printf("sprite %d is visible\ndistance to player: %f\n", i, doom->sprite[i].distance);
 		}
 		i++;

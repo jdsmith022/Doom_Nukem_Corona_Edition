@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/10 15:50:31 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/07 16:50:43 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct			s_sprite {
 	double				distance;
 	int					screen_left_x;
 	int					screen_right_x;
+	int					position;
+	int					x;
 }						t_sprite;
 
 typedef struct			s_ray {
@@ -192,8 +194,10 @@ void					load_textures (t_doom *doom);
 
 //sprites
 void					sprite_init(t_doom *doom);
-void					sprite_check(t_doom *doom, t_ray ray);
+void					sprite_check(t_doom *doom, t_ray ray, int x);
 void					sprite_render(t_doom *doom);
 int						*sort_sprite_array(t_sprite *sprite, int total);
+void					find_position(t_doom *doom, t_point *sprite_cord, int index);
+void					draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
 
 #endif
