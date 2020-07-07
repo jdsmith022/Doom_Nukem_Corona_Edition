@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 17:49:36 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/07 18:20:18 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,6 @@ void			draw_floor(t_doom *doom, int x,
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
-		//if (sector.id == 2)
-		//	put_pixel(doom, x, y, 0x328fa8);
-		//else
-		//	put_pixel(doom, x, y, 0xe8c307);
 		index = (y * doom->surface->pitch) + (x * bpp);
 		if (sector.slope_id != -1)
 		dist = (doom->player_std_height - sector.height_floor)\
