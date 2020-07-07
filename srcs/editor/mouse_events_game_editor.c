@@ -78,13 +78,13 @@ void    mouse_press_sector(t_doom *doom, int x, int y)
 	}
 	else if (x > AR_RIGHT_TC_X && x < AR_RIGHT_TC_X + FRAME_WIDTH && y > AR_RIGHT_TC_Y && y < AR_RIGHT_TC_Y + FRAME_HEIGHT)
 	{
-		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling + 1])
+		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling + 1]->pixels)
 			doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling++;
 	}
-	else if (x > AR_LEFT_TF_X && x < AR_LEFT_TF_X + FRAME_WIDTH && y > AR_LEFT_TF_Y && y < AR_LEFT_TF_Y + FRAME_HEIGHT)
+	else if (x > AR_LEFT_TC_X && x < AR_LEFT_TC_X + FRAME_WIDTH && y > AR_LEFT_TC_Y && y < AR_LEFT_TC_Y + FRAME_HEIGHT)
 	{
-		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling - 1])
-		doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling--;
+		if (doom->lib.tex_lib[doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling - 1]->pixels)
+			doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling--;
 	}
 }
 

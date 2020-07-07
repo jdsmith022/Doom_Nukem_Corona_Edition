@@ -78,7 +78,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	while (pixel.y <= plane.sidedef_bottom)
+	while (pixel.y < plane.sidedef_bottom)
 	{
 		if (pixel.y < plane.mid_texture_bottom)
 			put_protal_pixel(doom, pixel);
@@ -95,7 +95,7 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
-	while (pixel.y <= plane.sidedef_bottom)
+	while (pixel.y < plane.sidedef_bottom)
 	{
 		find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
