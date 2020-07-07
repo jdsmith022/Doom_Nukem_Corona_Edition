@@ -152,8 +152,11 @@ typedef struct		s_sector {
 
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
+	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
+	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
+	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;
@@ -218,7 +221,7 @@ void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 
 /*read functions*/
-SDL_Surface			**save_img(int fd);
+SDL_Surface			**save_img(int fd, int *len);
 SDL_Surface			**save_sky(void);
 void				error(char *error, int line_num);
 int					open_file(char *filename);
@@ -233,6 +236,7 @@ int					get_line(char **line, int fd, char *error, int is_num);
 t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 int					open_file(char *filename);
+int					line_num(int i);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\

@@ -109,12 +109,15 @@ void    add_to_game(t_doom *doom)
 {
 	if (doom->game_design.sector != NULL && doom->game_design.w_len > 2)
     {
-		coor_pos(doom);
-		box_in_sectors(doom);
-        doom->lib.sector = doom->game_design.sector; // free og
-	    doom->lib.sidedef = doom->game_design.sidedef; // free og
-	    doom->pos.x = doom->game_design.pl_x;
-	    doom->pos.y = doom->game_design.pl_y;
-	    doom->i_sector = doom->game_design.pl_sec;
+		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
+		{
+			coor_pos(doom);
+			box_in_sectors(doom);
+        	doom->lib.sector = doom->game_design.sector; // free og
+	    	doom->lib.sidedef = doom->game_design.sidedef; // free og
+	    	doom->pos.x = doom->game_design.pl_x;
+	    	doom->pos.y = doom->game_design.pl_y;
+	   		doom->i_sector = doom->game_design.pl_sec;
+		}
     }
 }

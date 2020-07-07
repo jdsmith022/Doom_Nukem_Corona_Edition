@@ -82,13 +82,12 @@ static SDL_Surface	**read_from_line(char *line,
 	return (lib);
 }
 
-SDL_Surface			**save_img(int map_fd)
+SDL_Surface			**save_img(int map_fd, int *len)
 {
 	char		*line;
-	int			len;
 
 	get_line(&line, map_fd,\
 		"the amount of textures is not specified or can not be read", 1);
-	len = ft_atoi(line);
-	return (read_from_line(line, map_fd, len));
+	*len = ft_atoi(line);
+	return (read_from_line(line, map_fd, *len));
 }
