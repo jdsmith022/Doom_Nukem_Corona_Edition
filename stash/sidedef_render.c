@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:26:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 10:47:47 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,9 @@ static void			set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	start = curr_sidedef.line.start;
 	end = curr_sidedef.line.end;
 	if (start.x == end.x || (start.x > end.x && start.y < end.y))
-	{
 		sidedef->offset = rounded(intersect.y) % doom->wall_height_std;
-		sidedef->dir = 0;
-	}
 	else if (start.y == end.y || (start.x < end.x && start.y > end.y))
-	{
 		sidedef->offset = rounded(intersect.x) % doom->wall_height_std;
-		sidedef->dir = 1;
-	}
 }
 
 static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
@@ -45,8 +39,6 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 {
 	t_sidedef	sidedef;
 
-	set_texture_properties(doom, doom->lib.sector[curr_sidedef.sector],\
-		curr_sidedef.txt_1);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
 	sidedef.sector = curr_sidedef.sector;
@@ -55,7 +47,6 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.txt_1 = curr_sidedef.txt_1;
 	sidedef.txt_2 = curr_sidedef.txt_2;
 	sidedef.txt_3 = curr_sidedef.txt_3;
-	sidedef.intersect = intersect;
 	return (sidedef);
 }
 
@@ -99,10 +90,7 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 		}
 		x++;
 	}
-	if (min_distance != INFINITY)
-	{
-		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
-			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		project_on_plane(doom, near_sidedef, ray.plane_x);
-	}
+	if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
+		sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+	project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
 }

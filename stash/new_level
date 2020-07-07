@@ -1,14 +1,12 @@
 #albert heijn
 
 #texture library
-3
+2
 textures/brown_wall.bmp
-textures/dark_stone.bmp
 textures/dark_stone.bmp
 
 #object library
 0
-
 
 
 #number of sectors
@@ -30,7 +28,6 @@ textures/dark_stone.bmp
 4
 0
 0
-
 
 #sidedefs0
 -1

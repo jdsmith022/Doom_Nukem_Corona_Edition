@@ -1,0 +1,81 @@
+#albert heijn
+
+#texture library
+0
+
+#object library
+0
+
+#number of sectors
+1
+#number of walls
+4
+#number of objects
+0
+
+
+#sector[0]
+10
+0
+1
+0
+0
+5
+0
+4
+0
+1
+
+#sidedefs0
+-1
+0
+0
+125
+0
+0
+2
+2
+2
+0
+
+#sidedefs1
+-1
+125
+125
+125
+0
+0
+2
+2
+2
+1
+
+#sidedefs2
+-1
+125
+125
+0
+125
+0
+3
+3
+3
+2
+
+#sidedefs3
+-1
+0
+125
+0
+0
+0
+3
+3
+3
+3
+
+#objs in sector
+0
+
+#moving objects
+0

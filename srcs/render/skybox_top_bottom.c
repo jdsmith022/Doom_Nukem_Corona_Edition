@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   draw_floor_and_ceiling.c                           :+:    :+:            */
+/*   skybox_top_bottom.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 14:17:48 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/07/06 14:45:25 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/07/06 21:21:31 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		put_row(t_doom *doom, Uint32 tex_dex,
 	char *texture;
 
 	pixels = doom->surface->pixels;
-	texture = doom->lib.tex_lib[tex_dex]->pixels;
+	texture = doom->lib.sky_lib[tex_dex]->pixels;
 	pixels[index] = texture[pixel_dex];
 	index++;
 	pixel_dex++;
@@ -37,43 +37,19 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	Uint64	pixel_dex;
 	Uint8	bpp;
 
-	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
+	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	floor.x = dist * cos(doom->ray_angle);
 	floor.y = dist * sin(doom->ray_angle);
-	floor.x += doom->pos.x;
-	floor.y += doom->pos.y;
-	texture.x = (int)floor.x % doom->lib.tex_lib[tex_dex]->h;
-	texture.y = (int)floor.y % doom->lib.tex_lib[tex_dex]->w;
-	pixel_dex = (((int)texture.y * doom->lib.tex_lib[tex_dex]->pitch)\
+	// floor.x -= doom->pos.x;
+	// floor.y -= doom->pos.y;
+	texture.x = (int)floor.x % doom->texture_width;
+	texture.y = (int)floor.y % doom->texture_height;
+	pixel_dex = (((int)texture.y * doom->lib.sky_lib[tex_dex]->pitch)\
 		+ ((int)texture.x * bpp));
 	put_row(doom, tex_dex, index, pixel_dex);
 }
 
-void			draw_ceiling(t_doom *doom, int x,
-					t_sector sector, int y)
-{
-	double	dist;
-	Uint32	index;
-	Uint32	tex_dex;
-	Uint32	height;
-	Uint8	bpp;
-
-	tex_dex = sector.txt_ceiling;
-	bpp = doom->surface->format->BytesPerPixel;
-	height = (HEIGHT + doom->player_height) / 2;
-	while (y > 0)
-	{
-		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height - sector.height_ceiling)\
-			/ (height - y) * doom->dist_to_plane;
-		dist /= cos(doom->ray_adjacent * x - FOV / 2);
-		row_calculations(doom, dist, index, tex_dex);
-		y--;
-	}
-}
-
-void			draw_floor(t_doom *doom, int x,
-					t_sector sector, int y)
+void		    draw_ground(t_doom *doom, int x, t_sector sector, int y)
 {
 	double	dist;
 	Uint32	index;
@@ -81,16 +57,36 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 
-	tex_dex = sector.txt_floor;
-	height = (HEIGHT + doom->player_height) / 2;
+	tex_dex = 1;
+	height = HEIGHT / 2;
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height - sector.height_floor)\
-			/ (y - height) * (doom->dist_to_plane);
+		dist = doom->player_std_height / (y - height) * (doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
 		y++;
+	}
+}
+
+void		    draw_sky(t_doom *doom, int x, t_sector sector, int y)
+{
+	double	dist;
+	Uint32	index;
+	Uint32	tex_dex;
+	Uint32	height;
+	Uint8	bpp;
+
+	tex_dex = 0;
+	bpp = doom->surface->format->BytesPerPixel;
+	height = HEIGHT / 2;
+	while (y > 0)
+	{
+		index = (y * doom->surface->pitch) + (x * bpp);
+		dist = doom->player_std_height / (height - y) * doom->dist_to_plane;
+		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		row_calculations(doom, dist, index, tex_dex);
+		y--;
 	}
 }
