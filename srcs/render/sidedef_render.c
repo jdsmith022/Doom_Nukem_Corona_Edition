@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 12:21:26 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 12:34:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 {
 	t_sidedef	sidedef;
 
-	set_texture_properties(doom, doom->lib.sector[curr_sidedef.sector], curr_sidedef.txt_1);
+	// set_texture_properties(doom, doom->lib.sector[curr_sidedef.sector], curr_sidedef.txt_1);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
 	sidedef.sector = curr_sidedef.sector;
