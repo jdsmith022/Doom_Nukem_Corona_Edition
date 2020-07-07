@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:21:41 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 14:35:45 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,4 +283,9 @@ void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
 void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
+
+/* AUDIO */
+
+void	audio(t_audio audio, t_event event);
+
 #endif

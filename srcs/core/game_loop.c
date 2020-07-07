@@ -6,22 +6,18 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:47:11 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 14:48:16 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/audio.h"
 
 #include <stdio.h>
 
 void	doom_gui(t_doom *doom)
 {
 	(void)doom;
-}
-
-void	doom_sound(t_doom *doom)
-{
-	// audio(doom->audio);
 }
 
 double	get_timeframe(long *last_frame_time)
@@ -52,7 +48,7 @@ void	game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE)
 		{
 			doom_render(doom);
-			doom_sound(doom);
+			// audio(doom->audio, doom->own_event);
 			doom_gui(doom);
 		}
 		else

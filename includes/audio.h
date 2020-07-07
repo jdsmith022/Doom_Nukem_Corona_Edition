@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 13:55:23 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 14:40:07 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct		s_audio {
 void				exit_error(const char *message);
 void				init_audio();
 void				load_audio(t_audio *audio);
-int					audio(t_audio *audio);
 void				play_music(Mix_Music *music);
 void				play_sound(Mix_Chunk *sample, int channel);
 void				loop_sound(Mix_Chunk *sample, int channel);

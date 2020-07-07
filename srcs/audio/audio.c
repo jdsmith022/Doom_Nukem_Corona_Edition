@@ -38,6 +38,7 @@ void	init_audio(t_audio *audio)
 void	load_audio(t_audio *audio)
 {
 	uint8_t i;
+
 	i = 0;
 	printf("Loading audio...\n");
 	audio->sounds[0] = Mix_LoadWAV(ft_strjoin(AUDIO_PATH, S_FOOTSTEPS));
@@ -53,9 +54,10 @@ void	load_audio(t_audio *audio)
 	audio->music = Mix_LoadMUS(MU_1);
 }
 
-int		audio(t_audio *audio)
+void	audio(t_audio audio, t_event event)
 {
-	return 0;
+	printf("audio\n");
+	return;
 }
 
 	// sdl.quit = false;
