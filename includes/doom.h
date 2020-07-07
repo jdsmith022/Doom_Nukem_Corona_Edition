@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/06 17:16:25 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 13:06:09 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
-# include "audio.h"
 
 # include "../sdl/includes/SDL.h"
 
