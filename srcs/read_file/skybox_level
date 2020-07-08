@@ -1,6 +1,7 @@
 #albert heijn
 
 #texture library
+<<<<<<< HEAD
 13
 textures/brown_wall.bmp
 textures/brown_wall.bmp
@@ -15,6 +16,17 @@ textures/brown_wall.bmp
 textures/brown_wall.bmp
 textures/brown_wall.bmp
 textures/brown_wall.bmp
+=======
+8
+a
+a
+a
+a
+a
+a
+a
+a
+>>>>>>> stash
 
 #object library
 0

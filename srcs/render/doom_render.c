@@ -29,12 +29,12 @@ void	doom_render(t_doom *doom)
 
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);
-	// if (doom->lib.sector[doom->i_sector].outside)
-	// {
-	// 	ray.line.start.x = 64;
-	// 	ray.line.start.y = 64;
-	// }
-	// else
+	if (doom->lib.sector[doom->i_sector].outside)
+	{
+		ray.line.start.x = 64;
+		ray.line.start.y = 64;
+	}
+	else
 		ray.line.start = doom->pos;
 	while (x < WIDTH)
 	{
