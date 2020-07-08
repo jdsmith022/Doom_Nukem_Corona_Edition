@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 13:57:33 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 12:46:17 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	draw_skybox(t_doom *doom, int x, t_sidedef sidedef, t_plane plane)
 	t_sector	sector;
 	t_point		center;
 
-	if (doom->dir_angle > 6.25)
+	if (doom->dir_angle > 6.3)
 		doom->dir_angle *= PI / 180;
 	sector = doom->lib.sector[sidedef.sector];
 	draw_sky(doom, x, sector, (plane.sidedef_top));
