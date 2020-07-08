@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 15:37:59 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/05 14:36:29 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,9 @@ static void			set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	end = curr_sidedef.line.end;
 	diff = find_slope_line_offset(start, end);
 	if (start.x == end.x || diff == 1)
-	{
 		sidedef->offset = ft_rounder(intersect.y) % doom->wall_height_std;
-		sidedef->dir = 0;
-	}
 	else if (start.y == end.y || diff == 2)
-	{
 		sidedef->offset = ft_rounder(intersect.x) % doom->wall_height_std;
-		sidedef->dir = 1;
-	}
 }
 
 static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
@@ -89,7 +83,7 @@ static double		sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-void				sidedef_render(t_doom *doom, t_ray ray, int sector,
+int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
 	t_point		intersect;
@@ -118,6 +112,7 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		project_on_plane(doom, near_sidedef, ray.plane_x);
+		return (project_on_plane(doom, near_sidedef, ray.plane_x));
 	}
+	return (0);
 }

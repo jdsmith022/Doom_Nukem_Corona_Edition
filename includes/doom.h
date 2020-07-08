@@ -259,9 +259,9 @@ void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 
 /*render functions*/
-void				sidedef_render(t_doom *doom, t_ray ray,\
+int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
-void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void    			set_texture_properties(t_doom *doom, t_sector sector,\
 						int texture);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\

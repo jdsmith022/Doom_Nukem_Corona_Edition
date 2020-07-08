@@ -30,7 +30,7 @@ void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 		sector->slope_ceiling = safe;
 	if (i == 7)
 	{
-		if (safe > 3)
+		if (safe >= 3)
 			sector->n_sidedefs = safe;
 		else
 			error("sector needs atleast 3 sidedefs", line_num(0));

@@ -81,7 +81,7 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 }
 
-void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
+int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 {
 	t_plane		plane;
 	t_sector	sector;
@@ -90,14 +90,18 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	set_properties_plane(doom, sidedef, &plane, x);
 	plane.intersect = sidedef.intersect;
 	if (sector.outside == TRUE)
+	{
 		draw_skybox(doom, x, sidedef, plane);
+		return (1);
+	}
 	else
 	{
-		draw_ceiling(doom, x, sector, plane.sidedef_top);
+		// draw_ceiling(doom, x, sector, plane.sidedef_top);
 		if (sidedef.opp_sector == -1)
 			draw_onesided_sidedef(doom, plane, sidedef, x);
 		else
 			draw_portal_sidedef(doom, plane, sidedef, x);
-		draw_floor(doom, x, sector, plane.sidedef_bottom);
+		// draw_floor(doom, x, sector, plane.sidedef_bottom);
 	}
+	return (0);
 }
