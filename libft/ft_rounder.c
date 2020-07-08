@@ -3,17 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_rounder.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/06/03 12:40:41 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/06/03 12:45:26 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/07/05 14:34:28 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/07/08 13:35:11 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		rounder(double dbl)
-{
-	int rounded;
+#include "libft.h"
 
-	rounded = (int)(dbl + 0.5);
-	return (rounded);
+int     ft_rounder(double dbl)
+{
+    return ((int)(dbl + 0.5));
 }

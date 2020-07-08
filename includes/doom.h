@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 16:50:43 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/08 13:33:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,22 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+# include <time.h>
+# include <stdbool.h>
 
 # include "../libft/libft.h"
+# include "../bmp/srcs/bmp.h"
+# include "../srcs/editor/game_editor.h"
+# include "audio.h"
+
 # include "../sdl/includes/SDL.h"
+
+# define NAME "Doom Nukem Corona Edition"
+
+# define TRUE 1
+# define FALSE 0
+
+# define NUM_LEVELS 1
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
@@ -33,171 +46,261 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define SPEED 20
+# define PLAYER_HEIGHT 32
+# define MOVE_SPEED 200
+# define CAM_SPEED 5
+# define GRAVITY -0.5
+# define VELOCITY 12
 
-# define TOTAL_TEX 2
-# define TOTAL_SPRITE 4
+typedef struct		s_point {
+	double			x;
+	double			y;
+}					t_point;
 
-typedef struct			s_point {
-    double				x;
-    double				y;
-}						t_point;
+typedef struct		s_line {
+	t_point			start;
+	t_point			end;
+}					t_line;
 
+typedef struct		s_ray {
+	t_line			line;
+	double			angle;
+	double			plane_x;
+}					t_ray;
 
-typedef struct			s_line {
-    t_point				start;
-    t_point				end;
-}						t_line;
+typedef struct		s_event {
+	int				mouse_press;
+	int				hold_angle;
+	int				hold_x;
+	int				hold_y;
+	int				cam_move_f;
+	int				cam_move_b;
+	int				cam_move_l;
+	int				cam_move_r;
+	int				floor_diff;
+	int				step_down;
+	int				jump;
+	int				bend;
+	double			velocity;
+	int				y_pitch;
+}					t_event;
 
-typedef struct			s_sprite {
-	int					index;						//start index
-	int					amount;						//which side is viewed
-	t_point				pos;
-	double				size;
-	t_line				line;
-	double				angle;			//what is the angle on the map
-	int					action;
-	int					block;						//can the player walk through it or not
-	int					sector;
-	double				width;
-	double				height;
-	double				sprite_x;					//x cord translated to viewer space
-	double				sprite_y;					//y cord translated to viewer space
-	int					visible;
-	double				distance;
-	int					screen_left_x;
-	int					screen_right_x;
-	int					position;
-	int					x;
-}						t_sprite;
+typedef struct		s_m_object{
+	int				n_textures;
+	int*			textures;
+	int*			face_ang;
+	char*			name;
+	int				action;
+	t_line*			movement;
+	// t_line			height;
+	int				speed;
+	int				spawn_time;
+}					t_m_object;
 
-typedef struct			s_ray {
-	t_line				line;
-	double				angle;
-	int					plane_x;
-}						t_ray;
+typedef struct		s_object{
+	int				n_textures;
+	int*			textures;
+	int*			face_ang;
+	char*			name;
+	int				action;
+	t_line			location;
+}					t_object;
 
-typedef struct			s_event {
-	int					mouse_press;
-	int					hold_angle;
-	int					hold_x;
-}						t_event;
-
-typedef struct			s_plane
+typedef struct		s_plane
 {
-	int					sidedef_top;
-	int					sidedef_bottom;
-	int					mid_texture_top;
-	int					mid_texture_bottom;
-	double				sidedef_height;
-	int					ceiling_start;
-	int					floor_start;
-	int					floor_end;
-	t_point				intersect;
-}						t_plane;
+	int				sidedef_top;
+	int				sidedef_bottom;
+	int				sidedef_height;
+	int				mid_texture_top;
+	int				mid_texture_bottom;
+	double			height_standard;
+	int				wall_offset;
+	t_point			intersect;
+}					t_plane;
 
-typedef struct			s_sidedef {
-	int					id;
-	t_line				line;
-	int					action;
-	int					sector;
-	t_point				sidedef_delta;
-	int					opp_sidedef;
-	int					opp_sector;
-	double				offset_x;
-	double				offset;
-	double				offset_y;
-	char				*texture_1;
-	char				*texture_2;
-	char				*texture_3;
-	double				distance;
-}						t_sidedef;
+typedef struct		s_sidedef {
+	int				id;
+	t_line			line;
+	int				action;
+	int				sector;
+	int				opp_sidedef;
+	int				opp_sector;
+	double			offset;
+	int				dir;
+	int				txt_1;
+	int				txt_2;
+	int				txt_3;
+	double			distance;
+	t_point			intersect;
+}					t_sidedef;
 
-typedef struct			s_sector {
-	int					id;
-	int					n_sprites;		//amount of sprites, maybe not neccesarry since the sprites have sidedefs
-	int					i_sprites;		//index sprites, maybe not necessary
-	int					n_sidedefs;
-	int					i_sidedefs;
-	int					height_floor;
-	int					height_ceiling;
-	int					light_level;
-	int					slope_id;
-	int					slope_angle;
-	char				*texture_ceiling;
-	char				*texture_floor;
-}						t_sector;
+typedef struct		s_sector {
+	int				id;
+	int				outside;
+	int				n_sidedefs;
+	int				i_sidedefs;
+	int				n_objects;
+	int				i_objects;
+	int				light_level;
+	int				slope_id;
+	int				slope_ceiling;
+	int				slope_floor;
+	int				height_ceiling;
+	int				height_floor;
+	int				txt_ceiling;
+	int				txt_floor;
+	int				diff_x;
+	int				diff_y;
+}					t_sector;
 
-typedef struct			s_doom {
-  	SDL_Window			*window;
-	//SDL_Renderer 		*renderer;
-	SDL_Surface			*surface;
-	SDL_Event			event;
-	SDL_Surface			**textures;
-	t_sector			sector[3];
-	t_sidedef			sidedef[13];
-	t_point				pos;
-	t_event				own_event;
-	SDL_Surface			*sprite_image[TOTAL_TEX];
-	t_sprite			sprite[TOTAL_SPRITE];
-	int					visible_sprites;
-	int					i_sector;
-	int					esc; 
-	double				angle;
-	double				dir_angle;
-	double				max_ray;
-	double				dist_to_plane;
-	double				ray_adjacent;
-	int					texture_width; //need to store width and height of each texture in their struct
-	int					texture_height; //need to store width and height of each texture in their struct
-	int					obj_height;
-	double				height_diff; // store in texture struct? this will be the different of height for floor and ceiling
-	double				player_height; //player height and pos in struct called player?
-	double				stripe_distance[WIDTH]; //distance of each painted stripe on screen, to decide if stripe of sprite is drawn
-}						t_doom;
+typedef struct		s_lib{
+	SDL_Surface		**tex_lib;
+	int				len_tex_lib;
+	SDL_Surface		**obj_lib;
+	int				len_obj_lib;
+	SDL_Surface		**sky_lib;
+	int				len_sky_lib;
+	t_sector		*sector;
+	t_sidedef		*sidedef;
+	t_object		*sprites;
+	int				n_mov_sprites;
+	t_m_object		*mov_sprites;
+}					t_lib;
 
-int						main(void);
-void					doom_init(t_doom *doom);
-void					game_loop(t_doom *doom);
-void					doom_render(t_doom *doom);
-void					doom_input(t_doom *doom);
-void					sidedef_render(t_doom *doom, t_ray ray,\
-							int sector, int prev_sector);
-void					project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect);
-void					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-							int x, t_plane *plane);
+typedef struct		s_gamedesign{
+		t_sector	*sector;
+		int			s_len;
+		int			s_size;
+		t_sidedef	*sidedef;
+		int			w_len;
+		int			w_size;
+		int			cur_sec;
+		int			cur_sd;
+		int			portal_sd;
+		int			portal_sec;
+		int 		pl_pos;
+		int			pl_x;
+		int			pl_y;
+		int			pl_sec;
+}
+					t_gamedesign;
 
-void					draw_onesided_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
-void					draw_portal_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
-void					draw_sidedef(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
-void					draw_ceiling(t_doom *doom, int x, int y);
-void					draw_floor(t_doom *doom, int x, t_plane plane, t_sector sector);
-void					put_pixel(t_doom *doom, int x, int y, Uint32 color);
+typedef struct		s_doom {
+	int				is_running;
+	int				game_editor;
+	SDL_Window		*window;
+	SDL_Surface		*surface;
+	SDL_Surface		**textures;
+	SDL_Event		event;
+	t_lib			lib;
+	t_point			pos;
+	t_event			own_event;
+	int				wall_height_std;
+	double			player_std_height;
+	double			player_height;
+	int				texture_width;
+	int				texture_height;
+	int				i_sector;
+	int				prev_sector;
+	double			ray_angle;
+	double			dir_angle;
+	double			ray_adjacent;;
+	int				obj_height;
+	double			max_ray;
+	double			dist_to_plane;
+	t_gamedesign	game_design;
+}					t_doom;
 
-t_point					line_intersection(t_point start1, t_point delta1,
+/*core functions*/
+int					main(void);
+void				doom_init(t_doom *doom);
+int					sdl_init(t_doom *doom);
+void				game_loop(t_doom *doom);
+void				doom_update(t_doom *doom, double dt_time);
+void				doom_render(t_doom *doom);
+double				points_distance(t_point p1, t_point p2);
+void				doom_exit_success(t_doom *doom);
+void				doom_exit_failure(t_doom *doom, const char *exit_message);
+void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+
+/*read functions*/
+SDL_Surface			**save_img(int fd, int *len);
+SDL_Surface			**save_sky(void);
+void				error(char *error, int line_num);
+int					open_file(char *filename);
+t_bmp				*malloc_images_lib(int len);
+SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
+t_sector			*save_sectors(int fd, int *len);
+t_sidedef			*save_walls(int fd);
+t_object			*save_sprites(int fd);
+void				main2(t_doom *doom);
+void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
+int					get_line(char **line, int fd, char *error, int is_num);
+t_bmp				*malloc_images_lib(int len);
+SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
+int					open_file(char *filename);
+int					line_num(int i);
+
+/*events functions*/
+void				key_press(t_doom *doom, t_event *event,\
+						SDL_KeyboardEvent *key);
+void				key_release(t_event *event, SDL_KeyboardEvent *key);
+void				key_handler(t_doom *doom, t_event *event, double dt);
+void				mouse_press(t_doom *doom,\
+						SDL_MouseButtonEvent *button);
+void				mouse_release(t_doom *doom,\
+						SDL_MouseButtonEvent *button);
+void				camera_movement(t_doom *doom,\
+						SDL_MouseMotionEvent *motion, double dt);
+void				move_cam_direction(t_doom *doom,\
+						SDL_MouseMotionEvent *motion, double dt);
+void				cam_move_fb(t_doom *doom, double dt, int direction);
+void				cam_move_rl(t_doom *doom, double dt, int direction);
+int					check_floor_diff(t_doom *doom, int sector, int next_sector);
+void				jump_player(t_doom *doom, double dt);
+void				step_down(t_doom *doom, double dt);
+void				bend_down(t_doom *doom);
+
+/*render functions*/
+void				sidedef_render(t_doom *doom, t_ray ray,\
+						int sector, int prev_sector);
+void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+void    			set_texture_properties(t_doom *doom, t_sector sector,\
+						int texture);
+int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+						t_plane *plane);
+void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
+						t_sidedef sidedef, int x);
+void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
+						t_sidedef sidedef, int x);
+void				draw_sidedef(t_doom *doom, t_plane plane,\
+						t_sidedef sidedef, int x);
+void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
+						t_plane plane);
+void			    draw_ground(t_doom *doom, int x, t_sector sector, int y);
+void			    draw_sky(t_doom *doom, int x, t_sector sector, int y);
+void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+void				put_pixel(t_doom *doom, int x, int y, int color);
+void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
+						Uint32 pixel_dex);
+t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
-t_point					line_delta(t_point start, t_point end);
-double					point_distance(t_point p1, t_point p2, double angle);
-double					point_line_distance(t_point point, t_line line);
+t_point				line_delta(t_point start, t_point end);
+double				point_distance(t_point p1, t_point p2, double angle);
+double				point_line_distance(t_point point, t_line line);
 
-void 					move_position_forward(t_doom *doom);
-void 					move_position_backward(t_doom *doom);
-void 					move_position_left(t_doom *doom);
-void					move_position_right(t_doom *doom);
-int						movement_collision(t_doom *doom, t_line move);
-t_point					check_line_intersection(t_line move, t_sidedef sidedef);
+/*game editor*/
 
-void					doom_exit_success(t_doom *doom);
-void					doom_exit_failure(t_doom *doom, const char *exit_message);
-
-void					load_textures (t_doom *doom);
-
-//sprites
-void					sprite_init(t_doom *doom);
-void					sprite_check(t_doom *doom, t_ray ray, int x);
-void					sprite_render(t_doom *doom);
-int						*sort_sprite_array(t_sprite *sprite, int total);
-void					find_position(t_doom *doom, t_point *sprite_cord, int index);
-void					draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
-
+void    open_game_editor(t_doom *doom);
+void	add_sidedef(t_doom *doom, int x, int y);
+void	del_sidedef(t_doom *doom);
+void	add_sector(t_doom *doom);
+void	del_sector(t_doom *doom);
+void    draw_bar(Uint32 **pixels, t_bar bar);
+void    draw_bar_point(Uint32 **pixels, t_bar bar);
+void	add_portal(t_doom *doom, int dir);
+void    add_to_game(t_doom *doom);
+void	mouse_press_game_editor(t_doom *doom, int x, int y);
+void    bars(Uint32 **pixels, t_doom *doom);
 #endif
