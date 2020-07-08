@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:48:34 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 12:20:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include "../bmp/srcs/bmp.h"
 
 # include "../sdl/includes/SDL.h"
+# include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # define NAME "Doom Nukem Corona Edition"
 

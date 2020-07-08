@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/03 14:21:34 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/08 12:20:09 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBFT = libft/
 BMP = bmp/
 SDL = sdl/
 SDL_FLAGS = `sdl2-config --cflags --libs`
+SDL_TEXT_FLAGS = `-lSDL -lSDL_ttf`
 
 CORE = srcs/core/
 EVENTS = srcs/events/
@@ -45,7 +46,8 @@ ADD_FILES = Makefile textures
 all: $(NAME)
 
 $(NAME): libft/libft.a bmp/lib_bmp.a .objects $(O_FILES)
-	@gcc -o $@ -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lft $(C_FILES) $(FLAGS) $(SDL_FLAGS)
+	@gcc -o $@ -I $(LIBFT) -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lft \
+	$(C_FILES) $(FLAGS) $(SDL_FLAGS) $(SDL_TEXT_FLAGS)
 	@echo "$(GREEN)[√]$(WHITE) compiling done!"
 
 .objects/%.o: srcs/%.c $(HEADERS)

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/02 13:04:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 12:13:24 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	game_loop(t_doom *doom)
 		doom_render(doom);
 		doom_sound(doom);
 		doom_gui(doom);
+		doom_text(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
