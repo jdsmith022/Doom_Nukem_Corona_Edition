@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:50:12 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 12:33:55 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		movement_collision(t_doom *doom, t_line move)
 	return (0);
 }
 
-void	cam_move_rl(t_doom *doom, double dt, int direction)
+void	cam_move_rl(t_doom *doom, double dt, double direction)
 {
 	t_line	movement;
 	int		collision;
@@ -76,7 +76,7 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 	}
 }
 
-void	cam_move_fb(t_doom *doom, double dt, int direction)
+void	cam_move_fb(t_doom *doom, double dt, double direction)
 {
 	t_line	movement;
 	int		collision;

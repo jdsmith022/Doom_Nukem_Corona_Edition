@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 17:35:10 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/08 12:42:56 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,8 +236,8 @@ void				camera_movement(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
 void				move_cam_direction(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
-void				cam_move_fb(t_doom *doom, double dt, int direction);
-void				cam_move_rl(t_doom *doom, double dt, int direction);
+void				cam_move_fb(t_doom *doom, double dt, double direction);
+void				cam_move_rl(t_doom *doom, double dt, double direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
