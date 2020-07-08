@@ -1,4 +1,4 @@
-p/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
 /*   sidedef_render.c                                   :+:    :+:            */
@@ -6,13 +6,13 @@ p/* ************************************************************************** *
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 12:42:06 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 18:32:06 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-static Uint8		find_slope_line_offset(t_point start, t_point end)
+Uint8				find_slope_line_offset(t_point start, t_point end)
 {
 	Uint8 max_x;
 	Uint8 max_y;

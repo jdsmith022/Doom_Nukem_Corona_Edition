@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/05 16:33:52 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/07/08 18:31:41 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,8 +275,8 @@ void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 						t_plane plane);
-void			    draw_ground(t_doom *doom, int x, t_sector sector, int y);
-void			    draw_sky(t_doom *doom, int x, t_sector sector, int y);
+void		    	draw_ground(t_doom *doom, int x, int y);
+void		  		draw_sky(t_doom *doom, int x, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
@@ -289,6 +289,9 @@ double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
 double				sidedef_intersection_distance(t_ray ray, t_line line, t_point *intersect);
 void				wall_offset(t_plane *plane, int sidedef_top);
+void				find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point intersect);
+void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
+Uint8				find_slope_line_offset(t_point start, t_point end);
 
 /*game editor*/
 

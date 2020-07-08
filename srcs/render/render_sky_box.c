@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 
 static void		set_properties_plane_sky(t_doom *doom,
-					t_plane *plane, int x)
+					t_plane *plane, int x, double distance)
 {
 	double		height_floor;
 	int			sidedef_top;
@@ -23,20 +23,37 @@ static void		set_properties_plane_sky(t_doom *doom,
 
 void    sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd)
 {
+    t_point save_intersect;
     t_point intersect;
     double  min_distance;
 	t_plane plane;
+	t_line near_sidedef;
+	double distance;
     int x;
 
     x = 0;
+	ray.line.start.x = 64;
+	ray.line.start.y = 64;
+	ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
+	ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
+	min_distance = INFINITY;
     while (x < 4)
     {
         distance = sidedef_intersection_distance(ray,\
-			sky_sd[x], &intersect);
+			sky_sd[x], &save_intersect);
 		if (distance < min_distance)
+		{
 			min_distance = distance;
+			near_sidedef = sky_sd[x];
+			intersect = save_intersect;
+			doom->texture_width = 130;
+			doom->texture_height = 130;
+			doom->wall_height_std = 130;
+		}
 		x++;
     }
-	set_properties_plane_sky(doom, &plane, ray.plane_x)
-	draw_skybox(doom, min_distance, intersect, ray)
+	set_properties_plane_sky(doom, &plane, ray.plane_x, min_distance);
+	draw_sky(doom, ray.plane_x, plane.sidedef_top);
+	find_side(doom, ray.plane_x, near_sidedef, plane, intersect);
+	draw_ground(doom, ray.plane_x, plane.sidedef_bottom);
 }

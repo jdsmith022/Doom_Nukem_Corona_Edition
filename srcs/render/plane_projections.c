@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:17:55 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 19:15:10 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,15 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, x);
 	plane.intersect = sidedef.intersect;
-	if (sector.outside == TRUE)
 	{
-		draw_skybox(doom, x, sidedef, plane);
-		return (1);
-	}
-	else
-	{
-		// draw_ceiling(doom, x, sector, plane.sidedef_top);
+		if (!doom->lib.sector[sidedef.sector].outside)
+			draw_ceiling(doom, x, sector, plane.sidedef_top);
 		if (sidedef.opp_sector == -1)
 			draw_onesided_sidedef(doom, plane, sidedef, x);
 		else
 			draw_portal_sidedef(doom, plane, sidedef, x);
-		// draw_floor(doom, x, sector, plane.sidedef_bottom);
+		if (!doom->lib.sector[sidedef.sector].outside)
+			draw_floor(doom, x, sector, plane.sidedef_bottom);
 	}
 	return (0);
 }

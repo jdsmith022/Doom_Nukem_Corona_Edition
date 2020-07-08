@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 14:45:25 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/06 21:21:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 18:50:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	put_row(doom, tex_dex, index, pixel_dex);
 }
 
-void		    draw_ground(t_doom *doom, int x, t_sector sector, int y)
+void		    draw_ground(t_doom *doom, int x, int y)
 {
 	double	dist;
 	Uint32	index;
