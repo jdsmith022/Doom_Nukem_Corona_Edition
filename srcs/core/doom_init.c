@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:48:46 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 12:31:14 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,4 +180,5 @@ void 	doom_init(t_doom *doom)
 	// doom->sector[2].slope_id = -1;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom_init_events(&doom->own_event);
+	font_init()
 }
