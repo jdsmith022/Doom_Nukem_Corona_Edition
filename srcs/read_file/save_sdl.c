@@ -25,7 +25,31 @@ static void			save_bpm_to_sdl(t_bmp *images,
 	print_meta_data(images[index].info);
 }
 
-SDL_Surface			**save_sky(void)
+t_line		*init_sky_sd()
+{
+	t_line *sky_sd;
+
+	sky_sd = (t_line*)malloc(sizeof(t_line) * 4);
+	sky_sd[0].start.x = 0;
+	sky_sd[0].start.y = 0;
+	sky_sd[0].end.x = 125;
+	sky_sd[0].end.y = 0;
+	sky_sd[1].start.x = 125;
+	sky_sd[1].start.y = 125;
+	sky_sd[1].end.x = 125;
+	sky_sd[1].end.y = 0;
+	sky_sd[2].start.x = 125;
+	sky_sd[2].start.y = 125;
+	sky_sd[2].end.x = 0;
+	sky_sd[2].end.y = 125;
+	sky_sd[3].start.x = 0;
+	sky_sd[3].start.y = 125;
+	sky_sd[3].end.x = 0;
+	sky_sd[3].end.y = 0;
+	return (sky_sd);
+}
+
+SDL_Surface			**save_sky(t_line **sky_sd)
 {
 	SDL_Surface	**lib;
 	t_bmp		*images;
@@ -51,6 +75,7 @@ SDL_Surface			**save_sky(void)
 	sky_fd = open_file("textures/sky_box/meadow_bk.bmp");
 	images[5] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 5);
+	*sky_sd = init_sky_sd();
 	return (lib);
 }
 

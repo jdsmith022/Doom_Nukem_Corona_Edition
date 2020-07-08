@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+p/* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
 /*   sidedef_render.c                                   :+:    :+:            */
@@ -74,17 +74,17 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	return (sidedef);
 }
 
-static double		sidedef_intersection_distance(t_ray ray,
-						t_sidedef sidedef, t_point *intersect)
+double		sidedef_intersection_distance(t_ray ray,
+						t_line line, t_point *intersect)
 {
 	double		distance;
 	t_point		ray_delta;
 	t_point		sidedef_delta;
 
 	ray_delta = line_delta(ray.line.start, ray.line.end);
-	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
+	sidedef_delta = line_delta(line.start, line.end);
 	*intersect = line_intersection(ray.line.start, ray_delta,\
-		sidedef.line.start, sidedef_delta);
+		line.start, sidedef_delta);
 	distance = point_distance(*intersect, ray.line.start, ray.angle);
 	return (distance);
 }
@@ -104,7 +104,7 @@ int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		doom->lib.sector[sector].i_sidedefs)
 	{
 		distance = sidedef_intersection_distance(ray,\
-			doom->lib.sidedef[x], &intersect);
+			doom->lib.sidedef[x].line, &intersect);
 		if (distance < min_distance &&\
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{

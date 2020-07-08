@@ -12,7 +12,7 @@
 
 #include "../../includes/doom.h"
 
-static void		wall_offset(t_plane *plane, int sidedef_top)
+void		wall_offset(t_plane *plane, int sidedef_top)
 {
 	plane->wall_offset = 0;
 	if (sidedef_top < 0)

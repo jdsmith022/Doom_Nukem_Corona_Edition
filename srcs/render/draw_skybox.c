@@ -12,6 +12,9 @@
 
 #include "../../includes/doom.h"
 
+
+
+
 static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,
 					Uint32 pixel_dex)
 {
@@ -48,15 +51,39 @@ static void		draw_side_textures(t_doom *doom, t_plane plane,
 	put_sky(doom, tex_dex, index, pixel_dex);
 }
 
-static void		find_side(t_doom *doom, int x, t_sidedef sidedef,
-					t_plane plane)
+int		set_offset(t_line line, t_point intersect, t_doom *doom, int &dir)
+{
+	t_point start;
+	t_point end;
+	Uint8	diff;
+
+	start = line.start;
+	end = line.end;
+	diff = find_slope_line_offset(start, end);
+	if (start.x == end.x || diff == 1)
+	{
+		offset = ft_rounder(intersect.y) % doom->wall_height_std;
+		*dir = 0;
+	}
+	else if (start.y == end.y || diff == 2)
+	{
+		offset = ft_rounder(intersect.x) % doom->wall_height_std;
+		*dir = 1;
+	}
+	return (offset);
+}
+
+static void		find_side(t_doom *doom, int x, t_line *line, t_plane plane)
 {
 	t_point	pixel;
 	Uint32	tex_dex;
 	double	dir_angle;
+	int		offset;
+	int 	dir;
 
 	pixel.x = x;
 	pixel.y = plane.sidedef_top;
+	set_offset(line,)
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		dir_angle = doom->dir_angle;
@@ -77,15 +104,13 @@ static void		find_side(t_doom *doom, int x, t_sidedef sidedef,
 
 
 
-void	draw_skybox(t_doom *doom, int x, t_sidedef sidedef, t_plane plane)
+void	draw_skybox(t_doom *doom, int x, int distance, int intersect, t_plane plane)
 {
-	t_sector	sector;
 	t_point		center;
 
 	if (doom->dir_angle > 6.3)
 		doom->dir_angle *= PI / 180;
-	sector = doom->lib.sector[sidedef.sector];
-	draw_sky(doom, x, sector, (plane.sidedef_top));
+	draw_sky(doom, x, (plane.sidedef_top));
 	find_side(doom, x, sidedef, plane);
 	draw_ground(doom, x, sector, (plane.sidedef_bottom));
 }

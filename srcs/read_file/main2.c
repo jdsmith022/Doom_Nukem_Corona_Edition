@@ -20,7 +20,7 @@ void	main2(t_doom *doom)
     fd = open_file("srcs/read_file/skybox_level");
     doom->lib.tex_lib = save_img(fd, &doom->lib.len_tex_lib);
     doom->lib.obj_lib = save_img(fd, &doom->lib.len_obj_lib);
-    doom->lib.sky_lib = save_sky();
+    doom->lib.sky_lib = save_sky(&doom->lib.sky_sd);
     doom->lib.sector = save_sectors(fd, &len);
     doom->lib.sidedef = save_walls(fd);
     doom->lib.sprites = save_sprites(fd);

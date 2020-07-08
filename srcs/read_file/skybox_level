@@ -20,9 +20,9 @@ textures/brown_wall.bmp
 0
 
 #number of sectors
-2
+3
 #number of walls
-7
+11
 #number of objects
 0
 
@@ -90,7 +90,7 @@ textures/brown_wall.bmp
 #objs in sector
 0
 
-#sector[0]
+#sector[1]
 10
 0
 1
@@ -104,7 +104,7 @@ textures/brown_wall.bmp
 
 #sidedefs0
 -1
-0
+20
 30
 0
 0
@@ -115,20 +115,20 @@ textures/brown_wall.bmp
 0
 
 #sidedefs1
--1
-0
+2
+20
 30
-0
+20
 60
 0
 2
-2
+-1
 2
 1
 
 #sidedefs2
 -1
-0
+20
 60
 0
 90
@@ -138,6 +138,69 @@ textures/brown_wall.bmp
 3
 2
 
+
+#objs in sector
+0
+
+#sector[2]
+10
+0
+1
+0
+0
+5
+0
+4
+0
+0
+
+#sidedefs0
+-1
+20
+30
+0
+0
+0
+2
+2
+2
+0
+
+#sidedefs1
+0
+20
+30
+20
+60
+0
+2
+-1
+2
+1
+
+#sidedefs2
+-1
+20
+60
+0
+90
+0
+3
+3
+3
+2
+
+#sidedefs2
+-1
+20
+30
+20
+60
+0
+3
+3
+3
+2
 
 #objs in sector
 0

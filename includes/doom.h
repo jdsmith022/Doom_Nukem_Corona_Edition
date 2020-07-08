@@ -157,6 +157,7 @@ typedef struct		s_lib{
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	int				len_sky_lib;
+	t_line			*sky_sd;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;
@@ -222,7 +223,7 @@ void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 
 /*read functions*/
 SDL_Surface			**save_img(int fd, int *len);
-SDL_Surface			**save_sky(void);
+SDL_Surface			**save_sky(t_line **sky_sd);
 void				error(char *error, int line_num);
 int					open_file(char *filename);
 t_bmp				*malloc_images_lib(int len);
@@ -286,6 +287,8 @@ t_point				line_intersection(t_point start1, t_point delta1,
 t_point				line_delta(t_point start, t_point end);
 double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
+double				sidedef_intersection_distance(t_ray ray, t_line line, t_point *intersect);
+void				wall_offset(t_plane *plane, int sidedef_top);
 
 /*game editor*/
 

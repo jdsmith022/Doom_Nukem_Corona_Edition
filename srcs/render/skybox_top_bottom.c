@@ -70,7 +70,7 @@ void		    draw_ground(t_doom *doom, int x, t_sector sector, int y)
 	}
 }
 
-void		    draw_sky(t_doom *doom, int x, t_sector sector, int y)
+void		    draw_sky(t_doom *doom, int x, int y)
 {
 	double	dist;
 	Uint32	index;
