@@ -22,9 +22,11 @@ void     main2(t_doom *doom)
     fd = open_file("srcs/read_file/new_level");
     doom->lib.tex_lib = save_img(fd);
     doom->lib.obj_lib = save_img(fd);
+    doom->lib.font_lib = save_font(doom);
     doom->lib.sector = save_sectors(fd, &len);
     doom->lib.sidedef = save_walls(fd);
     doom->lib.sprites = save_sprites(fd);
+    //NEED TO SEND DOOM TO EVERY LIB CRAETION AND FREE IF EVERY LIB IF MALLOC FAILS
     add_inf_to_lib(&doom->lib, len, fd);
     // create_header(&list, &len);
     // parsed_list = parse(list, len); //this is called cursing or something

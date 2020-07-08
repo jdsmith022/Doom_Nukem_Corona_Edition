@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 12:20:53 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 15:52:49 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ typedef struct		s_lib{
 	t_sector 		*sector;
 	t_sidedef 		*sidedef;
 	t_object 		*sprites;
+	SDL_Surface		**font_lib;
+	int				n_fonts;
 	int				n_mov_sprites;
 	t_m_object 		*mov_sprites;
 }					t_lib;

@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/08 13:13:24 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 15:54:42 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 static void fontInit(t_doom *doom)
 {
-        TTF_Init();
-        font = TTF_OpenFont("text/amatic/AmaticSC-Regular.tff", 12);
-        fColor.r = 255;
-        fColor.g = 255;
-        fColor.b = 255;
-}
+
 
 void        draw_text(t_doom *doom)
 {
-    fontInit(doom);
+    Uint32  index;
+    int     total_fonts;
+
+	index = 0;
+    total_fonts = doom->lib.n_fonts;
+	while (index < total_fonts)
+	{
+		SDL_BlitSurface(fontSurface, NULL, screen, &fontRect);
+        SDL_Flip(screen);
+		index++;
+	}
 }
