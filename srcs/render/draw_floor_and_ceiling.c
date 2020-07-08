@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/08 15:00:52 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/08 15:10:40 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,17 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 	double	height_floor;
+	int		slope;
 
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
+	slope = doom->lib.sector[sector.id].slope_height_floor;
 	if (sector.slope_id == -1)
-		height_floor = sector.height_floor;
+		height_floor = sector.height_floor * slope;
 	else
-		height_floor = doom->lib.sector[sector.id].slope_height_floor;
+		height_floor = sector.height_floor;
+		// height_floor = slope;
 	while (y < HEIGHT)
 	{
 		//if (sector.id == 2)
