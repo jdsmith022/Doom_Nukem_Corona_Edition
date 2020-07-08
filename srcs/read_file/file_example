@@ -33,12 +33,13 @@ texture number/name(3)
 sidedef id
 
 objects in sector
-name
+index
 vector location(x,y)
 action
-amount of textures[]
-angle facting
-texture
+size
+amount of textures
+texture[]
+lines[x,y;x,y][]
 
 4:moving sprites
 how many moving sprites

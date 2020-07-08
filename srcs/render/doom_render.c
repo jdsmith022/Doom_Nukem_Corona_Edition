@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 13:33:45 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 16:50:38 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	doom_render(t_doom *doom)
 	t_ray	ray;
 
 	x = 0;
-	doom->angle = doom->dir_angle - (FOV / 2);
+	doom->ray_angle = doom->dir_angle - (FOV / 2);
 	ray.line.start = doom->pos;
 	while (x < WIDTH)
 	{
@@ -37,8 +37,8 @@ void	doom_render(t_doom *doom)
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		ray.plane_x = x;
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
-		sprite_check(doom, ray, x);
-		doom->angle += doom->ray_adjacent;
+		// sprite_check(doom, ray, x);
+		doom->ray_angle += doom->ray_adjacent;
 		x++;
 	}
 }

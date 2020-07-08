@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 13:33:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 17:10:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 # define GRAVITY -0.5
 # define VELOCITY 12
 
+# define TOTAL_TEX 2
+# define TOTAL_SPRITE 4
+
 typedef struct		s_point {
 	double			x;
 	double			y;
@@ -61,6 +64,29 @@ typedef struct		s_line {
 	t_point			start;
 	t_point			end;
 }					t_line;
+
+typedef struct			s_sprite {
+	int					index;						//start index
+	int					amount;						//which side is viewed
+	t_point				pos;
+	double				size;
+	t_line				*lines;
+	double				angle;			//what is the angle on the map
+	int					action;
+	int					*textures;
+	int					*face_ang;
+	int					block;						//can the player walk through it or not
+	int					sector;
+	double				width;
+	double				height;
+	double				sprite_x;					//x cord translated to viewer space
+	double				sprite_y;					//y cord translated to viewer space
+	int					visible;
+	double				distance;
+	int					screen_left_x;
+	int					screen_right_x;
+	int					position;
+}						t_sprite;
 
 typedef struct		s_ray {
 	t_line			line;
@@ -160,11 +186,11 @@ typedef struct		s_lib{
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	int				len_sky_lib;
+	t_sprite		*sprite;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
-	t_object		*sprites;
-	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
+	int				n_mov_sprites;
 }					t_lib;
 
 typedef struct		s_gamedesign{
@@ -195,6 +221,8 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
+	int				visible_sprites;
+	double			stripe_distance[WIDTH];
 	int				wall_height_std;
 	double			player_std_height;
 	double			player_height;
@@ -303,4 +331,13 @@ void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
 void    bars(Uint32 **pixels, t_doom *doom);
+
+/*sprite functions*/
+void				sprite_init(t_doom *doom);
+void				sprite_check(t_doom *doom, t_ray ray, int x);
+void				sprite_render(t_doom *doom);
+int					*sort_sprite_array(t_sprite *sprite, int total);
+void				find_position(t_doom *doom, t_point *sprite_cord, int index);
+void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
+
 #endif

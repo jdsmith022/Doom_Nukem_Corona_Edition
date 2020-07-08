@@ -23,7 +23,7 @@ void	main2(t_doom *doom)
     doom->lib.sky_lib = save_sky();
     doom->lib.sector = save_sectors(fd, &len);
     doom->lib.sidedef = save_walls(fd);
-    doom->lib.sprites = save_sprites(fd);
+    doom->lib.sprite = save_sprites(fd);
     add_inf_to_lib(&doom->lib, len, fd);
     // create_header(&list, &len);
     // parsed_list = parse(list, len); //this is called cursing or something

@@ -7,7 +7,9 @@ textures/dark_stone.bmp
 textures/dark_stone.bmp
 
 #object library
-0
+2
+./sprites/apple.BMP
+./sprites/banana.BMP
 
 
 
@@ -16,7 +18,7 @@ textures/dark_stone.bmp
 #number of walls
 12
 #number of objects
-0
+1
 
 
 #sector[0]
@@ -81,7 +83,36 @@ textures/dark_stone.bmp
 3
 
 #objs in sector
+1
 0
+150
+150
+0
+4
+4
+0
+146
+146
+154
+146
+0
+154
+146
+154
+154
+0
+154
+154
+146
+154
+0
+146
+154
+146
+146
+
+
+
 
 #sector[1]
 10

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 13:33:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/08 14:14:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE)
 		{
 			doom_render(doom);
+			sprite_render(doom); //is this the best place?
 			doom_sound(doom);
 			doom_gui(doom);
 		}
