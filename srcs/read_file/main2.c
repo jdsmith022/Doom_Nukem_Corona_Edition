@@ -17,7 +17,7 @@ void	main2(t_doom *doom)
 
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
-    fd = open_file("srcs/read_file/skybox_level");
+    fd = open_file("srcs/read_file/skybox_level2");
     doom->lib.tex_lib = save_img(fd, &doom->lib.len_tex_lib);
     doom->lib.obj_lib = save_img(fd, &doom->lib.len_obj_lib);
     doom->lib.sky_lib = save_sky(&doom->lib.sky_sd);
