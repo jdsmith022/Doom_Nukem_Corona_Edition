@@ -71,6 +71,7 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.txt_2 = curr_sidedef.txt_2;
 	sidedef.txt_3 = curr_sidedef.txt_3;
 	sidedef.intersect = intersect;
+	sidedef.action = curr_sidedef.action;
 	return (sidedef);
 }
 
@@ -89,7 +90,7 @@ double		sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-int			sidedef_render(t_doom *doom, t_ray ray, int sector,
+int			sidedef_render(t_doom *doom, t_ray *ray, int sector,
 						int prev_sector)
 {
 	t_point		intersect;
@@ -102,12 +103,12 @@ int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	min_distance = INFINITY;
 	if (doom->lib.sector[sector].outside)
 	{
-			sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
+			sidedef_render_skybox(doom, *ray, doom->lib.sky_sd);
 	}
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
-		distance = sidedef_intersection_distance(ray,\
+		distance = sidedef_intersection_distance(*ray,\
 			doom->lib.sidedef[x].line, &intersect);
 		if (distance < min_distance &&\
 			doom->lib.sidedef[x].opp_sector != prev_sector)
@@ -120,9 +121,13 @@ int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	if (min_distance != INFINITY)
 	{
+		if (near_sidedef.action == 1) // create define to know what is what but this is see through
+			ray->filter = 80;
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		return (project_on_plane(doom, near_sidedef, ray.plane_x));
+		if (near_sidedef.action == 1)
+			ray->filter = 0;
+		project_on_plane(doom, near_sidedef, *ray);
 	}
 	return (0);
 }

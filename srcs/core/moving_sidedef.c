@@ -64,14 +64,35 @@ void    calc_mv(t_sidedef *mv_sd, int open)
 
 }
 
-void    sliding_door(t_doom *doom, int sd_index)
+int     return_sd(int *mv_sd, int sd_index, int len)
+{
+    int i;
+
+    i = 0;
+    while (i < len)
+    {
+        if (sd_index == mv_sd[i])
+            return (i);
+        i++;
+    }
+    return (-1)
+}
+
+
+t_line    sliding_door(t_doom *doom, int sd_index_add, int sd_index_get)
 {
     static int *mv_sd;
+    static t_line *coor_sd;
     static int  len;
     int         i;
 
-    if (sd_index != -1)
-        init_door(&len, &mv_sd, sd_index);
+    if (sd_index_add != -1)
+        init_door(&len, &mv_sd, sd_index_add);
+    else if (sd_index_get != -1)
+    {
+        i = return_sd(mv_sd, sd_index_get, len);
+
+    }
     else
     {
         i = 0;

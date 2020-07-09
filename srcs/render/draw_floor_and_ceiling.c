@@ -49,7 +49,16 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	put_row(doom, tex_dex, index, pixel_dex);
 }
 
-void			draw_ceiling(t_doom *doom, int x,
+void			add_filter(t_doom *doom, int y, int filter, int index)
+{
+	char *pixels;
+	pixels = doom->surface->pixels;
+
+	if (filter != 0)
+		pixels[index] += filter;
+}
+
+void			draw_ceiling(t_doom *doom, t_ray ray,
 					t_sector sector, int y)
 {
 	double	dist;
@@ -63,16 +72,17 @@ void			draw_ceiling(t_doom *doom, int x,
 	height = (HEIGHT + doom->player_height) / 2;
 	while (y >= 0)
 	{
-		index = (y * doom->surface->pitch) + (x * bpp);
+		index = (y * doom->surface->pitch) + (ray.plane_x * bpp);
 		dist = (doom->player_std_height - sector.height_ceiling)\
 			/ (height - y) * doom->dist_to_plane;
-		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		dist /= cos(doom->ray_adjacent * ray.plane_x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
+		add_filter(doom, y, ray.filter, index);
 		y--;
 	}
 }
 
-void			draw_floor(t_doom *doom, int x,
+void			draw_floor(t_doom *doom, t_ray ray,
 					t_sector sector, int y)
 {
 	double	dist;
@@ -86,11 +96,12 @@ void			draw_floor(t_doom *doom, int x,
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
-		index = (y * doom->surface->pitch) + (x * bpp);
+		index = (y * doom->surface->pitch) + (ray.plane_x  * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
 			/ (y - height) * (doom->dist_to_plane);
-		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		dist /= cos(doom->ray_adjacent * ray.plane_x  - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
+		add_filter(doom, y, ray.filter, index);
 		y++;
 	}
 }

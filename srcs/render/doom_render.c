@@ -30,6 +30,7 @@ void	doom_render(t_doom *doom)
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);
 	ray.line.start = doom->pos;
+	ray.filter = 0;
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);
@@ -39,7 +40,7 @@ void	doom_render(t_doom *doom)
 		ray.plane_x = x;
 		if (doom->lib.sector[doom->i_sector].outside)
 			sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
-		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
+		sidedef_render(doom, &ray, doom->i_sector, doom->i_sector);
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}

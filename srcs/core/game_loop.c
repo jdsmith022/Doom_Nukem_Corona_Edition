@@ -54,7 +54,7 @@ void	game_loop(t_doom *doom)
 			doom_render(doom);
 			doom_sound(doom);
 			doom_gui(doom);
-			sliding_door(doom, -1); //move to its own file
+			// sliding_door(doom, -1); //move to its own file
 		}
 		else
 			open_game_editor(doom);

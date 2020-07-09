@@ -70,13 +70,13 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 }
 
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x)
+					t_sidedef sidedef, t_ray ray)
 {
 	Uint32	*pixels;
 	t_point	pixel;
 
 	pixel.y = plane.sidedef_top;
-	pixel.x = x;
+	pixel.x = ray.plane_x;
 	pixels = doom->surface->pixels;
 	while (pixel.y < plane.sidedef_bottom)
 	{
@@ -89,15 +89,21 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 }
 
 void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x)
+					t_sidedef sidedef, t_ray ray)
 {
 	t_point	pixel;
+	char	*pixels;
 
 	pixel.y = plane.sidedef_top;
-	pixel.x = x;
+	pixel.x = ray.plane_x;
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		find_texture_index(doom, pixel, plane, sidedef);
+		if (ray.filter != 0)
+		{
+			pixels = doom->surface->pixels;
+			pixels[(((int)pixel.y * WIDTH) + (int)pixel.x) * 4] += ray.filter;
+		}
 		pixel.y++;
 	}
 }
