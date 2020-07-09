@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 15:01:53 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/09 10:31:47 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
+# include "../srcs/editor/game_editor.h"
+# include "audio.h"
 
 # include "../sdl/includes/SDL.h"
 # include "audio.h"
@@ -121,15 +123,18 @@ typedef struct		s_sidedef {
 	int				sector;
 	int				opp_sidedef;
 	int				opp_sector;
-	int				offset;
+	double			offset;
+	int				dir;
 	int				txt_1;
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	t_point			intersect;
 }					t_sidedef;
 
 typedef struct		s_sector {
 	int				id;
+	int				outside;
 	int				n_sidedefs;
 	int				i_sidedefs;
 	int				n_objects;
@@ -148,7 +153,12 @@ typedef struct		s_sector {
 
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
+	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
+	int				len_obj_lib;
+	SDL_Surface		**sky_lib;
+	int				len_sky_lib;
+	t_line			*sky_sd;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;
@@ -187,6 +197,8 @@ typedef struct		s_doom {
 	int				wall_height_std;
 	double			player_std_height;
 	double			player_height;
+	int				texture_width;
+	int				texture_height;
 	int				i_sector;
 	int				prev_sector;
 	double			ray_angle;
@@ -212,14 +224,22 @@ void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 
 /*read functions*/
-SDL_Surface			**save_img(int fd);
+SDL_Surface			**save_img(int fd, int *len);
+SDL_Surface			**save_sky(t_line **sky_sd);
 void				error(char *error, int line_num);
+int					open_file(char *filename);
+t_bmp				*malloc_images_lib(int len);
+SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
 t_object			*save_sprites(int fd);
-void				main2(t_doom *doom);
+void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
+t_bmp				*malloc_images_lib(int len);
+SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
+int					open_file(char *filename);
+int					line_num(int i);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
@@ -242,10 +262,11 @@ void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 
 /*render functions*/
-void				sidedef_render(t_doom *doom, t_ray ray,\
+int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
-void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
-						t_point intersect);
+int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+void    			set_texture_properties(t_doom *doom, t_sector sector,\
+						int texture);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
@@ -254,6 +275,10 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
+void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
+						t_plane plane);
+void		    	draw_ground(t_doom *doom, int x, int y);
+void		  		draw_sky(t_doom *doom, int x, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
@@ -264,8 +289,11 @@ t_point				line_intersection(t_point start1, t_point delta1,
 t_point				line_delta(t_point start, t_point end);
 double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
-
-void				load_textures(t_doom *doom);
+double				sidedef_intersection_distance(t_ray ray, t_line line, t_point *intersect);
+void				wall_offset(t_plane *plane, int sidedef_top);
+void				find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point intersect);
+void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
+Uint8				find_slope_line_offset(t_point start, t_point end);
 
 /*game editor*/
 
@@ -274,8 +302,8 @@ void	add_sidedef(t_doom *doom, int x, int y);
 void	del_sidedef(t_doom *doom);
 void	add_sector(t_doom *doom);
 void	del_sector(t_doom *doom);
-void    draw_bar(Uint32 **pixels, int x, int y, int len);
-void    draw_bar_point(Uint32 **pixels, t_doom *doom, int x, int y, int len);
+void    draw_bar(Uint32 **pixels, t_bar bar);
+void    draw_bar_point(Uint32 **pixels, t_bar bar);
 void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
@@ -284,4 +312,5 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y);
 
 void	audio(t_audio audio, t_event event);
 
+void    bars(Uint32 **pixels, t_doom *doom);
 #endif

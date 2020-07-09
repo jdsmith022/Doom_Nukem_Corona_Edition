@@ -6,13 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 19:15:10 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 13:12:58 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void		wall_offset(t_plane *plane, int sidedef_top)
+static void		wall_offset(t_plane *plane, int sidedef_top)
 {
 	plane->wall_offset = 0;
 	if (sidedef_top < 0)
@@ -56,7 +56,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 
 	(void)sector;
 	new_height = (HEIGHT + doom->player_height) / 2;
-	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
+	plane->height_standard = doom->texture_height / sidedef.distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
@@ -81,23 +81,25 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 }
 
-int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
+void		project_on_plane(t_doom *doom, t_sidedef sidedef,
+				int x, t_point intersect)
 {
 	t_plane		plane;
 	t_sector	sector;
 
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, x);
-	plane.intersect = sidedef.intersect;
+	set_texture_properties(doom, sector, sidedef.txt_1);
+	plane.intersect = intersect;
+	if (sector.outside == TRUE)
+		draw_skybox(doom, x, sidedef, plane);
+	else
 	{
-		if (!doom->lib.sector[sidedef.sector].outside)
-			draw_ceiling(doom, x, sector, plane.sidedef_top);
+		draw_ceiling(doom, x, sector, plane.sidedef_top);
 		if (sidedef.opp_sector == -1)
 			draw_onesided_sidedef(doom, plane, sidedef, x);
 		else
 			draw_portal_sidedef(doom, plane, sidedef, x);
-		if (!doom->lib.sector[sidedef.sector].outside)
-			draw_floor(doom, x, sector, plane.sidedef_bottom);
+		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	}
-	return (0);
 }

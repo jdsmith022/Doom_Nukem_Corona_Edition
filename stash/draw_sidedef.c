@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:08:40 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/07 10:44:37 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static void		put_protal_pixel(t_doom *doom, t_point pixel)
 		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
 }
 
-static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
-					t_point pixel, t_plane plane)
+static Uint32		find_sidedef_texture(t_sidedef sidedef, t_point pixel,
+						t_plane plane)
 {
 	Uint32 tex_dex;
 
 	if (sidedef.opp_sector == -1)
-		tex_dex = sidedef.txt_2;
+		tex_dex = sidedef.txt_1;
 	else if (pixel.y <= plane.mid_texture_top)
 		tex_dex = sidedef.txt_1;
 	// else if (pixel.y > plane.mid_texture_top &&\
@@ -57,14 +57,14 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	double	wall_y;
 	int		bpp;
 
-	tex_dex = find_sidedef_texture(doom, sidedef, pixel, plane);
+	tex_dex = find_sidedef_texture(sidedef, pixel, plane);
 	bpp = doom->surface->format->BytesPerPixel;
-	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
-	wall_y = (double)(64 / plane.height_standard) *\
-		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
+	index = (pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
+	wall_y = (double)(doom->texture_height / plane.height_standard) *\
+		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top);
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
-	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
-		(sidedef.offset * bpp));
+	pixel_dex = ((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
+		((int)sidedef.offset * bpp);
 	put_texture(doom, tex_dex, index, pixel_dex);
 	//put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
@@ -88,8 +88,8 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	}
 }
 
-void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x)
+void				draw_onesided_sidedef(t_doom *doom, t_plane plane,
+							t_sidedef sidedef, int x)
 {
 	t_point	pixel;
 

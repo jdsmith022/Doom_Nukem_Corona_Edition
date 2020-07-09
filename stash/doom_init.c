@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:31:04 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 10:40:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,18 +147,17 @@ void 	doom_init(t_doom *doom)
 {
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
-	init_audio(&doom->audio);
-	load_audio(&doom->audio);
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 64;
 	doom->pos.y = 64;
-	doom->max_ray = 10000;
+	doom->max_ray = 200;
 	doom->i_sector = 0;
 	doom->player_height = 32;
 	doom->player_std_height = 32;
+	doom->wall_height_std = 64;
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;

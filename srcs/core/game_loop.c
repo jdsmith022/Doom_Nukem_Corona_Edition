@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 16:05:13 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/09 10:31:18 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	game_loop(t_doom *doom)
 	double			dt;
 
 	last_frame_time = 0;
-	dt = 0.05;
+	dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
 		dt = get_timeframe(&last_frame_time);

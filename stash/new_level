@@ -9,7 +9,6 @@ textures/dark_stone.bmp
 0
 
 
-
 #number of sectors
 3
 #number of walls
@@ -29,7 +28,6 @@ textures/dark_stone.bmp
 4
 0
 0
-
 
 #sidedefs0
 -1

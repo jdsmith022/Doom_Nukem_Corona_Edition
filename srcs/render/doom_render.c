@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/06 22:23:31 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/08 18:54:27 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	doom_render(t_doom *doom)
 {
 	int		x;
 	t_ray	ray;
+	int		sky;
 
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);
@@ -36,6 +37,10 @@ void	doom_render(t_doom *doom)
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		ray.plane_x = x;
+		if (doom->lib.sector[doom->i_sector].outside)
+		{
+			sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
+		}
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
 		ray.angle += doom->ray_adjacent;
 		x++;

@@ -57,9 +57,11 @@ void	add_sector(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].slope_ceiling = 0;
 		doom->game_design.sector[doom->game_design.s_len].height_ceiling = 0;
 		doom->game_design.sector[doom->game_design.s_len].height_floor = 0;
+		doom->game_design.sector[doom->game_design.s_len].txt_floor = 0;
+		doom->game_design.sector[doom->game_design.s_len].txt_ceiling = 0;
 		doom->game_design.sector[doom->game_design.s_len].i_sidedefs = doom->game_design.w_len;
 		doom->game_design.sector[doom->game_design.s_len].n_sidedefs = 0;
 		doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
 		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
-
+		doom->game_design.sector[doom->game_design.s_len].outside = 0;
 }

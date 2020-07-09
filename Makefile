@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/07 16:07:57 by elkanfrank    ########   odam.nl          #
+#    Updated: 2020/07/09 10:31:13 by elkanfrank    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,10 @@ CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
-				draw_floor_and_ceiling slope_projections put_texture
-READ_FILES = add_info_to_lib error read_file main2
+				draw_floor_and_ceiling slope_projections put_texture\
+				skybox_top_bottom draw_skybox set_texture_properties\
+				render_sky_box
+READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 					mouse_events_game_editor
 AUDIO_FILES = audio playback helpers
