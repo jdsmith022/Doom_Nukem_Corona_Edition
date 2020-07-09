@@ -52,6 +52,8 @@ void    sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd)
 		}
 		x++;
     }
+	if (doom->dir_angle >= 6.3)
+		doom->dir_angle *= PI / 180;
 	set_properties_plane_sky(doom, &plane, ray.plane_x, min_distance);
 	draw_sky(doom, ray.plane_x, plane.sidedef_top);
 	find_side(doom, ray.plane_x, near_sidedef, plane, intersect);
