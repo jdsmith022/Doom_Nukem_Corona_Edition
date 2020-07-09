@@ -12,7 +12,7 @@
 
 #include "../../includes/doom.h"
 
-t_point	check_line_intersection(t_line move, t_sidedef sidedef)
+t_point	check_line_intersection(t_line move, t_sidedef sidedef, double angle, int x)
 {
 	t_point	intersect;
 	t_point	move_delta;
@@ -22,10 +22,12 @@ t_point	check_line_intersection(t_line move, t_sidedef sidedef)
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
 	sidedef.line.start, sidedef_delta);
+	if (point_distance(intersect, move.start, angle) < 10 && sidedef->action = 1) //create_enum and than use the name
+		sliding_door(NULL, x);
 	return (intersect);
 }
 
-int		movement_collision(t_doom *doom, t_line move)
+int		movement_collision(t_doom *doom, t_line move, double angle)
 {
 	int			x;
 	t_point		intersect;
@@ -36,7 +38,7 @@ int		movement_collision(t_doom *doom, t_line move)
 		+ doom->lib.sector[doom->i_sector].i_sidedefs)
 	{
 		sidedef = doom->lib.sidedef[x];
-		intersect = check_line_intersection(move, sidedef);
+		intersect = check_line_intersection(move, sidedef, angle, x);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
 		{
 			if (sidedef.opp_sector == -1 || check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
@@ -64,7 +66,7 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 		cos(doom->dir_angle + direction);
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
 		sin(doom->dir_angle + direction);
-	collision = movement_collision(doom, movement);
+	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
 		doom->pos = movement.end;

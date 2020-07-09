@@ -306,4 +306,8 @@ void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
 void    bars(Uint32 **pixels, t_doom *doom);
+
+/*actions*/
+
+void    sliding_door(t_doom *doom, int sd_index);
 #endif
