@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 14:20:03 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 16:58:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,22 +94,13 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		doom->lib.portal_ceiling = plane.sidedef_top;
 		doom->lib.portal_floor = plane.sidedef_bottom;
 	}
-	printf("sector: %d\n", doom->i_sector);
-	{
-		if (!sector.outside)
-		{
-			draw_ceiling(doom, x, sector, plane.sidedef_top);
-			printf("plane: %d\n", plane.sidedef_top);
-			doom->lib.portal_floor = plane.sidedef_top;
-
-		}
-		printf("boom\n");
-		if (sidedef.opp_sector == -1)
-			draw_onesided_sidedef(doom, plane, sidedef, x);
-		else
-			draw_portal_sidedef(doom, plane, sidedef, x);
-		if (!sector.outside)
-			draw_floor(doom, x, sector, plane.sidedef_bottom);
-	}
+	if (!sector.outside)
+		draw_ceiling(doom, x, sector, plane.sidedef_top);
+	if (sidedef.opp_sector == -1)
+		draw_onesided_sidedef(doom, plane, sidedef, x);
+	else
+		draw_portal_sidedef(doom, plane, sidedef, x);
+	if (!sector.outside)
+		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	return (0);
 }

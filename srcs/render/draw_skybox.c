@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/09 14:15:32 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 16:59:02 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,8 @@ void		find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point interse
 	int		limit;
 
 	pixel.x = x;
-		printf("sector: %d\n", doom->i_sector);
-	if (doom->i_sector == 1)
-	{
-		limit = doom->lib.portal_floor;
-	}
-	// else
-	// {
-	// 	limit = plane.sidedef_bottom;
-	// }
+	limit = plane.sidedef_bottom;
 	pixel.y = plane.sidedef_top;
-	printf("pixel.y: %f\n", pixel.y);
 	offset = set_offset(line, intersect, doom, &dir);
 	while (pixel.y < limit)
 	{
