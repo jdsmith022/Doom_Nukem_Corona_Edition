@@ -10,7 +10,7 @@ int		open_file(char *filename)
 	return (fd);
 }
 
-void	main2(t_doom *doom)
+void	save_libraries(t_doom *doom)
 {
 	int fd;
 	int len;
