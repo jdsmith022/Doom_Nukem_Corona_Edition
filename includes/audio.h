@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:40:07 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/07 16:54:08 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 # define MALLOC_ERR "error: malloc"
 
 #define AUDIO_BUFF 1042
-#define NUM_OF_SOUNDS 2
+#define NUM_OF_SOUNDS 3
 
-#define AUDIO_PATH		"/Users/elkanfrank/dev/codam/sdl_audio/sounds"
+#define AUDIO_PATH		"/Users/elkanfrank/dev/codam/doom_corona/sounds"
 
 #define S_UI_1 			"/General Sounds/Buttons/sfx_sounds_button1.wav"
 #define S_FOOTSTEPS 	"/Movement/Footsteps/sfx_movement_footstepsloop4_slow.wav"
+#define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump15.wav"
 #define MU_1			"/music/main_theme.wav"
 
 typedef struct		s_audio {

@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/06 18:53:24 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/07 16:07:57 by elkanfrank    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 READ_FILES = add_info_to_lib error read_file main2
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 					mouse_events_game_editor
-AUDIO_FILES = audio helpers
+AUDIO_FILES = audio playback helpers
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)

@@ -43,20 +43,28 @@ void	load_audio(t_audio *audio)
 	printf("Loading audio...\n");
 	audio->sounds[0] = Mix_LoadWAV(ft_strjoin(AUDIO_PATH, S_FOOTSTEPS));
 	audio->sounds[1] = Mix_LoadWAV(ft_strjoin(AUDIO_PATH, S_UI_1));
+	audio->sounds[2] = Mix_LoadWAV(ft_strjoin(AUDIO_PATH, S_JUMP));
 	while (i < NUM_OF_SOUNDS){
 		if (!audio->sounds[i])
 			printf("Mix_LoadWAV: %s\n", Mix_GetError());
 		i++;
 	}
 	printf("Loading audio complete\n");
-	Mix_AllocateChannels(2);
+	Mix_AllocateChannels(3);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	audio->music = Mix_LoadMUS(MU_1);
 }
 
 void	audio(t_audio audio, t_event event)
 {
-	printf("audio\n");
+	if (event.cam_move_f || event.cam_move_b)
+		loop_sound(audio.sounds[0], 1);
+	else if (!event.cam_move_f && !event.cam_move_b)
+		pause_sound(audio.sounds[0], 1);
+	if (event.jump){
+		pause_sound(audio.sounds[0], 1);
+		play_sound(audio.sounds[2], 2);
+	}
 	return;
 }
 
