@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 19:15:10 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 16:58:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,20 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_sector	sector;
 
 	sector = doom->lib.sector[sidedef.sector];
-	set_properties_plane(doom, sidedef, &plane, x);
 	plane.intersect = sidedef.intersect;
+	set_properties_plane(doom, sidedef, &plane, x);
+	if (sector.outside)
 	{
-		if (!doom->lib.sector[sidedef.sector].outside)
-			draw_ceiling(doom, x, sector, plane.sidedef_top);
-		if (sidedef.opp_sector == -1)
-			draw_onesided_sidedef(doom, plane, sidedef, x);
-		else
-			draw_portal_sidedef(doom, plane, sidedef, x);
-		if (!doom->lib.sector[sidedef.sector].outside)
-			draw_floor(doom, x, sector, plane.sidedef_bottom);
+		doom->lib.portal_ceiling = plane.sidedef_top;
+		doom->lib.portal_floor = plane.sidedef_bottom;
 	}
+	if (!sector.outside)
+		draw_ceiling(doom, x, sector, plane.sidedef_top);
+	if (sidedef.opp_sector == -1)
+		draw_onesided_sidedef(doom, plane, sidedef, x);
+	else
+		draw_portal_sidedef(doom, plane, sidedef, x);
+	if (!sector.outside)
+		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	return (0);
 }

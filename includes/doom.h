@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:11:00 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 13:07:26 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,14 +150,21 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
+typedef struct		s_sky {
+}					t_sky;
+
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
-	int				len_sky_lib;
 	t_line			*sky_sd;
+	int				portal_ceiling;
+	int				room_ceiling;
+	int				portal_floor;
+	int				room_floor;
+	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;
@@ -166,20 +173,20 @@ typedef struct		s_lib{
 }					t_lib;
 
 typedef struct		s_gamedesign{
-		t_sector	*sector;
-		int			s_len;
-		int			s_size;
-		t_sidedef	*sidedef;
-		int			w_len;
-		int			w_size;
-		int			cur_sec;
-		int			cur_sd;
-		int			portal_sd;
-		int			portal_sec;
-		int 		pl_pos;
-		int			pl_x;
-		int			pl_y;
-		int			pl_sec;
+	t_sector		*sector;
+	int				s_len;
+	int				s_size;
+	t_sidedef		*sidedef;
+	int				w_len;
+	int				w_size;
+	int				cur_sec;
+	int				cur_sd;
+	int				portal_sd;
+	int				portal_sec;
+	int 			pl_pos;
+	int				pl_x;
+	int				pl_y;
+	int				pl_sec;
 }
 					t_gamedesign;
 
@@ -196,6 +203,7 @@ typedef struct		s_doom {
 	int				wall_height_std;
 	double			player_std_height;
 	double			player_height;
+	Uint32			mid_screen;
 	int				texture_width;
 	int				texture_height;
 	int				i_sector;
