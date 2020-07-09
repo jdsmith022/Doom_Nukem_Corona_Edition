@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 12:39:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 18:30:42 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	min_distance = INFINITY;
 	if (doom->lib.sector[sector].outside)
 	{
-			sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
+		// printf("one\n");
+		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
 	}
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
@@ -122,6 +123,7 @@ int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+		
 		return (project_on_plane(doom, near_sidedef, ray.plane_x));
 	}
 	return (0);

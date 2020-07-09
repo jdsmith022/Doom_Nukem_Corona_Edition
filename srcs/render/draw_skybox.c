@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/09 16:59:02 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 18:33:29 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void		find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point interse
 	int		limit;
 
 	pixel.x = x;
-	limit = plane.sidedef_bottom;
 	pixel.y = plane.sidedef_top;
+	limit = plane.sidedef_bottom;
 	offset = set_offset(line, intersect, doom, &dir);
 	while (pixel.y < limit)
 	{
