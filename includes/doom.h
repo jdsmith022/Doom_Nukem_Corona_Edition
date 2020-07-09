@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:11:00 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:13:52 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,7 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void		    	draw_ground(t_doom *doom, int x, int y);
 void		  		draw_sky(t_doom *doom, int x, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, t_plane plane);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);

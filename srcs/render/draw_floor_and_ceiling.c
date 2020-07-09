@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 18:36:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:16:42 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	floor.y = dist * sin(doom->ray_angle);
 	floor.x += doom->pos.x;
 	floor.y += doom->pos.y;
-	texture.x = (int)floor.x % doom->lib.tex_lib[tex_dex]->h;
-	texture.y = (int)floor.y % doom->lib.tex_lib[tex_dex]->w;
+	texture.x = (int)floor.x % doom->texture_width;
+	texture.y = (int)floor.y % doom->texture_height;
 	pixel_dex = (((int)texture.y * doom->lib.tex_lib[tex_dex]->pitch)\
 		+ ((int)texture.x * bpp));
 	put_row(doom, tex_dex, index, pixel_dex);
@@ -73,7 +73,7 @@ void			draw_ceiling(t_doom *doom, int x,
 }
 
 void			draw_floor(t_doom *doom, int x,
-					t_sector sector, int y)
+					t_sector sector, t_plane plane)
 {
 	double	dist;
 	Uint32	index;
@@ -81,9 +81,11 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 
+	int y = plane.sidedef_bottom;
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
+	printf("sidedefbottom: %d, sectorid: %d, sidedef: %d\n", plane.sidedef_bottom, sector.id, doom->lib.sidedef[sector.id].id);
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);

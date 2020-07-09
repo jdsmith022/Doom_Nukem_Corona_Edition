@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 11:53:22 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:02:35 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void 	doom_init(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 100;
+	doom->pos.x = 50;
 	doom->pos.y = 100;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
