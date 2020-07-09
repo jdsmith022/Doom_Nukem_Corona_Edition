@@ -147,77 +147,97 @@ t_sidedef   wall_inf(int fd, int sector, int tex_len, int sec_len)
 	return (wall);
 }
 
-void        add_inf_to_obj(t_object *sprite, char *line, int i, int safe, int obj_len)
+void        add_inf_to_obj(t_sprite *sprite, char *line, int i, int safe, int obj_len)
 {
 	if (i == 0)
-		sprite->name = line; //maybe can be done without string copy
+		sprite->index = safe; //maybe can be done without string copy
 	if (i == 1)
 	{
 		if (safe > 0)
-			sprite->location.start.x = safe;
+			sprite->pos.x = safe;
 		else
 			error("Impossible to have negative coordinates", line_num(0));
 	}
 	if (i == 2)
 	{
 		if (safe > 0)
-			sprite->location.start.y = safe;
+			sprite->pos.y = safe;
 		else
 			error("Impossible to have negative coordinates", line_num(0));
 	}
 	if (i == 3)
-	{
-		if (safe > 0)
-			sprite->location.end.x = safe;
-		else
-			error("Impossible to have negative coordinates", line_num(0));
-	}
-	if (i == 4)
-	{
-		if (safe > 0)
-			sprite->location.end.y = safe;
-		else
-			error("Impossible to have negative coordinates", line_num(0));
-	}
-	if (i == 5)
 		sprite->action = safe;
-	if (i == 6)
+	if (i == 4)
+		sprite->size = safe;
+	if (i == 5)
 	{
 		if (safe > 0)
 		{
-			sprite->n_textures = safe;
+			// printf("Amount %i\n", safe);
+			sprite->amount = safe;
 			sprite->textures = (int*)malloc(sizeof(int) * safe);
-			sprite->face_ang = (int*)malloc(sizeof(int) * safe);
+			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);
 		}
 		else
 			error("Sprite needs a texture", line_num(0));
 
 	}
-	if (i > 6 && i < sprite->n_textures + 6)
+	if (i > 5 && i < sprite->amount * 5 + 6)
 	{
-		if (safe >= 0 && safe < obj_len)
+		if (i % 5 == 1)
 		{
-			if (i % 2 == 1)
-				sprite->textures[(i - 7) / 2] = safe;
+			// printf("test texture %d\n", safe);
+			if (safe >= 0 && safe < obj_len)
+				sprite->textures[(i - 6) / 5] = safe;
 			else
-				sprite->face_ang[(i - 8) / 2] = safe;
+				error("Sprite texture is not available", line_num(0));
 		}
-		else
-			error("Sprite texture is not available", line_num(0));
+		if (i % 5 == 2)
+		{
+			// printf("test start x %d\n", safe);
+			if (safe > 0)
+				sprite->lines[(i - 6) / 5].start.x = safe;
+			else
+				error("Impossible to have negative coordinates", line_num(0));
+		}
+		if (i % 5 == 3)
+		{
+			// printf("test start y %d\n", safe);
+			if (safe > 0)
+				sprite->lines[(i - 6) / 5].start.y = safe;
+			else
+				error("Impossible to have negative coordinates", line_num(0));
+		}
+		if (i % 5 == 4)
+		{
+			// printf("test end x %d\n", safe);
+			if (safe > 0)
+				sprite->lines[(i - 6) / 5].end.x = safe;
+			else
+				error("Impossible to have negative coordinates", line_num(0));
+		}
+		if (i % 5 == 0)
+		{
+			// printf("test end y %d\n", safe);
+			if (safe > 0)
+				sprite->lines[(i - 6) / 5].end.y = safe;
+			else
+				error("Impossible to have negative coordinates", line_num(0));
+		}
 	}
 }
 
-t_object   object_inf(int fd, int sector, int obj_len)
+t_sprite   object_inf(int fd, int sector, int obj_len)
 {
 	int i;
 	char    *line;
-	t_object sprite;
+	t_sprite sprite;
 	int     safe;
 
 	i = 0;
 	(void)sector;
-	sprite.n_textures = 0;
-	while (i < 6 + sprite.n_textures)
+	sprite.amount = 0;
+	while (i < 6 + sprite.amount * 5)
 	{
 		// if (i < 5)
 		safe = get_line(&line, fd, "object informations does not exist", 1);
@@ -242,11 +262,11 @@ void        add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
 		sprite->spawn_time = safe;
 	if (i == 4)
 	{
-		sprite->n_textures = safe;
+		sprite->amount = safe;
 		sprite->textures = (int*)malloc(sizeof(int) * safe);
 		sprite->face_ang = (int*)malloc(sizeof(int) * safe);
 	}
-	if (i > 4 && i < sprite->n_textures + 4)
+	if (i > 4 && i < sprite->amount + 4)
 	{
 		if (i % 2 == 1)
 			sprite->textures[(i - 5) / 2] = safe;
@@ -264,8 +284,8 @@ t_m_object   mov_object_inf(int fd, int sector)
 
 	(void)sector;
 	i = 0;
-	m_sprite.n_textures = 0;
-	while (i < 5 + m_sprite.n_textures)
+	m_sprite.amount = 0;
+	while (i < 5 + m_sprite.amount)
 	{
 		if (i > 0)
 		safe = get_line(&line, fd, "moving object informations does not exist", 1);
@@ -312,7 +332,7 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
 		j = 0;
 		while (j < col_lib->sector[i].n_objects)
 		{
-			col_lib->sprites[k] = object_inf(fd, i, col_lib->len_obj_lib);
+			col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
 			l++;
 			j++;
 		}
