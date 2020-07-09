@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/09 12:16:42 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:41:55 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,17 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 
+	int stop;
 	int y = plane.sidedef_bottom;
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
-	printf("sidedefbottom: %d, sectorid: %d, sidedef: %d\n", plane.sidedef_bottom, sector.id, doom->lib.sidedef[sector.id].id);
-	while (y < HEIGHT)
+	stop = HEIGHT;
+	if (sector.outside == 0)
+		stop = doom->lib.portal_floor;
+	printf("stop: %d, sector.outside: %d\n", stop, sector.outside);
+	// printf("sidedefbottom: %d, sectorid: %d, sidedef: %d\n", plane.sidedef_bottom, sector.id, doom->lib.sidedef[sector.id].id);
+	while (y < stop)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\

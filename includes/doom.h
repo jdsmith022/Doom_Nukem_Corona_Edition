@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 12:13:52 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:38:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,14 +150,19 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
+typedef struct		s_sky {
+}					t_sky;
+
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
-	int				len_sky_lib;
 	t_line			*sky_sd;
+	int				portal_ceiling;
+	int				portal_floor;
+	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
 	t_object		*sprites;

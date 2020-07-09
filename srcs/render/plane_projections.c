@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 12:13:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:42:32 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,12 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, x);
+	if (sector.outside)
+	{
+		doom->lib.portal_ceiling = plane.sidedef_top;
+		doom->lib.portal_floor = plane.sidedef_bottom;
+		printf("bottom: %d\n", plane.sidedef_bottom);
+	}
 	plane.intersect = sidedef.intersect;
 	{
 		if (!doom->lib.sector[sidedef.sector].outside)
