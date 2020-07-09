@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/08 13:51:07 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/09 14:52:11 by rooscocolie   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RENDER = srcs/render/
 READ = srcs/read_file/
 EDITOR = srcs/editor/
 AUDIO = srcs/audio/
-SPRITE = srcs/sprite/
+# SPRITE = srcs/sprite/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit
@@ -41,8 +41,8 @@ READ_FILES = add_info_to_lib error read_file main2 save_sdl malloc_lib
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 					mouse_events_game_editor
 AUDIO_FILES = audio helpers
-SPRITE_FILES = sprite_check sprite_draw sprite_init sprite_position \
-				sprite_render sprite_sort
+# SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
+				sprite_sort sprite_reset
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
@@ -50,7 +50,7 @@ C_FILES_RENDER = $(RENDER_FILES:%=%.c)
 C_FILES_READ = $(READ_FILES:%=%.c)
 C_FILES_EDITOR = $(EDITOR_FILES:%=%.c)
 C_FILES_AUDIO = $(AUDIO_FILES:%=%.c)
-C_FILES_SPRITE = $(SPRITE_FILES:%=%.c)
+# C_FILES_SPRITE = $(SPRITE_FILES:%=%.c)
 
 O_FILES_CORE = $(CORE_FILES:%=$(CORE).objects/%.o)
 O_FILES_EVENTS = $(EVENTS_FILES:%=$(EVENTS).objects/%.o)
@@ -58,12 +58,12 @@ O_FILES_RENDER = $(RENDER_FILES:%=$(RENDER).objects/%.o)
 O_FILES_READ = $(READ_FILES:%=$(READ).objects/%.o)
 O_FILES_EDITOR = $(EDITOR_FILES:%=$(EDITOR).objects/%.o)
 O_FILES_AUDIO = $(AUDIO_FILES:%=$(AUDIO).objects/%.o)
-O_FILES_SPRITE = $(SPRITE_FILES:%=$(SPRITE).objects/%.o)
+# O_FILES_SPRITE = $(SPRITE_FILES:%=$(SPRITE).objects/%.o)
 
-SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE)
+SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) #$(SPRITE)
 O_FILES_DIRS = $(SRCS_DIRS:%=%.objects)
 O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
-		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) $(O_FILES_SPRITE)
+		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) #$(O_FILES_SPRITE)
 
 HEADERS = includes/doom.h includes/audio.h
 ADD_FILES = Makefile textures
@@ -98,9 +98,9 @@ $(AUDIO).objects/%.o: $(AUDIO)%.c $(HEADERS)
 	@$(CC) -o $@ -c $<
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
-$(SPRITE).objects/%.o: $(SPRITE)%.c $(HEADERS)
-	@$(CC) -o $@ -c $<
-	@echo "$(GREEN)[+]$(WHITE) $@"
+# $(SPRITE).objects/%.o: $(SPRITE)%.c $(HEADERS)
+	# @$(CC) -o $@ -c $<
+	# @echo "$(GREEN)[+]$(WHITE) $@"
 
 %/.objects:
 	@mkdir $@
@@ -128,7 +128,7 @@ re: fclean all
 add: fclean
 	@git add $(LIBFT) $(HEADERS) $(ADD_FILES) $(SDL) $(BMP) \
 	$(C_FILES_CORE) $(C_FILES_EVENTS) $(C_FILES_RENDER) $(C_FILES_READ) \
-	$(C_FILES_EDITOR) $(C_FILES_AUDIO) $(C_FILES_SPRITE)
+	$(C_FILES_EDITOR) $(C_FILES_AUDIO)
 	@git status
 
 push:

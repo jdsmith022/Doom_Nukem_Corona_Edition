@@ -6,11 +6,11 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 11:29:08 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/08 17:07:39 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:32:22 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/doom.h"
+#include "../../includes/doom.h"
 
 int		find_x(t_doom *doom, int index)
 {
@@ -26,10 +26,7 @@ int		find_x(t_doom *doom, int index)
 	+ doom->dist_to_plane * doom->dist_to_plane);
 	screen_x = 0;
 	printf("dist pixels from middle (%d): %d\n", middle, dist);
-	if (doom->lib.sprite[index].x <= middle)
-		screen_x = middle - dist;
-	else
-		screen_x = middle + dist;
+	screen_x = middle + dist; //this doesn't make sense
 	// return (screen_x);
 	return (middle); //for now
 }

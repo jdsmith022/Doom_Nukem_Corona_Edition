@@ -1,13 +1,17 @@
- #include "../../includes/doom.h"
+#include "../../includes/doom.h"
 
- #include <stdio.h>
+#include <stdio.h>
 
 void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 {
 	if (i == 0)
+	{
 		sector->light_level = safe;
+	}
 	if (i == 1)
+	{
 		sector->height_floor = safe;
+	}
 	if (i == 2)
 	{
 		if (safe >= 0 && safe < tex_len)
@@ -16,9 +20,13 @@ void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 			error("texture is not available", line_num(0));
 	}
 	if (i == 3)
+	{
 		sector->slope_floor = safe;
+	}
 	if (i == 4)
+	{
 		sector->height_ceiling = safe;
+	}
 	if (i == 5)
 	{
 		if (safe >= 0 && safe < tex_len)
@@ -27,7 +35,9 @@ void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 			error("texture is not available", line_num(0));
 	}
 	if (i == 6)
+	{
 		sector->slope_ceiling = safe;
+	}
 	if (i == 7)
 	{
 		if (safe > 3)
@@ -44,6 +54,7 @@ void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 		else
 			error("outside needs to be 1 or 2 (on or off)", line_num(0));
 	}
+	printf("add_inf_to_sect i: %d SAFE = %d\n", i, safe);
 }
 
 t_sector   sector_inf(int fd, int tex_len)
@@ -147,116 +158,137 @@ t_sidedef   wall_inf(int fd, int sector, int tex_len, int sec_len)
 	return (wall);
 }
 
-void        add_inf_to_obj(t_sprite *sprite, char *line, int i, int safe, int obj_len)
-{
-	if (i == 0)
-		sprite->index = safe; //maybe can be done without string copy
-	if (i == 1)
-		sprite->action = safe;
-	if (i == 2)
-		sprite->size = safe;
-	if (i == 3)
-		sprite->pos.x = safe;
-	if (i == 4)
-		sprite->pos.y = safe;
-	if (i == 5)
-	{
-		if (safe > 0)
-		{
-			sprite->amount = safe;
-			sprite->textures = (int*)malloc(sizeof(int) * safe);
-			sprite->lines = (int*)malloc(sizeof(int) * safe);
-		}
-		else
-			error("Sprite needs a texture", line_num(0));
+// void        add_inf_to_obj(t_sprite *sprite, char *line, int i, int safe, int obj_len)
+// {
+// 	if (i == 0)
+// 	{
+// 		// printf("test_index %d\n", safe);
+// 		sprite->index = safe; //maybe can be done without string copy
+// 	}
+// 	if (i == 3)
+// 	{
+// 	// printf("test_action %d\n", safe);		
+// 		sprite->action = safe;
+// 	}
+// 	if (i == 4)
+// 	{
+// 		// printf("test_size %d\n", safe);
+// 		sprite->size = safe;
+// 	}
+// 	if (i == 1)
+// 	{
+// 		// printf("test_pos.x %d\n", safe);
+// 		sprite->pos.x = safe;
+// 	}
+// 	if (i == 2)
+// 	{
+// 		// printf("test_pos.y %d\n", safe);
+// 		sprite->pos.y = safe;
+// 	}
+// 	if (i == 5)
+// 	{
+// 		// printf("test_5 %d\n", safe);
+// 		if (safe > 0)
+// 		{
+// 			sprite->amount = safe;
+// 			sprite->textures = (int*)malloc(sizeof(int) * safe);
+// 			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);
+// 		}
+// 		else
+// 			error("Sprite needs a texture", line_num(0));
+// 	}
+// 	if (i > 5 && i < sprite->amount * 5 + 6)
+// 	{
+// 		if (i % 5 == 1)
+// 		{
+// 			// printf("test texture %d\n", safe);
+// 			if (safe >= 0 && safe < obj_len)
+// 				sprite->textures[(i - 6) / 5] = safe;
+// 			else
+// 				error("Sprite texture is not available", line_num(0));
+// 		}
+// 		if (i % 5 == 2)
+// 		{
+// 			// printf("test start x %d\n", safe);
+// 			if (safe > 0)
+// 				sprite->lines[(i - 6) / 5].start.x = safe;
+// 			else
+// 				error("Impossible to have negative coordinates", line_num(0));
+// 		}
+// 		if (i % 5 == 3)
+// 		{
+// 			// printf("test start y %d\n", safe);
+// 			if (safe > 0)
+// 				sprite->lines[(i - 6) / 5].start.y = safe;
+// 			else
+// 				error("Impossible to have negative coordinates", line_num(0));
+// 		}
+// 		if (i % 5 == 4)
+// 		{
+// 			// printf("test end x %d\n", safe);
+// 			if (safe > 0)
+// 				sprite->lines[(i - 6) / 5].end.x = safe;
+// 			else
+// 				error("Impossible to have negative coordinates", line_num(0));
+// 		}
+// 		if (i % 5 == 0)
+// 		{
+// 			// printf("test end y %d\n", safe);
+// 			if (safe > 0)
+// 				sprite->lines[(i - 6) / 5].end.y = safe;
+// 			else
+// 				error("Impossible to have negative coordinates", line_num(0));
+// 		}
+// 	}
+// }
 
-	}
-	if (i > 6 && i < sprite->amount + 6)
-	{
-		if (safe >= 0 && safe < obj_len)
-		{
-			if (i % 5 == 1)
-				sprite->textures[(i - 7) / 5] = safe;
-		if (i % 5 == 2)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 7) / 5].start.x = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		if (i % 5 == 3)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 7) / 5].start.y = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		if (i % 5 == 4)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 7) / 5].end.x = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		if (i % 5 == 0)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 7) / 5].end.y = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		else
-			error("Sprite texture is not available", line_num(0));
-	}
-}
+// t_sprite   object_inf(int fd, int sector, int obj_len)
+// {
+// 	int i;
+// 	char    *line;
+// 	t_sprite sprite;
+// 	int     safe;
 
-t_sprite   object_inf(int fd, int sector, int obj_len)
-{
-	int i;
-	char    *line;
-	t_sprite sprite;
-	int     safe;
+// 	i = 0;
+// 	(void)sector;
+// 	sprite.amount = 0;
+// 	while (i < 6 + sprite.amount * 5)
+// 	{
+// 		// if (i < 5)
+// 		safe = get_line(&line, fd, "object informations does not exist", 1);
+// 		// else
+// 		//     get_line(&line, fd, "object informations does not exist", 0);
+// 		add_inf_to_obj(&sprite, line, i, safe, obj_len);
+// 		free(line);
+// 		i++;
+// 	}
+// 	return (sprite);
+// }
 
-	i = 0;
-	(void)sector;
-	sprite.amount = 0;
-	while (i < 6 + sprite.amount)
-	{
-		// if (i < 5)
-		safe = get_line(&line, fd, "object informations does not exist", 1);
-		// else
-		//     get_line(&line, fd, "object informations does not exist", 0);
-		add_inf_to_obj(&sprite, line, i, safe, obj_len);
-		free(line);
-		i++;
-	}
-	return (sprite);
-}
-
-void        add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
-{
-	if (i == 0)
-		sprite->name = line; //maybe can be done without string copy
-	if (i == 1)
-		sprite->action = safe;
-	if (i == 2)
-		sprite->speed = safe;
-	if (i == 3)
-		sprite->spawn_time = safe;
-	if (i == 4)
-	{
-		sprite->n_textures = safe;
-		sprite->textures = (int*)malloc(sizeof(int) * safe);
-		sprite->face_ang = (int*)malloc(sizeof(int) * safe);
-	}
-	if (i > 4 && i < sprite->n_textures + 4)
-	{
-		if (i % 2 == 1)
-			sprite->textures[(i - 5) / 2] = safe;
-		else
-			sprite->face_ang[(i - 6) / 2] = safe;
-	}
-}
+// void        add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
+// {
+// 	if (i == 0)
+// 		sprite->name = line; //maybe can be done without string copy
+// 	if (i == 1)
+// 		sprite->action = safe;
+// 	if (i == 2)
+// 		sprite->speed = safe;
+// 	if (i == 3)
+// 		sprite->spawn_time = safe;
+// 	if (i == 4)
+// 	{
+// 		sprite->n_textures = safe;
+// 		sprite->textures = (int*)malloc(sizeof(int) * safe);
+// 		sprite->face_ang = (int*)malloc(sizeof(int) * safe);
+// 	}
+// 	if (i > 4 && i < sprite->n_textures + 4)
+// 	{
+// 		if (i % 2 == 1)
+// 			sprite->textures[(i - 5) / 2] = safe;
+// 		else
+// 			sprite->face_ang[(i - 6) / 2] = safe;
+// 	}
+// }
 
 t_m_object   mov_object_inf(int fd, int sector)
 {
@@ -274,7 +306,7 @@ t_m_object   mov_object_inf(int fd, int sector)
 		safe = get_line(&line, fd, "moving object informations does not exist", 1);
 		else
 			get_line(&line, fd, "moving object name does not exist", 0);
-		add_inf_to_m_obj(&m_sprite, line, i, safe);
+		// add_inf_to_m_obj(&m_sprite, line, i, safe);
 		free(line);
 		i++;
 	}
@@ -311,11 +343,12 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
 		get_line(&line, fd, "the object number can not be read", 1);
 		col_lib->sector[i].n_objects = ft_atoi(line);
 		free(line);
+		obj_int = 0;
 		col_lib->sector[i].i_objects = obj_int;
 		j = 0;
 		while (j < col_lib->sector[i].n_objects)
 		{
-			col_lib->sprite[k] = object_inf(fd, i, col_lib->len_obj_lib);
+			// col_lib->sprite[l] = object_inf(fd, i, col_lib->len_obj_lib);
 			l++;
 			j++;
 		}

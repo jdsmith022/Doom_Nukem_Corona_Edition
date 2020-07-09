@@ -6,11 +6,11 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/08 17:06:43 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 14:17:45 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/doom.h"
+#include "../../includes/doom.h"
 
 void		scale_sprite(t_doom *doom, t_sprite *sprite)
 {
@@ -56,6 +56,7 @@ void		sprite_render(t_doom *doom)
 	int		*sprite_order;
 
 	//sort sprite array
+	// printf("visible sprites: %d\n", doom->visible_sprites);
 	sprite_order = sort_sprite_array(doom->lib.sprite, doom->visible_sprites);
 
 	//draw sprites

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 17:04:26 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 15:14:57 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,28 @@ void				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x], &intersect);
+		printf("startx: %f, starty: %f\n", doom->lib.sidedef[x].line.start.x, doom->lib.sidedef[x].line.start.y);
+		printf("endx: %f, endy: %f\n", doom->lib.sidedef[x].line.end.x, doom->lib.sidedef[x].line.end.y);
 		if (distance < min_distance &&\
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
 			min_distance = distance;
+			printf("mins: %f\n", min_distance);
 			near_sidedef = set_properties_sidedef(intersect,\
 				distance, doom->lib.sidedef[x], doom);
 		}
 		x++;
 	}
-	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	sprite_check(doom, ray, sector);
+	// doom->stripe_distance[(int)ray.plane_x] = min_distance;
+	// sprite_check(doom, ray, sector);
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
+	// else
+	// {
+		// printf("sidedef_render else\n");
+	// }
 }

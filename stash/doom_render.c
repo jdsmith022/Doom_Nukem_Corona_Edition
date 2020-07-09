@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 15:18:45 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/09 14:50:00 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	doom_render(t_doom *doom)
 		
 		ray.plane_x = x;
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
-		sprite_check(doom, ray, x);
 		doom->angle += doom->ray_adjacent;
 		x++;
 	}

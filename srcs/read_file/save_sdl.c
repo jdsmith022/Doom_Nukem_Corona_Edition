@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 13:53:53 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 14:49:21 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,34 @@ static void			save_bpm_to_sdl(t_bmp *images,
 	print_meta_data(images[index].info);
 }
 
-SDL_Surface			**save_sky(void)
-{
-	SDL_Surface	**lib;
-	t_bmp		*images;
-	int			sky_fd;
+// SDL_Surface			**save_sky(void)
+// {
+// 	SDL_Surface	**lib;
+// 	t_bmp		*images;
+// 	int			sky_fd;
 
-	images = malloc_images_lib(6);
-	lib = malloc_sdl_lib(images, 6);
-	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
-	images[0] = read_bmp(sky_fd);
-	save_bpm_to_sdl(images, lib, 0);
-	sky_fd = open_file("textures/sky_box/meadow_dn.bmp");
-	images[1] = read_bmp(sky_fd);
-	save_bpm_to_sdl(images, lib, 1);
-	sky_fd = open_file("textures/sky_box/meadow_rt.bmp");
-	images[2] = read_bmp(sky_fd);
-	save_bpm_to_sdl(images, lib, 2);
-	sky_fd = open_file("textures/sky_box/meadow_ft.bmp");
-	images[3] = read_bmp(sky_fd);
-	save_bpm_to_sdl(images, lib, 3);
-	sky_fd = open_file("textures/sky_box/meadow_lf.bmp");
-	images[4] = read_bmp(sky_fd);
-	save_bpm_to_sdl(images, lib, 4);
-	sky_fd = open_file("textures/sky_box/meadow_bk.bmp");
-	images[5] = read_bmp(sky_fd);
-	save_bpm_to_sdl(images, lib, 5);
-	return (lib);
-}
+// 	images = malloc_images_lib(6);
+// 	lib = malloc_sdl_lib(images, 6);
+// 	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
+// 	images[0] = read_bmp(sky_fd);
+// 	save_bpm_to_sdl(images, lib, 0);
+// 	sky_fd = open_file("textures/sky_box/meadow_dn.bmp");
+// 	images[1] = read_bmp(sky_fd);
+// 	save_bpm_to_sdl(images, lib, 1);
+// 	sky_fd = open_file("textures/sky_box/meadow_rt.bmp");
+// 	images[2] = read_bmp(sky_fd);
+// 	save_bpm_to_sdl(images, lib, 2);
+// 	sky_fd = open_file("textures/sky_box/meadow_ft.bmp");
+// 	images[3] = read_bmp(sky_fd);
+// 	save_bpm_to_sdl(images, lib, 3);
+// 	sky_fd = open_file("textures/sky_box/meadow_lf.bmp");
+// 	images[4] = read_bmp(sky_fd);
+// 	save_bpm_to_sdl(images, lib, 4);
+// 	sky_fd = open_file("textures/sky_box/meadow_bk.bmp");
+// 	images[5] = read_bmp(sky_fd);
+// 	save_bpm_to_sdl(images, lib, 5);
+// 	return (lib);
+// }
 
 static SDL_Surface	**read_from_line(char *line,
 						int map_fd, int len)

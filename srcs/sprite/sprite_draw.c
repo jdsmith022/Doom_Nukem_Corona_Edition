@@ -6,11 +6,11 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/08 17:03:22 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 12:28:22 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/doom.h"
+#include "../../includes/doom.h"
 
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, size_t index, int i)
 {
@@ -18,7 +18,7 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, size_t index, int i)
 	char	*text;
 
 	pixels = doom->surface->pixels;
-	text = doom->sprite_image[i]->pixels;
+	text = doom->lib.obj_lib[i]->pixels;
 	if (text[pix_dex] != 0)
 		pixels[index] = text[pix_dex];
 	index++;
@@ -67,6 +67,7 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 			printf("inside while level2\n");
 			index = (screen_y * doom->surface->pitch) + (stripe + doom->surface->format->BytesPerPixel);
 			pix_dex = (pix_y * doom->lib.obj_lib[i_sprite]->pitch) + (pix_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+			//if stripe_distance[WIDTH] is niet kleiner dan sprite_distance op de x van de stripe
 			put_pixel_tex(doom, pix_dex, index, i_sprite);
 			pix_y++;
 			screen_y++;
