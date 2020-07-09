@@ -55,15 +55,18 @@ void	load_audio(t_audio *audio)
 	audio->music = Mix_LoadMUS(MU_1);
 }
 
-void	audio(t_audio audio, t_event event)
+void	audio(t_audio audio, t_event *event)
 {
-	if (event.cam_move_f || event.cam_move_b)
+	if (event->jump == false)
+		event->s_jump_started = false;
+	if (event->cam_move_f || event->cam_move_b)
 		loop_sound(audio.sounds[0], 1);
-	else if (!event.cam_move_f && !event.cam_move_b)
+	else if (!event->cam_move_f && !event->cam_move_b)
 		pause_sound(audio.sounds[0], 1);
-	if (event.jump){
+	if (event->jump && !event->s_jump_started){
 		pause_sound(audio.sounds[0], 1);
 		play_sound(audio.sounds[2], 2);
+		event->s_jump_started = true;
 	}
 	return;
 }

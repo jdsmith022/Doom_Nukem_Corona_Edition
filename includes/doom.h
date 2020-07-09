@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:31:47 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/09 13:13:11 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct		s_event {
 	int				bend;
 	double			velocity;
 	int				y_pitch;
+	bool			s_jump_started;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -310,7 +311,7 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y);
 
 /* AUDIO */
 
-void	audio(t_audio audio, t_event event);
+void	audio(t_audio audio, t_event *event);
 
 void    bars(Uint32 **pixels, t_doom *doom);
 #endif

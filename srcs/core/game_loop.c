@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:31:18 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/09 13:17:45 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE)
 		{
 			doom_render(doom);
-			audio(doom->audio, doom->own_event);
+			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 		}
 		else
