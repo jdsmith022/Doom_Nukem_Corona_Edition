@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   audio.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 00:06:39 by elkanfrank    ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef AUDIO_H
 # define AUDIO_H
 
@@ -25,12 +13,17 @@
 #define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump15.wav"
 #define MU_1			"/music/main_theme.wav"
 
+typedef struct		s_audio_event {
+	bool			jump_toggled;
+}					t_audio_event;
+
 typedef struct		s_audio {
 	int 			sample_rate;
 	int				channels;
 	uint16_t		format;
 	Mix_Chunk		*sounds[NUM_OF_SOUNDS];
 	Mix_Music		*music;
+	t_audio_event	*event;
 }					t_audio;
 
 void				exit_error(const char *message);

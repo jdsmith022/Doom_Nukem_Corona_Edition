@@ -1,12 +1,4 @@
-#include "../../includes/doom.h"
-
-// DONE
-// Background music plays
-// Sound triggers on key input
-
-// TODO
-// Prevent Sound from repeating when holding a key
-// 
+#include "../../includes/doom.h" 
 
 // FUNCTIONS
 // play_sound --> triggers a sound once
@@ -20,15 +12,19 @@
 // get_volume --> decides volume for a sound (based on distance to an object)
 // pause_sound --> pauses all sounds (when opening a menu for example)
 // play_sound_rr --> plays a sound in round robin (footsteps, gunshots etc.)
-// 
 
 // Channels
 // 1 2 3 4
 
 void	init_audio(t_audio *audio)
 {
+	t_audio_event *event;
 	if (!audio)
 		return ;
+	
+	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event));
+	audio->event = event;
+	audio->event->jump_toggled = false;
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, AUDIO_BUFF) == -1)
     	exit_error(Mix_GetError());
 	Mix_QuerySpec(&audio->sample_rate, &audio->format, &audio->channels);
@@ -55,26 +51,26 @@ void	load_audio(t_audio *audio)
 	audio->music = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
 }
 
-void	movement_sounds(t_audio audio, t_event *event)
+void	play_movement_sounds(t_audio audio, t_event *event)
 {
 	if (event->jump == false)
-		event->s_jump_started = false;
+		audio.event->jump_toggled = false;
 	if (event->cam_move_f || event->cam_move_b)
 		loop_sound(audio.sounds[0], 1);
 	else if (!event->cam_move_f && !event->cam_move_b)
 		pause_sound(audio.sounds[0], 1);
 	else if (event->cam_move_l || event->cam_move_r)
 		loop_sound(audio.sounds[0], 1);
-	if (event->jump && !event->s_jump_started){
+	if (event->jump && !audio.event->jump_toggled){
 		pause_sound(audio.sounds[0], 1);
 		play_sound(audio.sounds[2], 2);
-		event->s_jump_started = true;
+		audio.event->jump_toggled = true;
 	}
 }
 
 void	audio(t_audio audio, t_event *event)
 {
 	play_music(audio.music);
-	movement_sounds(audio, event);
+	play_movement_sounds(audio, event);
 	return;
 }

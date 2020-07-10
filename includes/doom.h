@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 13:13:11 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/10 13:49:21 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ typedef struct		s_event {
 	int				bend;
 	double			velocity;
 	int				y_pitch;
-	bool			s_jump_started;
 }					t_event;
 
 typedef struct		s_m_object{
