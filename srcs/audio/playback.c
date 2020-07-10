@@ -28,7 +28,9 @@ void	loop_sound(Mix_Chunk *sample, int channel){
 }
 
 void	pause_sound(Mix_Chunk *sample, int channel){
-	if (!Mix_Paused(channel)){
+	if (!Mix_Playing(channel))
+		return ;
+	else if (!Mix_Paused(channel)){
 		Mix_Pause(channel);
 		SDL_Log("Pausing channel %d", channel);
 	}

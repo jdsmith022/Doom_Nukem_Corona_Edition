@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:34:53 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:11:37 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 21:19:50 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	t_doom	doom;
-
+	
 	ft_bzero(&doom, sizeof(t_doom));
 	//load_maps();
 	//init_struct();

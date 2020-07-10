@@ -3,10 +3,12 @@
 
 # include "../SDL2_mixer/SDL_mixer.h"
 
-#define AUDIO_BUFF 1042
-#define NUM_OF_SOUNDS 3
+# include <limits.h>
+# include <unistd.h>
 
-#define AUDIO_PATH		"/Users/elkanfrank/dev/codam/doom_corona/sounds"
+#define AUDIO_BUFF 1042
+#define AUDIO_PATH audio->path
+#define NUM_OF_SOUNDS 3
 
 #define S_UI_1 			"/General Sounds/Buttons/sfx_sounds_button1.wav"
 #define S_FOOTSTEPS 	"/Movement/Footsteps/sfx_movement_footstepsloop4_slow.wav"
@@ -18,12 +20,15 @@ typedef struct		s_audio_event {
 }					t_audio_event;
 
 typedef struct		s_audio {
+	char			*path;
 	int 			sample_rate;
 	int				channels;
 	uint16_t		format;
 	Mix_Chunk		*sounds[NUM_OF_SOUNDS];
 	Mix_Music		*music;
 	t_audio_event	*event;
+	uint8_t			sound_vol;
+	uint8_t			music_vol;
 }					t_audio;
 
 void				exit_error(const char *message);
