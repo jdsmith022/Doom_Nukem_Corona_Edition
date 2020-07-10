@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 09:44:46 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 14:22:26 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,29 @@ typedef struct		s_line {
 	t_point			end;
 }					t_line;
 
+typedef struct			s_sprite {
+	int					index;			//start index
+	int					amount;			//which side is viewed
+	t_point				pos;
+	double				size;
+	t_line				*lines;
+	double				angle;			//what is the angle on the map
+	int					action;
+	int					*textures;
+	int					*face_ang;
+	int					block;			//can the player walk through it or not
+	int					sector;
+	double				width;
+	double				height;
+	double				sprite_x;		//x cord translated to viewer space
+	double				sprite_y;		//y cord translated to viewer space
+	int					visible;
+	double				distance;
+	int					screen_left_x;
+	int					screen_right_x;
+	// int					position;
+}						t_sprite;
+
 typedef struct		s_ray {
 	t_line			line;
 	double			angle;
@@ -83,7 +106,7 @@ typedef struct		s_event {
 }					t_event;
 
 typedef struct		s_m_object{
-	int				n_textures;
+	int				amount;
 	int*			textures;
 	int*			face_ang;
 	char*			name;
@@ -166,7 +189,7 @@ typedef struct		s_lib{
 	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
-	t_object		*sprites;
+	t_sprite		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
 }					t_lib;
@@ -214,6 +237,9 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	t_gamedesign	game_design;
+	int				visible_sprites;
+	int				total_sprites;
+	double			stripe_distance[WIDTH];
 }					t_doom;
 
 /*core functions*/
@@ -237,7 +263,7 @@ t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 t_sector			*save_sectors(int fd, int *len);
 t_sidedef			*save_walls(int fd);
-t_object			*save_sprites(int fd);
+t_sprite			*save_sprites(int fd, int *total_sprites);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
@@ -313,4 +339,14 @@ void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
 void    bars(Uint32 **pixels, t_doom *doom);
+
+/*sprite functions*/
+void				sprite_init(t_doom *doom);
+void				sprite_check(t_doom *doom, t_ray ray, int x);
+void				sprite_render(t_doom *doom);
+int					*sort_sprite_array(t_sprite *sprite, int total);
+void				find_position(t_doom *doom, t_point *sprite_cord, int index);
+void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
+void				sprite_reset(t_doom *doom);
+
 #endif
