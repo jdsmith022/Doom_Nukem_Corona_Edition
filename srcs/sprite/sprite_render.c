@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/09 18:50:41 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/10 17:02:55 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ void		scale_sprite(t_doom *doom, t_sprite *sprite)
 	double		h;
 	double		w;
 
-	// h = doom->lib.obj_lib[sprite->index]->h;
-	// w = doom->lib.obj_lib[sprite->index]->w;
-	h = 64;
-	w = 64;
+	h = doom->lib.obj_lib[sprite->index]->h;
+	w = doom->lib.obj_lib[sprite->index]->w;
+	printf("h: %f, w: %f\n", h, w);
+	// h = 64;
+	// w = 64;
 	sprite->height = (sprite->size / sprite->distance * doom->dist_to_plane);
-	sprite->width = (sprite->size / sprite->distance * doom->dist_to_plane);
-	// (sprite->height / h) * w;
+	// sprite->width = (sprite->size / sprite->distance * doom->dist_to_plane);
+	sprite->width = (sprite->height / h) * w;
+	printf("screen h: %f, screen w: %f\n", sprite->height, sprite->width);
 }
 
 void		draw_sprite(t_doom *doom, int *sprite_order)
@@ -33,14 +35,14 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	t_point sprite_cord;
 
 	i = 0;
-	printf("draw_sprite %d\n", doom->visible_sprites);
+	// printf("draw_sprite %d\n", doom->visible_sprites);
 	while (i < doom->visible_sprites)
 	{
-		printf("*index: %d\n", sprite_order[i]);
+		// printf("*index: %d\n", sprite_order[i]);
 		index = sprite_order[i];
 		//scale sprites
 		scale_sprite(doom, &doom->lib.sprites[index]);
-		printf("height: %f\nwidth: %f\n", doom->lib.sprites[index].height, doom->lib.sprites[index].width);
+		// printf("height: %f\nwidth: %f\n", doom->lib.sprites[index].height, doom->lib.sprites[index].width);
 
 		//find position on screen
 		find_position(doom, &sprite_cord, index);
@@ -59,12 +61,12 @@ void		sprite_render(t_doom *doom)
 {
 	int		*sprite_order;
 
-	printf("sprite_render 1\n");
+	// printf("sprite_render 1\n");
 	//sort sprite array
 	// printf("visible sprites: %d\n", doom->visible_sprites);
 	sprite_order = sort_sprite_array(doom->lib.sprites, doom->visible_sprites);
 
-	printf("sprite_render 2\n");
+	// printf("sprite_render 2\n");
 	//draw sprites
 	draw_sprite(doom, sprite_order);
 	//(scale sprite and find_position))

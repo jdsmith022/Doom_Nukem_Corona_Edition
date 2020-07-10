@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/10 14:16:10 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/10 18:34:53 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,41 +41,57 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 	size_t	index;
 	Uint32	pix_dex;
 	int		stripe;
+	// double	tex_x;
+	double	tex_y;
 	double	pix_y;
+	double	y;
+	double	x;
 	// int		pix_x;
 	double	screen_y;
 
-	printf("BEGIN DRAW STRIPES\n");
+	// printf("BEGIN DRAW STRIPES\n");
 	i_sprite = doom->lib.sprites[index_sp].index;
 	begin.x = sprite_cord.x - doom->lib.sprites[index_sp].width / 2;
 	begin.y = sprite_cord.y - doom->lib.sprites[index_sp].height / 2;
 	end.x = begin.x + doom->lib.sprites[index_sp].width;
 	end.y = begin.y + doom->lib.sprites[index_sp].height;
-	printf("%f; %f\t%f; %f\n", begin.x, begin.y, end.x, end.y);
+	// printf("%f; %f\t%f; %f\n", begin.x, begin.y, end.x, end.y);
 	stripe = begin.x;
 	// pix_x = 0;
 	screen_y = begin.y;
 	index = 0;
+	x = 0;
+	// tex_x = 0;
 	while (stripe < end.x && stripe > 0 && stripe < WIDTH)
 	{
 		// printf("inside while level1\n");
 		// pix_y = 0;
+		// tex_y = 0;
+		tex_y = tex_y / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
+		y = 0;
 		screen_y = (int)begin.y;
 		// printf("pix_y: %d, < end.y: %d\n", pix_y, (int)end.y);
 		while (screen_y < (int)end.y/* && pix_y > 0 && pix_y < HEIGHT*/)
 		{
 			// printf("inside while level2\n");
 			index = (screen_y * doom->surface->pitch) + (int)(stripe * doom->surface->format->BytesPerPixel);
-			pix_y = (double)(64 / doom->lib.sprites[index_sp].height) * ((double)(screen_y + stripe)  /*+ off_set*/ - begin.y);
-			pix_dex = ((int)pix_y * doom->lib.obj_lib[i_sprite]->pitch) + (stripe * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+			// pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch) + (tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+			// pix_y = (double)(64 / doom->lib.sprites[index_sp].height) * ((double)(screen_y + stripe) /* + off_set*/ - begin.y);
+			// pix_dex = ((int)pix_y * doom->lib.obj_lib[i_sprite]->pitch) + (stripe * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+			//CONSIDER SIZE OF THE TEXTURE
+			pix_dex = ((int)y * doom->lib.obj_lib[i_sprite]->pitch) + ((int)x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 			//if stripe_distance[WIDTH] is niet kleiner dan sprite_distance op de x van de stripe
 			put_pixel_tex(doom, pix_dex, index, i_sprite);
 			// pix_y++;
+			y++;
 			screen_y++;
+			tex_y++;
 		}
-		printf("screen_y: %f, end.y: %f\n", screen_y, end.y);
-		printf("stripe: %d, end.x: %f\n", stripe, end.x);
+		// printf("screen_y: %f, end.y: %f\n", screen_y, end.y);
+		// printf("stripe: %d, end.x: %f\n", stripe, end.x);
 		// pix_x++;
+		// tex_x++;
 		stripe++;
+		x++;
 	}
 }

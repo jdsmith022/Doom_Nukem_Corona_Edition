@@ -8,8 +8,8 @@ textures/Marin.bmp
 
 #object library
 2
-sprites/apple.bmp
-sprites/banana.bmp
+sprites/brinta.bmp
+sprites/tony3.bmp
 
 #number of sectors
 3
@@ -87,7 +87,7 @@ sprites/banana.bmp
 50
 50
 0
-4
+8
 4
 0
 46
