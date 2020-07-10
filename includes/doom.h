@@ -161,6 +161,7 @@ typedef struct		s_lib{
 	t_line			*sky_sd;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
+	int				len_sidedef;
 	t_object		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
@@ -230,7 +231,7 @@ int					open_file(char *filename);
 t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 t_sector			*save_sectors(int fd, int *len);
-t_sidedef			*save_walls(int fd);
+t_sidedef			*save_walls(int fd, int *len);
 t_object			*save_sprites(int fd);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
@@ -311,4 +312,5 @@ void    bars(Uint32 **pixels, t_doom *doom);
 /*actions*/
 
 void    sliding_door(t_doom *doom, int sd_index);
+void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
 #endif

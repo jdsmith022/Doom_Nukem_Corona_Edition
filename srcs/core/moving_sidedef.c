@@ -1,5 +1,35 @@
 #include "../../includes/doom.h"
 
+void    create_mv_sidedef(t_sidedef **sidedef, int k, int len)
+{
+    t_sidedef   *new_sidedef;
+    int         i;
+
+    new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1));
+    i = 0;
+    while (i <= k)
+    {
+        new_sidedef[i] = sidedef[0][i];
+        i++;
+    }
+    new_sidedef[i] = sidedef[0][i - 1];
+    new_sidedef[i].line.start.x = sidedef[0][i - 1].line.start.x;
+    new_sidedef[i].line.start.y = sidedef[0][i - 1].line.start.y;
+    new_sidedef[i].line.end.x = sidedef[0][i - 1].line.start.x;
+    new_sidedef[i].line.end.y = sidedef[0][i - 1].line.start.y;
+    new_sidedef[i].opp_sector = sidedef[0][i - 1].opp_sector;
+    new_sidedef[i].opp_sidedef = sidedef[0][i - 1].opp_sidedef;
+    new_sidedef[i].action = 0;
+
+    new_sidedef[i - 1].opp_sector = -1;
+    new_sidedef[i - 1].opp_sidedef = -1;
+    // new_sidedef[i - 1].action = 0;
+    free(*sidedef);
+    *sidedef = new_sidedef;
+}
+
+
+
 void    init_door(int *len, int **mv_sd, int sd_index)
 {
     int space;
@@ -44,7 +74,7 @@ void    init_door(int *len, int **mv_sd, int sd_index)
     }
 }
 
-void    calc_mv(t_sidedef *mv_sd, int open)
+void    calc_mv(t_sidedef *mv_sd, t_sidedef *mv_portal, int open)
 {
     int x_dif;
     int y_dif;
@@ -57,42 +87,22 @@ void    calc_mv(t_sidedef *mv_sd, int open)
 	y_steps = (float)y_dif / (float)(abs(x_dif) + abs(y_dif));
     if (open)
     {
-        mv_sd->line.end.x -= x_steps;
-        mv_sd->line.end.y -= y_steps;
+        mv_sd->line.start.x += x_steps;
+        mv_sd->line.start.y += y_steps;
+        mv_portal->line.end.x += x_steps;
+        mv_portal->line.end.y += y_steps;
     }
-
-
-}
-
-int     return_sd(int *mv_sd, int sd_index, int len)
-{
-    int i;
-
-    i = 0;
-    while (i < len)
-    {
-        if (sd_index == mv_sd[i])
-            return (i);
-        i++;
-    }
-    return (-1)
 }
 
 
-t_line    sliding_door(t_doom *doom, int sd_index_add, int sd_index_get)
+void    sliding_door(t_doom *doom, int sd_index_add)
 {
     static int *mv_sd;
-    static t_line *coor_sd;
     static int  len;
     int         i;
 
     if (sd_index_add != -1)
         init_door(&len, &mv_sd, sd_index_add);
-    else if (sd_index_get != -1)
-    {
-        i = return_sd(mv_sd, sd_index_get, len);
-
-    }
     else
     {
         i = 0;
@@ -100,7 +110,7 @@ t_line    sliding_door(t_doom *doom, int sd_index_add, int sd_index_get)
         {
             if (mv_sd[i] != -1)
             {
-                calc_mv(&doom->lib.sidedef[mv_sd[i]], 1);
+                calc_mv(&doom->lib.sidedef[mv_sd[i]], &doom->lib.sidedef[mv_sd[i] + 1], 1);
                 if ((int)doom->lib.sidedef[mv_sd[i]].line.end.x == (int)doom->lib.sidedef[mv_sd[i]].line.start.x && \
                     (int)doom->lib.sidedef[mv_sd[i]].line.end.y == (int)doom->lib.sidedef[mv_sd[i]].line.start.y)
                     mv_sd[i] = -1;

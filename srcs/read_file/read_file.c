@@ -25,16 +25,15 @@ t_sector			*save_sectors(int fd, int *len)
 	return (sect);
 }
 
-t_sidedef			*save_walls(int fd)
+t_sidedef			*save_walls(int fd, int *len)
 {
 	t_sidedef	*walls;
 	char		*line;
-	int			len;
 
 	get_line(&line, fd,\
 		"the amount of walls is not specified or can not be read", 1);
-	len = ft_atoi(line);
-	walls = (t_sidedef*)ft_memalloc(sizeof(t_sidedef) * len);
+	*len = ft_atoi(line);
+	walls = (t_sidedef*)ft_memalloc(sizeof(t_sidedef) * *len);
 	free(line);
 	return (walls);
 }

@@ -22,7 +22,7 @@ t_point	check_line_intersection(t_line move, t_sidedef sidedef, double angle, in
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
 	sidedef.line.start, sidedef_delta);
-	if (point_distance(intersect, move.start, angle) < 10.0 && sidedef.action == 1) //create_enum and than use the name
+	if (point_distance(intersect, move.start, angle) < 40.0 && sidedef.action == 2) //create_enum and than use the name
 		sliding_door(NULL, x);
 	return (intersect);
 }
