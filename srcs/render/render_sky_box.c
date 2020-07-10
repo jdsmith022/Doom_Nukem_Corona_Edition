@@ -11,7 +11,7 @@ static void		set_properties_plane_sky(t_doom *doom,
 
 	distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	new_height = (HEIGHT + doom->player_height) / 2;
-	plane->height_standard = doom->wall_height_std / distance * doom->dist_to_plane;
+	plane->height_standard = doom->vertical_height_std / distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
 	sidedef_top = (new_height - div_height_std) - doom->own_event.y_pitch;
 	wall_offset(plane, sidedef_top);
@@ -48,7 +48,7 @@ void    sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd)
 			intersect = save_intersect;
 			doom->texture_width = 130;
 			doom->texture_height = 130;
-			doom->wall_height_std = 130;
+			doom->vertical_height_std = 130;
 		}
 		x++;
     }

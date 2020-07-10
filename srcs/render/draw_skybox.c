@@ -6,14 +6,11 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/09 16:59:02 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 12:18:05 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-
-
-
 
 static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,
 					Uint32 pixel_dex)
@@ -62,12 +59,12 @@ int		set_offset(t_line line, t_point intersect, t_doom *doom, int *dir)
 	diff = find_slope_line_offset(start, end);
 	if (start.x == end.x || diff == 1)
 	{
-		offset = ft_rounder(intersect.y) % doom->wall_height_std;
+		offset = ft_rounder(intersect.y) % doom->vertical_height_std;
 		*dir = 0;
 	}
 	else if (start.y == end.y || diff == 2)
 	{
-		offset = ft_rounder(intersect.x) % doom->wall_height_std;
+		offset = ft_rounder(intersect.x) % doom->vertical_height_std;
 		*dir = 1;
 	}
 	return (offset);

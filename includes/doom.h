@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 11:09:36 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 12:16:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,7 @@ int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void    			set_texture_properties(t_doom *doom, t_sector sector,\
-						int texture);
+						int texture, int d);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
