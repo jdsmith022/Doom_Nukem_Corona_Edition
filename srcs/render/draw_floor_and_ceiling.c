@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/10 13:01:35 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/10 17:17:30 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,27 @@ void			draw_ceiling(t_doom *doom, int x,
 }
 
 void			draw_floor(t_doom *doom, int x,
-					t_sector sector, int y)
+					t_sector sector, int y, t_sidedef sidedef)
 {
 	double	dist;
 	Uint32	index;
 	Uint32	height;
 	Uint32	tex_dex;
 	Uint8	bpp;
+	double	height_floor;
 
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT / 2) + doom->player_height;
-	if (sector.slope_id != -1)
-		height -= (sector.height_floor + sector.slope_height_floor);
+	//if (sector.slope_id != -1)
+	//	height -= (sector.height_floor + sector.slope_height_floor + sector.slope_height_floor);
 	bpp = doom->surface->format->BytesPerPixel;
+	height_floor = sector.height_floor;
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height - sector.height_floor)\
+		if (sector.slope_id != -1)
+			height_floor = set_properties_slope(doom, sidedef, sector);
+		dist = (doom->player_std_height - height_floor)\
 			/ (y - height) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		dist = fabs(dist);

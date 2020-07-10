@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 22:30:25 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/10 16:47:39 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	double		player_heigth;
 
 	sector = doom->lib.sector[opp_sector];
-	if (sector.slope_id != -1)
-		sector.height_floor =\
-			set_properties_slope(doom, sidedef, sector, plane);
+	//if (sector.slope_id != -1)
+	//	sector.height_floor =\
+	//		set_properties_slope(doom, sidedef, sector, plane);
 	player_heigth = (HEIGHT / 2) + doom->player_height;
 	div_height_std = plane->height_standard / 2;
 	height_opp_sector = sector.height_ceiling / sidedef.distance * \
@@ -62,9 +62,11 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	int			div_height_std;
 	double		player_height;
 
+	//if (sector.slope_id != -1)
+	//	sector.height_floor =\
+	//		set_properties_slope(doom, sidedef, sector, plane);
 	if (sector.slope_id != -1)
-		sector.height_floor =\
-			set_properties_slope(doom, sidedef, sector, plane);
+			sector.height_floor = set_properties_slope(doom, sidedef, sector);
 	player_height = (HEIGHT / 2) + doom->player_height;
 	plane->height_standard = doom->wall_height_std / sidedef.distance\
 		* doom->dist_to_plane;
@@ -104,5 +106,5 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef,
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
-	draw_floor(doom, x, sector, plane.sidedef_bottom);
+	draw_floor(doom, x, sector, plane.sidedef_bottom, sidedef);
 }

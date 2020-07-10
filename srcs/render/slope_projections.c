@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 13:06:01 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/10 16:44:49 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			get_opp_sidedef(t_sector sector)
 }
 
 double		set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-	t_sector sector, t_plane *plane)
+	t_sector sector)
 {
 	int			opp_side;
 	t_point		conn_side;
