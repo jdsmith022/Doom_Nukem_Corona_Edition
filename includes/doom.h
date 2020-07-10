@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 12:42:56 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/08 17:05:14 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
 # define GRAVITY -1.5
-# define VELOCITY 12
+# define VELOCITY 20
 
 typedef struct		s_point {
 	double			x;

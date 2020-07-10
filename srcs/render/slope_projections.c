@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 15:49:23 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/09 13:06:01 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,7 @@ double		set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	if (sidedef.id == opp_side)
 		distance = fabs(point_line_distance(sidedef.line.end,\
 			doom->lib.sidedef[sector.slope_id].line));
-	height = sector.height_floor + tan(sector.slope_floor) * distance;
-	doom->lib.sector[sector.id].slope_height_floor = height;
-	//printf("%d -- %f, %f\n",sidedef.id, conn_side.x, conn_side.y);
+	doom->lib.sector[sector.id].slope_height_floor = tan(sector.slope_floor) * distance;
+	height = sector.height_floor + doom->lib.sector[sector.id].slope_height_floor;
 	return (height);
 }

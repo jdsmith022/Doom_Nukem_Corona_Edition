@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 16:32:34 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/09 22:43:15 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,13 +157,18 @@ void 	doom_init(t_doom *doom)
 	doom->player_height = 32;
 	doom->player_std_height = 32;
 	doom->wall_height_std = 64;
-	doom->lib.sector[0].slope_id = 0;
+	doom->lib.sector[0].slope_id = -1;
 	doom->lib.sector[1].slope_id = -1;
 	doom->lib.sector[2].slope_id = 8;
 	doom->lib.sector[3].slope_id = -1;
 	doom->lib.sector[4].slope_id = -1;
 	doom->lib.sector[2].slope_floor = 5 * (PI / 180);
-	doom->lib.sector[0].slope_floor = 1.9 * (PI / 180);
+	//doom->lib.sector[0].slope_floor = 1.9 * (PI / 180);
+	doom->lib.sector[0].slope_floor = 0;
+	doom->lib.sector[1].slope_floor = 0;
+	//doom->lib.sector[2].slope_floor = 0;
+	doom->lib.sector[3].slope_floor = 0;
+	doom->lib.sector[4].slope_floor = 0;
 	// doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
