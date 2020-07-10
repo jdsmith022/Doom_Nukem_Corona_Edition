@@ -2,9 +2,10 @@
 
 #texture library
 3
-textures/brown_wall.bmp
-textures/dark_stone.bmp
-textures/Marin.bmp
+textures/walls/96X96-Shelf.bmp
+textures/floors_ceiling/floor.bmp
+textures/floors_ceiling/ceiling96X96_clean.bmp
+
 
 #object library
 2
@@ -22,10 +23,10 @@ sprites/banana.bmp
 #sector[0]
 10
 0
-0
-0
-0
 1
+0
+0
+2
 0
 4
 0
@@ -40,7 +41,7 @@ sprites/banana.bmp
 200
 0
 1
-2
+0
 1
 0
 
@@ -52,7 +53,7 @@ sprites/banana.bmp
 0
 1
 1
-2
+0
 1
 1
 
@@ -63,9 +64,9 @@ sprites/banana.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 2
 
 #sidedefs3
@@ -76,7 +77,7 @@ sprites/banana.bmp
 200
 0
 1
-2
+0
 1
 3
 
@@ -114,10 +115,10 @@ sprites/banana.bmp
 #sector[1]
 10
 20
-0
-0
-0
 1
+0
+0
+2
 0
 4
 1
@@ -130,9 +131,9 @@ sprites/banana.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 4
 
 #sidedefs1
@@ -142,9 +143,9 @@ sprites/banana.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 5
 
 #sidedefs2
@@ -154,9 +155,9 @@ sprites/banana.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 6
 
 #sidedefs3
@@ -166,9 +167,9 @@ sprites/banana.bmp
 300
 0
 0
+1
 0
-0
-0
+1
 7
 
 #objs in sector
@@ -177,10 +178,10 @@ sprites/banana.bmp
 #sector[2]
 10
 0
-0
-0
-0
 1
+0
+0
+2
 0
 4
 2
@@ -193,9 +194,9 @@ sprites/banana.bmp
 500
 200
 0
+1
 0
-0
-0
+1
 8
 
 #sidedefs1
@@ -205,9 +206,9 @@ sprites/banana.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 9
 
 #sidedefs2
@@ -217,9 +218,9 @@ sprites/banana.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 10
 
 #sidedefs3
@@ -229,9 +230,9 @@ sprites/banana.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 11
 
 #objs in sector

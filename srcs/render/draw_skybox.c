@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/10 09:47:52 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 12:21:47 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ static int		set_offset(t_line line, t_point intersect, t_doom *doom,
 	diff = find_slope_line_offset(start, end);
 	if (start.x == end.x || diff == 1)
 	{
-		offset = ft_rounder(intersect.y) % doom->wall_height_std;
+		offset = ft_rounder(intersect.y) % doom->vertical_height_std;
 		*dir = 0;
 	}
 	else if (start.y == end.y || diff == 2)
 	{
-		offset = ft_rounder(intersect.x) % doom->wall_height_std;
+		offset = ft_rounder(intersect.x) % doom->vertical_height_std;
 		*dir = 1;
 	}
 	return (offset);

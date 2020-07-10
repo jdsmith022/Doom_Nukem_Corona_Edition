@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   offset.c                                           :+:    :+:            */
+/*   line_offset.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/10 10:07:26 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/10 10:11:44 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 14:49:59 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+void		wall_offset(t_plane *plane, int sidedef_top)
+{
+	plane->wall_offset = 0;
+	if (sidedef_top < 0)
+	{
+		plane->wall_offset = abs(sidedef_top);
+		plane->sidedef_top = 0;
+	}
+	else
+		plane->sidedef_top = sidedef_top;
+}
 
 Uint8			find_slope_line_offset(t_point start, t_point end)
 {

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 14:22:26 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/10 16:50:22 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ typedef struct		s_plane
 	int				mid_texture_top;
 	int				mid_texture_bottom;
 	double			height_standard;
+	int				ceiling_start;
+	int				floor_start;
 	int				wall_offset;
 }					t_plane;
 
@@ -222,7 +224,8 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
-	int				wall_height_std;
+	int				vertical_height_std;
+	int				horizontal_height_std;
 	double			player_std_height;
 	double			player_height;
 	Uint32			mid_screen;
@@ -297,7 +300,7 @@ int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void    			set_texture_properties(t_doom *doom, t_sector sector,\
-						int texture);
+						int texture, int d);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
@@ -320,7 +323,8 @@ t_point				line_intersection(t_point start1, t_point delta1,
 t_point				line_delta(t_point start, t_point end);
 double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
-double				sidedef_intersection_distance(t_ray ray, t_line line, t_point *intersect);
+double				sidedef_intersection_distance(t_ray ray, t_line line,\
+						t_point *intersect);
 void				wall_offset(t_plane *plane, int sidedef_top);
 void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
