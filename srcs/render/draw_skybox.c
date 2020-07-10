@@ -6,14 +6,11 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/09 18:33:29 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 09:47:52 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-
-
-
 
 static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,
 					Uint32 pixel_dex)
@@ -32,14 +29,17 @@ static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	pixels[index] = texture[pixel_dex];
 }
 
-static void		draw_side_textures(t_doom *doom, t_plane plane, int offset, t_point pixel, Uint32 tex_dex)
+static void		draw_side_textures(t_doom *doom, t_plane plane, int offset,
+					Uint32 tex_dex)
 {
 	Uint32	pixel_dex;
 	Uint32	index;
+	t_point pixel;
 	double	wall_y;
 	int		bpp;
 
-	// printf("side: %d\n", sidedef.id);
+	pixel.x = plane.intersect.x;
+	pixel.y = plane.intersect.y;
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
@@ -50,7 +50,8 @@ static void		draw_side_textures(t_doom *doom, t_plane plane, int offset, t_point
 	put_sky(doom, tex_dex, index, pixel_dex);
 }
 
-int		set_offset(t_line line, t_point intersect, t_doom *doom, int *dir)
+static int		set_offset(t_line line, t_point intersect, t_doom *doom,
+					int *dir)
 {
 	t_point start;
 	t_point end;
@@ -73,20 +74,18 @@ int		set_offset(t_line line, t_point intersect, t_doom *doom, int *dir)
 	return (offset);
 }
 
-void		find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point intersect)
+void			find_skybox_sidedef_texture(t_doom *doom, int x,
+					t_plane plane)
 {
-	t_point	pixel;
 	Uint32	tex_dex;
 	double	dir_angle;
 	int		offset;
 	int 	dir;
-	int		limit;
 
-	pixel.x = x;
-	pixel.y = plane.sidedef_top;
-	limit = plane.sidedef_bottom;
-	offset = set_offset(line, intersect, doom, &dir);
-	while (pixel.y < limit)
+	offset = set_offset(plane.line, plane.intersect, doom, &dir);
+	plane.intersect.x = x;
+	plane.intersect.y = plane.sidedef_top;
+	while (plane.intersect.y < plane.sidedef_bottom)
 	{
 		dir_angle = doom->dir_angle;
 		if ((dir_angle > PI / 2 && dir_angle < (3 * PI) / 2)\
@@ -99,8 +98,8 @@ void		find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point interse
 			tex_dex = 3;
 		else
 			tex_dex = 5;
-		draw_side_textures(doom, plane, offset, pixel, tex_dex);
-		pixel.y++;
+		draw_side_textures(doom, plane, offset, tex_dex);
+		plane.intersect.y++;
 	}
 }
 
