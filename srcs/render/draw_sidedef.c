@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 12:35:11 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/09 19:19:15 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	tex_dex = find_sidedef_texture(doom, sidedef, pixel, plane);
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
-	wall_y = (double)(64 / plane.height_standard) *\
+	wall_y = (double)(doom->texture_height / plane.height_standard) *\
 		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
