@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 18:04:49 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/10 13:55:53 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ void	game_loop(t_doom *doom)
 		doom_update(doom, dt);
 		if (doom->game_editor == FALSE)
 		{
-			sprite_reset(doom);
+			// sprite_reset(doom);
 			doom_render(doom);
-			// printf("game_loop: after doom_render\n");
-			sprite_render(doom);
-			printf("game_loop: after sprite_render\n");
+			// sprite_render(doom);
 			doom_sound(doom);
 			doom_gui(doom);
 		}

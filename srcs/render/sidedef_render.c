@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 16:52:27 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/10 13:54:06 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ int			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	// printf("render: %f, %f\n", ray.line.end.x, ray.line.end.y);
-	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	sprite_check(doom, ray, sector);
+	// doom->stripe_distance[(int)ray.plane_x] = min_distance;
+	// sprite_check(doom, ray, sector);
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
