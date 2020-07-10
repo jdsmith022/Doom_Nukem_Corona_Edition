@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/10 09:45:31 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/10 14:46:18 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 17:17:38 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ static void			set_properties(t_doom *doom, int set)
 		doom->texture_width = 130;
 		doom->texture_height = 130;
 		doom->vertical_height_std = 130;
+		doom->player_std_height = 65;
 	}
 	else
 	{
-		doom->texture_width = 96;
-		doom->texture_height = 96;
-		doom->vertical_height_std = 96;
+		doom->texture_width = 64;
+		doom->texture_height = 64;
+		doom->vertical_height_std = 64;
+		doom->player_std_height = 32;
 	}
 }
 
