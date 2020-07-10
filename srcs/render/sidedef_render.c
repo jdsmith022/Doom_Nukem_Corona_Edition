@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 12:22:37 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 13:15:32 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	diff = find_slope_line_offset(start, end);
 	if (start.x == end.x || diff == 1)
 	{
-		sidedef->offset = ft_rounder(intersect.y) % doom->vertical_height_std;
+		sidedef->offset = ft_rounder(intersect.y) % 96;
 		sidedef->dir = 0;
 	}
 	else if (start.y == end.y || diff == 2)
 	{
-		sidedef->offset = ft_rounder(intersect.x) % doom->vertical_height_std;
+		sidedef->offset = ft_rounder(intersect.x) %  96;
 		sidedef->dir = 1;
 	}
 }
@@ -105,7 +105,33 @@ static int		find_intersect(t_doom *doom, t_ray ray, int sector,
 int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
-	if (doom->lib.sector[sector].outside)
-		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
-	return (find_intersect(doom, ray, sector, prev_sector));
+	t_point		intersect;
+	t_sidedef	near_sidedef;
+	double		distance;
+	double		min_distance;
+	int			x;
+
+	x = doom->lib.sector[sector].i_sidedefs;
+	min_distance = INFINITY;
+	while (x < doom->lib.sector[sector].n_sidedefs +\
+		doom->lib.sector[sector].i_sidedefs)
+	{
+		distance = sidedef_intersection_distance(ray,\
+			doom->lib.sidedef[x].line, &intersect);
+		if (distance < min_distance &&\
+			doom->lib.sidedef[x].opp_sector != prev_sector)
+		{
+			min_distance = distance;
+			near_sidedef = set_properties_sidedef(intersect,\
+				distance, doom->lib.sidedef[x], doom);
+		}
+		x++;
+	}
+	if (min_distance != INFINITY)
+	{
+		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
+			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+		return (project_on_plane(doom, near_sidedef, ray.plane_x));
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 14:45:25 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/09 12:40:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 12:51:58 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	floor.x = dist * cos(doom->ray_angle);
 	floor.y = dist * sin(doom->ray_angle);
-	// floor.x -= doom->pos.x;
-	// floor.y -= doom->pos.y;
+	floor.x -= doom->pos.x;
+	floor.y -= doom->pos.y;
 	texture.x = (int)floor.x % doom->texture_width;
 	texture.y = (int)floor.y % doom->texture_height;
 	pixel_dex = (((int)texture.y * doom->lib.sky_lib[tex_dex]->pitch)\

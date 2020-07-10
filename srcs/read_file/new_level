@@ -1,9 +1,11 @@
 #albert heijn
 
 #texture library
-2
-textures/64X96-Shelf.bmp
-textures/gray_scuffed_floor.bmp
+3
+textures/walls/96X96-Shelf.bmp
+textures/floors_ceiling/floor.bmp
+textures/floors_ceiling/ceiling96X96_clean.bmp
+
 
 #object library
 0
@@ -24,7 +26,7 @@ textures/gray_scuffed_floor.bmp
 1
 0
 0
-1
+2
 0
 4
 0
@@ -38,9 +40,9 @@ textures/gray_scuffed_floor.bmp
 0
 200
 0
+1
 0
-0
-0
+1
 0
 
 #sidedefs1
@@ -50,9 +52,9 @@ textures/gray_scuffed_floor.bmp
 100
 0
 1
+1
 0
-0
-0
+1
 1
 
 #sidedefs2
@@ -62,9 +64,9 @@ textures/gray_scuffed_floor.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 2
 
 #sidedefs3
@@ -74,9 +76,9 @@ textures/gray_scuffed_floor.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 3
 
 #objs in sector
@@ -88,7 +90,7 @@ textures/gray_scuffed_floor.bmp
 1
 0
 0
-1
+2
 0
 4
 1
@@ -101,9 +103,9 @@ textures/gray_scuffed_floor.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 4
 
 #sidedefs1
@@ -113,9 +115,9 @@ textures/gray_scuffed_floor.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 5
 
 #sidedefs2
@@ -125,9 +127,9 @@ textures/gray_scuffed_floor.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 6
 
 #sidedefs3
@@ -137,9 +139,9 @@ textures/gray_scuffed_floor.bmp
 300
 0
 0
+1
 0
-0
-0
+1
 7
 
 #objs in sector
@@ -151,7 +153,7 @@ textures/gray_scuffed_floor.bmp
 1
 0
 0
-1
+2
 0
 4
 2
@@ -164,9 +166,9 @@ textures/gray_scuffed_floor.bmp
 500
 200
 0
+1
 0
-0
-0
+1
 8
 
 #sidedefs1
@@ -176,9 +178,9 @@ textures/gray_scuffed_floor.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 9
 
 #sidedefs2
@@ -188,9 +190,9 @@ textures/gray_scuffed_floor.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 10
 
 #sidedefs3
@@ -200,9 +202,9 @@ textures/gray_scuffed_floor.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 11
 
 #objs in sector
