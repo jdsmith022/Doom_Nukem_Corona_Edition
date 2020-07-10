@@ -52,10 +52,10 @@ void	load_audio(t_audio *audio)
 	printf("Loading audio complete\n");
 	Mix_AllocateChannels(3);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
-	audio->music = Mix_LoadMUS(MU_1);
+	audio->music = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
 }
 
-void	audio(t_audio audio, t_event *event)
+void	movement_sounds(t_audio audio, t_event *event)
 {
 	if (event->jump == false)
 		event->s_jump_started = false;
@@ -63,43 +63,18 @@ void	audio(t_audio audio, t_event *event)
 		loop_sound(audio.sounds[0], 1);
 	else if (!event->cam_move_f && !event->cam_move_b)
 		pause_sound(audio.sounds[0], 1);
+	else if (event->cam_move_l || event->cam_move_r)
+		loop_sound(audio.sounds[0], 1);
 	if (event->jump && !event->s_jump_started){
 		pause_sound(audio.sounds[0], 1);
 		play_sound(audio.sounds[2], 2);
 		event->s_jump_started = true;
 	}
-	return;
 }
 
-	// sdl.quit = false;
-	// const uint8_t *keys;
-	// // bool key_changed = false;
-	// keys = SDL_GetKeyboardState(NULL);
-	// while (!sdl.quit)
-	// {
-	// 	// play_music(audio.music);
-	// 	SDL_PollEvent(&event);
-	// 	if (event.type == SDL_KEYDOWN){
-	// 		keys = SDL_GetKeyboardState(NULL);
-	// 		if (keys[SDL_SCANCODE_W]){
-	// 			loop_sound(audio.sounds[0], 1);
-	// 		} 
-	// 		else if (keys[SDL_SCANCODE_SPACE]){
-	// 			play_sound(audio.sounds[1], 0);
-	// 		}
-	// 	}
-	// 	else if (event.type == SDL_KEYUP){
-	// 		keys = SDL_GetKeyboardState(NULL);
-	// 		if (!keys[SDL_SCANCODE_W]){
-	// 			pause_sound(audio.sounds[0], 1);
-	// 		}
-	// 	}
-	// 	draw_image(sdl);
-	// 	if (event.type == SDL_QUIT)
-	// 		sdl.quit = true;
-	// }
-	// Mix_CloseAudio();
-	// SDL_DestroyRenderer(sdl.renderer);
-	// SDL_DestroyWindow(sdl.window);
-	// SDL_Quit();
-	// return (0);
+void	audio(t_audio audio, t_event *event)
+{
+	play_music(audio.music);
+	movement_sounds(audio, event);
+	return;
+}

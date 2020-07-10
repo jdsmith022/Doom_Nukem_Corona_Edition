@@ -2,7 +2,7 @@
 
 void	play_music(Mix_Music *music){
 	if (!Mix_PlayingMusic()){
-		Mix_PlayMusic(music, 1);
+		Mix_PlayMusic(music, -1);
 		SDL_Log("Playing music");
 	}
 }

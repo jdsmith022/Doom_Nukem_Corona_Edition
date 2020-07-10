@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 16:54:08 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/10 00:06:39 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define AUDIO_H
 
 # include "../SDL2_mixer/SDL_mixer.h"
-
-# define INIT_ERR	"error: initialization of SDL"
-# define MALLOC_ERR "error: malloc"
 
 #define AUDIO_BUFF 1042
 #define NUM_OF_SOUNDS 3
