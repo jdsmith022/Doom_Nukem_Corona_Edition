@@ -6,15 +6,11 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/08 15:54:42 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 18:16:33 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-
-static void fontInit(t_doom *doom)
-{
-
 
 void        draw_text(t_doom *doom)
 {
