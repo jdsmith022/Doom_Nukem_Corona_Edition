@@ -2,4 +2,6 @@
 Codam Coding College final project before first internship
 
 
-MUST DO to use SDL lib: brew install sdl2
+##Prerequists
+ to use SDL lib: brew install sdl2
+ to use SDL2 mixer lib: brew install sdl2_mixer

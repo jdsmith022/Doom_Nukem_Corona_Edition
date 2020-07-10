@@ -6,7 +6,7 @@
 /*   By: JessicaSmith <JessicaSmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 15:21:36 by JessicaSmit   #+#    #+#                 */
-/*   Updated: 2020/07/08 16:25:22 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 18:57:43 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,16 @@ static void			font_init(t_doom *doom)
 	TTF_Init();
 	font = TTF_OpenFont("text/amatic/AmaticSC-Regular.tff", 12);
 	string = "Fuck yeah font!";
-	font_color.r = 255;
-	font_color.g = 255;
-	font_color.b = 255;
-	font_rect.x = 300;
-	font_rect.y = 300;
+	doom->lib.font_color[0].r = 255;
+	doom->lib.font_color[0].g = 255;
+	doom->lib.font_color[0].b = 255;
+	doom->lib.font_rect[0].x = 300;
+	doom->lib.font_rect[0].y = 300;
 	doom->lib.font_lib[0] = TTF_RenderText_Solid(font, string, font_color);
 }
 
-static SDL_Surface	**string_into_surface(t_doom *doom)
+static SDL_Surface	**string_into_surface(t_doom *doom, SDL_Surface **lib)
 {
-	SDL_Surface **lib;
 	int			len;
 
 	len = 1;
@@ -43,8 +42,11 @@ static SDL_Surface	**string_into_surface(t_doom *doom)
 	return (lib);
 }
 
-void		save_font(t_doom *doom)
+SDL_Surface		**save_font(t_doom *doom)
 {
-	doom->lib.font_lib = string_into_surface(doom);
+	SDL_Surface **lib;
+
+	string_into_surface(doom, lib);
 	doom->lib.n_fonts = 1;
+	return (lib);
 }

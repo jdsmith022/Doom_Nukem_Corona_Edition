@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 12:21:56 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 09:16:17 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	doom_render(t_doom *doom)
 {
 	int		x;
 	t_ray	ray;
+	int		sky;
 
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);

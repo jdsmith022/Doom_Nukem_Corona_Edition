@@ -64,16 +64,3 @@ typedef struct		s_bmp_info
 }					t_bmp_info;
 
 ```
-
-## t_pixel
-
-This struct represents a 3-byte pixel
-
-```
-typedef struct		s_pixel
-{
-	uint8_t 		red;
-	uint8_t 		green;
-	uint8_t 		blue;
-}					t_pixel;
-```

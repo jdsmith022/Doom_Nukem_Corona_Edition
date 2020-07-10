@@ -1,33 +1,37 @@
 #albert heijn
 
 #texture library
-1
-textures/brown_wall.bmp
+3
+textures/walls/96X96-Shelf.bmp
+textures/floors_ceiling/floor.bmp
+textures/floors_ceiling/ceiling96X96_clean.bmp
 
 
 #object library
-0
-
-
+2
+sprites/apple.bmp
+sprites/banana.bmp
 
 #number of sectors
 3
 #number of walls
 12
 #number of objects
-0
+1
 
 
 #sector[0]
 10
 0
-0
-0
-0
 1
+0
+0
+2
 0
 4
 0
+0
+
 
 #sidedefs0
 -1
@@ -36,9 +40,9 @@ textures/brown_wall.bmp
 0
 200
 0
+1
 0
-0
-0
+1
 0
 
 #sidedefs1
@@ -47,10 +51,10 @@ textures/brown_wall.bmp
 0
 100
 0
+1
+1
 0
-0
-0
-0
+1
 1
 
 #sidedefs2
@@ -60,9 +64,9 @@ textures/brown_wall.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 2
 
 #sidedefs3
@@ -72,24 +76,53 @@ textures/brown_wall.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 3
 
-#objs in sector
+1
+
+#object1
 0
+50
+50
+0
+4
+4
+0
+46
+46
+54
+46
+0
+54
+46
+54
+54
+0
+54
+54
+46
+54
+0
+46
+54
+46
+46
+
 
 #sector[1]
 10
-0
-0
-0
-0
+20
 1
+0
+0
+2
 0
 4
 1
+0
 
 #sidedefs
 0
@@ -98,9 +131,9 @@ textures/brown_wall.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 4
 
 #sidedefs1
@@ -110,9 +143,9 @@ textures/brown_wall.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 5
 
 #sidedefs2
@@ -122,9 +155,9 @@ textures/brown_wall.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 6
 
 #sidedefs3
@@ -134,9 +167,9 @@ textures/brown_wall.bmp
 300
 0
 0
+1
 0
-0
-0
+1
 7
 
 #objs in sector
@@ -145,13 +178,14 @@ textures/brown_wall.bmp
 #sector[2]
 10
 0
-0
-0
-0
 1
+0
+0
+2
 0
 4
 2
+0
 
 #sidedefs
 -1
@@ -160,9 +194,9 @@ textures/brown_wall.bmp
 500
 200
 0
+1
 0
-0
-0
+1
 8
 
 #sidedefs1
@@ -172,9 +206,9 @@ textures/brown_wall.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 9
 
 #sidedefs2
@@ -184,9 +218,9 @@ textures/brown_wall.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 10
 
 #sidedefs3
@@ -196,9 +230,9 @@ textures/brown_wall.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 11
 
 #objs in sector

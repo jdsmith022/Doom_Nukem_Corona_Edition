@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 12:31:14 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 18:18:00 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,15 +150,14 @@ void 	doom_init(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 50;
-	doom->pos.y = 100;
+	doom->pos.x = 64;
+	doom->pos.y = 64;
+	doom->vertical_height_std  = 96;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
 	doom->player_height = 32;
-	doom->player_std_height = 32;
-	doom->texture_width = 64;
-	doom->texture_height = 64;
-	doom->wall_height_std = 64;
+	doom->visible_sprites = 0;
+	doom->player_std_height = 48;
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
@@ -180,5 +179,4 @@ void 	doom_init(t_doom *doom)
 	// doom->sector[2].slope_id = -1;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom_init_events(&doom->own_event);
-	font_init()
 }

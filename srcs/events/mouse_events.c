@@ -6,11 +6,14 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:56:09 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/14 18:22:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/05 13:44:59 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../editor/game_editor.h"
+
+#include <stdio.h>
 
 void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	double dt)
@@ -19,6 +22,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 	int		dir_x;
 	int		dir_y;
 
+	(void)dt;
 	radian = PI / 180;
 	dir_x = 1;
 	dir_y = 1;
@@ -51,4 +55,6 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 		doom->own_event.hold_x = button->x;
 		doom->own_event.mouse_press = 1;
 	}
+	if (doom->game_editor == TRUE)
+		mouse_press_game_editor(doom, button->x, button->y);
 }

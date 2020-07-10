@@ -6,11 +6,13 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 12:13:24 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 18:18:10 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+#include <stdio.h>
 
 void	doom_gui(t_doom *doom)
 {
@@ -42,14 +44,21 @@ void	game_loop(t_doom *doom)
 	double			dt;
 
 	last_frame_time = 0;
+	dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		doom_render(doom);
-		doom_sound(doom);
-		doom_gui(doom);
-		doom_text(doom);
+		if (doom->game_editor == FALSE)
+		{
+			// sprite_reset(doom);
+			doom_render(doom);
+			// sprite_render(doom);
+			doom_sound(doom);
+			doom_gui(doom);
+		}
+		else
+			open_game_editor(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
