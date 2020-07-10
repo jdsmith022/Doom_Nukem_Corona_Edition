@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 13:07:26 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 11:09:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,23 @@ typedef struct		s_object{
 
 typedef struct		s_plane
 {
+	t_point			intersect;
+	t_line			line;
 	int				sidedef_top;
 	int				sidedef_bottom;
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
 	double			height_standard;
+	int				ceiling_start;
+	int				floor_start;
 	int				wall_offset;
-	t_point			intersect;
 }					t_plane;
 
 typedef struct		s_sidedef {
-	int				id;
+	t_point			intersect;
 	t_line			line;
+	int				id;
 	int				action;
 	int				sector;
 	int				opp_sidedef;
@@ -128,7 +132,6 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
-	t_point			intersect;
 }					t_sidedef;
 
 typedef struct		s_sector {
@@ -161,9 +164,7 @@ typedef struct		s_lib{
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
 	int				portal_ceiling;
-	int				room_ceiling;
 	int				portal_floor;
-	int				room_floor;
 	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
@@ -200,7 +201,8 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
-	int				wall_height_std;
+	int				vertical_height_std;
+	int				horizontal_height_std;
 	double			player_std_height;
 	double			player_height;
 	Uint32			mid_screen;
@@ -297,7 +299,7 @@ double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
 double				sidedef_intersection_distance(t_ray ray, t_line line, t_point *intersect);
 void				wall_offset(t_plane *plane, int sidedef_top);
-void				find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point intersect);
+void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 

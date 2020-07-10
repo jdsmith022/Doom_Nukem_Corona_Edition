@@ -2,8 +2,8 @@
 
 #texture library
 2
-textures/brown_wall.bmp
-textures/dark_stone.bmp
+textures/64X96-Shelf.bmp
+textures/gray_scuffed_floor.bmp
 
 #object library
 0
@@ -21,7 +21,7 @@ textures/dark_stone.bmp
 #sector[0]
 10
 0
-0
+1
 0
 0
 1
@@ -38,9 +38,9 @@ textures/dark_stone.bmp
 0
 200
 0
-1
-1
-1
+0
+0
+0
 0
 
 #sidedefs1
@@ -50,9 +50,9 @@ textures/dark_stone.bmp
 100
 0
 1
-1
-1
-1
+0
+0
+0
 1
 
 #sidedefs2
@@ -74,9 +74,9 @@ textures/dark_stone.bmp
 100
 200
 0
-1
-1
-1
+0
+0
+0
 3
 
 #objs in sector
@@ -85,7 +85,7 @@ textures/dark_stone.bmp
 #sector[1]
 10
 20
-0
+1
 0
 0
 1
@@ -148,7 +148,7 @@ textures/dark_stone.bmp
 #sector[2]
 10
 0
-0
+1
 0
 0
 1
