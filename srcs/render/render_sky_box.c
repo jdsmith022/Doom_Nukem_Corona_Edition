@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/10 09:45:31 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/10 09:48:46 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/10 09:50:32 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void			sidedef_render_skybox(t_doom *doom, t_ray ray,
 	set_ray(&ray, doom);
 	min_distance = find_min_distance(doom, ray, sky_sd, &plane);
 	set_properties_plane_sky(doom, &plane, ray.plane_x, min_distance);
-	printf("here\n");
 	draw_sky(doom, ray.plane_x, plane.sidedef_top);
 	find_skybox_sidedef_texture(doom, ray.plane_x, plane);
 	draw_ground(doom, ray.plane_x, plane.sidedef_bottom);
