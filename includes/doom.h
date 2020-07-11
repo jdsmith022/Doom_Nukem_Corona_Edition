@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 17:19:14 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/11 16:27:02 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,34 @@ typedef struct		s_line {
 	t_point			end;
 }					t_line;
 
+typedef struct			s_sprite {
+	int					index;			//start index
+	int					amount;			//which side is viewed
+	t_point				pos;
+	double				size;
+	t_line				*lines;
+	double				angle;			//what is the angle on the map
+	int					action;
+	int					*textures;
+	int					*face_ang;
+	int					block;			//can the player walk through it or not
+	int					sector;
+	double				width;
+	double				height;
+	double				sprite_x;		//x cord translated to viewer space
+	double				sprite_y;		//y cord translated to viewer space
+	int					visible;
+	double				distance;
+	int					screen_left_x;
+	int					screen_right_x;
+	// int					position;
+}						t_sprite;
+
 typedef struct		s_ray {
 	t_line			line;
 	double			angle;
 	double			plane_x;
+	int				filter;
 }					t_ray;
 
 typedef struct		s_event {
@@ -84,7 +108,7 @@ typedef struct		s_event {
 }					t_event;
 
 typedef struct		s_m_object{
-	int				n_textures;
+	int				amount;
 	int*			textures;
 	int*			face_ang;
 	char*			name;
@@ -106,19 +130,23 @@ typedef struct		s_object{
 
 typedef struct		s_plane
 {
+	t_point			intersect;
+	t_line			line;
 	int				sidedef_top;
 	int				sidedef_bottom;
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
 	double			height_standard;
+	int				ceiling_start;
+	int				floor_start;
 	int				wall_offset;
-	t_point			intersect;
 }					t_plane;
 
 typedef struct		s_sidedef {
-	int				id;
+	t_point			intersect;
 	t_line			line;
+	int				id;
 	int				action;
 	int				sector;
 	int				opp_sidedef;
@@ -129,7 +157,6 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
-	t_point			intersect;
 }					t_sidedef;
 
 typedef struct		s_sector {
@@ -151,36 +178,42 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
+typedef struct		s_sky {
+}					t_sky;
+
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
-	int				len_sky_lib;
 	t_line			*sky_sd;
+	int				portal_ceiling;
+	int				portal_floor;
+	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
-	t_object		*sprites;
+	int				len_sidedef;
+	t_sprite		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
 }					t_lib;
 
 typedef struct		s_gamedesign{
-		t_sector	*sector;
-		int			s_len;
-		int			s_size;
-		t_sidedef	*sidedef;
-		int			w_len;
-		int			w_size;
-		int			cur_sec;
-		int			cur_sd;
-		int			portal_sd;
-		int			portal_sec;
-		int 		pl_pos;
-		int			pl_x;
-		int			pl_y;
-		int			pl_sec;
+	t_sector		*sector;
+	int				s_len;
+	int				s_size;
+	t_sidedef		*sidedef;
+	int				w_len;
+	int				w_size;
+	int				cur_sec;
+	int				cur_sd;
+	int				portal_sd;
+	int				portal_sec;
+	int 			pl_pos;
+	int				pl_x;
+	int				pl_y;
+	int				pl_sec;
 }
 					t_gamedesign;
 
@@ -194,9 +227,11 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
-	int				wall_height_std;
+	int				vertical_height_std;
+	int				horizontal_height_std;
 	double			player_std_height;
 	double			player_height;
+	Uint32			mid_screen;
 	int				texture_width;
 	int				texture_height;
 	int				i_sector;
@@ -209,6 +244,9 @@ typedef struct		s_doom {
 	double			dist_to_plane;
 	t_gamedesign	game_design;
 	t_audio			audio;
+	int				visible_sprites;
+	int				total_sprites;
+	double			stripe_distance[WIDTH];
 }					t_doom;
 
 /*core functions*/
@@ -231,8 +269,8 @@ int					open_file(char *filename);
 t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 t_sector			*save_sectors(int fd, int *len);
-t_sidedef			*save_walls(int fd);
-t_object			*save_sprites(int fd);
+t_sidedef			*save_walls(int fd, int *len);
+t_sprite			*save_sprites(int fd, int *total_sprites);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
@@ -266,7 +304,7 @@ int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void    			set_texture_properties(t_doom *doom, t_sector sector,\
-						int texture);
+						int texture, int d);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
@@ -289,9 +327,10 @@ t_point				line_intersection(t_point start1, t_point delta1,
 t_point				line_delta(t_point start, t_point end);
 double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
-double				sidedef_intersection_distance(t_ray ray, t_line line, t_point *intersect);
+double				sidedef_intersection_distance(t_ray ray, t_line line,\
+						t_point *intersect);
 void				wall_offset(t_plane *plane, int sidedef_top);
-void				find_side(t_doom *doom, int x, t_line line, t_plane plane, t_point intersect);
+void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 
@@ -313,4 +352,19 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y);
 void	audio(t_audio audio, t_event *event);
 
 void    bars(Uint32 **pixels, t_doom *doom);
+
+/*sprite functions*/
+void				sprite_init(t_doom *doom);
+void				sprite_check(t_doom *doom, t_ray ray, int x);
+void				sprite_render(t_doom *doom);
+int					*sort_sprite_array(t_sprite *sprite, int total);
+void				find_position(t_doom *doom, t_point *sprite_cord, int index);
+void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
+void				sprite_reset(t_doom *doom);
+
+/*actions*/
+
+void    sliding_door(t_doom *doom, int sd_index);
+void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
+
 #endif

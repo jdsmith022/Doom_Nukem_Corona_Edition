@@ -1,19 +1,19 @@
 #albert heijn
 
 #texture library
-2
-textures/brown_wall.bmp
-textures/dark_stone.bmp
+3
+textures/walls/96X96-Shelf.bmp
+textures/floors_ceiling/floor.bmp
+textures/floors_ceiling/ceiling96X96_clean.bmp
+
 
 #object library
 0
 
-
-
 #number of sectors
 3
 #number of walls
-12
+13
 #number of objects
 0
 
@@ -21,10 +21,10 @@ textures/dark_stone.bmp
 #sector[0]
 10
 0
-0
-0
-0
 1
+0
+0
+2
 0
 4
 0
@@ -39,7 +39,7 @@ textures/dark_stone.bmp
 200
 0
 1
-1
+0
 1
 0
 
@@ -49,9 +49,9 @@ textures/dark_stone.bmp
 0
 100
 0
+0
 1
-1
-1
+0
 1
 1
 
@@ -61,11 +61,12 @@ textures/dark_stone.bmp
 0
 100
 200
-0
-0
-0
-0
 2
+0
+1
+0
+1
+
 
 #sidedefs3
 -1
@@ -75,20 +76,21 @@ textures/dark_stone.bmp
 200
 0
 1
-1
+0
 1
 3
 
-#objs in sector
 0
+
+
 
 #sector[1]
 10
 20
-0
-0
-0
 1
+0
+0
+2
 0
 4
 1
@@ -101,9 +103,9 @@ textures/dark_stone.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 4
 
 #sidedefs1
@@ -113,9 +115,9 @@ textures/dark_stone.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 5
 
 #sidedefs2
@@ -125,9 +127,9 @@ textures/dark_stone.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 6
 
 #sidedefs3
@@ -137,9 +139,9 @@ textures/dark_stone.bmp
 300
 0
 0
+1
 0
-0
-0
+1
 7
 
 #objs in sector
@@ -148,10 +150,10 @@ textures/dark_stone.bmp
 #sector[2]
 10
 0
-0
-0
-0
 1
+0
+0
+2
 0
 4
 2
@@ -164,9 +166,9 @@ textures/dark_stone.bmp
 500
 200
 0
+1
 0
-0
-0
+1
 8
 
 #sidedefs1
@@ -176,9 +178,9 @@ textures/dark_stone.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 9
 
 #sidedefs2
@@ -188,9 +190,9 @@ textures/dark_stone.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 10
 
 #sidedefs3
@@ -200,9 +202,9 @@ textures/dark_stone.bmp
 500
 0
 0
+1
 0
-0
-0
+1
 11
 
 #objs in sector
