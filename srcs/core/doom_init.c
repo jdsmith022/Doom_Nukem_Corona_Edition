@@ -6,7 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2020/07/05 17:24:05 by mminkjan      ########   odam.nl         */
+=======
+/*   Updated: 2020/07/09 22:43:15 by Malou         ########   odam.nl         */
+>>>>>>> c27ec036e790d407cebcf74d1e3a90cfaa300f9e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +166,13 @@ void 	doom_init(t_doom *doom)
 	doom->lib.sector[2].slope_id = 8;
 	doom->lib.sector[3].slope_id = -1;
 	doom->lib.sector[4].slope_id = -1;
-	doom->lib.sector[2].slope_floor = 10 * (PI / 180);
+	doom->lib.sector[2].slope_floor = 5 * (PI / 180);
+	//doom->lib.sector[0].slope_floor = 1.9 * (PI / 180);
+	doom->lib.sector[0].slope_floor = 0;
+	doom->lib.sector[1].slope_floor = 0;
+	//doom->lib.sector[2].slope_floor = 0;
+	doom->lib.sector[3].slope_floor = 0;
+	doom->lib.sector[4].slope_floor = 0;
 	// doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;

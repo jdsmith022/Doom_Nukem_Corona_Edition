@@ -1,8 +1,9 @@
 #the cross
 
 #texture library
-1
+2
 textures/dark_stone.bmp
+textures/brown_wall.bmp
 
 
 #object library
@@ -20,7 +21,7 @@ textures/dark_stone.bmp
 
 #sector[0]
 10
-0
+10
 0
 0
 0
@@ -92,7 +93,7 @@ textures/dark_stone.bmp
 1
 
 #sidedefs
--2
+-1
 0
 300
 300
@@ -145,8 +146,8 @@ textures/dark_stone.bmp
 #sector[2]
 10
 20
+1
 0
-22
 0
 0
 0

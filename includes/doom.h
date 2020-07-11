@@ -6,7 +6,11 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2020/07/05 17:16:40 by mminkjan      ########   odam.nl         */
+=======
+/*   Updated: 2020/07/10 16:39:41 by Malou         ########   odam.nl         */
+>>>>>>> c27ec036e790d407cebcf74d1e3a90cfaa300f9e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +50,7 @@
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
 # define GRAVITY -1.5
-# define VELOCITY 12
+# define VELOCITY 20
 
 typedef struct		s_point {
 	double			x;
@@ -109,6 +113,7 @@ typedef struct		s_plane
 	int				sidedef_height;
 	int				mid_texture_top;
 	int				mid_texture_bottom;
+	double			height_floor;
 	double			height_standard;
 	int				wall_offset;
 	t_point			intersect;
@@ -137,10 +142,11 @@ typedef struct		s_sector {
 	int				i_objects;
 	int				light_level;
 	int				slope_id;
-	int				slope_ceiling;
+	double			slope_ceiling;
 	double			slope_floor;
 	int				height_ceiling;
-	int				height_floor;
+	double			height_floor;
+	double			slope_height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
 	int				diff_x;
@@ -234,8 +240,8 @@ void				camera_movement(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
 void				move_cam_direction(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
-void				cam_move_fb(t_doom *doom, double dt, int direction);
-void				cam_move_rl(t_doom *doom, double dt, int direction);
+void				cam_move_fb(t_doom *doom, double dt, double direction);
+void				cam_move_rl(t_doom *doom, double dt, double direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
@@ -246,8 +252,8 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
-int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-						t_plane *plane);
+double				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+						t_sector sector);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
@@ -255,7 +261,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y, t_sidedef sidedef);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);

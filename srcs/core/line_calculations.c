@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 12:09:58 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/27 14:28:14 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/08 16:31:31 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ double		point_line_distance(t_point point, t_line line)
 
 	delta = line_delta(line.start, line.end);
 	denominator = sqrt(pow(delta.y, 2) + pow(delta.x, 2));
-	distance = delta.y * point.x - delta.x * point.y +\
-	line.end.x * line.start.y - line.end.y * line.start.x / denominator;
+	distance = (delta.y * point.x - delta.x * point.y +\
+		line.end.x * line.start.y - line.end.y * line.start.x) / denominator;
 	return (distance);
 }
 
