@@ -118,6 +118,12 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 			min_distance = distance;
 			near_sidedef = set_properties_sidedef(intersect,\
 				distance, doom->lib.sidedef[x], doom);
+			if (doom->lib.sidedef[x].action == 2)
+			{
+				intersect.x -= (doom->lib.sidedef[x + 1].line.end.x - doom->lib.sidedef[x + 1].line.start.x);
+				intersect.y -= (doom->lib.sidedef[x + 1].line.end.y - doom->lib.sidedef[x + 1].line.start.y);
+				set_offset(&near_sidedef, doom->lib.sidedef[x], intersect, doom);
+			}
 		}
 		x++;
 	}
