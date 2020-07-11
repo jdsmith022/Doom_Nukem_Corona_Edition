@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 16:54:18 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 09:16:17 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/11 12:27:53 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	doom_render(t_doom *doom)
 	x = 0;
 	ray.angle = doom->dir_angle - (FOV / 2);
 	ray.line.start = doom->pos;
+	ray.filter = 0;
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);
