@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/11 10:49:13 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/11 11:07:49 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,11 @@ int			get_opp_sidedef(t_sector sector)
 // 	return (max_point);
 // }
 
-int			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-	t_plane *plane)
+double			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+	t_sector sector)
 {
-	t_sector	sector;
 	int			opp_side;
-	t_point		opp_point;
+	t_point		conn_point;
 	double		distance;
 	double		height;
 
@@ -127,10 +126,10 @@ int			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	if (sidedef.id == sector.slope_id)
 		return (doom->lib.sector[sidedef.sector].height_floor);
 	opp_side = get_opp_sidedef(sector);
-	conn_side = get_connecting_point(sidedef,\
+	conn_point = get_connecting_point(sidedef,\
 		doom->lib.sidedef[sector.slope_id]);
 	if (sidedef.id != sector.slope_id && sidedef.id != opp_side)
-		distance = points_distance(sidedef.intersect, conn_side);
+		distance = points_distance(sidedef.intersect, conn_point);
 	if (sidedef.id == opp_side)
 		distance = fabs(point_line_distance(sidedef.line.end,\
 			doom->lib.sidedef[sector.slope_id].line));
