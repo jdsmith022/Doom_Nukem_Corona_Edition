@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:11:00 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/11 12:18:33 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,23 +264,23 @@ void				bend_down(t_doom *doom);
 /*render functions*/
 int					sidedef_render(t_doom *doom, t_ray *ray,\
 						int sector, int prev_sector);
-int					project_on_plane(t_doom *doom, t_sidedef sidedef, t_ray ray);
+int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void    			set_texture_properties(t_doom *doom, t_sector sector,\
 						int texture);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
-						t_sidedef sidedef, t_ray ray);
+						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
-						t_sidedef sidedef, t_ray ray);
+						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 						t_plane plane);
 void		    	draw_ground(t_doom *doom, int x, int y);
 void		  		draw_sky(t_doom *doom, int x, int y);
-void				draw_ceiling(t_doom *doom, t_ray ray, t_sector sector, int y);
-void				draw_floor(t_doom *doom, t_ray ray, t_sector sector, int y);
+void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);

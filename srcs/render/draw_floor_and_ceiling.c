@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/07 18:36:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/11 12:16:26 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			add_filter(t_doom *doom, int y, int filter, int index)
 		pixels[index] += filter;
 }
 
-void			draw_ceiling(t_doom *doom, t_ray ray,
+void			draw_ceiling(t_doom *doom, int x,
 					t_sector sector, int y)
 {
 	double	dist;
@@ -72,17 +72,16 @@ void			draw_ceiling(t_doom *doom, t_ray ray,
 	height = (HEIGHT + doom->player_height) / 2;
 	while (y >= 0)
 	{
-		index = (y * doom->surface->pitch) + (ray.plane_x * bpp);
+		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_ceiling)\
 			/ (height - y) * doom->dist_to_plane;
-		dist /= cos(doom->ray_adjacent * ray.plane_x - FOV / 2);
+		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
-		add_filter(doom, y, ray.filter, index);
 		y--;
 	}
 }
 
-void			draw_floor(t_doom *doom, t_ray ray,
+void			draw_floor(t_doom *doom, int x,
 					t_sector sector, int y)
 {
 	double	dist;
@@ -96,12 +95,11 @@ void			draw_floor(t_doom *doom, t_ray ray,
 	bpp = doom->surface->format->BytesPerPixel;
 	while (y < HEIGHT)
 	{
-		index = (y * doom->surface->pitch) + (ray.plane_x  * bpp);
+		index = (y * doom->surface->pitch) + (x  * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
 			/ (y - height) * (doom->dist_to_plane);
-		dist /= cos(doom->ray_adjacent * ray.plane_x  - FOV / 2);
+		dist /= cos(doom->ray_adjacent * x  - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
-		add_filter(doom, y, ray.filter, index);
 		y++;
 	}
 }

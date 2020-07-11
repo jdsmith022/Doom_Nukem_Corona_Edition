@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/08 18:32:06 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/11 12:15:10 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,10 @@ int			sidedef_render(t_doom *doom, t_ray *ray, int sector,
 	}
 	if (min_distance != INFINITY)
 	{
-		if (near_sidedef.action == 1) // create define to know what is what but this is see through
-			ray->filter = 80;
+
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		if (near_sidedef.action == 1)
-			ray->filter = 0;
-		project_on_plane(doom, near_sidedef, *ray);
+		project_on_plane(doom, near_sidedef, ray->plane_x);
 	}
 	return (0);
 }
