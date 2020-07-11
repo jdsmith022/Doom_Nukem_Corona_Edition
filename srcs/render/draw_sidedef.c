@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 14:08:40 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/11 12:17:21 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 }
 
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, t_ray ray)
+					t_sidedef sidedef, int x)
 {
 	Uint32	*pixels;
 	t_point	pixel;
 
 	pixel.y = plane.sidedef_top;
-	pixel.x = ray.plane_x;
+	pixel.x = x;
 	pixels = doom->surface->pixels;
 	while (pixel.y < plane.sidedef_bottom)
 	{
@@ -89,21 +89,16 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 }
 
 void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, t_ray ray)
+					t_sidedef sidedef, int x)
 {
 	t_point	pixel;
 	char	*pixels;
 
 	pixel.y = plane.sidedef_top;
-	pixel.x = ray.plane_x;
+	pixel.x = x;
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		find_texture_index(doom, pixel, plane, sidedef);
-		if (ray.filter != 0)
-		{
-			pixels = doom->surface->pixels;
-			pixels[(((int)pixel.y * WIDTH) + (int)pixel.x) * 4] += ray.filter;
-		}
 		pixel.y++;
 	}
 }
