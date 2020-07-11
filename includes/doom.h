@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+=======
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   doom.h                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: Malou <Malou@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
+/*   Updated: 2020/07/11 17:57:58 by nde-wild      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> sliding_door
 #ifndef DOOM_H
 # define DOOM_H
 
@@ -340,6 +355,9 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y);
 void	audio(t_audio audio, t_event *event);
 
 void    bars(Uint32 **pixels, t_doom *doom);
+void    draw_images(Uint32 *pixels, t_doom *doom);
+void    draw_screen_colors(Uint32 *pixels, t_doom *doom);
+void	box_in_sectors(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
