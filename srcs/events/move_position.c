@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   move_position.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/07 10:54:54 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/03 13:50:12 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 t_point	check_line_intersection(t_line move, t_sidedef sidedef, double angle, int x)

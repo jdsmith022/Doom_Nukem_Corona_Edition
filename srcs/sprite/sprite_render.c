@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_render.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/09 18:50:41 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		scale_sprite(t_doom *doom, t_sprite *sprite)

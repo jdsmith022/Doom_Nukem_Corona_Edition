@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_floor_and_ceiling.c                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/11 12:26:05 by nde-wild      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		put_row(t_doom *doom, Uint32 tex_dex,

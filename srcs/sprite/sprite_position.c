@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_position.c                                  :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/07 11:29:08 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/09 15:46:51 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 int		find_x(t_doom *doom, int index)

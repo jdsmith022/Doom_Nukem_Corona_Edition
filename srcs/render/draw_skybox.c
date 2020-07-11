@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_skybox.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/05 11:14:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/10 12:21:47 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,

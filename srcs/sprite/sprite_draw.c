@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_draw.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/10 14:16:10 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, size_t index, int i)

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_sidedef.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/11 12:26:04 by nde-wild      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 // static void		put_dimishing_light(Uint32 *color, double dist)

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_check.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/06/06 16:07:32 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/07/09 18:03:39 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)

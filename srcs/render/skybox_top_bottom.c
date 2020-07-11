@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   skybox_top_bottom.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/06 14:45:25 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/10 12:51:58 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		put_row(t_doom *doom, Uint32 tex_dex,

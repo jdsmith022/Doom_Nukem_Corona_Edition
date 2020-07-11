@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   exit.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/06 15:11:32 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/06/17 16:13:21 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void        doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge)

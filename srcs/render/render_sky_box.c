@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   render_sky_box.c                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/10 09:45:31 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/10 17:17:38 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void			set_properties_plane_sky(t_doom *doom,

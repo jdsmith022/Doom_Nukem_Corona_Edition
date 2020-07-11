@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   line_calculations.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/02 12:09:58 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/27 14:28:14 by Malou         ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 t_point		line_intersection(t_point start1, t_point delta1,

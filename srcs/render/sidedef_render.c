@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sidedef_render.c                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/11 12:28:14 by nde-wild      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
