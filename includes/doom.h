@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 14:22:26 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/11 15:07:26 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,9 +293,9 @@ void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 
 /*render functions*/
-int					sidedef_render(t_doom *doom, t_ray ray,\
+void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
-int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
+void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect);
 void    			set_texture_properties(t_doom *doom, t_sector sector,\
 						int texture);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\

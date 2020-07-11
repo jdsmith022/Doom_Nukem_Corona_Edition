@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 09:44:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/11 15:37:15 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	(void)sector;
 	new_height = (HEIGHT + doom->player_height) / 2;
 	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
+	// printf("****plane height standard: %f****\n", plane->height_standard); //misschien opslaan om grootte te bepalen van sprite?
 	div_height_std = plane->height_standard / 2;
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
@@ -81,7 +82,7 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 }
 
-int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
+void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
 {
 	t_plane		plane;
 	t_sector	sector;
@@ -102,5 +103,4 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
-	return (0);
 }

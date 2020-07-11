@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/10 18:34:53 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/11 19:11:11 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 	double	pix_y;
 	double	y;
 	double	x;
+	double	y_temp;
+	double	x_temp;
 	// int		pix_x;
 	double	screen_y;
 
@@ -61,6 +63,7 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 	screen_y = begin.y;
 	index = 0;
 	x = 0;
+	x_temp = 0;
 	// tex_x = 0;
 	while (stripe < end.x && stripe > 0 && stripe < WIDTH)
 	{
@@ -69,8 +72,11 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 		// tex_y = 0;
 		tex_y = tex_y / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 		y = 0;
+		y_temp = 0;
 		screen_y = (int)begin.y;
 		// printf("pix_y: %d, < end.y: %d\n", pix_y, (int)end.y);
+		if (x != 0)
+			x_temp = (double)(stripe - begin.x) / doom->lib.sprites[index_sp].width * x;
 		while (screen_y < (int)end.y/* && pix_y > 0 && pix_y < HEIGHT*/)
 		{
 			// printf("inside while level2\n");
@@ -79,7 +85,10 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 			// pix_y = (double)(64 / doom->lib.sprites[index_sp].height) * ((double)(screen_y + stripe) /* + off_set*/ - begin.y);
 			// pix_dex = ((int)pix_y * doom->lib.obj_lib[i_sprite]->pitch) + (stripe * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 			//CONSIDER SIZE OF THE TEXTURE
-			pix_dex = ((int)y * doom->lib.obj_lib[i_sprite]->pitch) + ((int)x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+			if (y != 0)
+				y_temp = (double)(screen_y - begin.y) / doom->lib.sprites[index_sp].height * y;
+			// printf("(x: %f; y: %f) (x_temp: %f;y_temp: %f) width: %f", x, y, x_temp, y_temp, doom->lib.sprites[index_sp].width);
+			pix_dex = ((int)y_temp * doom->lib.obj_lib[i_sprite]->pitch) + ((int)x_temp * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 			//if stripe_distance[WIDTH] is niet kleiner dan sprite_distance op de x van de stripe
 			put_pixel_tex(doom, pix_dex, index, i_sprite);
 			// pix_y++;

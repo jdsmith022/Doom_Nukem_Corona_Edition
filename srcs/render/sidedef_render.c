@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 14:41:24 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/11 15:10:57 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ double			sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-static int		find_intersect(t_doom *doom, t_ray ray, int sector,
+void		find_intersect(t_doom *doom, t_ray ray, int sector,
 					int prev_sector)
 {
 	t_point		intersect;
@@ -100,15 +100,14 @@ static int		find_intersect(t_doom *doom, t_ray ray, int sector,
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		return (project_on_plane(doom, near_sidedef, ray.plane_x));
+		project_on_plane(doom, near_sidedef, ray.plane_x, intersect);
 	}
-	return (0);
 }
 
-int				sidedef_render(t_doom *doom, t_ray ray, int sector,
+void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
 	if (doom->lib.sector[sector].outside)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
-	return (find_intersect(doom, ray, sector, prev_sector));
+	find_intersect(doom, ray, sector, prev_sector);
 }
