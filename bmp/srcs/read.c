@@ -46,6 +46,8 @@ t_bmp				read_bmp(int fd)
 	if (header.signature != 0x4D42)
 		exit_with_error("Error: not a bmp file.\n");
 	read(fd, &(bmp.info), sizeof(t_bmp_info)); // Reads bmp info
+	if (bmp.info.info_size != 40)
+		exit_with_error("Error: bmp reader only supports BITMAPINFOHEADER files\n");
 	if (bmp.info.bits_per_pixel != 24 && bmp.info.bits_per_pixel != 32)
 		exit_with_error("Error: bmp reader only supports 24 and 32bit bmp.\n");
 	if (bmp.info.compression)

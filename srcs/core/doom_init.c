@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/09 10:31:04 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/11 16:18:33 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,11 @@ void 	doom_init(t_doom *doom)
 {
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
-	init_audio(&doom->audio);
-	load_audio(&doom->audio);
+	doom->audio.engine = OFF;
+	if (doom->audio.engine){
+		init_audio(&doom->audio);
+		load_audio(&doom->audio);
+	}
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;
