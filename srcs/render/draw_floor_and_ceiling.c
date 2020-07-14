@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/14 14:03:01 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/14 18:12:50 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,6 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
-double		set_slope_delta(t_sector sector, t_plane plane, int direction)
-{
-	
-}
-
 int			check_slope_direction(t_sector sector, int sidedef_id)
 {
 	int		opp_sidedef;
@@ -89,6 +84,26 @@ int			check_slope_direction(t_sector sector, int sidedef_id)
 		return (1);
 	else
 		return (2);
+}
+
+double		set_slope_delta(t_doom *doom, t_sector sector, t_plane plane, int y)
+{
+	double		distance;
+	double		slope_delta;
+	int			opp_side;
+	t_sidedef 	sidedef;
+	t_sidedef 	slope_side;
+	int			direction;
+	int			steps;
+
+	direction = check_slope_direction;
+	slope_side = doom->lib.sidedef[sector.slope_id];
+
+	steps = HEIGHT - y;
+	steps = plane.slope_distance / steps;
+	if (direction == 1)
+		slope_delta = 
+	
 }
 
 void			draw_floor(t_doom *doom, int x,
@@ -106,10 +121,7 @@ void			draw_floor(t_doom *doom, int x,
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT / 2) + doom->player_height;
 	if (sector.slope_id != -1)
-	{
-		slope_direction = check_slope_direction(sector, plane.sidedef_id);
-		slope_delta = set_slope_delta(sector, plane, slope_direction);
-	}
+		slope_delta = set_slope_delta(doom, sector, plane, slope_direction);
 	bpp = doom->surface->format->BytesPerPixel;
 	height_floor = sector.height_floor;
 	while (y < HEIGHT)

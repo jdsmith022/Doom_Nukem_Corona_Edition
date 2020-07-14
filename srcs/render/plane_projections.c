@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/14 13:45:42 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/14 14:39:26 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef,
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
-	draw_floor(doom, x, sector, plane.sidedef_bottom, sidedef);
+	draw_floor(doom, x, sector, plane.sidedef_bottom, plane);
 }
