@@ -321,6 +321,14 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
 		while (j < col_lib->sector[i].n_sidedefs)
 		{
 			col_lib->sidedef[k] = wall_inf(fd, i, col_lib->len_tex_lib, len);
+			if (col_lib->sidedef[k].action == 2 && col_lib->sidedef[k].opp_sector != -1)
+			{
+				create_mv_sidedef(&col_lib->sidedef, k, col_lib->len_sidedef);
+				col_lib->len_sidedef++;
+				col_lib->sector[i].n_sidedefs++;
+				k++;
+				j++;
+			}
 			k++;
 			j++;
 		}

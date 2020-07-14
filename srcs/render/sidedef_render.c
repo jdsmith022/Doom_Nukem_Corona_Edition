@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sidedef_render.c                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 17:45:38 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 16:59:59 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
@@ -50,6 +38,7 @@ static t_sidedef set_properties_sidedef(t_point intersect, double distance,
 	sidedef.txt_2 = curr_sidedef.txt_2;
 	sidedef.txt_3 = curr_sidedef.txt_3;
 	sidedef.intersect = intersect;
+	sidedef.action = curr_sidedef.action;
 	return (sidedef);
 }
 
@@ -134,9 +123,10 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	if (min_distance != INFINITY)
 	{
+
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		return (project_on_plane(doom, near_sidedef, ray.plane_x));
+		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 	return (0);
 }

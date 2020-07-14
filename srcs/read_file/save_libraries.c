@@ -23,7 +23,7 @@ void	save_libraries(t_doom *doom)
     save_font(doom);
     doom->lib.sky_lib = save_sky(&doom->lib.sky_sd);
     doom->lib.sector = save_sectors(fd, &len);
-    doom->lib.sidedef = save_walls(fd);
+    doom->lib.sidedef = save_walls(fd,  &doom->lib.len_sidedef);
     doom->lib.sprites = save_sprites(fd, &doom->total_sprites);
     add_inf_to_lib(&doom->lib, len, fd);
     // create_header(&list, &len);

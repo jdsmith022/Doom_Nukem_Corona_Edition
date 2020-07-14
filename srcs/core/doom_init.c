@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   doom_init.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 18:18:00 by JessicaSmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 // void	set_lines(t_sidedef *sidedef)
@@ -146,6 +134,11 @@ void 	doom_init(t_doom *doom)
 {
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
+	doom->audio.engine = OFF;
+	if (doom->audio.engine){
+		init_audio(&doom->audio);
+		load_audio(&doom->audio);
+	}
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;

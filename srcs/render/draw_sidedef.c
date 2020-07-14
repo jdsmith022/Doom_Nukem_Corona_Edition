@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_sidedef.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 18:40:59 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 16:47:04 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 // static void		put_dimishing_light(Uint32 *color, double dist)
@@ -92,6 +80,7 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x)
 {
 	t_point	pixel;
+	char	*pixels;
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;

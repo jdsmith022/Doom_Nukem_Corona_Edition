@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   slope_projections.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/06/27 15:51:18 by Malou         ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 t_point		get_opp_point(t_sidedef sidedef, t_sidedef opp_sidedef)

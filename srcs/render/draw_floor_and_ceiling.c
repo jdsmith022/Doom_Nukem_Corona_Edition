@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_floor_and_ceiling.c                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/10 18:19:34 by JessicaSmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		put_row(t_doom *doom, Uint32 tex_dex,
@@ -47,6 +35,15 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	pixel_dex = (((int)texture.y * doom->lib.tex_lib[tex_dex]->pitch)\
 		+ ((int)texture.x * bpp));
 	put_row(doom, tex_dex, index, pixel_dex);
+}
+
+void			add_filter(t_doom *doom, int y, int filter, int index)
+{
+	char *pixels;
+	pixels = doom->surface->pixels;
+
+	if (filter != 0)
+		pixels[index] += filter;
 }
 
 void			draw_ceiling(t_doom *doom, int x,
@@ -92,7 +89,7 @@ void			draw_floor(t_doom *doom, int x,
 		limit = doom->lib.portal_floor;
 	while (y < limit)
 	{
-		index = (y * doom->surface->pitch) + (x * bpp);
+		index = (y * doom->surface->pitch) + (x  * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
 			/ (y - doom->mid_screen) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);

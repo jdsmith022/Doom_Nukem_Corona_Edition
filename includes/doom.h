@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/14 11:36:04 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/14 12:29:38 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
+# include "audio.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -87,6 +88,7 @@ typedef struct		s_ray {
 	t_line			line;
 	double			angle;
 	double			plane_x;
+	int				filter;
 }					t_ray;
 
 typedef struct		s_event {
@@ -196,6 +198,7 @@ typedef struct		s_lib{
 	int				len_sky_lib;
 	t_sector		*sector;
 	t_sidedef		*sidedef;
+	int				len_sidedef;
 	t_sprite		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
@@ -244,6 +247,7 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	t_gamedesign	game_design;
+	t_audio			audio;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -269,7 +273,7 @@ int					open_file(char *filename);
 t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 t_sector			*save_sectors(int fd, int *len);
-t_sidedef			*save_walls(int fd);
+t_sidedef			*save_walls(int fd, int *len);
 t_sprite			*save_sprites(int fd, int *total_sprites);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
@@ -346,7 +350,15 @@ void    draw_bar_point(Uint32 **pixels, t_bar bar);
 void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
+
+/* AUDIO */
+
+void	audio(t_audio audio, t_event *event);
+
 void    bars(Uint32 **pixels, t_doom *doom);
+void    draw_images(Uint32 *pixels, t_doom *doom);
+void    draw_screen_colors(Uint32 *pixels, t_doom *doom);
+void	box_in_sectors(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
@@ -357,7 +369,11 @@ void				find_position(t_doom *doom, t_point *sprite_cord, int index);
 void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
 void				sprite_reset(t_doom *doom);
 
-
 /*save font*/
 void				save_font(t_doom *doom);
+
+/*actions*/
+void    sliding_door(t_doom *doom, int sd_index);
+void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
+
 #endif
