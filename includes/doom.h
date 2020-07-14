@@ -38,6 +38,10 @@
 # define GRAVITY -0.5
 # define VELOCITY 12
 
+# define Y_CHANGE 1.0 / (float)HEIGHT
+# define X_CHANGE 1.0 / (float)WIDTH
+
+
 typedef struct		s_hsv{
 	double			r;
 	double			g;
