@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/11 19:11:11 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/14 21:20:02 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp)
 		while (screen_y < (int)end.y/* && pix_y > 0 && pix_y < HEIGHT*/)
 		{
 			// printf("inside while level2\n");
-			index = (screen_y * doom->surface->pitch) + (int)(stripe * doom->surface->format->BytesPerPixel);
+			index = (size_t)(screen_y * doom->surface->pitch) + (int)(stripe * doom->surface->format->BytesPerPixel);
 			// pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch) + (tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 			// pix_y = (double)(64 / doom->lib.sprites[index_sp].height) * ((double)(screen_y + stripe) /* + off_set*/ - begin.y);
 			// pix_dex = ((int)pix_y * doom->lib.obj_lib[i_sprite]->pitch) + (stripe * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);

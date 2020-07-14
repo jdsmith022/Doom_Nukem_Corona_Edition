@@ -6,30 +6,30 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 11:29:08 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/09 15:46:51 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/14 20:56:37 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-int		find_x(t_doom *doom, int index)
-{
-	//player position should be (0,0)
-	//adjust cords of the sprite
-	//use atan2 to find angle of sprite position
-	int 	middle;
-	int		dist;
-	int		screen_x;
+// int		find_x(t_doom *doom, int index)
+// {
+// 	//player position should be (0,0)
+// 	//adjust cords of the sprite
+// 	//use atan2 to find angle of sprite position
+// 	int 	middle;
+// 	int		dist;
+// 	int		screen_x;
 
-	middle = WIDTH / 2;
-	dist = sqrt(doom->lib.sprites[index].distance * doom->lib.sprites[index].distance\
-	+ doom->dist_to_plane * doom->dist_to_plane);
-	screen_x = 0;
-	printf("dist pixels from middle (%d): %d\n", middle, dist);
-	screen_x = middle + dist; //this doesn't make sense
-	// return (screen_x);
-	return (middle); //for now
-}
+// 	middle = WIDTH / 2;
+// 	dist = sqrt(doom->lib.sprites[index].distance * doom->lib.sprites[index].distance\
+// 	+ doom->dist_to_plane * doom->dist_to_plane);
+// 	screen_x = 0;
+// 	printf("dist pixels from middle (%d): %d\n", middle, dist);
+// 	screen_x = middle + dist; //this doesn't make sense
+// 	// return (screen_x);
+// 	return (middle); //for now
+// }
 
 int		find_y(t_doom *doom)
 {
@@ -49,7 +49,8 @@ int		find_y(t_doom *doom)
 */
 void	find_position(t_doom *doom, t_point *sprite_cord, int index)
 {
-	sprite_cord->x = find_x(doom, index);
+	// sprite_cord->x = find_x(doom, index);
+	sprite_cord->x = doom->lib.sprites[index].sprite_x;
 	sprite_cord->y = find_y(doom); //temp, I need to consider size of the wall
 	printf("sprite_cord->x: %f\n", sprite_cord->x);
 	printf("sprite_cord->y: %f\n", sprite_cord->y);

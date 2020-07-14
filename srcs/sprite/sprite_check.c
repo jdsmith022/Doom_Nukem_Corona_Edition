@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/06 16:07:32 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/07/09 18:03:39 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/14 20:50:38 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 	{
 		// printf("sprite face %d is visible\ndistance to player: %f\n", i - 1, sprite->distance);
 		doom->visible_sprites++;
+		sprite->sprite_x = ray.plane_x;
 	}
 	// printf("here\n");
 }
