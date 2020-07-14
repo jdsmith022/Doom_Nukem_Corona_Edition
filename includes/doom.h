@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/14 12:29:38 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/14 12:44:30 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,6 +371,7 @@ void				sprite_reset(t_doom *doom);
 
 /*save font*/
 void				save_font(t_doom *doom);
+void				draw_font(t_doom *doom);
 
 /*actions*/
 void    sliding_door(t_doom *doom, int sd_index);

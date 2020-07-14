@@ -40,6 +40,7 @@ void	game_loop(t_doom *doom)
 			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			sliding_door(doom, -1); //move to its own file
+			// draw_font(doom); // will need to be own file with checks
 		}
 		else
 			open_game_editor(doom);

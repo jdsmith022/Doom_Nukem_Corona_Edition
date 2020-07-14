@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/14 12:27:56 by JessicaSmit   ########   odam.nl          #
+#    Updated: 2020/07/14 12:44:13 by JessicaSmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
-UI_FILES = text_to_window
+UI_FILES = draw_font
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
