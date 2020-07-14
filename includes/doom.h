@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/11 11:02:07 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/14 13:56:04 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ typedef struct		s_plane
 	double			height_floor;
 	double			height_standard;
 	int				wall_offset;
+	int				sidedef_id;
+	double			slope_distance;
 	t_point			intersect;
 }					t_plane;
 
@@ -249,7 +251,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
 double				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-						t_sector sector);
+						t_sector sector, t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
@@ -257,7 +259,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y, t_sidedef sidedef);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y, t_plane plane);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);

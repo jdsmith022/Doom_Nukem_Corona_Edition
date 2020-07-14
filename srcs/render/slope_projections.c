@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/11 11:07:49 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/14 13:53:06 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ t_point		get_connecting_point(t_sidedef sidedef, t_sidedef opp_sidedef)
 
 int			get_opp_sidedef(t_sector sector)
 {
-	int			first_sidedef;
+	int			sidedef_index;
 
-	first_sidedef = sector.i_sidedefs;
-	if (sector.slope_id == first_sidedef ||\
-		sector.slope_id == first_sidedef + 1)
+	sidedef_index = sector.i_sidedefs;
+	if (sector.slope_id == sidedef_index ||\
+		sector.slope_id == sidedef_index + 1)
 		return (sector.slope_id + 2);
 	return (sector.slope_id - 2);
 }
@@ -113,12 +113,11 @@ int			get_opp_sidedef(t_sector sector)
 // }
 
 double			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-	t_sector sector)
+	t_sector sector, t_plane *plane)
 {
 	int			opp_side;
 	t_point		conn_point;
 	double		distance;
-	double		height;
 
 	distance = 0;
 	if (sidedef.sector != sector.id)
@@ -134,6 +133,6 @@ double			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 		distance = fabs(point_line_distance(sidedef.line.end,\
 			doom->lib.sidedef[sector.slope_id].line));
 	doom->lib.sector[sector.id].slope_height_floor = tan(sector.slope_floor) * distance;
-	height = sector.height_floor + doom->lib.sector[sector.id].slope_height_floor;
-	return (height);
+	plane->slope_distance = distance;
+	return (doom->lib.sector[sector.id].slope_height_floor);
 }

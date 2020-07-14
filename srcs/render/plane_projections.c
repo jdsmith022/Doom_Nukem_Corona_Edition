@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/11 11:06:57 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/14 13:45:42 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 
 	sector = doom->lib.sector[opp_sector];
 	if (sector.slope_id != -1)
-		sector.height_floor =\
-			set_properties_slope(doom, sidedef, sector);
+		sector.height_floor += set_properties_slope(doom, sidedef, sector);
 	player_heigth = (HEIGHT / 2) + doom->player_height;
 	div_height_std = plane->height_standard / 2;
 	height_opp_sector = sector.height_ceiling / sidedef.distance * \
@@ -63,7 +62,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	double		player_height;
 
 	if (sector.slope_id != -1)
-		sector.height_floor = set_properties_slope(doom, sidedef, sector);
+		sector.height_floor += set_properties_slope(doom, sidedef, sector, &plane);
 	player_height = (HEIGHT / 2) + doom->player_height;
 	plane->height_standard = doom->wall_height_std / sidedef.distance\
 		* doom->dist_to_plane;
@@ -98,6 +97,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef,
 
 	sector = doom->lib.sector[sidedef.sector];
 	plane.intersect = intersect;
+	plane.sidedef_id = sidedef.id;
 	set_properties_plane(doom, sidedef, &plane, x);
 	draw_ceiling(doom, x, sector, plane.sidedef_top);
 	if (sidedef.opp_sector == -1)

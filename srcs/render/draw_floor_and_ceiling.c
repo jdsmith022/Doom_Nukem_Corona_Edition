@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/11 10:49:31 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/14 14:03:01 by Malou         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,27 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
+double		set_slope_delta(t_sector sector, t_plane plane, int direction)
+{
+	
+}
+
+int			check_slope_direction(t_sector sector, int sidedef_id)
+{
+	int		opp_sidedef;
+	int		connecting_sidedef;
+
+	if (sidedef_id == sector.slope_id)
+		return (0);
+	opp_sidedef = get_opp_sidedef(sector);
+	if (sidedef_id == opp_sidedef)
+		return (1);
+	else
+		return (2);
+}
+
 void			draw_floor(t_doom *doom, int x,
-					t_sector sector, int y, t_sidedef sidedef)
+					t_sector sector, int y, t_plane plane)
 {
 	double	dist;
 	Uint32	index;
@@ -81,18 +100,21 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 	double	height_floor;
+	int 	slope_direction;
+	double	slope_delta;
 
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT / 2) + doom->player_height;
-	//if (sector.slope_id != -1)
-	//	height -= (sector.height_floor + sector.slope_height_floor + sector.slope_height_floor);
+	if (sector.slope_id != -1)
+	{
+		slope_direction = check_slope_direction(sector, plane.sidedef_id);
+		slope_delta = set_slope_delta(sector, plane, slope_direction);
+	}
 	bpp = doom->surface->format->BytesPerPixel;
 	height_floor = sector.height_floor;
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		if (sector.slope_id != -1)
-			height_floor = set_properties_slope(doom, sidedef, sector);
 		dist = (doom->player_std_height - height_floor)\
 			/ (y - height) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
