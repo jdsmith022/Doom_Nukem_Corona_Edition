@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/10 19:09:41 by JessicaSmit   ########   odam.nl          #
+#    Updated: 2020/07/14 10:58:24 by JessicaSmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ FLAGS = -Wall -Wextra -Werror
 LIBFT = libft
 SDL = sdl
 BMP = bmp
-SDL_FLAGS = `sdl2-config --cflags --libs` -lSDL -lSDL_ttf
-LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lft
+SDL_FLAGS = `sdl2-config --cflags --libs`
+LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lSDL2_ttf -lft
 
 CORE = srcs/core/
 EVENTS = srcs/events/

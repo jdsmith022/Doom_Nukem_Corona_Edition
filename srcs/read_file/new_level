@@ -8,16 +8,14 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 
 
 #object library
-2
-sprites/apple.bmp
-sprites/banana.bmp
+0
 
 #number of sectors
 3
 #number of walls
 12
 #number of objects
-1
+0
 
 
 #sector[0]

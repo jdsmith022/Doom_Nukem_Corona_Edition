@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 18:52:36 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/14 11:36:04 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,8 +177,10 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
-typedef struct		s_sky {
-}					t_sky;
+typedef struct		s_font {
+	SDL_Surface		*font_surface;
+	SDL_Rect		font_rect;
+}					t_font;
 
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
@@ -187,10 +189,8 @@ typedef struct		s_lib{
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
-	SDL_Surface		**font_lib;
+	t_font			*font_lib;
 	int				n_fonts;
-	SDL_Color		*font_color;
-	SDL_Rect		*font_rect;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -224,7 +224,6 @@ typedef struct		s_doom {
 	int				game_editor;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
-	SDL_Surface		**textures;
 	SDL_Event		event;
 	t_lib			lib;
 	t_point			pos;
@@ -360,5 +359,5 @@ void				sprite_reset(t_doom *doom);
 
 
 /*save font*/
-SDL_Surface			**save_font(t_doom *doom);
+void				save_font(t_doom *doom);
 #endif
