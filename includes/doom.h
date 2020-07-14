@@ -14,6 +14,7 @@
 # include "audio.h"
 
 # include "../sdl/includes/SDL.h"
+# include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 # include "audio.h"
 
 # define NAME "Doom Nukem Corona Edition"
@@ -166,8 +167,10 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
-typedef struct		s_sky {
-}					t_sky;
+typedef struct		s_font {
+	SDL_Surface		*font_surface;
+	SDL_Rect		font_rect;
+}					t_font;
 
 typedef struct		s_lib{
 	SDL_Surface		**tex_lib;
@@ -176,6 +179,8 @@ typedef struct		s_lib{
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
+	t_font			*font_lib;
+	int				n_fonts;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -210,7 +215,6 @@ typedef struct		s_doom {
 	int				game_editor;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
-	SDL_Surface		**textures;
 	SDL_Event		event;
 	t_lib			lib;
 	t_point			pos;
@@ -353,8 +357,11 @@ void				find_position(t_doom *doom, t_point *sprite_cord, int index);
 void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
 void				sprite_reset(t_doom *doom);
 
-/*actions*/
+/*save font*/
+void				save_font(t_doom *doom);
+void				draw_font(t_doom *doom);
 
+/*actions*/
 void    sliding_door(t_doom *doom, int sd_index);
 void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
 
