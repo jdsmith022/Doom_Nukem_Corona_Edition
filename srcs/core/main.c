@@ -1,9 +1,10 @@
 #include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 
 int	main(void)
 {
 	t_doom	doom;
-	
+
 	ft_bzero(&doom, sizeof(t_doom));
 	//load_maps();
 	//init_struct();
@@ -13,6 +14,7 @@ int	main(void)
 	doom_init(&doom);
 	//load_default(); //loads default settings ie menu, player settings
 	//init_HUD/UI
-	game_loop(&doom);
+	handle_groceries();
+	// game_loop(&doom);
 	return (0);
 }
