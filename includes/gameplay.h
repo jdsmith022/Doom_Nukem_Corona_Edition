@@ -24,4 +24,8 @@ typedef struct	s_groceries {
 
 void	handle_groceries();
 
+void	add_item_to_basket(t_list **head, uint8_t item);
+void	remove_item_from_basket(t_list **head, uint8_t item);
+void	print_basket(t_list **basket);
+
 #endif

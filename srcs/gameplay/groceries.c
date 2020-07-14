@@ -40,34 +40,6 @@ uint8_t 		*get_shopping_list(uint8_t *groceries)
 	return shopping_list;
 }
 
-void	add_item_to_basket(t_list **head, uint8_t item)
-{
-	t_list *temp;
-
-	if (!(*head)){
-		// *head = ft_lstnew(&item, sizeof(uint8_t));
-		return ;
-	}
-	temp = *head;
-	while (temp->next){
-		temp = temp->next;
-	}
-	// temp = ft_lstnew(&item, sizeof(uint8_t));
-}
-
-void	print_basket(t_list **basket)
-{
-	t_list *temp;
-
-	if (!(*basket))
-		return ;
-	temp = *basket;
-	while (temp->next){
-		printf("%d\n", (int)temp->content);
-		temp = temp->next;
-	}
-}
-
 void	handle_groceries()
 {
 	t_groceries	groceries;
@@ -75,8 +47,9 @@ void	handle_groceries()
 
 	i = 0;
 	groceries.shopping_list = get_shopping_list(get_groceries());
+	groceries.basket = NULL;
 	add_item_to_basket(&groceries.basket, BANANA);
-	// add_item_to_basket(&groceries.basket, ORANGE);
-	// add_item_to_basket(&groceries.basket, CHOCOLADE);
-	// print_basket(&groceries.basket);
+	add_item_to_basket(&groceries.basket, ORANGE);
+	add_item_to_basket(&groceries.basket, CHOCOLADE);
+	print_basket(&groceries.basket);
 }
