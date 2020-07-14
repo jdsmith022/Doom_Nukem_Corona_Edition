@@ -4,7 +4,7 @@
 // {
 // 	*color = ((*color & 0xff) >> 24) * (int)dist << 24;
 // 	*color = ((*color & 0x00ff) >> 16) * (int)dist << 16;
-// 	*color = ((*color & 0x0000ff) >> 8) * (int)dist << 8;./
+// 	*color = ((*color & 0x0000ff) >> 8) * (int)dist << 8;
 // }
 
 static void		put_protal_pixel(t_doom *doom, t_point pixel)
@@ -54,7 +54,7 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
 	put_texture(doom, tex_dex, index, pixel_dex);
-	//put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
+	// put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
 
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
@@ -66,6 +66,8 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
+	// doom->distance = 1 / (doom->distance / 70);
+	doom->distance = doom->lib.sector[sidedef.sector].light_level;
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		if (pixel.y < plane.mid_texture_bottom)
@@ -84,6 +86,8 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
+	// doom->distance = 1 / (doom->distance / 70);
+	doom->distance = doom->lib.sector[sidedef.sector].light_level;
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		find_texture_index(doom, pixel, plane, sidedef);

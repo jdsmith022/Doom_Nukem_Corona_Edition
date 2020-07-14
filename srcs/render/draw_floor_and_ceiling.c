@@ -5,16 +5,23 @@ static void		put_row(t_doom *doom, Uint32 tex_dex,
 {
 	char *pixels;
 	char *texture;
+	char	R;
+	char	G;
+	char	B;
 
 	pixels = doom->surface->pixels;
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
-	pixels[index] = texture[pixel_dex];
+	R = texture[pixel_dex];
+	G = texture[pixel_dex + 1];
+	B = texture[pixel_dex + 2];
+	add_saturation(&R, &G, &B, doom->distance);
+	pixels = doom->surface->pixels;
+	texture = doom->lib.tex_lib[tex_dex]->pixels;
+	pixels[index] = R;
 	index++;
-	pixel_dex++;
-	pixels[index] = texture[pixel_dex];
+	pixels[index] = G;
 	index++;
-	pixel_dex++;
-	pixels[index] = texture[pixel_dex];
+	pixels[index] = B;
 }
 
 static void		row_calculations(t_doom *doom, double dist, Uint32 index,
@@ -67,6 +74,9 @@ void			draw_ceiling(t_doom *doom, int x,
 		dist = (doom->player_std_height - sector.height_ceiling)\
 			/ (doom->mid_screen - y) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		// doom->distance = 1 / (dist / 70);
+	doom->distance = sector.light_level;
+
 		row_calculations(doom, dist, index, tex_dex);
 		y--;
 	}
@@ -93,6 +103,8 @@ void			draw_floor(t_doom *doom, int x,
 		dist = (doom->player_std_height - sector.height_floor)\
 			/ (y - doom->mid_screen) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		// doom->distance = 1 / (dist / 70);
+		doom->distance = sector.light_level;
 		row_calculations(doom, dist, index, tex_dex);
 		y++;
 	}
