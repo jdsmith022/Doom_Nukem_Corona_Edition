@@ -78,5 +78,12 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
+	if (sidedef.poster != -1)
+	{
+		sidedef.distance *= 4;
+		set_properties_plane(doom, sidedef, &plane, x);
+		doom->lib.sidedef[sidedef.poster].offset = sidedef.offset;
+		draw_poster(doom, plane, doom->lib.sidedef[sidedef.poster], x);
+	}
 	return (0);
 }

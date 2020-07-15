@@ -156,6 +156,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	int				poster;
 }					t_sidedef;
 
 typedef struct		s_sector {
@@ -339,6 +340,8 @@ void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				add_saturation(char *r, char *g, char *b, double light);
+void				draw_poster(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x);
 
 
 /*game editor*/
