@@ -66,13 +66,22 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	doom->distance = 1 / (doom->distance / 70);
-	doom->distance = x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE : + doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
-	// doom->distance = 100 - (doom->distance / 2) ;
-	// doom->distance = doom->lib.sector[sidedef.sector].light_level;
+	if (doom->light == TRUE)
+	{
+		if (doom->lib.sector[sidedef.sector].light == TRUE)
+			doom->distance = doom->lib.sector[sidedef.sector].light_level;
+		else
+			doom->distance = 0.15;
+	}
+	else
+	{
+		doom->distance = 1 / (doom->distance / 70);
+		doom->distance = x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE : + doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
+	}
 	while (pixel.y < plane.sidedef_bottom)
 	{
-		doom->distance = pixel.y > HEIGHT / 2 ? doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
+		if (doom->light == FALSE)
+			doom->distance = pixel.y > HEIGHT / 2 ? doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		if (pixel.y < plane.mid_texture_bottom)
 			put_protal_pixel(doom, pixel);
 		if (pixel.y > plane.mid_texture_bottom)
@@ -89,16 +98,22 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
-	// doom->distance += x > WIDTH / 2 ? (x - (float)WIDTH / 2.0) * X_CHANGE : ((float)WIDTH / 2.0 - x) * X_CHANGE;
-	// doom->distance += pixel.y > HEIGHT / 2 ? (pixel.y - (float)HEIGHT / 2.0) / 50.0 : (float)pixel.y / 50.0;
-	doom->distance = 1 / (doom->distance / 70);
-	doom->distance = x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE : + doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
-	// doom->distance = 100 - (doom->distance / 2);
-	// y_change =  1.0 / (float)HEIGHT;
-	// doom->distance = doom->lib.sector[sidedef.sector].light_level;
+	if (doom->light == TRUE)
+	{
+		if (doom->lib.sector[sidedef.sector].light == TRUE)
+			doom->distance = doom->lib.sector[sidedef.sector].light_level;
+		else
+			doom->distance = 0.15;
+	}
+	else
+	{
+		doom->distance = 1 / (doom->distance / 70);
+		doom->distance = x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE : + doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
+	}
 	while (pixel.y < plane.sidedef_bottom)
 	{
-		doom->distance = pixel.y > HEIGHT / 2 ? doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
+		if (doom->light == FALSE)
+			doom->distance = pixel.y > HEIGHT / 2 ? doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}

@@ -165,6 +165,7 @@ typedef struct		s_sector {
 	int				n_objects;
 	int				i_objects;
 	double			light_level;
+	int				light;
 	int				slope_id;
 	int				slope_ceiling;
 	int				slope_floor;
@@ -225,6 +226,7 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
+	int				light;
 	int				vertical_height_std;
 	int				horizontal_height_std;
 	double			player_std_height;

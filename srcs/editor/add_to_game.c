@@ -107,6 +107,7 @@ void    add_to_game(t_doom *doom)
 			while (i <= doom->game_design.s_len)
 			{
 				doom->lib.sector[i].light_level /= 10.0;
+				doom->lib.sector[i].light = TRUE;
 				i++;
 			}
 	    	doom->pos.x = doom->game_design.pl_x;
@@ -114,7 +115,7 @@ void    add_to_game(t_doom *doom)
 	   		doom->i_sector = doom->game_design.pl_sec;
 			// printf("%f %d\n", doom->player_height, doom->lib.sector[doom->game_design.pl_sec].height_floor);
 			doom->player_height = doom->player_height + doom->lib.sector[doom->game_design.pl_sec].height_floor;
-		
+			doom->light = TRUE;
 			// printf("%f\n", doom->player_height);
 		}
     }
