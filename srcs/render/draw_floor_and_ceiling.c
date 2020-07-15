@@ -78,8 +78,6 @@ void			draw_ceiling(t_doom *doom, int x,
 		doom->distance = 1 / ((float)doom->distance / 70.0);
 		doom->distance = x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE : + doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
 		doom->distance = y > HEIGHT / 2 ? doom->distance - (y - (float)HEIGHT / 2.0) * Y_CHANGE : + doom->distance - ((float)HEIGHT/ 2.0 - y) * Y_CHANGE;
-	// doom->distance = 100 - (doom->distance / 2);
-
 	// doom->distance = sector.light_level;
 
 		row_calculations(doom, dist, index, tex_dex);
@@ -112,7 +110,6 @@ void			draw_floor(t_doom *doom, int x,
 		doom->distance = 1 / ((float)doom->distance / 70.0);
 		doom->distance = x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE : + doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
 		doom->distance = y > HEIGHT / 2 ? doom->distance - (y - (float)HEIGHT / 2.0) * Y_CHANGE : + doom->distance - ((float)HEIGHT/ 2.0 - y) * Y_CHANGE;
-		// doom->distance = 100 - (doom->distance / 2);
 		// doom->distance = sector.light_level;
 		row_calculations(doom, dist, index, tex_dex);
 		y++;

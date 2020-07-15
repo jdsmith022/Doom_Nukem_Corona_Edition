@@ -5,7 +5,7 @@
 textures/walls/96X96-Shelf.bmp
 textures/floors_ceiling/floor.bmp
 textures/floors_ceiling/ceiling96X96_clean.bmp
-textures/blue.bmp
+textures/Marin.bmp
 
 
 #object library
@@ -20,7 +20,7 @@ textures/blue.bmp
 
 
 #sector[0]
-8
+5
 0
 1
 0
@@ -149,7 +149,7 @@ textures/blue.bmp
 0
 
 #sector[2]
-12
+15
 0
 1
 0

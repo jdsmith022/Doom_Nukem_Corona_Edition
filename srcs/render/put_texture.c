@@ -138,11 +138,43 @@ void		hsv_to_rgb(	t_hsv hsv, char *r, char *g, char *b)
 
 void		add_saturation(char *r, char *g, char *b, double light)
 {
-	t_hsv	hsv;
+	// t_hsv	hsv;
+	double R;
+	double G;
+	double B;
 
-	hsv = rgb_to_hsv((double)*r, (double)*g, (double)*b);
-	hsv.b *= light;
-	hsv_to_rgb(hsv, r, g, b);
+	R = (double)*r;
+	G = (double)*g;
+	B = (double)*b;
+
+	// hsv = rgb_to_hsv((double)*r, (double)*g, (double)*b);
+	// hsv.b *= light;
+	// hsv_to_rgb(hsv, r, g, b);
+	if (R < 0.0)
+		R += 255.0;
+	if (G < 0.0)
+		G += 255.0;
+	if (B < 0.0)
+		B += 255.0;
+
+	 R *= light;
+	 G *= light;
+	 B *= light;
+	if (R < 0.0)
+		R = 0;
+	if (G < 0.0)
+		G = 0;
+	if (B < 0.0)
+		B = 0;
+	if (R > 255.0)
+		R = 255.0;
+	if (G > 255.0)
+		G = 255.0;
+	if (B > 255.0)
+		B = 255.0;
+	*r = R;
+	*g = G;
+	*b = B;
 }
 
 void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
@@ -154,6 +186,7 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	char	G;
 	char	B;
 
+	
 	pixels = doom->surface->pixels;
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
 	R = texture[pixel_dex];

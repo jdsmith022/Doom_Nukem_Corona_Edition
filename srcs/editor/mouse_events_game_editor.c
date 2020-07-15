@@ -45,6 +45,10 @@ void    mouse_press_sector(t_doom *doom, int x, int y)
 	{
 		doom->game_design.sector[doom->game_design.cur_sec].height_ceiling = (float)(x - HC_X) / HC_LEN * HC_DIFF + HC_MIN;
 	}
+	else if (x > LL_X && x < LL_X + LL_LEN && y > LL_Y && y < LL_Y + LL_HEIGHT)
+	{
+		doom->game_design.sector[doom->game_design.cur_sec].light_level = (float)(x - LL_X) / LL_LEN * LL_DIFF + LL_MIN;
+	}
 	else if (x > AR_LEFT_X && x < AR_LEFT_X + FRAME_WIDTH && y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT)
 	{
 		if (doom->game_design.cur_sec > 0)
@@ -60,11 +64,6 @@ void    mouse_press_sector(t_doom *doom, int x, int y)
 			doom->game_design.cur_sec++;
 			doom->game_design.cur_sd = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1;
 		}
-	}
-	else if (x > AR_LEFT_S_X && x < AR_LEFT_S_X + FRAME_WIDTH && y > AR_LEFT_S_Y && y < AR_LEFT_S_Y + FRAME_HEIGHT)
-	{
-		if (doom->game_design.cur_sd > doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1)
-			doom->game_design.cur_sd--;
 	}
 	else if (x > AR_RIGHT_TF_X && x < AR_RIGHT_TF_X + FRAME_WIDTH && y > AR_RIGHT_TF_Y && y < AR_RIGHT_TF_Y + FRAME_HEIGHT)
 	{
@@ -92,8 +91,13 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 {
     if (x > AR_RIGHT_S_X && x < AR_RIGHT_S_X + FRAME_WIDTH && y > AR_RIGHT_S_Y && y < AR_RIGHT_S_Y + FRAME_HEIGHT)
 	{
-		if (doom->game_design.cur_sd < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
-			doom->game_design.cur_sd++;	
+		if (doom->game_design.cur_sd + 1< doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
+					doom->game_design.cur_sd++;
+	}
+	else if (x > AR_LEFT_S_X && x < AR_LEFT_S_X + FRAME_WIDTH && y > AR_LEFT_S_Y && y < AR_LEFT_S_Y + FRAME_HEIGHT)
+	{
+		if (doom->game_design.cur_sd > doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1)
+			doom->game_design.cur_sd--;
 	}
 	else if (x > CROSS_X && x < CROSS_X + FRAME_WIDTH && y > CROSS_Y && y < CROSS_Y + FRAME_HEIGHT)
 	{

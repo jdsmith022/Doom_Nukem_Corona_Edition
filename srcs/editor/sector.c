@@ -64,4 +64,6 @@ void	add_sector(t_doom *doom)
 		doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
 		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
 		doom->game_design.sector[doom->game_design.s_len].outside = 0;
+		doom->game_design.sector[doom->game_design.s_len].light_level = 10;
+
 }

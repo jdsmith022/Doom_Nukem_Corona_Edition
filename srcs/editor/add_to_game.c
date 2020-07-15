@@ -59,19 +59,63 @@ void	coor_pos(t_doom *doom)
 		change_pos(x, y, doom);
 }
 
+t_sidedef	*new_level_sidedef(t_sidedef *sidedef, int w_len)
+{
+	t_sidedef	*new;
+	int			i;
+
+	new = (t_sidedef*)malloc(sizeof(t_sidedef) * w_len);
+	i = 0;
+	while (i < w_len)
+	{
+		new[i] = sidedef[i];
+		i++;
+	}
+	return (new);
+}
+
+t_sector *new_level_sector(t_sector *sector, int s_len)
+{
+	t_sector	*new;
+	int			i;
+
+	new = (t_sector*)malloc(sizeof(t_sector) * s_len);
+	i = 0;
+	while (i < s_len)
+	{
+		new[i] = sector[i];
+		i++;
+	}
+	return (new);
+}
+
 void    add_to_game(t_doom *doom)
 {
+	int i;
+
 	if (doom->game_design.sector != NULL && doom->game_design.w_len > 2)
     {
 		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
 		{
 			coor_pos(doom);
 			box_in_sectors(doom);
-        	doom->lib.sector = doom->game_design.sector; // free og
-	    	doom->lib.sidedef = doom->game_design.sidedef; // free og
+			free(doom->lib.sector); //rm when there are multiple levels
+			free(doom->lib.sidedef); //rm when there are multiple levels
+        	doom->lib.sector = new_level_sector(doom->game_design.sector, doom->game_design.s_len + 1);
+	    	doom->lib.sidedef = new_level_sidedef(doom->game_design.sidedef, doom->game_design.w_len + 1);
+			i = 0;
+			while (i <= doom->game_design.s_len)
+			{
+				doom->lib.sector[i].light_level /= 10.0;
+				i++;
+			}
 	    	doom->pos.x = doom->game_design.pl_x;
 	    	doom->pos.y = doom->game_design.pl_y;
 	   		doom->i_sector = doom->game_design.pl_sec;
+			// printf("%f %d\n", doom->player_height, doom->lib.sector[doom->game_design.pl_sec].height_floor);
+			doom->player_height = doom->player_height + doom->lib.sector[doom->game_design.pl_sec].height_floor;
+		
+			// printf("%f\n", doom->player_height);
 		}
     }
 }

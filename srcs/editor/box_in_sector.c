@@ -46,9 +46,11 @@ void	box_in_sectors(t_doom *doom)
 	int i;
 	int save_x;
 	int save_y;
+	int	save_cur_sec;
     t_line diff;
 
     diff = corners(doom);
+	save_cur_sec = doom->game_design.cur_sec;
     i = 0;
 	while (i <= doom->game_design.s_len)
 	{
@@ -58,15 +60,16 @@ void	box_in_sectors(t_doom *doom)
 		doom->game_design.sector[i].diff_x = 0;
 		doom->game_design.sector[i].diff_y = 0;
 		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+		add_sidedef(doom, diff.start.x + 1, diff.end.y +-1);
+		add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
+		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
+		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
+		add_sidedef(doom, diff.end.x - 1, diff.start.y - 1);
 		add_sidedef(doom, diff.end.x - 1, diff.start.y + 1);
 		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
-		add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
-		add_sidedef(doom, diff.end.x - 1, diff.start.y + 1);
-		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
-		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
-		add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
 		doom->game_design.sector[i].diff_x = save_x;
 		doom->game_design.sector[i].diff_y = save_y;
 		i++;
 	}
+	doom->game_design.cur_sec = save_cur_sec;
 }
