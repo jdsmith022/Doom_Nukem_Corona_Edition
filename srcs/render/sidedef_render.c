@@ -129,9 +129,9 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	if (min_distance != INFINITY)
 	{
-
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+		doom->distance = min_distance;
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 	return (0);

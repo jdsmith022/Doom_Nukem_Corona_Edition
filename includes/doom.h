@@ -39,6 +39,16 @@
 # define GRAVITY -0.5
 # define VELOCITY 12
 
+# define Y_CHANGE 1.0 / (float)HEIGHT
+# define X_CHANGE 1.0 / (float)WIDTH
+
+
+typedef struct		s_hsv{
+	double			r;
+	double			g;
+	double			b;
+}					t_hsv;
+
 typedef struct		s_point {
 	double			x;
 	double			y;
@@ -155,7 +165,8 @@ typedef struct		s_sector {
 	int				i_sidedefs;
 	int				n_objects;
 	int				i_objects;
-	int				light_level;
+	double			light_level;
+	int				light;
 	int				slope_id;
 	int				slope_ceiling;
 	int				slope_floor;
@@ -219,6 +230,7 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
+	int				light;
 	int				vertical_height_std;
 	int				horizontal_height_std;
 	double			player_std_height;
@@ -230,7 +242,8 @@ typedef struct		s_doom {
 	int				prev_sector;
 	double			ray_angle;
 	double			dir_angle;
-	double			ray_adjacent;;
+	double			ray_adjacent;
+	double			distance;
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
@@ -325,6 +338,8 @@ void				wall_offset(t_plane *plane, int sidedef_top);
 void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
 Uint8				find_slope_line_offset(t_point start, t_point end);
+void				add_saturation(char *r, char *g, char *b, double light);
+
 
 /*game editor*/
 
