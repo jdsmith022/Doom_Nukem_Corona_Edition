@@ -70,4 +70,14 @@ void    bars(Uint32 **pixels, t_doom *doom)
     bar.cur_height = doom->game_design.sector[doom->game_design.cur_sec].height_ceiling;
     draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
+    bar.min = LL_MIN;
+    bar.max = LL_MAX;
+    bar.diff = LL_DIFF;
+    bar.x = LL_X;
+    bar.y = LL_Y;
+    bar.height = LL_HEIGHT;
+    bar.len = LL_LEN;
+    bar.cur_height = doom->game_design.sector[doom->game_design.cur_sec].light_level;
+    draw_bar(pixels, bar);
+	draw_bar_point(pixels, bar);
 }

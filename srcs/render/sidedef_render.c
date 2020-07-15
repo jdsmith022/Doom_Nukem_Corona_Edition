@@ -118,14 +118,20 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 			min_distance = distance;
 			near_sidedef = set_properties_sidedef(intersect,\
 				distance, doom->lib.sidedef[x], doom);
+			if (doom->lib.sidedef[x].action == 2)
+			{
+				intersect.x -= (doom->lib.sidedef[x + 1].line.end.x - doom->lib.sidedef[x + 1].line.start.x);
+				intersect.y -= (doom->lib.sidedef[x + 1].line.end.y - doom->lib.sidedef[x + 1].line.start.y);
+				set_offset(&near_sidedef, doom->lib.sidedef[x], intersect, doom);
+			}
 		}
 		x++;
 	}
 	if (min_distance != INFINITY)
 	{
-
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+		doom->distance = min_distance;
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 	return (0);

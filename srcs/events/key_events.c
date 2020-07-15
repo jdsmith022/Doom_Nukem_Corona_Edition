@@ -60,4 +60,8 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		doom->game_editor = FALSE;
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
+	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
+		doom->light = doom->light == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_o) //needs to become a click on button event
+		doom->lib.sector[doom->i_sector].light = doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 }

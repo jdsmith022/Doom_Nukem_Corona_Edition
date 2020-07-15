@@ -5,7 +5,15 @@
 void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 {
 	if (i == 0)
-		sector->light_level = safe;
+	{
+		if (safe <= 20 && safe >= 0)
+		{
+			sector->light_level = (double)safe / 10.0;
+			sector->light = TRUE;
+		}
+		else
+			error("light level not valid", line_num(0));
+	}
 	if (i == 1)
 		sector->height_floor = safe;
 	if (i == 2)
