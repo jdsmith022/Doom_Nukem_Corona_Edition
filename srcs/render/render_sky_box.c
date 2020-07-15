@@ -3,24 +3,24 @@
 static void			set_properties_plane_sky(t_doom *doom,
 						t_plane *plane, int x, double distance)
 {
-	double		height_floor;
-	int			sidedef_top;
-	int			sidedef_bottom;
-	int			div_height_std;
-	int			new_height;
+	double	height_floor;
+	int		sidedef_top;
+	int		sidedef_bottom;
+	int		div_height_std;
+	int		new_height;
 
-		distance *= cos(doom->ray_adjacent * x - FOV / 2);
-		new_height = (HEIGHT + doom->player_height) / 2;
-		plane->height_standard = doom->vertical_height_std /\
-			distance * doom->dist_to_plane;
-		div_height_std = plane->height_standard / 2;
-		sidedef_top = (new_height - div_height_std)\
-			- doom->own_event.y_pitch;
-		wall_offset(plane, sidedef_top);
-		sidedef_bottom = (new_height + div_height_std)\
-			- doom->own_event.y_pitch;
-		plane->sidedef_bottom = \
-			((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
+	distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	new_height = (HEIGHT + doom->player_height) / 2;
+	plane->height_standard = doom->vertical_height_std /\
+		distance * doom->dist_to_plane;
+	div_height_std = plane->height_standard / 2;
+	sidedef_top = (new_height - div_height_std)\
+		- doom->own_event.y_pitch;
+	wall_offset(plane, sidedef_top);
+	sidedef_bottom = (new_height + div_height_std)\
+		- doom->own_event.y_pitch;
+	plane->sidedef_bottom = \
+		((sidedef_bottom < 325 ? sidedef_bottom : (325)));
 }
 
 static void			set_properties(t_doom *doom, int set)
@@ -36,28 +36,26 @@ static void			set_properties(t_doom *doom, int set)
 	}
 	else
 	{
-		doom->texture_width = 64;
-		doom->texture_height = 64;
-		doom->vertical_height_std = 64;
-		doom->player_std_height = 32;
+		doom->texture_width = 96;
+		doom->texture_height = 96;
+		doom->vertical_height_std = 96;
+		doom->player_std_height = 48;
 	}
 }
 
-
-static double    find_min_distance(t_doom *doom, t_ray ray,
+static double	find_min_distance(t_doom *doom, t_ray ray,
 					t_line *sky_sd, t_plane *plane)
 {
-    t_point	save_intersect;
+	t_point	save_intersect;
 	double	distance;
 	double	min_distance;
-    int		x;
+	int		x;
 
-
-    x = 0;
+	x = 0;
 	min_distance = INFINITY;
-    while (x < 4)
-    {
-        distance = sidedef_intersection_distance(ray,\
+	while (x < 4)
+	{
+		distance = sidedef_intersection_distance(ray,\
 			sky_sd[x], &save_intersect);
 		if (distance < min_distance)
 		{
@@ -67,7 +65,7 @@ static double    find_min_distance(t_doom *doom, t_ray ray,
 			set_properties(doom, 0);
 		}
 		x++;
-    }
+	}
 	return (min_distance);
 }
 
@@ -75,22 +73,27 @@ static void		set_ray(t_ray *ray, t_doom *doom)
 {
 	ray->line.start.x = 64;
 	ray->line.start.y = 64;
-	ray->line.end.x = ray->line.start.x +
-		doom->max_ray * cos(ray->angle);
-	ray->line.end.y = ray->line.start.y +
-		doom->max_ray * sin(ray->angle);
+	ray->line.end.x = ray->line.start.x + doom->max_ray\
+		* cos(ray->angle);
+	ray->line.end.y = ray->line.start.y + doom->max_ray\
+		* sin(ray->angle);
 }
 
 void			sidedef_render_skybox(t_doom *doom, t_ray ray,
 					t_line *sky_sd)
 {
 	t_plane plane;
-    double  min_distance;
+	double	min_distance;
 
 	set_ray(&ray, doom);
 	min_distance = find_min_distance(doom, ray, sky_sd, &plane);
 	set_properties_plane_sky(doom, &plane, ray.plane_x, min_distance);
-	draw_sky(doom, ray.plane_x, plane.sidedef_top);
+	// if (plane.floor_start != 0 && plane.ceiling_start != 0)
+	// {
+	// 	plane.sidedef_bottom = plane.floor_start;
+	// 	plane.sidedef_top = plane.ceiling_start;
+	// }
+	draw_sky(doom, ray.plane_x, (plane.sidedef_top));
 	find_skybox_sidedef_texture(doom, ray.plane_x, plane);
 	draw_ground(doom, ray.plane_x, plane.sidedef_bottom);
 	set_properties(doom, 1);

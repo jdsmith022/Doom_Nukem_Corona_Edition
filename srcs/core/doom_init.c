@@ -143,8 +143,8 @@ void 	doom_init(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 64;
-	doom->pos.y = 64;
+	doom->pos.x = 100;
+	doom->pos.y = 100;
 	doom->vertical_height_std  = 96;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;

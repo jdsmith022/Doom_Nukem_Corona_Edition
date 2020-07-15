@@ -28,16 +28,16 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	floor.x = dist * cos(doom->ray_angle);
 	floor.y = dist * sin(doom->ray_angle);
-	floor.x -= doom->pos.x;
-	floor.y -= doom->pos.y;
-	texture.x = (int)floor.x % doom->texture_width;
-	texture.y = (int)floor.y % doom->texture_height;
-	pixel_dex = (((int)texture.y * doom->lib.sky_lib[tex_dex]->pitch)\
-		+ ((int)texture.x * bpp));
+	floor.x += 32 * 3000;
+	floor.y += 32 * 3000;
+	texture.x = ((int)floor.x % 1000);
+	texture.y = ((int)floor.y % 1000);
+	pixel_dex = ((int)texture.y * doom->lib.sky_lib[tex_dex]->pitch)\
+		+ ((int)texture.x * bpp);
 	put_row(doom, tex_dex, index, pixel_dex);
 }
 
-void		    draw_ground(t_doom *doom, int x, int y)
+void			draw_ground(t_doom *doom, int x, int y)
 {
 	double	dist;
 	Uint32	index;
@@ -58,7 +58,7 @@ void		    draw_ground(t_doom *doom, int x, int y)
 	}
 }
 
-void		    draw_sky(t_doom *doom, int x, int y)
+void			draw_sky(t_doom *doom, int x, int y)
 {
 	double	dist;
 	Uint32	index;

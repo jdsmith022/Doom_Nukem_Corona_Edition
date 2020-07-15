@@ -68,7 +68,7 @@ void			find_skybox_sidedef_texture(t_doom *doom, int x,
 	Uint32	tex_dex;
 	double	dir_angle;
 	int		offset;
-	int 	dir;
+	int		dir;
 
 	offset = set_offset(plane.line, plane.intersect, doom, &dir);
 	plane.intersect.x = x;
