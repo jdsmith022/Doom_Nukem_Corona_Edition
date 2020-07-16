@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/14 13:56:04 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/16 11:44:09 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,8 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
 double				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector sector, t_plane *plane);
+int					get_opp_sidedef(t_sector sector);
+t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/14 13:53:06 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/16 11:46:04 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 	return (doom->lib.sidedef[i]);
 }
 
-t_point		get_connecting_point(t_sidedef sidedef, t_sidedef opp_sidedef)
+t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
 {
 	t_point		start;
 	t_point		end;
-	t_point		opp_start;
-	t_point		opp_end;
+	t_point		conn_start;
+	t_point		conn_end;
 
-	start = sidedef.line.start;
-	end = sidedef.line.end;
-	opp_start = opp_sidedef.line.start;
-	opp_end = opp_sidedef.line.end;
-	if ((start.x == opp_start.x && start.y == opp_start.y) ||
-		(start.x == opp_end.x && start.y == opp_end.y))
+	start = sidedef.start;
+	end = sidedef.end;
+	conn_start = conn_sidedef.start;
+	conn_end = conn_sidedef.end;
+	if ((start.x == conn_start.x && start.y == conn_start.y) ||
+		(start.x == conn_end.x && start.y == conn_end.y))
 		return (start);
 	return (end);
 }
@@ -125,8 +125,8 @@ double			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	if (sidedef.id == sector.slope_id)
 		return (doom->lib.sector[sidedef.sector].height_floor);
 	opp_side = get_opp_sidedef(sector);
-	conn_point = get_connecting_point(sidedef,\
-		doom->lib.sidedef[sector.slope_id]);
+	conn_point = get_connecting_point(sidedef.line,\
+		doom->lib.sidedef[sector.slope_id].line);
 	if (sidedef.id != sector.slope_id && sidedef.id != opp_side)
 		distance = points_distance(sidedef.intersect, conn_point);
 	if (sidedef.id == opp_side)

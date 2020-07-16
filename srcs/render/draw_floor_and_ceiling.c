@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/14 18:12:50 by Malou         ########   odam.nl         */
+/*   Updated: 2020/07/16 11:56:15 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,37 +72,22 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
-int			check_slope_direction(t_sector sector, int sidedef_id)
+int			set_slope_direction(t_doom *doom, t_sector sector, t_plane plane)
 {
 	int		opp_sidedef;
 	int		connecting_sidedef;
+	t_point connecting_point;
+	t_line	slope_line;
+	t_line	connecting_line;
 
-	if (sidedef_id == sector.slope_id)
-		return (0);
-	opp_sidedef = get_opp_sidedef(sector);
-	if (sidedef_id == opp_sidedef)
+	if (plane.sidedef_id == sector.slope_id)
 		return (1);
-	else
-		return (2);
-}
-
-double		set_slope_delta(t_doom *doom, t_sector sector, t_plane plane, int y)
-{
-	double		distance;
-	double		slope_delta;
-	int			opp_side;
-	t_sidedef 	sidedef;
-	t_sidedef 	slope_side;
-	int			direction;
-	int			steps;
-
-	direction = check_slope_direction;
-	slope_side = doom->lib.sidedef[sector.slope_id];
-
-	steps = HEIGHT - y;
-	steps = plane.slope_distance / steps;
-	if (direction == 1)
-		slope_delta = 
+	opp_sidedef = get_opp_sidedef(sector);
+	if (plane.sidedef_id == opp_sidedef)
+		return (-1);
+	slope_line = doom->lib.sidedef[sector.slope_id].line;
+	connecting_line = doom->lib.sidedef[plane.sidedef_id].line;
+	connecting_point = get_connecting_point(slope_line, connecting_line);
 	
 }
 
@@ -116,12 +101,11 @@ void			draw_floor(t_doom *doom, int x,
 	Uint8	bpp;
 	double	height_floor;
 	int 	slope_direction;
-	double	slope_delta;
 
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT / 2) + doom->player_height;
 	if (sector.slope_id != -1)
-		slope_delta = set_slope_delta(doom, sector, plane, slope_direction);
+		slope_direction = set_slope_direction(doom, sector, plane);
 	bpp = doom->surface->format->BytesPerPixel;
 	height_floor = sector.height_floor;
 	while (y < HEIGHT)
