@@ -1,18 +1,10 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 
-// TODO: Define all groceries
-// TODO: Get list of all groceries
-// TODO: Generate shopping list
-// TODO: add_to_basket
-// TODO: remove_from_basket
-
-// TODO: Checkout basket function (game over / level completed)
-
 static uint8_t		*get_groceries()
 {
-	// This function is bad and unnecessary
-	// since all groceries are constants and shopping lists should 
+	// This function is unnecessary
+	// since all groceries are constants and shopping lists will 
 	// be embedded in the lvl file
 	uint8_t	*groceries;
 	uint8_t	i;
@@ -57,7 +49,18 @@ void	print_shopping_list(t_item *shopping_list)
 
 bool	checkout_basket(t_groceries groceries)
 {
-	return true;	
+	uint8_t i;
+
+	i = 0;
+	if (groceries.shopping_list_len != get_basket_len(&groceries.basket))
+		return false;
+	while (i < groceries.shopping_list_len)
+	{
+		if (!search_basket(&groceries.shopping_list[i], &groceries.basket))
+			return false;
+		i++;
+	}
+	return true;
 }
 
 void	handle_groceries()
@@ -67,16 +70,24 @@ void	handle_groceries()
 
 	i = 0;
 	groceries.shopping_list = get_shopping_list(get_groceries());
+	groceries.shopping_list_len = SHOPPING_LIST;
 	groceries.basket = NULL;
-	// print_shopping_list(groceries.shopping_list);
-	add_item_to_basket(&groceries.basket, BANANA);
-	add_item_to_basket(&groceries.basket, ORANGE);
-	add_item_to_basket(&groceries.basket, CHOCOLADE);
-	add_item_to_basket(&groceries.basket, SOAP);
+	print_shopping_list(groceries.shopping_list);
+	add_item_to_basket(&groceries.basket, 8);
+	add_item_to_basket(&groceries.basket, 8);
+	add_item_to_basket(&groceries.basket, 8);
+	add_item_to_basket(&groceries.basket, 8);
+	add_item_to_basket(&groceries.basket, 8);
+	add_item_to_basket(&groceries.basket, 2);
+	add_item_to_basket(&groceries.basket, 2);
+	add_item_to_basket(&groceries.basket, 2);
+	add_item_to_basket(&groceries.basket, 2);
+	add_item_to_basket(&groceries.basket, 3);
+	add_item_to_basket(&groceries.basket, 3);
+	add_item_to_basket(&groceries.basket, 3);
+	add_item_to_basket(&groceries.basket, 1);
+	add_item_to_basket(&groceries.basket, 1);
+	add_item_to_basket(&groceries.basket, 1);
 	print_basket(&groceries.basket);
-	// remove_item_from_basket(&groceries.basket, CHOCOLADE);
-	// remove_item_from_basket(&groceries.basket, BANANA);
-	// remove_item_from_basket(&groceries.basket, ORANGE);
-	// remove_item_from_basket(&groceries.basket, SOAP);
-	// print_basket(&groceries.basket);
+	printf("%d\n" , checkout_basket(groceries));
 }

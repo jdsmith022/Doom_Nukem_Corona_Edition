@@ -1,9 +1,21 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 
-void	init_basket()
+uint8_t get_basket_len(t_list **head)
 {
-	return ;
+	uint8_t len;
+	t_list *temp;
+
+	temp = *head;
+	if (!temp)
+		return 0;
+	len = 1;
+	while (temp->next)
+	{
+		temp = temp->next;
+		len++;
+	}
+	return len;
 }
 
 void	add_item_to_basket(t_list **head, uint8_t type)
@@ -19,42 +31,37 @@ void	add_item_to_basket(t_list **head, uint8_t type)
 		*head = temp;
 		return ;
 	}
-	while (temp->next)
-		temp = temp->next;
-	temp->next = ft_lstnew(&item, sizeof(t_item));
-}
-
-void	del_node(t_list **head, t_list *node)
-{
-	t_list *prev;
-
-	prev = *head;
-	if (prev->content == node->content)
+	while (!is_in_basket((t_item *)temp->content, type))
 	{
-		*head = node->next;
-		free(node);
-		return ;
+		if (temp->next)
+			temp = temp->next;
+		else break ;
 	}
-	while (prev->next->content != node->content)
-		prev = prev->next;
-	prev->next = node->next;
-	free(node);
+	if (is_in_basket((t_item *)temp->content, type))
+		change_amount((t_item *)temp->content, 1);
+	else
+		temp->next = ft_lstnew(&item, sizeof(t_item));
 }
 
-bool	remove_item_from_basket(t_list **head, uint8_t item)
+bool	remove_item_from_basket(t_list **head, uint8_t type)
 {
 	t_list *temp;
+	t_item *item;
 
 	temp = *head;
 	if (!temp)
 		return false;
-	while (*((uint8_t *)temp->content) != item)
+	item = (t_item *)temp->content;
+	while (item->type != type)
 	{
 		if (!temp->next)
 			return false;
 		temp = temp->next;
+		item = (t_item *)temp->content;
 	}
-	del_node(head, temp);
+	change_amount(item, -1);
+	if (item->amount == 0)
+		del_node(head, temp);
 	return true;
 }
 
