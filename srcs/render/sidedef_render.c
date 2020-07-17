@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-static void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom)
 {
 	t_point start;
@@ -118,36 +118,27 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
 			if (doom->lib.sidedef[x].action == 4)
-			{
-				save_poster = x;
-				near_sidedef.poster = x;
-			}
+				save_poster = init_poster(x, distance, intersect, &doom->lib.sidedef[x]);
 			else
 			{
 				min_distance = distance;
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
-				near_sidedef.poster = save_poster;
 				if (doom->lib.sidedef[x].action == 2)
-				{
-					intersect.x -= (doom->lib.sidedef[x + 1].line.end.x - doom->lib.sidedef[x + 1].line.start.x);
-					intersect.y -= (doom->lib.sidedef[x + 1].line.end.y - doom->lib.sidedef[x + 1].line.start.y);
-					set_offset(&near_sidedef, doom->lib.sidedef[x], intersect, doom);
-				}
+					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
+			near_sidedef.poster = save_poster;
 		}
 		x++;
 	}
-	// if (near_sidedef.poster != -1)
-	// 		printf("%i\n", near_sidedef.poster);
 	if (min_distance != INFINITY)
 	{
+
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		doom->distance = min_distance;
-		// if (near_sidedef.poster != -1)
-		// 	printf("%i\n", near_sidedef.poster);
-
+		if(near_sidedef.poster != -1)
+			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 	return (0);
