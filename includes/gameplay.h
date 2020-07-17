@@ -16,17 +16,6 @@
 # define GROCERIES	8
 # define SHOPPING_LIST 1
 
-typedef struct	s_item {
-	uint8_t		type;
-	uint8_t		amount;
-}				t_item;
-
-typedef struct	s_groceries {
-	t_item 		*shopping_list;
-	uint8_t		shopping_list_len;
-	t_list		*basket;
-}				t_groceries;
-
 void	handle_groceries();
 void	add_item_to_basket(t_list **head, uint8_t type);
 bool	remove_item_from_basket(t_list **head, uint8_t item);

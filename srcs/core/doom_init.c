@@ -139,6 +139,7 @@ void 	doom_init(t_doom *doom)
 		init_audio(&doom->audio);
 		load_audio(&doom->audio);
 	}
+	init_groceries(doom);
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
 	doom->light = TRUE;

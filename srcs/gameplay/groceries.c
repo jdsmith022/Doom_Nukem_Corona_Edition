@@ -63,31 +63,15 @@ bool	checkout_basket(t_groceries groceries)
 	return true;
 }
 
-void	handle_groceries()
+void	init_groceries(t_doom *doom)
 {
-	t_groceries	groceries;
-	uint8_t		i;
+	doom->groceries.shopping_list = get_shopping_list(get_groceries());
+	doom->groceries.shopping_list_len = SHOPPING_LIST;
+	doom->groceries.basket = NULL;
+	print_shopping_list(doom->groceries.shopping_list);
+}
 
-	i = 0;
-	groceries.shopping_list = get_shopping_list(get_groceries());
-	groceries.shopping_list_len = SHOPPING_LIST;
-	groceries.basket = NULL;
-	print_shopping_list(groceries.shopping_list);
-	add_item_to_basket(&groceries.basket, 8);
-	add_item_to_basket(&groceries.basket, 8);
-	add_item_to_basket(&groceries.basket, 8);
-	add_item_to_basket(&groceries.basket, 8);
-	add_item_to_basket(&groceries.basket, 8);
-	add_item_to_basket(&groceries.basket, 2);
-	add_item_to_basket(&groceries.basket, 2);
-	add_item_to_basket(&groceries.basket, 2);
-	add_item_to_basket(&groceries.basket, 2);
-	add_item_to_basket(&groceries.basket, 3);
-	add_item_to_basket(&groceries.basket, 3);
-	add_item_to_basket(&groceries.basket, 3);
-	add_item_to_basket(&groceries.basket, 1);
-	add_item_to_basket(&groceries.basket, 1);
-	add_item_to_basket(&groceries.basket, 1);
-	print_basket(&groceries.basket);
-	printf("%d\n" , checkout_basket(groceries));
+void	groceries()
+{	
+	// add_item_to_basket(&groceries.basket, 8);
 }

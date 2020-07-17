@@ -12,10 +12,10 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "audio.h"
+# include "audio.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
-# include "audio.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -221,6 +221,17 @@ typedef struct		s_gamedesign{
 }
 					t_gamedesign;
 
+typedef struct		s_item {
+	uint8_t			type;
+	uint8_t			amount;
+}					t_item;
+
+typedef struct		s_groceries {
+	t_item 			*shopping_list;
+	uint8_t			shopping_list_len;
+	t_list			*basket;
+}					t_groceries;
+
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
@@ -249,6 +260,7 @@ typedef struct		s_doom {
 	double			dist_to_plane;
 	t_gamedesign	game_design;
 	t_audio			audio;
+	t_groceries		groceries;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -357,6 +369,12 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y);
 /* AUDIO */
 
 void	audio(t_audio audio, t_event *event);
+
+/* GROCERY */
+
+void	init_groceries(t_doom *doom);
+void	groceries(t_doom *doom);
+
 
 void    bars(Uint32 **pixels, t_doom *doom);
 void    draw_images(Uint32 *pixels, t_doom *doom);
