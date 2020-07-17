@@ -14,7 +14,6 @@ int	main(void)
 	doom_init(&doom);
 	//load_default(); //loads default settings ie menu, player settings
 	//init_HUD/UI
-	handle_groceries();
-	// game_loop(&doom);
+	game_loop(&doom);
 	return (0);
 }
