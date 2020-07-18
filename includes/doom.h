@@ -12,7 +12,7 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "audio.h"
-# include "audio.h"
+# include "textures.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -293,6 +293,7 @@ void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
+void				set_texture_type(const char *name, SDL_Surface *surface);
 int					open_file(char *filename);
 int					line_num(int i);
 
@@ -373,13 +374,16 @@ void	audio(t_audio audio, t_event *event);
 /* GROCERY */
 
 void	init_groceries(t_doom *doom);
-void	groceries(t_doom *doom);
-
+void	groceries(t_groceries *groceries);
 
 void    bars(Uint32 **pixels, t_doom *doom);
 void    draw_images(Uint32 *pixels, t_doom *doom);
 void    draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void	box_in_sectors(t_doom *doom);
+
+/* DRAW */
+
+void    put_textures(int x, int y, int index, t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/14 12:42:28 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/18 17:42:05 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ static SDL_Surface	**read_from_line(char *line,
 	while (index < len)
 	{
 		get_line(&line, map_fd, "not enough texture names", 0);
+		printf("%s\n", line);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
 		{
@@ -101,6 +102,7 @@ static SDL_Surface	**read_from_line(char *line,
 		}
 		images[index] = read_bmp(fd);
 		save_bpm_to_sdl(images, lib, index);
+		set_texture_type(line, lib[index]);
 		free(line);
 		index++;
 	}
