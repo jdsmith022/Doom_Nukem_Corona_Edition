@@ -40,6 +40,25 @@ t_line  corners(t_doom *doom)
     return (diff);
 }
 
+void	add_corners(t_doom *doom, t_line diff)
+{
+	int	len;
+
+	len = doom->game_design.w_len;
+	add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+	if (len != doom->game_design.w_len)
+	{
+		del_sidedef(doom);
+		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+	}
+	add_sidedef(doom, diff.start.x + 1, diff.end.y +-1);
+	add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
+	add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
+	add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
+	add_sidedef(doom, diff.end.x - 1, diff.start.y - 1);
+	add_sidedef(doom, diff.end.x - 1, diff.start.y + 1);
+	add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+}
 
 void	box_in_sectors(t_doom *doom)
 {
@@ -59,14 +78,8 @@ void	box_in_sectors(t_doom *doom)
 		save_y = doom->game_design.sector[i].diff_y;
 		doom->game_design.sector[i].diff_x = 0;
 		doom->game_design.sector[i].diff_y = 0;
-		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
-		add_sidedef(doom, diff.start.x + 1, diff.end.y +-1);
-		add_sidedef(doom, diff.start.x + 1, diff.end.y - 1);
-		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
-		add_sidedef(doom, diff.end.x - 1, diff.end.y - 1);
-		add_sidedef(doom, diff.end.x - 1, diff.start.y - 1);
-		add_sidedef(doom, diff.end.x - 1, diff.start.y + 1);
-		add_sidedef(doom, diff.start.x + 1, diff.start.y + 1);
+		//test if there is still a start saved in the add sidedef function
+		add_corners(doom, diff);
 		doom->game_design.sector[i].diff_x = save_x;
 		doom->game_design.sector[i].diff_y = save_y;
 		i++;

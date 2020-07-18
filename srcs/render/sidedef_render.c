@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-static void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom)
 {
 	t_point start;
@@ -102,36 +102,43 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	double		distance;
 	double		min_distance;
 	int			x;
+	int			save_poster;
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
 	if (doom->lib.sector[sector].outside)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
+	save_poster = -1;
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
-		if (distance < min_distance &&\
+		if (distance <= min_distance &&\
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
-			min_distance = distance;
-			near_sidedef = set_properties_sidedef(intersect,\
-				distance, doom->lib.sidedef[x], doom);
-			if (doom->lib.sidedef[x].action == 2)
+			if (doom->lib.sidedef[x].action == 4)
+				save_poster = init_poster(x, distance, intersect, &doom->lib.sidedef[x]);
+			else
 			{
-				intersect.x -= (doom->lib.sidedef[x + 1].line.end.x - doom->lib.sidedef[x + 1].line.start.x);
-				intersect.y -= (doom->lib.sidedef[x + 1].line.end.y - doom->lib.sidedef[x + 1].line.start.y);
-				set_offset(&near_sidedef, doom->lib.sidedef[x], intersect, doom);
+				min_distance = distance;
+				near_sidedef = set_properties_sidedef(intersect,\
+					distance, doom->lib.sidedef[x], doom);
+				if (doom->lib.sidedef[x].action == 2)
+					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
+			near_sidedef.poster = save_poster;
 		}
 		x++;
 	}
 	if (min_distance != INFINITY)
 	{
+
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		doom->distance = min_distance;
+		if(near_sidedef.poster != -1)
+			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 	return (0);

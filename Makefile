@@ -21,7 +21,7 @@ LIBFT = libft
 SDL = sdl
 BMP = bmp
 SDL_FLAGS = `sdl2-config --cflags --libs`
-LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lSDL2_ttf -lft
+LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lft
 
 CORE = srcs/core/
 EVENTS = srcs/events/
@@ -39,7 +39,7 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
 				skybox_top_bottom draw_skybox set_texture_properties\
-				render_sky_box set_offsets
+				render_sky_box set_offsets draw_poster action
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			save_font
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
