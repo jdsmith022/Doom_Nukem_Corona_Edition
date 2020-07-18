@@ -16,7 +16,7 @@ sprites/tony3.bmp
 #number of walls
 12
 #number of objects
-1
+2
 
 
 #sector[0]
@@ -80,7 +80,7 @@ sprites/tony3.bmp
 1
 3
 
-1
+2
 
 #object1
 0
@@ -110,6 +110,33 @@ sprites/tony3.bmp
 46
 46
 
+#object1
+0
+75
+75
+0
+8
+4
+0
+71
+71
+79
+71
+0
+79
+71
+79
+79
+0
+79
+79
+71
+79
+0
+71
+79
+71
+71
 
 #sector[1]
 10
