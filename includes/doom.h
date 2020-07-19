@@ -359,6 +359,7 @@ void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
 
+
 /* AUDIO */
 
 void	audio(t_audio audio, t_event *event);

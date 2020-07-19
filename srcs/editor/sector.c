@@ -7,7 +7,18 @@ void		del_sector(t_doom *doom)
 	int i;
 	int n_sidedef;
 
-
+	i =	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs;
+	while (i < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
+	{
+		if (doom->game_design.sidedef[i].opp_sector != -1) //causes segfault: why?
+		{
+			doom->game_design.sidedef[doom->game_design.sidedef\
+			[doom->game_design.cur_sd].opp_sidedef].opp_sidedef = -1;
+			doom->game_design.sidedef[doom->game_design.sidedef\
+			[doom->game_design.cur_sd].opp_sidedef].opp_sector = -1;
+		}
+		i++;
+	}
 	i = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs;
 	while (i < doom->game_design.w_len - doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
 	{

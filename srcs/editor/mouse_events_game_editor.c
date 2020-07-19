@@ -107,7 +107,10 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
 		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
 	else if (x > PORTAL_X && x < PORTAL_X + FRAME_WIDTH && y > PORTAL_Y && y < PORTAL_Y + FRAME_HEIGHT)
-		add_portal(doom, 0);
+	{
+		if (doom->game_design.s_len > 0)
+			add_portal(doom, 0);
+	}
 	else if (x > WALL_X && x < WALL_X + FRAME_WIDTH && y > WALL_X && y < WALL_X + FRAME_HEIGHT)
 		doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef = -1;
 	else if (doom->game_design.portal_sec != -1 && x > AR_LEFT_SC_X && x < AR_LEFT_SC_X + FRAME_WIDTH && y > AR_LEFT_SC_Y && y < AR_LEFT_SC_Y + FRAME_HEIGHT)
