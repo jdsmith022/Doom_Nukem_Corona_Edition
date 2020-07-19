@@ -13,7 +13,14 @@ textures/walls/soda.bmp
 textures/walls/sausage_bacon.bmp
 
 #object library
-0
+7
+textures/groceries/brinta.bmp
+textures/groceries/butter.bmp
+textures/groceries/chocolate_milk.bmp
+textures/groceries/douwe.bmp
+textures/groceries/kellogs.bmp
+textures/groceries/mayonaisse.bmp
+textures/groceries/ketchup.bmp
 
 #number of sectors
 3

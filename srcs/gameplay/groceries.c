@@ -68,19 +68,14 @@ void	init_groceries(t_doom *doom)
 	doom->groceries.shopping_list = get_shopping_list(get_groceries());
 	doom->groceries.shopping_list_len = SHOPPING_LIST_LENGTH;
 	doom->groceries.basket = NULL;
-	print_shopping_list(doom->groceries.shopping_list);
-	int i;
-
-	i  = 0;
-	while (i < doom->lib.len_tex_lib){
-		printf("%d\n", *((uint8_t *)doom->lib.tex_lib[i]->userdata));
-		i++;
-	}
+	add_item_to_basket(doom, &doom->groceries.basket, 9);
+	add_item_to_basket(doom, &doom->groceries.basket, 10);
+	add_item_to_basket(doom, &doom->groceries.basket, 11);
+	print_basket(&doom->groceries.basket);
 }
 
-void	groceries(t_groceries *groceries)
-{	
-	// add_item_to_basket(&groceries.basket, 8);
-	draw_shopping_ui(groceries);
-	draw_basket_ui(groceries);
+void	groceries(t_doom *doom)
+{
+	draw_basket_ui(doom, doom->groceries, doom->lib);
+	// draw_shopping_ui(doom);
 }

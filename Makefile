@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/18 18:07:58 by elkanfrank    ########   odam.nl          #
+#    Updated: 2020/07/19 18:55:35 by elkanfrank    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ AUDIO = srcs/audio/
 GAMEPLAY = srcs/gameplay/
 SPRITE = srcs/sprite/
 UI = srcs/ui/
+DRAW = srcs/draw/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit moving_sidedef
@@ -49,6 +50,7 @@ SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
 UI_FILES = draw_font basket_ui
 GAMEPLAY_FILES = groceries basket node search
+DRAW_FILES = img vector
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
@@ -59,6 +61,7 @@ C_FILES_AUDIO = $(AUDIO_FILES:%=%.c)
 C_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=%.c)
 C_FILES_SPRITE = $(SPRITE_FILES:%=%.c)
 C_FILES_UI = $(UI_FILES:%=%.c)
+C_FILES_DRAW = $(DRAW_FILES:%=%.c)
 
 O_FILES_CORE = $(CORE_FILES:%=$(CORE).objects/%.o)
 O_FILES_EVENTS = $(EVENTS_FILES:%=$(EVENTS).objects/%.o)
@@ -69,11 +72,12 @@ O_FILES_AUDIO = $(AUDIO_FILES:%=$(AUDIO).objects/%.o)
 O_FILES_SPRITE = $(SPRITE_FILES:%=$(SPRITE).objects/%.o)
 O_FILES_UI = $(UI_FILES:%=$(UI).objects/%.o)
 O_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=$(GAMEPLAY).objects/%.o)
+O_FILES_DRAW = $(DRAW_FILES:%=$(DRAW).objects/%.o)
 
 
-SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE) $(UI) $(GAMEPLAY)
+SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE) $(UI) $(GAMEPLAY) $(DRAW)
 O_FILES_DIRS = $(SRCS_DIRS:%=%.objects)
-O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY) \
+O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY) $(O_FILES_DRAW) \
 		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) $(O_FILES_SPRITE) $(O_FILES_UI)
 
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/textures.h
@@ -118,6 +122,10 @@ $(UI).objects/%.o: $(UI)%.c $(HEADERS)
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
 $(GAMEPLAY).objects/%.o: $(GAMEPLAY)%.c $(HEADERS)
+	@$(CC) -o $@ -c $<
+	@echo "$(GREEN)[+]$(WHITE) $@"
+
+$(DRAW).objects/%.o: $(DRAW)%.c $(HEADERS)
 	@$(CC) -o $@ -c $<
 	@echo "$(GREEN)[+]$(WHITE) $@"
 

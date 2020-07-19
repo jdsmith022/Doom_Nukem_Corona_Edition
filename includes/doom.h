@@ -224,6 +224,7 @@ typedef struct		s_gamedesign{
 typedef struct		s_item {
 	uint8_t			type;
 	uint8_t			amount;
+	uint8_t			sprite_index;
 }					t_item;
 
 typedef struct		s_groceries {
@@ -337,7 +338,6 @@ void		    	draw_ground(t_doom *doom, int x, int y);
 void		  		draw_sky(t_doom *doom, int x, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
 t_point				line_intersection(t_point start1, t_point delta1,
@@ -352,6 +352,12 @@ void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				add_saturation(char *r, char *g, char *b, double light);
+
+/*  DRAW   */
+
+void				put_pixel(SDL_Surface *texture, t_doom *doom, Uint32 index, Uint32 pixel_dex);
+void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
+
 
 
 /*game editor*/
@@ -374,7 +380,7 @@ void	audio(t_audio audio, t_event *event);
 /* GROCERY */
 
 void	init_groceries(t_doom *doom);
-void	groceries(t_groceries *groceries);
+void	groceries(t_doom *doom);
 
 void    bars(Uint32 **pixels, t_doom *doom);
 void    draw_images(Uint32 *pixels, t_doom *doom);

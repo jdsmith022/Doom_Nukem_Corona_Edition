@@ -18,7 +18,21 @@ uint8_t get_basket_len(t_list **head)
 	return len;
 }
 
-void	add_item_to_basket(t_list **head, uint8_t type)
+void		set_index(t_doom *doom, uint8_t type, t_item *item)
+{
+	uint8_t i;
+
+	i = 0;
+	while (i < doom->lib.len_obj_lib)
+	{
+		if (*((uint8_t *)doom->lib.obj_lib[i]->userdata) == type)
+			item->sprite_index = i;
+		i++;
+	}
+	return ;
+}
+
+void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 {
 	t_list *temp;
 	t_item item;
@@ -26,6 +40,7 @@ void	add_item_to_basket(t_list **head, uint8_t type)
 	temp = *head;
 	item.type = type;
 	item.amount = 1;
+	set_index(doom, type, &item);
 	if (!temp){
 		temp = ft_lstnew(&item, sizeof(t_item));
 		*head = temp;
@@ -75,7 +90,7 @@ void	print_basket(t_list **basket)
 		return ;
 	while (temp){
 		item = *(t_item *)temp->content;
-		printf("type: %d amount: %d  ", item.type, item.amount);
+		printf("type: %d amount: %d  img_index: %d", item.type, item.amount, item.sprite_index);
 		temp = temp->next;
 	}
 	printf("\n");
