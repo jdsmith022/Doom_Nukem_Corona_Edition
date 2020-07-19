@@ -1,5 +1,4 @@
 # include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
 
 static uint8_t		*get_groceries()
 {
@@ -71,11 +70,10 @@ void	init_groceries(t_doom *doom)
 	add_item_to_basket(doom, &doom->groceries.basket, 9);
 	add_item_to_basket(doom, &doom->groceries.basket, 10);
 	add_item_to_basket(doom, &doom->groceries.basket, 11);
-	print_basket(&doom->groceries.basket);
 }
 
 void	groceries(t_doom *doom)
 {
-	draw_basket_ui(doom, doom->groceries, doom->lib);
+	draw_basket_ui(doom, doom->groceries);
 	// draw_shopping_ui(doom);
 }

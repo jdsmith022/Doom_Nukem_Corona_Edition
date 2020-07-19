@@ -1,37 +1,30 @@
 #include "../../includes/doom.h"
 
-void		put_pixel(SDL_Surface *texture, t_doom *doom, Uint32 index, Uint32 pixel_dex)
+void		put_pixel_from_img(SDL_Surface *texture, t_doom *doom, Uint32 index, Uint32 curr_pixel)
 {
 	char	*pixels;
-	char	R;
-	char	G;
-	char	B;
-	
+	t_rgb	rgb;
+
 	pixels = doom->surface->pixels;
-	R = (char)texture->pixels + pixel_dex;
-	G = (char)texture->pixels + pixel_dex + 1;
-	B = (char)texture->pixels + pixel_dex + 2;
-	// R = 127;
-	// G = 0;
-	// B = 0;
-	add_saturation(&R, &G, &B, doom->distance);
-	pixels[index] = R;
-	pixels[index + 1] = G;
-	pixels[index + 2] = B;
+	rgb.r = *((char *)texture->pixels + curr_pixel);
+	rgb.g = *((char *)texture->pixels + curr_pixel + 1);
+	rgb.b = *((char *)texture->pixels + curr_pixel + 2);
+	add_saturation(&rgb.r, &rgb.g, &rgb.b, doom->distance);
+	ft_memcpy(doom->surface->pixels + index, &rgb, sizeof(t_rgb));
 }
 
-void	draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y)
+void	draw_img(SDL_Surface *texture, t_doom *doom, int x, int y)
 {
-	uint32_t	shift;
-    int			save_x;
-    int			sx;
+	Uint32	shift;
+    int		save_x;
+    int		sx;
 
     save_x = x;
     sx = 0;
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
     while (sx < (texture->h * texture->w))
     {
-		put_pixel(texture, doom, (Uint32)((y * WIDTH + x) * 4), (Uint32)(sx * shift));
+		put_pixel_from_img(texture, doom, (y * WIDTH + x) * 4, sx * shift);
 		x++;
 		sx++;
         if (sx % (texture->w) == 0)

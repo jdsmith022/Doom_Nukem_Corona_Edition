@@ -13,6 +13,7 @@
 # include "../srcs/editor/game_editor.h"
 # include "audio.h"
 # include "textures.h"
+# include "gameplay.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -42,6 +43,15 @@
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
+#pragma pack(push, 1)
+
+typedef struct 		t_rgb {
+	char			r;
+	char			g;
+	char			b;
+}					t_rgb;
+
+#pragma pack(pop)
 
 typedef struct		s_hsv{
 	double			r;
@@ -221,18 +231,6 @@ typedef struct		s_gamedesign{
 }
 					t_gamedesign;
 
-typedef struct		s_item {
-	uint8_t			type;
-	uint8_t			amount;
-	uint8_t			sprite_index;
-}					t_item;
-
-typedef struct		s_groceries {
-	t_item 			*shopping_list;
-	uint8_t			shopping_list_len;
-	t_list			*basket;
-}					t_groceries;
-
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
@@ -377,10 +375,6 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y);
 
 void	audio(t_audio audio, t_event *event);
 
-/* GROCERY */
-
-void	init_groceries(t_doom *doom);
-void	groceries(t_doom *doom);
 
 void    bars(Uint32 **pixels, t_doom *doom);
 void    draw_images(Uint32 *pixels, t_doom *doom);
@@ -389,7 +383,22 @@ void	box_in_sectors(t_doom *doom);
 
 /* DRAW */
 
-void    put_textures(int x, int y, int index, t_doom *doom);
+void	draw_img(SDL_Surface *texture, t_doom *doom, int x, int y);
+
+/* GAMEPLAY */
+
+void	init_groceries(t_doom *doom);
+void	groceries(t_doom *doom);
+void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type);
+bool	remove_item_from_basket(t_list **head, uint8_t item);
+bool	search_basket(t_item *item, t_list **head);
+uint8_t get_basket_len(t_list **head);
+bool	is_in_basket(t_item *item, uint8_t type);
+bool	change_amount(t_item *item, int8_t amount);
+void	draw_basket_ui(t_doom *doom, t_groceries groceries);
+void	draw_shopping_ui(t_doom *doom);
+void	del_node(t_list **head, t_list *node);
+void	print_basket(t_list **basket);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
