@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/18 17:52:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/19 12:24:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ typedef struct			s_sprite {
 	double				sprite_y;		//y cord translated to viewer space
 	int					visible;
 	double				distance;
-	int					screen_left_x;
-	int					screen_right_x;
+	// int					screen_left_x;
+	// int					screen_right_x;
 	// int					position;
 }						t_sprite;
 
@@ -240,6 +240,8 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
+	int				sidedef_bottom[WIDTH];
+	int				sidedef_top[WIDTH];
 }					t_doom;
 
 /*core functions*/
