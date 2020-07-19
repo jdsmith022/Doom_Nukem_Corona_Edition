@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 11:29:08 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/19 12:58:28 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/19 13:50:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index)
 	int			x;
 
 	x = doom->lib.sprites[index].sprite_x;
-	sprite_begin->y = (HEIGHT - doom->sidedef_bottom[x]) + \
+	sprite_end->y = doom->sidedef_bottom[x] + \
 	((doom->lib.sprites[index].distance / doom->stripe_distance[x]) *\
 	(HEIGHT - doom->sidedef_bottom[x]));
 	printf("sidedef_bottom[%d]: %d\n", x, doom->sidedef_bottom[x]);
 	printf("sidedef_top[%d]: %d\n", x, doom->sidedef_top[x]);
-	sprite_end->y = sprite_begin->y + doom->lib.sprites[index].height;
+	sprite_begin->y = sprite_end->y - doom->lib.sprites[index].height;
 	//check height in sprite index
 	// middle = (HEIGHT + doom->player_height) / 2;
 	// middle = (HEIGHT + doom->player_height) / 2;

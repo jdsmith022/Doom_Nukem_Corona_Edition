@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/18 18:26:21 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/19 15:20:51 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 			// printf("(x: %f; y: %f) (x_temp: %f;y_temp: %f) width: %f", x, y, x_temp, y_temp, doom->lib.sprites[index_sp].width);
 			pix_dex = ((int)y_temp * doom->lib.obj_lib[i_sprite]->pitch) + ((int)x_temp * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 			//if stripe_distance[WIDTH] is niet kleiner dan sprite_distance op de x van de stripe
+			
 			put_pixel_tex(doom, pix_dex, index, i_sprite);
 			// pix_y++;
 			y++;

@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/19 13:01:03 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/19 13:46:11 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,5 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 	{
 		doom->sidedef_bottom[x] = plane.sidedef_bottom;
 		doom->sidedef_top[x] = plane.sidedef_top;
-		if (x == 0 || x == 400 || x == 799)
-			printf("[%x], %d & %d\n", x, plane.sidedef_bottom, plane.sidedef_top);
 	}
 }
