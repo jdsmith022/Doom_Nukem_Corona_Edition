@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/19 16:15:59 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/19 17:08:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 	sidedef_bottom = (new_height + wall_diff_height_std) - doom->own_event.y_pitch - height_floor;
 	sprite_end->y = sidedef_bottom;
 	sprite_begin->y = sprite_end->y - sprite->height;
+	if (sprite_begin->y < 0)
+		sprite_begin->y = 0;
+	if (sprite_end->y > HEIGHT)
+		sprite_end->y = HEIGHT - 1;
 	
 	// sprite_begin->y = (new_height - div_height_std) - doom->own_event.y_pitch;
 	// sprite_end->y = (new_height + div_height_std) - doom->own_event.y_pitch - height_floor;
