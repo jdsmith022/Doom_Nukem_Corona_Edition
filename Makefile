@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/19 21:31:25 by elkanfrank    ########   odam.nl          #
+#    Updated: 2020/07/20 01:44:15 by elkanfrank    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
 				skybox_top_bottom draw_skybox set_texture_properties\
-				render_sky_box set_offsets
+				render_sky_box set_offsets draw_poster action
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			save_font set_texture_type
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \

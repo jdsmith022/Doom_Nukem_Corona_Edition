@@ -166,6 +166,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	int				poster;
 }					t_sidedef;
 
 typedef struct		s_sector {
@@ -350,6 +351,10 @@ void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
 void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				add_saturation(char *r, char *g, char *b, double light);
+void				draw_poster(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x);
+void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+					t_point intersect, t_doom *doom);
 
 /*  DRAW   */
 
@@ -370,6 +375,7 @@ void    draw_bar_point(Uint32 **pixels, t_bar bar);
 void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
+
 
 /* AUDIO */
 
@@ -416,5 +422,10 @@ void				draw_font(t_doom *doom);
 /*actions*/
 void    sliding_door(t_doom *doom, int sd_index);
 void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
+void    relocate_moving_wall(t_point *intersect, t_sidedef *near_sidedef, t_doom *doom, int x);
+void    relocate_poster(t_doom *doom, t_sidedef *poster);
+int		init_poster(int x, double distance, t_point intersect, t_sidedef *poster);
+
+
 
 #endif
