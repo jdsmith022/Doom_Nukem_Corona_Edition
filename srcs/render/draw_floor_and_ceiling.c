@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/20 17:14:55 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/20 17:44:39 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,18 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
-// double	set_slope_height(t_doom *doom, t_sector sector, int y)
-// {
-// 	t_slope slope;
-// 	t_point	floor_pos;
-// 	double	distance;
-// 	double 	slope_height;
+double	set_slope_height(t_doom *doom, t_sector sector, int y)
+{
+	t_slope slope;
+	t_point	floor_pos;
+	double	distance;
+	double 	slope_height;
 
-// 	floor_pos.x = slope.intersect.x;
-// 	floor_pos.y = y--;
-// 	distance = point_line_distance(floor_pos, doom->lib.sidedef[sector.slope_id].line);
-// 	return (tan(sector.slope_floor) * distance);
-// }
-
+	floor_pos.x = slope.intersect.x;
+	floor_pos.y = y--;
+	distance = fabs(point_line_distance(floor_pos, doom->lib.sidedef[sector.slope_id].line));
+	return ((tan(sector.slope_floor) * distance) + sector.height_floor);
+}
 
 void			draw_floor(t_doom *doom, int x,
 					t_sector sector, int y)
@@ -105,8 +104,8 @@ void			draw_floor(t_doom *doom, int x,
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		// if (sector.slope_id != -1)
-		// 	height_floor += set_slope_height(doom, sector, y);
+		if (sector.slope_id != -1)
+			height_floor = set_slope_height(doom, sector, y);
 		dist = (doom->player_std_height - height_floor)\
 			/ (y - height) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
