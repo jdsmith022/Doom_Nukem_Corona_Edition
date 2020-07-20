@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/20 12:19:46 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/20 16:52:44 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct		s_object{
 }					t_object;
 
 typedef	struct		s_slope{
-	double			sidedef_id;
+	int				sidedef_id;
 	t_point			intersect;
 	double			distance;
 	int				opp_side;
@@ -153,7 +153,6 @@ typedef struct		s_sector {
 	double			slope_floor;
 	int				height_ceiling;
 	double			height_floor;
-	double			slope_height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
 	int				diff_x;
@@ -260,7 +259,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
-double				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+t_slope				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector *sector);
 int					get_opp_sidedef(t_sector sector);
 t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
