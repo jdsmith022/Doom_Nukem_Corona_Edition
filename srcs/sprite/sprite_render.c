@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/19 17:08:05 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/20 14:52:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 	int			div_height_std;
 	double		height_floor;
 	int			sidedef_bottom;
-	int			wall_height_std;
+	int			plane_height_std;
 	int			wall_diff_height_std;
 
 	new_height = (HEIGHT + doom->player_height) / 2;
 	sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
-	wall_height_std = doom->wall_height_std / sprite->distance * doom->dist_to_plane;
+	plane_height_std = doom->wall_height_std / sprite->distance * doom->dist_to_plane;
 	div_height_std = sprite->height / 2;
-	wall_diff_height_std = wall_height_std / 2;	
+	wall_diff_height_std = plane_height_std / 2;	
 	height_floor = doom->lib.sector[sprite->sector].height_floor / sprite->distance * doom->dist_to_plane;
 	sidedef_bottom = (new_height + wall_diff_height_std) - doom->own_event.y_pitch - height_floor;
 	sprite_end->y = sidedef_bottom;
@@ -44,11 +44,11 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 	// sprite_end->y = sprite_begin->y + sprite->height;
 	h = doom->lib.obj_lib[sprite->index]->h;
 	w = doom->lib.obj_lib[sprite->index]->w;
-	printf("h: %f, w: %f\n", h, w);
+	// printf("h: %f, w: %f\n", h, w);
 	// sprite->height = (sprite->size / sprite->distance * doom->dist_to_plane);
 	// sprite->width = (sprite->size / sprite->distance * doom->dist_to_plane);
 	sprite->width = (sprite->height / h) * w;
-	printf("screen h: %f, screen w: %f\n", sprite->height, sprite->width);
+	// printf("screen h: %f, screen w: %f\n", sprite->height, sprite->width);
 	sprite_begin->x = sprite->sprite_x;
 	sprite_end->x = sprite_begin->x + sprite->width;
 	if (sprite_begin->x < 0)

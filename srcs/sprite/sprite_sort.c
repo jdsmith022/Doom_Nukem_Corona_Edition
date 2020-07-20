@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/07 15:27:02 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/09 18:27:26 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/07/20 14:52:49 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int			*sort_sprite_array(t_sprite *sprite, int total)
 	int		*sprite_order;
 	int		i;
 
-	printf("sort_sprite1, total: %d\n", total);
 	sprite_order = (int*)malloc(sizeof(int) * total);
 	// printf("sort_sprite2, total: %d\n", total);
 	init_sprite_order_array(sprite, sprite_order, total);

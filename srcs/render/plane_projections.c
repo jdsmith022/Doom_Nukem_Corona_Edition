@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/03 18:17:10 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/19 13:46:11 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/20 11:49:13 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	(void)sector;
 	new_height = (HEIGHT + doom->player_height) / 2;
 	plane->height_standard = doom->wall_height_std / sidedef.distance * doom->dist_to_plane;
-	// printf("****plane height standard: %f****\n", plane->height_standard); //misschien opslaan om grootte te bepalen van sprite?
+	// printf("****texture height: %f,plane height standard: %f****\n", doom->texture_height, plane->height_standard); //misschien opslaan om grootte te bepalen van sprite?
 	div_height_std = plane->height_standard / 2;
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
 	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;

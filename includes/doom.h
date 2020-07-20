@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/19 12:24:05 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/20 14:47:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@
 # define CAM_SPEED 5
 # define GRAVITY -0.5
 # define VELOCITY 12
+
+typedef struct		s_pixel {
+	int				x;
+	int				y;
+}					t_pixel;
 
 typedef struct		s_point {
 	double			x;
@@ -242,6 +247,7 @@ typedef struct		s_doom {
 	double			stripe_distance[WIDTH];
 	int				sidedef_bottom[WIDTH];
 	int				sidedef_top[WIDTH];
+	int				test;
 }					t_doom;
 
 /*core functions*/

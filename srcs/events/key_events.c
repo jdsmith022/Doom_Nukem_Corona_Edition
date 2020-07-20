@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/07 11:07:52 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/20 14:51:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,8 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 		doom->game_editor = FALSE;
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
+	if (key->keysym.sym == SDLK_p)
+	{
+		doom->test = 1;
+	}
 }
