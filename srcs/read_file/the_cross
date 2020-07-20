@@ -21,7 +21,7 @@ textures/brown_wall.bmp
 
 #sector[0]
 10
-10
+0
 0
 0
 0
@@ -145,7 +145,7 @@ textures/brown_wall.bmp
 
 #sector[2]
 10
-20
+0
 1
 0
 0

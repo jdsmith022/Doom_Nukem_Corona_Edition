@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/21 14:22:41 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/16 11:46:04 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/20 11:49:47 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,26 +113,30 @@ int			get_opp_sidedef(t_sector sector)
 // }
 
 double			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-	t_sector sector, t_plane *plane)
+	t_sector *sector)
 {
 	int			opp_side;
 	t_point		conn_point;
 	double		distance;
+	t_slope		slope;
 
 	distance = 0;
-	if (sidedef.sector != sector.id)
-		sidedef = get_other_side(doom, sidedef, sector);
-	if (sidedef.id == sector.slope_id)
+	if (sidedef.sector != sector->id)
+		sidedef = get_other_side(doom, sidedef, *sector);
+	if (sidedef.id == sector->slope_id)
 		return (doom->lib.sector[sidedef.sector].height_floor);
-	opp_side = get_opp_sidedef(sector);
-	conn_point = get_connecting_point(sidedef.line,\
-		doom->lib.sidedef[sector.slope_id].line);
-	if (sidedef.id != sector.slope_id && sidedef.id != opp_side)
-		distance = points_distance(sidedef.intersect, conn_point);
+	slope.opp_side = get_opp_sidedef(*sector);
+	slope.conn_point = get_connecting_point(sidedef.line,\
+		doom->lib.sidedef[sector->slope_id].line);
+	if (sidedef.id != sector->slope_id && sidedef.id != opp_side)
+		slope.distance = points_distance(sidedef.intersect, conn_point);
 	if (sidedef.id == opp_side)
-		distance = fabs(point_line_distance(sidedef.line.end,\
-			doom->lib.sidedef[sector.slope_id].line));
-	doom->lib.sector[sector.id].slope_height_floor = tan(sector.slope_floor) * distance;
-	plane->slope_distance = distance;
-	return (doom->lib.sector[sector.id].slope_height_floor);
+		slope.distance = fabs(point_line_distance(sidedef.line.end,\
+			doom->lib.sidedef[sector->slope_id].line));
+	slope.height_floor = tan(sector->slope_floor) * distance;
+	slope.distance = distance;
+	slope.intersect = sidedef.intersect;
+	slope.sidedef_id = sidedef.id;
+	sector->slope = slope;
+	return (slope.height_floor);
 }

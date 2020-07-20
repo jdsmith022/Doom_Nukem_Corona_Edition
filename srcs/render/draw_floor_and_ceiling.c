@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/16 11:56:15 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/20 12:26:16 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,22 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
-int			set_slope_direction(t_doom *doom, t_sector sector, t_plane plane)
-{
-	int		opp_sidedef;
-	int		connecting_sidedef;
-	t_point connecting_point;
-	t_line	slope_line;
-	t_line	connecting_line;
+// double	set_slope_height(t_doom *doom, t_sector sector, int y)
+// {
+// 	t_slope slope;
+// 	t_point	floor_pos;
+// 	double	distance;
+// 	double 	slope_height;
 
-	if (plane.sidedef_id == sector.slope_id)
-		return (1);
-	opp_sidedef = get_opp_sidedef(sector);
-	if (plane.sidedef_id == opp_sidedef)
-		return (-1);
-	slope_line = doom->lib.sidedef[sector.slope_id].line;
-	connecting_line = doom->lib.sidedef[plane.sidedef_id].line;
-	connecting_point = get_connecting_point(slope_line, connecting_line);
-	
-}
+// 	floor_pos.x = slope.intersect.x;
+// 	floor_pos.y = y--;
+// 	distance = point_line_distance(floor_pos, doom->lib.sidedef[sector.slope_id].line);
+// 	return (tan(sector.slope_floor) * distance);
+// }
+
 
 void			draw_floor(t_doom *doom, int x,
-					t_sector sector, int y, t_plane plane)
+					t_sector sector, int y)
 {
 	double	dist;
 	Uint32	index;
@@ -100,17 +95,18 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 	double	height_floor;
-	int 	slope_direction;
 
 	tex_dex = sector.txt_floor;
 	height = (HEIGHT / 2) + doom->player_height;
-	if (sector.slope_id != -1)
-		slope_direction = set_slope_direction(doom, sector, plane);
 	bpp = doom->surface->format->BytesPerPixel;
 	height_floor = sector.height_floor;
+	if (sector.slope_id != -1)
+		height_floor += sector.slope.height_floor;
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
+		// if (sector.slope_id != -1)
+		// 	height_floor += set_slope_height(doom, sector, y);
 		dist = (doom->player_std_height - height_floor)\
 			/ (y - height) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);

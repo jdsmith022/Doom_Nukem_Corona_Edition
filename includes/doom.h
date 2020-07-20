@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/16 11:44:09 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/20 12:19:46 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,15 @@ typedef struct		s_object{
 	t_line			location;
 }					t_object;
 
+typedef	struct		s_slope{
+	double			sidedef_id;
+	t_point			intersect;
+	double			distance;
+	int				opp_side;
+	t_point			conn_point;
+	double			height_floor;
+}					t_slope;
+
 typedef struct		s_plane
 {
 	int				sidedef_top;
@@ -149,6 +158,7 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
+	t_slope			slope;
 }					t_sector;
 
 typedef struct		s_lib{
@@ -251,7 +261,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x,\
 						t_point intersect);
 double				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-						t_sector sector, t_plane *plane);
+						t_sector *sector);
 int					get_opp_sidedef(t_sector sector);
 t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
@@ -261,7 +271,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y, t_plane plane);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
