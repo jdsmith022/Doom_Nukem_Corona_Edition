@@ -40,5 +40,7 @@ t_item 					*get_shopping_list(uint8_t *groceries);
 
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
 void					draw_shopping_ui(t_doom *doom);
+Uint8					find_shelf(t_doom *doom, t_ray ray, int sector,
+						int prev_sector)
 
 #endif
