@@ -39,6 +39,8 @@ void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	t_item item;
 
 	temp = *head;
+	if (!type)
+		return ;
 	item.type = type;
 	item.amount = 1;
 	set_sprite(doom, type, &item);

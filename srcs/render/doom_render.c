@@ -9,6 +9,18 @@ double			clamp_angle(double angle)
 	return (angle);
 }
 
+t_ray	init_ray(t_doom *doom, int x)
+{
+	t_ray	ray;
+
+	ray.angle = clamp_angle(doom->dir_angle - (FOV / 2) +  doom->ray_adjacent * x);
+	ray.line.start = doom->pos;
+	ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
+	ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
+	ray.plane_x = x;
+	return (ray);
+}
+
 void	send_ray(t_doom *doom, int x, int y)
 {
 	t_ray	ray;

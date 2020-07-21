@@ -40,6 +40,10 @@
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
+# define SECTORS	doom->lib.sector
+# define SIDEDEFS	doom->lib.sidedef
+# define TEXTURES	doom->lib.tex_lib
+
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 
@@ -371,6 +375,8 @@ void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord);
+double				clamp_angle(double angle);
+t_ray				init_ray(t_doom *doom, int x);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
@@ -412,7 +418,5 @@ void				relocate_moving_wall(t_point *intersect,\
 void				relocate_poster(t_doom *doom, t_sidedef *poster);
 int					init_poster(int x, double distance, t_point intersect,\
 						t_sidedef *poster);
-Uint8				find_shelf(t_doom *doom, t_ray ray, int sector,
-						int prev_sector)
 
 #endif

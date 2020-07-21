@@ -13,6 +13,7 @@
 #define MOUSE_PRESSED 	doom->own_event.mouse_press
 
 typedef struct s_doom	t_doom;
+typedef struct s_ray	t_ray;
 
 typedef struct			s_item {
 	uint8_t				type;
@@ -37,11 +38,9 @@ bool					change_amount(t_item *item, int8_t amount);
 void					del_node(t_list **head, t_list *node);
 void					print_basket(t_list **basket);
 t_item 					*get_shopping_list(uint8_t *groceries);
-
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
 void					draw_shopping_ui(t_doom *doom);
-int						find_shelf(t_doom *doom, t_ray ray, int sector,
-						int prev_sector);
 t_ray					init_ray(t_doom *doom, int x);
+int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 
 #endif

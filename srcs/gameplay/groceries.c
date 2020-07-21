@@ -42,35 +42,30 @@ void	init_groceries(t_doom *doom)
 	doom->groceries->shopping_list = get_shopping_list(get_groceries());
 	doom->groceries->shopping_list_len = SHOPPING_LIST_LENGTH;
 	doom->groceries->basket = NULL;
-	add_item_to_basket(doom, &doom->groceries->basket, 9);
-	add_item_to_basket(doom, &doom->groceries->basket, 10);
-	add_item_to_basket(doom, &doom->groceries->basket, 11);
-	add_item_to_basket(doom, &doom->groceries->basket, 8);
+	// add_item_to_basket(doom, &doom->groceries->basket, 9);
+	// add_item_to_basket(doom, &doom->groceries->basket, 10);
+	// add_item_to_basket(doom, &doom->groceries->basket, 11);
+	// add_item_to_basket(doom, &doom->groceries->basket, 8);
 }
 
-bool	clicked_on_shelf(t_doom *doom)
+static void		set_shelf_type(t_doom *doom, uint8_t *type)
 {
-	uint16_t i;
-	Uint8	action_flag;
-	static int x;
+	t_ray	ray;
 
-	if (!x)
-		x = 0;
-	x++;
-	i = 0;
-	if (!MOUSE_PRESSED)
-		return false;
-	action_flag = find_shelf(doom, init_ray(doom, MOUSE_X), doom->i_sector, doom->i_sector);
-	printf("%i action: %i\n", x, action_flag);
-	while (i < doom->game_design.s_len)
-		i++;
-	return true;
+	ray = init_ray(doom, MOUSE_X);
+	*type = find_shelf(doom, ray, doom->i_sector, doom->i_sector);
 }
 
 void	groceries(t_doom *doom)
 {
-	if (clicked_on_shelf(doom))
-		printf("Clicked on shelf\n");
+	uint8_t type;
+
+	if (MOUSE_PRESSED)
+	{
+		set_shelf_type(doom, &type);
+		add_item_to_basket(doom, &doom->groceries->basket, type);
+		print_basket(&doom->groceries->basket);
+	}
 	draw_basket_ui(doom, doom->groceries);
 	// draw_shopping_ui(doom);
 }
