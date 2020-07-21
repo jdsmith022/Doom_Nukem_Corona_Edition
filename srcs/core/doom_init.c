@@ -144,8 +144,8 @@ void 	doom_init(t_doom *doom)
 	doom->light = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 100;
-	doom->pos.y = 100;
+	doom->pos.x = 64;
+	doom->pos.y = 64;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
 	doom->player_height = 48;
