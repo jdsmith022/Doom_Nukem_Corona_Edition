@@ -199,7 +199,7 @@ typedef struct		s_font {
 	SDL_Rect		font_rect;
 }					t_font;
 
-typedef struct		s_lib{
+typedef struct		s_lib {
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
@@ -219,7 +219,7 @@ typedef struct		s_lib{
 	t_m_object		*mov_sprites;
 }					t_lib;
 
-typedef struct		s_gamedesign{
+typedef struct		s_gamedesign {
 	t_sector		*sector;
 	int				s_len;
 	int				s_size;
@@ -230,12 +230,11 @@ typedef struct		s_gamedesign{
 	int				cur_sd;
 	int				portal_sd;
 	int				portal_sec;
-	int 			pl_pos;
+	int				pl_pos;
 	int				pl_x;
 	int				pl_y;
 	int				pl_sec;
-}
-					t_gamedesign;
+}					t_gamedesign;
 
 typedef struct		s_doom {
 	int				is_running;
@@ -247,11 +246,8 @@ typedef struct		s_doom {
 	t_point			pos;
 	t_event			own_event;
 	int				light;
-	int				vertical_height_std;
-	int				horizontal_height_std;
 	double			player_std_height;
 	double			player_height;
-	Uint32			mid_screen;
 	int				texture_width;
 	int				texture_height;
 	int				i_sector;
@@ -260,6 +256,7 @@ typedef struct		s_doom {
 	double			dir_angle;
 	double			ray_adjacent;
 	double			distance;
+	double			horizontal_plane_dist;
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
@@ -326,24 +323,36 @@ void				bend_down(t_doom *doom);
 int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
-void    			set_texture_properties(t_doom *doom, t_sector sector,\
-						int texture, int d);
+void				set_texture_properties(t_doom *doom);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
+Uint8				find_slope_line_offset(t_point start, t_point end);
+void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+					t_point intersect, t_doom *doom);
+void				wall_offset(t_plane *plane, int sidedef_top);
+
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
-						t_plane plane);
-void		    	draw_ground(t_doom *doom, int x, int y);
-void		  		draw_sky(t_doom *doom, int x, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+
+void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
+						t_line *sky_sd);
+void				find_skybox_sidedef_texture(t_doom *doom, int x,\
+						t_plane plane);
+void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
+						t_plane plane);
+void				draw_ground(t_doom *doom, int x, int y);
+void				draw_sky(t_doom *doom, int x, int y);
+
+void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
+
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point				line_delta(t_point start, t_point end);
@@ -351,11 +360,11 @@ double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
 double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);
-void				wall_offset(t_plane *plane, int sidedef_top);
-void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
-void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
-Uint8				find_slope_line_offset(t_point start, t_point end);
+
 void				add_saturation(char *r, char *g, char *b, double light);
+void				light_floor_ceiling(t_doom *doom, t_sector sector,\
+						int x, int y);
+
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
@@ -363,7 +372,6 @@ void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 
 /*  DRAW   */
 
-void				put_pixel(SDL_Surface *texture, t_doom *doom, Uint32 index, Uint32 pixel_dex);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord);
 
@@ -390,8 +398,10 @@ void				sprite_init(t_doom *doom);
 void				sprite_check(t_doom *doom, t_ray ray, int x);
 void				sprite_render(t_doom *doom);
 int					*sort_sprite_array(t_sprite *sprite, int total);
-void				find_position(t_doom *doom, t_point *sprite_cord, int index);
-void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
+void				find_position(t_doom *doom, t_point *sprite_cord,\
+						int index);
+void				draw_stripes(t_doom *doom, t_point sprite_cord,\
+						int index_sp);
 void				sprite_reset(t_doom *doom);
 
 /*save font*/
@@ -399,12 +409,12 @@ void				save_font(t_doom *doom);
 void				draw_font(t_doom *doom);
 
 /*actions*/
-void    sliding_door(t_doom *doom, int sd_index);
-void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
-void    relocate_moving_wall(t_point *intersect, t_sidedef *near_sidedef, t_doom *doom, int x);
-void    relocate_poster(t_doom *doom, t_sidedef *poster);
-int		init_poster(int x, double distance, t_point intersect, t_sidedef *poster);
-
-
+void				sliding_door(t_doom *doom, int sd_index);
+void				create_mv_sidedef(t_sidedef **sidedef, int k, int len);
+void				relocate_moving_wall(t_point *intersect,\
+						t_sidedef *near_sidedef, t_doom *doom, int x);
+void				relocate_poster(t_doom *doom, t_sidedef *poster);
+int					init_poster(int x, double distance, t_point intersect,\
+						t_sidedef *poster);
 
 #endif

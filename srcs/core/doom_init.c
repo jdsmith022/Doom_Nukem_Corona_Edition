@@ -146,12 +146,11 @@ void 	doom_init(t_doom *doom)
 	doom->light = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 64;
-	doom->pos.y = 64;
-	doom->vertical_height_std  = 96;
+	doom->pos.x = 32;
+	doom->pos.y = 130;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
-	doom->player_height = 32;
+	doom->player_height = 48;
 	doom->visible_sprites = 0;
 	doom->player_std_height = 48;
 	doom->lib.sector[0].slope_id = 1;
