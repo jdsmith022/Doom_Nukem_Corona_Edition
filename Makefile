@@ -27,8 +27,8 @@ CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
-				skybox_top_bottom draw_skybox set_texture_properties\
-				render_sky_box set_offsets draw_poster action
+				draw_skybox_top_bottom draw_skybox set_texture_properties\
+				render_sky_box set_offsets draw_poster action light_floor_ceiling
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			save_font set_texture_type
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
@@ -71,7 +71,16 @@ O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/textures.h
 ADD_FILES = Makefile textures
 
+
 all: $(NAME)
+
+# install: 
+# 	"$(GREEN)[+]Installing brew..."
+# 	#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# 	brew install sdl2
+# 	brew install sdl2_ttf
+# 	brew install sdl2_mixer	
+
 	
 $(NAME): libft/libft.a bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
 	@gcc -o $@ $(O_FILES) $(LIBS) $(FLAGS) $(SDL_FLAGS)

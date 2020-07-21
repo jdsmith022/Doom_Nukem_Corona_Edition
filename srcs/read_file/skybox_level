@@ -2,19 +2,20 @@
 
 #texture library
 13
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
-textures/brown_wall.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+textures/walls/96x96-Shelf.bmp
+
 
 #object library
 0
