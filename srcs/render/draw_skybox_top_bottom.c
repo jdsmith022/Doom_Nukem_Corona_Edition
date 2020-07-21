@@ -30,8 +30,8 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	floor.y = dist * sin(doom->ray_angle) / 2;
 	floor.x += 32;
 	floor.y += 32;
-	texture.x = ((int)floor.x % doom->texture_width);
-	texture.y = ((int)floor.y % doom->texture_width);
+	texture.x = ((int)floor.x % doom->texture_width) * 2;
+	texture.y = ((int)floor.y % doom->texture_width) * 2;
 	pixel_dex = ((int)texture.y * doom->lib.sky_lib[tex_dex]->pitch)\
 		+ ((int)texture.x * bpp);
 	put_row(doom, tex_dex, index, pixel_dex);
