@@ -21,9 +21,9 @@ void		draw_font(t_doom *doom)
 	total_fonts = doom->lib.n_fonts;
 	while (index < total_fonts)
 	{
-		// SDL_BlitSurface(doom->lib.font_lib[index].font_surface, NULL,\
-			doom->surface, &doom->lib.font_lib[index].font_rect);
-		// SDL_Flip(doom->surface);
+		// // SDL_BlitSurface(doom->lib.font_lib[index].font_surface, NULL,\
+		// 	doom->surface, &doom->lib.font_lib[index].font_rect);
+		// // SDL_Flip(doom->surface);
 		index++;
 	}
 }
