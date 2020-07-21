@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/20 17:44:39 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/21 11:09:25 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ double	set_slope_height(t_doom *doom, t_sector sector, int y)
 	double 	slope_height;
 
 	floor_pos.x = slope.intersect.x;
-	floor_pos.y = y--;
+	floor_pos.y = y;
 	distance = fabs(point_line_distance(floor_pos, doom->lib.sidedef[sector.slope_id].line));
 	return ((tan(sector.slope_floor) * distance) + sector.height_floor);
 }
