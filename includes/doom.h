@@ -415,5 +415,7 @@ void				relocate_moving_wall(t_point *intersect,\
 void				relocate_poster(t_doom *doom, t_sidedef *poster);
 int					init_poster(int x, double distance, t_point intersect,\
 						t_sidedef *poster);
+Uint8				find_shelf(t_doom *doom, t_ray ray, int sector,
+						int prev_sector)
 
 #endif
