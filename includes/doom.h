@@ -306,24 +306,36 @@ void				bend_down(t_doom *doom);
 int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
-void    			set_texture_properties(t_doom *doom);
+void				set_texture_properties(t_doom *doom);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
+Uint8				find_slope_line_offset(t_point start, t_point end);
+void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+					t_point intersect, t_doom *doom);
+void				wall_offset(t_plane *plane, int sidedef_top);
+
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
-						t_plane plane);
-void		    	draw_ground(t_doom *doom, int x, int y);
-void		  		draw_sky(t_doom *doom, int x, int y);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+
+void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
+						t_line *sky_sd);
+void				find_skybox_sidedef_texture(t_doom *doom, int x,\
+						t_plane plane);
+void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
+						t_plane plane);
+void				draw_ground(t_doom *doom, int x, int y);
+void				draw_sky(t_doom *doom, int x, int y);
+
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
+
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point				line_delta(t_point start, t_point end);
@@ -331,16 +343,13 @@ double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
 double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);
-void				wall_offset(t_plane *plane, int sidedef_top);
-void				find_skybox_sidedef_texture(t_doom *doom, int x, t_plane plane);
-void				sidedef_render_skybox(t_doom *doom, t_ray ray, t_line *sky_sd);
-Uint8				find_slope_line_offset(t_point start, t_point end);
+
 void				add_saturation(char *r, char *g, char *b, double light);
+void				sector_light(t_doom *doom, t_sector sector,\
+						double dist, int x, int y);
+
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
-void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
-					t_point intersect, t_doom *doom);
-
 
 /*game editor*/
 
