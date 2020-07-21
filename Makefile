@@ -21,7 +21,7 @@ LIBFT = libft
 SDL = sdl
 BMP = bmp
 SDL_FLAGS = `sdl2-config --cflags --libs`
-LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lSDL2_ttf -lft
+LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lft
 
 CORE = srcs/core/
 EVENTS = srcs/events/
