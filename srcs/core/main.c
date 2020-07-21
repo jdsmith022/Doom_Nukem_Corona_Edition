@@ -1,9 +1,10 @@
 #include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 
 int	main(void)
 {
 	t_doom	doom;
-	
+
 	ft_bzero(&doom, sizeof(t_doom));
 	//load_maps();
 	//init_struct();

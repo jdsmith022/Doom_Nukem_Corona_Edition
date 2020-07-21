@@ -38,7 +38,7 @@ static void		draw_side_textures(t_doom *doom, t_plane plane, int offset,
 	put_sky(doom, tex_dex, index, pixel_dex);
 }
 
-static int		set_offset(t_line line, t_point intersect, t_doom *doom,
+static int		set_offset_skybox(t_line line, t_point intersect, t_doom *doom,
 					int *dir)
 {
 	t_point start;
@@ -70,7 +70,7 @@ void			find_skybox_sidedef_texture(t_doom *doom, int x,
 	int		offset;
 	int		dir;
 
-	offset = set_offset(plane.line, plane.intersect, doom, &dir);
+	offset = set_offset_skybox(plane.line, plane.intersect, doom, &dir);
 	plane.intersect.x = x;
 	plane.intersect.y = plane.sidedef_top;
 	while (plane.intersect.y < plane.sidedef_bottom)

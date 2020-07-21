@@ -51,13 +51,23 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	if (key->keysym.sym == SDLK_x)
 		event->bend = 1;
 	if (key->keysym.sym == SDLK_UP)
+	{
+		if (event->y_pitch < 200)
 		event->y_pitch += 10;
+	}
 	if (key->keysym.sym == SDLK_DOWN)
+	{
+		if (event->y_pitch > -250)
 		event->y_pitch -= 10;
+	}
 	if (key->keysym.sym == SDLK_m)
 		doom->game_editor = TRUE;
 	if (key->keysym.sym == SDLK_n)
 		doom->game_editor = FALSE;
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
+	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
+		doom->light = doom->light == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_o) //needs to become a click on button event
+		doom->lib.sector[doom->i_sector].light = doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 }

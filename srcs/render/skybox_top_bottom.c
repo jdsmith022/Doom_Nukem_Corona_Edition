@@ -51,7 +51,7 @@ void			draw_ground(t_doom *doom, int x, int y)
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_std_height / (y - height) * (doom->dist_to_plane);
+		dist = doom->player_std_height / ((y + doom->own_event.y_pitch) - height) * (doom->dist_to_plane);
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
 		y++;
@@ -72,7 +72,7 @@ void			draw_sky(t_doom *doom, int x, int y)
 	while (y > 0)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_std_height / (height - y) * doom->dist_to_plane;
+		dist = doom->player_std_height / (height - (y + doom->own_event.y_pitch)) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		row_calculations(doom, dist, index, tex_dex);
 		y--;

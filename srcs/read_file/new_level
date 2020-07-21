@@ -1,7 +1,7 @@
 #albert heijn
 
 #texture library
-9
+10
 textures/walls/96X96-Shelf.bmp
 textures/floors_ceiling/floor.bmp
 textures/floors_ceiling/ceiling96X96_clean.bmp
@@ -11,6 +11,7 @@ textures/walls/water.bmp
 textures/walls/wine.bmp
 textures/walls/soda.bmp
 textures/walls/sausage_bacon.bmp
+textures/poster.bmp
 
 #object library
 0
@@ -18,20 +19,20 @@ textures/walls/sausage_bacon.bmp
 #number of sectors
 3
 #number of walls
-13
+19
 #number of objects
 0
 
 
 #sector[0]
-10
+5
 0
 1
 0
 0
 2
 0
-4
+9
 0
 0
 
@@ -82,6 +83,66 @@ textures/walls/sausage_bacon.bmp
 0
 3
 3
+3
+3
+
+#poster1
+-1
+0
+199
+16
+199
+4
+3
+9
+3
+3
+
+#poster2
+-1
+18
+199
+32
+199
+4
+3
+9
+3
+3
+
+#poster3
+-1
+34
+199
+50
+199
+4
+3
+9
+3
+3
+
+#poster4
+-1
+52
+199
+68
+199
+4
+3
+9
+3
+3
+
+#poster5
+-1
+70
+199
+86
+199
+4
+3
+9
 3
 3
 
@@ -153,14 +214,14 @@ textures/walls/sausage_bacon.bmp
 0
 
 #sector[2]
-10
+15
 0
 1
 0
 0
 2
 0
-4
+5
 2
 0
 
@@ -211,6 +272,18 @@ textures/walls/sausage_bacon.bmp
 7
 7
 11
+
+#poster
+-1
+478
+1
+462
+1
+4
+7
+9
+7
+12
 
 #objs in sector
 0

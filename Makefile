@@ -6,7 +6,11 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
+<<<<<<< HEAD
 #    Updated: 2020/07/21 08:29:03 by jesmith       ########   odam.nl          #
+=======
+#    Updated: 2020/07/18 11:31:21 by nde-wild      ########   odam.nl          #
+>>>>>>> origin
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +33,7 @@ RENDER = srcs/render/
 READ = srcs/read_file/
 EDITOR = srcs/editor/
 AUDIO = srcs/audio/
+GAMEPLAY = srcs/gameplay/
 SPRITE = srcs/sprite/
 UI = srcs/ui/
 
@@ -38,7 +43,7 @@ EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
 				skybox_top_bottom draw_skybox set_texture_properties\
-				render_sky_box set_offsets
+				render_sky_box set_offsets draw_poster action
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			save_font
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
@@ -47,6 +52,7 @@ AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
 UI_FILES = draw_font
+GAMEPLAY_FILES = groceries basket node search
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
@@ -54,6 +60,7 @@ C_FILES_RENDER = $(RENDER_FILES:%=%.c)
 C_FILES_READ = $(READ_FILES:%=%.c)
 C_FILES_EDITOR = $(EDITOR_FILES:%=%.c)
 C_FILES_AUDIO = $(AUDIO_FILES:%=%.c)
+C_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=%.c)
 C_FILES_SPRITE = $(SPRITE_FILES:%=%.c)
 C_FILES_UI = $(UI_FILES:%=%.c)
 
@@ -65,14 +72,15 @@ O_FILES_EDITOR = $(EDITOR_FILES:%=$(EDITOR).objects/%.o)
 O_FILES_AUDIO = $(AUDIO_FILES:%=$(AUDIO).objects/%.o)
 O_FILES_SPRITE = $(SPRITE_FILES:%=$(SPRITE).objects/%.o)
 O_FILES_UI = $(UI_FILES:%=$(UI).objects/%.o)
+O_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=$(GAMEPLAY).objects/%.o)
 
 
-SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE) $(UI)
+SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE) $(UI) $(GAMEPLAY)
 O_FILES_DIRS = $(SRCS_DIRS:%=%.objects)
-O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
+O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY) \
 		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) $(O_FILES_SPRITE) $(O_FILES_UI)
 
-HEADERS = includes/doom.h includes/audio.h
+HEADERS = includes/doom.h includes/audio.h includes/gameplay.h
 ADD_FILES = Makefile textures
 
 
@@ -85,6 +93,7 @@ all: $(NAME)
 # 	brew install sdl2_ttf
 # 	brew install sdl2_mixer	
 
+	
 $(NAME): libft/libft.a bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
 	@gcc -o $@ $(O_FILES) $(LIBS) $(FLAGS) $(SDL_FLAGS)
 	@echo "$(GREEN)[√]$(WHITE) compiling done!"
@@ -118,6 +127,10 @@ $(SPRITE).objects/%.o: $(SPRITE)%.c $(HEADERS)
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
 $(UI).objects/%.o: $(UI)%.c $(HEADERS)
+	@$(CC) -o $@ -c $<
+	@echo "$(GREEN)[+]$(WHITE) $@"
+
+$(GAMEPLAY).objects/%.o: $(GAMEPLAY)%.c $(HEADERS)
 	@$(CC) -o $@ -c $<
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
