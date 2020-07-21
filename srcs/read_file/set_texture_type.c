@@ -1,17 +1,27 @@
 #include "../../includes/doom.h"
+#include "../../includes/textures.h"
 
-void	set_texture_type(const char *name, SDL_Surface *surface)
+static bool	is_of_type(const char *path_loaded, t_grocery_paths path)
 {
-	uint8_t i;
+	if (!ft_strcmp(path_loaded, path.path_shelf))
+		return true;
+	else if (!ft_strcmp(path_loaded, path.path_sprite))
+		return true;
+	else
+		return false;
+}
+
+void		set_texture_type(const char *name, SDL_Surface *surface)
+{
+	uint8_t	i;
 
 	i = 0;
-	surface->userdata = ft_memalloc(sizeof(uint8_t));
-	while (i < GROCERY_LENGTH)
+	surface->userdata = ft_memalloc(sizeof(uint8_t)); // NOTE: FREE
+	while (i < NUM_OF_GROCERIES)
 	{
-		if (!ft_strcmp(name, grocerie_paths[i].path_shelf) ||
-			!ft_strcmp(name, grocerie_paths[i].path_sprite))
+		if (is_of_type(name, GROCERIE_PATHS[i]))
 		{
-			memcpy(surface->userdata, &grocerie_paths[i].type, sizeof(uint8_t));
+			memcpy(surface->userdata, &GROCERIE_PATHS[i].type, sizeof(uint8_t));
 			break ;
 		}
 		i++;

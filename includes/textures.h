@@ -15,33 +15,37 @@
 # define SODA		10
 # define BACON		11
 
-#define TEX_BACON "textures/groceries/brinta.bmp"
-#define TEX_APPLE "textures/groceries/butter.bmp"
-#define TEX_WINE "textures/groceries/chocolate_milk.bmp"
-#define TEX_WATER "textures/groceries/kellogs.bmp"
-#define TEX_SODA "textures/groceries/mayonaisse.bmp"
+#define NUM_OF_GROCERIES 5
 
-#define WALL_BACON "textures/walls/sausage_bacon.bmp"
-#define WALL_APPLE "textures/walls/apple.bmp"
-#define WALL_WINE "textures/walls/wine.bmp"
-#define WALL_WATER "textures/walls/water.bmp"
-#define WALL_SODA "textures/walls/soda.bmp"
+#define SPR_BACON	"textures/groceries/brinta.bmp"
+#define SPR_APPLE	"textures/groceries/butter.bmp"
+#define SPR_WINE	"textures/groceries/chocolate_milk.bmp"
+#define SPR_WATER	"textures/groceries/kellogs.bmp"
+#define SPR_SODA	"textures/groceries/mayonaisse.bmp"
 
-#define GROCERY_LENGTH 5
-# define SHOPPING_LIST_LENGTH 1
+#define TEX_BACON	"textures/walls/sausage_bacon.bmp"
+#define TEX_APPLE	"textures/walls/apple.bmp"
+#define TEX_WINE	"textures/walls/wine.bmp"
+#define TEX_WATER	"textures/walls/water.bmp"
+#define TEX_SODA	"textures/walls/soda.bmp"
 
-typedef struct	s_grocery_paths {
-	const char	*path_shelf;
-	const char	*path_sprite;
-	uint8_t		type;
-}				t_grocery_paths;
+typedef struct s_doom	t_doom;
+typedef struct s_item	t_item;
 
-static const t_grocery_paths grocerie_paths[] = {
-	{TEX_WATER, WALL_WATER, WATER},
-	{TEX_APPLE, WALL_APPLE, APPLE},
-	{TEX_WINE, WALL_WINE, WINE},
-	{TEX_SODA, WALL_SODA, SODA},
-	{TEX_BACON, WALL_BACON, BACON}
+typedef struct			s_grocery_paths {
+	const char			*path_shelf;
+	const char			*path_sprite;
+	uint8_t				type;
+}						t_grocery_paths;
+
+static const t_grocery_paths GROCERIE_PATHS[] = {
+	{TEX_WATER, SPR_WATER, WATER},
+	{TEX_APPLE, SPR_APPLE, APPLE},
+	{TEX_WINE, SPR_WINE, WINE},
+	{TEX_SODA, SPR_SODA, SODA},
+	{TEX_BACON, SPR_BACON, BACON}
 };
+
+void				set_sprite(t_doom *doom, uint8_t type, t_item *item);
 
 #endif

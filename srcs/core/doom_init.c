@@ -1,4 +1,6 @@
 #include "../../includes/doom.h"
+#include "../../includes/audio.h"
+#include "../../includes/gameplay.h"
 
 // void	set_lines(t_sidedef *sidedef)
 // {
@@ -134,12 +136,11 @@ void 	doom_init(t_doom *doom)
 {
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
-	doom->audio.engine = OFF;
-	if (doom->audio.engine){
-		init_audio(&doom->audio);
-		load_audio(&doom->audio);
-	}
 	init_groceries(doom);
+	init_audio(doom);
+	doom->audio->engine = OFF;
+	if (doom->audio->engine)
+		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
 	doom->light = TRUE;

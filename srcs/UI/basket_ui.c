@@ -1,17 +1,26 @@
 #include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 
-// void		put_textures(int x, int y, int index, t_doom *doom)
-// void		draw_sprite(int x, int y, uint8_t index, t_doom *doom)
-
-void	draw_basket_ui(t_doom *doom, t_groceries groceries)
+void	set_position(t_coord *coord)
 {
-	// Loops through basket and draws sprites with amount underneath
-	t_list *temp;
-	t_item *item;
+	coord->x += 50;
+}
 
-	temp = groceries.basket;
-	item = (t_item *)temp->content;
-	draw_img(item->sprite, doom, 50, 50);
+void	draw_basket_ui(t_doom *doom, t_groceries *groceries)
+{
+	t_list	*temp;
+	t_item	*item;
+	t_coord	coord;
+
+	coord = (t_coord){.x = 50, .y = 50};
+	temp = groceries->basket;
+	while (temp)
+	{
+		item = (t_item *)temp->content;
+		draw_img(item->sprite, doom, coord);
+		set_position(&coord);
+		temp = temp->next;
+	}
 	return ;
 }
 

@@ -1,4 +1,5 @@
 # include "../../includes/doom.h"
+# include "../../includes/gameplay.h"
 
 bool	is_in_basket(t_item *item, uint8_t type)
 {

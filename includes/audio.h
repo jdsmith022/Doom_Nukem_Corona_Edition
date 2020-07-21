@@ -18,29 +18,33 @@
 #define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump15.wav"
 #define MU_1			"/music/main_theme.wav"
 
-typedef struct		s_audio_event {
-	bool			jump_toggled;
-}					t_audio_event;
+typedef struct s_event	t_event;
+typedef struct s_doom	t_doom;
 
-typedef struct		s_audio {
-	bool			engine;
-	char			*path;
-	int 			sample_rate;
-	int				channels;
-	uint16_t		format;
-	Mix_Chunk		*sounds[NUM_OF_SOUNDS];
-	Mix_Music		*music;
-	t_audio_event	*event;
-	uint8_t			sound_vol;
-	uint8_t			music_vol;
-}					t_audio;
+typedef struct			s_audio_event {
+	bool				jump_toggled;
+}						t_audio_event;
 
-void				exit_error(const char *message);
-void				init_audio();
-void				load_audio(t_audio *audio);
-void				play_music(Mix_Music *music);
-void				play_sound(Mix_Chunk *sample, int channel);
-void				loop_sound(Mix_Chunk *sample, int channel);
-void				pause_sound(Mix_Chunk *sample, int channel);
+typedef struct			s_audio {
+	bool				engine;
+	char				*path;
+	int 				sample_rate;
+	int					channels;
+	uint16_t			format;
+	Mix_Chunk			*sounds[NUM_OF_SOUNDS];
+	Mix_Music			*music;
+	t_audio_event		*event;
+	uint8_t				sound_vol;
+	uint8_t				music_vol;
+}						t_audio;
+
+void					audio(t_audio *audio, t_event *event);
+void					exit_error(const char *message);
+void					init_audio(t_doom *doom);
+void					load_audio(t_audio *audio);
+void					play_music(Mix_Music *music);
+void					play_sound(Mix_Chunk *sample, int channel);
+void					loop_sound(Mix_Chunk *sample, int channel);
+void					pause_sound(Mix_Chunk *sample, int channel);
 
 #endif

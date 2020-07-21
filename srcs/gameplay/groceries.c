@@ -1,4 +1,5 @@
 # include "../../includes/doom.h"
+# include "../../includes/gameplay.h"
 
 static uint8_t		*get_groceries()
 {
@@ -16,34 +17,6 @@ static uint8_t		*get_groceries()
 		i++;
 	}
 	return groceries;
-}
-
-t_item 		*get_shopping_list(uint8_t *groceries)
-{
-	t_item *shopping_list;
-	uint8_t i;
-
-	i = 0;
-	shopping_list = ft_memalloc(sizeof(t_item) * SHOPPING_LIST_LENGTH);
-	while (i < SHOPPING_LIST_LENGTH)
-	{
-		shopping_list[i].type = (rand() % GROCERY_LENGTH) + 1;
-		shopping_list[i].amount = (rand() % 5) + 1;
-		i++;
-	}
-	return shopping_list;
-}
-
-void	print_shopping_list(t_item *shopping_list)
-{
-	uint8_t i;
-
-	i = 0;
-	while (i < SHOPPING_LIST_LENGTH){
-		printf("type: %d  amount: %d  ", shopping_list[i].type, shopping_list[i].amount);
-		i++;
-	}
-	printf("\n");
 }
 
 bool	checkout_basket(t_groceries groceries)
@@ -64,12 +37,13 @@ bool	checkout_basket(t_groceries groceries)
 
 void	init_groceries(t_doom *doom)
 {
-	doom->groceries.shopping_list = get_shopping_list(get_groceries());
-	doom->groceries.shopping_list_len = SHOPPING_LIST_LENGTH;
-	doom->groceries.basket = NULL;
-	add_item_to_basket(doom, &doom->groceries.basket, 9);
-	add_item_to_basket(doom, &doom->groceries.basket, 10);
-	add_item_to_basket(doom, &doom->groceries.basket, 11);
+	doom->groceries = (t_groceries *)ft_memalloc(sizeof(t_groceries)); // NOTE: FREE
+	doom->groceries->shopping_list = get_shopping_list(get_groceries());
+	doom->groceries->shopping_list_len = SHOPPING_LIST_LENGTH;
+	doom->groceries->basket = NULL;
+	add_item_to_basket(doom, &doom->groceries->basket, 9);
+	add_item_to_basket(doom, &doom->groceries->basket, 10);
+	add_item_to_basket(doom, &doom->groceries->basket, 11);
 }
 
 void	groceries(t_doom *doom)

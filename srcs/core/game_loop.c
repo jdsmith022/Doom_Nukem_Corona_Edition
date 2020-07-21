@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
+#include "../../includes/gameplay.h"
 
 #include <stdio.h>
 

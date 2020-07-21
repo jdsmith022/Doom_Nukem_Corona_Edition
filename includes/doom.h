@@ -11,9 +11,6 @@
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
-# include "audio.h"
-# include "textures.h"
-# include "gameplay.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -43,6 +40,9 @@
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
+typedef struct s_audio		t_audio;
+typedef struct s_groceries	t_groceries;
+
 #pragma pack(push, 1)
 
 typedef struct 		t_rgb {
@@ -52,6 +52,11 @@ typedef struct 		t_rgb {
 }					t_rgb;
 
 #pragma pack(pop)
+
+typedef struct		s_coord {
+	uint16_t		x;
+	uint16_t		y;
+}					t_coord;
 
 typedef struct		s_hsv{
 	double			r;
@@ -259,8 +264,8 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	t_gamedesign	game_design;
-	t_audio			audio;
-	t_groceries		groceries;
+	t_audio			*audio;
+	t_groceries		*groceries;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -360,51 +365,25 @@ void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 
 void				put_pixel(SDL_Surface *texture, t_doom *doom, Uint32 index, Uint32 pixel_dex);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
-
-
+void				draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord);
 
 /*game editor*/
 
-void    open_game_editor(t_doom *doom);
-void	add_sidedef(t_doom *doom, int x, int y);
-void	del_sidedef(t_doom *doom);
-void	add_sector(t_doom *doom);
-void	del_sector(t_doom *doom);
-void    draw_bar(Uint32 **pixels, t_bar bar);
-void    draw_bar_point(Uint32 **pixels, t_bar bar);
-void	add_portal(t_doom *doom, int dir);
-void    add_to_game(t_doom *doom);
-void	mouse_press_game_editor(t_doom *doom, int x, int y);
-
-
-/* AUDIO */
-
-void	audio(t_audio audio, t_event *event);
-
+void    			open_game_editor(t_doom *doom);
+void				add_sidedef(t_doom *doom, int x, int y);
+void				del_sidedef(t_doom *doom);
+void				add_sector(t_doom *doom);
+void				del_sector(t_doom *doom);
+void    			draw_bar(Uint32 **pixels, t_bar bar);
+void    			draw_bar_point(Uint32 **pixels, t_bar bar);
+void				add_portal(t_doom *doom, int dir);
+void    			add_to_game(t_doom *doom);
+void				mouse_press_game_editor(t_doom *doom, int x, int y);
 
 void    bars(Uint32 **pixels, t_doom *doom);
 void    draw_images(Uint32 *pixels, t_doom *doom);
 void    draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void	box_in_sectors(t_doom *doom);
-
-/* DRAW */
-
-void	draw_img(SDL_Surface *texture, t_doom *doom, int x, int y);
-
-/* GAMEPLAY */
-
-void	init_groceries(t_doom *doom);
-void	groceries(t_doom *doom);
-void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type);
-bool	remove_item_from_basket(t_list **head, uint8_t item);
-bool	search_basket(t_item *item, t_list **head);
-uint8_t get_basket_len(t_list **head);
-bool	is_in_basket(t_item *item, uint8_t type);
-bool	change_amount(t_item *item, int8_t amount);
-void	draw_basket_ui(t_doom *doom, t_groceries groceries);
-void	draw_shopping_ui(t_doom *doom);
-void	del_node(t_list **head, t_list *node);
-void	print_basket(t_list **basket);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);

@@ -1,4 +1,6 @@
 # include "../../includes/doom.h"
+# include "../../includes/gameplay.h"
+# include "../../includes/textures.h"
 
 uint8_t get_basket_len(t_list **head)
 {
