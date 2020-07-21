@@ -44,10 +44,25 @@ void	init_groceries(t_doom *doom)
 	add_item_to_basket(doom, &doom->groceries->basket, 9);
 	add_item_to_basket(doom, &doom->groceries->basket, 10);
 	add_item_to_basket(doom, &doom->groceries->basket, 11);
+	add_item_to_basket(doom, &doom->groceries->basket, 8);
+}
+
+bool	clicked_on_shelf(t_doom *doom)
+{
+	uint16_t i;
+
+	i = 0;
+	if (!MOUSE_PRESSED)
+		return false;
+	while (i < doom->game_design.s_len)
+		i++;
+	return true;
 }
 
 void	groceries(t_doom *doom)
 {
+	if (clicked_on_shelf(doom))
+		printf("Clicked on shelf\n");
 	draw_basket_ui(doom, doom->groceries);
 	// draw_shopping_ui(doom);
 }

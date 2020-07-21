@@ -9,6 +9,17 @@ double			clamp_angle(double angle)
 	return (angle);
 }
 
+void	send_ray(t_doom *doom, int x, int y)
+{
+	t_ray	ray;
+
+	if (x > WIDTH || x < 0)
+		return ;
+	ray.angle = doom->dir_angle - (FOV / 2);
+	ray.line.start = doom->pos;
+	ray.filter = 0;
+}
+
 void	doom_render(t_doom *doom)
 {
 	int		x;

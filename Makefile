@@ -71,7 +71,6 @@ O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/textures.h
 ADD_FILES = Makefile textures
 
-
 all: $(NAME)
 
 # install: 

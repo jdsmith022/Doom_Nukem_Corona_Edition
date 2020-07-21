@@ -8,6 +8,10 @@
 #define GROCERY_LENGTH 5
 #define SHOPPING_LIST_LENGTH 1
 
+#define MOUSE_Y			doom->own_event.hold_y
+#define MOUSE_X			doom->own_event.hold_x
+#define MOUSE_PRESSED 	doom->own_event.mouse_press
+
 typedef struct s_doom	t_doom;
 
 typedef struct			s_item {

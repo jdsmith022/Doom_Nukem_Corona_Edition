@@ -369,9 +369,6 @@ void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);
-
-/*  DRAW   */
-
 void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord);
 
