@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/14 12:42:28 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/21 13:15:09 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,15 @@ t_line		*init_sky_sd()
 	return (sky_sd);
 }
 
-SDL_Surface			**save_sky(t_line **sky_sd)
+SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd)
 {
 	SDL_Surface	**lib;
 	t_bmp		*images;
 	int			sky_fd;
 
-	images = malloc_images_lib(6);
-	lib = malloc_sdl_lib(images, 6);
+	images = malloc_images_lib(doom, 6);
+	lib = malloc_sdl_lib(doom, images, 6);
+	doom->lib.len_sky_lib = 6;
 	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
 	images[0] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 0);
@@ -79,7 +80,7 @@ SDL_Surface			**save_sky(t_line **sky_sd)
 	return (lib);
 }
 
-static SDL_Surface	**read_from_line(char *line,
+static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 						int map_fd, int len)
 {
 	SDL_Surface **lib;
@@ -87,8 +88,8 @@ static SDL_Surface	**read_from_line(char *line,
 	int			fd;
 	int			index;
 
-	images = malloc_images_lib(len);
-	lib = malloc_sdl_lib(images, len);
+	images = malloc_images_lib(doom, len);
+	lib = malloc_sdl_lib(doom, images, len);
 	index = 0;
 	while (index < len)
 	{
@@ -107,12 +108,12 @@ static SDL_Surface	**read_from_line(char *line,
 	return (lib);
 }
 
-SDL_Surface			**save_img(int map_fd, int *len)
+SDL_Surface			**save_img(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
 
 	get_line(&line, map_fd,\
 		"the amount of textures is not specified or can not be read", 1);
 	*len = ft_atoi(line);
-	return (read_from_line(line, map_fd, *len));
+	return (read_from_line(doom, line, map_fd, *len));
 }
