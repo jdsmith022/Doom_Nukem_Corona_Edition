@@ -339,8 +339,6 @@ void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-<<<<<<< HEAD
-=======
 
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
@@ -352,7 +350,6 @@ void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
 void				put_pixel(t_doom *doom, int x, int y, int color);
->>>>>>> bc621792f39ca1130a3def24baf342b2a6846bda
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
 
@@ -370,34 +367,13 @@ void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
-<<<<<<< HEAD
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);
 
 /*  DRAW   */
 
-void				put_pixel(SDL_Surface *texture, t_doom *doom, Uint32 index, Uint32 pixel_dex);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord);
-
-/*game editor*/
-
-void    			open_game_editor(t_doom *doom);
-void				add_sidedef(t_doom *doom, int x, int y);
-void				del_sidedef(t_doom *doom);
-void				add_sector(t_doom *doom);
-void				del_sector(t_doom *doom);
-void    			draw_bar(Uint32 **pixels, t_bar bar);
-void    			draw_bar_point(Uint32 **pixels, t_bar bar);
-void				add_portal(t_doom *doom, int dir);
-void    			add_to_game(t_doom *doom);
-void				mouse_press_game_editor(t_doom *doom, int x, int y);
-
-void    bars(Uint32 **pixels, t_doom *doom);
-void    draw_images(Uint32 *pixels, t_doom *doom);
-void    draw_screen_colors(Uint32 *pixels, t_doom *doom);
-void	box_in_sectors(t_doom *doom);
-=======
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
@@ -411,14 +387,10 @@ void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
 
-/* AUDIO */
-
-void				audio(t_audio audio, t_event *event);
 void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
->>>>>>> bc621792f39ca1130a3def24baf342b2a6846bda
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
