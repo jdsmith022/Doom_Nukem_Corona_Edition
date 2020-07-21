@@ -82,6 +82,7 @@ void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
 	doom->game_design.sidedef[doom->game_design.w_len].txt_1 = 0;
 	doom->game_design.sidedef[doom->game_design.w_len].txt_2 = 0;
 	doom->game_design.sidedef[doom->game_design.w_len].txt_3 = 0;
+	doom->game_design.sidedef[doom->game_design.w_len].action = 0;
 	if (doom->game_design.cur_sec != doom->game_design.s_len)
 		mv_sidedef(&doom->game_design.sidedef, doom->game_design.w_len, \
 		doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs);

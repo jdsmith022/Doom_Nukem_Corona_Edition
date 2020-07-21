@@ -5,15 +5,21 @@ void    int_check(char *line, char *er, int line_num)
 {
     int i;
     int check;
-
+    
+    // printf("double check: %s\n", line);
     i = 0;
     while(i < (int)ft_strlen(line))
     {
+        // printf("triple check: %i\n", (int)ft_strlen(line));
         check = ft_isdigit(line[i]);
         if (check == 0)
         {
+            // printf("quadriple check: %s\n", line);
             if (line[i] != '-')
+            {
+                // printf("final check: %s\n", line);
                 error(er, line_num);
+            }
         }
         i++;
     }
@@ -30,6 +36,11 @@ int     line_num(int i)
         line_num++;
         return (0);
     }
+    if (i == -1)
+    {
+        line_num--;
+        return (0);
+    }
     return (line_num);
 }
 
@@ -38,10 +49,10 @@ int     get_line(char **line, int fd, char *er, int is_int)
     int ret;
 
     line_num(1);
-    ret = get_next_line(fd, line);
+    ret = get_next_line2(fd, line);
     if (ret != 1)
             error(er, line_num(0));
-    while(*line[0] == '\0' || *line[0] == '#')
+    while (*line[0] == '\0' || *line[0] == '#')
     {
         if (ret != 1)
             error(er, line_num(0));
@@ -49,7 +60,7 @@ int     get_line(char **line, int fd, char *er, int is_int)
         {
             free(*line);
             line_num(1);
-            ret = get_next_line(fd, line);
+            ret = get_next_line2(fd, line);
         }
     }
     if (is_int == 1)
