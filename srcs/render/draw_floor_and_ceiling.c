@@ -64,7 +64,6 @@ void			draw_ceiling(t_doom *doom, int x,
 
 	tex_dex = sector.txt_ceiling;
 	bpp = doom->surface->format->BytesPerPixel;
-	doom->mid_screen = (HEIGHT + doom->player_height) / 2;
 	limit = 0;
 	if (doom->lib.sector[doom->prev_sector].outside)
 		limit = doom->lib.portal_ceiling;
@@ -72,10 +71,12 @@ void			draw_ceiling(t_doom *doom, int x,
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_ceiling)\
-			/ (doom->mid_screen - (y + doom->own_event.y_pitch));
+			/ ((HEIGHT + doom->player_height) / 2\
+			- (y + doom->own_event.y_pitch));
 		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
-		sector_light(doom, sector, dist, x, y);
+		doom->horizontal_plane_dist = dist;
+		light_floor_ceiling(doom, sector, x, y);
 		row_calculations(doom, dist, index, tex_dex);
 		y--;
 	}
@@ -91,7 +92,6 @@ void			draw_floor(t_doom *doom, int x,
 	int		limit;
 
 	tex_dex = sector.txt_floor;
-	doom->mid_screen = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
 	limit = HEIGHT;
 	if (doom->lib.sector[doom->prev_sector].outside)
@@ -100,10 +100,12 @@ void			draw_floor(t_doom *doom, int x,
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
-			/ ((y + doom->own_event.y_pitch) - doom->mid_screen);
+			/ ((y + doom->own_event.y_pitch) -\
+			(HEIGHT + doom->player_height) / 2);
 		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
-		sector_light(doom, sector, dist, x, y);
+		doom->horizontal_plane_dist = dist;
+		light_floor_ceiling(doom, sector, x, y);
 		row_calculations(doom, dist, index, tex_dex);
 		y++;
 	}

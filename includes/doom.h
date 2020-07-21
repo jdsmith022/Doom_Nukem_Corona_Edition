@@ -42,7 +42,6 @@
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
-
 typedef struct		s_hsv{
 	double			r;
 	double			g;
@@ -233,7 +232,6 @@ typedef struct		s_doom {
 	int				light;
 	double			player_std_height;
 	double			player_height;
-	Uint32			mid_screen;
 	int				texture_width;
 	int				texture_height;
 	int				i_sector;
@@ -242,6 +240,7 @@ typedef struct		s_doom {
 	double			dir_angle;
 	double			ray_adjacent;
 	double			distance;
+	double			horizontal_plane_dist;
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
@@ -345,42 +344,41 @@ double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);
 
 void				add_saturation(char *r, char *g, char *b, double light);
-void				sector_light(t_doom *doom, t_sector sector,\
-						double dist, int x, int y);
+void				light_floor_ceiling(t_doom *doom, t_sector sector,\
+						int x, int y);
 
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
 
 /*game editor*/
-
-void    open_game_editor(t_doom *doom);
-void	add_sidedef(t_doom *doom, int x, int y);
-void	del_sidedef(t_doom *doom);
-void	add_sector(t_doom *doom);
-void	del_sector(t_doom *doom);
-void    draw_bar(Uint32 **pixels, t_bar bar);
-void    draw_bar_point(Uint32 **pixels, t_bar bar);
-void	add_portal(t_doom *doom, int dir);
-void    add_to_game(t_doom *doom);
-void	mouse_press_game_editor(t_doom *doom, int x, int y);
-
+void				open_game_editor(t_doom *doom);
+void				add_sidedef(t_doom *doom, int x, int y);
+void				del_sidedef(t_doom *doom);
+void				add_sector(t_doom *doom);
+void				del_sector(t_doom *doom);
+void				draw_bar(Uint32 **pixels, t_bar bar);
+void				draw_bar_point(Uint32 **pixels, t_bar bar);
+void				add_portal(t_doom *doom, int dir);
+void				add_to_game(t_doom *doom);
+void				mouse_press_game_editor(t_doom *doom, int x, int y);
 
 /* AUDIO */
 
-void	audio(t_audio audio, t_event *event);
-
-void    bars(Uint32 **pixels, t_doom *doom);
-void    draw_images(Uint32 *pixels, t_doom *doom);
-void    draw_screen_colors(Uint32 *pixels, t_doom *doom);
-void	box_in_sectors(t_doom *doom);
+void				audio(t_audio audio, t_event *event);
+void				bars(Uint32 **pixels, t_doom *doom);
+void				draw_images(Uint32 *pixels, t_doom *doom);
+void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
+void				box_in_sectors(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
 void				sprite_check(t_doom *doom, t_ray ray, int x);
 void				sprite_render(t_doom *doom);
 int					*sort_sprite_array(t_sprite *sprite, int total);
-void				find_position(t_doom *doom, t_point *sprite_cord, int index);
-void				draw_stripes(t_doom *doom, t_point sprite_cord, int index_sp);
+void				find_position(t_doom *doom, t_point *sprite_cord,\
+						int index);
+void				draw_stripes(t_doom *doom, t_point sprite_cord,\
+						int index_sp);
 void				sprite_reset(t_doom *doom);
 
 /*save font*/
@@ -388,12 +386,12 @@ void				save_font(t_doom *doom);
 void				draw_font(t_doom *doom);
 
 /*actions*/
-void    sliding_door(t_doom *doom, int sd_index);
-void    create_mv_sidedef(t_sidedef **sidedef, int k, int len);
-void    relocate_moving_wall(t_point *intersect, t_sidedef *near_sidedef, t_doom *doom, int x);
-void    relocate_poster(t_doom *doom, t_sidedef *poster);
-int		init_poster(int x, double distance, t_point intersect, t_sidedef *poster);
-
-
+void				sliding_door(t_doom *doom, int sd_index);
+void				create_mv_sidedef(t_sidedef **sidedef, int k, int len);
+void				relocate_moving_wall(t_point *intersect,\
+						t_sidedef *near_sidedef, t_doom *doom, int x);
+void				relocate_poster(t_doom *doom, t_sidedef *poster);
+int					init_poster(int x, double distance, t_point intersect,\
+						t_sidedef *poster);
 
 #endif

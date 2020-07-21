@@ -53,12 +53,12 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	if (key->keysym.sym == SDLK_UP)
 	{
 		if (event->y_pitch < 200)
-		event->y_pitch += 10;
+			event->y_pitch += 10;
 	}
 	if (key->keysym.sym == SDLK_DOWN)
 	{
 		if (event->y_pitch > -250)
-		event->y_pitch -= 10;
+			event->y_pitch -= 10;
 	}
 	if (key->keysym.sym == SDLK_m)
 		doom->game_editor = TRUE;
