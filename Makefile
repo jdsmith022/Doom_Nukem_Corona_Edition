@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/14 12:44:13 by JessicaSmit   ########   odam.nl          #
+#    Updated: 2020/07/21 08:29:03 by jesmith       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,15 @@ O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
 HEADERS = includes/doom.h includes/audio.h
 ADD_FILES = Makefile textures
 
+
 all: $(NAME)
+
+# install: 
+# 	"$(GREEN)[+]Installing brew..."
+# 	#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# 	brew install sdl2
+# 	brew install sdl2_ttf
+# 	brew install sdl2_mixer	
 
 $(NAME): libft/libft.a bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
 	@gcc -o $@ $(O_FILES) $(LIBS) $(FLAGS) $(SDL_FLAGS)
