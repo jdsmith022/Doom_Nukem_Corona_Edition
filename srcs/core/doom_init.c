@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:45:11 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/21 11:03:06 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/21 15:42:50 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void 	doom_init(t_doom *doom)
 	doom->lib.sector[2].slope_id = 8;
 	doom->lib.sector[3].slope_id = -1;
 	doom->lib.sector[4].slope_id = -1;
-	doom->lib.sector[2].slope_floor = 4 * (PI / 180);
+	doom->lib.sector[2].slope_floor = 3 * (PI / 180);
 	//doom->lib.sector[0].slope_floor = 1.9 * (PI / 180);
 	doom->lib.sector[0].slope_floor = 0;
 	doom->lib.sector[1].slope_floor = 0;

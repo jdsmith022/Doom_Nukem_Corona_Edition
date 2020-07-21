@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/20 16:52:44 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/21 15:49:37 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ typedef	struct		s_slope{
 	int				opp_side;
 	t_point			conn_point;
 	double			height_floor;
+	double			delta_y;
+	int				start_y;
 }					t_slope;
 
 typedef struct		s_plane
