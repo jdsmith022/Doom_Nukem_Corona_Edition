@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 
-void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
-					t_point intersect, t_doom *doom)
+void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+						t_point intersect, t_doom *doom)
 {
 	t_point start;
 	t_point end;
@@ -12,23 +12,22 @@ void		set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	diff = find_slope_line_offset(start, end);
 	if (start.x == end.x || diff == 1)
 	{
-		sidedef->offset = ft_rounder(intersect.y) % 96;
+		sidedef->offset = ft_rounder(intersect.y) % doom->texture_width;
 		sidedef->dir = 0;
 	}
 	else if (start.y == end.y || diff == 2)
 	{
-		sidedef->offset = ft_rounder(intersect.x) %  96;
+		sidedef->offset = ft_rounder(intersect.x) % doom->texture_width;
 		sidedef->dir = 1;
 	}
 }
 
-static t_sidedef set_properties_sidedef(t_point intersect, double distance,
+static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef	sidedef;
 
-	set_texture_properties(doom, doom->lib.sector[curr_sidedef.sector],\
-		curr_sidedef.txt_1, 0);
+	set_texture_properties(doom);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
 	sidedef.sector = curr_sidedef.sector;
@@ -42,8 +41,8 @@ static t_sidedef set_properties_sidedef(t_point intersect, double distance,
 	return (sidedef);
 }
 
-double			sidedef_intersection_distance(t_ray ray,
-					t_line line, t_point *intersect)
+double				sidedef_intersection_distance(t_ray ray,
+						t_line line, t_point *intersect)
 {
 	double		distance;
 	t_point		ray_delta;
@@ -57,8 +56,8 @@ double			sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-static int		find_intersect(t_doom *doom, t_ray ray, int sector,
-					int prev_sector)
+static int			find_intersect(t_doom *doom, t_ray ray, int sector,
+						int prev_sector)
 {
 	t_point		intersect;
 	t_sidedef	near_sidedef;
@@ -133,11 +132,10 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	if (min_distance != INFINITY)
 	{
-
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		doom->distance = min_distance;
-		if(near_sidedef.poster != -1)
+		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}

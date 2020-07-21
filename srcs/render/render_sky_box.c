@@ -11,7 +11,7 @@ static void			set_properties_plane_sky(t_doom *doom,
 
 	distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	new_height = (HEIGHT + doom->player_height) / 2;
-	plane->height_standard = doom->vertical_height_std /\
+	plane->height_standard = doom->texture_height /\
 		distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
 	sidedef_top = (new_height - div_height_std)\
@@ -20,7 +20,7 @@ static void			set_properties_plane_sky(t_doom *doom,
 	sidedef_bottom = (new_height + div_height_std)\
 		- doom->own_event.y_pitch;
 	plane->sidedef_bottom = \
-		((sidedef_bottom < 325 ? sidedef_bottom : (325)));
+		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 }
 
 static void			set_properties(t_doom *doom, int set)
@@ -30,15 +30,13 @@ static void			set_properties(t_doom *doom, int set)
 	if (set == 0)
 	{
 		doom->texture_width = 130;
-		doom->texture_height = 130;
-		doom->vertical_height_std = 130;
-		doom->player_std_height = 65;
+		doom->texture_height = 64;
+		doom->player_std_height = 32;
 	}
 	else
 	{
 		doom->texture_width = 96;
 		doom->texture_height = 96;
-		doom->vertical_height_std = 96;
 		doom->player_std_height = 48;
 	}
 }
@@ -93,7 +91,7 @@ void			sidedef_render_skybox(t_doom *doom, t_ray ray,
 	// 	plane.sidedef_bottom = plane.floor_start;
 	// 	plane.sidedef_top = plane.ceiling_start;
 	// }
-	draw_sky(doom, ray.plane_x, (plane.sidedef_top));
+	draw_sky(doom, ray.plane_x, plane.sidedef_top);
 	find_skybox_sidedef_texture(doom, ray.plane_x, plane);
 	draw_ground(doom, ray.plane_x, plane.sidedef_bottom);
 	set_properties(doom, 1);

@@ -6,11 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-<<<<<<< HEAD
-#    Updated: 2020/07/21 08:29:03 by jesmith       ########   odam.nl          #
-=======
-#    Updated: 2020/07/18 11:31:21 by nde-wild      ########   odam.nl          #
->>>>>>> origin
+#    Updated: 2020/07/21 08:30:20 by jesmith       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 

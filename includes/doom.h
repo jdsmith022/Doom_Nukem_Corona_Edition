@@ -184,7 +184,7 @@ typedef struct		s_font {
 	SDL_Rect		font_rect;
 }					t_font;
 
-typedef struct		s_lib{
+typedef struct		s_lib {
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
 	SDL_Surface		**obj_lib;
@@ -204,7 +204,7 @@ typedef struct		s_lib{
 	t_m_object		*mov_sprites;
 }					t_lib;
 
-typedef struct		s_gamedesign{
+typedef struct		s_gamedesign {
 	t_sector		*sector;
 	int				s_len;
 	int				s_size;
@@ -215,12 +215,11 @@ typedef struct		s_gamedesign{
 	int				cur_sd;
 	int				portal_sd;
 	int				portal_sec;
-	int 			pl_pos;
+	int				pl_pos;
 	int				pl_x;
 	int				pl_y;
 	int				pl_sec;
-}
-					t_gamedesign;
+}					t_gamedesign;
 
 typedef struct		s_doom {
 	int				is_running;
@@ -232,8 +231,6 @@ typedef struct		s_doom {
 	t_point			pos;
 	t_event			own_event;
 	int				light;
-	int				vertical_height_std;
-	int				horizontal_height_std;
 	double			player_std_height;
 	double			player_height;
 	Uint32			mid_screen;
@@ -309,8 +306,7 @@ void				bend_down(t_doom *doom);
 int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
-void    			set_texture_properties(t_doom *doom, t_sector sector,\
-						int texture, int d);
+void    			set_texture_properties(t_doom *doom);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
