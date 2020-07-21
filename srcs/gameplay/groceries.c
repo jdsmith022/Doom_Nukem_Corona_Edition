@@ -1,5 +1,6 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
+#include <stdio.h>
 
 static uint8_t		*get_groceries()
 {
@@ -50,10 +51,17 @@ void	init_groceries(t_doom *doom)
 bool	clicked_on_shelf(t_doom *doom)
 {
 	uint16_t i;
+	Uint8	action_flag;
+	static int x;
 
+	if (!x)
+		x = 0;
+	x++;
 	i = 0;
 	if (!MOUSE_PRESSED)
 		return false;
+	action_flag = find_shelf(doom, init_ray(doom, MOUSE_X), doom->i_sector, doom->i_sector);
+	printf("%i action: %i\n", x, action_flag);
 	while (i < doom->game_design.s_len)
 		i++;
 	return true;

@@ -5,18 +5,19 @@ t_ray init_ray(t_doom *doom, int x)
 {
 	t_ray	ray;
 
-	ray.ange = clamp_angle(doom->dir_angle - (FOV / 2) +  doom->ray_adjacent * x));
+	ray.angle = clamp_angle(doom->dir_angle - (FOV / 2) +  doom->ray_adjacent * x);
 	ray.line.start = doom->pos;
 	ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 	ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 	ray.plane_x = x;
+	return (ray);
 }
 
-Uint8		find_shelf(t_doom *doom, t_ray ray, int sector,
+int		find_shelf(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
 	t_point		intersect;
-	Uint8		txt_action;
+	int			safe_x;
 	double		distance;
 	double		min_distance;
 	int			x;
@@ -32,15 +33,15 @@ Uint8		find_shelf(t_doom *doom, t_ray ray, int sector,
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
 				min_distance = distance;
-				txt_action = (Uint8)doom->lib.sidedef[x].txt_2->userdata;
+				safe_x = x;
 		}
 		x++;
 	}
 	if (min_distance != INFINITY)
 	{
-		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
-			txt_action = sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		return (txt_action)
+		if (doom->lib.sidedef[safe_x].opp_sector != -1 && doom->lib.sidedef[safe_x].opp_sector != prev_sector)
+			return (find_shelf(doom, ray, doom->lib.sidedef[safe_x].opp_sector, sector));
+		return (doom->lib.tex_lib[doom->lib.sidedef[safe_x].txt_2]->userdata);
 	}
 	return (0);
 }
