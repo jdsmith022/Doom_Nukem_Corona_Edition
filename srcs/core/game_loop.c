@@ -43,7 +43,10 @@ void	game_loop(t_doom *doom)
 			// draw_font(doom); // will need to be own file with checks
 		}
 		else
+		{
 			open_game_editor(doom);
+			// draw_font(doom);
+		}
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
