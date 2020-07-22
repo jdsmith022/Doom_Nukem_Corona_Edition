@@ -142,6 +142,7 @@ void 	doom_init(t_doom *doom)
 	// set_lines(doom->sidedef);
 	doom->is_running = TRUE;
 	doom->light = TRUE;
+	doom->hud = TRUE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 32;

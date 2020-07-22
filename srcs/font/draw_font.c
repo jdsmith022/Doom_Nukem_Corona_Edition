@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 22:25:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 23:23:43 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void		font_to_screen(t_doom *doom)
 	// 	font_lib = doom->lib.font_lib->shopping_list;
 	// else if (doom->basket == TRUE)
 	// 	font_lib = doom->lib.font_lib->basket;
-	// else if (doom->hud == TRUE)
-	// 	font_lib = doom->lib.font_lib->hud;
+	else if (doom->hud == TRUE)
+	{
+		font_lib = doom->lib.hud_font;
+		len = doom->lib.hud_font_len;
+		draw_font(doom, font_lib, len);
+	}
 }
