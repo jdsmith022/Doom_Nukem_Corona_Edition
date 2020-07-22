@@ -6,7 +6,7 @@
 /*   By: Malou <Malou@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/01 13:18:17 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/20 14:47:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/22 14:44:56 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ typedef struct			s_sprite {
 	int					index;			//start index
 	int					amount;			//which side is viewed
 	t_point				pos;
-	double				size;
+	double				size;			//small: 8, medium: 12, large: 18
 	t_line				*lines;
 	double				angle;			//what is the angle on the map
 	int					action;
-	int					*textures;
+	int					*textures;		//index to texture, +0, +1, +2 or +3
 	int					*face_ang;
 	int					block;			//can the player walk through it or not
 	int					sector;

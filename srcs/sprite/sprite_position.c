@@ -6,11 +6,13 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 11:29:08 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/19 13:50:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/22 10:36:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+
+//NOT IN USE ANYMORE
 
 // int		find_x(t_doom *doom, int index)
 // {
@@ -31,48 +33,48 @@
 // 	return (middle); //for now
 // }
 
-void	find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index)
-{
-	// double	middle;
-	// double	middle_divisor;
-	int			x;
+// void	find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index)
+// {
+// 	// double	middle;
+// 	// double	middle_divisor;
+// 	int			x;
 
-	x = doom->lib.sprites[index].sprite_x;
-	sprite_end->y = doom->sidedef_bottom[x] + \
-	((doom->lib.sprites[index].distance / doom->stripe_distance[x]) *\
-	(HEIGHT - doom->sidedef_bottom[x]));
-	printf("sidedef_bottom[%d]: %d\n", x, doom->sidedef_bottom[x]);
-	printf("sidedef_top[%d]: %d\n", x, doom->sidedef_top[x]);
-	sprite_begin->y = sprite_end->y - doom->lib.sprites[index].height;
-	//check height in sprite index
-	// middle = (HEIGHT + doom->player_height) / 2;
-	// middle = (HEIGHT + doom->player_height) / 2;
-	// middle_divisor = HEIGHT / middle;
-	// sprite_begin->y = (-doom->lib.sprites[index].height / middle_divisor) + middle;
-	if (sprite_begin->y < 0)
-		sprite_begin->y = 0;
-	// sprite_end->y = (doom->lib.sprites[index].height / middle_divisor) + middle;
-	if (sprite_end->y >= HEIGHT)
-		sprite_end->y = HEIGHT - 1;
-}
+// 	x = doom->lib.sprites[index].sprite_x;
+// 	sprite_end->y = doom->sidedef_bottom[x] + \
+// 	((doom->lib.sprites[index].distance / doom->stripe_distance[x]) *\
+// 	(HEIGHT - doom->sidedef_bottom[x]));
+// 	printf("sidedef_bottom[%d]: %d\n", x, doom->sidedef_bottom[x]);
+// 	printf("sidedef_top[%d]: %d\n", x, doom->sidedef_top[x]);
+// 	sprite_begin->y = sprite_end->y - doom->lib.sprites[index].height;
+// 	//check height in sprite index
+// 	// middle = (HEIGHT + doom->player_height) / 2;
+// 	// middle = (HEIGHT + doom->player_height) / 2;
+// 	// middle_divisor = HEIGHT / middle;
+// 	// sprite_begin->y = (-doom->lib.sprites[index].height / middle_divisor) + middle;
+// 	// sprite_end->y = (doom->lib.sprites[index].height / middle_divisor) + middle;
+// 	if (sprite_begin->y < 0)
+// 		sprite_begin->y = 0;
+// 	if (sprite_end->y >= HEIGHT)
+// 		sprite_end->y = HEIGHT - 1;
+// }
 
-/*
-**	find position x on screen
-**	- what are the cords of the most left cord and the most right cord on map,
-**		drawn on the screen
-**	find position y on screen
-**	- this is based on position from sprite struct
-*/
-void	find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index)
-{
-	// sprite_cord->x = find_x(doom, index);
-	sprite_begin->x = doom->lib.sprites[index].sprite_x;
-	sprite_end->x = sprite_begin->x + doom->lib.sprites[index].width;
-	if (sprite_begin->x < 0)
-		sprite_begin->x = 0;
-	if (sprite_end->x > WIDTH)
-		sprite_end->x = WIDTH - 1;
-	find_y(doom, sprite_begin, sprite_end, index); //temp, I need to consider size of the wall
-	printf("sprite_begin cords: (%f ;%f)\n", sprite_begin->x, sprite_begin->y);
-	printf("sprite_end cords: (%f ;%f)\n", sprite_end->x, sprite_end->y);
-}
+// /*
+// **	find position x on screen
+// **	- what are the cords of the most left cord and the most right cord on map,
+// **		drawn on the screen
+// **	find position y on screen
+// **	- this is based on position from sprite struct
+// */
+// void	find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index)
+// {
+// 	// sprite_cord->x = find_x(doom, index);
+// 	sprite_begin->x = doom->lib.sprites[index].sprite_x;
+// 	sprite_end->x = sprite_begin->x + doom->lib.sprites[index].width;
+// 	if (sprite_begin->x < 0)
+// 		sprite_begin->x = 0;
+// 	if (sprite_end->x > WIDTH)
+// 		sprite_end->x = WIDTH - 1;
+// 	find_y(doom, sprite_begin, sprite_end, index); //temp, I need to consider size of the wall
+// 	printf("sprite_begin cords: (%f ;%f)\n", sprite_begin->x, sprite_begin->y);
+// 	printf("sprite_end cords: (%f ;%f)\n", sprite_end->x, sprite_end->y);
+// }

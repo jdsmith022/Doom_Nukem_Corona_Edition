@@ -349,5 +349,4 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
 		j++;
 	}
 	wall_int =  wall_int + col_lib->sector[i].i_sidedefs;
-
 }
