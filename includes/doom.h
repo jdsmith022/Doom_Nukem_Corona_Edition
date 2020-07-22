@@ -11,6 +11,7 @@
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
+# include "../tga_reader/tga_readerh.h"
 # include "audio.h"
 
 # include "../sdl/includes/SDL.h"
