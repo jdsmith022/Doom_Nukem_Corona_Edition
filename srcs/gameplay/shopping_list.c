@@ -2,18 +2,18 @@
 # include "../../includes/gameplay.h"
 # include "../../includes/textures.h"
 
-t_item 		*get_shopping_list(uint8_t *groceries)
+t_item 		*get_shopping_list(t_doom *doom, uint8_t *groceries)
 {
-	t_item *shopping_list;
-	uint8_t i;
+	t_item	*shopping_list;
+	uint8_t	i;
 
 	i = 0;
 	shopping_list = ft_memalloc(sizeof(t_item) * SHOPPING_LIST_LENGTH);
 	while (i < SHOPPING_LIST_LENGTH)
 	{
-		shopping_list[i].type = (rand() % GROCERY_LENGTH) + 1;
+		shopping_list[i].type = 8;
 		shopping_list[i].amount = (rand() % 5) + 1;
-		// shopping_list[i]->sprite = ;
+		set_sprite(doom, shopping_list[i].type, &shopping_list[i]);
 		i++;
 	}
 	return shopping_list;

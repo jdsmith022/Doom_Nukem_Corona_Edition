@@ -6,7 +6,7 @@
 #include "../sdl/includes/SDL.h"
 
 #define GROCERY_LENGTH 5
-#define SHOPPING_LIST_LENGTH 1
+#define SHOPPING_LIST_LENGTH 2
 
 #define MOUSE_Y			doom->own_event.hold_y
 #define MOUSE_X			doom->own_event.hold_x
@@ -14,11 +14,13 @@
 
 typedef struct s_doom	t_doom;
 typedef struct s_ray	t_ray;
+typedef struct s_coord	t_coord;
 
 typedef struct			s_item {
 	uint8_t				type;
 	uint8_t				amount;
 	SDL_Surface			*sprite;
+	SDL_Rect			position;
 }						t_item;
 
 typedef struct			s_groceries {
@@ -37,9 +39,10 @@ bool					is_in_basket(t_item *item, uint8_t type);
 bool					change_amount(t_item *item, int8_t amount);
 void					del_node(t_list **head, t_list *node);
 void					print_basket(t_list **basket);
-t_item 					*get_shopping_list(uint8_t *groceries);
+t_item					*get_shopping_list(t_doom *doom, uint8_t *groceries);
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
-void					draw_shopping_ui(t_doom *doom);
+void					draw_shopping_ui(t_doom *doom, t_groceries *groceries);
+void					draw_text_at(t_doom *doom, SDL_Rect rect, char *text);
 t_ray					init_ray(t_doom *doom, int x);
 int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 

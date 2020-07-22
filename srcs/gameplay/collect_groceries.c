@@ -21,7 +21,7 @@ int		find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
-	if (min_dist == INFINITY)
+	if (min_dist > 40)
 		return false;
 	if (SIDEDEFS[safe_x].opp_sector != -1 &&
 		SIDEDEFS[safe_x].opp_sector != prev_sector)

@@ -374,7 +374,7 @@ void				draw_poster(t_doom *doom, t_plane plane,
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
-void				draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord);
+void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);
 

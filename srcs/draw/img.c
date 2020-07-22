@@ -12,7 +12,7 @@ void			put_pixel_from_img(char *img_pixels, t_doom *doom, uint32_t index)
 	ft_memcpy(doom->surface->pixels + index, &rgb, sizeof(t_rgb));
 }
 
-void			draw_img(SDL_Surface *texture, t_doom *doom, t_coord coord)
+void			draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect coord)
 {
 	uint32_t	shift;
     uint16_t	prev_x;
