@@ -6,7 +6,7 @@
 /*   By: JessicaSmith <JessicaSmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 15:21:36 by JessicaSmit   #+#    #+#                 */
-/*   Updated: 2020/07/21 12:49:15 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/22 20:33:05 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void		save_font(t_doom *doom, int *len)
 {
 	t_font		*font_lib;
 
+	set_font_color(doom);
+	
 	*len = 1;
 	font_lib = doom->lib.font_lib;
 	font_lib = (t_font*)ft_memalloc(sizeof(t_font) * (*len));

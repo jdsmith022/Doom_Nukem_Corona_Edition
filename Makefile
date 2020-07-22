@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/22 14:59:15 by jesmith       ########   odam.nl          #
+#    Updated: 2020/07/22 20:06:14 by jessicasmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
-FONT_FILES = draw_font set_color_font game_editor_font
+FONT_FILES = draw_font set_color_font font_to_sdl game_editor_font
 GAMEPLAY_FILES = groceries basket node search
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)

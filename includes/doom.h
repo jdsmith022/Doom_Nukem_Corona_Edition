@@ -178,13 +178,19 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
-typedef struct		s_font {
-	SDL_Surface		*font_surface;
-	SDL_Rect		font_rect;
+typedef struct		s_color {
 	SDL_Color		white;
 	SDL_Color		black;
 	SDL_Color		green;
 	SDL_Color		red;
+}					t_color;
+
+typedef struct		s_font {
+	SDL_Surface		*font_surface;
+	SDL_Rect		font_rect;
+	SDL_Color		font_color;
+	int				len;
+	char			*str;
 }					t_font;
 
 typedef struct		s_lib {
@@ -194,9 +200,11 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
-	t_font			*font_lib;
-	int				len_font_lib;
+	t_font			*hud_font;
+	int				hud_font_len;
 	t_font			*game_editor_font;
+	int				ge_font_len;
+	t_color			font_color;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -229,6 +237,7 @@ typedef struct		s_gamedesign {
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
+	int				hud;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
@@ -391,6 +400,8 @@ void				sprite_reset(t_doom *doom);
 void				save_font(t_doom *doom, int *len);
 void				draw_font(t_doom *doom);
 void				set_font_color(t_doom *doom);
+void				font_to_sdl(t_doom *doom, char *str, SDL_Color font_color,\
+						size_t len);
 void				save_game_editor_font(t_doom *doom, int *len);
 
 /*actions*/

@@ -29,6 +29,7 @@ void	game_loop(t_doom *doom)
 
 	last_frame_time = 0;
 	dt = 0.05; //leave for marin but remove before handing in
+	doom->hud = TRUE; //this is to display only on game play
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
 		dt = get_timeframe(&last_frame_time);
@@ -45,8 +46,8 @@ void	game_loop(t_doom *doom)
 		else
 		{
 			open_game_editor(doom);
-			// draw_font(doom);
 		}
+		// draw_font(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}

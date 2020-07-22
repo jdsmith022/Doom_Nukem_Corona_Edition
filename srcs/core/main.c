@@ -10,6 +10,7 @@ int	main(void)
 	//init_struct();
 	//init_message_bus();
 	save_libraries(&doom);
+	save_font_libraries(&doom);
 	doom.game_editor = FALSE;
 	doom_init(&doom);
 	//load_default(); //loads default settings ie menu, player settings
