@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 23:24:14 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 23:55:52 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	char		**str;
 
 	index = 0;
+    lib[index].len = len;
 	lib[index].str = "Corona Level";
 	lib[index].font_rect.x = 30;
 	lib[index].font_rect.y = 520;
@@ -46,5 +47,5 @@ void		save_hud_font(t_doom *doom, int *len)
 	set_text(doom, font_lib, *len);
 	font_path = "srcs/font/font_style/Cicle_Semi.ttf";
 	font_size = 26;
-	font_to_surface(doom, doom->lib.hud_font, *len, font_path, font_size);
+	font_to_sdl(doom, doom->lib.hud_font, font_path, font_size);
 }

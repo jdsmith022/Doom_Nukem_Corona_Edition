@@ -6,13 +6,13 @@
 /*   By: JessicaSmith <JessicaSmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 15:21:36 by JessicaSmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 21:13:44 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 23:51:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../../includes/doom.h"
 
-// static void	font_to_surface(t_doom *doom)
+// static void	font_to_sdl(t_doom *doom)
 // {
 // 	TTF_Font	*font;
 // 	char		*string;
@@ -45,5 +45,5 @@
 // 	if (font_lib == NULL)
 // 		doom_exit_failure(doom, MALLOC_ERR);
 // 	doom->lib.font_lib = font_lib;
-// 	font_to_surface(doom);
+// 	font_to_sdl(doom);
 // }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/22 23:07:02 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 23:54:17 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	char		**str;
 
 	index = 0;
+	lib[index].len = len;
 	lib[index].str = "Create Sector";
 	lib[index].font_rect.x = 30;
 	lib[index].font_rect.y = 40;
@@ -46,5 +47,5 @@ void		save_game_editor_font(t_doom *doom, int *len)
 	set_text(doom, font_lib, *len);
 	font_path = "srcs/font/font_style/Cicle_Semi.ttf";
 	font_size = 20;
-	font_to_surface(doom, doom->lib.game_editor_font, *len, font_path, font_size);
+	font_to_sdl(doom, doom->lib.game_editor_font, font_path, font_size);
 }

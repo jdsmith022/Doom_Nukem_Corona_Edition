@@ -6,21 +6,23 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 20:03:17 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 23:06:50 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 23:54:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	font_to_surface(t_doom *doom, t_font *lib, uint8_t len, char *font_path,
+void	font_to_sdl(t_doom *doom, t_font *lib, char *font_path,
 			int font_size)
 {
 	TTF_Font	*font;
 	SDL_Surface	*font_surface;
 	size_t		index;
+	uint8_t 	len;
 
 
 	index = 0;
+	len = lib[index].len;
 	TTF_Init();
 	font = TTF_OpenFont(font_path, font_size);
 	while (index < len)

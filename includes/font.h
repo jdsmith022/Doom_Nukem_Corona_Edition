@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 23:09:59 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 23:55:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void				save_font(t_doom *doom, int *len);
 void        		font_to_screen(t_doom *doom);
 void	            save_font_libraries(t_doom *doom);
 void				set_font_colors(t_doom *doom);
-void	            font_to_surface(t_doom *doom, t_font *lib, uint8_t len, \
+void	            font_to_sdl(t_doom *doom, t_font *lib, \
 						char *font_style, int font_size);
 void				save_game_editor_font(t_doom *doom, int *len);
 void				save_hud_font(t_doom *doom, int *len);
+
 #endif
