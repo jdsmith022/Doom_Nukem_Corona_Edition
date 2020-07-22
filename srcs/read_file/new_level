@@ -14,7 +14,8 @@ textures/walls/sausage_bacon.bmp
 textures/poster.bmp
 
 #object library
-0
+1
+textures/ketchup.tga
 
 #number of sectors
 3

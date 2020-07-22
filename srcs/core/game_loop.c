@@ -36,10 +36,10 @@ void	game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE)
 		{
 			// sprite_reset(doom);
-			doom_render(doom);
-			audio(doom->audio, &doom->own_event);
-			doom_gui(doom);
-			sliding_door(doom, -1); //move to its own file
+			// doom_render(doom);
+			// audio(doom->audio, &doom->own_event);
+			// doom_gui(doom);
+			// sliding_door(doom, -1); //move to its own file
 			// draw_font(doom); // will need to be own file with checks
 		}
 		else

@@ -11,7 +11,7 @@
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
-# include "../tga_reader/tga_readerh.h"
+# include "../tga_reader/tga_reader.h"
 # include "audio.h"
 
 # include "../sdl/includes/SDL.h"
@@ -263,12 +263,13 @@ void				doom_render(t_doom *doom);
 double				points_distance(t_point p1, t_point p2);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
-void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+void				doom_exit_lib_failure(void *lib, const char *exit_meassge);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 
 /*read functions*/
 SDL_Surface			**save_img(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_sprite(t_doom *doom, int map_fd, int *len);
 SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
 void				error(char *error, int line_num);
 int					open_file(char *filename);
@@ -278,8 +279,9 @@ t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
-t_bmp				*malloc_images_lib(t_doom *doom, int len);
-SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
+t_bmp				*malloc_bmp(t_doom *doom, int len);
+SDL_Surface			**malloc_sdl(t_doom *doom, void *images, int len);
+t_tga				*malloc_tga(t_doom *doom, int len);
 int					open_file(char *filename);
 int					line_num(int i);
 

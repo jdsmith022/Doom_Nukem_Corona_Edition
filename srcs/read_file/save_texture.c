@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   save_sdl.c                                         :+:    :+:            */
+/*   save_texture.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/21 13:15:09 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/22 12:06:51 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd)
 	t_bmp		*images;
 	int			sky_fd;
 
-	images = malloc_images_lib(doom, 6);
-	lib = malloc_sdl_lib(doom, images, 6);
+	images = malloc_bmp(doom, 6);
+	lib = malloc_sdl(doom, images, 6);
 	doom->lib.len_sky_lib = 6;
 	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
 	images[0] = read_bmp(sky_fd);
@@ -88,8 +88,8 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	int			fd;
 	int			index;
 
-	images = malloc_images_lib(doom, len);
-	lib = malloc_sdl_lib(doom, images, len);
+	images = malloc_bmp(doom, len);
+	lib = malloc_sdl(doom, images, len);
 	index = 0;
 	while (index < len)
 	{
