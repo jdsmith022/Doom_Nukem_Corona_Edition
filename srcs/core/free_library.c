@@ -60,12 +60,12 @@ void		free_sdl_lib(t_doom *doom)
 		len = doom->lib.len_obj_lib;
 		free_sld_lib(lib, len);
 	}
-	if (doom->lib.font_lib->font_surface)
-	{
-		lib = &doom->lib.font_lib->font_surface;
-		len = doom->lib.len_font_lib;
-		free_sld_lib(lib, len);
-	}
+	// if (doom->lib.font_lib->font_surface)
+	// {
+	// 	lib = &doom->lib.font_lib->font_surface;
+	// 	len = doom->lib.len_font_lib;
+	// 	free_sld_lib(lib, len);
+	// }
 	if (doom->lib.sky_lib)
 	{
 		lib = doom->lib.sky_lib;

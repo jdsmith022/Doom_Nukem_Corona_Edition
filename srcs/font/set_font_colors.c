@@ -6,13 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:47:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/22 20:51:01 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/07/22 21:17:27 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	set_font_color(t_doom *doom)
+void	set_font_colors(t_doom *doom)
 {
 	SDL_Color color;
 

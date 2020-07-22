@@ -12,10 +12,10 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "audio.h"
+# include "font.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
-# include "audio.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -177,21 +177,6 @@ typedef struct		s_sector {
 	int				diff_x;
 	int				diff_y;
 }					t_sector;
-
-typedef struct		s_color {
-	SDL_Color		white;
-	SDL_Color		black;
-	SDL_Color		green;
-	SDL_Color		red;
-}					t_color;
-
-typedef struct		s_font {
-	SDL_Surface		*font_surface;
-	SDL_Rect		font_rect;
-	SDL_Color		font_color;
-	int				len;
-	char			*str;
-}					t_font;
 
 typedef struct		s_lib {
 	SDL_Surface		**tex_lib;
@@ -395,14 +380,6 @@ void				find_position(t_doom *doom, t_point *sprite_cord,\
 void				draw_stripes(t_doom *doom, t_point sprite_cord,\
 						int index_sp);
 void				sprite_reset(t_doom *doom);
-
-/*font functions*/
-void				save_font(t_doom *doom, int *len);
-void				draw_font(t_doom *doom);
-void				set_font_color(t_doom *doom);
-void				font_to_sdl(t_doom *doom, char *str, SDL_Color font_color,\
-						size_t len);
-void				save_game_editor_font(t_doom *doom, int *len);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);
