@@ -181,6 +181,10 @@ typedef struct		s_sector {
 typedef struct		s_font {
 	SDL_Surface		*font_surface;
 	SDL_Rect		font_rect;
+	SDL_Color		white;
+	SDL_Color		black;
+	SDL_Color		green;
+	SDL_Color		red;
 }					t_font;
 
 typedef struct		s_lib {
@@ -192,6 +196,7 @@ typedef struct		s_lib {
 	t_line			*sky_sd;
 	t_font			*font_lib;
 	int				len_font_lib;
+	t_font			*game_editor_font;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -382,9 +387,11 @@ void				draw_stripes(t_doom *doom, t_point sprite_cord,\
 						int index_sp);
 void				sprite_reset(t_doom *doom);
 
-/*save font*/
+/*font functions*/
 void				save_font(t_doom *doom, int *len);
 void				draw_font(t_doom *doom);
+void				set_font_color(t_doom *doom);
+void				save_game_editor_font(t_doom *doom, int *len);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);
