@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/23 13:06:23 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/23 16:36:38 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct		s_font_lib
 	int				ge_font_len;
 	t_font			*basket_font;
 	int				basket_font_len;
-	int				items_in_basket; 
+	int				items_in_basket;
 	t_font			*shopping_font;
 	int				shopping_font_len;
 }					t_font_lib;
