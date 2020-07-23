@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   save_font.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: JessicaSmith <JessicaSmith@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/08 15:21:36 by JessicaSmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 23:51:48 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 // #include "../../includes/doom.h"
 
 // static void	font_to_sdl(t_doom *doom)

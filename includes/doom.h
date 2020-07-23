@@ -272,6 +272,8 @@ int					open_file(char *filename);
 t_sector			*save_sectors(t_doom *doom, int fd, int *len);
 t_sidedef			*save_walls(t_doom *doom, int fd, int *len);
 t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
+void				save_bpm_to_sdl(t_bmp *images,\
+						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);

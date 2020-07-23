@@ -183,8 +183,8 @@ void        add_inf_to_obj(t_sprite *sprite, char *line, int i, int safe, int ob
 		{
 			// printf("Amount %i\n", safe);
 			sprite->amount = safe;
-			sprite->textures = (int*)malloc(sizeof(int) * safe);
-			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);
+			sprite->textures = (int*)malloc(sizeof(int) * safe); //need to protect
+			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);//need to protect
 		}
 		else
 			error("Sprite needs a texture", line_num(0));
@@ -271,8 +271,8 @@ void        add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
 	if (i == 4)
 	{
 		sprite->amount = safe;
-		sprite->textures = (int*)malloc(sizeof(int) * safe);
-		sprite->face_ang = (int*)malloc(sizeof(int) * safe);
+		sprite->textures = (int*)malloc(sizeof(int) * safe);//need to protect
+		sprite->face_ang = (int*)malloc(sizeof(int) * safe);//need to protect
 	}
 	if (i > 4 && i < sprite->amount + 4)
 	{
