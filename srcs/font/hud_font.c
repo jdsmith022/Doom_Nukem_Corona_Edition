@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/23 11:25:47 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/23 13:33:09 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[1].font_rect.y = 520;
 	lib[1].font_color = doom->lib.font_lib.font_color.blue;
 	lib[2].str = "Shopping List";
-	lib[2].font_rect.x = 630;
+	lib[2].font_rect.x = 620;
 	lib[2].font_rect.y = 50;
 	lib[2].font_color = doom->lib.font_lib.font_color.red;
 	lib[3].str = "Basket";
