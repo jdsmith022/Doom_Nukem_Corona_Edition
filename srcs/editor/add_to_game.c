@@ -51,12 +51,14 @@ void	coor_pos(t_doom *doom)
 		change_pos(x, y, doom);
 }
 
-t_sidedef	*new_level_sidedef(t_sidedef *sidedef, int w_len)
+t_sidedef	*new_level_sidedef(t_doom *doom, t_sidedef *sidedef, int w_len)
 {
 	t_sidedef	*new;
 	int			i;
 
 	new = (t_sidedef*)malloc(sizeof(t_sidedef) * w_len);
+	if (new == NULL)
+		doom_exit_failure(doom, MALLOC_ERR);
 	i = 0;
 	while (i < w_len)
 	{
@@ -66,12 +68,14 @@ t_sidedef	*new_level_sidedef(t_sidedef *sidedef, int w_len)
 	return (new);
 }
 
-t_sector	*new_level_sector(t_sector *sector, int s_len)
+t_sector	*new_level_sector(t_doom *doom, t_sector *sector, int s_len)
 {
 	t_sector	*new;
 	int			i;
 
 	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 1));
+	if (new == NULL)
+		doom_exit_failure(doom, MALLOC_ERR);
 	i = 0;
 	while (i <= s_len)
 	{
@@ -88,7 +92,7 @@ t_sector	*light_correction(t_sector *sector, int len)
 	i = 0;
 	while (i <= len)
 	{
-		if (sector[i].light_level!= 0)
+		if (sector[i].light_level != 0)
 			sector[i].light_level /= 10.0;
 		sector[i].light = TRUE;
 		i++;
@@ -109,13 +113,14 @@ void		add_to_game(t_doom *doom)
 			free(doom->lib.sector); //rm when there are multiple levels		
 			free(doom->lib.sidedef); //rm when there are multiple levels	
 			printf("3\n");			
-			doom->lib.sector = new_level_sector(\
-			doom->game_design.sector, doom->game_design.s_len + 1);		
+			doom->lib.sector = new_level_sector(doom,\
+				doom->game_design.sector, doom->game_design.s_len + 1);		
 			printf("4\n");			
-			doom->lib.sidedef = new_level_sidedef(\
-			doom->game_design.sidedef, doom->game_design.w_len + 1);	
+			doom->lib.sidedef = new_level_sidedef(doom,\
+				doom->game_design.sidedef, doom->game_design.w_len + 1);	
 			printf("5\n");						
-			doom->lib.sector = light_correction(doom->lib.sector, doom->game_design.s_len);
+			doom->lib.sector = light_correction(\
+				doom->lib.sector, doom->game_design.s_len);
 			printf("6\n");				
 			doom->pos.x = doom->game_design.pl_x;
 			doom->pos.y = doom->game_design.pl_y;
