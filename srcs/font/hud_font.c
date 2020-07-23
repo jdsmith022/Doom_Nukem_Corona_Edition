@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/23 10:41:39 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/23 11:25:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,24 @@
 static void	set_text(t_doom *doom, t_font *lib, int len)
 {
 	SDL_Rect	font_rect;
-	size_t		index;
-	char		**str;
 
-	index = 0;
-	lib[index].len = len;
-	lib[index].str = "Corona Level";
-	lib[index].font_rect.x = 30;
-	lib[index].font_rect.y = 520;
-	lib[index].font_color = doom->lib.font_lib.font_color.green;
-	index++;
-	lib[index].str = "Sanitizer Level";
-	lib[index].font_rect.x = 620;
-	lib[index].font_rect.y = 520;
-	lib[index].font_color = doom->lib.font_lib.font_color.blue;
-	index++;
-	lib[index].str = "Shopping List";
-	lib[index].font_rect.x = 30;
-	lib[index].font_rect.y = 50;
-	lib[index].font_color = doom->lib.font_lib.font_color.red;
-	index++;
-	lib[index].str = "Basket";
-	lib[index].font_rect.x = 30;
-	lib[index].font_rect.y = 100;
-	lib[index].font_color = doom->lib.font_lib.font_color.red;
+	lib[0].len = len;
+	lib[0].str = "Corona Level";
+	lib[0].font_rect.x = 30;
+	lib[0].font_rect.y = 520;
+	lib[0].font_color = doom->lib.font_lib.font_color.green;
+	lib[1].str = "Sanitizer Level";
+	lib[1].font_rect.x = 620;
+	lib[1].font_rect.y = 520;
+	lib[1].font_color = doom->lib.font_lib.font_color.blue;
+	lib[2].str = "Shopping List";
+	lib[2].font_rect.x = 630;
+	lib[2].font_rect.y = 50;
+	lib[2].font_color = doom->lib.font_lib.font_color.red;
+	lib[3].str = "Basket";
+	lib[3].font_rect.x = 690;
+	lib[3].font_rect.y = 100;
+	lib[3].font_color = doom->lib.font_lib.font_color.red;
 }
 
 void		save_hud_font(t_doom *doom, int *len)
