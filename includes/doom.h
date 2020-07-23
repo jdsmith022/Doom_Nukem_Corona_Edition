@@ -32,7 +32,7 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define PLAYER_HEIGHT 32
+# define PLAYER_HEIGHT 48
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
 # define GRAVITY -0.5
