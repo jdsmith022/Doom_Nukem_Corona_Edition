@@ -10,14 +10,14 @@ static void	free_font_lib(t_doom *doom)
 {
 	t_font		*font;
 
-	if (doom->lib.game_editor_font)
+	if (doom->lib.font_lib.game_editor_font)
 	{
-		font = doom->lib.game_editor_font;
+		font = doom->lib.font_lib.game_editor_font;
 		void_free_lib(font);
 	}
-	if (doom->lib.hud_font)
+	if (doom->lib.font_lib.hud_font)
 	{
-		font = doom->lib.hud_font;
+		font = doom->lib.font_lib.hud_font;
 		void_free_lib(font);
 	}
 	//add other font libs to be freed

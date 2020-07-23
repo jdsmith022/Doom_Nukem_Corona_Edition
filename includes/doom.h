@@ -185,11 +185,7 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
-	t_font			*hud_font;
-	int				hud_font_len;
-	t_font			*game_editor_font;
-	int				ge_font_len;
-	t_color			font_color;
+	t_font_lib		font_lib;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -223,6 +219,8 @@ typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
 	int				hud;
+	int				basket;
+	int				shopping;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
@@ -266,7 +264,8 @@ void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 
 /*read functions*/
-SDL_Surface			**save_img(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_objects(t_doom *doom, int fd, int *len);
 SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
 void				error(char *error, int line_num);
 int					open_file(char *filename);

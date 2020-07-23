@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/21 13:15:09 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/23 09:34:36 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,24 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 		}
 		images[index] = read_bmp(fd);
 		save_bpm_to_sdl(images, lib, index);
+		// save_line_for_basket(doom, len, line);save line for shopping list & basket into font lib **basket_list **shopping_list
 		free(line);
 		index++;
 	}
 	return (lib);
 }
 
-SDL_Surface			**save_img(t_doom *doom, int map_fd, int *len)
+SDL_Surface			**save_objects(t_doom *doom, int map_fd, int *len)
+{
+	char		*line;
+
+	get_line(&line, map_fd,\
+		"the amount of objects is not specified or can not be read", 1);
+	*len = ft_atoi(line);
+	return (read_from_line(doom, line, map_fd, *len));
+}
+
+SDL_Surface			**save_textures(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
 

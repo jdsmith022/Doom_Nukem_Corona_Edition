@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/22 23:09:14 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/23 09:41:55 by jesmith       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,21 +34,20 @@ SPRITE = srcs/sprite/
 FONT = srcs/font/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
-				exit moving_sidedef free_library
+				exit moving_sidedef free_library 
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
 				render_sky_box set_offsets draw_poster action light_floor_ceiling
-READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
-			save_font
+READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 					mouse_events_game_editor box_in_sector draw_edit_console
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
-				save_font_libraries hud_font
+				save_font_libraries hud_font basket_font shopping_font
 GAMEPLAY_FILES = groceries basket node search
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)

@@ -143,6 +143,8 @@ void 	doom_init(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud = TRUE;
+	doom->basket = FALSE;
+	doom->shopping = FALSE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->pos.x = 32;
