@@ -77,4 +77,6 @@ void	groceries(t_doom *doom)
 	}
 	draw_basket_ui(doom, doom->groceries);
 	// draw_shopping_ui(doom, doom->groceries);
+	// draw_grocery_amount(doom, (SDL_Rect){50, 50, 50, 50}, (char *)"1");
+
 }

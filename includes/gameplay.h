@@ -46,7 +46,6 @@ void					draw_text_at(t_doom *doom, SDL_Rect rect, char *text);
 t_ray					init_ray(t_doom *doom, int x);
 int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 void					set_positions(t_list **basket);
-
-
+void					draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text);
 
 #endif
