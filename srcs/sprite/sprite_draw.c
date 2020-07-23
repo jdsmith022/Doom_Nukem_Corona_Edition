@@ -6,7 +6,7 @@
 /*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/22 15:07:32 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/07/23 16:35:03 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 	int		screen_y;
 
 	i_sprite = doom->lib.sprites[index_sp].index;
-	stripe = (int)sprite_begin->x + doom->pos.x;
-	screen_y = (int)sprite_begin->y + doom->pos.y;
+	stripe = (int)sprite_begin->x/* + doom->pos.x*/;
+	screen_y = (int)sprite_begin->y/* + doom->pos.y*/;
 	index = 0;
 	while (stripe < (int)sprite_end->x && stripe > 0 && stripe < WIDTH)
 	{
