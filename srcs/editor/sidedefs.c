@@ -29,12 +29,14 @@ void		del_sidedef(t_doom *doom)
 	doom->game_design.cur_sd--;
 }
 
-t_sidedef	*cpy_sidedef(t_sidedef *sidedef, int *w_size)
+t_sidedef	*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size)
 {
 	t_sidedef	*new;
 	int			i;
 
 	new = (t_sidedef*)malloc(sizeof(t_sidedef) * *w_size * 2);
+	if (new == NULL)
+		doom_exit_failure(doom, MALLOC_ERR);
 	i = 0;
 	while (i < *w_size)
 	{
@@ -115,7 +117,7 @@ void		add_sidedef(t_doom *doom, int x, int y)
 	if (!start)
 	{
 		if (doom->game_design.w_size < doom->game_design.w_len + 1)
-			doom->game_design.sidedef = cpy_sidedef(\
+			doom->game_design.sidedef = cpy_sidedef(doom,\
 			doom->game_design.sidedef, &doom->game_design.w_size);
 		doom->game_design.sidedef[doom->game_design.w_len].line.start.x = \
 		x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;

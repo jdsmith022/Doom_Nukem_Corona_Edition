@@ -4,24 +4,34 @@
 
 void    put_textures(int x, int y, int index, t_doom *doom)
 {
-	char *tex;
-	char *pix;
+	// char *tex;
+	// char *pix;
     int save_x;
 	Uint32 shift;
-    int sx;
+    double sx;
+	double sy;
+	double change_x;
+	double change_y;
 
     save_x = x;
     sx = 0;
+	sy = 0;
 	shift = doom->lib.tex_lib[index]->format->BitsPerPixel == 24 ? 3 : 4;
-    while (sx < (doom->lib.tex_lib[index]->h * doom->lib.tex_lib[index]->w))
+	change_x = (double)doom->lib.tex_lib[index]->w / 48.0;
+	change_y = (double)doom->lib.tex_lib[index]->h / 48.0;
+	// change_x = 1.0;
+	// change_y = 1.0;
+    while ((int)sy < (doom->lib.tex_lib[index]->h))
     {
-		put_texture(doom, (Uint32)index, (Uint32)((y * WIDTH + x) * 4), (Uint32)(sx * shift));
+		put_texture(doom, (Uint32)index, (Uint32)((y * WIDTH + x) * 4), (Uint32)(((int)sy * doom->lib.tex_lib[index]->w + (int)sx) * shift));
 		x++;
-		sx++;
-        if (sx % (doom->lib.tex_lib[index]->w) == 0)
+		sx += change_x;
+        if ((int)sx >= doom->lib.tex_lib[index]->w)
         {
             x = save_x;
             y++;
+			sx = 0;
+			sy += change_y;
         }
     }
 }

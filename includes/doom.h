@@ -211,11 +211,12 @@ typedef struct		s_lib {
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
 	t_font			*font_lib;
-	int				n_fonts;
+	int				len_font_lib;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
 	t_sector		*sector;
+	int				n_sectors;
 	t_sidedef		*sidedef;
 	int				len_sidedef;
 	t_sprite		*sprites;
@@ -283,23 +284,25 @@ double				points_distance(t_point p1, t_point p2);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+void				free_sdl_lib(t_doom *doom);
+void				free_struct_lib(t_doom *doom);
 
 /*read functions*/
-SDL_Surface			**save_img(int fd, int *len);
-SDL_Surface			**save_sky(t_line **sky_sd);
+SDL_Surface			**save_img(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
 void				error(char *error, int line_num);
 int					open_file(char *filename);
-t_bmp				*malloc_images_lib(int len);
-SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
-t_sector			*save_sectors(int fd, int *len);
-t_sidedef			*save_walls(int fd, int *len);
-t_sprite			*save_sprites(int fd, int *total_sprites);
+t_sector			*save_sectors(t_doom *doom, int fd, int *len);
+t_sidedef			*save_walls(t_doom *doom, int fd, int *len);
+t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
+void				save_bpm_to_sdl(t_bmp *images,\
+						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
-t_bmp				*malloc_images_lib(int len);
-SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 void				set_texture_type(const char *name, SDL_Surface *surface);
+t_bmp				*malloc_images_lib(t_doom *doom, int len);
+SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
 int					open_file(char *filename);
 int					line_num(int i);
 
@@ -407,7 +410,7 @@ void				draw_stripes(t_doom *doom, t_point sprite_cord,\
 void				sprite_reset(t_doom *doom);
 
 /*save font*/
-void				save_font(t_doom *doom);
+void				save_font(t_doom *doom, int *len);
 void				draw_font(t_doom *doom);
 
 /*actions*/

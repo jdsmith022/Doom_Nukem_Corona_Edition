@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/22 18:28:18 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/07/23 13:53:36 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void		draw_font(t_doom *doom)
 	int		total_fonts;
 
 	index = 0;
-	total_fonts = doom->lib.n_fonts;
+	total_fonts = doom->lib.len_font_lib;
 	while (index < total_fonts)
 	{
-		SDL_BlitSurface(doom->lib.font_lib[index].font_surface, NULL,\
-			doom->surface, &doom->lib.font_lib[index].font_rect);
-		// SDL_Flip(doom->surface);
+		// // SDL_BlitSurface(doom->lib.font_lib[index].font_surface, NULL,\
+		// 	doom->surface, &doom->lib.font_lib[index].font_rect);
+		// // SDL_Flip(doom->surface);
 		index++;
 	}
 }

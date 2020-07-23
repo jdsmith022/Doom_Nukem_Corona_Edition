@@ -49,4 +49,5 @@ void	game_loop(t_doom *doom)
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
+	doom_exit_success(doom);
 }
