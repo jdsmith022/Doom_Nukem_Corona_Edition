@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_sort.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/06/07 15:27:02 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/20 14:52:49 by rsteigen      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		init_sprite_order_array(t_sprite *sprite, int *order, int total)

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   key_events.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/05/31 17:33:01 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/20 14:51:19 by rsteigen      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void	key_handler(t_doom *doom, t_event *event, double dt)
@@ -63,17 +51,23 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	if (key->keysym.sym == SDLK_x)
 		event->bend = 1;
 	if (key->keysym.sym == SDLK_UP)
-		event->y_pitch += 10;
+	{
+		if (event->y_pitch < 200)
+			event->y_pitch += 10;
+	}
 	if (key->keysym.sym == SDLK_DOWN)
-		event->y_pitch -= 10;
+	{
+		if (event->y_pitch > -250)
+			event->y_pitch -= 10;
+	}
 	if (key->keysym.sym == SDLK_m)
 		doom->game_editor = TRUE;
 	if (key->keysym.sym == SDLK_n)
 		doom->game_editor = FALSE;
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
-	if (key->keysym.sym == SDLK_p)
-	{
-		doom->test = 1;
-	}
+	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
+		doom->light = doom->light == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_o) //needs to become a click on button event
+		doom->lib.sector[doom->i_sector].light = doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 }

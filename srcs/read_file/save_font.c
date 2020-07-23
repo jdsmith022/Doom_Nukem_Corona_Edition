@@ -6,7 +6,7 @@
 /*   By: JessicaSmith <JessicaSmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 15:21:36 by JessicaSmit   #+#    #+#                 */
-/*   Updated: 2020/07/14 12:46:05 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/23 16:52:01 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ static void	font_to_surface(t_doom *doom)
 	doom->lib.font_lib[0].font_surface = font_surface;
 }
 
-void		save_font(t_doom *doom)
+void		save_font(t_doom *doom, int *len)
 {
 	t_font		*font_lib;
 
-	doom->lib.n_fonts = 1;
+	*len = 1;
 	font_lib = doom->lib.font_lib;
-	font_lib = (t_font*)ft_memalloc(sizeof(t_font) * doom->lib.n_fonts);
+	font_lib = (t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (font_lib == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	doom->lib.font_lib = font_lib;

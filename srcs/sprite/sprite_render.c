@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_render.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/06/07 14:55:53 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/22 12:14:57 by rsteigen      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite)
@@ -26,7 +14,7 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 
 	new_height = (HEIGHT + doom->player_height) / 2;
 	sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
-	plane_height_std = doom->wall_height_std / sprite->distance * doom->dist_to_plane;
+	plane_height_std = doom->texture_height / sprite->distance * doom->dist_to_plane;
 	div_height_std = sprite->height / 2;
 	wall_diff_height_std = plane_height_std / 2;	
 	height_floor = doom->lib.sector[sprite->sector].height_floor / sprite->distance * doom->dist_to_plane;
@@ -71,7 +59,9 @@ void		sprite_render(t_doom *doom)
 {
 	int		*sprite_order;
 
+	// printf("sprite_render begin\n");
 	sprite_order = sort_sprite_array(doom->lib.sprites, doom->visible_sprites);
+	// printf("sprite_render middle\n");
 	draw_sprite(doom, sprite_order);
 	//free sprite order
 }

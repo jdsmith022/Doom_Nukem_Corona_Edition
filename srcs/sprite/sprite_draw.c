@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_draw.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rooscocolien <rooscocolien@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/07 15:50:59 by rooscocolie   #+#    #+#                 */
-/*   Updated: 2020/07/23 16:35:03 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
@@ -47,7 +35,7 @@ int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	return (tex_x);
 }
 
-int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp, int stripe)
+int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp, int screen_y)
 {
 	int		i_sprite;
 	int		tex_y;
@@ -55,9 +43,9 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	i_sprite = doom->lib.sprites[index_sp].index;
 	tex_y = 0;
 	if (sprite_begin->y > 0 && sprite_begin->y < HEIGHT)
-		tex_y = (stripe - sprite_begin->y) / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
+		tex_y = (int)(screen_y - sprite_begin->y) / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	else
-		tex_y = (sprite_end->y - stripe) / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
+		tex_y = (int)(sprite_end->y - screen_y) / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	return (tex_y);
 }
 
@@ -75,8 +63,10 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 	stripe = (int)sprite_begin->x/* + doom->pos.x*/;
 	screen_y = (int)sprite_begin->y/* + doom->pos.y*/;
 	index = 0;
+	// printf("draw_stripes 1\n");
 	while (stripe < (int)sprite_end->x && stripe > 0 && stripe < WIDTH)
 	{
+		// printf("draw_stripes 2\n");
 		screen_y = (int)sprite_begin->y;
 		tex_x = find_tex_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 		while (screen_y < (int)sprite_end->y/* && pix_y > 0 && pix_y < HEIGHT*/)

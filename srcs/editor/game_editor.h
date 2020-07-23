@@ -23,11 +23,11 @@
 #define AR_DOWN_M_Y 0
 
 #define D_45_X SIDEBAR_SECTOR / 3 / 5
-#define D_45_Y HEIGHT / 7
+#define D_45_Y HEIGHT / 8
 #define STRAIGHT_X SIDEBAR_SECTOR / 3 + D_45_X
-#define STRAIGHT_Y HEIGHT / 7
+#define STRAIGHT_Y HEIGHT / 8
 #define D_M45_X SIDEBAR_SECTOR / 3 * 2 + D_45_X
-#define D_M45_Y HEIGHT / 7
+#define D_M45_Y HEIGHT / 8
 
 #define AR_LEFT_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH) / 2
 #define AR_LEFT_Y 0
@@ -56,18 +56,18 @@
 #define AR_RIGHT_SC_Y HEIGHT / 8 * 4
 
 #define AR_LEFT_TF_X 0
-#define AR_LEFT_TF_Y HEIGHT / 7 * 4
+#define AR_LEFT_TF_Y HEIGHT / 8 * 5
 #define TEX_FL_X  SIDEBAR_SECTOR / 3
-#define TEX_FL_Y HEIGHT / 7 * 4
+#define TEX_FL_Y HEIGHT / 8 * 5
 #define AR_RIGHT_TF_X SIDEBAR_SECTOR - FRAME_WIDTH
-#define AR_RIGHT_TF_Y HEIGHT / 7 * 4
+#define AR_RIGHT_TF_Y HEIGHT / 8 * 5
 
 #define AR_LEFT_TC_X 0
-#define AR_LEFT_TC_Y HEIGHT / 7 * 5
+#define AR_LEFT_TC_Y HEIGHT / 8 * 6
 #define TEX_CE_X  SIDEBAR_SECTOR / 3
-#define TEX_CE_Y HEIGHT / 7 * 5
+#define TEX_CE_Y HEIGHT / 8 * 6
 #define AR_RIGHT_TC_X SIDEBAR_SECTOR - FRAME_WIDTH
-#define AR_RIGHT_TC_Y HEIGHT / 7 * 5
+#define AR_RIGHT_TC_Y HEIGHT / 8 * 6
 
 #define AR_LEFT_TS1_X SIDEBAR_SIDEDEF
 #define AR_LEFT_TS1_Y HEIGHT / 8 * 5
@@ -94,7 +94,7 @@
 #define HF_MIN -30
 #define HF_DIFF 60
 #define HF_X 0
-#define HF_Y HEIGHT / 7 * 2
+#define HF_Y HEIGHT / 8 * 2
 #define HF_HEIGHT 5
 #define HF_LEN (float)(WIDTH / 5)
 
@@ -102,10 +102,17 @@
 #define HC_MIN -30
 #define HC_DIFF 60
 #define HC_X 0
-#define HC_Y HEIGHT / 7 * 3
+#define HC_Y HEIGHT / 8 * 3
 #define HC_HEIGHT 5
 #define HC_LEN (float)(WIDTH / 5)
 
+#define LL_MAX 20
+#define LL_MIN 0
+#define LL_DIFF 20
+#define LL_X 0
+#define LL_Y HEIGHT / 8 * 4
+#define LL_HEIGHT 5
+#define LL_LEN (float)(WIDTH / 5)
 enum game_editor_im{plus, minus, straight, d_45, d_m45, arrow_left, arrow_right, cross};
 
 static const uint32_t editor_sprites[FRAME_COUNT][1024] = {

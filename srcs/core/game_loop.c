@@ -1,25 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   game_loop.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Malou <Malou@student.codam.nl>               +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/04/01 14:56:13 by Malou         #+#    #+#                 */
-/*   Updated: 2020/07/10 14:40:51 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
+#include "../../includes/audio.h"
 
 #include <stdio.h>
 
 void	doom_gui(t_doom *doom)
-{
-	(void)doom;
-}
-
-void	doom_sound(t_doom *doom)
 {
 	(void)doom;
 }
@@ -54,12 +38,15 @@ void	game_loop(t_doom *doom)
 			sprite_reset(doom);
 			doom_render(doom);
 			sprite_render(doom);
-			doom_sound(doom);
+			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
+			sliding_door(doom, -1); //move to its own file
+			// draw_font(doom); // will need to be own file with checks
 		}
 		else
 			open_game_editor(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
+	doom_exit_success(doom);
 }

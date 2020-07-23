@@ -1,32 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_floor_and_ceiling.c                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/09 18:31:49 by jessicasmit   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 static void		put_row(t_doom *doom, Uint32 tex_dex,
 					Uint32 index, Uint64 pixel_dex)
 {
-	char *pixels;
-	char *texture;
+	char	*pixels;
+	char	*texture;
+	char	r;
+	char	g;
+	char	b;
 
 	pixels = doom->surface->pixels;
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
-	pixels[index] = texture[pixel_dex];
+	r = texture[pixel_dex];
+	g = texture[pixel_dex + 1];
+	b = texture[pixel_dex + 2];
+	add_saturation(&r, &g, &b, doom->distance);
+	pixels = doom->surface->pixels;
+	texture = doom->lib.tex_lib[tex_dex]->pixels;
+	pixels[index] = r;
 	index++;
-	pixel_dex++;
-	pixels[index] = texture[pixel_dex];
+	pixels[index] = g;
 	index++;
-	pixel_dex++;
-	pixels[index] = texture[pixel_dex];
+	pixels[index] = b;
 }
 
 static void		row_calculations(t_doom *doom, double dist, Uint32 index,
@@ -49,6 +44,15 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	put_row(doom, tex_dex, index, pixel_dex);
 }
 
+void			add_filter(t_doom *doom, int y, int filter, int index)
+{
+	char *pixels;
+
+	pixels = doom->surface->pixels;
+	if (filter != 0)
+		pixels[index] += filter;
+}
+
 void			draw_ceiling(t_doom *doom, int x,
 					t_sector sector, int y)
 {
@@ -56,11 +60,10 @@ void			draw_ceiling(t_doom *doom, int x,
 	Uint32	index;
 	Uint32	tex_dex;
 	Uint8	bpp;
-	int limit;
+	int		limit;
 
 	tex_dex = sector.txt_ceiling;
 	bpp = doom->surface->format->BytesPerPixel;
-	doom->mid_screen = (HEIGHT + doom->player_height) / 2;
 	limit = 0;
 	if (doom->lib.sector[doom->prev_sector].outside)
 		limit = doom->lib.portal_ceiling;
@@ -68,8 +71,12 @@ void			draw_ceiling(t_doom *doom, int x,
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_ceiling)\
-			/ (doom->mid_screen - y) * doom->dist_to_plane;
+			/ ((HEIGHT + doom->player_height) / 2\
+			- (y + doom->own_event.y_pitch));
+		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		doom->horizontal_plane_dist = dist;
+		light_floor_ceiling(doom, sector, x, y);
 		row_calculations(doom, dist, index, tex_dex);
 		y--;
 	}
@@ -82,10 +89,9 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	index;
 	Uint32	tex_dex;
 	Uint8	bpp;
-	int 	limit;
+	int		limit;
 
 	tex_dex = sector.txt_floor;
-	doom->mid_screen = (HEIGHT + doom->player_height) / 2;
 	bpp = doom->surface->format->BytesPerPixel;
 	limit = HEIGHT;
 	if (doom->lib.sector[doom->prev_sector].outside)
@@ -94,8 +100,12 @@ void			draw_floor(t_doom *doom, int x,
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
-			/ (y - doom->mid_screen) * (doom->dist_to_plane);
+			/ ((y + doom->own_event.y_pitch) -\
+			(HEIGHT + doom->player_height) / 2);
+		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		doom->horizontal_plane_dist = dist;
+		light_floor_ceiling(doom, sector, x, y);
 		row_calculations(doom, dist, index, tex_dex);
 		y++;
 	}

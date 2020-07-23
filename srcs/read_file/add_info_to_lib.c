@@ -5,7 +5,15 @@
 void        add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 {
 	if (i == 0)
-		sector->light_level = safe;
+	{
+		if (safe <= 20 && safe >= 0)
+		{
+			sector->light_level = (double)safe / 10.0;
+			sector->light = TRUE;
+		}
+		else
+			error("light level not valid", line_num(0));
+	}
 	if (i == 1)
 		sector->height_floor = safe;
 	if (i == 2)
@@ -175,8 +183,8 @@ void        add_inf_to_obj(t_sprite *sprite, char *line, int i, int safe, int ob
 		{
 			// printf("Amount %i\n", safe);
 			sprite->amount = safe;
-			sprite->textures = (int*)malloc(sizeof(int) * safe);
-			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);
+			sprite->textures = (int*)malloc(sizeof(int) * safe); //need to protect
+			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);//need to protect
 		}
 		else
 			error("Sprite needs a texture", line_num(0));
@@ -263,8 +271,8 @@ void        add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
 	if (i == 4)
 	{
 		sprite->amount = safe;
-		sprite->textures = (int*)malloc(sizeof(int) * safe);
-		sprite->face_ang = (int*)malloc(sizeof(int) * safe);
+		sprite->textures = (int*)malloc(sizeof(int) * safe);//need to protect
+		sprite->face_ang = (int*)malloc(sizeof(int) * safe);//need to protect
 	}
 	if (i > 4 && i < sprite->amount + 4)
 	{
@@ -321,6 +329,14 @@ void    add_inf_to_lib(t_lib *col_lib, int len, int fd)
 		while (j < col_lib->sector[i].n_sidedefs)
 		{
 			col_lib->sidedef[k] = wall_inf(fd, i, col_lib->len_tex_lib, len);
+			if (col_lib->sidedef[k].action == 2 && col_lib->sidedef[k].opp_sector != -1)
+			{
+				create_mv_sidedef(&col_lib->sidedef, k, col_lib->len_sidedef);
+				col_lib->len_sidedef++;
+				col_lib->sector[i].n_sidedefs++;
+				k++;
+				j++;
+			}
 			k++;
 			j++;
 		}

@@ -1,33 +1,43 @@
 #albert heijn
 
 #texture library
-3
-textures/brown_wall.bmp
-textures/dark_stone.bmp
-textures/Marin.bmp
+10
+textures/walls/96X96-Shelf.bmp
+textures/floors_ceiling/floor.bmp
+textures/floors_ceiling/ceiling96X96_clean.bmp
+textures/walls/cherry_strawberry.bmp
+textures/walls/apple.bmp
+textures/walls/water.bmp
+textures/walls/wine.bmp
+textures/walls/soda.bmp
+textures/walls/sausage_bacon.bmp
+textures/poster.bmp
 
 #object library
 2
-sprites/brinta.bmp
-sprites/tony3.bmp
+textures/groceries/brinta.bmp
+textures/groceries/butter.bmp
+#textures/groceries/cleaning1.bmp
+#textures/groceries/cleaning2.bmp
+#textures/groceries/ketchp.bmp
 
 #number of sectors
 3
 #number of walls
-12
+19
 #number of objects
 2
 
 
 #sector[0]
-10
-0
-0
-0
+5
 0
 1
 0
-4
+0
+2
+0
+9
 0
 0
 
@@ -39,9 +49,9 @@ sprites/tony3.bmp
 0
 200
 0
-1
-2
-1
+4
+4
+4
 0
 
 #sidedefs1
@@ -50,10 +60,10 @@ sprites/tony3.bmp
 0
 100
 0
-1
-1
-2
-1
+0
+4
+4
+4
 1
 
 #sidedefs2
@@ -62,11 +72,12 @@ sprites/tony3.bmp
 0
 100
 200
-0
-0
-0
-0
 2
+1
+0
+1
+1
+
 
 #sidedefs3
 -1
@@ -75,11 +86,73 @@ sprites/tony3.bmp
 100
 200
 0
-1
-2
-1
+3
+3
+3
 3
 
+
+#poster1
+-1
+0
+199
+16
+199
+4
+3
+9
+3
+3
+
+#poster2
+-1
+18
+199
+32
+199
+4
+3
+9
+3
+3
+
+#poster3
+-1
+34
+199
+50
+199
+4
+3
+9
+3
+3
+
+#poster4
+-1
+52
+199
+68
+199
+4
+3
+9
+3
+3
+
+#poster5
+-1
+70
+199
+86
+199
+4
+3
+9
+3
+3
+
+#objects in sector
 2
 
 #object1
@@ -110,29 +183,29 @@ sprites/tony3.bmp
 46
 46
 
-#object1
+#object2
 1
 75
 75
 0
 16
 4
-0
+1
 71
 71
 79
 71
-0
+1
 79
 71
 79
 79
-0
+1
 79
 79
 71
 79
-0
+1
 71
 79
 71
@@ -141,10 +214,10 @@ sprites/tony3.bmp
 #sector[1]
 10
 20
-0
-0
-0
 1
+0
+0
+2
 0
 4
 1
@@ -157,9 +230,9 @@ sprites/tony3.bmp
 100
 200
 0
+1
 0
-0
-0
+1
 4
 
 #sidedefs1
@@ -169,9 +242,9 @@ sprites/tony3.bmp
 300
 200
 0
-0
-0
-0
+5
+5
+5
 5
 
 #sidedefs2
@@ -181,9 +254,9 @@ sprites/tony3.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 6
 
 #sidedefs3
@@ -193,23 +266,24 @@ sprites/tony3.bmp
 300
 0
 0
-0
-0
-0
+6
+6
+6
 7
 
 #objs in sector
 0
 
+
 #sector[2]
-10
-0
-0
-0
+15
 0
 1
 0
-4
+0
+2
+0
+5
 2
 0
 
@@ -220,9 +294,9 @@ sprites/tony3.bmp
 500
 200
 0
-0
-0
-0
+7
+7
+7
 8
 
 #sidedefs1
@@ -232,9 +306,9 @@ sprites/tony3.bmp
 500
 0
 0
-0
-0
-0
+8
+8
+8
 9
 
 #sidedefs2
@@ -244,9 +318,9 @@ sprites/tony3.bmp
 300
 200
 0
+1
 0
-0
-0
+1
 10
 
 #sidedefs3
@@ -256,13 +330,54 @@ sprites/tony3.bmp
 500
 0
 0
-0
-0
-0
+7
+7
+7
 11
+
+#poster
+-1
+478
+1
+462
+1
+4
+7
+9
+7
+12
 
 #objs in sector
 0
+
+#object1 in sector 2
+#2
+#400
+#100
+#0
+#16
+#4
+#2
+#395
+#95
+#405
+#95
+#3
+#405
+#95
+#405
+#105
+#4
+#405
+#105
+#395
+#105
+#3
+#395
+#105
+#395
+#95
+
 
 #moving objects
 0

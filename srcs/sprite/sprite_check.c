@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   sprite_check.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/06/06 16:07:32 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/07/14 20:50:38 by rooscocolie   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 
 void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
@@ -68,6 +56,7 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector)
 	sprite_i = doom->lib.sector[sector].i_objects;
 	// printf("n_objects: %d\n", doom->lib.sector[sector].n_objects);
 	//TOTAL_SPRITES per sector
+	// printf("sprite_check 1\n");
 	while (i < doom->lib.sector[sector].n_objects)
 	{
 		if (doom->lib.sprites[sprite_i].visible == -1)
@@ -79,5 +68,6 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector)
 		i++;
 		sprite_i++;
 	}
+	// printf("sprite_check eind\n");
 	// printf("outside sprite_check\n");
 }
