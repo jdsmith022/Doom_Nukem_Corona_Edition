@@ -158,6 +158,15 @@ typedef struct		s_sidedef {
 	int				poster;
 }					t_sidedef;
 
+typedef	struct		s_slope {
+	double			distance;
+	double			height;
+	int				opp_side;
+	int				sidedef_id;
+	t_point			intersect;
+	t_point			conn_point;
+}					t_slope;
+
 typedef struct		s_sector {
 	int				id;
 	int				outside;
@@ -307,8 +316,8 @@ int					sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_texture_properties(t_doom *doom);
-int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-						t_plane *plane);
+t_slope					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+						t_sector *sector);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);

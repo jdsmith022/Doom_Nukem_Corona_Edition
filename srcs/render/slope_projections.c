@@ -1,83 +1,85 @@
 #include "../../includes/doom.h"
 
-t_point		get_opp_point(t_sidedef sidedef, t_sidedef opp_sidedef)
+t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 {
 	t_point		start;
 	t_point		end;
 	t_point		opp_start;
 	t_point		opp_end;
+	size_t		i;
 
 	start = sidedef.line.start;
 	end = sidedef.line.end;
-	opp_start = opp_sidedef.line.start;
-	opp_end = opp_sidedef.line.end;
-	if ((start.x == opp_start.x && start.y == opp_start.y) ||
-		(start.x == opp_end.x && start.y == opp_end.y))
+	i = sector.i_sidedefs;
+	while (i < sector.i_sidedefs + sector.n_sidedefs)
+	{
+		opp_start = doom->lib.sidedef[i].line.start;
+		opp_end = doom->lib.sidedef[i].line.end;
+		if (((start.x == opp_start.x && start.y == opp_start.y) &&\
+			(end.x == opp_end.x && end.y == opp_end.y)) ||\
+			((start.x == opp_end.x && start.y == opp_end.y) &&\
+			(end.x == opp_start.x && end.y == opp_start.y)))
+		{
+			doom->lib.sidedef[i].intersect = sidedef.intersect;
+			return (doom->lib.sidedef[i]);
+		}
+		i++;
+	}
+	return (doom->lib.sidedef[i]);
+}
+
+t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
+{
+	t_point		start;
+	t_point		end;
+	t_point		conn_start;
+	t_point		conn_end;
+
+	start = sidedef.start;
+	end = sidedef.end;
+	conn_start = conn_sidedef.start;
+	conn_end = conn_sidedef.end;
+	if ((start.x == conn_start.x && start.y == conn_start.y) ||
+		(start.x == conn_end.x && start.y == conn_end.y))
 		return (start);
 	return (end);
 }
 
-int		select_opp_sidedef(t_sector sector)
+int			get_opp_sidedef(t_sector sector)
 {
-	int		first_sidedef;
+	int			sidedef_index;
 
-	first_sidedef = sector.i_sidedefs;
-	if (sector.slope_id == first_sidedef || sector.slope_id == first_sidedef + 1)
+	sidedef_index = sector.i_sidedefs;
+	if (sector.slope_id == sidedef_index ||\
+		sector.slope_id == sidedef_index + 1)
 		return (sector.slope_id + 2);
 	return (sector.slope_id - 2);
 }
 
-t_point		get_biggest_distance(t_doom *doom, t_sector sector, t_sidedef hinge)
+t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+	t_sector *sector)
 {
-	int		i;
-	int		max;
-	double	dist;
-	double	max_dist;
-	t_point	side_point;
-	t_point max_point;
+	t_slope		slope;
 
-	i = sector.i_sidedefs;
-	max_dist = 0;
-	max = i + sector.n_sidedefs;
-	while (i < max)
+	slope.distance = 0;
+	if (sidedef.sector != sector->id)
+		sidedef = get_other_side(doom, sidedef, *sector);
+	if (sidedef.id == sector->slope_id)
 	{
-		if (i != hinge.id)
-		{
-			side_point = doom->lib.sidedef[i].line.start;
-			dist = point_line_distance(side_point, hinge.line);
-			if (dist > max_dist)
-				max_dist = dist;
-			side_point = doom->lib.sidedef[i].line.end;
-			dist = point_line_distance(side_point, hinge.line);
-			if (dist > max_dist)
-			{
-				max_dist = dist;
-				max_point = side_point;
-			}
-		}
-		i++;
+		slope.height = 0;
+		return (slope);
 	}
-	return (max_point);
+	slope.opp_side = get_opp_sidedef(*sector);
+	slope.conn_point = get_connecting_point(sidedef.line,\
+		doom->lib.sidedef[sector->slope_id].line);
+	if (sidedef.id != sector->slope_id && sidedef.id != slope.opp_side)
+		slope.distance = points_distance(sidedef.intersect, slope.conn_point);
+	if (sidedef.id == slope.opp_side)
+		slope.distance = fabs(point_line_distance(sidedef.line.end,\
+			doom->lib.sidedef[sector->slope_id].line));
+	slope.height = tan(sector->slope_floor) * slope.distance;
+	slope.intersect = sidedef.intersect;
+	slope.sidedef_id = sidedef.id;
+	return (slope);
 }
 
-int			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-	t_plane *plane)
-{
-	t_sector	sector;
-	//int			opp_side;
-	t_point		opp_point;
-	double		distance;
-
-	sector = doom->lib.sector[sidedef.sector];
-	opp_point = get_biggest_distance(doom, sector, sidedef);
-	if (sidedef.id == sector.slope_id)
-		return (doom->lib.sector[sidedef.sector].height_floor);
-	//opp_side = select_opp_sidedef(sector);
-	//if (sidedef.id == opp_side)
-	//	return (plane->sidedef_bottom);
-	//else if (sidedef.id == sector.slope_id)
-	//	return (doom->lib.sector[sidedef.opp_sector].height_floor);
-	//opp_point = get_opp_point(sidedef, doom->lib.sidedef[opp_side]);
-	distance = points_distance(plane->intersect, opp_point);
-	return ((int)(tan(sector.slope_floor) * distance));
-}
