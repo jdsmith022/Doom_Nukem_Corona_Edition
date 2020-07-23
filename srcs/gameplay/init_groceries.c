@@ -7,8 +7,8 @@ SDL_Rect	get_position(uint16_t index, int start_x)
 
 	position.x = start_x + (index * 50);
 	position.y = 50;
-	position.w = 15;
-	position.h = 15;
+	position.w = 30;
+	position.h = 30;
 	return position;
 }
 
