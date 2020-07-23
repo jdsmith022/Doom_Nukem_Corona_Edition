@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/04 14:00:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/21 16:12:40 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/07/23 16:09:14 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,7 @@ void			draw_floor(t_doom *doom, int x,
 	bpp = doom->surface->format->BytesPerPixel;
 	height_floor = sector.height_floor;
 	if (sector.slope_id != -1)
-	{
-		sector.slope.delta_y = set_delta_y(doom->lib.sidedef[sector.slope_id].line, &sector, y);
 		height_floor += sector.slope.height_floor;
-	}
 	while (y < HEIGHT)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
