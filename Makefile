@@ -6,7 +6,7 @@
 #    By: Malou <Malou@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/01 13:24:04 by Malou         #+#    #+#                  #
-#    Updated: 2020/07/21 18:41:40 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/07/23 11:50:20 by jesmith       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
 				render_sky_box set_offsets draw_poster action light_floor_ceiling
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
-			save_font
+			save_font save_bmp_to_sdl save_sky
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 					mouse_events_game_editor box_in_sector draw_edit_console
 AUDIO_FILES = audio playback helpers
