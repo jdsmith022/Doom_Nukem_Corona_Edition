@@ -154,8 +154,10 @@ void 	doom_init(t_doom *doom)
 	doom->player_height = 48;
 	doom->visible_sprites = 0;
 	doom->player_std_height = 48;
-	doom->lib.sector[0].slope_id = 1;
-	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
+	doom->lib.sector[0].slope_id = -1;
+	doom->lib.sector[1].slope_id = -1;
+	doom->lib.sector[2].slope_id = -1;
+	doom->lib.sector[0].slope_floor =  2 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
 	// doom->sector[0].i_sidedefs = 0;

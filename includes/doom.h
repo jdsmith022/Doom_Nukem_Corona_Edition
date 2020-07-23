@@ -33,10 +33,10 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define PLAYER_HEIGHT 32
+# define PLAYER_HEIGHT 48
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
-# define GRAVITY -0.5
+# define GRAVITY -1
 # define VELOCITY 12
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
@@ -185,6 +185,7 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
+	t_slope			slope;
 }					t_sector;
 
 typedef struct		s_lib {
