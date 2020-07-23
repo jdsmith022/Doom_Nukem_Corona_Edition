@@ -10,7 +10,7 @@ static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	int			div_height_std;
 	int			new_height;
 
-	new_height = (HEIGHT + doom->player_height) / 2;
+	new_height = (HEIGHT / 2) + doom->player_height;
 	div_height_std = plane->height_standard / 2;
 	height_opp_sector = doom->lib.sector[opp_sector].height_ceiling / sidedef.distance * doom->dist_to_plane;
 	height_floor = doom->lib.sector[opp_sector].height_floor / sidedef.distance * doom->dist_to_plane;
@@ -31,7 +31,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	int			new_height;
 
 	(void)sector;
-	new_height = (HEIGHT + doom->player_height) / 2;
+	new_height = (HEIGHT / 2) + doom->player_height;
 	plane->height_standard = doom->texture_height / sidedef.distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
 	// height_sidedef = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;

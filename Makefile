@@ -19,11 +19,11 @@ EDITOR = srcs/editor/
 AUDIO = srcs/audio/
 GAMEPLAY = srcs/gameplay/
 SPRITE = srcs/sprite/
-UI = srcs/ui/
 DRAW = srcs/draw/
+FONT = srcs/font/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
-				exit moving_sidedef free_library
+				exit moving_sidedef free_library 
 EVENTS_FILES = key_events mouse_events move_position move_position2
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
@@ -36,9 +36,10 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
-UI_FILES = draw_font
 GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries init_groceries grocery_ui
 DRAW_FILES = img vector
+FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
+				save_font_libraries hud_font basket_font shopping_font
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
@@ -48,8 +49,8 @@ C_FILES_EDITOR = $(EDITOR_FILES:%=%.c)
 C_FILES_AUDIO = $(AUDIO_FILES:%=%.c)
 C_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=%.c)
 C_FILES_SPRITE = $(SPRITE_FILES:%=%.c)
-C_FILES_UI = $(UI_FILES:%=%.c)
 C_FILES_DRAW = $(DRAW_FILES:%=%.c)
+C_FILES_FONT = $(FONT_FILES:%=%.c)
 
 O_FILES_CORE = $(CORE_FILES:%=$(CORE).objects/%.o)
 O_FILES_EVENTS = $(EVENTS_FILES:%=$(EVENTS).objects/%.o)
@@ -58,28 +59,19 @@ O_FILES_READ = $(READ_FILES:%=$(READ).objects/%.o)
 O_FILES_EDITOR = $(EDITOR_FILES:%=$(EDITOR).objects/%.o)
 O_FILES_AUDIO = $(AUDIO_FILES:%=$(AUDIO).objects/%.o)
 O_FILES_SPRITE = $(SPRITE_FILES:%=$(SPRITE).objects/%.o)
-O_FILES_UI = $(UI_FILES:%=$(UI).objects/%.o)
+O_FILES_FONT = $(FONT_FILES:%=$(FONT).objects/%.o)
 O_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=$(GAMEPLAY).objects/%.o)
 O_FILES_DRAW = $(DRAW_FILES:%=$(DRAW).objects/%.o)
 
-
-SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE) $(UI) $(GAMEPLAY) $(DRAW)
+SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) $(SPRITE) $(FONT) $(GAMEPLAY) $(DRAW)
 O_FILES_DIRS = $(SRCS_DIRS:%=%.objects)
 O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY) $(O_FILES_DRAW) \
-		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) $(O_FILES_SPRITE) $(O_FILES_UI)
+		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) $(O_FILES_SPRITE) $(O_FILES_FONT)
 
-HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/textures.h
+HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/font.h includes/textures.h
 ADD_FILES = Makefile textures
 
 all: $(NAME)
-
-# install: 
-# 	"$(GREEN)[+]Installing brew..."
-# 	#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# 	brew install sdl2
-# 	brew install sdl2_ttf
-# 	brew install sdl2_mixer	
-
 	
 $(NAME): libft/libft.a bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
 	@gcc -o $@ $(O_FILES) $(LIBS) $(FLAGS) $(SDL_FLAGS)
@@ -113,7 +105,7 @@ $(SPRITE).objects/%.o: $(SPRITE)%.c $(HEADERS)
 	@$(CC) -o $@ -c $<
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
-$(UI).objects/%.o: $(UI)%.c $(HEADERS)
+$(FONT).objects/%.o: $(FONT)%.c $(HEADERS)
 	@$(CC) -o $@ -c $<
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
@@ -151,7 +143,7 @@ re: fclean all
 add: fclean
 	@git add $(LIBFT) $(HEADERS) $(ADD_FILES) $(SDL) $(BMP) \
 	$(C_FILES_CORE) $(C_FILES_EVENTS) $(C_FILES_RENDER) $(C_FILES_READ) \
-	$(C_FILES_EDITOR) $(C_FILES_AUDIO) $(C_FILES_SPRITE) $(C_FILES_UI)
+	$(C_FILES_EDITOR) $(C_FILES_AUDIO) $(C_FILES_SPRITE) $(C_FILES_FONT)
 	@git status
 
 push:

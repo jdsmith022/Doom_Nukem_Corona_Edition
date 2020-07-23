@@ -61,9 +61,15 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 			event->y_pitch -= 10;
 	}
 	if (key->keysym.sym == SDLK_m)
+	{
 		doom->game_editor = TRUE;
+		doom->hud = FALSE;
+	}
 	if (key->keysym.sym == SDLK_n)
+	{
 		doom->game_editor = FALSE;
+		doom->hud = TRUE;
+	}
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
 	if (key->keysym.sym == SDLK_p) //needs to become an click on button event

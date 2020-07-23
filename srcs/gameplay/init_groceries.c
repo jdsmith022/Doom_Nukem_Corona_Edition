@@ -51,6 +51,6 @@ void	init_groceries(t_doom *doom)
 {
 	doom->groceries = (t_groceries *)ft_memalloc(sizeof(t_groceries)); // NOTE: FREE
 	doom->groceries->shopping_list = get_shopping_list(doom, get_groceries());
-	doom->groceries->shopping_list_len = SHOPPING_LIST_LENGTH;
+	// doom->groceries->shopping_list_len = SHOPPING_LIST_LENGTH;
 	doom->groceries->basket = NULL;
 }

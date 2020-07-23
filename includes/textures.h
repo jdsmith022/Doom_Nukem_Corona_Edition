@@ -17,11 +17,11 @@
 
 #define NUM_OF_GROCERIES 5
 
-#define SPR_BACON	"textures/groceries/brinta.bmp"
-#define SPR_APPLE	"textures/groceries/butter.bmp"
-#define SPR_WINE	"textures/groceries/chocolate_milk.bmp"
-#define SPR_WATER	"textures/groceries/kellogs.bmp"
-#define SPR_SODA	"textures/groceries/mayonaisse.bmp"
+#define SPR_BACON	"sprites/groceries/brinta.bmp"
+#define SPR_APPLE	"sprites/groceries/butter.bmp"
+#define SPR_WINE	"sprites/groceries/chocolate_milk.bmp"
+#define SPR_WATER	"sprites/groceries/kellogs.bmp"
+#define SPR_SODA	"sprites/groceries/mayonaisse.bmp"
 
 #define TEX_BACON	"textures/walls/sausage_bacon.bmp"
 #define TEX_APPLE	"textures/walls/apple.bmp"

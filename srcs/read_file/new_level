@@ -15,13 +15,13 @@ textures/poster.bmp
 
 #object library
 7
-textures/groceries/brinta.bmp
-textures/groceries/butter.bmp
-textures/groceries/chocolate_milk.bmp
-textures/groceries/douwe.bmp
-textures/groceries/kellogs.bmp
-textures/groceries/mayonaisse.bmp
-textures/groceries/ketchup.bmp
+sprites/groceries/brinta.bmp
+sprites/groceries/butter.bmp
+sprites/groceries/chocolate_milk.bmp
+sprites/groceries/douwe.bmp
+sprites/groceries/kellogs.bmp
+sprites/groceries/mayonaisse.bmp
+sprites/groceries/ketchup.bmp
 
 #number of sectors
 3

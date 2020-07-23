@@ -11,6 +11,7 @@
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
+# include "font.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -198,11 +199,6 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
-typedef struct		s_font {
-	SDL_Surface		*font_surface;
-	SDL_Rect		font_rect;
-}					t_font;
-
 typedef struct		s_lib {
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
@@ -210,8 +206,7 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
-	t_font			*font_lib;
-	int				len_font_lib;
+	t_font_lib		font_lib;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -244,6 +239,9 @@ typedef struct		s_gamedesign {
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
+	int				hud;
+	int				basket;
+	int				shopping;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
@@ -288,7 +286,8 @@ void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 
 /*read functions*/
-SDL_Surface			**save_img(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_objects(t_doom *doom, int fd, int *len);
 SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
 void				error(char *error, int line_num);
 int					open_file(char *filename);
@@ -408,10 +407,6 @@ void				find_position(t_doom *doom, t_point *sprite_cord,\
 void				draw_stripes(t_doom *doom, t_point sprite_cord,\
 						int index_sp);
 void				sprite_reset(t_doom *doom);
-
-/*save font*/
-void				save_font(t_doom *doom, int *len);
-void				draw_font(t_doom *doom);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

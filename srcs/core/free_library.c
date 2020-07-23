@@ -6,6 +6,23 @@ static void		void_free_lib(void *lib)
 	free(lib);
 }
 
+static void	free_font_lib(t_doom *doom)
+{
+	t_font		*font;
+
+	if (doom->lib.font_lib.game_editor_font)
+	{
+		font = doom->lib.font_lib.game_editor_font;
+		void_free_lib(font);
+	}
+	if (doom->lib.font_lib.hud_font)
+	{
+		font = doom->lib.font_lib.hud_font;
+		void_free_lib(font);
+	}
+	//add other font libs to be freed
+}
+
 void		free_struct_lib(t_doom *doom)
 {
 	t_sector	*sector;
@@ -27,6 +44,7 @@ void		free_struct_lib(t_doom *doom)
 		sprites = doom->lib.sprites;
 		void_free_lib(sprites);
 	}
+	free_font_lib(doom);
 }
 
 static void		free_sld_lib(SDL_Surface **lib, int len)
@@ -58,12 +76,6 @@ void		free_sdl_lib(t_doom *doom)
 	{
 		lib = doom->lib.obj_lib;
 		len = doom->lib.len_obj_lib;
-		free_sld_lib(lib, len);
-	}
-	if (doom->lib.font_lib->font_surface)
-	{
-		lib = &doom->lib.font_lib->font_surface;
-		len = doom->lib.len_font_lib;
 		free_sld_lib(lib, len);
 	}
 	if (doom->lib.sky_lib)

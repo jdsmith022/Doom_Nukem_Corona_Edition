@@ -24,8 +24,11 @@ void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
 	uint8_t i;
 
 	i = 0;
+
 	while (i < doom->lib.len_obj_lib)
 	{
+		if (!doom->lib.obj_lib[i])
+			printf("NOOOO\n");
 		if (*((uint8_t *)doom->lib.obj_lib[i]->userdata) == type)
 			item->sprite = doom->lib.obj_lib[i];
 		i++;

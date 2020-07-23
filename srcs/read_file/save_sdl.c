@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   save_sdl.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/23 13:57:05 by elkanfrank    ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/doom.h"
 #include "../../includes/textures.h"
 
@@ -30,10 +18,7 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 		printf("%s\n", line);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
-		{
-			index++;
-			continue ;
-		}
+			doom_exit_failure(doom, "image path not found error !\n");
 		images[index] = read_bmp(fd);
 		save_bpm_to_sdl(images, lib, index);
 		set_texture_type(line, lib[index]);
@@ -44,7 +29,17 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	return (lib);
 }
 
-SDL_Surface			**save_img(t_doom *doom, int map_fd, int *len)
+SDL_Surface			**save_objects(t_doom *doom, int map_fd, int *len)
+{
+	char		*line;
+
+	get_line(&line, map_fd,\
+		"the amount of objects is not specified or can not be read", 1);
+	*len = ft_atoi(line);
+	return (read_from_line(doom, line, map_fd, *len));
+}
+
+SDL_Surface			**save_textures(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
 
