@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/05 15:35:53 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/23 11:50:09 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/23 11:56:58 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ SDL_Surface			**save_img(t_doom *doom, int map_fd, int *len)
 	get_line(&line, map_fd,\
 		"the amount of textures is not specified or can not be read", 1);
 	*len = ft_atoi(line);
+	free(line);
 	return (read_from_line(doom, line, map_fd, *len));
 }

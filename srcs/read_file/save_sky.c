@@ -6,13 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/23 11:49:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/23 11:49:59 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/23 12:00:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-t_line		*init_sky_sd()
+static t_line		*init_sky_sd(void)
 {
 	t_line *sky_sd;
 
