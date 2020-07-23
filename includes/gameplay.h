@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include "../sdl/includes/SDL.h"
+#include "font.h"
 
 #define GROCERY_LENGTH 5
 #define SHOPPING_LIST_LENGTH 2
@@ -27,6 +28,7 @@ typedef struct			s_groceries {
 	t_item 				*shopping_list;
 	uint8_t				shopping_list_len;
 	t_list				*basket;
+	TTF_Font			*font;
 }						t_groceries;
 
 void					init_groceries(t_doom *doom);
@@ -47,5 +49,6 @@ t_ray					init_ray(t_doom *doom, int x);
 int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 void					set_positions(t_list **basket);
 void					draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text);
+SDL_Rect				get_position(uint16_t index, int start_x);
 
 #endif

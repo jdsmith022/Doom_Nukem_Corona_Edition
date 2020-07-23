@@ -142,6 +142,7 @@ void 	doom_init(t_doom *doom)
 	if (doom->audio->engine)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
+	doom->own_event.mouse_state_switched = FALSE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud = TRUE;

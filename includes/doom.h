@@ -50,34 +50,34 @@ typedef struct s_groceries	t_groceries;
 
 #pragma pack(push, 1)
 
-typedef struct 		t_rgb {
-	char			r;
-	char			g;
-	char			b;
-}					t_rgb;
+typedef struct 			t_rgb {
+	char				r;
+	char				g;
+	char				b;
+}						t_rgb;
 
 #pragma pack(pop)
 
-typedef struct		s_coord {
-	uint16_t		x;
-	uint16_t		y;
-}					t_coord;
+typedef struct			s_coord {
+	uint16_t			x;
+	uint16_t			y;
+}						t_coord;
 
-typedef struct		s_hsv{
-	double			r;
-	double			g;
-	double			b;
-}					t_hsv;
+typedef struct			s_hsv{
+	double				r;
+	double				g;
+	double				b;
+}						t_hsv;
 
-typedef struct		s_point {
-	double			x;
-	double			y;
-}					t_point;
+typedef struct			s_point {
+	double				x;
+	double				y;
+}						t_point;
 
-typedef struct		s_line {
-	t_point			start;
-	t_point			end;
-}					t_line;
+typedef struct			s_line {
+	t_point				start;
+	t_point				end;
+}						t_line;
 
 typedef struct			s_sprite {
 	int					index;			//start index
@@ -111,6 +111,7 @@ typedef struct		s_ray {
 
 typedef struct		s_event {
 	int				mouse_press;
+	bool			mouse_state_switched;
 	int				hold_angle;
 	int				hold_x;
 	int				hold_y;
@@ -324,6 +325,8 @@ int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
+bool				handle_mouse_state(t_doom *doom);
+
 
 /*render functions*/
 int					sidedef_render(t_doom *doom, t_ray ray,\

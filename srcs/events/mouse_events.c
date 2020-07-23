@@ -47,3 +47,11 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 	if (doom->game_editor == TRUE)
 		mouse_press_game_editor(doom, button->x, button->y);
 }
+
+bool	handle_mouse_state(t_doom *doom)
+{
+	if (doom->own_event.mouse_state_switched)
+		return false;
+	doom->own_event.mouse_state_switched = true;
+	return true;
+}

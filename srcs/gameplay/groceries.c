@@ -56,27 +56,31 @@ uint8_t		click_on_basket(t_list **basket, uint8_t *type, int x, int y)
 	return false;
 }
 
-void	groceries(t_doom *doom)
+void	handle_groceries(t_doom *doom)
 {
 	uint8_t type;
 
-	if (MOUSE_PRESSED)
-	{
-		if (click_on_basket(&doom->groceries->basket, &type, MOUSE_X, MOUSE_Y)){
-			printf("Remove\n");
-			remove_item_from_basket(&doom->groceries->basket, type);
-			set_positions(&doom->groceries->basket);
-		}
-		else
-		{
-			set_shelf_type(doom, &type);
-			add_item_to_basket(doom, &doom->groceries->basket, type);
-			set_positions(&doom->groceries->basket);
-		}
-		// print_basket(&doom->groceries->basket);
+	if (!handle_mouse_state(doom))
+		return ;
+	if (click_on_basket(&doom->groceries->basket, &type, MOUSE_X, MOUSE_Y)){
+		printf("Remove\n");
+		remove_item_from_basket(&doom->groceries->basket, type);
+		set_positions(&doom->groceries->basket);
 	}
-	draw_basket_ui(doom, doom->groceries);
-	// draw_shopping_ui(doom, doom->groceries);
-	// draw_grocery_amount(doom, (SDL_Rect){50, 50, 50, 50}, (char *)"1");
+	else
+	{
+		set_shelf_type(doom, &type);
+		add_item_to_basket(doom, &doom->groceries->basket, type);
+		set_positions(&doom->groceries->basket);
+	}
+}
 
+void	groceries(t_doom *doom)
+{
+	if (MOUSE_PRESSED)
+		handle_groceries(doom);
+	else
+		doom->own_event.mouse_state_switched = false;
+	draw_basket_ui(doom, doom->groceries);
+	draw_shopping_ui(doom, doom->groceries);
 }
