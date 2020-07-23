@@ -69,15 +69,15 @@ O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/font.h
 ADD_FILES = Makefile textures
 
+install: 
+	"$(GREEN)[+]Installing brew..."
+	#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install sdl2
+	brew install sdl2_ttf
+	brew install sdl2_mixer	
 
 all: $(NAME)
 
-# install: 
-# 	"$(GREEN)[+]Installing brew..."
-# 	#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# 	brew install sdl2
-# 	brew install sdl2_ttf
-# 	brew install sdl2_mixer	
 
 	
 $(NAME): libft/libft.a bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
