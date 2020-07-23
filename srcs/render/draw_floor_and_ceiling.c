@@ -71,7 +71,7 @@ void			draw_ceiling(t_doom *doom, int x,
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_ceiling)\
-			/ ((HEIGHT + doom->player_height) / 2\
+			/ ((HEIGHT / 2 + doom->player_height)\
 			- (y + doom->own_event.y_pitch));
 		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
@@ -101,7 +101,7 @@ void			draw_floor(t_doom *doom, int x,
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = (doom->player_std_height - sector.height_floor)\
 			/ ((y + doom->own_event.y_pitch) -\
-			(HEIGHT + doom->player_height) / 2);
+			((HEIGHT / 2) + doom->player_height));
 		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		doom->horizontal_plane_dist = dist;
