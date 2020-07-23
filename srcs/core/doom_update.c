@@ -4,6 +4,7 @@ void	doom_update(t_doom *doom, double dt)
 {
 	SDL_Event event;
 
+	event = doom->event;
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)

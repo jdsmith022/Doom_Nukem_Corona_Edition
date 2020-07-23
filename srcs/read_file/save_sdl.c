@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/textures.h"
 
 static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 						int map_fd, int len)
@@ -14,15 +15,13 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	while (index < len)
 	{
 		get_line(&line, map_fd, "not enough texture names", 0);
+		printf("%s\n", line);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
-		{
-			index++;
-			continue ;
-		}
+			doom_exit_failure(doom, "image path not found error !\n");
 		images[index] = read_bmp(fd);
 		save_bpm_to_sdl(images, lib, index);
-		// save_line_for_basket(doom, len, line);save line for shopping list & basket into font lib **basket_list **shopping_list
+		set_texture_type(line, lib[index]);
 		free(line);
 		index++;
 	}

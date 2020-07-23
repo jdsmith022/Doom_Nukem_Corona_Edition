@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/audio.h"
 
 void	play_music(Mix_Music *music){
 	if (!Mix_PlayingMusic()){

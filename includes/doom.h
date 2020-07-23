@@ -11,7 +11,6 @@
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
-# include "audio.h"
 # include "font.h"
 
 # include "../sdl/includes/SDL.h"
@@ -41,6 +40,28 @@
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
+
+# define SECTORS	doom->lib.sector
+# define SIDEDEFS	doom->lib.sidedef
+# define TEXTURES	doom->lib.tex_lib
+
+typedef struct s_audio		t_audio;
+typedef struct s_groceries	t_groceries;
+
+#pragma pack(push, 1)
+
+typedef struct 		t_rgb {
+	char			r;
+	char			g;
+	char			b;
+}					t_rgb;
+
+#pragma pack(pop)
+
+typedef struct		s_coord {
+	uint16_t		x;
+	uint16_t		y;
+}					t_coord;
 
 typedef struct		s_hsv{
 	double			r;
@@ -243,7 +264,8 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	t_gamedesign	game_design;
-	t_audio			audio;
+	t_audio			*audio;
+	t_groceries		*groceries;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -277,6 +299,7 @@ void				save_bpm_to_sdl(t_bmp *images,\
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
+void				set_texture_type(const char *name, SDL_Surface *surface);
 t_bmp				*malloc_images_lib(t_doom *doom, int len);
 SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
 int					open_file(char *filename);
@@ -350,6 +373,12 @@ void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
+void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+					t_point intersect, t_doom *doom);
+void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
+void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
+double				clamp_angle(double angle);
+t_ray				init_ray(t_doom *doom, int x);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
@@ -363,9 +392,6 @@ void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
 
-/* AUDIO */
-
-void				audio(t_audio audio, t_event *event);
 void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);

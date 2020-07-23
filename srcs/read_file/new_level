@@ -14,7 +14,14 @@ textures/walls/sausage_bacon.bmp
 textures/poster.bmp
 
 #object library
-0
+7
+sprites/groceries/brinta.bmp
+sprites/groceries/butter.bmp
+sprites/groceries/chocolate_milk.bmp
+sprites/groceries/douwe.bmp
+sprites/groceries/kellogs.bmp
+sprites/groceries/mayonaisse.bmp
+sprites/groceries/ketchup.bmp
 
 #number of sectors
 3

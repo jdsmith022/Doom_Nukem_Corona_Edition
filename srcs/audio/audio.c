@@ -1,4 +1,5 @@
 #include "../../includes/doom.h" 
+#include "../../includes/audio.h"
 
 // FUNCTIONS
 // play_sound --> triggers a sound once
@@ -16,24 +17,25 @@
 // Channels
 // 1 2 3 4
 
-void	init_audio(t_audio *audio)
+void	init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
 	char			path_buff[PATH_MAX];
 
-	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // needs a free
-	audio->event = event;
-	audio->music_vol = FALSE;
-	audio->sound_vol = TRUE;
+	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // NOTE: FREE
+	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
+	doom->audio->event = event;
+	doom->audio->music_vol = FALSE;
+	doom->audio->sound_vol = TRUE;
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, AUDIO_BUFF) == -1)
     	exit_error(Mix_GetError());
-	Mix_QuerySpec(&audio->sample_rate, &audio->format, &audio->channels);
+	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format, &doom->audio->channels);
 	Mix_AllocateChannels(3);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
-	SDL_Log("%dHz %dbit %d %d buff\n", audio->sample_rate, (audio->format&0xFF), audio->channels, AUDIO_BUFF);
+	SDL_Log("%dHz %dbit %d %d buff\n", doom->audio->sample_rate, (doom->audio->format&0xFF), doom->audio->channels, AUDIO_BUFF);
 	getcwd(path_buff, sizeof(path_buff));
-	audio->path = ft_strjoin(path_buff, "/sounds"); // needs a free
-	if (!ft_strlen(audio->path))
+	doom->audio->path = ft_strjoin(path_buff, "/sounds"); // NOTE: FREE
+	if (!ft_strlen(doom->audio->path))
 		exit_error("Cannot find working directory\n");
 }
 
@@ -56,28 +58,29 @@ void	load_audio(t_audio *audio)
 	printf("Loading audio completed\n");
 }
 
-void	play_movement_sounds(t_audio audio, t_event *event)
+void	play_movement_sounds(t_audio *audio, t_event *event)
 {
 	if (event->jump == false)
-		audio.event->jump_toggled = false;
+		audio->event->jump_toggled = false;
 	if (event->cam_move_f || event->cam_move_b)
-		loop_sound(audio.sounds[0], 1);
+		loop_sound(audio->sounds[0], 1);
 	else
-		pause_sound(audio.sounds[0], 1);
+		pause_sound(audio->sounds[0], 1);
 	if (event->cam_move_l || event->cam_move_r)
-		loop_sound(audio.sounds[0], 1);
-	if (event->jump && !audio.event->jump_toggled){
-		pause_sound(audio.sounds[0], 1);
-		play_sound(audio.sounds[2], 2);
-		audio.event->jump_toggled = true;
+		loop_sound(audio->sounds[0], 1);
+	if (event->jump && !audio->event->jump_toggled){
+		pause_sound(audio->sounds[0], 1);
+		play_sound(audio->sounds[2], 2);
+		audio->event->jump_toggled = true;
 	}
 }
 
-void	audio(t_audio audio, t_event *event)
+void	audio(t_audio *audio, t_event *event)
 {
-	if (audio.music_vol)
-		play_music(audio.music);
-	if (audio.sound_vol)
+	if (audio->engine == OFF)
+		return ;
+	if (audio->music_vol)
+		play_music(audio->music);
+	if (audio->sound_vol)
 		play_movement_sounds(audio, event);
-	return;
 }
