@@ -36,8 +36,8 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
-UI_FILES = draw_font grocery_ui
-GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries init_groceries
+UI_FILES = draw_font
+GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries init_groceries grocery_ui
 DRAW_FILES = img vector
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
