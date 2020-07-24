@@ -33,7 +33,7 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define PLAYER_HEIGHT 32
+# define PLAYER_HEIGHT 48
 # define MOVE_SPEED 200
 # define CAM_SPEED 5
 # define GRAVITY -0.5
@@ -64,10 +64,10 @@ typedef struct			s_sprite {
 	t_point				pos;
 	double				size;			//small: 8, medium: 12, large: 18
 	t_line				*lines;
-	double				angle;			//what is the angle on the map
+	double				angle;			//GEBRUIK IK NIET what is the angle on the map
 	int					action;
 	int					*textures;		//index to texture, +0, +1, +2 or +3
-	int					*face_ang;
+	int					*face_ang;		//DIT KAN GEWOON EEN INT ZIJN, dit is dan de index naar de texture
 	int					block;			//can the player walk through it or not
 	int					sector;
 	double				width;
@@ -76,6 +76,7 @@ typedef struct			s_sprite {
 	double				sprite_y;		//y cord translated to viewer space
 	int					visible;
 	double				distance;
+	int					face;
 	// int					screen_left_x;
 	// int					screen_right_x;
 	// int					position;

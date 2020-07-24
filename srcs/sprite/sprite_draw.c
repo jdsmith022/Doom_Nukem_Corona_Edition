@@ -7,18 +7,17 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 
 	pixels = doom->surface->pixels;
 	text = doom->lib.obj_lib[i]->pixels;
-	if (text[pix_dex] != (char)255)
+	if (text[pix_dex] != (char)255 && text[pix_dex + 1] != (char)255 &&\
+	text[pix_dex + 2] != (char)255)
+	{
 		pixels[index] = text[pix_dex];
-	index++;
-	pix_dex++;
-	if (text[pix_dex] != (char)255)
+		index++;
+		pix_dex++;
 		pixels[index] = text[pix_dex];
-	index++;
-	pix_dex++;
-	if (text[pix_dex] != (char)255)
+		index++;
+		pix_dex++;
 		pixels[index] = text[pix_dex];
-	index++;
-	pix_dex++;
+	}
 }
 
 int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp, int stripe)
@@ -59,6 +58,7 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 	int		tex_x;
 	int		screen_y;
 
+	// i_sprite = doom->lib.sprites[index_sp].index;
 	i_sprite = doom->lib.sprites[index_sp].index;
 	stripe = (int)sprite_begin->x/* + doom->pos.x*/;
 	screen_y = (int)sprite_begin->y/* + doom->pos.y*/;
