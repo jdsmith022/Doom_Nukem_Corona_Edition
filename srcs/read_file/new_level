@@ -14,9 +14,9 @@ textures/walls/sausage_bacon.bmp
 textures/poster.bmp
 
 #object library
-1
+2
 textures/groceries/brinta.bmp
-#textures/groceries/butter.bmp
+textures/groceries/butter.bmp
 #textures/groceries/cleaning1.bmp
 #textures/groceries/cleaning2.bmp
 #textures/groceries/ketchp.bmp
@@ -26,7 +26,7 @@ textures/groceries/brinta.bmp
 #number of walls
 19
 #number of objects
-1
+3
 
 
 #sector[0]
@@ -153,63 +153,63 @@ textures/groceries/brinta.bmp
 3
 
 #objects in sector
-0
+2
 
 #object1
-#0
-#50
-#50
-#0
-#8
-#4
-#0
-#46
-#46
-#54
-#46
-#0
-#54
-#46
-#54
-#54
-#0
-#54
-#54
-#46
-#54
-#0
-#46
-#54
-#46
-#46
+0
+50
+50
+0
+8
+4
+0
+46
+46
+54
+46
+0
+54
+46
+54
+54
+0
+54
+54
+46
+54
+0
+46
+54
+46
+46
 
 #object2
-#1
-#75
-#75
-#0
-#16
-#4
-#1
-#71
-#71
-#79
-#71
-#1
-#79
-#71
-#79
-#79
-#1
-#79
-#79
-#71
-#79
-#1
-#71
-#79
-#71
-#71
+1
+75
+75
+0
+16
+4
+1
+71
+71
+79
+71
+1
+79
+71
+79
+79
+1
+79
+79
+71
+79
+1
+71
+79
+71
+71
 
 #sector[1]
 10
