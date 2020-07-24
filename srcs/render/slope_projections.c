@@ -80,6 +80,7 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.height = tan(sector->slope_floor) * slope.distance;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
+	printf("%f\n", slope.height);
 	return (slope);
 }
 
