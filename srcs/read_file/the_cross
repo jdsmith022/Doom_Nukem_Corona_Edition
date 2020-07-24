@@ -1,8 +1,10 @@
 #the cross
 
 #texture library
-1
-textures/dark_stone.bmp
+3
+textures/walls/wine.bmp
+textures/floors_ceiling/floor.bmp
+textures/floors_ceiling/ceiling96X96_clean.bmp
 
 #object library
 0
@@ -17,10 +19,10 @@ textures/dark_stone.bmp
 #sector[0]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 0
@@ -80,10 +82,10 @@ textures/dark_stone.bmp
 #sector[1]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 1
@@ -143,10 +145,10 @@ textures/dark_stone.bmp
 #sector[2]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 2
@@ -206,10 +208,10 @@ textures/dark_stone.bmp
 #sector[3]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 3
@@ -269,10 +271,10 @@ textures/dark_stone.bmp
 #sector[4]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 4
