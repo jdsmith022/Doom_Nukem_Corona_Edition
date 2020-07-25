@@ -33,7 +33,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,\
 void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 {
 	if (button->button == SDL_BUTTON_LEFT)
-		doom->own_event.mouse_press = 0;
+		doom->own_event.mouse_press = FALSE;
 }
 
 void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
@@ -51,7 +51,7 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button)
 bool	handle_mouse_state(t_doom *doom)
 {
 	if (doom->own_event.mouse_state_switched)
-		return false;
-	doom->own_event.mouse_state_switched = true;
-	return true;
+		return (FALSE);
+	doom->own_event.mouse_state_switched = TRUE;
+	return (TRUE);
 }

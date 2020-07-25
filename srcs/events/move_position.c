@@ -74,7 +74,7 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
 	movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
-	collision = movement_collision(doom, movement,  doom->dir_angle + direction);
+	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
 		doom->pos = movement.end;
