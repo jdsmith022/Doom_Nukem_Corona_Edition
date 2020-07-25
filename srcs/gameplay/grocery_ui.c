@@ -2,20 +2,28 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/font.h"
 
+void	draw_item(t_doom *doom, t_item item)
+{
+	if (!item.sprite)
+		printf("Sprite not found!\n");
+	else
+	{
+		draw_img(item.sprite, doom, item.position);
+		draw_grocery_amount(doom, item.position, ft_itoa(item.amount));
+	}
+}
+
 void	draw_basket_ui(t_doom *doom, t_groceries *groceries)
 {
-	t_list	*temp;
-	t_item	*item;
-	SDL_Rect position;
+	t_list		*temp;
+	t_item		*item;
+	SDL_Rect	position;
 
 	temp = groceries->basket;
 	while (temp)
 	{
 		item = (t_item *)temp->content;
-		if (!item->sprite)
-			printf("Image not found!\n");
-		draw_img(item->sprite, doom, item->position);
-		draw_grocery_amount(doom, item->position, ft_itoa(item->amount));
+		draw_item(doom, *item);
 		temp = temp->next;
 	}
 	return ;
@@ -31,10 +39,7 @@ void	draw_shopping_ui(t_doom *doom, t_groceries *groceries)
 	while (i < groceries->shopping_list_len)
 	{
 		item = groceries->shopping_list[i];
-		if (!item.sprite)
-			printf("Image not found!\n");
-		draw_img(item.sprite, doom, item.position);
-		draw_grocery_amount(doom, item.position, ft_itoa(item.amount));
+		draw_item(doom, item);
 		i++;
 	}
 	return ;
