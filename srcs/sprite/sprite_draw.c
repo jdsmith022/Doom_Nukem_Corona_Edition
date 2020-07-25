@@ -25,7 +25,8 @@ int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	int		i_sprite;
 	int		tex_x;
 
-	i_sprite = doom->lib.sprites[index_sp].index;
+	// i_sprite = doom->lib.sprites[index_sp].index;
+	i_sprite = doom->lib.sprites[index_sp].visible;
 	tex_x = 0;
 	if ((int)sprite_begin->x > 0 && sprite_begin->x < WIDTH)
 	{
@@ -48,7 +49,8 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	int		i_sprite;
 	int		tex_y;
 
-	i_sprite = doom->lib.sprites[index_sp].index;
+	// i_sprite = doom->lib.sprites[index_sp].index;
+	i_sprite = doom->lib.sprites[index_sp].visible;
 	tex_y = 0;
 	if (sprite_begin->y > 0 && sprite_begin->y < HEIGHT)
 		tex_y = (int)(screen_y - sprite_begin->y) / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
@@ -67,7 +69,7 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 	int		tex_x;
 	int		screen_y;
 
-	i_sprite = doom->lib.sprites[index_sp].index;
+	i_sprite = doom->lib.sprites[index_sp].visible;
 	stripe = (int)sprite_begin->x;
 	screen_y = (int)sprite_begin->y;
 	index = 0;

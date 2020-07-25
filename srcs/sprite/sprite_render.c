@@ -26,8 +26,10 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 		sprite_begin->y = 0;
 	if (sprite_end->y > HEIGHT)
 		sprite_end->y = HEIGHT - 1;
-	h = doom->lib.obj_lib[sprite->index]->h;
-	w = doom->lib.obj_lib[sprite->index]->w;
+	// h = doom->lib.obj_lib[sprite->index]->h;
+	// w = doom->lib.obj_lib[sprite->index]->w;
+	h = doom->lib.obj_lib[sprite->visible]->h;
+	w = doom->lib.obj_lib[sprite->visible]->w;
 	sprite->width = (sprite->height / h) * w;	
 	sprite_end->x = sprite->sprite_x;
 	sprite_begin->x = sprite_end->x - sprite->width;

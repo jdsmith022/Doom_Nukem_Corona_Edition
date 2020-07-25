@@ -29,8 +29,10 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, 
 			curr_distance = point_distance(doom->pos, intersect, ray.angle);
 			if (curr_distance < temp_distance)
 			{
+
 				temp_distance = curr_distance;
-				sprite->visible = i;
+				// sprite->visible = i;
+				sprite->visible = sprite->textures[i];
 			}
 			sprite->distance = fabs(point_distance(doom->pos, sprite->pos, ray.angle));
 		}

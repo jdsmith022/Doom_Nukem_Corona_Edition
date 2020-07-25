@@ -14,19 +14,21 @@ textures/walls/sausage_bacon.bmp
 textures/poster.bmp
 
 #object library
-5
+7
 textures/groceries/brinta.bmp
 textures/groceries/butter.bmp
 textures/groceries/cleaning1.bmp
 textures/groceries/cleaning2.bmp
 textures/groceries/chocolate_milk.bmp
+textures/groceries/kellogs.bmp
+textures/groceries/douwe.bmp
 
 #number of sectors
 3
 #number of walls
 19
 #number of objects
-6
+7
 
 
 #sector[0]
@@ -271,8 +273,36 @@ textures/groceries/chocolate_milk.bmp
 6
 7
 
-#objs in sector
+#objs in sector 1
+1
+
+#object1 in sector 1
+1
+200
+10
 0
+16
+4
+1
+195
+5
+205
+5
+1
+205
+5
+205
+15
+1
+205
+15
+195
+15
+1
+195
+15
+195
+5
 
 
 #sector[2]
@@ -362,17 +392,17 @@ textures/groceries/chocolate_milk.bmp
 95
 405
 95
-0
+4
 405
 95
 405
 105
-0
+5
 405
 105
 395
 105
-0
+6
 395
 105
 395
