@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/23 09:40:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/23 16:33:11 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/07/25 13:19:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void	set_text(t_doom *doom, t_font *lib, int len, char **shopping_list)
 		index++;
 	}
 }
-
-
 
 void		save_shopping_list_font(t_doom *doom, int *len)
 {
