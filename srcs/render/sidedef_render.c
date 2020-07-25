@@ -37,7 +37,9 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.txt_2 = curr_sidedef.txt_2;
 	sidedef.txt_3 = curr_sidedef.txt_3;
 	sidedef.intersect = intersect;
+	sidedef.line = curr_sidedef.line;
 	sidedef.action = curr_sidedef.action;
+	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
 }
 
@@ -81,9 +83,6 @@ static int			find_intersect(t_doom *doom, t_ray ray, int sector,
 		}
 		x++;
 	}
-	// printf("render: %f, %f\n", ray.line.end.x, ray.line.end.y);
-	// doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	// sprite_check(doom, ray, sector);
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
@@ -93,7 +92,7 @@ static int			find_intersect(t_doom *doom, t_ray ray, int sector,
 	return (0);
 }
 
-int				sidedef_render(t_doom *doom, t_ray ray, int sector,
+void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
 	t_point		intersect;
@@ -133,11 +132,14 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
+		{
+			doom->prev_sidedef.id = near_sidedef.id;
+			doom->prev_sidedef.distance = min_distance;
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
+		}
 		doom->distance = min_distance;
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
-	return (0);
 }

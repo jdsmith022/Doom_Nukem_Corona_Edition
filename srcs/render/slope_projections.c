@@ -1,5 +1,17 @@
 #include "../../includes/doom.h"
 
+
+
+// int			set_slope_bottom(t_doom *doom, t_slope slope, t_sidedef sidedef)
+// {
+// 		double 	height;
+
+// 		sidedef
+
+		
+
+// }
+
 t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 {
 	t_point		start;
@@ -70,17 +82,19 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 		return (slope);
 	}
 	slope.opp_side = get_opp_sidedef(*sector);
-	slope.conn_point = get_connecting_point(sidedef.line,\
-		doom->lib.sidedef[sector->slope_id].line);
-	if (sidedef.id != sector->slope_id && sidedef.id != slope.opp_side)
-		slope.distance = points_distance(sidedef.intersect, slope.conn_point);
 	if (sidedef.id == slope.opp_side)
 		slope.distance = fabs(point_line_distance(sidedef.line.end,\
 			doom->lib.sidedef[sector->slope_id].line));
+	if (sidedef.id != sector->slope_id && sidedef.id != slope.opp_side)
+	{
+		slope.conn_point = get_connecting_point(sidedef.line,\
+		doom->lib.sidedef[sector->slope_id].line);
+		slope.distance = points_distance(sidedef.intersect, slope.conn_point);
+	}
 	slope.height = tan(sector->slope_floor) * slope.distance;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
-	printf("%f\n", slope.height);
+	// slope.bottom = set_slope_bottom(doom, slope, sidedef);
 	return (slope);
 }
 

@@ -96,12 +96,14 @@ void			draw_floor(t_doom *doom, int x,
 	limit = HEIGHT;
 	if (doom->lib.sector[doom->prev_sector].outside)
 		limit = doom->lib.portal_floor;
+	// if (slope.id && sector.slope != prev.sector.slope)
+	// 	limit = plane.mid_tex_bottom;
 	while (y < limit)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height - sector.height_floor)\
+		dist = ((doom->player_std_height - sector.height_floor)\
 			/ ((y + doom->own_event.y_pitch) -\
-			((HEIGHT / 2) + doom->player_height));
+			((HEIGHT / 2) + doom->player_height)));
 		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		doom->horizontal_plane_dist = dist;

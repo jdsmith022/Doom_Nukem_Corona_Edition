@@ -88,6 +88,11 @@ typedef struct		s_ray {
 	int				filter;
 }					t_ray;
 
+typedef struct		s_prev_sidedef {
+	int				id;
+	double			distance;
+}					t_prev_sidedef;
+
 typedef struct		s_event {
 	int				mouse_press;
 	int				hold_angle;
@@ -156,11 +161,13 @@ typedef struct		s_sidedef {
 	int				txt_3;
 	double			distance;
 	int				poster;
+	t_prev_sidedef	prev_sidedef;
 }					t_sidedef;
 
 typedef	struct		s_slope {
 	double			distance;
 	double			height;
+	int				slope_plane_end;
 	int				opp_side;
 	int				sidedef_id;
 	t_point			intersect;
@@ -178,7 +185,7 @@ typedef struct		s_sector {
 	int				light;
 	int				slope_id;
 	int				slope_ceiling;
-	int				slope_floor;
+	double			slope_floor;
 	int				height_ceiling;
 	int				height_floor;
 	int				txt_ceiling;
@@ -257,6 +264,7 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
+	t_prev_sidedef	prev_sidedef;
 }					t_doom;
 
 /*core functions*/
@@ -313,7 +321,7 @@ void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 
 /*render functions*/
-int					sidedef_render(t_doom *doom, t_ray ray,\
+void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_texture_properties(t_doom *doom);
