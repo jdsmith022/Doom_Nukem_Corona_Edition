@@ -77,6 +77,8 @@ void	groceries(t_doom *doom)
 		handle_groceries(doom);
 	else
 		doom->own_event.mouse_state_switched = false;
-	draw_basket_ui(doom, doom->groceries);
-	draw_shopping_ui(doom, doom->groceries);
+	if (doom->groceries->basket)
+		draw_basket_ui(doom, doom->groceries);
+	if (doom->groceries->shopping_list)
+		draw_shopping_ui(doom, doom->groceries);
 }

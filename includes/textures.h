@@ -3,31 +3,31 @@
 
 #include <stdlib.h>
 
+#define NUM_OF_GROCERIES 7
+
 # define APPLE		1
-# define ORANGE		2
-# define BANANA		3
-# define PINEAPPLE	4
-# define CHOCOLADE	5
-# define SOAP		6
-# define CORONA		7
-# define WINE		8
-# define WATER		9
-# define SODA		10
-# define BACON		11
+# define BACON		2
+# define CHERRY		3
+# define JARS		4
+# define WATER		5
+# define WINE		6
+# define SODA		7
 
-#define NUM_OF_GROCERIES 5
-
-#define SPR_BACON	"sprites/groceries/brinta.bmp"
 #define SPR_APPLE	"sprites/groceries/butter.bmp"
-#define SPR_WINE	"sprites/groceries/chocolate_milk.bmp"
-#define SPR_WATER	"sprites/groceries/kellogs.bmp"
+#define SPR_BACON	"sprites/groceries/brinta.bmp"
+#define SPR_CHERRY	"sprites/walls/tony1.bmp"
+#define SPR_JARS	"sprites/walls/douwe.bmp"
 #define SPR_SODA	"sprites/groceries/mayonaisse.bmp"
+#define SPR_WATER	"sprites/groceries/kellogs.bmp"
+#define SPR_WINE	"sprites/groceries/chocolate_milk.bmp"
 
-#define TEX_BACON	"textures/walls/sausage_bacon.bmp"
 #define TEX_APPLE	"textures/walls/apple.bmp"
-#define TEX_WINE	"textures/walls/wine.bmp"
-#define TEX_WATER	"textures/walls/water.bmp"
+#define TEX_BACON	"textures/walls/sausage_bacon.bmp"
+#define TEX_CHERRY	"textures/walls/cherry-strawberry.bmp"
+#define TEX_JARS	"textures/walls/jar-wall.bmp"
 #define TEX_SODA	"textures/walls/soda.bmp"
+#define TEX_WATER	"textures/walls/water.bmp"
+#define TEX_WINE	"textures/walls/wine.bmp"
 
 typedef struct s_doom	t_doom;
 typedef struct s_item	t_item;
@@ -43,7 +43,9 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	{TEX_APPLE, SPR_APPLE, APPLE},
 	{TEX_WINE, SPR_WINE, WINE},
 	{TEX_SODA, SPR_SODA, SODA},
-	{TEX_BACON, SPR_BACON, BACON}
+	{TEX_BACON, SPR_BACON, BACON},
+	{TEX_JARS, SPR_JARS, JARS},
+	{TEX_CHERRY, SPR_CHERRY, CHERRY}
 };
 
 void				set_sprite(t_doom *doom, uint8_t type, t_item *item);

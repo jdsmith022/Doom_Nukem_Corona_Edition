@@ -11,7 +11,7 @@ t_item 		*get_shopping_list(t_doom *doom, uint8_t *groceries)
 	shopping_list = ft_memalloc(sizeof(t_item) * SHOPPING_LIST_LENGTH);
 	while (i < SHOPPING_LIST_LENGTH)
 	{
-		shopping_list[i].type = 8 + i;
+		shopping_list[i].type = 1 + i;
 		shopping_list[i].amount = (rand() % 5) + 1;
 		set_sprite(doom, shopping_list[i].type, &shopping_list[i]);
 		shopping_list[i].position = get_position(i, WIDTH - 300);
