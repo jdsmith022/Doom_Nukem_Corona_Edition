@@ -134,7 +134,8 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
 		{
 			doom->prev_sidedef.id = near_sidedef.id;
-			doom->prev_sidedef.distance = min_distance;
+			doom->prev_sidedef.distance = near_sidedef.distance;
+			doom->prev_sidedef.intersect = near_sidedef.intersect;
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		}
 		doom->distance = min_distance;

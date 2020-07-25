@@ -2,16 +2,6 @@
 
 
 
-// int			set_slope_bottom(t_doom *doom, t_slope slope, t_sidedef sidedef)
-// {
-// 		double 	height;
-
-// 		sidedef
-
-		
-
-// }
-
 t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 {
 	t_point		start;
@@ -40,6 +30,16 @@ t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 	return (doom->lib.sidedef[i]);
 }
 
+int			get_opp_sidedef(t_sector sector)
+{
+	int			sidedef_index;
+
+	sidedef_index = sector.i_sidedefs;
+	if (sector.slope_id == sidedef_index ||\
+		sector.slope_id == sidedef_index + 1)
+		return (sector.slope_id + 2);
+	return (sector.slope_id - 2);
+}
 t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
 {
 	t_point		start;
@@ -57,16 +57,38 @@ t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
 	return (end);
 }
 
-int			get_opp_sidedef(t_sector sector)
+int			set_bottom_plane(t_doom *doom, t_sidedef sidedef, t_sector sector, double height)
 {
-	int			sidedef_index;
-
-	sidedef_index = sector.i_sidedefs;
-	if (sector.slope_id == sidedef_index ||\
-		sector.slope_id == sidedef_index + 1)
-		return (sector.slope_id + 2);
-	return (sector.slope_id - 2);
+	int		bottom;
 }
+
+int			 set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef, t_sector sector)
+{
+	t_sidedef	bottom_sidedef;
+	double		height;
+	int			opp_side;
+	double		distance;
+	t_point		conn_point;
+
+	bottom_sidedef = doom->lib.sidedef[sidedef.id];
+	bottom_sidedef = get_other_side(doom, bottom_sidedef, sector);
+	if (bottom_sidedef.id == sector.slope_id)
+		height = 0;
+	opp_side = get_opp_sidedef(sector);
+	if (bottom_sidedef.id == opp_side)
+		distance = fabs(point_line_distance(bottom_sidedef.line.start,\
+			doom->lib.sidedef[sector.slope_id].line));
+	if (bottom_sidedef.id != sector.slope_id && sidedef.id != opp_side)
+	{
+		conn_point = get_connecting_point(bottom_sidedef.line,\
+			doom->lib.sidedef[sector.slope_id].line);
+		distance = points_distance(conn_point, sidedef.intersect);
+	}
+	height = tan(sector.slope_floor) * distance;
+	return (set_bottom_plane(doom, bottom_sidedef, sector, height));
+}
+
+
 
 t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	t_sector *sector)

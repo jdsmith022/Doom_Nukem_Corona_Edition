@@ -91,6 +91,7 @@ typedef struct		s_ray {
 typedef struct		s_prev_sidedef {
 	int				id;
 	double			distance;
+	t_point			intersect;
 }					t_prev_sidedef;
 
 typedef struct		s_event {
@@ -167,7 +168,7 @@ typedef struct		s_sidedef {
 typedef	struct		s_slope {
 	double			distance;
 	double			height;
-	int				slope_plane_end;
+	int				plane_end;
 	int				opp_side;
 	int				sidedef_id;
 	t_point			intersect;
@@ -325,8 +326,9 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_texture_properties(t_doom *doom);
-t_slope					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+t_slope				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector *sector);
+int					set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef, t_sector sector);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);
