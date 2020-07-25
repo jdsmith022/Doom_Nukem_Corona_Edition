@@ -25,23 +25,19 @@ int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	int		i_sprite;
 	int		tex_x;
 
-	printf("test\n");
 	i_sprite = doom->lib.sprites[index_sp].index;
 	tex_x = 0;
 	if ((int)sprite_begin->x > 0 && sprite_begin->x < WIDTH)
 	{
-		printf("test1\n");
-		tex_x = (stripe - sprite_begin->x) / doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
+		tex_x = (stripe - (int)sprite_begin->x) / doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
 	}
 	else if ((int)sprite_begin->x <= 0)
 	{
-		printf("begin->x <= 0.0");
-		tex_x = (doom->lib.sprites[index_sp].width - sprite_end->x + stripe) /\
-		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
+		tex_x = ((int)doom->lib.sprites[index_sp].width - sprite_end->x + stripe) /\
+		(int)doom->lib.sprites[index_sp].width * (int)doom->lib.obj_lib[i_sprite]->w;
 	}
 	else
 	{
-		printf("test2\n");
 		tex_x = (sprite_end->x - stripe) / doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
 	}
 	return (tex_x);
@@ -71,16 +67,12 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 	int		tex_x;
 	int		screen_y;
 
-	// i_sprite = doom->lib.sprites[index_sp].index;
 	i_sprite = doom->lib.sprites[index_sp].index;
-	printf("start draw, sprite #%d\n", index_sp);
-	stripe = (int)sprite_begin->x/* + doom->pos.x*/;
-	screen_y = (int)sprite_begin->y/* + doom->pos.y*/;
+	stripe = (int)sprite_begin->x;
+	screen_y = (int)sprite_begin->y;
 	index = 0;
-	// printf("draw_stripes 1\n");
-	while (stripe < (int)sprite_end->x && stripe > 0 && stripe < WIDTH)
+	while (stripe < (int)sprite_end->x && stripe >= 0 && stripe < WIDTH)
 	{
-		// printf("draw_stripes 2\n");
 		screen_y = (int)sprite_begin->y;
 		tex_x = find_tex_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 		while (screen_y < (int)sprite_end->y/* && pix_y > 0 && pix_y < HEIGHT*/)

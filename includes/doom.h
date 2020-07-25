@@ -77,6 +77,7 @@ typedef struct			s_sprite {
 	int					visible;
 	double				distance;
 	int					face;
+	double				offset;
 	// int					screen_left_x;
 	// int					screen_right_x;
 	// int					position;

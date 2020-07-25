@@ -52,17 +52,7 @@ int			*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_sprite
 	int		i;
 
 	sprite_order = (int*)malloc(sizeof(int) * visible_sprites);
-	// printf("sort_sprite2, total: %d\n", total);
 	init_sprite_order_array(sprite, sprite_order, visible_sprites, total_sprites);
-	i = 0;
-	// while (i < visible_sprites)
-	// {
-	// 	i++;
-	// 	if (i == visible_sprites)
-	// 		printf("\n");
-	// }
-	// if (i < 0)
-	// 	printf("sprite[i].distance: %f\n", sprite[0].distance);
 	sort_sprites(sprite, sprite_order, visible_sprites);
 	return (sprite_order);
 }
