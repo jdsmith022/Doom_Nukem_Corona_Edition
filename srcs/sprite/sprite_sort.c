@@ -1,15 +1,15 @@
 #include "../../includes/doom.h"
 
-void		init_sprite_order_array(t_sprite *sprite, int *order, int total)
+void		init_sprite_order_array(t_sprite *sprite, int *order, int visible_sprites, int total_sprites)
 {
 	int		i;
 	int		x;
 
 	i = 0;
 	x = 0;
-	while (i < total)
+	while (i < visible_sprites)
 	{
-		while (sprite[x].visible == -1 && x < total - 1)
+		while (sprite[x].visible == -1 && x < total_sprites)
 			x++;
 		order[i] = x;
 		x++;
@@ -46,22 +46,23 @@ void		sort_sprites(t_sprite *sprite, int *sprite_order, int total)
 	}
 }
 
-int			*sort_sprite_array(t_sprite *sprite, int total)
+int			*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_sprites)
 {
 	int		*sprite_order;
 	int		i;
 
-	sprite_order = (int*)malloc(sizeof(int) * total);
+	sprite_order = (int*)malloc(sizeof(int) * visible_sprites);
 	// printf("sort_sprite2, total: %d\n", total);
-	init_sprite_order_array(sprite, sprite_order, total);
+	init_sprite_order_array(sprite, sprite_order, visible_sprites, total_sprites);
 	i = 0;
-	// while (i < total)
+	// while (i < visible_sprites)
 	// {
-	// 	printf("%d ", sprite_order[i]);
 	// 	i++;
+	// 	if (i == visible_sprites)
+	// 		printf("\n");
 	// }
 	// if (i < 0)
 	// 	printf("sprite[i].distance: %f\n", sprite[0].distance);
-	sort_sprites(sprite, sprite_order, total);
+	sort_sprites(sprite, sprite_order, visible_sprites);
 	return (sprite_order);
 }

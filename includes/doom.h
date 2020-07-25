@@ -381,7 +381,7 @@ void				box_in_sectors(t_doom *doom);
 void				sprite_init(t_doom *doom);
 void				sprite_check(t_doom *doom, t_ray ray, int x);
 void				sprite_render(t_doom *doom);
-int					*sort_sprite_array(t_sprite *sprite, int total);
+int					*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_sprites);
 void				find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index);
 void				draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp);
 void				sprite_reset(t_doom *doom);

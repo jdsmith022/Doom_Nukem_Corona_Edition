@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite)
+void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite, int index)
 {
 	double		h;
 	double		w;
@@ -47,8 +47,14 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	while (i < doom->visible_sprites)
 	{
 		index = sprite_order[i];
-		scale_sprite(doom, &sprite_begin, &sprite_end, &doom->lib.sprites[index]);
+		// printf("draw sprite \tindex:%d\n", index);
+		scale_sprite(doom, &sprite_begin, &sprite_end, &doom->lib.sprites[index], index);
+		printf("sprite #%d\n", index);
+		printf("p(%f ; %f)\n", doom->pos.x, doom->pos.y);
+		printf("(%f ; %f) - (%f ; %f)\n", sprite_begin.x, sprite_begin.y, sprite_end.x, sprite_end.y);
+		// printf("after schale\n");
 		draw_stripes(doom, &sprite_begin, &sprite_end, index);
+		// printf("after draw\n");
 		doom->lib.sprites[index].visible = -1;
 		i++;
 	}
@@ -58,9 +64,18 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 void		sprite_render(t_doom *doom)
 {
 	int		*sprite_order;
+	int		i = 0;
 
 	// printf("sprite_render begin\n");
-	sprite_order = sort_sprite_array(doom->lib.sprites, doom->visible_sprites);
+	sprite_order = sort_sprite_array(doom->lib.sprites, doom->visible_sprites, doom->total_sprites);
+	// printf("visible_sprites: %d\n", doom->visible_sprites);
+	while (i < doom->visible_sprites)
+	{
+		printf("%d ", sprite_order[i]);
+		i++;
+		if (i == doom->visible_sprites)
+			printf("\n");
+	}
 	// printf("sprite_render middle\n");
 	draw_sprite(doom, sprite_order);
 	// printf("sprite_render einde\n");

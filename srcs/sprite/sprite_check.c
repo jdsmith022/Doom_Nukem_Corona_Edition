@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 
 //int i is gewoon index tel van 0 - 4
-void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
+void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, int sprite_i)
 {
 	t_point	ray_delta;
 	t_point sprite_delta;
@@ -11,7 +11,7 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 
 	temp_distance = INFINITY;
 	curr_distance = 0;
-	// printf("test check_visibility\n");
+	// loop through the four lines, which one is closer?
 	while (i < 4)
 	{
 		ray_delta = line_delta(ray.line.start, ray.line.end);
@@ -39,7 +39,7 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 	// printf("sprite->visible: %d\n", sprite->visible);
 	if (sprite->visible != -1)
 	{
-		// printf("sprite face %d is visible\ndistance to player: %f\n", i - 1, sprite->distance);
+		// printf("sprite %d is visible\n", sprite_i);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
 	}
@@ -56,7 +56,8 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector)
 	i = 0;
 	x = 0;
 	sprite_i = doom->lib.sector[sector].i_objects; //dit moet ik checken
-	// printf("sprite_i: %d\n", sprite_i);
+	
+	// printf("sprite_i: %d, sector: %d, n_objects: %d\n", sprite_i, sector, doom->lib.sector[sector].n_objects);
 	//TOTAL_SPRITES per sector
 	// printf("sprite_check 1\n");
 	while (i < doom->lib.sector[sector].n_objects)
@@ -65,10 +66,9 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector)
 		{
 			// printf("test sprite check\n");
 			//loop through every line of particular object, save closest distance and line segment
-			check_visibility_sprite(doom, &doom->lib.sprites[sprite_i], ray, x);
+			check_visibility_sprite(doom, &doom->lib.sprites[sprite_i], ray, x, sprite_i);
 		}
 		i++;
 		sprite_i++;
 	}
-	// printf("sprite_check eind\n");
 }

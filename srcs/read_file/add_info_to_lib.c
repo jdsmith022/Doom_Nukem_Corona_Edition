@@ -181,7 +181,6 @@ void        add_inf_to_obj(t_sprite *sprite, char *line, int i, int safe, int ob
 	{
 		if (safe > 0)
 		{
-			// printf("Amount %i\n", safe);
 			sprite->amount = safe;
 			sprite->textures = (int*)malloc(sizeof(int) * safe); //need to protect
 			sprite->lines = (t_line*)malloc(sizeof(t_line) * safe);//need to protect
@@ -252,6 +251,7 @@ t_sprite   object_inf(int fd, int sector, int obj_len)
 		// else
 		//     get_line(&line, fd, "object informations does not exist", 0);
 		add_inf_to_obj(&sprite, line, i, safe, obj_len);
+		sprite.sector = sector; //added to safe sector of sprite
 		free(line);
 		i++;
 	}
