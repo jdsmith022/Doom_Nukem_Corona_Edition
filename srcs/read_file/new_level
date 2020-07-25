@@ -2,26 +2,26 @@
 
 #texture library
 10
-textures/walls/96X96-Shelf.bmp
-textures/floors_ceiling/floor.bmp
-textures/floors_ceiling/ceiling96X96_clean.bmp
-textures/walls/cherry_strawberry.bmp
-textures/walls/apple.bmp
-textures/walls/water.bmp
-textures/walls/wine.bmp
-textures/walls/soda.bmp
-textures/walls/sausage_bacon.bmp
-textures/poster.bmp
+assets/textures/shelves/96X96-Shelf.bmp
+assets/textures/floors_ceiling/floor.bmp
+assets/textures/floors_ceiling/ceiling96X96_clean.bmp
+assets/textures/shelves/cherry_strawberry.bmp
+assets/textures/shelves/apple.bmp
+assets/textures/shelves/water.bmp
+assets/textures/shelves/wine.bmp
+assets/textures/shelves/soda.bmp
+assets/textures/shelves/sausage_bacon.bmp
+assets/sprites/misc/poster.bmp
 
 #object library
 7
-sprites/groceries/brinta.bmp
-sprites/groceries/butter.bmp
-sprites/groceries/chocolate_milk.bmp
-sprites/groceries/douwe.bmp
-sprites/groceries/kellogs.bmp
-sprites/groceries/mayonaisse.bmp
-sprites/groceries/ketchup.bmp
+assets/sprites/groceries/bacon.bmp
+assets/sprites/groceries/butter.bmp
+assets/sprites/groceries/cherry.bmp
+assets/sprites/groceries/coffee.bmp
+assets/sprites/groceries/wine1.bmp
+assets/sprites/groceries/mayonaisse.bmp
+assets/sprites/groceries/water.bmp
 
 #number of sectors
 3

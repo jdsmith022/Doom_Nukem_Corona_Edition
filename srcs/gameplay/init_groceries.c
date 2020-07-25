@@ -20,6 +20,8 @@ void		set_positions(t_list **basket)
 
 	i = 0;
 	temp = *basket;
+	if (!temp)
+		return;
 	while (temp)
 	{
 		item = (t_item *)temp->content;

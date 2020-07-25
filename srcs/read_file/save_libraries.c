@@ -3,10 +3,12 @@
 int		open_file(char *filename)
 {
 	int		fd;
+    char *message;
 
+    message = ft_strjoin(filename, "can't open");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		error("file can't open", 0);
+		error(message, 0);
 	return (fd);
 }
 

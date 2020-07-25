@@ -57,6 +57,7 @@ void	handle_groceries(t_doom *doom)
 {
 	uint8_t type;
 
+	int i = 0;
 	if (!handle_mouse_state(doom))
 		return ;
 	if (click_on_basket(&doom->groceries->basket, &type, MOUSE_X, MOUSE_Y)){
@@ -68,6 +69,7 @@ void	handle_groceries(t_doom *doom)
 		set_shelf_type(doom, &type);
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
+		print_basket(&doom->groceries->basket);
 	}
 }
 

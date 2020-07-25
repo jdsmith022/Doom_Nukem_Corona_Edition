@@ -28,9 +28,10 @@ void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
 	while (i < doom->lib.len_obj_lib)
 	{
 		if (!doom->lib.obj_lib[i])
-			printf("NOOOO\n");
-		if (*((uint8_t *)doom->lib.obj_lib[i]->userdata) == type)
+			item->sprite = NULL;
+		else if (*((uint8_t *)doom->lib.obj_lib[i]->userdata) == type){
 			item->sprite = doom->lib.obj_lib[i];
+		}
 		i++;
 	}
 	return ;
@@ -42,7 +43,7 @@ void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	t_item item;
 
 	temp = *head;
-	if (!type)
+	if (!type || type > NUM_OF_GROCERIES)
 		return ;
 	item.type = type;
 	item.amount = 1;

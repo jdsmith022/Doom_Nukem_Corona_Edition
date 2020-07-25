@@ -21,6 +21,10 @@ void			draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect coord)
 
     prev_x = coord.x;
     sx = 0;
+	if (!texture){
+		printf("No texture\n");
+		return ;
+	}
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
     while (sx < (texture->h * texture->w))
     {

@@ -29,7 +29,7 @@ static void		save_sky_2(t_bmp *images,\
 {
 	images[4] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 4);
-	sky_fd = open_file("textures/sky_box/meadow_bk.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_bk.bmp");
 	images[5] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 5);
 }
@@ -43,19 +43,19 @@ SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd)
 	images = malloc_images_lib(doom, 6);
 	lib = malloc_sdl_lib(doom, images, 6);
 	doom->lib.len_sky_lib = 6;
-	sky_fd = open_file("textures/sky_box/meadow_up.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_up.bmp");
 	images[0] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 0);
-	sky_fd = open_file("textures/sky_box/meadow_dn.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_dn.bmp");
 	images[1] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 1);
-	sky_fd = open_file("textures/sky_box/meadow_rt.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_rt.bmp");
 	images[2] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 2);
-	sky_fd = open_file("textures/sky_box/meadow_ft.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_ft.bmp");
 	images[3] = read_bmp(sky_fd);
 	save_bpm_to_sdl(images, lib, 3);
-	sky_fd = open_file("textures/sky_box/meadow_lf.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_lf.bmp");
 	save_sky_2(images, lib, sky_fd);
 	free(images);
 	*sky_sd = init_sky_sd();

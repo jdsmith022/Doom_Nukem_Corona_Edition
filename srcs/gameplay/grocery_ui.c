@@ -12,6 +12,8 @@ void	draw_basket_ui(t_doom *doom, t_groceries *groceries)
 	while (temp)
 	{
 		item = (t_item *)temp->content;
+		if (!item->sprite)
+			printf("Image not found!\n");
 		draw_img(item->sprite, doom, item->position);
 		draw_grocery_amount(doom, item->position, ft_itoa(item->amount));
 		temp = temp->next;
@@ -29,6 +31,8 @@ void	draw_shopping_ui(t_doom *doom, t_groceries *groceries)
 	while (i < groceries->shopping_list_len)
 	{
 		item = groceries->shopping_list[i];
+		if (!item.sprite)
+			printf("Image not found!\n");
 		draw_img(item.sprite, doom, item.position);
 		draw_grocery_amount(doom, item.position, ft_itoa(item.amount));
 		i++;
