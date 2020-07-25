@@ -39,13 +39,13 @@ typedef struct			s_grocery_paths {
 }						t_grocery_paths;
 
 static const t_grocery_paths GROCERIE_PATHS[] = {
-	{TEX_WATER, SPR_WATER, WATER},
 	{TEX_APPLE, SPR_APPLE, APPLE},
-	{TEX_WINE, SPR_WINE, WINE},
-	{TEX_SODA, SPR_SODA, SODA},
 	{TEX_BACON, SPR_BACON, BACON},
+	{TEX_CHERRY, SPR_CHERRY, CHERRY},
 	{TEX_JARS, SPR_JARS, JARS},
-	{TEX_CHERRY, SPR_CHERRY, CHERRY}
+	{TEX_SODA, SPR_SODA, SODA},
+	{TEX_WINE, SPR_WINE, WINE},
+	{TEX_WATER, SPR_WATER, WATER}
 };
 
 void				set_sprite(t_doom *doom, uint8_t type, t_item *item);

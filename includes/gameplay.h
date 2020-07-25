@@ -7,7 +7,7 @@
 #include "font.h"
 
 #define GROCERY_LENGTH 5
-#define SHOPPING_LIST_LENGTH 2
+#define MAX_SHOPPING_LIST_LENGTH 4
 
 #define MOUSE_Y			doom->own_event.hold_y
 #define MOUSE_X			doom->own_event.hold_x
@@ -25,6 +25,7 @@ typedef struct			s_item {
 }						t_item;
 
 typedef struct			s_groceries {
+	uint8_t				num_of_groceries;
 	t_item 				*shopping_list;
 	uint8_t				shopping_list_len;
 	t_list				*basket;
@@ -50,5 +51,6 @@ int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 void					set_positions(t_list **basket);
 void					draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text);
 SDL_Rect				get_position(uint16_t index, int start_x);
+void					print_shopping_list(t_groceries *groceries);
 
 #endif

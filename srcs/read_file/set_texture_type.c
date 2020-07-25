@@ -17,6 +17,7 @@ void		set_texture_type(const char *name, SDL_Surface *surface)
 
 	i = 0;
 	surface->userdata = ft_memalloc(sizeof(uint8_t)); // NOTE: FREE
+	ft_bzero(surface->userdata, sizeof(uint8_t));
 	while (i < NUM_OF_GROCERIES)
 	{
 		if (is_of_type(name, GROCERIE_PATHS[i]))
