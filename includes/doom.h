@@ -247,6 +247,7 @@ typedef struct		s_doom {
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
+	SDL_Cursor		*cursor;
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;

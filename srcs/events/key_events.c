@@ -2,7 +2,6 @@
 
 void	key_handler(t_doom *doom, t_event *event, double dt)
 {
-	(void)dt;
 	if (event->cam_move_f == TRUE)
 		cam_move_fb(doom, dt, MOVE_SPEED);
 	else if (event->cam_move_b == TRUE)
