@@ -135,6 +135,7 @@ void	doom_init_events(t_event *event)
 static void		init_cursor(t_doom *doom)
 {
 	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
+	SDL_ShowCursor(SDL_ENABLE);
 	SDL_SetCursor(doom->cursor);
 	doom->own_event.select = FALSE;
 }

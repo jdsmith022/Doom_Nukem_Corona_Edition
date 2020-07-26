@@ -115,8 +115,8 @@ void	open_game_editor(t_doom *doom)
 	Uint32	*pixels;
 	int		i;
 
-	SDL_ShowCursor(SDL_ENABLE);
 	SDL_SetRelativeMouseMode(SDL_FALSE);
+	// SDL_ShowCursor(SDL_ENABLE);
 	doom->distance = 1;
 	pixels = doom->surface->pixels;
 	if (doom->game_design.sector == NULL)
