@@ -15,8 +15,6 @@ static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	mid_top = (new_height - (plane->height_standard / 2))\
 		- doom->own_event.y_pitch - height_celing;
 	plane->mid_texture_top = ((mid_top >= 0) ? mid_top : 0);
-	// if (sidedef.id == 10)
-	// 	printf("%d - %d\n", mid_top, plane->sidedef_top);
 	height_floor = opp_sector.height_floor / sidedef.distance\
 		* doom->dist_to_plane;
 	mid_bottom = (new_height + (plane->height_standard / 2))\

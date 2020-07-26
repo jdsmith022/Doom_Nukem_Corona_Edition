@@ -70,7 +70,7 @@ void			draw_ceiling(t_doom *doom, int x,
 	while (y >= limit)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height - sector.height_ceiling)\
+		dist = (doom->player_std_height + sector.height_ceiling)\
 			/ ((HEIGHT / 2 + doom->player_height)\
 			- (y + doom->own_event.y_pitch));
 		dist *= doom->dist_to_plane;
