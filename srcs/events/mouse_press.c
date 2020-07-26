@@ -8,7 +8,7 @@ void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 
 void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
 {
-	if (button->button == SDL_BUTTON_LEFT && event.select == TRUE)
+	if (button->button == SDL_BUTTON_LEFT)
 	{
 		doom->own_event.hold_x = button->x;
 		doom->own_event.hold_y = button->y;
