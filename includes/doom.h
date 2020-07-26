@@ -216,6 +216,9 @@ typedef struct		s_lib {
 	int				n_sectors;
 	t_sidedef		*sidedef;
 	int				len_sidedef;
+	t_sidedef		*infection;
+	int				cur_len_infection;
+	int				tot_len_infection;
 	t_sprite		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
@@ -384,6 +387,10 @@ void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);
+t_sidedef			set_properties_sidedef(t_point intersect, double distance,
+						t_sidedef curr_sidedef, t_doom *doom);
+void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
+					t_plane *plane, int x);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
@@ -421,5 +428,8 @@ void				relocate_moving_wall(t_point *intersect,\
 void				relocate_poster(t_doom *doom, t_sidedef *poster);
 int					init_poster(int x, double distance, t_point intersect,\
 						t_sidedef *poster);
+void				add_infection(t_doom *doom);
+void				find_infection(t_doom *doom, t_ray ray, double min_distance);
+
 
 #endif

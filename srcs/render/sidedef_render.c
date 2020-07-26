@@ -22,7 +22,7 @@ void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	}
 }
 
-static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
+t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef	sidedef;
@@ -138,6 +138,7 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
+		find_infection(doom, ray, min_distance);
 	}
 	return (0);
 }

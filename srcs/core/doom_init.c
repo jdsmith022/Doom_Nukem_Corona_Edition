@@ -139,9 +139,16 @@ static void		init_cursor(t_doom *doom)
 	doom->own_event.select = FALSE;
 }
 
+static void	init_infection(t_doom *doom)
+{
+	doom->lib.infection = (t_sidedef*)malloc(sizeof(t_sidedef) * 100);
+	doom->lib.tot_len_infection = 100;
+	doom->lib.cur_len_infection = 0;
+}
+
 void 	doom_init(t_doom *doom)
 {
-
+	 srand(time(0));
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
 	init_groceries(doom);
@@ -168,6 +175,8 @@ void 	doom_init(t_doom *doom)
 	doom->player_std_height = 48;
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
+	init_infection(doom);
+
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
 	// doom->sector[0].i_sidedefs = 0;
