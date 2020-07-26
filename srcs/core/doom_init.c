@@ -147,8 +147,8 @@ void 	doom_init(t_doom *doom)
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
 	init_groceries(doom);
-	init_audio(doom);
 	init_cursor(doom);
+	init_audio(doom);
 	doom->audio->engine = OFF;
 	if (doom->audio->engine)
 		load_audio(doom->audio);
