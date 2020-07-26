@@ -157,6 +157,7 @@ static void		init_settings(t_doom *doom)
 	doom->hud = TRUE;
 	doom->basket = FALSE;
 	doom->shopping = FALSE;
+	doom->audio->engine = OFF;
 }
 
 void 	doom_init(t_doom *doom)
@@ -168,7 +169,6 @@ void 	doom_init(t_doom *doom)
 	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
-	doom->audio->engine = OFF;
 	if (doom->audio->engine)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
