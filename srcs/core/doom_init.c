@@ -132,17 +132,28 @@ void	doom_init_events(t_event *event)
 	event->y_pitch = 0;
 }
 
+static void		init_cursor(t_doom *doom)
+{
+	SDL_Cursor *cursor;
+
+	cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
+	SDL_SetCursor(cursor);
+	doom->own_event.select = FALSE;
+}
+
 void 	doom_init(t_doom *doom)
 {
+
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
 	init_groceries(doom);
 	init_audio(doom);
+	init_cursor(doom);
 	doom->audio->engine = OFF;
 	if (doom->audio->engine)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
-	doom->own_event.mouse_state_switched = FALSE;
+	doom->own_event.mouse_state_switched = TRUE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud = TRUE;
