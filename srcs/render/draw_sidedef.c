@@ -27,7 +27,9 @@ static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
 	if (sidedef.opp_sector == -1)
 		tex_dex = sidedef.txt_2;
 	else if (pixel.y <= plane.mid_texture_top)
+	{
 		tex_dex = sidedef.txt_1;
+	}
 	// else if (pixel.y > plane.mid_texture_top &&\
 	// pixel.y < plane.mid_texture_bottom)
 	// 	tex_dex = sidedef.txt_2;
@@ -84,7 +86,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 			doom->distance = pixel.y > HEIGHT / 2 ? doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		if (pixel.y < plane.mid_texture_bottom)
 			put_protal_pixel(doom, pixel);
-		if (pixel.y > plane.mid_texture_bottom)
+		if (pixel.y < plane.mid_texture_top || pixel.y > plane.mid_texture_bottom)
 			find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}

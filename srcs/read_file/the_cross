@@ -1,11 +1,20 @@
 #the cross
 
 #texture library
-1
-textures/dark_stone.bmp
+3
+assets/textures/shelves/wine.bmp
+assets/textures/floors_ceiling/ceiling96X96_clean.bmp
+assets/textures/floors_ceiling/ceiling96X96_clean.bmp
 
 #object library
-0
+7
+assets/sprites/groceries/bacon.bmp
+assets/sprites/groceries/butter.bmp
+assets/sprites/groceries/cherry.bmp
+assets/sprites/groceries/coffee.bmp
+assets/sprites/groceries/wine1.bmp
+assets/sprites/groceries/mayonaisse.bmp
+assets/sprites/groceries/water.bmp
 
 #number of sectors
 5
@@ -17,10 +26,10 @@ textures/dark_stone.bmp
 #sector[0]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 0
@@ -80,10 +89,10 @@ textures/dark_stone.bmp
 #sector[1]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 1
@@ -143,13 +152,14 @@ textures/dark_stone.bmp
 #sector[2]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 2
+0
 
 #sidedefs
 0
@@ -205,10 +215,10 @@ textures/dark_stone.bmp
 #sector[3]
 10
 0
+1
 0
 0
-0
-0
+2
 0
 4
 3
@@ -268,10 +278,10 @@ textures/dark_stone.bmp
 #sector[4]
 10
 0
+1
 0
-0
-0
-0
+20
+1
 0
 4
 4
