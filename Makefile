@@ -24,7 +24,7 @@ FONT = srcs/font/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit moving_sidedef free_library 
-EVENTS_FILES = key_events mouse_events move_position move_position2
+EVENTS_FILES = key_events mouse_movement move_position move_position2 mouse_press
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\

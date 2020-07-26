@@ -14,11 +14,11 @@ void	doom_update(t_doom *doom, double dt)
 		if (event.type == SDL_KEYUP)
 			key_release(&doom->own_event, &event.key);
 		if (event.type == SDL_MOUSEBUTTONDOWN)
-			mouse_press(doom, &event.button);
+			mouse_press(doom, &event.button, doom->own_event);
 		if (event.type == SDL_MOUSEBUTTONUP)
 			mouse_release(doom, &event.button);
-		if (event.type == SDL_MOUSEMOTION && doom->own_event.mouse_press == 1)
-			move_cam_direction(doom, &event.motion, dt);
+		if (event.type == SDL_MOUSEMOTION)
+			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
 	key_handler(doom, &doom->own_event, dt);
 }

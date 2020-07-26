@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 
-t_point	check_line_intersection(t_line move, t_sidedef sidedef, double angle, int x)
+t_point		check_line_intersection(t_line move, t_sidedef sidedef,
+				double angle, int x)
 {
 	t_point	intersect;
 	t_point	move_delta;
@@ -10,12 +11,28 @@ t_point	check_line_intersection(t_line move, t_sidedef sidedef, double angle, in
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
 	sidedef.line.start, sidedef_delta);
-	if (point_distance(intersect, move.start, angle) < 40.0 && sidedef.action == 2) //create_enum and than use the name
+	if (point_distance(intersect, move.start, angle)
+		< 40.0 && sidedef.action == 2) //create_enum and than use the name
 		sliding_door(NULL, x);
 	return (intersect);
 }
 
-int		movement_collision(t_doom *doom, t_line move, double angle)
+static int	check_collision(t_doom *doom, t_sidedef sidedef,
+				t_line move, t_point intersect)
+{
+	if (sidedef.opp_sector == -1 ||\
+		check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
+		return (-1);
+	else if (sidedef.opp_sector != -1)
+	{
+		doom->i_sector = sidedef.opp_sector;
+		if (move.end.x == intersect.x && move.end.y == intersect.y)
+			return (1);
+	}
+	return (0);
+}
+
+static int	movement_collision(t_doom *doom, t_line move, double angle)
 {
 	int			x;
 	t_point		intersect;
@@ -28,17 +45,7 @@ int		movement_collision(t_doom *doom, t_line move, double angle)
 		sidedef = doom->lib.sidedef[x];
 		intersect = check_line_intersection(move, sidedef, angle, x);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
-		{
-			if (sidedef.opp_sector == -1 || check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
-				return (-1);
-			else if (sidedef.opp_sector != -1)
-			{
-				doom->i_sector = sidedef.opp_sector;
-				if (move.end.x == intersect.x && move.end.y == intersect.y)
-					return (1);
-				return (0);
-			}
-		}
+			return (check_collision(doom, sidedef, move, intersect));
 		x++;
 	}
 	return (0);
