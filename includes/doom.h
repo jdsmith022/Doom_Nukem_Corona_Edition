@@ -328,7 +328,8 @@ int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_texture_properties(t_doom *doom);
 t_slope				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector *sector);
-int					set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef, t_sector sector);
+int					set_slope_bottom_values(t_doom *doom,\
+						t_prev_sidedef sidedef, t_sector sector, int plane_height_std);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);

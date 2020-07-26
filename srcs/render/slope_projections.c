@@ -1,7 +1,5 @@
 #include "../../includes/doom.h"
 
-
-
 t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 {
 	t_point		start;
@@ -32,7 +30,7 @@ t_sidedef	get_other_side(t_doom *doom, t_sidedef sidedef, t_sector sector)
 
 int			get_opp_sidedef(t_sector sector)
 {
-	int			sidedef_index;
+	int		sidedef_index;
 
 	sidedef_index = sector.i_sidedefs;
 	if (sector.slope_id == sidedef_index ||\
@@ -40,6 +38,7 @@ int			get_opp_sidedef(t_sector sector)
 		return (sector.slope_id + 2);
 	return (sector.slope_id - 2);
 }
+
 t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
 {
 	t_point		start;
@@ -57,15 +56,28 @@ t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
 	return (end);
 }
 
-int			set_bottom_plane(t_doom *doom, t_sidedef sidedef, t_sector sector, double height)
+int			set_bottom_plane(t_doom *doom, t_sidedef sidedef,\
+				t_sector sector, int height_standard)
 {
 	int		bottom;
+	double	height_floor;
+	int		new_height;
+	int		plane_bottom;
+	int		div_height_std;
+
+	height_floor = (sector.height_floor + sector.slope.height)\
+		/ sidedef.distance * doom->dist_to_plane;
+	new_height = (HEIGHT / 2) + doom->player_height;
+	div_height_std = height_standard / 2;
+	plane_bottom = (new_height + div_height_std)\
+		- doom->own_event.y_pitch - height_floor;
+	return (plane_bottom);
 }
 
-int			 set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef, t_sector sector)
+int			set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef,\
+				t_sector sector, int plane_height_std)
 {
 	t_sidedef	bottom_sidedef;
-	double		height;
 	int			opp_side;
 	double		distance;
 	t_point		conn_point;
@@ -73,22 +85,20 @@ int			 set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef, t_sector se
 	bottom_sidedef = doom->lib.sidedef[sidedef.id];
 	bottom_sidedef = get_other_side(doom, bottom_sidedef, sector);
 	if (bottom_sidedef.id == sector.slope_id)
-		height = 0;
+		distance = 0;
 	opp_side = get_opp_sidedef(sector);
 	if (bottom_sidedef.id == opp_side)
 		distance = fabs(point_line_distance(bottom_sidedef.line.start,\
 			doom->lib.sidedef[sector.slope_id].line));
-	if (bottom_sidedef.id != sector.slope_id && sidedef.id != opp_side)
+	else if (bottom_sidedef.id != sector.slope_id && sidedef.id != opp_side)
 	{
 		conn_point = get_connecting_point(bottom_sidedef.line,\
 			doom->lib.sidedef[sector.slope_id].line);
 		distance = points_distance(conn_point, sidedef.intersect);
 	}
-	height = tan(sector.slope_floor) * distance;
-	return (set_bottom_plane(doom, bottom_sidedef, sector, height));
+	sector.slope.height = tan(sector.slope_floor) * distance;
+	return (set_bottom_plane(doom, bottom_sidedef, sector, plane_height_std));
 }
-
-
 
 t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	t_sector *sector)
@@ -116,7 +126,6 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.height = tan(sector->slope_floor) * slope.distance;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
-	// slope.bottom = set_slope_bottom(doom, slope, sidedef);
 	return (slope);
 }
 
