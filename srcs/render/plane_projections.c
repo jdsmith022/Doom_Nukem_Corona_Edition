@@ -43,8 +43,9 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	if (sector->slope_id != -1)
 	{
 		sector->slope = set_properties_slope(doom, sidedef, sector);
-		sector->slope.plane_end = set_slope_bottom_values(doom, sidedef.prev_sidedef, *sector, plane->height_standard);
+		set_slope_bottom_values(doom, sidedef.prev_sidedef, sector, plane->height_standard);
 		sector->height_floor += sector->slope.height;
+		printf("%d\n", sector->height_floor);
 	}
 	sidedef_top = (new_height - div_height_std) - doom->own_event.y_pitch;
 	wall_offset(plane, sidedef_top);
@@ -55,22 +56,14 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 }
 
 static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
-					t_plane *plane, int x)
+					t_plane *plane, t_sector *sector)
 {
-	t_sector	sector;
-
 	ft_bzero(plane, sizeof(plane));
-	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
-	sidedef.prev_sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
-	sector = doom->lib.sector[sidedef.sector];
-	set_properties_plane_sidedef(doom, sidedef, &sector, plane);
+	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 	if (sidedef.opp_sector != -1)
-	{
-		sector = doom->lib.sector[sidedef.opp_sector];
 		set_properties_plane_portal(doom, sidedef,\
-			&sector, plane);
-	}
-	if (sector.outside)
+			sector, plane);
+	if (sector->outside)
 	{
 		doom->lib.portal_ceiling = plane->sidedef_top;
 		doom->lib.portal_floor = plane->sidedef_bottom;
@@ -84,7 +77,9 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 
 	sector = doom->lib.sector[sidedef.sector];
 	plane.intersect = sidedef.intersect;
-	set_properties_plane(doom, sidedef, &plane, x);
+	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	sidedef.prev_sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
@@ -99,7 +94,7 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		doom->texture_width = 16;
 		doom->distance = sidedef.distance;
 		plane.intersect = doom->lib.sidedef[sidedef.poster].intersect;
-		set_properties_plane(doom, doom->lib.sidedef[sidedef.poster], &plane, x);
+		set_properties_plane(doom, doom->lib.sidedef[sidedef.poster], &plane, &sector);
 		// doom->lib.sidedef[sidedef.poster].offset = sidedef.offset;
 		draw_onesided_sidedef(doom, plane, doom->lib.sidedef[sidedef.poster], x);
 		doom->texture_height = 96;
