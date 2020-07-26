@@ -160,7 +160,7 @@ void 	doom_init(t_doom *doom)
 	doom->shopping = FALSE;
 	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 400;
+	doom->pos.x = 10;
 	doom->pos.y = 130;
 	doom->max_ray = 10000;
 	doom->i_sector = 0;
@@ -170,8 +170,8 @@ void 	doom_init(t_doom *doom)
 	doom->lib.sector[0].slope_id = -1;
 	doom->lib.sector[1].slope_id = -1;
 	doom->lib.sector[2].slope_id = -1;
-	doom->lib.sector[3].slope_id = -1;
-	doom->lib.sector[4].slope_id = -1;
+	// doom->lib.sector[3].slope_id = -1;
+	// doom->lib.sector[4].slope_id = -1;
 	// doom->lib.sector[5].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
