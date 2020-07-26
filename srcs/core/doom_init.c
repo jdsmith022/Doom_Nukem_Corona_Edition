@@ -140,33 +140,43 @@ static void		init_cursor(t_doom *doom)
 	doom->own_event.select = FALSE;
 }
 
-void 	doom_init(t_doom *doom)
+static void		init_player(t_doom *doom)
 {
+	doom->pos.x = 32;
+	doom->pos.y = 130;
+	doom->player_height = 48;
+	doom->player_width = 48;
+	doom->player_std_height = 48;
+}
 
-	if (sdl_init(doom) != 0)
-		doom_exit_failure(doom, "unable to initialize SDL\n");
-	init_groceries(doom);
-	init_cursor(doom);
-	init_audio(doom);
-	doom->audio->engine = OFF;
-	if (doom->audio->engine)
-		load_audio(doom->audio);
-	// set_lines(doom->sidedef);
+static void		init_settings(t_doom *doom)
+{
 	doom->own_event.mouse_state_switched = TRUE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud = TRUE;
 	doom->basket = FALSE;
 	doom->shopping = FALSE;
-	doom->dir_angle = 90;
+}
+
+void 	doom_init(t_doom *doom)
+{
+	if (sdl_init(doom) != 0)
+		doom_exit_failure(doom, "unable to initialize SDL\n");
+	init_groceries(doom);
+	init_cursor(doom);
+	init_audio(doom);
+	init_player(doom);
+	init_settings(doom);
+	doom->audio->engine = OFF;
+	if (doom->audio->engine)
+		load_audio(doom->audio);
+	// set_lines(doom->sidedef);
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 32;
-	doom->pos.y = 130;
 	doom->max_ray = 10000;
+	doom->dir_angle = 90;
 	doom->i_sector = 0;
-	doom->player_height = 48;
 	doom->visible_sprites = 0;
-	doom->player_std_height = 48;
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
