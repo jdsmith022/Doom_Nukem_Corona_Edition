@@ -189,7 +189,7 @@ typedef struct		s_sector {
 	int				slope_ceiling;
 	double			slope_floor;
 	int				height_ceiling;
-	int				height_floor;
+	double			height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
 	int				diff_x;
