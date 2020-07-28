@@ -99,6 +99,8 @@ void		set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef,\
 	sector->slope.bottom_height = tan(sector->slope_floor) * distance;
 	sector->slope.plane_end = set_bottom_plane(doom, bottom_sidedef,\
 		*sector, plane_height_std);
+	sector->slope.prev_distance = fabs(points_distance(sidedef.intersect,\
+		sector->slope.intersect));
 }
 
 t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\

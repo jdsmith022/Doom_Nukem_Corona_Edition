@@ -82,18 +82,17 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
-double			set_new_height(t_doom *doom, t_sector *sector)
+double			set_slope_delta(t_doom *doom, t_sector sector)
 {
-	double		height;
-	t_point		intersect;
+	double		height_diff;
 	double		distance;
-	t_line		slope_id;
+	double		height;
+	double		delta_height;
 
-	intersect.x = sector->slope.intersect.x;
-	intersect.y = sector->slope.intersect.y--;
-	slope_id = doom->lib.sidedef[sector->slope_id].line;
-	distance = fabs(point_line_distance(intersect, slope_id));
-	return (tan(sector->slope_floor) * distance);
+	height_diff = sector.slope.bottom_height - sector.slope.height;
+	delta_height = height_diff / sector.slope.distance;
+	printf("sidedef_id = %d | distance = %f | height_diff = %f | delta = %f\n", sector.slope.sidedef_id, sector.slope.distance, height_diff, delta_height);
+	return (delta_height);
 }
 
 void			draw_floor(t_doom *doom, int x,
@@ -104,6 +103,7 @@ void			draw_floor(t_doom *doom, int x,
 	Uint32	tex_dex;
 	Uint8	bpp;
 	int		limit;
+	double	delta_height;
 
 	tex_dex = sector.txt_floor;
 	bpp = doom->surface->format->BytesPerPixel;
@@ -111,7 +111,7 @@ void			draw_floor(t_doom *doom, int x,
 	if (doom->lib.sector[doom->prev_sector].outside)
 		limit = doom->lib.portal_floor;
 	if (sector.slope_id != -1)
-		limit = sector.slope.plane_end;
+		delta_height = set_slope_delta(doom, sector);
 	while (y < limit)
 	{
 		dist = ((doom->player_std_height - sector.height_floor)\
@@ -119,8 +119,9 @@ void			draw_floor(t_doom *doom, int x,
 			((HEIGHT / 2) + doom->player_height)));
 		if (sector.slope_id != -1)
 		{
-			sector.height_floor = set_new_height(doom, &sector);
-			printf("%f\n", sector.height_floor);
+			sector.height_floor += delta_height;
+			//if (sector.slope.sidedef_id == 10)
+			//	printf("%d -- %f\n", y, sector.height_floor);
 		}
 		dist *= doom->dist_to_plane;
 		index = (y * doom->surface->pitch) + (x * bpp);

@@ -169,6 +169,7 @@ typedef	struct		s_slope {
 	double			distance;
 	double			height;
 	double			bottom_height;
+	double			prev_distance;
 	int				plane_end;
 	int				opp_side;
 	int				sidedef_id;
