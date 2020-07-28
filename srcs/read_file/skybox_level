@@ -2,20 +2,19 @@
 
 #texture library
 13
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-textures/walls/96x96-Shelf.bmp
-
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
+assets/textures/shelves/96x96-Shelf.bmp
 
 #object library
 0

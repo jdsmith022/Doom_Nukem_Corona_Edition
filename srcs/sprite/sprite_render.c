@@ -15,7 +15,7 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 	int			width_left; //try-out
 	int			width_right; //try-out
 
-	new_height = (HEIGHT + doom->player_height) / 2;
+	new_height = (HEIGHT / 2) + doom->player_height;
 	sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
 	plane_height_std = doom->texture_height / sprite->distance * doom->dist_to_plane;
 	// div_height_std = sprite->height / 2;

@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/audio.h"
 
 void				exit_error(const char *message)
 {

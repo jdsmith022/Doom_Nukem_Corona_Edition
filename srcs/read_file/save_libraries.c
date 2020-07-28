@@ -3,10 +3,12 @@
 int		open_file(char *filename)
 {
 	int		fd;
+    char *message;
 
+    message = ft_strjoin(filename, "can't open");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		error("file can't open", 0);
+		error(message, 0);
 	return (fd);
 }
 
@@ -17,10 +19,8 @@ void	save_libraries(t_doom *doom)
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
     fd = open_file("srcs/read_file/new_level");
-    doom->lib.tex_lib = save_img(doom, fd, &doom->lib.len_tex_lib);
-    printf("test1\n");
-    doom->lib.obj_lib = save_img(doom, fd, &doom->lib.len_obj_lib);
-    save_font(doom, &doom->lib.len_font_lib);
+    doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
+    doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
     doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
     doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
     doom->lib.sidedef = save_walls(doom, fd,  &doom->lib.len_sidedef);

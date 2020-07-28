@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/23 09:40:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/23 11:53:49 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/07/25 13:19:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len, char **shopping_list)
 {
 	SDL_Rect	font_rect;
 	size_t		index;
+	char		*list_tally;
 	char		**str;
 
 	index = 0;
@@ -39,6 +40,7 @@ void		save_shopping_list_font(t_doom *doom, int *len)
 	int			font_size;
 	char		**shopping_list;
 
+	doom->lib.font_lib.items_in_basket = 1;
 	font_lib = (t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (font_lib == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);

@@ -26,7 +26,7 @@ t_hsv	rgb_to_hsv(double r, double g, double b)
 	double	min;
 	double	max;
 	double	diff;
-	
+
 	if (r < 0.0)
 		r += 255.0;
 	if (g < 0.0)
@@ -186,7 +186,6 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	char	G;
 	char	B;
 
-	
 	pixels = doom->surface->pixels;
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
 	R = texture[pixel_dex];

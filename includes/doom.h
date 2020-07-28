@@ -11,11 +11,10 @@
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
-# include "audio.h"
+# include "font.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
-# include "audio.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -42,21 +41,43 @@
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
-typedef struct		s_hsv{
-	double			r;
-	double			g;
-	double			b;
-}					t_hsv;
+# define SECTORS	doom->lib.sector
+# define SIDEDEFS	doom->lib.sidedef
+# define TEXTURES	doom->lib.tex_lib
 
-typedef struct		s_point {
-	double			x;
-	double			y;
-}					t_point;
+typedef struct s_audio		t_audio;
+typedef struct s_groceries	t_groceries;
 
-typedef struct		s_line {
-	t_point			start;
-	t_point			end;
-}					t_line;
+#pragma pack(push, 1)
+
+typedef struct 			t_rgb {
+	char				r;
+	char				g;
+	char				b;
+}						t_rgb;
+
+#pragma pack(pop)
+
+typedef struct			s_coord {
+	uint16_t			x;
+	uint16_t			y;
+}						t_coord;
+
+typedef struct			s_hsv{
+	double				r;
+	double				g;
+	double				b;
+}						t_hsv;
+
+typedef struct			s_point {
+	double				x;
+	double				y;
+}						t_point;
+
+typedef struct			s_line {
+	t_point				start;
+	t_point				end;
+}						t_line;
 
 typedef struct			s_sprite {
 	int					index;			//start index
@@ -92,6 +113,7 @@ typedef struct		s_ray {
 
 typedef struct		s_event {
 	int				mouse_press;
+	bool			mouse_state_switched;
 	int				hold_angle;
 	int				hold_x;
 	int				hold_y;
@@ -103,6 +125,7 @@ typedef struct		s_event {
 	int				step_down;
 	int				jump;
 	int				bend;
+	int				select;
 	double			velocity;
 	int				y_pitch;
 }					t_event;
@@ -180,11 +203,6 @@ typedef struct		s_sector {
 	int				diff_y;
 }					t_sector;
 
-typedef struct		s_font {
-	SDL_Surface		*font_surface;
-	SDL_Rect		font_rect;
-}					t_font;
-
 typedef struct		s_lib {
 	SDL_Surface		**tex_lib;
 	int				len_tex_lib;
@@ -192,8 +210,7 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
-	t_font			*font_lib;
-	int				len_font_lib;
+	t_font_lib		font_lib;
 	int				portal_ceiling;
 	int				portal_floor;
 	int				len_sky_lib;
@@ -226,15 +243,20 @@ typedef struct		s_gamedesign {
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
+	int				hud;
+	int				basket;
+	int				shopping;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
+	SDL_Cursor		*cursor;
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
 	int				light;
 	double			player_std_height;
 	double			player_height;
+	double			player_width;
 	int				texture_width;
 	int				texture_height;
 	int				i_sector;
@@ -248,7 +270,8 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	t_gamedesign	game_design;
-	t_audio			audio;
+	t_audio			*audio;
+	t_groceries		*groceries;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -272,7 +295,8 @@ void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 
 /*read functions*/
-SDL_Surface			**save_img(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
+SDL_Surface			**save_objects(t_doom *doom, int fd, int *len);
 SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
 void				error(char *error, int line_num);
 int					open_file(char *filename);
@@ -284,6 +308,7 @@ void				save_bpm_to_sdl(t_bmp *images,\
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
+void				set_texture_type(const char *name, SDL_Surface *surface);
 t_bmp				*malloc_images_lib(t_doom *doom, int len);
 SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
 int					open_file(char *filename);
@@ -295,19 +320,21 @@ void				key_press(t_doom *doom, t_event *event,\
 void				key_release(t_event *event, SDL_KeyboardEvent *key);
 void				key_handler(t_doom *doom, t_event *event, double dt);
 void				mouse_press(t_doom *doom,\
-						SDL_MouseButtonEvent *button);
+						SDL_MouseButtonEvent *button, t_event event);
 void				mouse_release(t_doom *doom,\
 						SDL_MouseButtonEvent *button);
 void				camera_movement(t_doom *doom,\
 						SDL_MouseMotionEvent *motion, double dt);
 void				move_cam_direction(t_doom *doom,\
-						SDL_MouseMotionEvent *motion, double dt);
+						SDL_MouseMotionEvent *motion,\
+						double dt, t_event *event);
 void				cam_move_fb(t_doom *doom, double dt, int direction);
 void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
+bool				handle_mouse_state(t_doom *doom);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
@@ -357,6 +384,12 @@ void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
+void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+					t_point intersect, t_doom *doom);
+void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
+void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
+double				clamp_angle(double angle);
+t_ray				init_ray(t_doom *doom, int x);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
@@ -370,9 +403,6 @@ void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
 
-/* AUDIO */
-
-void				audio(t_audio audio, t_event *event);
 void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
@@ -386,10 +416,6 @@ int					*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_spri
 void				find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index);
 void				draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp);
 void				sprite_reset(t_doom *doom);
-
-/*save font*/
-void				save_font(t_doom *doom, int *len);
-void				draw_font(t_doom *doom);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

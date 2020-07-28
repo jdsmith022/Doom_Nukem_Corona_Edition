@@ -50,6 +50,8 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
 		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
+	if (wall_y > doom->texture_height)
+		wall_y -= doom->texture_height;
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
@@ -84,7 +86,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 			doom->distance = pixel.y > HEIGHT / 2 ? doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		if (pixel.y < plane.mid_texture_bottom)
 			put_protal_pixel(doom, pixel);
-		if (pixel.y > plane.mid_texture_bottom)
+		if (pixel.y < plane.mid_texture_top || pixel.y > plane.mid_texture_bottom)
 			find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}

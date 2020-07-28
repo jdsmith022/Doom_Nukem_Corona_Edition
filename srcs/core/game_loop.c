@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
+#include "../../includes/gameplay.h"
 
 #include <stdio.h>
 
@@ -40,11 +41,14 @@ void	game_loop(t_doom *doom)
 			sprite_render(doom);
 			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
+			groceries(doom);
 			sliding_door(doom, -1); //move to its own file
-			// draw_font(doom); // will need to be own file with checks
 		}
 		else
+		{
 			open_game_editor(doom);
+		}
+		font_to_screen(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
