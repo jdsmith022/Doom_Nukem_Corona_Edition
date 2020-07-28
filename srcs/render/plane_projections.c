@@ -73,7 +73,10 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 		doom->lib.portal_floor = plane->sidedef_bottom;
 	}
 	if (sector->slope_id != -1)
+	{
 		sector->slope.delta_height = set_slope_delta(doom, sector, plane->sidedef_bottom);
+		// printf("side_id %d | delta_height = %f| height %f | y_steps %d\n", sidedef.id, sector->slope.delta_height, sector->slope.height - sector->slope.bottom_height, sector->slope.bottom_plane - plane->sidedef_bottom);
+	}
 }
 
 int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
