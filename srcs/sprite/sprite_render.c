@@ -12,11 +12,14 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 	int			sidedef_bottom;
 	int			plane_height_std;
 	int			wall_diff_height_std;
+	int			width_left; //try-out
+	int			width_right; //try-out
 
 	new_height = (HEIGHT + doom->player_height) / 2;
 	sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
 	plane_height_std = doom->texture_height / sprite->distance * doom->dist_to_plane;
-	div_height_std = sprite->height / 2;
+	// div_height_std = sprite->height / 2;
+	div_height_std = plane_height_std / 2 ;
 	wall_diff_height_std = plane_height_std / 2;	
 	height_floor = doom->lib.sector[sprite->sector].height_floor / sprite->distance * doom->dist_to_plane;
 	sidedef_bottom = (new_height + wall_diff_height_std) - doom->own_event.y_pitch - height_floor;
@@ -31,8 +34,19 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_s
 	h = doom->lib.obj_lib[sprite->visible]->h;
 	w = doom->lib.obj_lib[sprite->visible]->w;
 	sprite->width = (sprite->height / h) * w;	
-	sprite_end->x = sprite->sprite_x;
-	sprite_begin->x = sprite_end->x - sprite->width;
+	
+	//try-out
+	width_right = sprite->sprite_x / WIDTH * sprite->width;
+	width_left = sprite->width - width_right;
+	sprite_end->x = sprite->sprite_x + width_right;
+	sprite_begin->x = sprite->sprite_x - width_left;
+	//end try-out
+	
+	
+	
+	
+	// sprite_end->x = sprite->sprite_x; //outcommented because of try-out
+	// sprite_begin->x = sprite_end->x - sprite->width; //outcommendted because of try-out
 	if (sprite_begin->x < 0)
 		sprite_begin->x = 0;
 	if (sprite_end->x > WIDTH)

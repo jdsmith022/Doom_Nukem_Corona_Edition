@@ -70,8 +70,8 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 	sector = doom->lib.sector[sidedef.sector];
 	plane.intersect = sidedef.intersect;
 	set_properties_plane(doom, sidedef, &plane, x);
-	doom->sidedef_bottom[x] = plane.sidedef_bottom;
-	doom->sidedef_top[x] = plane.sidedef_top;
+	doom->sidedef_bottom[x] = plane.sidedef_bottom; //added
+	doom->sidedef_top[x] = plane.sidedef_top; //added
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
