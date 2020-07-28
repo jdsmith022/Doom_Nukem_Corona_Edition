@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-void			put_pixel_from_img(char *img_pixels, t_doom *doom, uint32_t index)
+static void		put_pixel_from_img(char *img_pixels, t_doom *doom, uint32_t index)
 {
 	char		*pixels;
 	t_rgb		rgb;

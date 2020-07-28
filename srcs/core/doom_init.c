@@ -157,7 +157,7 @@ static void		init_settings(t_doom *doom)
 	doom->hud = TRUE;
 	doom->basket = FALSE;
 	doom->shopping = FALSE;
-	doom->audio->engine = OFF;
+	doom->audio->engine = ON;
 }
 
 void 	doom_init(t_doom *doom)
@@ -169,7 +169,7 @@ void 	doom_init(t_doom *doom)
 	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
-	if (doom->audio->engine)
+	if (doom->audio->engine == ON)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
 	doom->ray_adjacent = FOV / WIDTH;

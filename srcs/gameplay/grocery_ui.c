@@ -2,7 +2,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/font.h"
 
-void	draw_item(t_doom *doom, t_item item)
+void			draw_item(t_doom *doom, t_item item)
 {
 	if (!item.sprite)
 		printf("Sprite not found!\n");
@@ -13,7 +13,7 @@ void	draw_item(t_doom *doom, t_item item)
 	}
 }
 
-void	draw_basket_ui(t_doom *doom, t_groceries *groceries)
+void			draw_basket_ui(t_doom *doom, t_groceries *groceries)
 {
 	t_list		*temp;
 	t_item		*item;
@@ -29,7 +29,7 @@ void	draw_basket_ui(t_doom *doom, t_groceries *groceries)
 	return ;
 }
 
-void	draw_shopping_ui(t_doom *doom, t_groceries *groceries)
+void			draw_shopping_ui(t_doom *doom, t_groceries *groceries)
 {
 	t_item		item;
 	SDL_Rect	position;
@@ -45,7 +45,7 @@ void	draw_shopping_ui(t_doom *doom, t_groceries *groceries)
 	return ;
 }
 
-void	draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text)
+void			draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text)
 {
 	SDL_Color	font_color;
 	TTF_Font	*font;

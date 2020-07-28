@@ -2,23 +2,6 @@
 # include "../../includes/gameplay.h"
 # include "../../includes/textures.h"
 
-uint8_t get_basket_len(t_list **head)
-{
-	uint8_t len;
-	t_list *temp;
-
-	temp = *head;
-	if (!temp)
-		return 0;
-	len = 1;
-	while (temp->next)
-	{
-		temp = temp->next;
-		len++;
-	}
-	return len;
-}
-
 void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
 {
 	uint8_t i;

@@ -1,9 +1,9 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 
-SDL_Rect	get_position(uint16_t index, int start_x)
+SDL_Rect		get_position(uint16_t index, int start_x)
 {
-	SDL_Rect position;
+	SDL_Rect	position;
 
 	position.x = start_x + (index * 50);
 	position.y = 50;
@@ -12,7 +12,7 @@ SDL_Rect	get_position(uint16_t index, int start_x)
 	return position;
 }
 
-void		set_positions(t_list **basket)
+void			set_positions(t_list **basket)
 {
 	t_list		*temp;
 	t_item		*item;
@@ -31,10 +31,10 @@ void		set_positions(t_list **basket)
 	}
 }
 
-static uint8_t		*get_groceries()
+static uint8_t	*get_groceries()
 {
-	uint8_t	*groceries;
-	uint8_t	i;
+	uint8_t		*groceries;
+	uint8_t		i;
 
 	i = 0;
 	groceries = ft_memalloc(sizeof(uint8_t) * GROCERY_LENGTH);
@@ -46,14 +46,14 @@ static uint8_t		*get_groceries()
 	return groceries;
 }
 
-void	set_grocery_font(TTF_Font **font)
+void			set_grocery_font(TTF_Font **font)
 {
 	*font = TTF_OpenFont("srcs/font/font_style/Cicle_Semi.ttf", 16);
 }
 
-uint8_t		get_num_of_groceries(t_doom *doom)
+uint8_t			get_num_of_groceries(t_doom *doom)
 {
-	uint16_t 	i;
+	uint16_t	i;
 	uint8_t		num_of_groceries;
 
 	i = 0;
@@ -67,9 +67,9 @@ uint8_t		get_num_of_groceries(t_doom *doom)
 	return num_of_groceries;
 }
 
-void	init_groceries(t_doom *doom)
+void			init_groceries(t_doom *doom)
 {
-	uint8_t num_of_groceries;
+	uint8_t		num_of_groceries;
 
 	doom->groceries = (t_groceries *)ft_memalloc(sizeof(t_groceries)); // NOTE: FREE
 	doom->groceries->num_of_groceries = get_num_of_groceries(doom);
@@ -77,7 +77,7 @@ void	init_groceries(t_doom *doom)
 		doom->groceries->shopping_list_len = num_of_groceries;
 	else
 		doom->groceries->shopping_list_len = MAX_SHOPPING_LIST_LENGTH;
-	doom->groceries->shopping_list = get_shopping_list(doom, get_groceries());
+	generate_shopping_list(doom);
 	doom->groceries->basket = NULL;
 	set_grocery_font(&doom->groceries->font);
 	print_shopping_list(doom->groceries);
