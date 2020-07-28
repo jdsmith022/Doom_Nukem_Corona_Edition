@@ -201,6 +201,8 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
+	int				sidedef_bottom[WIDTH];
+	int				sidedef_top[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {
@@ -275,8 +277,8 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
-	int				sidedef_bottom[WIDTH];
-	int				sidedef_top[WIDTH];
+	// int				sidedef_bottom[WIDTH];
+	// int				sidedef_top[WIDTH];
 	int				test;
 }					t_doom;
 
