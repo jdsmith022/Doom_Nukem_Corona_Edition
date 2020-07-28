@@ -203,6 +203,7 @@ typedef struct		s_sector {
 	int				diff_y;
 	int				sidedef_bottom[WIDTH];
 	int				sidedef_top[WIDTH];
+	double			sidedef_distance[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {

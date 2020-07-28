@@ -80,6 +80,8 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 	set_properties_plane(doom, sidedef, &plane, x);
 	sector.sidedef_bottom[x] = plane.sidedef_bottom; //added
 	sector.sidedef_top[x] = plane.sidedef_top; //added
+	if (sidedef.opp_sector != -1)
+		sector.sidedef_distance[x] = sidedef.distance;
 	// doom->sidedef_bottom[x] = plane.sidedef_bottom; //added
 	// doom->sidedef_top[x] = plane.sidedef_top; //added
 	if (sidedef.opp_sector == -1)
@@ -88,7 +90,6 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (!sector.outside)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
-	//draw visible sperite,
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	if (sidedef.poster != -1)

@@ -26,7 +26,7 @@ int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	int		tex_x;
 
 	// i_sprite = doom->lib.sprites[index_sp].index;
-	i_sprite = doom->lib.sprites[index_sp].visible;
+	i_sprite = doom->lib.sprites[index_sp].visible; //multiple faces
 	tex_x = 0;
 	if ((int)sprite_begin->x > 0 && sprite_begin->x < WIDTH)
 	{
@@ -50,7 +50,7 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	int		tex_y;
 
 	// i_sprite = doom->lib.sprites[index_sp].index;
-	i_sprite = doom->lib.sprites[index_sp].visible;
+	i_sprite = doom->lib.sprites[index_sp].visible; //multiple faces
 	tex_y = 0;
 	if (sprite_begin->y > 0 && sprite_begin->y < HEIGHT)
 		tex_y = (int)(screen_y - sprite_begin->y) / doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
@@ -59,16 +59,23 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	return (tex_y);
 }
 
+int		check_floor_height_visibiity(t_doom *doom, t_sprite sprite, int stripe, int screen_y)
+{
+	
+}
+
 void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp)
 {
-	int		i_sprite;
-	Uint32	index;
-	Uint32	pix_dex;
-	int		stripe;
-	int		tex_y;
-	int		tex_x;
-	int		screen_y;
+	int			i_sprite;
+	Uint32		index;
+	Uint32		pix_dex;
+	int			stripe;
+	int			tex_y;
+	int			tex_x;
+	int			screen_y;
+	t_sprite	sprite;
 
+	sprite = doom->lib.sprites[index_sp];
 	i_sprite = doom->lib.sprites[index_sp].visible;
 	stripe = (int)sprite_begin->x;
 	screen_y = (int)sprite_begin->y;
@@ -81,11 +88,13 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 			tex_x = find_tex_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 			while (screen_y < (int)sprite_end->y/* && pix_y > 0 && pix_y < HEIGHT*/)
 			{
-				index = (size_t)(screen_y * doom->surface->pitch) + (int)(stripe * doom->surface->format->BytesPerPixel);
-				tex_y = find_tex_y(doom, sprite_begin, sprite_end, index_sp, screen_y);
-				pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch) + ((int)tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-				// if (doom->lib.sprites[index_sp].distance < doom->stripe_distance[stripe])
+				if (check_floor_height_visbility(doom, sprite, stripe, screen_y))
+				{
+					index = (size_t)(screen_y * doom->surface->pitch) + (int)(stripe * doom->surface->format->BytesPerPixel);
+					tex_y = find_tex_y(doom, sprite_begin, sprite_end, index_sp, screen_y);
+					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch) + ((int)tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 					put_pixel_tex(doom, pix_dex, index, i_sprite);
+				}
 				screen_y++;
 			}
 		}
