@@ -45,7 +45,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	if (sector->slope_id != -1)
 	{
 		sector->slope = set_properties_slope(doom, sidedef, sector);
-		set_slope_bottom_values(doom, sidedef.prev_sidedef, sector, plane->height_standard);
+		set_slope_bottom_values(doom, sidedef, sector, div_height_std);
 		sector->height_floor += sector->slope.height;
 	}
 	height_floor = sector->height_floor / sidedef.distance * doom->dist_to_plane;

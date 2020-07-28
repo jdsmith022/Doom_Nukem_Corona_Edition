@@ -88,11 +88,6 @@ typedef struct		s_ray {
 	int				filter;
 }					t_ray;
 
-typedef struct		s_prev_sidedef {
-	int				id;
-	double			distance;
-	t_point			intersect;
-}					t_prev_sidedef;
 
 typedef struct		s_event {
 	int				mouse_press;
@@ -147,6 +142,12 @@ typedef struct		s_plane
 	int				wall_offset;
 }					t_plane;
 
+typedef struct		s_prev_sidedef {
+	int				id;
+	double			distance;
+	t_point			intersect;
+}					t_prev_sidedef;
+
 typedef struct		s_sidedef {
 	t_point			intersect;
 	t_line			line;
@@ -169,8 +170,8 @@ typedef	struct		s_slope {
 	double			distance;
 	double			height;
 	double			bottom_height;
-	double			prev_distance;
-	int				plane_end;
+	int				bottom_plane;
+	double			dist_to_bottom;
 	int				opp_side;
 	int				sidedef_id;
 	t_point			intersect;
@@ -331,7 +332,7 @@ void				set_texture_properties(t_doom *doom);
 t_slope				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector *sector);
 void				set_slope_bottom_values(t_doom *doom,\
-						t_prev_sidedef sidedef,\
+						t_sidedef sidedef,\
 						t_sector *sector, int plane_height_std);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,

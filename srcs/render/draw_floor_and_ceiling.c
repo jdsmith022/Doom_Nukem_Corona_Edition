@@ -82,16 +82,21 @@ void			draw_ceiling(t_doom *doom, int x,
 	}
 }
 
-double			set_slope_delta(t_doom *doom, t_sector sector)
+double			set_slope_delta(t_doom *doom, t_sector sector, int y)
 {
 	double		height_diff;
 	double		distance;
 	double		height;
 	double		delta_height;
+	double		delta_steps;
 
 	height_diff = sector.slope.bottom_height - sector.slope.height;
 	delta_height = height_diff / sector.slope.distance;
-	printf("sidedef_id = %d | distance = %f | height_diff = %f | delta = %f\n", sector.slope.sidedef_id, sector.slope.distance, height_diff, delta_height);
+	delta_steps = sector.slope.bottom_plane - y;
+	delta_height = height_diff / delta_steps;
+	if (sector.slope.sidedef_id == 10)
+		printf("delta_heigth = %f | plane.end = %d | plane_start = %d | slope_height = %f\n\n", delta_height, sector.slope.bottom_plane, y, sector.slope.height);
+	delta_height = 0;
 	return (delta_height);
 }
 
@@ -111,7 +116,10 @@ void			draw_floor(t_doom *doom, int x,
 	if (doom->lib.sector[doom->prev_sector].outside)
 		limit = doom->lib.portal_floor;
 	if (sector.slope_id != -1)
-		delta_height = set_slope_delta(doom, sector);
+	{
+		limit = sector.slope.bottom_plane;
+		delta_height = set_slope_delta(doom, sector, y);
+	}
 	while (y < limit)
 	{
 		dist = ((doom->player_std_height - sector.height_floor)\
@@ -120,8 +128,8 @@ void			draw_floor(t_doom *doom, int x,
 		if (sector.slope_id != -1)
 		{
 			sector.height_floor += delta_height;
-			//if (sector.slope.sidedef_id == 10)
-			//	printf("%d -- %f\n", y, sector.height_floor);
+			if (sector.slope.sidedef_id == 10)
+				printf("%d -- %f\n", y, sector.height_floor);
 		}
 		dist *= doom->dist_to_plane;
 		index = (y * doom->surface->pitch) + (x * bpp);

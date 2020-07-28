@@ -63,18 +63,20 @@ int			set_bottom_plane(t_doom *doom, t_sidedef sidedef,\
 	double	height_floor;
 	int		new_height;
 	int		plane_bottom;
-	int		div_height_std;
+	double	plane_height_std;
 
-	height_floor = (sector.height_floor + sector.slope.height)\
-		/ sidedef.distance * doom->dist_to_plane;
 	new_height = (HEIGHT / 2) + doom->player_height;
-	div_height_std = height_standard / 2;
-	plane_bottom = (new_height + div_height_std)\
+	plane_height_std = doom->texture_height / sidedef.prev_sidedef.distance * doom->dist_to_plane;
+	plane_height_std = plane_height_std / 2 + sector.height_ceiling;
+	height_floor = (sector.height_floor + sector.slope.bottom_height)\
+		/ sidedef.prev_sidedef.distance * doom->dist_to_plane;
+	plane_bottom = (new_height + plane_height_std)\
 		- doom->own_event.y_pitch - height_floor;
+	plane_bottom = ((plane_bottom < HEIGHT ? plane_bottom : (HEIGHT)));
 	return (plane_bottom);
 }
 
-void		set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef,\
+void		set_slope_bottom_values(t_doom *doom, t_sidedef sidedef,\
 				t_sector *sector, int plane_height_std)
 {
 	t_sidedef	bottom_sidedef;
@@ -82,7 +84,7 @@ void		set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef,\
 	double		distance;
 	t_point		conn_point;
 
-	bottom_sidedef = doom->lib.sidedef[sidedef.id];
+	bottom_sidedef = doom->lib.sidedef[sidedef.prev_sidedef.id];
 	bottom_sidedef = get_other_side(doom, bottom_sidedef, *sector);
 	if (bottom_sidedef.id == sector->slope_id)
 		distance = 0;
@@ -97,9 +99,9 @@ void		set_slope_bottom_values(t_doom *doom, t_prev_sidedef sidedef,\
 		distance = points_distance(conn_point, sidedef.intersect);
 	}
 	sector->slope.bottom_height = tan(sector->slope_floor) * distance;
-	sector->slope.plane_end = set_bottom_plane(doom, bottom_sidedef,\
+	sector->slope.bottom_plane = set_bottom_plane(doom, sidedef,\
 		*sector, plane_height_std);
-	sector->slope.prev_distance = fabs(points_distance(sidedef.intersect,\
+	sector->slope.dist_to_bottom = fabs(points_distance(sidedef.intersect,\
 		sector->slope.intersect));
 }
 
