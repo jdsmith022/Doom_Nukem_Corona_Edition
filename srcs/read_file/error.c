@@ -40,7 +40,7 @@ int     get_line(char **line, int fd, char *er, int is_int)
     line_num(1);
     ret = get_next_line(fd, line);
     if (ret != 1)
-            error(er, line_num(0));
+        error(er, line_num(0));
     while(*line[0] == '\0' || *line[0] == '#')
     {
         if (ret != 1)

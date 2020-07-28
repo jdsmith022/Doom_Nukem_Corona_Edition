@@ -86,6 +86,7 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (!sector.outside)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
+	//draw visible spriote current sector
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	if (sidedef.poster != -1)
