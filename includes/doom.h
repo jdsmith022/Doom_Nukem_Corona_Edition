@@ -377,6 +377,11 @@ void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
 
+void				row_calculations(t_doom *doom, double dist, Uint32 index,
+						Uint32 tex_dex);
+void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
+						t_plane *plane, t_sector *sector);
+
 /*game editor*/
 void				open_game_editor(t_doom *doom);
 void				add_sidedef(t_doom *doom, int x, int y);

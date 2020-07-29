@@ -54,7 +54,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 }
 
-static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
+void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 					t_plane *plane, t_sector *sector)
 {
 	t_sector opp_sector;
@@ -98,16 +98,6 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	if (sidedef.poster != -1)
-	{
-		doom->texture_height = 16;
-		doom->texture_width = 16;
-		doom->distance = sidedef.distance;
-		plane.intersect = doom->lib.sidedef[sidedef.poster].intersect;
-		set_properties_plane(doom, doom->lib.sidedef[sidedef.poster], &plane, &sector);
-		// doom->lib.sidedef[sidedef.poster].offset = sidedef.offset;
-		draw_onesided_sidedef(doom, plane, doom->lib.sidedef[sidedef.poster], x);
-		doom->texture_height = 96;
-		doom->texture_width = 96;
-	}
+		draw_poster(doom, plane, sidedef, x);
 	return (0);
 }
