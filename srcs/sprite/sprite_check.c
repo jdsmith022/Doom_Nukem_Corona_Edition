@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 
 //int i is gewoon index tel van 0 - 4
-void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, int sprite_i)
+void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, int sprite_i, int prev_sector)
 {
 	t_point	ray_delta;
 	t_point sprite_delta;
@@ -45,11 +45,12 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, 
 		// set_offset_sprite(&sprite, intersect);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
+		sprite->prev_sector = prev_sector;
 	}
 	// printf("einde check visibility sprite\n");
 }
 
-void		sprite_check(t_doom *doom, t_ray ray, int sector)
+void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	//check line intersection with all not yet visible sprites
 	int		i;
@@ -69,7 +70,7 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector)
 		{
 			// printf("test sprite check\n");
 			//loop through every line of particular object, save closest distance and line segment
-			check_visibility_sprite(doom, &doom->lib.sprites[sprite_i], ray, x, sprite_i);
+			check_visibility_sprite(doom, &doom->lib.sprites[sprite_i], ray, x, sprite_i, prev_sector);
 		}
 		i++;
 		sprite_i++;

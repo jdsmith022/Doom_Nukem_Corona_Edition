@@ -91,6 +91,7 @@ typedef struct			s_sprite {
 	int					*face_ang;		//DIT KAN GEWOON EEN INT ZIJN, dit is dan de index naar de texture
 	int					block;			//can the player walk through it or not
 	int					sector;
+	int					prev_sector;
 	double				width;
 	double				height;
 	double				sprite_x;		//x cord translated to viewer space
@@ -413,7 +414,7 @@ void				box_in_sectors(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
-void				sprite_check(t_doom *doom, t_ray ray, int x);
+void				sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector);
 void				sprite_render(t_doom *doom);
 int					*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_sprites);
 void				find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index);

@@ -80,8 +80,9 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 	set_properties_plane(doom, sidedef, &plane, x);
 	sector.sidedef_bottom[x] = plane.sidedef_bottom; //added
 	sector.sidedef_top[x] = plane.sidedef_top; //added
-	if (sidedef.opp_sector != -1)
-		sector.sidedef_distance[x] = sidedef.distance;
+	// if (sidedef.opp_sector != -1)
+		// sector.sidedef_distance[x] = sidedef.distance; I don't need this
+	
 	// doom->sidedef_bottom[x] = plane.sidedef_bottom; //added
 	// doom->sidedef_top[x] = plane.sidedef_top; //added
 	if (sidedef.opp_sector == -1)
