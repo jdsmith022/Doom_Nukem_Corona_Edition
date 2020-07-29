@@ -65,6 +65,7 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	{
 		index = sprite_order[i];
 		scale_sprite(doom, &sprite_begin, &sprite_end, &doom->lib.sprites[index], index);
+		// check_sector_floor_height(doom, &sprite_begin, &sprite_end, &doom->lib.sprites[index], index);
 		draw_stripes(doom, &sprite_begin, &sprite_end, index);
 		doom->lib.sprites[index].visible = -1;
 		i++;
@@ -75,7 +76,6 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 void		sprite_render(t_doom *doom)
 {
 	int		*sprite_order;
-	int		i = 0;
 
 	sprite_order = sort_sprite_array(doom->lib.sprites, doom->visible_sprites, doom->total_sprites);
 	draw_sprite(doom, sprite_order);
