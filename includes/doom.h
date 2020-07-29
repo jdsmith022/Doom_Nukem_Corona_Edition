@@ -330,16 +330,20 @@ void				bend_down(t_doom *doom);
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
-void				set_texture_properties(t_doom *doom);
+void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
+						t_plane *plane, t_sector *sector);
 t_slope				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector *sector);
 void				set_slope_bottom_values(t_doom *doom,\
 						t_sidedef sidedef, t_sector *sector);
 double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
-Uint8				find_slope_line_offset(t_point start, t_point end);
+void				set_texture_properties(t_doom *doom);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 					t_point intersect, t_doom *doom);
+
+Uint8				find_slope_line_offset(t_point start, t_point end);
 void				wall_offset(t_plane *plane, int sidedef_top);
+
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
@@ -358,6 +362,11 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
+void				draw_poster(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x);
+
+void				row_calculations(t_doom *doom, double dist, Uint32 index,
+						Uint32 tex_dex);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
@@ -374,13 +383,6 @@ void				add_saturation(char *r, char *g, char *b, double light);
 void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
 
-void				draw_poster(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x);
-
-void				row_calculations(t_doom *doom, double dist, Uint32 index,
-						Uint32 tex_dex);
-void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
-						t_plane *plane, t_sector *sector);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
