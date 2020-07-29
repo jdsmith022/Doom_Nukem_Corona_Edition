@@ -250,7 +250,6 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
-	Uint32			tex_dex;
 	int				light;
 	double			player_std_height;
 	double			player_height;

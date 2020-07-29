@@ -5,10 +5,11 @@ void			draw_ceiling(t_doom *doom, int x,
 {
 	double	dist;
 	Uint32	index;
+	Uint32	tex_dex;
 	Uint8	bpp;
 	int		limit;
 
-	doom->tex_dex = sector.txt_ceiling;
+	tex_dex = sector.txt_ceiling;
 	bpp = doom->surface->format->BytesPerPixel;
 	limit = 0;
 	if (doom->lib.sector[doom->prev_sector].outside)
@@ -23,7 +24,7 @@ void			draw_ceiling(t_doom *doom, int x,
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		doom->horizontal_plane_dist = dist;
 		light_floor_ceiling(doom, sector, x, y);
-		row_calculations(doom, doom->horizontal_plane_dist, index, doom->lib.tex_lib[doom->tex_dex]);
+		row_calculations(doom, doom->horizontal_plane_dist, index, doom->lib.tex_lib[tex_dex]);
 		y--;
 	}
 }
