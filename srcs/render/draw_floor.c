@@ -30,11 +30,10 @@ void			draw_floor(t_doom *doom, int x,
 {
 	double	dist;
 	Uint32	index;
-	Uint32	tex_dex;
 	Uint8	bpp;
 	int		limit;
 
-	tex_dex = sector.txt_floor;
+	doom->tex_dex = sector.txt_floor;
 	bpp = doom->surface->format->BytesPerPixel;
 	find_floor_limit(doom, sector, &limit);
 	while (y < limit)
@@ -42,7 +41,7 @@ void			draw_floor(t_doom *doom, int x,
 		calculate_floor_dist(doom, x, y, &sector);
 		light_floor_ceiling(doom, sector, x, y);
 		index = (y * doom->surface->pitch) + (x * bpp);
-		row_calculations(doom, doom->horizontal_plane_dist, index, tex_dex);
+		row_calculations(doom, doom->horizontal_plane_dist, index, doom->lib.tex_lib[doom->tex_dex]);
 		y++;
 	}
 }

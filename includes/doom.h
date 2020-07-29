@@ -250,6 +250,7 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
+	Uint32			tex_dex;
 	int				light;
 	double			player_std_height;
 	double			player_height;
@@ -365,8 +366,8 @@ void				draw_sky(t_doom *doom, int x, int y);
 void				draw_poster(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x);
 
-void				row_calculations(t_doom *doom, double dist, Uint32 index,
-						Uint32 tex_dex);
+void				row_calculations(t_doom *doom, double dist, Uint32 index,\
+						SDL_Surface *lib);
 void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
