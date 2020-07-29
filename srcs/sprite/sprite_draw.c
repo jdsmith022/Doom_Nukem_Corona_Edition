@@ -59,10 +59,10 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	return (tex_y);
 }
 
-int		check_floor_height_visibiity(t_doom *doom, t_sprite sprite, int stripe, int screen_y)
-{
+// int		check_floor_height_visibiity(t_doom *doom, t_sprite sprite, int stripe, int screen_y)
+// {
 	
-}
+// }
 
 void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp)
 {
@@ -88,13 +88,13 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 			tex_x = find_tex_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 			while (screen_y < (int)sprite_end->y/* && pix_y > 0 && pix_y < HEIGHT*/)
 			{
-				if (check_floor_height_visbility(doom, sprite, stripe, screen_y))
-				{
+				// if (check_floor_height_visbility(doom, sprite, stripe, screen_y))
+				// {
 					index = (size_t)(screen_y * doom->surface->pitch) + (int)(stripe * doom->surface->format->BytesPerPixel);
 					tex_y = find_tex_y(doom, sprite_begin, sprite_end, index_sp, screen_y);
 					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch) + ((int)tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 					put_pixel_tex(doom, pix_dex, index, i_sprite);
-				}
+				// }
 				screen_y++;
 			}
 		}

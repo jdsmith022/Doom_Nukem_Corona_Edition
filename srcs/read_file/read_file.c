@@ -8,6 +8,8 @@ t_sector			*save_sectors(t_doom *doom, int fd, int *len)
 	get_line(&line, fd,\
 		"the amount of sectors is not specified or can not be read", 1);
 	*len = ft_atoi(line);
+	printf("len: %d\n", *len);
+	printf("n_sectors: %d\n", doom->lib.n_sectors);
 	sect = (t_sector*)ft_memalloc(sizeof(t_sector) * *len);
 	if (sect == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
