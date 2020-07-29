@@ -86,8 +86,6 @@ int			set_bottom_plane(t_doom *doom, t_sidedef sidedef,\
 	plane_height_std = plane_height_std / 2 + sector.height_ceiling;
 	height_floor = (sector.height_floor + sector.slope.bottom_height)\
 		/ sidedef.prev_sidedef.distance * doom->dist_to_plane;
-	// if (sidedef.id == 10)
-	// 	printf("prev_id = %d |height = %f\n", sidedef.prev_sidedef.id, sector.slope.bottom_height);
 	plane_bottom = (new_height + plane_height_std)\
 		- doom->own_event.y_pitch - height_floor;
 	plane_bottom = ((plane_bottom < HEIGHT ? plane_bottom : (HEIGHT)));
