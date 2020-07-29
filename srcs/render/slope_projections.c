@@ -58,17 +58,18 @@ t_point		get_connecting_point(t_line sidedef, t_line conn_sidedef)
 
 double			set_slope_delta(t_doom *doom, t_sector *sector, int y)
 {
-	double		height_diff;
-	double		distance;
-	double		height;
+	double		plane_distance;
+	double		delta_slope;
 	double		delta_height;
-	double		delta_steps;
+	double		delta_distance;
 
-	height_diff = sector->slope.bottom_height - sector->slope.height;
-	delta_steps = sector->slope.bottom_plane - y;
-	delta_height = height_diff / delta_steps;
+	delta_height = sector->slope.height - sector->slope.bottom_height;
+	plane_distance = y - sector->slope.bottom_plane;
+	delta_slope = delta_height / plane_distance;
+	delta_distance = sector->slope.dist_to_bottom / plane_distance;
+	// distance *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
 	sector->slope.prev_id = sector->slope.sidedef_id;
-	return (delta_height);
+	return (delta_distance);
 }
 
 int			set_bottom_plane(t_doom *doom, t_sidedef sidedef,\
@@ -99,8 +100,12 @@ void		set_slope_bottom_values(t_doom *doom, t_sidedef sidedef,\
 	int			opp_side;
 	double		distance;
 	t_point		conn_point;
+	t_sector	opp_sector;
 
 	bottom_line = doom->lib.sidedef[sidedef.prev_sidedef.id];
+	opp_sector = doom->lib.sector[sidedef.sector];
+	if (opp_sector.slope_id == -1)
+		sector->slope.prev_id = -1;
 	bottom_line = get_other_side_of_line(doom, bottom_line, *sector);
 	if (bottom_line.id == sector->slope_id)
 		distance = 0;
@@ -117,7 +122,8 @@ void		set_slope_bottom_values(t_doom *doom, t_sidedef sidedef,\
 	sector->slope.bottom_height = tan(sector->slope_floor) * distance;
 	sector->slope.bottom_plane = set_bottom_plane(doom, sidedef,\
 		*sector);
-	sector->slope.dist_to_bottom = fabs(points_distance(sidedef.intersect,\
+	sector->slope.prev_intersect = sidedef.prev_sidedef.intersect;
+	sector->slope.dist_to_bottom = fabs(points_distance(sidedef.prev_sidedef.intersect,\
 		sector->slope.intersect));
 }
 
@@ -127,6 +133,8 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	t_slope		slope;
 
 	slope.distance = 0;
+	slope.intersect = sidedef.intersect;
+	slope.sidedef_id = sidedef.id;
 	if (sidedef.sector != sector->id)
 		sidedef = get_other_side_of_line(doom, sidedef, *sector);
 	if (sidedef.id == sector->slope_id)
@@ -145,8 +153,6 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 		slope.distance = points_distance(sidedef.intersect, slope.conn_point);
 	}
 	slope.height = tan(sector->slope_floor) * slope.distance;
-	slope.intersect = sidedef.intersect;
-	slope.sidedef_id = sidedef.id;
 	return (slope);
 }
 

@@ -177,6 +177,7 @@ typedef	struct		s_slope {
 	int				prev_id;
 	double			delta_height;
 	t_point			intersect;
+	t_point			prev_intersect;
 	t_point			conn_point;
 }					t_slope;
 
@@ -198,6 +199,7 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
+	int				plane_x;
 	t_slope			slope;
 }					t_sector;
 

@@ -45,7 +45,8 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	if (sector->slope_id != -1)
 	{
 		sector->slope = set_properties_slope(doom, sidedef, sector);
-		set_slope_bottom_values(doom, sidedef, sector);
+		if (doom->i_sector != sector->id)
+			set_slope_bottom_values(doom, sidedef, sector);
 		sector->height_floor += sector->slope.height;
 	}
 	height_floor = sector->height_floor / sidedef.distance * doom->dist_to_plane;
@@ -60,6 +61,7 @@ void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	t_sector opp_sector;
 
 	ft_bzero(plane, sizeof(plane));
+	ft_bzero(&sector->slope, sizeof(sector->slope));
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 	if (sidedef.opp_sector != -1)
 	{
@@ -72,7 +74,7 @@ void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 		doom->lib.portal_ceiling = plane->sidedef_top;
 		doom->lib.portal_floor = plane->sidedef_bottom;
 	}
-	if (sector->slope_id != -1)
+	if (sector->slope_id != -1 && sector->slope.prev_id != -1)
 	{
 		sector->slope.delta_height = set_slope_delta(doom, sector, plane->sidedef_bottom);
 		// printf("side_id %d | delta_height = %f| height %f | y_steps %d\n", sidedef.id, sector->slope.delta_height, sector->slope.height - sector->slope.bottom_height, sector->slope.bottom_plane - plane->sidedef_bottom);
@@ -88,6 +90,7 @@ int		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	plane.intersect = sidedef.intersect;
 	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	sidedef.prev_sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	sector.plane_x = x;
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
