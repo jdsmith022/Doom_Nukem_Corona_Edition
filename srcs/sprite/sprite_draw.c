@@ -59,13 +59,6 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int in
 	return (tex_y);
 }
 
-int		check_floor_height_visibility(t_doom *doom, t_sprite sprite, int stripe, int screen_y)
-{
-	if (doom->lib.sector[sprite.prev_sector].sidedef_bottom[stripe] > screen_y)
-		return (-1);
-	return (0);
-}
-
 void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp)
 {
 	int			i_sprite;
@@ -86,8 +79,6 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 	{
 		if (doom->stripe_distance[stripe] > doom->lib.sprites[index_sp].distance)
 		{
-			if (doom->lib.sector[sprite.prev_sector].sidedef_bottom[stripe] >= 0 && doom->lib.sector[sprite.prev_sector].sidedef_bottom[stripe] < HEIGHT)
-				printf("stripe (%d)>> sidedef_bottom: %d\n", stripe, doom->lib.sector[sprite.prev_sector].sidedef_bottom[stripe]);
 			screen_y = (int)sprite_begin->y;
 			tex_x = find_tex_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 			while (screen_y < (int)sprite_end->y/* && pix_y > 0 && pix_y < HEIGHT*/)

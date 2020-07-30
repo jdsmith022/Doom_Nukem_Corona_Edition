@@ -45,7 +45,7 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, 
 		// set_offset_sprite(&sprite, intersect);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
-		sprite->prev_sector = prev_sector;
+		// sprite->prev_sector = prev_sector;
 	}
 	// printf("einde check visibility sprite\n");
 }

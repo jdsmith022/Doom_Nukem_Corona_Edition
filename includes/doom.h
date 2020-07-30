@@ -91,7 +91,7 @@ typedef struct			s_sprite {
 	int					*face_ang;		//DIT KAN GEWOON EEN INT ZIJN, dit is dan de index naar de texture
 	int					block;			//can the player walk through it or not
 	int					sector;
-	int					prev_sector;
+	int					n_sector;
 	double				width;
 	double				height;
 	double				sprite_x;		//x cord translated to viewer space
@@ -100,6 +100,7 @@ typedef struct			s_sprite {
 	double				distance;
 	int					face;
 	double				offset;
+	int					prev_sectors[50];
 	// int					screen_left_x;
 	// int					screen_right_x;
 	// int					position;
@@ -343,6 +344,8 @@ bool				handle_mouse_state(t_doom *doom);
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
+t_sidedef			set_properties_sidedef(t_point intersect, double distance,
+						t_sidedef curr_sidedef, t_doom *doom);
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect);
 void				set_texture_properties(t_doom *doom);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
@@ -420,6 +423,7 @@ int					*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_spri
 void				find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index);
 void				draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp);
 void				sprite_reset(t_doom *doom);
+void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite, int index);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

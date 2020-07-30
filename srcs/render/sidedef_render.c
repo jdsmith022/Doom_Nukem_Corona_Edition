@@ -22,7 +22,7 @@ void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	}
 }
 
-static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
+t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef	sidedef;
