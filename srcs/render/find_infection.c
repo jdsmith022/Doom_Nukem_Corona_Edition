@@ -18,10 +18,11 @@ void		find_infection(t_doom *doom, t_ray ray, double min_distance)
 	t_point		intersect;
 	t_sidedef	near_sidedef;
 	double		distance;
+	double		safe;
 	int			x;
 
 	x = 0;
-	min_distance = INFINITY;
+	safe = INFINITY;
 	while (x < doom->lib.cur_len_infection)
 	{
 		distance = sidedef_intersection_distance(ray,\
@@ -29,12 +30,13 @@ void		find_infection(t_doom *doom, t_ray ray, double min_distance)
 		if (distance <= min_distance + 0.01)
 		{
 			min_distance = distance;
+			safe = min_distance;
 			near_sidedef = set_properties_sidedef(intersect,\
 				distance, doom->lib.infection[x], doom);
 		}
 		x++;
 	}
-	if (min_distance != INFINITY)
+	if (safe != INFINITY)
 	{
 		doom->distance = min_distance;
 		relocate_poster(doom, &near_sidedef);

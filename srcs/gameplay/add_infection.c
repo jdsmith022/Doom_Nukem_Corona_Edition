@@ -22,15 +22,15 @@ void    init_infection(t_sidedef *infection, t_doom *doom)
     x_diff++;
     y_diff++;
     infection->line.start.x = doom->lib.sidedef[i].line.end.x > doom->lib.sidedef[i].line.start.x ? 
-                                rand() % x_diff + doom->lib.sidedef[i].line.start.x :
-                                rand() % x_diff + doom->lib.sidedef[i].line.end.x;
+                                rand() % (x_diff - (int)(x_steps * 16)) + doom->lib.sidedef[i].line.start.x :
+                                rand() % (x_diff - (int)(x_steps * 16)) + doom->lib.sidedef[i].line.end.x;
     infection->line.start.y = doom->lib.sidedef[i].line.end.y > doom->lib.sidedef[i].line.start.y ? 
-                                rand() % y_diff + doom->lib.sidedef[i].line.start.y :
-                                rand() % y_diff + doom->lib.sidedef[i].line.end.y;
-    infection->line.end.x = infection->line.start.x + x_steps * 16.0;
-    infection->line.end.y = infection->line.start.y + y_steps * 16.0;
+                                rand() % (y_diff - (int)(y_steps * 16)) + doom->lib.sidedef[i].line.start.y :
+                                rand() % (y_diff - (int)(y_steps * 16)) + doom->lib.sidedef[i].line.end.y;
+    infection->line.end.x = infection->line.start.x + x_steps * 15.0;
+    infection->line.end.y = infection->line.start.y + y_steps * 15.0;
 	infection->id = 0;
-	infection->sector = doom->game_design.cur_sec;
+	infection->sector = doom->lib.sidedef[i].sector;
 	infection->opp_sidedef = -1;
 	infection->opp_sector = -1;
 	infection->txt_1 = 0;
@@ -40,7 +40,7 @@ void    init_infection(t_sidedef *infection, t_doom *doom)
 
 void    add_infection(t_doom *doom)
 {
-    if (rand() % 100 == 1 && doom->lib.cur_len_infection < 100)
+    if (rand() % 10 == 1 && doom->lib.cur_len_infection < 100)
     {
         doom->lib.cur_len_infection++;
         init_infection(&(doom->lib.infection[doom->lib.cur_len_infection]), doom);
