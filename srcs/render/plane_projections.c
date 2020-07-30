@@ -53,6 +53,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	sidedef_bottom = (new_height + div_height_std) - doom->own_event.y_pitch - height_floor;
 	plane->sidedef_bottom = \
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
+	sector->floor_end = set_floor_limit(doom, plane, sidedef, sector);
 }
 
 void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
