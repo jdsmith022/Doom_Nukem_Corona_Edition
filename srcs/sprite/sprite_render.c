@@ -21,6 +21,7 @@ void		cast_ray_from_player_to_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, 
 			min_distance = distance;
 			curr_sector = doom->lib.sidedef[x].sector;
 			opp_sector = doom->lib.sidedef[x].opp_sector;
+			//can I save less?
 			sprite->prev_sectors[sprite->n_sector] = curr_sector;
 			sprite->n_sector++;
 		}
