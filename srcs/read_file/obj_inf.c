@@ -1,27 +1,29 @@
- #include "../../includes/doom.h"
+#include "../../includes/doom.h"
 
- void        add_inf_to_obj(t_sprite *sprite, int i, int safe, int obj_len)
+void		add_coordinates_obj(t_sprite *sprite, int i, int safe)
 {
-	if (i == 0)
-		sprite->index = safe;
+	int	mod;
+
+	mod = i % 5;
+	if (((((mod > 1 && mod < 5) || mod == 0) && i > 5 && \
+	i < sprite->amount * 5 + 6) || i == 1 || i == 2) && safe < 0)
+		error("Impossible to have negative coordinates", line_num(0));
 	if (i == 1)
-	{
-		if (safe > 0)
-			sprite->pos.x = safe;
-		else
-			error("Impossible to have negative coordinates", line_num(0));
-	}
-	if (i == 2)
-	{
-		if (safe > 0)
-			sprite->pos.y = safe;
-		else
-			error("Impossible to have negative coordinates", line_num(0));
-	}
-	if (i == 3)
-		sprite->action = safe;
-	if (i == 4)
-		sprite->size = safe;
+		sprite->pos.x = safe;
+	else if (i == 2)
+		sprite->pos.y = safe;
+	else if (mod == 2)
+		sprite->lines[(i - 6) / 5].start.x = safe;
+	else if (mod == 3)
+		sprite->lines[(i - 6) / 5].start.y = safe;
+	else if (mod == 4)
+		sprite->lines[(i - 6) / 5].end.x = safe;
+	else if (mod == 0)
+		sprite->lines[(i - 6) / 5].end.y = safe;
+}
+
+static void	add_lines(t_sprite *sprite, int i, int safe, int obj_len)
+{
 	if (i == 5)
 	{
 		if (safe > 0)
@@ -32,7 +34,6 @@
 		}
 		else
 			error("Sprite needs a texture", line_num(0));
-
 	}
 	if (i > 5 && i < sprite->amount * 5 + 6)
 	{
@@ -43,53 +44,35 @@
 			else
 				error("Sprite texture is not available", line_num(0));
 		}
-		if (i % 5 == 2)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 6) / 5].start.x = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		if (i % 5 == 3)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 6) / 5].start.y = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		if (i % 5 == 4)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 6) / 5].end.x = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
-		if (i % 5 == 0)
-		{
-			if (safe > 0)
-				sprite->lines[(i - 6) / 5].end.y = safe;
-			else
-				error("Impossible to have negative coordinates", line_num(0));
-		}
+		add_coordinates_obj(sprite, i, safe);
 	}
 }
 
-t_sprite   object_inf(int fd, int sector, int obj_len)
+static void	add_inf_to_obj(t_sprite *sprite, int i, int safe, int obj_len)
 {
-	int i;
-	char    *line;
-	t_sprite sprite;
-	int     safe;
+	if (i == 0)
+		sprite->index = safe;
+	add_coordinates_obj(sprite, i, safe);
+	if (i == 3)
+		sprite->action = safe;
+	if (i == 4)
+		sprite->size = safe;
+	add_lines(sprite, i, safe, obj_len);
+}
+
+t_sprite	object_inf(int fd, int sector, int obj_len)
+{
+	int			i;
+	char		*line;
+	t_sprite	sprite;
+	int			safe;
 
 	i = 0;
-	(void)sector;
+	(void)sector; //why is this here
 	sprite.amount = 0;
 	while (i < 6 + sprite.amount * 5)
 	{
-		// if (i < 5)
 		safe = get_line(&line, fd, "object informations does not exist", 1);
-		// else
-		//     get_line(&line, fd, "object informations does not exist", 0);
 		add_inf_to_obj(&sprite, i, safe, obj_len);
 		free(line);
 		i++;

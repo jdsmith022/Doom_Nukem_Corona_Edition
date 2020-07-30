@@ -18,9 +18,11 @@ light
 height of floor
 texture of floor
 slope of floor
+slope id of floor
 height of ceiling
 texture of ceiling
 slope of ceiling
+slope id of ceiling
 lines in sector
 objects in sector
 sector id

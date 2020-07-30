@@ -7,6 +7,7 @@
 # include <fcntl.h>
 # include <time.h>
 # include <stdbool.h>
+# include <sys/stat.h>
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
@@ -284,6 +285,9 @@ t_bmp				*malloc_images_lib(int len);
 SDL_Surface			**malloc_sdl_lib(t_bmp *images, int len);
 int					open_file(char *filename);
 int					line_num(int i);
+t_sprite   			object_inf(int fd, int sector, int obj_len);
+t_sidedef			wall_inf(int fd, int sector, int tex_len, int sec_len);
+t_sector  			sector_inf(int fd, int tex_len);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
@@ -358,6 +362,7 @@ void    draw_bar_point(Uint32 **pixels, t_bar bar);
 void	add_portal(t_doom *doom, int dir);
 void    add_to_game(t_doom *doom);
 void	mouse_press_game_editor(t_doom *doom, int x, int y);
+void    printing_map(t_gamedesign *design);
 
 
 /* AUDIO */
