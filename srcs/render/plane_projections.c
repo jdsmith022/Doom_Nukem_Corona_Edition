@@ -91,6 +91,7 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	sector.sidedef_bottom[x] = plane.sidedef_bottom; //added
 	sector.sidedef_top[x] = plane.sidedef_top; //added
+	// printf("sector: %d, x: %d, bottom: %d, top: %d\n", sidedef.sector, x, sector.sidedef_bottom[x], sector.sidedef_top[x]);
 	if (sidedef.poster != -1)
 	{
 		doom->texture_height = 16;

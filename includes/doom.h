@@ -100,7 +100,7 @@ typedef struct			s_sprite {
 	double				distance;
 	int					face;
 	double				offset;
-	int					prev_sectors[50];
+	int					prev_sectors[50];	//where to empty them again?
 	// int					screen_left_x;
 	// int					screen_right_x;
 	// int					position;
@@ -205,7 +205,6 @@ typedef struct		s_sector {
 	int				diff_y;
 	int				sidedef_bottom[WIDTH];
 	int				sidedef_top[WIDTH];
-	double			sidedef_distance[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {

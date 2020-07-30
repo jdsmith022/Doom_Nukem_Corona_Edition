@@ -76,12 +76,13 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	while (i < doom->visible_sprites)
 	{
 		index = sprite_order[i];
-		ft_bzero(doom->lib.sprites[index].prev_sectors, 50);
+		// ft_bzero(doom->lib.sprites[index].prev_sectors, 50); //yes or no?
 		if (doom->i_sector != doom->lib.sprites[index].sector)
 		{
 			find_prev_sectors(doom, &doom->lib.sprites[index]);
-			print_prev_sectors(doom->lib.sprites[index], index);
+			// print_prev_sectors(doom->lib.sprites[index], index);
 		}
+		printf("draw sprite: %d\n", doom->lib.sprites[index].n_sector);
 		scale_sprite(doom, &sprite_begin, &sprite_end, &doom->lib.sprites[index], index);
 		draw_stripes(doom, &sprite_begin, &sprite_end, index);
 		doom->lib.sprites[index].visible = -1;
@@ -95,7 +96,6 @@ void		sprite_render(t_doom *doom)
 	int		*sprite_order;
 
 	sprite_order = sort_sprite_array(doom->lib.sprites, doom->visible_sprites, doom->total_sprites);
-
 	draw_sprite(doom, sprite_order);
 	//free_sprite_order
 }

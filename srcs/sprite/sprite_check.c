@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 
 //int i is gewoon index tel van 0 - 4
+//prev sector can be removed
 void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, int sprite_i, int prev_sector)
 {
 	t_point	ray_delta;

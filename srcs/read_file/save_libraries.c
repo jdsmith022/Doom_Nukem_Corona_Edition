@@ -25,9 +25,7 @@ void	save_libraries(t_doom *doom)
     doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
     doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
     doom->lib.sidedef = save_walls(doom, fd,  &doom->lib.len_sidedef);
-    printf("before sprites\n");
     doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
-    printf("after sprites\n");
     add_inf_to_lib(&doom->lib, doom->lib.n_sectors, fd);
     close(fd);
     // create_header(&list, &len);
