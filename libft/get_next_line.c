@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/05 14:56:39 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/30 11:29:56 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/07/30 18:14:34 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ int		ft_readloop(int fd, char *buf, t_list *item, char **line)
 		item->content = ft_strdup(temp);
 		free(temp);
 		if (ft_strchr(buf, '\n') || ft_strchr(buf, ',') || ft_strchr(buf, '\r'))
-		{
 			break ;
-		}
 	}
 	if (ret < BUFF_SIZE && ft_strlen(item->content) == 0)
 		return (0);
