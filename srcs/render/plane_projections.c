@@ -35,7 +35,6 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	int			div_height_std;
 	int			new_height;
 
-	(void)sector;
 	new_height = (HEIGHT / 2) + doom->player_height;
 	plane->height_standard = doom->texture_height / sidedef.distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2 + sector->height_ceiling;
@@ -53,7 +52,6 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	sidedef_bottom = (new_height + div_height_std) - doom->own_event.y_pitch - height_floor;
 	plane->sidedef_bottom = \
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
-	sector->floor_end = set_floor_limit(doom, plane, sidedef, sector);
 }
 
 void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
@@ -64,6 +62,8 @@ void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	ft_bzero(plane, sizeof(plane));
 	ft_bzero(&sector->slope, sizeof(sector->slope));
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
+	sector->floor_end = set_floor_limit(doom, plane, sidedef, sector);
+	// sector->ceililng_end = set_ceiling_limit(doom, plane, sidedef, sector);
 	if (sidedef.opp_sector != -1)
 	{
 		opp_sector = doom->lib.sector[sidedef.opp_sector];

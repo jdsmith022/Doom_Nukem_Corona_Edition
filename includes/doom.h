@@ -343,8 +343,10 @@ double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
 void				set_texture_properties(t_doom *doom);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 						t_point intersect, t_doom *doom);
-int					set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
-						t_sector *sector);
+int					set_floor_limit(t_doom *doom, t_plane *plane,\
+						t_sidedef sidedef, t_sector *sector);
+int					set_ceiling_limit(t_doom *doom, t_plane *plane,\
+						t_sidedef sidedef, t_sector *sector);
 
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				wall_offset(t_plane *plane, int sidedef_top);
