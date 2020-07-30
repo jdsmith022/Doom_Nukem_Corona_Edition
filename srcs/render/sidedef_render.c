@@ -30,6 +30,7 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	set_texture_properties(doom);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
+	sidedef.distance = point_distance(intersect, doom->pos, doom->ray_angle);
 	sidedef.sector = curr_sidedef.sector;
 	sidedef.opp_sector = curr_sidedef.opp_sector;
 	sidedef.id = curr_sidedef.id;
@@ -41,6 +42,31 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.action = curr_sidedef.action;
 	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
+}
+
+int					is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
+{
+	t_point start;
+	t_point end;
+	t_point opp_start;
+	t_point opp_end;
+	t_line	line;
+
+	line = doom->lib.sidedef[id].line;
+	start = line.start;
+	end = line.end;
+	opp_start = opp_line.line.start;
+	opp_end = opp_line.line.end;
+	if (((start.x == opp_start.x && start.y == opp_start.y) &&\
+			(end.x == opp_end.x && end.y == opp_end.y)) ||\
+			((start.x == opp_end.x && start.y == opp_end.y) &&\
+			(end.x == opp_start.x && end.y == opp_start.y)))
+	{
+		printf("saamee %d\n", opp_line.id);
+		return (0);
+	}
+	printf("not saamee\n %d", opp_line.id);
+	return (-1);
 }
 
 double				sidedef_intersection_distance(t_ray ray,
@@ -58,39 +84,6 @@ double				sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-static int			find_intersect(t_doom *doom, t_ray ray, int sector,
-						int prev_sector)
-{
-	t_point		intersect;
-	t_sidedef	near_sidedef;
-	double		distance;
-	double		min_distance;
-	int			x;
-
-	x = doom->lib.sector[sector].i_sidedefs;
-	min_distance = INFINITY;
-	while (x < doom->lib.sector[sector].n_sidedefs +\
-		doom->lib.sector[sector].i_sidedefs)
-	{
-		distance = sidedef_intersection_distance(ray,\
-			doom->lib.sidedef[x].line, &intersect);
-		if (distance < min_distance &&\
-			doom->lib.sidedef[x].opp_sector != prev_sector)
-		{
-			min_distance = distance;
-			near_sidedef = set_properties_sidedef(intersect,\
-				distance, doom->lib.sidedef[x], doom);
-		}
-		x++;
-	}
-	if (min_distance != INFINITY)
-	{
-		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
-			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		return (project_on_plane(doom, near_sidedef, ray.plane_x));
-	}
-	return (0);
-}
 
 void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
@@ -104,6 +97,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
+	printf("sector -- %d\n", sector);
 	if (doom->lib.sector[sector].outside)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
 	save_poster = -1;
@@ -112,8 +106,9 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
+		printf("prev sidedef = %d	action flag: %d\n",doom->prev_sidedef.id, doom->lib.sidedef[x].action);
 		if (distance <= min_distance &&\
-			doom->lib.sidedef[x].opp_sector != prev_sector)
+			(doom->lib.sidedef[x].opp_sector != prev_sector || (doom->lib.sidedef[x].action == 5 && is_opp_sidedef(doom, doom->prev_sidedef.id, doom->lib.sidedef[x]) != 0)))
 		{
 			if (doom->lib.sidedef[x].action == 4)
 				save_poster = init_poster(x, distance, intersect, &doom->lib.sidedef[x]);
@@ -122,6 +117,7 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 				min_distance = distance;
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
+				printf("near_sidedef = %d\n", near_sidedef.id);
 				if (doom->lib.sidedef[x].action == 2)
 					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
@@ -131,16 +127,20 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	if (min_distance != INFINITY)
 	{
-		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
+		if (near_sidedef.opp_sector != -1 && (near_sidedef.opp_sector != prev_sector || near_sidedef.action == 5))
 		{
+			printf("1: %d --- %d\n", near_sidedef.sector, near_sidedef.opp_sector);
 			doom->prev_sidedef.id = near_sidedef.id;
 			doom->prev_sidedef.distance = near_sidedef.distance;
 			doom->prev_sidedef.intersect = near_sidedef.intersect;
+			if (near_sidedef.action == 5)
+				ray.line.start = intersect;
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		}
 		doom->distance = min_distance;
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
+		printf("projected sidedef = %d\n\n", near_sidedef.id);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 }

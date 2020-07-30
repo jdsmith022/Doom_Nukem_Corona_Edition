@@ -159,6 +159,8 @@ void 	doom_init(t_doom *doom)
 	doom->lib.sector[2].slope_id = 8;
 	doom->lib.sector[3].slope_id = -1;
 	doom->lib.sector[4].slope_id = -1;
+	doom->lib.sector[4].slope_id = 24;
+	doom->lib.sector[2].slope_floor =  4 * (PI / 180);
 	doom->lib.sector[2].slope_floor =  4 * (PI / 180);
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
