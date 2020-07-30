@@ -12,12 +12,24 @@ int		open_file(char *filename)
 	return (fd);
 }
 
+static void	modified()
+{
+	struct stat filestat;
+
+	stat("srcs/read_file/new_level", &filestat);
+	printf("%s", ctime(&filestat.st_mtime));
+	/* turn on and add the last modified date before handing in*/
+	// if (ft_strcmp(ctime(&filestat.st_mtime), "Tue Jul 21 11:47:15 2020\n") != 0)
+	//     error("file has been modified", 0);
+}
+
 void	save_libraries(t_doom *doom)
 {
 	int fd;
 
     // if (argc != 1)
     //     error("Please compile program in this fashion: ./duke_nukem", 0);
+	modified();
     fd = open_file("srcs/read_file/new_level");
     doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
     doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);

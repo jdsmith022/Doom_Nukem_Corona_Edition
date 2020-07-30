@@ -18,21 +18,23 @@ light
 height of floor
 texture of floor
 slope of floor
+slope id of floor
 height of ceiling
 texture of ceiling
 slope of ceiling
+slope id of ceiling
 lines in sector
+objects in sector
 sector id
 outside
 
-portal/line
+opp_sector
 vector start(x,y)
 vector end (x,y)
 action flag
 texture number/name(3)
 sidedef id
 
-objects in sector
 index
 vector location(x,y)
 action
