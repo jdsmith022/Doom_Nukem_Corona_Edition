@@ -30,6 +30,8 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	set_texture_properties(doom);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
+	sidedef.line.start = curr_sidedef.line.start;
+	sidedef.line.end = curr_sidedef.line.end;
 	sidedef.sector = curr_sidedef.sector;
 	sidedef.opp_sector = curr_sidedef.opp_sector;
 	sidedef.id = curr_sidedef.id;
@@ -138,7 +140,7 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
-		// find_infection(doom, ray, min_distance);
+		find_infection(doom, ray, min_distance);
 	}
 	return (0);
 }

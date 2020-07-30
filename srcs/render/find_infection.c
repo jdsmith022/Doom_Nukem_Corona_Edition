@@ -4,7 +4,7 @@ void        put_infection(t_doom *doom, t_sidedef infection, int x)
 {
     t_plane plane;
 
-    doom->texture_height = 16;
+	doom->texture_height = 16;
 	doom->texture_width = 16;
 	set_properties_plane(doom, infection, &plane, x);
 	draw_onesided_sidedef(doom, plane, infection, x);
@@ -37,7 +37,7 @@ void		find_infection(t_doom *doom, t_ray ray, double min_distance)
 		x++;
 	}
 	if (safe != INFINITY)
-	{
+	{	
 		doom->distance = min_distance;
 		relocate_poster(doom, &near_sidedef);
 		put_infection(doom, near_sidedef, ray.plane_x);

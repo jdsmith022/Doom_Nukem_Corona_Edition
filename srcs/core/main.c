@@ -5,6 +5,7 @@ int	main(void)
 {
 	t_doom	doom;
 
+	srand(time(NULL));
 	ft_bzero(&doom, sizeof(t_doom));
 	//load_maps();
 	//init_struct();

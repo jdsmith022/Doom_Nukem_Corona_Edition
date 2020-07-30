@@ -50,12 +50,7 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	if (key->keysym.sym == SDLK_x)
 		event->bend = TRUE;
 	if (key->keysym.sym == SDLK_q)
-	{
-		if (event->select == TRUE)
-			event->select = FALSE;
-		else
-			event->select = TRUE;
-	}
+			event->select = event->select == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_m)
 	{
 		doom->game_editor = TRUE;
