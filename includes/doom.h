@@ -125,6 +125,7 @@ typedef struct		s_event {
 	int				jump;
 	int				bend;
 	int				select;
+	int				shoot;
 	double			velocity;
 	int				y_pitch;
 }					t_event;
