@@ -36,10 +36,13 @@ assets/sprites/groceries/water.bmp
 0
 1
 0
+-1
 0
 2
 0
+-1
 10
+0
 0
 0
 
@@ -165,19 +168,19 @@ assets/sprites/groceries/water.bmp
 4
 0
 
-0
-
-
 
 #sector[1]
 10
 20
 1
 0
+-1
 0
 2
 0
+-1
 4
+0
 1
 0
 
@@ -229,18 +232,18 @@ assets/sprites/groceries/water.bmp
 6
 7
 
-#objs in sector
-0
-
 #sector[2]
 15
 0
 1
 0
+-1
 0
 2
 0
+-1
 5
+0
 2
 0
 
@@ -303,9 +306,6 @@ assets/sprites/groceries/water.bmp
 9
 7
 12
-
-#objs in sector
-0
 
 #moving objects
 0

@@ -122,7 +122,7 @@
 // 	sidedef[12].opp_sector = 1;
 // }
 
-void	doom_init_events(t_event *event)
+static void	doom_init_events(t_event *event)
 {
 	event->jump = FALSE;
 	event->velocity = VELOCITY;
@@ -130,14 +130,8 @@ void	doom_init_events(t_event *event)
 	event->step_down = FALSE;
 	event->jump = FALSE;
 	event->y_pitch = 0;
-}
-
-static void		init_cursor(t_doom *doom)
-{
-	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
-	SDL_ShowCursor(SDL_ENABLE);
-	SDL_SetCursor(doom->cursor);
-	doom->own_event.select = FALSE;
+	event->select = FALSE;
+	event->shoot = FALSE;
 }
 
 static void	init_infection(t_doom *doom)
@@ -173,10 +167,10 @@ void 	doom_init(t_doom *doom)
 	if (sdl_init(doom) != 0)
 		doom_exit_failure(doom, "unable to initialize SDL\n");
 	init_groceries(doom);
-	init_cursor(doom);
 	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
+	doom_init_events(&doom->own_event);
 	if (doom->audio->engine)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
@@ -185,6 +179,7 @@ void 	doom_init(t_doom *doom)
 	doom->dir_angle = 90;
 	doom->i_sector = 0;
 	doom->visible_sprites = 0;
+	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom->lib.sector[0].slope_id = -1;
 	doom->lib.sector[1].slope_id = -1;
 	doom->lib.sector[2].slope_id = -1;
@@ -212,6 +207,4 @@ void 	doom_init(t_doom *doom)
 	// doom->sector[2].i_sidedefs = 9;
 	// doom->sector[2].n_sidedefs = 4;
 	// doom->sector[2].slope_id = -1;
-	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	doom_init_events(&doom->own_event);
 }
