@@ -21,7 +21,7 @@ static int	check_collision(t_doom *doom, t_sidedef sidedef,
 				t_line move, t_point intersect)
 {
 	if (sidedef.opp_sector == -1 ||\
-		check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
+	check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
 		return (-1);
 	else if (sidedef.opp_sector != -1)
 	{
@@ -37,12 +37,14 @@ static int	movement_collision(t_doom *doom, t_line move, double angle)
 	int			x;
 	t_point		intersect;
 	t_sidedef	sidedef;
+	t_sidedef	opp_sidedef;
 
 	x = doom->lib.sector[doom->i_sector].i_sidedefs;
 	while (x < doom->lib.sector[doom->i_sector].n_sidedefs\
 		+ doom->lib.sector[doom->i_sector].i_sidedefs)
 	{
 		sidedef = doom->lib.sidedef[x];
+		opp_sidedef = doom->lib.sidedef[sidedef.opp_sidedef];
 		intersect = check_line_intersection(move, sidedef, angle, x);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
 			return (check_collision(doom, sidedef, move, intersect));

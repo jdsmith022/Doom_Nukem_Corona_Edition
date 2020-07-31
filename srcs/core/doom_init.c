@@ -135,6 +135,7 @@ void	doom_init_events(t_event *event)
 static void		init_cursor(t_doom *doom)
 {
 	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
+	SDL_ShowCursor(SDL_ENABLE);
 	SDL_SetCursor(doom->cursor);
 	doom->own_event.select = FALSE;
 }
@@ -146,6 +147,26 @@ static void	init_infection(t_doom *doom)
 	doom->lib.cur_len_infection = 0;
 }
 
+static void		init_player(t_doom *doom)
+{
+	doom->pos.x = 32;
+	doom->pos.y = 130;
+	doom->player_height = 48;
+	doom->player_width = 48;
+	doom->player_std_height = 48;
+}
+
+static void		init_settings(t_doom *doom)
+{
+	doom->own_event.mouse_state_switched = TRUE;
+	doom->is_running = TRUE;
+	doom->light = TRUE;
+	doom->hud = TRUE;
+	doom->basket = FALSE;
+	doom->shopping = FALSE;
+	doom->audio->engine = OFF;
+}
+
 void 	doom_init(t_doom *doom)
 {
 	 srand(time(0));
@@ -154,25 +175,22 @@ void 	doom_init(t_doom *doom)
 	init_groceries(doom);
 	init_cursor(doom);
 	init_audio(doom);
-	doom->audio->engine = OFF;
+	init_player(doom);
+	init_settings(doom);
 	if (doom->audio->engine)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
-	doom->own_event.mouse_state_switched = TRUE;
-	doom->is_running = TRUE;
-	doom->light = TRUE;
-	doom->hud = TRUE;
-	doom->basket = FALSE;
-	doom->shopping = FALSE;
-	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
-	doom->pos.x = 32;
-	doom->pos.y = 130;
 	doom->max_ray = 10000;
+	doom->dir_angle = 90;
 	doom->i_sector = 0;
-	doom->player_height = 48;
 	doom->visible_sprites = 0;
-	doom->player_std_height = 48;
+	doom->lib.sector[0].slope_id = -1;
+	doom->lib.sector[1].slope_id = -1;
+	doom->lib.sector[2].slope_id = -1;
+	// doom->lib.sector[3].slope_id = -1;
+	// doom->lib.sector[4].slope_id = -1;
+	// doom->lib.sector[5].slope_floor =  21.80140949 * (PI / 180);
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
 	init_infection(doom);

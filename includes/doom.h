@@ -257,6 +257,7 @@ typedef struct		s_doom {
 	int				light;
 	double			player_std_height;
 	double			player_height;
+	double			player_width;
 	int				texture_width;
 	int				texture_height;
 	int				i_sector;

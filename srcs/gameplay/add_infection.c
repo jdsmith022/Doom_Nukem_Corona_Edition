@@ -2,26 +2,36 @@
 
 #include <stdio.h>
 
-void    init_infection(t_sidedef *infection, t_doom *doom)
+int     sub_section(t_doom *doom, int i, double *x_steps, double *y_steps)
 {
     int change;
-    int i;
     int x_diff;
     int y_diff;
-    double x_steps;
-    double y_steps;
 
-    i = -1;
-    while (i == -1 || doom->lib.sidedef[i].opp_sector != -1)
-        i = rand() % doom->lib.len_sidedef;
+
     x_diff = (doom->lib.sidedef[i].line.end.x) - (doom->lib.sidedef[i].line.start.x);
 	y_diff = (doom->lib.sidedef[i].line.end.y) - (doom->lib.sidedef[i].line.start.y);
-	x_steps = (float)x_diff / (float)(abs(x_diff) + abs(y_diff));
-	y_steps = (float)y_diff / (float)(abs(x_diff) + abs(y_diff));
+	*x_steps = (float)x_diff / (float)(abs(x_diff) + abs(y_diff));
+	*y_steps = (float)y_diff / (float)(abs(x_diff) + abs(y_diff));
     if ((abs(x_diff) + abs(y_diff)) != 0)
         change = rand() % (abs(x_diff) + abs(y_diff));
     else
         change = 1;
+    return (change);
+}
+
+void    init_infection(t_sidedef *infection, t_doom *doom)
+{
+    int change;
+    int i;
+    double x_steps;
+    double y_steps;
+
+
+    i = -1;
+    while (i == -1 || doom->lib.sidedef[i].opp_sector != -1)
+        i = rand() % doom->lib.len_sidedef;
+    change = sub_section(doom, i, &x_steps, &y_steps);
     infection->line.start.x = change * x_steps + doom->lib.sidedef[i].line.start.x;
     infection->line.start.y = change * y_steps + doom->lib.sidedef[i].line.start.y;
     infection->line.end.x = (infection->line.start.x + x_steps * 15);
