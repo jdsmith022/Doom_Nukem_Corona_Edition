@@ -48,7 +48,7 @@ add:
 	@git status
 
 $(NAME):
-	@gcc $(CFLAGS) -c $(CFILES)   
+	@gcc $(CFLAGS) -c $(CFILES)
 	@ar rc	$(NAME) $(SRCO) $(HEAD)
 	@ranlib	$(NAME)
 
