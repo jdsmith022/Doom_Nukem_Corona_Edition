@@ -1,20 +1,21 @@
 #include "../../includes/doom.h"
 
-int    init_poster(int x, double distance, t_point intersect, t_sidedef *poster)
+int		init_poster(int x, double distance, t_point intersect,
+			t_sidedef *poster)
 {
 	poster->distance = distance;
 	poster->intersect = intersect;
-    return (x);
+	return (x);
 }
 
-void    relocate_poster(t_doom *doom, t_sidedef *poster)
+void	relocate_poster(t_doom *doom, t_sidedef *poster)
 {
-	int x_diff;
-    int y_diff;
-    double x_steps;
-    double y_steps;
-	int mod_x;
-	int mod_y;
+	int		x_diff;
+	int		y_diff;
+	double	x_steps;
+	double	y_steps;
+	int		mod_x;
+	int		mod_y;
 
 	x_diff = (poster->line.end.x) - (poster->line.start.x);
 	y_diff = (poster->line.end.y) - (poster->line.start.y);
@@ -33,9 +34,12 @@ void    relocate_poster(t_doom *doom, t_sidedef *poster)
 	set_offset(poster, *poster, poster->intersect, doom);
 }
 
-void    relocate_moving_wall(t_point *intersect, t_sidedef *near_sidedef, t_doom *doom, int x)
+void	relocate_moving_wall(t_point *intersect, t_sidedef *near_sidedef,
+			t_doom *doom, int x)
 {
-    intersect->x -= doom->lib.sidedef[x + 1].line.end.x - doom->lib.sidedef[x + 1].line.start.x;
-	intersect->y -= doom->lib.sidedef[x + 1].line.end.y - doom->lib.sidedef[x + 1].line.start.y;
+	intersect->x -= doom->lib.sidedef[x + 1].line.end.x -\
+		doom->lib.sidedef[x + 1].line.start.x;
+	intersect->y -= doom->lib.sidedef[x + 1].line.end.y -\
+		doom->lib.sidedef[x + 1].line.start.y;
 	set_offset(near_sidedef, doom->lib.sidedef[x], *intersect, doom);
 }

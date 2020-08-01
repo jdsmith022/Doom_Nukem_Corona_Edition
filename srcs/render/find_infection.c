@@ -1,9 +1,10 @@
 #include "../../includes/doom.h"
 
-void        put_infection(t_doom *doom, t_sidedef infection, int x)
+static void		put_infection(t_doom *doom, t_sidedef infection, int x)
 {
-    t_plane plane;
+	t_plane		plane;
 
+	infection.action = 4;
 	doom->texture_height = 16;
 	doom->texture_width = 16;
 	set_properties_plane(doom, infection, &plane, x);
@@ -11,7 +12,6 @@ void        put_infection(t_doom *doom, t_sidedef infection, int x)
 	doom->texture_height = 96;
 	doom->texture_width = 96;
 }
-
 
 void		find_infection(t_doom *doom, t_ray ray, double min_distance)
 {
@@ -37,7 +37,7 @@ void		find_infection(t_doom *doom, t_ray ray, double min_distance)
 		x++;
 	}
 	if (safe != INFINITY)
-	{	
+	{
 		doom->distance = min_distance;
 		relocate_poster(doom, &near_sidedef);
 		put_infection(doom, near_sidedef, ray.plane_x);

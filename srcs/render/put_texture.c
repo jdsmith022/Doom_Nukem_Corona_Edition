@@ -146,7 +146,6 @@ void		add_saturation(char *r, char *g, char *b, double light)
 	R = (double)*r;
 	G = (double)*g;
 	B = (double)*b;
-
 	// hsv = rgb_to_hsv((double)*r, (double)*g, (double)*b);
 	// hsv.b *= light;
 	// hsv_to_rgb(hsv, r, g, b);

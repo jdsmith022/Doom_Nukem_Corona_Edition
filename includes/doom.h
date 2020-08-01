@@ -180,6 +180,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	int				infection;
 	int				poster;
 }					t_sidedef;
 
@@ -303,7 +304,7 @@ int					open_file(char *filename);
 t_sector			*save_sectors(t_doom *doom, int fd, int *len);
 t_sidedef			*save_walls(t_doom *doom, int fd, int *len);
 t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
-void				save_bpm_to_sdl(t_bmp *images,\
+void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
@@ -359,7 +360,6 @@ void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
 void				find_skybox_sidedef_texture(t_doom *doom, int x,\

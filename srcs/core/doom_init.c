@@ -164,8 +164,6 @@ static void		init_settings(t_doom *doom)
 void 	doom_init(t_doom *doom)
 {
 	 srand(time(0));
-	if (sdl_init(doom) != 0)
-		doom_exit_failure(doom, "unable to initialize SDL\n");
 	init_groceries(doom);
 	init_audio(doom);
 	init_player(doom);
