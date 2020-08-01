@@ -164,6 +164,7 @@ typedef struct		s_sidedef {
 	double			distance;
 	int				poster;
 	t_prev_sidedef	prev_sidedef;
+	t_prev_sidedef	saved_sidedef;
 }					t_sidedef;
 
 typedef	struct		s_slope {
@@ -274,6 +275,8 @@ typedef struct		s_doom {
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
+	t_prev_sidedef	saved_sidedef;
+	int				save_poster;
 }					t_doom;
 
 /*core functions*/

@@ -286,7 +286,7 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 600
 600
 600
-0
+6
 0
 0
 0
@@ -298,7 +298,7 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 600
 600
 900
-0
+6
 0
 0
 0
@@ -310,7 +310,7 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 900
 300
 900
-0
+6
 0
 0
 0
@@ -322,7 +322,7 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 900
 300
 600
-0
+6
 0
 0
 0
@@ -388,7 +388,7 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 2
 0
 4
-4
+5
 0
 
 #sidedefs
@@ -420,7 +420,7 @@ textures/floors_ceiling/ceiling96X96_clean.bmp
 400
 800
 350
-8005
+800
 5
 0
 0
