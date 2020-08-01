@@ -42,6 +42,7 @@ void	game_loop(t_doom *doom)
 			doom_gui(doom);
 			groceries(doom);
 			sliding_door(doom, -1); //move to its own file
+			add_infection(doom); //move to a seprate file
 		}
 		else
 		{

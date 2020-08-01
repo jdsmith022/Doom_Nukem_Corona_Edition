@@ -39,8 +39,4 @@ void	save_libraries(t_doom *doom)
     doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
     add_inf_to_lib(&doom->lib, doom->lib.n_sectors, fd);
     close(fd);
-    // create_header(&list, &len);
-    // parsed_list = parse(list, len); //this is called cursing or something
-    // bytecode = create_bytecode(parsed_list);
-    // printf("%s\n", parsed_list);
 }

@@ -22,7 +22,7 @@ void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 	}
 }
 
-static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
+t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef	sidedef;
@@ -30,6 +30,8 @@ static t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	set_texture_properties(doom);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
+	sidedef.line.start = curr_sidedef.line.start;
+	sidedef.line.end = curr_sidedef.line.end;
 	sidedef.sector = curr_sidedef.sector;
 	sidedef.opp_sector = curr_sidedef.opp_sector;
 	sidedef.id = curr_sidedef.id;
@@ -113,7 +115,7 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
-		if (distance <= min_distance &&\
+		if (distance <= min_distance + 0.01 &&\
 			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
 			if (doom->lib.sidedef[x].action == 4)
@@ -138,6 +140,7 @@ int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
+		find_infection(doom, ray, min_distance);
 	}
 	return (0);
 }

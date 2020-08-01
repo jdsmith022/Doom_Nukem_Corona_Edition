@@ -28,7 +28,8 @@ EVENTS_FILES = key_events mouse_movement move_position move_position2 mouse_pres
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_floor_and_ceiling slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
-				render_sky_box set_offsets draw_poster action light_floor_ceiling
+				render_sky_box set_offsets draw_poster action light_floor_ceiling \
+				find_infection
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			save_font sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type
@@ -38,7 +39,8 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_position sprite_render \
 				sprite_sort sprite_reset
-GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries init_groceries grocery_ui
+GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries \
+				init_groceries grocery_ui add_infection
 DRAW_FILES = img vector
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font basket_font shopping_font
