@@ -89,8 +89,11 @@ void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
-	sector.sidedef_bottom[x] = plane.sidedef_bottom; //added
-	sector.sidedef_top[x] = plane.sidedef_top; //added
+	// sector.sidedef_bottom[x] = plane.sidedef_bottom; //added
+	// sector.sidedef_top[x] = plane.sidedef_top; //added
+	doom->lib.sector[sidedef.sector].sidedef_bottom[x] = plane.sidedef_bottom; //added
+	doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top; //added
+	// printf("%d %d %d %d\n", sidedef.sector, x, plane.sidedef_bottom, plane.sidedef_top);
 	// printf("sector: %d, x: %d, bottom: %d, top: %d\n", sidedef.sector, x, sector.sidedef_bottom[x], sector.sidedef_top[x]);
 	if (sidedef.poster != -1)
 	{

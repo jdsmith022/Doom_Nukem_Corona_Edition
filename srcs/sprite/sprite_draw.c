@@ -20,26 +20,29 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 	}
 }
 
-int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp, int stripe)
+int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
+		int index_sp, int stripe)
 {
 	int		i_sprite;
 	int		tex_x;
 
-	// i_sprite = doom->lib.sprites[index_sp].index;
-	i_sprite = doom->lib.sprites[index_sp].visible; //multiple faces
+	i_sprite = doom->lib.sprites[index_sp].visible;
 	tex_x = 0;
 	if ((int)sprite_begin->x > 0 && sprite_begin->x < WIDTH)
 	{
-		tex_x = (stripe - (int)sprite_begin->x) / doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
+		tex_x = (stripe - (int)sprite_begin->x) /\
+		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
 	}
 	else if ((int)sprite_begin->x <= 0)
 	{
-		tex_x = ((int)doom->lib.sprites[index_sp].width - sprite_end->x + stripe) /\
-		(int)doom->lib.sprites[index_sp].width * (int)doom->lib.obj_lib[i_sprite]->w;
+		tex_x = ((int)doom->lib.sprites[index_sp].width - sprite_end->x +\
+		stripe) / (int)doom->lib.sprites[index_sp].width *\
+		(int)doom->lib.obj_lib[i_sprite]->w;
 	}
 	else
 	{
-		tex_x = (sprite_end->x - stripe) / doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
+		tex_x = (sprite_end->x - stripe) /\
+		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
 	}
 	return (tex_x);
 }
@@ -65,10 +68,10 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int index_s
 
 	i = 0;
 	if (sprite.n_sector > 0)
-		printf("sprite.n_sector: %d, sprite #%d\n", sprite.n_sector, index_sp);
+		// printf("sprite.n_sector: %d, sprite #%d\n", sprite.n_sector, index_sp);
 	while (i < sprite.n_sector)
 	{
-		printf("i: %d, stripe: %d\n", i, stripe);
+		// printf("i: %d, prev_sector[i]: %d, stripe: %d\n", i, sprite.prev_sectors[i], stripe);
 		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[stripe] > 0 &&\
 		doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[stripe] < HEIGHT &&\
 		doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[stripe] < screen_y)
