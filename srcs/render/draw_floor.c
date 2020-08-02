@@ -15,7 +15,7 @@ double		calculate_new_floor_height(t_doom *doom, t_sector *sector)
 		(sector->slope.dist_to_bottom * sin(doom->ray_angle));
 	slope = doom->lib.sidedef[sector->slope_id].line;
 	dist_to_slope = fabs(point_line_distance(new_intersect, slope));
-	dist_to_slope *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
+	// dist_to_slope /= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
 	height = tan(sector->slope_floor) * dist_to_slope;
 	return (height);
 }

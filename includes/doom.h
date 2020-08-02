@@ -88,7 +88,6 @@ typedef struct		s_ray {
 	int				filter;
 }					t_ray;
 
-
 typedef struct		s_event {
 	int				mouse_press;
 	int				hold_angle;
@@ -336,11 +335,17 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 int					project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane, t_sector *sector);
+
 t_slope				set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_sector *sector);
 void				set_slope_bottom_values(t_doom *doom,\
 						t_sidedef sidedef, t_sector *sector);
 double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
+t_sidedef			get_other_side_of_line(t_doom *doom,\
+						t_sidedef sidedef, t_sector sector);
+int					get_opp_side_of_slope(t_sector sector);
+t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
+
 void				set_texture_properties(t_doom *doom);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
 						t_point intersect, t_doom *doom);
