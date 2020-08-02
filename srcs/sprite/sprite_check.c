@@ -60,6 +60,7 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	i = 0;
 	x = 0;
 	sprite_i = doom->lib.sector[sector].i_objects; //dit moet ik checken
+	doom->lib.sprites[sprite_i].angle = ray.angle;
 	
 	// printf("sprite_i: %d, sector: %d, n_objects: %d\n", sprite_i, sector, doom->lib.sector[sector].n_objects);
 	//TOTAL_SPRITES per sector

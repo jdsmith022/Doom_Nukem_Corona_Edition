@@ -11,29 +11,36 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 	int		opp_sector;
 
 	x = doom->lib.sector[curr_sector].i_sidedefs;
+	printf("sidedef: %d\n", x);
 	min_distance = sprite->distance;
 	while (x < doom->lib.sector[curr_sector].n_sidedefs +\
 		doom->lib.sector[curr_sector].i_sidedefs)
 	{
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
+		printf("check distance for sector: %d, sidedef %d\n", doom->lib.sidedef[x].sector, x);
 		if (distance <= min_distance &&\
 		doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
+			printf("distance of sidedef intersect is less than sprite distance\n");
 			min_distance = distance;
 			curr_sector = doom->lib.sidedef[x].sector;
 			opp_sector = doom->lib.sidedef[x].opp_sector;
 			//can I save less sectors?
 			if (curr_sector != sprite->sector)
 			{
+				printf("curr_sector is not sprite sector, save curr sector %d\n", curr_sector);
 				sprite->prev_sectors[sprite->n_sector] = curr_sector;
 				sprite->n_sector++;
+				opp_sector = doom->lib.sidedef[x].opp_sector;
 			}
 		}
 		x++;
 	}
+	printf("min_distance %f, sprite_distance: %f\n", min_distance, sprite->distance);
 	if (min_distance < sprite->distance)
 	{
+		printf("opp_sector: %d, prev_sector: %d\n", opp_sector, prev_sector);
 		if (opp_sector != -1 && opp_sector != prev_sector)
 			cast_ray_from_player_to_sprite(doom, sprite, ray, opp_sector,\
 			curr_sector);
@@ -45,14 +52,15 @@ void		find_prev_sectors(t_doom *doom, t_sprite *sprite)
 	t_ray	ray;
 
 	sprite->n_sector = 0;
-	ray.angle = doom->dir_angle - (FOV / 2);
+	// ray.angle = doom->dir_angle - (FOV / 2);
 	ray.line.start = doom->pos;
-	ray.angle = clamp_angle(ray.angle);
-	doom->ray_angle = ray.angle;
+	// ray.angle = clamp_angle(ray.angle);
+	// doom->ray_angle = ray.angle;
+	ray.angle = sprite->angle;
 	ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 	ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 	cast_ray_from_player_to_sprite(doom, sprite, ray, doom->i_sector,\
-	doom->i_sector);
+	doom->i_sector); //sprite stuur ik al mee in doom
 }
 
 //remove
