@@ -102,8 +102,8 @@ void		sidedef_render(t_doom *doom, t_ray ray, int sector,
 			doom->lib.sidedef[x].line, &intersect);
 		if (distance <= min_distance &&\
 			((doom->lib.sidedef[x].opp_sector != prev_sector) ||\
-			(doom->lib.sidedef[x].action == 5 &&\
-			is_opp_sidedef(doom, doom->prev_sidedef.id, doom->lib.sidedef[x]) != 0)))
+			(doom->lib.sidedef[x].action == 5 && is_opp_sidedef(doom,\
+			doom->prev_sidedef.id, doom->lib.sidedef[x]) != 0)))
 		{
 			if (doom->lib.sidedef[x].action == 4)
 				save_poster = init_poster(x, distance, intersect,\

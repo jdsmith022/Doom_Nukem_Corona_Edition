@@ -67,7 +67,7 @@ double			set_slope_delta(t_doom *doom, t_sector *sector, int y)
 	plane_distance = y - sector->slope.bottom_plane;
 	delta_slope = delta_height / plane_distance;
 	delta_distance = sector->slope.dist_to_bottom / plane_distance;
-	// distance *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
+	delta_distance *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
 	sector->slope.prev_id = sector->slope.sidedef_id;
 	return (delta_distance);
 }
