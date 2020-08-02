@@ -7,12 +7,16 @@
 #define FRAME_COUNT 8
 #define FRAME_WIDTH 32
 #define FRAME_HEIGHT 32
-#define SIDEBAR_SECTOR WIDTH / 5
+
+#define SIDEBAR_SECTOR 238
 #define SIDEBAR_SIDEDEF WIDTH - WIDTH / 5
+
 #define MINUS_X WIDTH / 5
 #define MINUS_Y 0
+
 #define PLUS_X WIDTH - WIDTH / 5 - FRAME_WIDTH
 #define PLUS_Y 0
+
 #define AR_LEFT_M_X SIDEBAR_SECTOR
 #define AR_LEFT_M_Y HEIGHT / 2
 #define AR_RIGHT_M_X SIDEBAR_SIDEDEF - FRAME_WIDTH
@@ -45,7 +49,7 @@
 #define CROSS_P_X SIDEBAR_SECTOR / 2 - FRAME_WIDTH / 2 + SIDEBAR_SIDEDEF
 #define CROSS_P_Y HEIGHT / 8 * 2
 
-#define PORTAL_X SIDEBAR_SECTOR - FRAME_WIDTH - AR_LEFT_X + SIDEBAR_SIDEDEF
+#define PORTAL_X SIDEBAR_SECTOR / 2
 #define PORTAL_Y HEIGHT / 8 * 3
 #define WALL_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH) / 2 + SIDEBAR_SIDEDEF
 #define WALL_Y HEIGHT / 8 * 3
@@ -69,25 +73,25 @@
 #define AR_RIGHT_TC_X SIDEBAR_SECTOR - FRAME_WIDTH
 #define AR_RIGHT_TC_Y HEIGHT / 8 * 6
 
-#define AR_LEFT_TS1_X SIDEBAR_SIDEDEF
+#define AR_LEFT_TS1_X 0
 #define AR_LEFT_TS1_Y HEIGHT / 8 * 5
-#define TEX_S1_X  SIDEBAR_SECTOR / 3 + SIDEBAR_SIDEDEF
+#define TEX_S1_X  SIDEBAR_SECTOR / 3
 #define TEX_S1_Y HEIGHT / 8 * 5
-#define AR_RIGHT_TS1_X WIDTH - FRAME_WIDTH
+#define AR_RIGHT_TS1_X SIDEBAR_SECTOR - FRAME_WIDTH
 #define AR_RIGHT_TS1_Y HEIGHT / 8 * 5
 
-#define AR_LEFT_TS2_X SIDEBAR_SIDEDEF
+#define AR_LEFT_TS2_X 0
 #define AR_LEFT_TS2_Y HEIGHT / 8 * 6
-#define TEX_S2_X  SIDEBAR_SECTOR / 3 + SIDEBAR_SIDEDEF
+#define TEX_S2_X  SIDEBAR_SECTOR / 3
 #define TEX_S2_Y HEIGHT / 8 * 6
-#define AR_RIGHT_TS2_X WIDTH - FRAME_WIDTH
+#define AR_RIGHT_TS2_X SIDEBAR_SECTOR - FRAME_WIDTH
 #define AR_RIGHT_TS2_Y HEIGHT / 8 * 6
 
-#define AR_LEFT_TS3_X SIDEBAR_SIDEDEF
+#define AR_LEFT_TS3_X 0
 #define AR_LEFT_TS3_Y HEIGHT / 8 * 7
-#define TEX_S3_X  SIDEBAR_SECTOR / 3 + SIDEBAR_SIDEDEF
+#define TEX_S3_X  SIDEBAR_SECTOR / 3
 #define TEX_S3_Y HEIGHT / 8 * 7
-#define AR_RIGHT_TS3_X WIDTH - FRAME_WIDTH
+#define AR_RIGHT_TS3_X SIDEBAR_SECTOR - FRAME_WIDTH
 #define AR_RIGHT_TS3_Y HEIGHT / 8 * 7
 
 #define HF_MAX 30
@@ -96,7 +100,7 @@
 #define HF_X 0
 #define HF_Y HEIGHT / 8 * 2
 #define HF_HEIGHT 5
-#define HF_LEN (float)(WIDTH / 5)
+#define HF_LEN (float)238
 
 #define HC_MAX 30
 #define HC_MIN -30
@@ -104,7 +108,7 @@
 #define HC_X 0
 #define HC_Y HEIGHT / 8 * 3
 #define HC_HEIGHT 5
-#define HC_LEN (float)(WIDTH / 5)
+#define HC_LEN (float)238
 
 #define LL_MAX 20
 #define LL_MIN 0
@@ -112,7 +116,24 @@
 #define LL_X 0
 #define LL_Y HEIGHT / 8 * 4
 #define LL_HEIGHT 5
-#define LL_LEN (float)(WIDTH / 5)
+#define LL_LEN (float)238
+
+#define SECTOR_BOTTON_START_X 0
+#define SECTOR_BOTTON_START_Y 560
+#define SECTOR_BOTTON_END_X 78
+#define SECTOR_BOTTON_END_Y 600
+
+#define SIDEDEF_BOTTON_START_X 80
+#define SIDEDEF_BOTTON_START_Y 560
+#define SIDEDEF_BOTTON_END_X 158
+#define SIDEDEF_BOTTON_END_Y 600
+
+#define OBJECT_BOTTON_START_X 160
+#define OBJECT_BOTTON_START_Y 560
+#define OBJECT_BOTTON_END_X 238
+#define OBJECT_BOTTON_END_Y 600
+
+
 enum game_editor_im{plus, minus, straight, d_45, d_m45, arrow_left, arrow_right, cross};
 
 static const uint32_t editor_sprites[FRAME_COUNT][1024] = {

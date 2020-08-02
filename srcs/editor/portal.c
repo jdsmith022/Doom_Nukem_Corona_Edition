@@ -10,7 +10,10 @@ void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 	if (doom->game_design.cur_sec < 0)
 		doom->game_design.cur_sec = doom->game_design.s_len;
 	if (doom->game_design.cur_sec > doom->game_design.s_len)
-		doom->game_design.cur_sec = 0;
+	{
+		add_sector(doom);
+		doom->game_design.cur_sec += dir;
+	}
 	if (doom->game_design.portal_sec == doom->game_design.cur_sec)
 		doom->game_design.cur_sec += dir;
 	doom->game_design.sector[doom->game_design.cur_sec].diff_x = diff_x;

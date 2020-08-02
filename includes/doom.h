@@ -238,6 +238,9 @@ typedef struct		s_gamedesign {
 	int				pl_x;
 	int				pl_y;
 	int				pl_sec;
+	int				b_sector;
+	int				b_sidedef;
+	int				b_object;
 }					t_gamedesign;
 
 typedef struct		s_doom {

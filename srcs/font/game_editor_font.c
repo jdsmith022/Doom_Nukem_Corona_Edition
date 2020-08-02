@@ -20,15 +20,20 @@ static void	set_menu_text(t_doom *doom, t_font *lib, int len)
 
 	index = 0;
 	lib[index].len = len;
-	lib[index].str = "Create Sector";
-	lib[index].font_rect.x = 30;
-	lib[index].font_rect.y = 40;
+	lib[index].str = "Sector";
+	lib[index].font_rect.x = 15;
+	lib[index].font_rect.y = 560;
 	lib[index].font_color = doom->lib.font_lib.font_color.black;
 	index++;
-	lib[index].str = "Design Sector";
-	lib[index].font_rect.x = 670;
-	lib[index].font_rect.y = 40;
+	lib[index].str = "Wall";
+	lib[index].font_rect.x = 100;
+	lib[index].font_rect.y = 560;
 	lib[index].font_color = doom->lib.font_lib.font_color.black;
+	// index++;
+	// lib[index].str = "Object";
+	// lib[index].font_rect.x = 90;
+	// lib[index].font_rect.y = 560;
+	// lib[index].font_color = doom->lib.font_lib.font_color.black;
 }
 
 static t_font	*editor_menu(t_doom *doom, int *len)

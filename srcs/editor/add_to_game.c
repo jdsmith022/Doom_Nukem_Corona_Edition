@@ -107,28 +107,21 @@ void		add_to_game(t_doom *doom)
 		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
 		{
 			coor_pos(doom);
-			printf("1\n");
 			box_in_sectors(doom);
-			printf("2\n");
 			free(doom->lib.sector); //rm when there are multiple levels		
-			free(doom->lib.sidedef); //rm when there are multiple levels	
-			printf("3\n");			
+			free(doom->lib.sidedef); //rm when there are multiple levels			
 			doom->lib.sector = new_level_sector(doom,\
-				doom->game_design.sector, doom->game_design.s_len + 1);		
-			printf("4\n");			
+				doom->game_design.sector, doom->game_design.s_len + 1);				
 			doom->lib.sidedef = new_level_sidedef(doom,\
-				doom->game_design.sidedef, doom->game_design.w_len + 1);	
-			printf("5\n");						
+				doom->game_design.sidedef, doom->game_design.w_len + 1);					
 			doom->lib.sector = light_correction(\
-				doom->lib.sector, doom->game_design.s_len);
-			printf("6\n");				
+				doom->lib.sector, doom->game_design.s_len);	
 			doom->pos.x = doom->game_design.pl_x;
 			doom->pos.y = doom->game_design.pl_y;
 			doom->i_sector = doom->game_design.pl_sec;
 			doom->player_height = doom->player_height \
 			+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 			doom->light = TRUE;
-			printf("7\n");
 		}
 	}
 }

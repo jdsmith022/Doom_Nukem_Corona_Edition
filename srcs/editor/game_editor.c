@@ -108,6 +108,9 @@ void	init_game_design(t_doom *doom)
 	doom->game_design.sector[doom->game_design.s_len].light_level = 10;
 	doom->game_design.portal_sec = -1;
 	doom->game_design.portal_sd = -1;
+	doom->game_design.b_sector = FALSE;
+	doom->game_design.b_sidedef = FALSE;
+	doom->game_design.b_object = FALSE;
 }
 
 void	open_game_editor(t_doom *doom)
@@ -122,7 +125,8 @@ void	open_game_editor(t_doom *doom)
 		init_game_design(doom);
 	draw_screen_colors(pixels, doom);
 	draw_images(pixels, doom);
-	bars(&pixels, doom);
+	if (doom->game_design.b_sector == TRUE)
+		bars(&pixels, doom);
 	i = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs;
 	while (i < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs\
 		+ doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
