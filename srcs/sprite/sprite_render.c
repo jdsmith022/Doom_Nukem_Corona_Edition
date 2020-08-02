@@ -24,7 +24,7 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 			curr_sector = doom->lib.sidedef[x].sector;
 			opp_sector = doom->lib.sidedef[x].opp_sector;
 			//can I save less sectors?
-			if (doom->i_sector != sprite->sector)
+			if (curr_sector != sprite->sector)
 			{
 				sprite->prev_sectors[sprite->n_sector] = curr_sector;
 				sprite->n_sector++;
