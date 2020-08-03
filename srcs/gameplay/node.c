@@ -1,9 +1,9 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 
-void	del_node(t_list **head, t_list *node)
+void		del_node(t_list **head, t_list *node)
 {
-	t_list *prev;
+	t_list	*prev;
 
 	prev = *head;
 	if (prev->content == node->content)

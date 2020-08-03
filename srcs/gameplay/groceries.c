@@ -3,7 +3,7 @@
 
 static void		set_shelf_type(t_doom *doom, uint8_t *type)
 {
-	t_ray	ray;
+	t_ray		ray;
 
 	ray = init_ray(doom, MOUSE_X);
 	*type = find_shelf(doom, ray, doom->i_sector, doom->i_sector);
@@ -20,8 +20,8 @@ bool			mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 
 bool			click_on_basket(t_list **basket, uint8_t *type, int x, int y)
 {
-	t_list *temp;
-	t_item *item;
+	t_list		*temp;
+	t_item		*item;
 
 	temp = *basket;
 	while (temp)
@@ -39,7 +39,7 @@ bool			click_on_basket(t_list **basket, uint8_t *type, int x, int y)
 
 void			handle_groceries(t_doom *doom)
 {
-	uint8_t type;
+	uint8_t		type;
 
 	if (!handle_mouse_state(doom))
 		return ;
@@ -53,17 +53,4 @@ void			handle_groceries(t_doom *doom)
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}
-}
-
-void			groceries(t_doom *doom)
-{
-	if (MOUSE_PRESSED)
-		handle_groceries(doom);
-	else
-		doom->own_event.mouse_state_switched = false;
-	if (doom->groceries->basket)
-		draw_basket_ui(doom, doom->groceries);
-	if (doom->groceries->shopping_list)
-		draw_shopping_ui(doom, doom->groceries);
-	checkout(doom->groceries);
 }

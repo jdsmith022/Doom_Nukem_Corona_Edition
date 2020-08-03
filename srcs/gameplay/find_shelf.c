@@ -1,7 +1,7 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 
-int		find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector)
+int				find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	t_point		isect;
 	int			safe_x;

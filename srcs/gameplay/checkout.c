@@ -20,8 +20,8 @@ static uint8_t	get_basket_len(t_list **head)
 
 static bool		search_basket(t_item *itema, t_list **head)
 {
-	t_list *temp;
-	t_item *itemb;
+	t_list		*temp;
+	t_item		*itemb;
 
 	temp = *head;
 	if (!temp)

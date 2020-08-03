@@ -36,6 +36,7 @@ typedef struct			s_groceries {
 
 void					init_groceries(t_doom *doom);
 void					groceries(t_doom *doom);
+void					handle_groceries(t_doom *doom);
 void					add_item_to_basket(t_doom *doom, t_list **head, uint8_t type);
 bool					remove_item_from_basket(t_list **head, uint8_t item);
 bool					is_in_basket(t_item *item, uint8_t type);
@@ -52,6 +53,7 @@ void					draw_text_at(t_doom *doom, SDL_Rect rect, char *text);
 t_ray					init_ray(t_doom *doom, int x);
 int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 SDL_Rect				get_position(uint16_t index, int start_x);
+void					set_positions(t_list **basket);
 void					print_shopping_list(t_groceries *groceries);
 
 #endif

@@ -1,10 +1,18 @@
 #include "../../includes/doom.h" 
 #include "../../includes/audio.h"
 
+static void	init_paths(t_doom *doom){
+	char			path_buff[PATH_MAX];
+
+	getcwd(path_buff, sizeof(path_buff));
+	if (!ft_strlen(path_buff))
+		exit_error("Cannot find working directory\n");
+	doom->audio->path = ft_strjoin(path_buff, "/sounds"); // NOTE: FREE
+}
+
 void	init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
-	char			path_buff[PATH_MAX];
 
 	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // NOTE: FREE
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
@@ -23,10 +31,7 @@ void	init_audio(t_doom *doom)
 	);
 	Mix_AllocateChannels(3);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
-	getcwd(path_buff, sizeof(path_buff));
-	if (!ft_strlen(path_buff))
-		exit_error("Cannot find working directory\n");
-	doom->audio->path = ft_strjoin(path_buff, "/sounds"); // NOTE: FREE
+	init_paths(doom);
 }
 
 void	load_audio(t_audio *audio)
