@@ -32,7 +32,6 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 				printf("curr_sector is not sprite sector, save curr sector %d\n", curr_sector);
 				sprite->prev_sectors[sprite->n_sector] = curr_sector;
 				sprite->n_sector++;
-				opp_sector = doom->lib.sidedef[x].opp_sector;
 			}
 		}
 		x++;
@@ -40,7 +39,7 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 	printf("min_distance %f, sprite_distance: %f\n", min_distance, sprite->distance);
 	if (min_distance < sprite->distance)
 	{
-		printf("opp_sector: %d, prev_sector: %d\n", opp_sector, prev_sector);
+		printf("opp_sector: %d, prev_sector: %d, x: %d\n", opp_sector, prev_sector, x - 1);
 		if (opp_sector != -1 && opp_sector != prev_sector)
 			cast_ray_from_player_to_sprite(doom, sprite, ray, opp_sector,\
 			curr_sector);
