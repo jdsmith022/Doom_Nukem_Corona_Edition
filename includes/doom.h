@@ -26,6 +26,8 @@
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
+# define OPEN_ERR	"error: opening file"
+# define FONT_ERR	"error: writing font to screen"
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -436,6 +438,5 @@ int					init_poster(int x, double distance, t_point intersect,\
 						t_sidedef *poster);
 void				add_infection(t_doom *doom);
 void				find_infection(t_doom *doom, t_ray ray, double min_distance);
-
 
 #endif
