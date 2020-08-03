@@ -122,7 +122,7 @@
 // 	sidedef[12].opp_sector = 1;
 // }
 
-void	doom_init_events(t_event *event)
+static void	doom_init_events(t_event *event)
 {
 	event->jump = FALSE;
 	event->velocity = VELOCITY;
@@ -130,14 +130,15 @@ void	doom_init_events(t_event *event)
 	event->step_down = FALSE;
 	event->jump = FALSE;
 	event->y_pitch = 0;
+	event->select = FALSE;
+	event->shoot = FALSE;
 }
 
-static void		init_cursor(t_doom *doom)
+static void	init_infection(t_doom *doom)
 {
-	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
-	SDL_ShowCursor(SDL_ENABLE);
-	SDL_SetCursor(doom->cursor);
-	doom->own_event.select = FALSE;
+	doom->lib.infection = (t_sidedef*)malloc(sizeof(t_sidedef) * 100);
+	doom->lib.tot_len_infection = 100;
+	doom->lib.cur_len_infection = 0;
 }
 
 static void		init_player(t_doom *doom)
@@ -162,14 +163,13 @@ static void		init_settings(t_doom *doom)
 
 void 	doom_init(t_doom *doom)
 {
-	if (sdl_init(doom) != 0)
-		doom_exit_failure(doom, "unable to initialize SDL\n");
+	srand(time(0));
 	init_groceries(doom);
-	init_cursor(doom);
 	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
-	if (doom->audio->engine == ON)
+	doom_init_events(&doom->own_event);
+	if (doom->audio->engine)
 		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
 	doom->ray_adjacent = FOV / WIDTH;
@@ -177,6 +177,7 @@ void 	doom_init(t_doom *doom)
 	doom->dir_angle = 90;
 	doom->i_sector = 0;
 	doom->visible_sprites = 0;
+	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom->lib.sector[0].slope_id = -1;
 	doom->lib.sector[1].slope_id = -1;
 	doom->lib.sector[2].slope_id = -1;
@@ -185,6 +186,8 @@ void 	doom_init(t_doom *doom)
 	// doom->lib.sector[5].slope_floor =  21.80140949 * (PI / 180);
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
+	init_infection(doom);
+
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
 	// doom->sector[0].i_sidedefs = 0;
@@ -202,6 +205,4 @@ void 	doom_init(t_doom *doom)
 	// doom->sector[2].i_sidedefs = 9;
 	// doom->sector[2].n_sidedefs = 4;
 	// doom->sector[2].slope_id = -1;
-	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	doom_init_events(&doom->own_event);
 }
