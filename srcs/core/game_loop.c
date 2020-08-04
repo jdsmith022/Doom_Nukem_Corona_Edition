@@ -45,12 +45,11 @@ void	game_loop(t_doom *doom)
 			add_infection(doom); //move to a seprate file
 		}
 		else
-		{
 			open_game_editor(doom);
-		}
-		font_to_screen(doom);
+		update_hud(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
+		// SDL_SetWindowFullscreen(doom->window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 	}
 	doom_exit_success(doom);
 }

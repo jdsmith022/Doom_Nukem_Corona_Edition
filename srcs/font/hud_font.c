@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/03 14:15:29 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/04 19:21:55 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 
 	lib[0].len = len;
 	lib[0].str = "Corona Level";
-	lib[0].font_rect.x = 30;
-	lib[0].font_rect.y = 520;
+	lib[0].font_rect.x = 10;
+	lib[0].font_rect.y = HEIGHT - 35;
 	lib[0].font_color = doom->lib.font_lib.font_color.green;
 	lib[1].str = "Sanitizer Level";
-	lib[1].font_rect.x = 620;
-	lib[1].font_rect.y = 520;
+	lib[1].font_rect.x = WIDTH - 175;
+	lib[1].font_rect.y = HEIGHT - 35;
 	lib[1].font_color = doom->lib.font_lib.font_color.blue;
 	lib[2].str = "Shopping List";
-	lib[2].font_rect.x = 620;
+	lib[2].font_rect.x = WIDTH - 160;
 	lib[2].font_rect.y = 15;
 	lib[2].font_color = doom->lib.font_lib.font_color.red;
 	lib[3].str = "Basket";
-	lib[3].font_rect.x = 30;
+	lib[3].font_rect.x = 10;
 	lib[3].font_rect.y = 15;
 	lib[3].font_color = doom->lib.font_lib.font_color.red;
 }

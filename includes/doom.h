@@ -250,6 +250,8 @@ typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
 	int				hud;
+	int				w_h;
+	int				w_w;
 	int				basket;
 	int				shopping;
 	SDL_Window		*window;
@@ -309,7 +311,7 @@ t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
 void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
-void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
+void				add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 void				set_texture_type(const char *name, SDL_Surface *surface);
 t_bmp				*malloc_images_lib(t_doom *doom, int len);
@@ -406,8 +408,8 @@ void				add_sidedef(t_doom *doom, int x, int y);
 void				del_sidedef(t_doom *doom);
 void				add_sector(t_doom *doom);
 void				del_sector(t_doom *doom);
-void				draw_bar(Uint32 **pixels, t_bar bar);
-void				draw_bar_point(Uint32 **pixels, t_bar bar);
+void				draw_bar(t_doom *doom, Uint32 **pixels, t_bar bar);
+void				draw_bar_point(t_doom *doom, Uint32 **pixels, t_bar bar);
 void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
@@ -439,4 +441,7 @@ int					init_poster(int x, double distance, t_point intersect,\
 void				add_infection(t_doom *doom);
 void				find_infection(t_doom *doom, t_ray ray, double min_distance);
 
+
+/*HUD*/
+void				update_hud(t_doom *doom);
 #endif
