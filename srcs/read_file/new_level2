@@ -14,7 +14,7 @@ assets/textures/shelves/sausage_bacon.bmp
 assets/sprites/misc/poster.bmp
 
 #object library
-7
+9
 assets/sprites/groceries/bacon.bmp
 assets/sprites/groceries/butter.bmp
 assets/sprites/groceries/cherry.bmp
@@ -22,13 +22,20 @@ assets/sprites/groceries/coffee.bmp
 assets/sprites/groceries/wine1.bmp
 assets/sprites/groceries/mayonaisse.bmp
 assets/sprites/groceries/water.bmp
+assets/sprites/scissor_lift/scissor_lift.bmp
+assets/sprites/scissor_lift/scissor_lift_side.bmp
+#assets/sprites/shoppers/shopper_front_copy.bmp
+#assets/sprites/shoppers/shopper_side_left.bmp
+#assets/sprites/shoppers/shopper_side_right.bmp
+#assets/sprites/shoppers/shopper_back.bmp
+
 
 #number of sectors
 4
 #number of walls
 22
 #number of objects
-10
+11
 
 
 #sector[0]
@@ -393,7 +400,7 @@ assets/sprites/groceries/water.bmp
 12
 
 #objs in sector
-4
+5
 
 #object0 in sector 2
 0
@@ -506,6 +513,34 @@ assets/sprites/groceries/water.bmp
 80
 375
 70
+
+#object4 in sector 2 scissor lift
+7
+450
+150
+0
+64
+4
+7
+445
+145
+455
+145
+8
+455
+145
+455
+155
+7
+455
+155
+445
+155
+8
+445
+155
+445
+145
 
 #sector[3]
 15

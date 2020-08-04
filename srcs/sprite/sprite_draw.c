@@ -110,7 +110,6 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int 
 				tex_y = find_tex_y(doom, sprite_begin, sprite_end, index_sp, screen_y);
 				pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch) + ((int)tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
 				put_pixel_tex(doom, pix_dex, index, i_sprite);
-
 				screen_y++;
 			}
 		}
