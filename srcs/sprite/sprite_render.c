@@ -1,5 +1,33 @@
 #include "../../includes/doom.h"
 
+double				sidedef_intersection_distance_sprite(t_ray ray,
+						t_line line, t_point *intersect, int x)
+{
+	double		distance;
+	t_point		ray_delta;
+	t_point		sidedef_delta;
+
+	ray_delta = line_delta(ray.line.start, ray.line.end);
+	if (x == 16)
+	{
+		printf("ray line start: (%f ; %f)\nray line end: (%f ; %f)\n", ray.line.start.x, ray.line.start.y, ray.line.end.x, ray.line.end.y);
+		printf("ray_delta: (%f ; %f)\n", ray_delta.x, ray_delta.y);
+	}
+	sidedef_delta = line_delta(line.start, line.end);
+	if (x == 16)
+	{
+		printf("sidedef_delta: (%f ; %f)\n", sidedef_delta.x, sidedef_delta.y);
+	}
+	*intersect = line_intersection(ray.line.start, ray_delta,\
+		line.start, sidedef_delta);
+	if (x == 16)
+	{
+		printf("intersect: (%f ; %f)\n", intersect->x, intersect->y);
+	}
+	distance = point_distance(*intersect, ray.line.start, ray.angle);
+	return (distance);
+}
+
 void		cast_ray_from_player_to_sprite(t_doom *doom,\
 			t_sprite *sprite, t_ray ray, int curr_sector, int prev_sector)
 {
@@ -17,8 +45,8 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 	while (x >= 0 && x < doom->lib.sector[curr_sector].n_sidedefs +\
 		doom->lib.sector[curr_sector].i_sidedefs)
 	{
-		temp_distance = sidedef_intersection_distance(ray,\
-			doom->lib.sidedef[x].line, &intersect);
+		temp_distance = sidedef_intersection_distance_sprite(ray,\
+			doom->lib.sidedef[x].line, &intersect, x);
 		if (temp_distance)
 			distance = temp_distance;
 		printf("check distance (%f) for sector: %d, sidedef %d\nopp_sector: %d, prev_sector: %d\n", distance, doom->lib.sidedef[x].sector, x, doom->lib.sidedef[x].opp_sector, prev_sector);
@@ -60,8 +88,10 @@ void		find_prev_sectors(t_doom *doom, t_sprite *sprite)
 	// ray.angle = clamp_angle(ray.angle);
 	// doom->ray_angle = ray.angle;
 	ray.angle = sprite->angle;
-	ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
-	ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
+	ray.line.end.x = ray.line.start.x + sprite->distance * cos(ray.angle);
+	ray.line.end.y = ray.line.start.y + sprite->distance * sin(ray.angle);
+	// ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
+	// ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 	cast_ray_from_player_to_sprite(doom, sprite, ray, doom->i_sector,\
 	doom->i_sector); //sprite stuur ik al mee in doom
 }
