@@ -14,12 +14,15 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 	x = doom->lib.sector[curr_sector].i_sidedefs;
 	printf("sidedef: %d\n", x);
 	min_distance = sprite->distance;
+	distance = -1.0;
 	while (x < doom->lib.sector[curr_sector].n_sidedefs +\
 		doom->lib.sector[curr_sector].i_sidedefs)
 	{
-		distance = sidedef_intersection_distance(ray,\
+		temp_distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
 		printf("check distance (%f) for sector: %d, sidedef %d\n", distance, doom->lib.sidedef[x].sector, x);
+		if (temp_distance)
+			distance = temp_distance;
 		if (distance && distance <= min_distance &&\
 		doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
