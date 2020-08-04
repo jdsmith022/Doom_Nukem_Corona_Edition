@@ -50,7 +50,7 @@ static void	draw_hud_bottom_bar(t_doom *doom)
 				pixels[(y * WIDTH + x)] = 0x00000;
 			else if (y >= HEIGHT - 53 && y < HEIGHT - 49 &&\
 			x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
-				pixels[(y * WIDTH + x)] = 0x2C2C2E;
+				pixels[(y * WIDTH + x)] = 0x565659;
 			else if (y >= HEIGHT - 49 && \
 			x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
 				pixels[(y * WIDTH + x)] = 0x00002E;
