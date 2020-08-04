@@ -23,7 +23,7 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 			distance = temp_distance;
 		printf("check distance (%f) for sector: %d, sidedef %d\nopp_sector: %d, prev_sector: %d\n", distance, doom->lib.sidedef[x].sector, x, doom->lib.sidedef[x].opp_sector, prev_sector);
 		if (distance && distance <= min_distance &&\
-		doom->lib.sidedef[x].opp_sector != prev_sector)
+		doom->lib.sidedef[x].opp_sector != prev_sector && doom->lib.sidedef[x].opp_sector != -1)
 		{
 			printf("distance of sidedef intersect is less than sprite distance\n");
 			min_distance = distance;
@@ -35,7 +35,7 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 				printf("curr_sector is not sprite sector, save curr sector %d\n", curr_sector);
 				sprite->prev_sectors[sprite->n_sector] = curr_sector;
 				sprite->n_sector++;
-				x = -2;
+				x = -2; //dit kan weg denk ik
 			}
 		}
 		x++;
@@ -44,7 +44,7 @@ void		cast_ray_from_player_to_sprite(t_doom *doom,\
 	if (min_distance < sprite->distance)
 	{
 		printf("opp_sector: %d, prev_sector: %d, x: %d\n", opp_sector, prev_sector, x - 1);
-		if (opp_sector != -1 && opp_sector != prev_sector)
+		if (opp_sector != -1 && opp_sector != prev_sector && opp_sector != sprite->sector)
 			cast_ray_from_player_to_sprite(doom, sprite, ray, opp_sector,\
 			curr_sector);
 	}
