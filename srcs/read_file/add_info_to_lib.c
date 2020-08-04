@@ -18,7 +18,7 @@ void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite, char *line, int i, int 
 		sprite->textures = (int*)malloc(sizeof(int) * safe);
 		sprite->face_ang = (int*)malloc(sizeof(int) * safe);
 		if (sprite->textures == NULL || sprite->face_ang == NULL)
-			doom_exit_failure(doom, malloc);
+			doom_exit_failure(doom, MALLOC_ERR);
 	}
 	if (i > 4 && i < sprite->amount + 4)
 	{
