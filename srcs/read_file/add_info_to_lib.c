@@ -96,14 +96,18 @@ void	create_object(t_lib *col_lib, int fd, int i)
 		l = 0;
 		obj_int = 0;
 	}
+	printf("test1\n");
 	col_lib->sector[i].i_objects = obj_int;
+	printf("test2\n");
 	j = 0;
 	while (j < col_lib->sector[i].n_objects)
 	{
+		printf("test3, col_lib->sector[%d].n_objects: %d\n", i, col_lib->sector[i].n_objects);
 		col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
 		l++;
 		j++;
 	}
+	printf("test3\n");
 	obj_int = obj_int + j;
 }
 
@@ -114,6 +118,9 @@ void	add_inf_to_lib(t_lib *col_lib, int len, int fd)
 	char	*line;
 
 	i = 0;
+	printf("before while aitl\n");
+	printf("len: %d\n", len);
+	//per sector
 	while (i < len)
 	{
 		create_sidedef(col_lib, fd, len, i);//check this is correct
@@ -121,6 +128,7 @@ void	add_inf_to_lib(t_lib *col_lib, int len, int fd)
 		//check this is correct when objs is available
 		i++;
 	}
+	printf("after while aitl\n");
 	j = 0;
 	get_line(&line, fd, "the moving object number can not be read", 1);
 	col_lib->n_mov_sprites = ft_atoi(line);

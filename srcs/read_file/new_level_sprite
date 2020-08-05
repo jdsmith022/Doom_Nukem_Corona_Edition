@@ -34,7 +34,7 @@ assets/sprites/shoppers/shopper_back.bmp
 #number of walls
 22
 #number of objects
-0
+1
 
 
 #sector[0]
@@ -48,7 +48,7 @@ assets/sprites/shoppers/shopper_back.bmp
 0
 -1
 10
-0
+1
 0
 0
 
@@ -182,61 +182,34 @@ assets/sprites/shoppers/shopper_back.bmp
 4
 0
 
-#object0 in sector 0
-#0
-#50
-#50
-#0
-#8
-#4
-#0
-#46
-#46
-#54
-#46
-#0
-#54
-#46
-#54
-#54
-#0
-#54
-#54
-#46
-#54
-#0
-#46
-#54
-#46
-#46
+#object1
+0
+50
+50
+0
+8
+4
+0
+46
+46
+54
+46
+0
+54
+46
+54
+54
+0
+54
+54
+46
+54
+0
+46
+54
+46
+46
 
-#object1 in sector 0
-#1
-#75
-#75
-#0
-#16
-#4
-#1
-#71
-#71
-#79
-#71
-#1
-#79
-#71
-#79
-#79
-#1
-#79
-#79
-#71
-#79
-#1
-#71
-#79
-#71
-#71
 
 #sector[1]
 10
