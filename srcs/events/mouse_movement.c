@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../editor/game_editor.h"
 
@@ -7,12 +8,12 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 	if (motion->yrel > 0)
 	{
 		if (event->y_pitch < 200)
-			event->y_pitch += 20;
+			event->y_pitch += 10;
 	}
 	if (motion->yrel < 0)
 	{
 		if (event->y_pitch > -250)
-			event->y_pitch -= 20;
+			event->y_pitch -= 10;
 	}
 	doom->own_event.hold_x = motion->x;
 	doom->own_event.hold_y = motion->y;
@@ -45,11 +46,27 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 	double dt, t_event *event)
 {
 	SDL_GetMouseState(&doom->own_event.hold_x, &doom->own_event.hold_y);
-	if (event->select == FALSE)
+	if (event->select == TRUE && event->shoot == FALSE)
+	{;
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
+		SDL_SetCursor(doom->cursor);
+	}
+	else if (event->shoot == TRUE && event->select == FALSE)
 	{
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
+		SDL_SetCursor(doom->cursor);
+	}
+	else if ((event->select == FALSE && event->shoot == FALSE) || \
+		(event->select == TRUE && event->shoot == TRUE))
+	{
+		if (event->select == TRUE && event->shoot == TRUE)
+		{
+			event->select = FALSE;
+			event->shoot = FALSE;
+		}
 		SDL_SetRelativeMouseMode(SDL_TRUE);
 		cam_movement(doom, motion, dt, event);
 	}
-	else
-		SDL_SetRelativeMouseMode(SDL_FALSE);
 }

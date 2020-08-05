@@ -47,7 +47,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 }
 
-static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
+void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 					t_plane *plane, int x)
 {
 	t_sector	sector;
@@ -70,7 +70,7 @@ static void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	}
 }
 
-void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect)
+void		project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 {
 	t_plane		plane;
 	t_sector	sector;

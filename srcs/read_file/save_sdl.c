@@ -20,7 +20,7 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 		if (fd < 0)
 			doom_exit_failure(doom, "Error: image path not found\n");
 		images[index] = read_bmp(fd);
-		save_bpm_to_sdl(images, lib, index);
+		save_bpm_to_sdl(doom, images, lib, index);
 		set_texture_type(line, lib[index]);
 		free(line);
 		index++;

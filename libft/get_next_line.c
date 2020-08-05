@@ -5,13 +5,14 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/05 14:56:39 by jesmith        #+#    #+#                */
-/*   Updated: 2020/02/05 16:03:50 by jesmith       ########   odam.nl         */
+/*   Created: 2020/02/05 14:56:39 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/07/30 18:14:34 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
+#include "../includes/doom.h"
 
 int		ft_strsubsize(char *str)
 {
@@ -20,8 +21,10 @@ int		ft_strsubsize(char *str)
 	i = 0;
 	if (str == NULL)
 		return (0);
-	while (str[i] != '\n' && str[i] != '\0')
+	while (str[i] != '\n' && str[i] != '\0' && str[i] != ',' && str[i] != '\r')
 		i++;
+	if (str[i] == ',' || str[i] == '\r')
+		line_num(-1);
 	return (i);
 }
 
@@ -37,7 +40,7 @@ int		ft_readloop(int fd, char *buf, t_list *item, char **line)
 		free(item->content);
 		item->content = ft_strdup(temp);
 		free(temp);
-		if (ft_strchr(buf, '\n'))
+		if (ft_strchr(buf, '\n') || ft_strchr(buf, ',') || ft_strchr(buf, '\r'))
 			break ;
 	}
 	if (ret < BUFF_SIZE && ft_strlen(item->content) == 0)
@@ -71,7 +74,7 @@ t_list	*ft_content_sizecheck(int fd, t_list *start)
 	return (new);
 }
 
-int		get_next_line(const int fd, char **line)
+int		get_next_line2(const int fd, char **line)
 {
 	char			*buf;
 	static t_list	*start;

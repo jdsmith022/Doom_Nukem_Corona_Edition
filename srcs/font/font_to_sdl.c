@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 20:03:17 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/07/28 14:01:15 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/08/05 16:55:47 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	font_to_sdl(t_doom *doom, t_font *lib, char *font_path,
 	len = lib[index].len;
 	TTF_Init();
 	font = TTF_OpenFont(font_path, font_size);
+	if (font == NULL)
+		doom_exit_failure(doom, MALLOC_ERR);
 	while (index < len)
 	{
 		font_surface =
@@ -33,4 +35,5 @@ void	font_to_sdl(t_doom *doom, t_font *lib, char *font_path,
 		lib[index].font_surface = font_surface;
 		index++;
 	}
+	free(font);
 }

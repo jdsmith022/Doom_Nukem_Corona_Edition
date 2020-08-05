@@ -7,6 +7,7 @@
 # include <fcntl.h>
 # include <time.h>
 # include <stdbool.h>
+# include <sys/stat.h>
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
@@ -25,6 +26,8 @@
 
 # define INIT_ERR	"error: initialization of SDL"
 # define MALLOC_ERR "error: malloc"
+# define OPEN_ERR	"error: opening file"
+# define FONT_ERR	"error: writing font to screen"
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -123,6 +126,7 @@ typedef struct		s_event {
 	int				jump;
 	int				bend;
 	int				select;
+	int				shoot;
 	double			velocity;
 	int				y_pitch;
 }					t_event;
@@ -177,6 +181,7 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
+	int				infection;
 	int				poster;
 }					t_sidedef;
 
@@ -217,6 +222,9 @@ typedef struct		s_lib {
 	int				n_sectors;
 	t_sidedef		*sidedef;
 	int				len_sidedef;
+	t_sidedef		*infection;
+	int				cur_len_infection;
+	int				tot_len_infection;
 	t_sprite		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
@@ -302,7 +310,7 @@ int					open_file(char *filename);
 t_sector			*save_sectors(t_doom *doom, int fd, int *len);
 t_sidedef			*save_walls(t_doom *doom, int fd, int *len);
 t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
-void				save_bpm_to_sdl(t_bmp *images,\
+void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
@@ -312,6 +320,9 @@ t_bmp				*malloc_images_lib(t_doom *doom, int len);
 SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
 int					open_file(char *filename);
 int					line_num(int i);
+t_sprite   			object_inf(int fd, int sector, int obj_len);
+t_sidedef			wall_inf(int fd, int sector, int tex_len, int sec_len);
+t_sector  			sector_inf(int fd, int tex_len);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
@@ -340,7 +351,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom);
-void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x, t_point intersect);
+void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_texture_properties(t_doom *doom);
 int					set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane);
@@ -357,7 +368,6 @@ void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
 void				find_skybox_sidedef_texture(t_doom *doom, int x,\
@@ -391,6 +401,10 @@ void				draw_texture(SDL_Surface *texture, t_doom *doom, int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);
+t_sidedef			set_properties_sidedef(t_point intersect, double distance,
+						t_sidedef curr_sidedef, t_doom *doom);
+void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
+					t_plane *plane, int x);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
@@ -403,7 +417,7 @@ void				draw_bar_point(Uint32 **pixels, t_bar bar);
 void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
-
+void				printing_map(t_gamedesign *design);
 void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
@@ -428,5 +442,7 @@ void				relocate_moving_wall(t_point *intersect,\
 void				relocate_poster(t_doom *doom, t_sidedef *poster);
 int					init_poster(int x, double distance, t_point intersect,\
 						t_sidedef *poster);
+void				add_infection(t_doom *doom);
+void				find_infection(t_doom *doom, t_ray ray, double min_distance);
 
 #endif
