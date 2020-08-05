@@ -31,10 +31,13 @@ assets/textures/shelves/96x96-Shelf.bmp
 0
 1
 0
+-1
 0
 5
 0
+-1
 6
+0
 0
 1
 
@@ -111,18 +114,18 @@ assets/textures/shelves/96x96-Shelf.bmp
 3
 5
 
-#objs in sector
-0
-
 #sector[2]
 10
 0
 1
 0
+-1
 0
 5
 0
+-1
 6
+0
 1
 0
 
@@ -199,9 +202,6 @@ assets/textures/shelves/96x96-Shelf.bmp
 3
 3
 10
-
-#objs in sector
-0
 
 #moving objects
 0

@@ -17,6 +17,7 @@ int	main(void)
 	save_font_libraries(&doom);
 	doom_init(&doom);
 	doom_start(&doom);
+	printf("huh\n");
 	game_loop(&doom);
 	return (0);
 }
