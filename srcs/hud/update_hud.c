@@ -1,5 +1,10 @@
 #include "../../includes/doom.h"
 
+// static void		update_values(t_doom *doom)
+// {
+
+// }
+
 // static void	draw_hud_top_bar(t_doom *doom)
 // {
 // 	Uint32	*pixels;
@@ -66,6 +71,7 @@ void		update_hud(t_doom *doom)
 	{
 		// draw_hud_bottom_top(doom);
 		draw_hud_bottom_bar(doom);
+		// update_values(doom);
 	}
 	font_to_screen(doom);
 }

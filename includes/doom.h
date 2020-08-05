@@ -13,6 +13,7 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "font.h"
+# include "hud.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -50,6 +51,8 @@
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
+typedef struct s_menu		t_menu;
+typedef struct s_hud		t_hud;
 
 #pragma pack(push, 1)
 
@@ -249,7 +252,7 @@ typedef struct		s_gamedesign {
 typedef struct		s_doom {
 	int				is_running;
 	int				game_editor;
-	int				hud;
+	int				huds;
 	int				w_h;
 	int				w_w;
 	int				basket;
@@ -261,6 +264,11 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
+	t_gamedesign	game_design;
+	t_audio			*audio;
+	t_groceries		*groceries;
+	t_menu			*menu;
+	t_hud			*hud;
 	int				light;
 	double			player_std_height;
 	double			player_height;
@@ -277,9 +285,6 @@ typedef struct		s_doom {
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
-	t_gamedesign	game_design;
-	t_audio			*audio;
-	t_groceries		*groceries;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -289,6 +294,8 @@ typedef struct		s_doom {
 int					main(void);
 void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
+void				init_menu(t_doom *doom);
+void				init_hud(t_doom *doom);
 void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
@@ -298,6 +305,7 @@ void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
+double				get_timeframe(long *last_frame_time);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
@@ -441,7 +449,4 @@ int					init_poster(int x, double distance, t_point intersect,\
 void				add_infection(t_doom *doom);
 void				find_infection(t_doom *doom, t_ray ray, double min_distance);
 
-
-/*HUD*/
-void				update_hud(t_doom *doom);
 #endif

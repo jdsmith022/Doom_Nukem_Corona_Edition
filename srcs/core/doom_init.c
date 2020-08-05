@@ -1,6 +1,8 @@
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/hud.h"
+#include "../../includes/menu.h"
 
 // void	set_lines(t_sidedef *sidedef)
 // {
@@ -155,10 +157,11 @@ static void		init_settings(t_doom *doom)
 	doom->own_event.mouse_state_switched = TRUE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
-	doom->hud = TRUE;
+	doom->huds = TRUE;
 	doom->basket = FALSE;
 	doom->shopping = FALSE;
 	doom->audio->engine = OFF;
+	doom->game_editor = FALSE;
 }
 
 void 	doom_init(t_doom *doom)
@@ -168,6 +171,9 @@ void 	doom_init(t_doom *doom)
 	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
+	init_hud(doom);
+	init_menu(doom);
+	init_infection(doom);
 	doom_init_events(&doom->own_event);
 	if (doom->audio->engine)
 		load_audio(doom->audio);
@@ -186,7 +192,6 @@ void 	doom_init(t_doom *doom)
 	// doom->lib.sector[5].slope_floor =  21.80140949 * (PI / 180);
 	doom->lib.sector[0].slope_id = 1;
 	doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
-	init_infection(doom);
 
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;

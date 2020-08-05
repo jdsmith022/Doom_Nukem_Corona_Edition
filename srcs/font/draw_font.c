@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/03 14:17:06 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/05 12:24:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		font_to_screen(t_doom *doom)
 		len = doom->lib.font_lib.ge_font_len;
 		draw_font(doom, font_lib, len);
 	}
-	else if (doom->hud == TRUE)
+	else if (doom->huds == TRUE)
 	{
 		font_lib = doom->lib.font_lib.hud_font;
 		len = doom->lib.font_lib.hud_font_len;

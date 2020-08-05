@@ -27,7 +27,6 @@ void    init_infection(t_sidedef *infection, t_doom *doom)
     double x_steps;
     double y_steps;
 
-
     i = -1;
     while (i == -1 || doom->lib.sidedef[i].opp_sector != -1)
         i = rand() % doom->lib.len_sidedef;
