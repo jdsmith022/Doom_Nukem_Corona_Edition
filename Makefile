@@ -46,7 +46,7 @@ GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries \
 DRAW_FILES = img vector
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font basket_font shopping_font \
-				start_menu_font
+				start_menu_font setting_window_font
 HUD_FILES = update_hud
 MENU_FILES = start_menu mouse_settings
 

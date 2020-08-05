@@ -6,11 +6,12 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 20:03:17 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/03 14:15:55 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/05 15:24:10 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/font.h"
 
 void	font_to_sdl(t_doom *doom, t_font *lib, char *font_path,
 			int font_size)
@@ -28,7 +29,7 @@ void	font_to_sdl(t_doom *doom, t_font *lib, char *font_path,
 		doom_exit_failure(doom, MALLOC_ERR);
 	while (index < len)
 	{
-		font_surface =
+		font_surface = \
 			TTF_RenderText_Solid(font, lib[index].str, lib[index].font_color);
 		if (font_surface == NULL)
 			doom_exit_failure(doom, MALLOC_ERR);
