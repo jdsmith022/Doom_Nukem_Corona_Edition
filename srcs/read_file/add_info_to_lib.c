@@ -272,7 +272,7 @@ void        add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
 	{
 		sprite->amount = safe;
 		sprite->textures = (int*)malloc(sizeof(int) * safe);//need to protect
-		sprite->face_ang = (int*)malloc(sizeof(int) * safe);//need to protect
+		// sprite->face_ang = (int*)malloc(sizeof(int) * safe);//need to protect
 	}
 	if (i > 4 && i < sprite->amount + 4)
 	{

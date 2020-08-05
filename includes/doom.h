@@ -88,7 +88,6 @@ typedef struct			s_sprite {
 	double				angle;			//GEBRUIK IK NIET what is the angle on the map
 	int					action;
 	int					*textures;		//index to texture, +0, +1, +2 or +3
-	int					*face_ang;		//DIT KAN GEWOON EEN INT ZIJN, dit is dan de index naar de texture
 	int					block;			//can the player walk through it or not
 	int					sector;
 	int					n_sector;
@@ -99,11 +98,7 @@ typedef struct			s_sprite {
 	int					visible;
 	double				distance;
 	int					face;
-	double				offset;
 	int					prev_sectors[50];	//where to empty them again?
-	// int					screen_left_x;
-	// int					screen_right_x;
-	// int					position;
 }						t_sprite;
 
 typedef struct		s_ray {
