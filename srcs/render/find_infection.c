@@ -12,7 +12,7 @@ static void		put_infection(t_doom *doom, t_sidedef infection, int x)
 	doom->texture_width = 96;
 }
 
-void		find_infection(t_doom *doom, t_ray ray, double min_distance)
+void			find_infection(t_doom *doom, t_ray ray, double min_distance)
 {
 	t_point		intersect;
 	t_sidedef	near_sidedef;

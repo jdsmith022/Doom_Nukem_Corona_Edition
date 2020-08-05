@@ -58,43 +58,6 @@ double				sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-static int			find_intersect(t_doom *doom, t_ray ray, int sector,
-						int prev_sector)
-{
-	t_point		intersect;
-	t_sidedef	near_sidedef;
-	double		distance;
-	double		min_distance;
-	int			x;
-
-	x = doom->lib.sector[sector].i_sidedefs;
-	min_distance = INFINITY;
-	while (x < doom->lib.sector[sector].n_sidedefs +\
-		doom->lib.sector[sector].i_sidedefs)
-	{
-		distance = sidedef_intersection_distance(ray,\
-			doom->lib.sidedef[x].line, &intersect);
-		if (distance < min_distance &&\
-			doom->lib.sidedef[x].opp_sector != prev_sector)
-		{
-			min_distance = distance;
-			near_sidedef = set_properties_sidedef(intersect,\
-				distance, doom->lib.sidedef[x], doom);
-		}
-		x++;
-	}
-	// printf("render: %f, %f\n", ray.line.end.x, ray.line.end.y);
-	// doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	// sprite_check(doom, ray, sector);
-	if (min_distance != INFINITY)
-	{
-		if (near_sidedef.opp_sector != -1 && near_sidedef.opp_sector != prev_sector)
-			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		return (project_on_plane(doom, near_sidedef, ray.plane_x));
-	}
-	return (0);
-}
-
 int				sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
