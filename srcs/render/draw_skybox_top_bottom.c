@@ -28,7 +28,7 @@ static void		row_calculations(t_doom *doom, double dist, Uint32 index,
 	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	floor.x = dist * cos(doom->ray_angle);
 	floor.y = dist * sin(doom->ray_angle);
-	floor.x += 32 * 2;
+	floor.x += 64;
 	floor.y += 32 * 2;
 	texture.x = ((int)floor.x % doom->texture_width);
 	texture.y = ((int)floor.y % doom->texture_width);
