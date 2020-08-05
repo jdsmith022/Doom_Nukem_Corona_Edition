@@ -417,7 +417,7 @@ int					*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_spri
 void				find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index);
 void				draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp);
 void				sprite_reset(t_doom *doom);
-void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite, int index);
+void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite);
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
 
 /*actions*/

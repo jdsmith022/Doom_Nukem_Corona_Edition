@@ -42,7 +42,6 @@ t_bmp				read_bmp(int fd)
 	t_bmp			bmp;
 	uint32_t		i;
 
-	printf("test read bmp 1\n");
 	read(fd, &header, sizeof(t_bmp_header)); // Reads header
 	if (header.signature != 0x4D42)
 		exit_with_error("Error: not a bmp file.\n");

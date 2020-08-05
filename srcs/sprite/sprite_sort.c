@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 
-void		init_sprite_order_array(t_sprite *sprite, int *order, int visible_sprites, int total_sprites)
+void		init_sprite_order_array(t_sprite *sprite, int *order,\
+			int visible_sprites, int total_sprites)
 {
 	int		i;
 	int		x;
@@ -46,13 +47,15 @@ void		sort_sprites(t_sprite *sprite, int *sprite_order, int total)
 	}
 }
 
-int			*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_sprites)
+int			*sort_sprite_array(t_sprite *sprite, int visible_sprites,\
+			int total_sprites)
 {
 	int		*sprite_order;
 	int		i;
 
 	sprite_order = (int*)malloc(sizeof(int) * visible_sprites);
-	init_sprite_order_array(sprite, sprite_order, visible_sprites, total_sprites);
+	init_sprite_order_array(sprite, sprite_order, visible_sprites,\
+	total_sprites);
 	sort_sprites(sprite, sprite_order, visible_sprites);
 	return (sprite_order);
 }

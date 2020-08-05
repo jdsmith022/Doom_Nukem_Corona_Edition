@@ -25,34 +25,39 @@ void		find_face_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 **		if there are more faces, I need to loop through faces
 */
 
-void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, int sprite_i, int prev_sector)
+void		detect_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 {
 	t_point		ray_delta;
 	t_point		sprite_delta;
 	t_point		intersect;
-	double		curr_distance;
-	double		temp_distance;
-	// t_sprite	sprite;
 
-	temp_distance = INFINITY;
-	curr_distance = 0;
-	while (i < 4)
+	ray_delta = line_delta(ray.line.start, ray.line.end);
+	sprite_delta = line_delta(sprite->lines[i].start, sprite->lines[i].end);
+	intersect = line_intersection(ray.line.start, ray_delta,\
+	sprite->lines[i].start, sprite_delta);
+	if (!isnan(intersect.x) && !isnan(intersect.y))
 	{
-		ray_delta = line_delta(ray.line.start, ray.line.end);
-		sprite_delta = line_delta(sprite->lines[i].start, sprite->lines[i].end);
-		intersect = line_intersection(ray.line.start, ray_delta,\
-		sprite->lines[i].start, sprite_delta);
-		if (!isnan(intersect.x) && !isnan(intersect.y))
-		{
-			curr_distance = point_distance(doom->pos, intersect, ray.angle);
-			if (curr_distance < temp_distance)
-			{
-				temp_distance = curr_distance;
-				sprite->visible = sprite->textures[i];
-			}
-			// sprite->distance = fabs(point_distance(doom->pos, intersect, ray.angle)); //this is not the real distance
-			sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
-		}
+		sprite->visible = sprite->textures[i];
+	}
+}
+
+/*
+**	in while loop, second contition is added
+**	detect sprite is a new function
+**	if it has multiple faces: find the right one
+*/
+
+void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
+			int prev_sector)
+{
+	t_sprite	*sprite;
+	int			i;
+
+	sprite = &doom->lib.sprites[sprite_i];
+	i = 0;
+	while (i < 4 && sprite->visible == -1)
+	{
+		detect_sprite(doom, sprite, ray, i);
 		i++;
 	}
 	if (sprite->visible != -1)
@@ -60,23 +65,22 @@ void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i, 
 		find_face_sprite(doom, sprite, ray, 0);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
+		sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
 	}
 }
 
 void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	int		i;
-	int		x;
 	int		sprite_i;
 
 	i = 0;
-	x = 0;
-	sprite_i = doom->lib.sector[sector].i_objects; //dit moet ik checken
+	sprite_i = doom->lib.sector[sector].i_objects;
 	doom->lib.sprites[sprite_i].angle = ray.angle;
 	while (i < doom->lib.sector[sector].n_objects)
 	{
 		if (doom->lib.sprites[sprite_i].visible == -1)
-			check_visibility_sprite(doom, &doom->lib.sprites[sprite_i], ray, x, sprite_i, prev_sector);
+			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
 		i++;
 		sprite_i++;
 	}

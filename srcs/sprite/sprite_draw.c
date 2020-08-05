@@ -13,9 +13,6 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 		;
 	}
 	else
-	// if (text[pix_dex] != (char)255 && text[pix_dex + 1] != (char)255 &&\
-	// text[pix_dex + 2] != (char)255)
-	// {
 	{
 		pixels[index] = text[pix_dex];
 		index++;
@@ -25,7 +22,6 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 		pix_dex++;
 		pixels[index] = text[pix_dex];
 	}
-	// }
 }
 
 int		find_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
@@ -72,8 +68,7 @@ int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	return (tex_y);
 }
 
-int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom,\
-		int index_sp, int x)
+int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 {
 	int		i;
 	int		y_cord;
@@ -114,7 +109,7 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 			screen_y = (int)sprite_begin->y;
 			tex_x = find_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 			while (screen_y < (int)sprite_end->y &&\
-			no_clipping_region(screen_y, sprite, doom, index_sp, stripe) == 1)
+			no_clipping_region(screen_y, sprite, doom, stripe) == 1)
 			{
 				index = (Uint32)(screen_y * doom->surface->pitch) +\
 				(int)(stripe * doom->surface->format->BytesPerPixel);
@@ -123,8 +118,6 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 				pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
 				+ ((int)tex_x *\
 				doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-				// if (index_sp >= 7)
-				// 	pix_dex *= 2;
 				put_pixel_tex(doom, pix_dex, index, i_sprite);
 				screen_y++;
 			}
