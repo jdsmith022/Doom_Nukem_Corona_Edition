@@ -185,7 +185,7 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 		if (doom->i_sector != doom->lib.sprites[index].sector)
 		{
 			find_prev_sectors(doom, &doom->lib.sprites[index]);
-			print_prev_sectors(doom->lib.sprites[index], index);
+			// print_prev_sectors(doom->lib.sprites[index], index);
 		}
 		scale_sprite(doom, &sprite_begin, &sprite_end,\
 		&doom->lib.sprites[index], index);

@@ -7,8 +7,15 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 
 	pixels = doom->surface->pixels;
 	text = doom->lib.obj_lib[i]->pixels;
-	if (text[pix_dex] != (char)255 && text[pix_dex + 1] != (char)255 &&\
-	text[pix_dex + 2] != (char)255)
+	if (text[pix_dex] == (char)255 && text[pix_dex + 1] == (char)255 &&\
+	text[pix_dex + 2] == (char)255)
+	{
+		;
+	}
+	else
+	// if (text[pix_dex] != (char)255 && text[pix_dex + 1] != (char)255 &&\
+	// text[pix_dex + 2] != (char)255)
+	// {
 	{
 		pixels[index] = text[pix_dex];
 		index++;
@@ -18,9 +25,10 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 		pix_dex++;
 		pixels[index] = text[pix_dex];
 	}
+	// }
 }
 
-int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
+int		find_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		int index_sp, int stripe)
 {
 	int		i_sprite;
@@ -30,24 +38,24 @@ int		find_tex_x(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	tex_x = 0;
 	if ((int)sprite_begin->x > 0 && sprite_begin->x < WIDTH)
 	{
-		tex_x = (stripe - (int)sprite_begin->x) /\
-		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
+		tex_x = (int)((stripe - (int)sprite_begin->x) /\
+		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w);
 	}
 	else if ((int)sprite_begin->x <= 0)
 	{
-		tex_x = ((int)doom->lib.sprites[index_sp].width - sprite_end->x +\
+		tex_x = (int)(((int)doom->lib.sprites[index_sp].width - sprite_end->x +\
 		stripe) / (int)doom->lib.sprites[index_sp].width *\
-		(int)doom->lib.obj_lib[i_sprite]->w;
+		(int)doom->lib.obj_lib[i_sprite]->w);
 	}
 	else
 	{
-		tex_x = (sprite_end->x - stripe) /\
-		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w;
+		tex_x = (int)((sprite_end->x - stripe) /\
+		doom->lib.sprites[index_sp].width * doom->lib.obj_lib[i_sprite]->w);
 	}
 	return (tex_x);
 }
 
-int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
+int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		int index_sp, int screen_y)
 {
 	int		i_sprite;
@@ -64,16 +72,17 @@ int		find_tex_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	return (tex_y);
 }
 
-int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int index_sp, int stripe)
+int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom,\
+		int index_sp, int x)
 {
 	int		i;
+	int		y_cord;
 
 	i = 0;
 	while (i < sprite.n_sector)
 	{
-		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[stripe] > 0 &&\
-		doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[stripe] < HEIGHT &&\
-		doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[stripe] < screen_y)
+		y_cord = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
+		if (y_cord > 0 && y_cord < HEIGHT && y_cord < screen_y)
 			return (-1);
 		i++;
 	}
@@ -99,19 +108,23 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	index = 0;
 	while (stripe < (int)sprite_end->x && stripe >= 0 && stripe < WIDTH)
 	{
-		if (doom->stripe_distance[stripe] > doom->lib.sprites[index_sp].distance)
+		if (doom->stripe_distance[stripe] >\
+		doom->lib.sprites[index_sp].distance)
 		{
 			screen_y = (int)sprite_begin->y;
-			tex_x = find_tex_x(doom, sprite_begin, sprite_end, index_sp, stripe);
-			while (screen_y < (int)sprite_end->y  && no_clipping_region(screen_y,\
-			sprite, doom, index_sp, stripe) == 1)
+			tex_x = find_x(doom, sprite_begin, sprite_end, index_sp, stripe);
+			while (screen_y < (int)sprite_end->y &&\
+			no_clipping_region(screen_y, sprite, doom, index_sp, stripe) == 1)
 			{
-				index = (size_t)(screen_y * doom->surface->pitch) +\
+				index = (Uint32)(screen_y * doom->surface->pitch) +\
 				(int)(stripe * doom->surface->format->BytesPerPixel);
-				tex_y = find_tex_y(doom, sprite_begin, sprite_end,\
+				tex_y = find_y(doom, sprite_begin, sprite_end,\
 				index_sp, screen_y);
 				pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
-				+ ((int)tex_x * doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+				+ ((int)tex_x *\
+				doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+				// if (index_sp >= 7)
+				// 	pix_dex *= 2;
 				put_pixel_tex(doom, pix_dex, index, i_sprite);
 				screen_y++;
 			}

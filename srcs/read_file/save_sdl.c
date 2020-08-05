@@ -15,13 +15,17 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	while (index < len)
 	{
 		get_line(&line, map_fd, "not enough texture names", 0);
-		printf("%s\n", line);
+		printf("index: %d %s\n", index, line);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
 			doom_exit_failure(doom, "Error: image path not found\n");
+		printf("read test1\n");
 		images[index] = read_bmp(fd);
+		printf("read test2\n");
 		save_bpm_to_sdl(images, lib, index);
+		printf("read test3\n");
 		set_texture_type(line, lib[index]);
+		printf("read test4\n");
 		free(line);
 		index++;
 	}
@@ -36,6 +40,7 @@ SDL_Surface			**save_objects(t_doom *doom, int map_fd, int *len)
 	get_line(&line, map_fd,\
 		"the amount of objects is not specified or can not be read", 1);
 	*len = ft_atoi(line);
+	printf("len: %d\n", *len);
 	return (read_from_line(doom, line, map_fd, *len));
 }
 

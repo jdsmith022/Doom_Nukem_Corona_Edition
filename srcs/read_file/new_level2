@@ -14,7 +14,7 @@ assets/textures/shelves/sausage_bacon.bmp
 assets/sprites/misc/poster.bmp
 
 #object library
-9
+13
 assets/sprites/groceries/bacon.bmp
 assets/sprites/groceries/butter.bmp
 assets/sprites/groceries/cherry.bmp
@@ -24,10 +24,10 @@ assets/sprites/groceries/mayonaisse.bmp
 assets/sprites/groceries/water.bmp
 assets/sprites/scissor_lift/scissor_lift.bmp
 assets/sprites/scissor_lift/scissor_lift_side.bmp
-#assets/sprites/shoppers/shopper_front_copy.bmp
-#assets/sprites/shoppers/shopper_side_left.bmp
-#assets/sprites/shoppers/shopper_side_right.bmp
-#assets/sprites/shoppers/shopper_back.bmp
+assets/sprites/shoppers/shopper_front.bmp
+assets/sprites/shoppers/shopper_side_left.bmp
+assets/sprites/shoppers/shopper_right_side.bmp
+assets/sprites/shoppers/shopper_back.bmp
 
 
 #number of sectors
@@ -35,7 +35,7 @@ assets/sprites/scissor_lift/scissor_lift_side.bmp
 #number of walls
 22
 #number of objects
-11
+12
 
 
 #sector[0]
@@ -607,7 +607,7 @@ assets/sprites/scissor_lift/scissor_lift_side.bmp
 16
 
 #objs in sector
-3
+4
 
 #object0 in sector 3
 0
@@ -692,6 +692,34 @@ assets/sprites/scissor_lift/scissor_lift_side.bmp
 305
 345
 295
+
+#object3 shopper in sector 3
+9
+450
+350
+0
+48
+4
+12
+445
+345
+455
+345
+10
+455
+345
+455
+355
+9
+455
+355
+445
+355
+11
+445
+355
+445
+345
 
 #moving objects
 0

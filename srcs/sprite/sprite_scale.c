@@ -35,6 +35,7 @@ t_sprite *sprite, int index)
 	h = doom->lib.obj_lib[sprite->visible]->h;
 	w = doom->lib.obj_lib[sprite->visible]->w;
 	sprite->width = (sprite->height / h) * w;	
+	// printf("scale_sprite #%d\ttex_h: %f\ttex_w: %f\nscreen_h: %f\tscreen_w: %f\n", index, h, w, sprite->height, sprite->width);
 	
 	//try-out
 	width_right = sprite->sprite_x / WIDTH * sprite->width;
