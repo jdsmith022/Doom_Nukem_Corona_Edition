@@ -1,5 +1,5 @@
 #texture library
-7
+8
 assets/textures/outside/outside_store.bmp
 assets/textures/floors_ceiling/floor.bmp
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
@@ -7,6 +7,7 @@ assets/textures/outside/start_sector_walls.bmp
 assets/textures/outside/outside_reverse.bmp
 assets/sprites/health/fill_up.bmp
 assets/sprites/corona/corona_virus.bmp
+assets/textures/outside/enter_here.bmp
 
 #object library
 0
@@ -14,7 +15,7 @@ assets/sprites/corona/corona_virus.bmp
 #number of sectors
 2
 #number of walls
-13
+11
 #number of objects
 0
 
@@ -64,9 +65,9 @@ assets/sprites/corona/corona_virus.bmp
 60
 96
 0
-0
-0
-0
+7
+7
+7
 2
 
 #sidedefs3
@@ -75,10 +76,10 @@ assets/sprites/corona/corona_virus.bmp
 96
 30
 96
-0
-0
-0
-0
+2
+7
+7
+7
 3
 
 #sidedefs4
@@ -88,9 +89,9 @@ assets/sprites/corona/corona_virus.bmp
 0
 96
 0
-0
-0
-0
+7
+7
+7
 4
 
 
@@ -118,7 +119,7 @@ assets/sprites/corona/corona_virus.bmp
 2
 0
 -1
-8
+6
 0
 1
 0
@@ -198,28 +199,28 @@ assets/sprites/corona/corona_virus.bmp
 11
 
 #poster1 ->sanitizer
--1
-96
-20
-96
-36
-8
-5
-5
-5
-12
+#-1
+#96
+#20
+#96
+#36
+#8
+#5
+#5
+#5
+#12
 
 #poster2 ->corona
--1
-0
-20
-0
-36
-4
-6
-6
-6
-13
+#-1
+#0
+#20
+#0
+#36
+#4
+#6
+#6
+#6
+#13
 
 #moving objects
 0
