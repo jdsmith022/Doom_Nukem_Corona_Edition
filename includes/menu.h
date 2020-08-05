@@ -9,10 +9,10 @@ typedef struct	s_menu {
 	int			menu;
 	int			start;
 	int			game_editor;
-	int			game_play;
+	int			settings;
 }				t_menu;
 
 void				doom_start(t_doom *doom);
-// void				set_up_menu(t_doom *doom);
+void				mouse_settings(t_doom *doom, double dt);
 
 #endif

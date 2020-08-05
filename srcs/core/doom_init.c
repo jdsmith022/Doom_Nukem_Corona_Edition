@@ -132,7 +132,7 @@ static void	doom_init_events(t_event *event)
 	event->step_down = FALSE;
 	event->jump = FALSE;
 	event->y_pitch = 0;
-	event->select = FALSE;
+	event->select = TRUE;
 	event->shoot = FALSE;
 }
 
@@ -155,7 +155,7 @@ static void		init_player(t_doom *doom)
 static void		init_settings(t_doom *doom)
 {
 	doom->own_event.mouse_state_switched = TRUE;
-	doom->is_running = TRUE;
+	doom->is_running = FALSE;
 	doom->light = TRUE;
 	doom->huds = TRUE;
 	doom->basket = FALSE;

@@ -16,7 +16,7 @@ int	main(void)
 	save_libraries(&doom);
 	save_font_libraries(&doom);
 	doom_init(&doom);
-	// doom_start(&doom);
+	doom_start(&doom);
 	game_loop(&doom);
 	return (0);
 }

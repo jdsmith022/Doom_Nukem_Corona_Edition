@@ -32,7 +32,11 @@ void	doom_start(t_doom *doom)
 	while (doom->menu->menu == TRUE)
 	{
 		dt = get_timeframe(&last_frame_time);
-		doom_update(doom, dt);
+		mouse_settings(doom, dt);
 		print_background(doom);
+		start_menu_font(doom);
+		SDL_UpdateWindowSurface(doom->window);
+		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
+	doom->own_event.select = FALSE;
 }

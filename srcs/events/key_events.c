@@ -34,22 +34,15 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 		event->bend = FALSE;
 }
 
-static void 	key_select_and_shoot(t_doom *doom, t_event *event,
-					SDL_KeyboardEvent *key)
-{
-	if (key->keysym.sym == SDLK_q)
-		event->select = event->select == TRUE ? FALSE : TRUE;
-	if (key->keysym.sym == SDLK_e)
-		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
-}
-
 static void		key_press2(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
-	if (key->keysym.sym == SDLK_q || key->keysym.sym == SDLK_e)
-		key_select_and_shoot(doom, event, key);
+	if (key->keysym.sym == SDLK_q)
+		event->select = event->select == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_e)
+		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
 		doom->light = doom->light == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_o) //needs to become a click on button event

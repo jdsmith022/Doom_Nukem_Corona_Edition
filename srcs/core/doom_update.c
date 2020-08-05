@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/menu.h"
 
 void	doom_update(t_doom *doom, double dt)
 {
@@ -13,6 +14,8 @@ void	doom_update(t_doom *doom, double dt)
 			key_press(doom, &doom->own_event, &event.key);
 		if (event.type == SDL_KEYUP)
 			key_release(&doom->own_event, &event.key);
+		if (event.type == SDL_QUIT)
+			doom_exit_success(doom);
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 			mouse_press(doom, &event.button, doom->own_event);
 		if (event.type == SDL_MOUSEBUTTONUP)

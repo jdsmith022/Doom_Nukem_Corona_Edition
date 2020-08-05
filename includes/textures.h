@@ -38,7 +38,7 @@ typedef struct			s_grocery_paths {
 	uint8_t				type;
 }						t_grocery_paths;
 
-static const t_grocery_paths GROCERIE_PATHS[] = {
+static const t_grocery_paths GROCERIE_PATHS [] = {
 	{TEX_APPLE, SPR_APPLE, APPLE},
 	{TEX_BACON, SPR_BACON, BACON},
 	{TEX_CHERRY, SPR_CHERRY, CHERRY},

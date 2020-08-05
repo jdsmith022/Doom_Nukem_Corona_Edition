@@ -45,9 +45,10 @@ GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries \
 				init_groceries grocery_ui add_infection
 DRAW_FILES = img vector
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
-				save_font_libraries hud_font basket_font shopping_font
+				save_font_libraries hud_font basket_font shopping_font \
+				start_menu_font
 HUD_FILES = update_hud
-MENU_FILES = start_menu
+MENU_FILES = start_menu mouse_settings
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
