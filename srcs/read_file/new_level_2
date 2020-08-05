@@ -117,6 +117,8 @@ assets/sprites/groceries/water.bmp
 3
 5
 
+#sidedef6 sliding sidedef
+
 #sector[1]
 10
 0
@@ -205,6 +207,31 @@ assets/sprites/groceries/water.bmp
 3
 3
 11
+
+#poster1 ->sanitizer
+#-1
+#18
+#199
+#32
+#199
+#8 //sanitizer flag
+#3
+#9
+#3
+#12
+
+#poster2 ->corona
+#-1
+#18
+#199
+#32
+#199
+#4 //corona flag
+#3
+#9
+#3
+#13
+
 
 #moving objects
 0
