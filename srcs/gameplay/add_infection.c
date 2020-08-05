@@ -48,11 +48,9 @@ void    init_infection(t_sidedef *infection, t_doom *doom)
 
 void    add_infection(t_doom *doom)
 {
-	printf("before add_infection\n");
     if (rand() % 10 == 1 && doom->lib.cur_len_infection < 100)
     {
         doom->lib.cur_len_infection++;
         init_infection(&(doom->lib.infection[doom->lib.cur_len_infection]), doom);
     }
-	printf("after add_infection\n");
 }
