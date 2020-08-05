@@ -1,34 +1,31 @@
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
-static void		mouse_handeler2(t_doom *doom, SDL_MouseButtonEvent *button)
+static void		setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 {
 	int			x;
 	int			y;
-	SDL_Rect	rect;
 
 	x = doom->own_event.hold_x;
 	y = doom->own_event.hold_y;
-	rect = doom->lib.font_lib.setting_menu_font[8].font_rect;
-	if (doom->menu->settings == TRUE && \
-	x >= (rect.x) && x <= (rect.x + 200) && \
+	if (x >= (rect.x) && x <= (rect.x + 200) && \
 	y >= (rect.y) && y <= (rect.y + 25))
+	{
+		printf("hello\n");
 		doom->menu->settings = FALSE;
+	}
+	doom->own_event.hold_x = 0;
+	doom->own_event.hold_y = 0;
 }
 
-static void		mouse_handler(t_doom *doom, SDL_MouseButtonEvent *button)
+static void		start_menu_click_event(t_doom *doom, SDL_Rect rect1,
+					SDL_Rect rect2, SDL_Rect rect3)
 {
 	int			x;
 	int			y;
-	SDL_Rect	rect1;
-	SDL_Rect	rect2;
-	SDL_Rect	rect3;
 
 	x = doom->own_event.hold_x;
 	y = doom->own_event.hold_y;
-	rect1 = doom->lib.font_lib.start_menu_font[2].font_rect;
-	rect2 = doom->lib.font_lib.start_menu_font[3].font_rect;
-	rect3 = doom->lib.font_lib.start_menu_font[4].font_rect;
 	if (x >= (rect1.x) && x <= (rect1.x + 200) && \
 	y >= (rect1.y) && y <= (rect1.y + 25))
 	{
@@ -45,7 +42,26 @@ static void		mouse_handler(t_doom *doom, SDL_MouseButtonEvent *button)
 		doom->game_editor = TRUE;
 		doom->menu->menu = FALSE;
 	}
-	mouse_handeler2(doom, button);
+}
+
+static void		mouse_handler(t_doom *doom, SDL_MouseButtonEvent *button)
+{
+	SDL_Rect	rect1;
+	SDL_Rect	rect2;
+	SDL_Rect	rect3;
+
+	if (doom->menu->settings == FALSE)
+	{
+		rect1 = doom->lib.font_lib.start_menu_font[2].font_rect;
+		rect2 = doom->lib.font_lib.start_menu_font[3].font_rect;
+		rect3 = doom->lib.font_lib.start_menu_font[4].font_rect;
+		start_menu_click_event(doom, rect1, rect2, rect3);
+	}
+	else
+	{
+		rect1 = doom->lib.font_lib.setting_menu_font[8].font_rect;
+		setting_menu_click_event(doom, rect1);
+	}
 }
 
 void		mouse_settings(t_doom *doom, double dt)
