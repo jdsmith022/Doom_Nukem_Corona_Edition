@@ -20,10 +20,14 @@ static void	set_text2(t_doom *doom, t_font *lib, int start)
 	lib[7].font_rect.x = WIDTH / 20;
 	lib[7].font_rect.y = start * 7.5;
 	lib[7].font_color = doom->lib.font_lib.font_color.black;
-	lib[8].str = "Back to menu";
-	lib[8].font_rect.x = WIDTH / 2.41;
+	lib[8].str = "Press ESC anytime to exit";
+	lib[8].font_rect.x = WIDTH / 20;
 	lib[8].font_rect.y = start * 8.5;
 	lib[8].font_color = doom->lib.font_lib.font_color.black;
+	lib[9].str = "Back to menu";
+	lib[9].font_rect.x = WIDTH / 2.41;
+	lib[9].font_rect.y = start * 9.5;
+	lib[9].font_color = doom->lib.font_lib.font_color.black;
 }
 
 static void	set_text(t_doom *doom, t_font *lib, int len)
@@ -60,7 +64,7 @@ void	save_setting_window_font(t_doom *doom, int *len)
 	char		*font_path;
 	int			font_size;
 
-	*len = 9;
+	*len = 10;
 	doom->lib.font_lib.setting_menu_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.setting_menu_font == NULL)

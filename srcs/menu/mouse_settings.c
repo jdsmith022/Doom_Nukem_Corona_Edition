@@ -10,10 +10,7 @@ static void		setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 	y = doom->own_event.hold_y;
 	if (x >= (rect.x) && x <= (rect.x + 200) && \
 	y >= (rect.y) && y <= (rect.y + 25))
-	{
-		printf("hello\n");
 		doom->menu->settings = FALSE;
-	}
 	doom->own_event.hold_x = 0;
 	doom->own_event.hold_y = 0;
 }
@@ -59,7 +56,7 @@ static void		mouse_handler(t_doom *doom, SDL_MouseButtonEvent *button)
 	}
 	else
 	{
-		rect1 = doom->lib.font_lib.setting_menu_font[8].font_rect;
+		rect1 = doom->lib.font_lib.setting_menu_font[9].font_rect;
 		setting_menu_click_event(doom, rect1);
 	}
 }

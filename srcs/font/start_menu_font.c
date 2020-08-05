@@ -26,6 +26,10 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[4].font_rect.x = WIDTH / 2.41;
 	lib[4].font_rect.y = 425;
 	lib[4].font_color = doom->lib.font_lib.font_color.green;
+	lib[5].str = "Press ESC to exit";
+	lib[5].font_rect.x = WIDTH / 2.7;
+	lib[5].font_rect.y = 500;
+	lib[5].font_color = doom->lib.font_lib.font_color.green;
 }
 
 void	save_start_menu_font(t_doom *doom, int *len)
@@ -33,7 +37,7 @@ void	save_start_menu_font(t_doom *doom, int *len)
 	char		*font_path;
 	int			font_size;
 
-	*len = 5;
+	*len = 6;
 	doom->lib.font_lib.start_menu_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.start_menu_font == NULL)
