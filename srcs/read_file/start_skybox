@@ -126,12 +126,12 @@ assets/textures/outside/enter_here.bmp
 1
 0
 
-#sidedefs0 //must match to this sidedef
+#sidedefs0 //must match all levels to this sidedef
 -1
 0
 0
 96
-0
+10
 0
 3
 3
