@@ -55,8 +55,6 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
-	// if (sidedef.action == 4)
-	// 	pixel_dex *= 2;
 	put_texture(doom, tex_dex, index, pixel_dex);
 	// put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }

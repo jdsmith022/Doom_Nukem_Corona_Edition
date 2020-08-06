@@ -13,6 +13,7 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "font.h"
+# include "hud.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -50,6 +51,8 @@
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
+typedef struct s_menu		t_menu;
+typedef struct s_hud		t_hud;
 
 #pragma pack(push, 1)
 
@@ -248,11 +251,6 @@ typedef struct		s_gamedesign {
 }					t_gamedesign;
 
 typedef struct		s_doom {
-	int				is_running;
-	int				game_editor;
-	int				hud;
-	int				basket;
-	int				shopping;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
@@ -260,7 +258,15 @@ typedef struct		s_doom {
 	t_lib			lib;
 	t_point			pos;
 	t_event			own_event;
-	int				light;
+	t_gamedesign	game_design;
+	t_audio			*audio;
+	t_groceries		*groceries;
+	t_menu			*menu;
+	t_hud			*hud;
+	bool			is_running;
+	bool			game_editor;
+	bool			huds;
+	bool			light;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;
@@ -276,9 +282,6 @@ typedef struct		s_doom {
 	int				obj_height;
 	double			max_ray;
 	double			dist_to_plane;
-	t_gamedesign	game_design;
-	t_audio			*audio;
-	t_groceries		*groceries;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
@@ -291,6 +294,8 @@ typedef struct		s_doom {
 int					main(void);
 void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
+void				init_menu(t_doom *doom);
+void				init_hud(t_doom *doom);
 void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
@@ -300,6 +305,7 @@ void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
+double				get_timeframe(long *last_frame_time);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
@@ -313,7 +319,7 @@ t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
 void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
-void				add_inf_to_lib(t_lib *col_lib, int len, int fd);
+void				add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 void				set_texture_type(const char *name, SDL_Surface *surface);
 t_bmp				*malloc_images_lib(t_doom *doom, int len);
@@ -412,8 +418,8 @@ void				add_sidedef(t_doom *doom, int x, int y);
 void				del_sidedef(t_doom *doom);
 void				add_sector(t_doom *doom);
 void				del_sector(t_doom *doom);
-void				draw_bar(Uint32 **pixels, t_bar bar);
-void				draw_bar_point(Uint32 **pixels, t_bar bar);
+void				draw_bar(t_doom *doom, Uint32 **pixels, t_bar bar);
+void				draw_bar_point(t_doom *doom, Uint32 **pixels, t_bar bar);
 void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);

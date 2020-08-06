@@ -2,7 +2,7 @@
 
 #include <stdio.h> //remove before handing in
 
-void		add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
+void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite, char *line, int i, int safe)
 {
 	if (i == 0)
 		sprite->name = line;
@@ -15,8 +15,10 @@ void		add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
 	if (i == 4)
 	{
 		sprite->amount = safe;
-		sprite->textures = (int*)malloc(sizeof(int) * safe);//need to protect
-		// sprite->face_ang = (int*)malloc(sizeof(int) * safe);//need to protect
+		sprite->textures = (int*)malloc(sizeof(int) * safe);
+		// sprite->face_ang = (int*)malloc(sizeof(int) * safe);
+		if (sprite->textures == NULL)
+			doom_exit_failure(doom, MALLOC_ERR);
 	}
 	if (i > 4 && i < sprite->amount + 4)
 	{
@@ -27,7 +29,7 @@ void		add_inf_to_m_obj(t_m_object *sprite, char *line, int i, int safe)
 	}
 }
 
-t_m_object	mov_object_inf(int fd, int sector)
+t_m_object	mov_object_inf(t_doom *doom, int fd, int sector)
 {
 	int			i;
 	char		*line;
@@ -44,10 +46,11 @@ t_m_object	mov_object_inf(int fd, int sector)
 			"moving object informations does not exist", 1);
 		else
 			get_line(&line, fd, "moving object name does not exist", 0);
-		add_inf_to_m_obj(&m_sprite, line, i, safe);
+		add_inf_to_m_obj(doom, &m_sprite, line, i, safe);
 		free(line);
 		i++;
 	}
+	free(line);
 	return (m_sprite);
 }
 
@@ -109,7 +112,7 @@ void	create_object(t_lib *col_lib, int fd, int i)
 	obj_int = obj_int + j;
 }
 
-void	add_inf_to_lib(t_lib *col_lib, int len, int fd)
+void	add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd)
 {
 	int		i;
 	int		j;
@@ -129,9 +132,11 @@ void	add_inf_to_lib(t_lib *col_lib, int len, int fd)
 	col_lib->n_mov_sprites = ft_atoi(line);
 	col_lib->mov_sprites = \
 	(t_m_object*)malloc(sizeof(t_m_object) * col_lib->n_mov_sprites);
+	if (col_lib->mov_sprites == NULL)
+		doom_exit_failure(doom, MALLOC_ERR);
 	while (j < col_lib->n_mov_sprites)
 	{
-		col_lib->mov_sprites[j] = mov_object_inf(fd, j);
+		col_lib->mov_sprites[j] = mov_object_inf(doom, fd, j);
 		j++;
 	}
 }
