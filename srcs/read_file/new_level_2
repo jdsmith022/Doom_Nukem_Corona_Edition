@@ -15,10 +15,10 @@ assets/textures/outside/enter_here.bmp
 #number of sectors
 2
 #number of walls
-11
+13
 #number of objects
 0
-
+#1 this will be the trolly/cart
 #sector[0]
 10
 0
@@ -119,7 +119,7 @@ assets/textures/outside/enter_here.bmp
 2
 0
 -1
-6
+8
 0
 1
 0
@@ -199,28 +199,28 @@ assets/textures/outside/enter_here.bmp
 11
 
 #poster1 ->sanitizer
-#-1
-#96
-#20
-#96
-#36
-#8
-#5
-#5
-#5
-#12
+-1
+96
+20
+96
+36
+8
+5
+5
+5
+12
 
 #poster2 ->corona
-#-1
-#0
-#20
-#0
-#36
-#4
-#6
-#6
-#6
-#13
+-1
+0
+20
+0
+36
+4
+6
+6
+6
+13
 
 #moving objects
 0
