@@ -5,14 +5,15 @@
 
 typedef	struct s_doom	t_doom;
 
-typedef struct	s_menu {
-	int			menu;
-	int			start;
-	int			game_editor;
-	int			game_play;
-}				t_menu;
+typedef struct			s_menu {
+	int					menu;
+	int					start;
+	int					game_editor;
+	int					settings;
+}						t_menu;
 
-void				doom_start(t_doom *doom);
-// void				set_up_menu(t_doom *doom);
+void					doom_start(t_doom *doom);
+void					mouse_settings(t_doom *doom);
+void					instruction_window(t_doom *doom);
 
 #endif
