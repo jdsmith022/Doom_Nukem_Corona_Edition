@@ -158,8 +158,6 @@ static void		init_settings(t_doom *doom)
 	doom->is_running = FALSE;
 	doom->light = TRUE;
 	doom->huds = TRUE;
-	doom->basket = FALSE;
-	doom->shopping = FALSE;
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 }

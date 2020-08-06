@@ -250,13 +250,6 @@ typedef struct		s_gamedesign {
 }					t_gamedesign;
 
 typedef struct		s_doom {
-	int				is_running;
-	int				game_editor;
-	int				huds;
-	int				w_h;
-	int				w_w;
-	int				basket;
-	int				shopping;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
@@ -269,7 +262,10 @@ typedef struct		s_doom {
 	t_groceries		*groceries;
 	t_menu			*menu;
 	t_hud			*hud;
-	int				light;
+	bool			is_running;
+	bool			game_editor;
+	bool			huds;
+	bool			light;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;
