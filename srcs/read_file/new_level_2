@@ -11,6 +11,7 @@ assets/textures/outside/enter_here.bmp
 
 #object library
 0
+#1 will be trollyyyyyy
 
 #number of sectors
 2
@@ -19,6 +20,7 @@ assets/textures/outside/enter_here.bmp
 #number of objects
 0
 #1 this will be the trolly/cart
+
 #sector[0]
 10
 0
