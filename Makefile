@@ -31,8 +31,9 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				render_sky_box set_offsets draw_poster action light_floor_ceiling \
 				find_infection
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
-			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
-			 set_texture_type
+			save_bmp_to_sdl save_sky \
+			set_texture_type\
+			sector_inf sidedef_inf obj_inf
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
 				printing_map

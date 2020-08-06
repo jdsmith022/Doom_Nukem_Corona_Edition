@@ -39,6 +39,7 @@ index
 vector location(x,y)
 action
 size
+block
 amount of textures
 texture[]
 lines[x,y;x,y][]

@@ -84,7 +84,7 @@ typedef struct			s_line {
 
 typedef struct			s_sprite {
 	int					index;			//start index
-	int					amount;			//which side is viewed
+	int					amount;			//which side is viewed how many textures does the sprite have?
 	t_point				pos;
 	double				size;			//small: 8, medium: 12, large: 18
 	t_line				*lines;
