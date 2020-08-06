@@ -6,10 +6,10 @@
 typedef	struct s_doom	t_doom;
 
 typedef struct			s_menu {
-	int					menu;
-	int					start;
-	int					game_editor;
-	int					settings;
+	bool				menu;
+	bool				start;
+	bool				game_editor;
+	bool				settings;
 }						t_menu;
 
 void					doom_start(t_doom *doom);
