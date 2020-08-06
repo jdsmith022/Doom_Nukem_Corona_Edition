@@ -104,8 +104,8 @@ void	create_object(t_lib *col_lib, int fd, int i)
 
 	while (j < col_lib->sector[i].n_objects)
 	{
-		// col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
-		col_lib->sprites[l] = object_inf(fd, i, col_lib->sector[i].n_objects);
+		col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
+		// col_lib->sprites[l] = object_inf(fd, i, col_lib->sector[i].n_objects);
 		l++;
 		j++;
 	}

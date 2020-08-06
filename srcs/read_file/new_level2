@@ -85,10 +85,13 @@ assets/sprites/groceries/toiletpaper.bmp
 0
 1
 0
+-1
 0
 2
 0
+-1
 9
+2
 0
 0
 
@@ -209,9 +212,6 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 3
 
-#objects in sector
-2
-
 #object1
 0
 50
@@ -275,10 +275,13 @@ assets/sprites/groceries/toiletpaper.bmp
 20
 1
 0
+-1
 0
 2
 0
+-1
 4
+1
 1
 0
 
@@ -334,8 +337,6 @@ assets/sprites/groceries/toiletpaper.bmp
 6
 7
 
-#objs in sector 1
-1
 
 #object1 in sector 1
 1
@@ -347,24 +348,24 @@ assets/sprites/groceries/toiletpaper.bmp
 4
 1
 195
-5
+10
 205
-5
+10
 1
 205
-5
+10
 205
-15
+20
 1
 205
-15
+20
 195
-15
+20
 1
 195
-15
+20
 195
-5
+10
 
 
 #sector[2]
@@ -372,9 +373,12 @@ assets/sprites/groceries/toiletpaper.bmp
 0
 1
 0
+-1
 0
 2
 0
+-1
+5
 5
 2
 0
@@ -444,8 +448,6 @@ assets/sprites/groceries/toiletpaper.bmp
 7
 12
 
-#objs in sector
-5
 
 #object0 in sector 2
 0
@@ -597,9 +599,12 @@ assets/sprites/groceries/toiletpaper.bmp
 0
 1
 0
+-1
 0
 2
 0
+-1
+4
 4
 3
 0
@@ -656,8 +661,6 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 16
 
-#objs in sector
-4
 
 #object0 in sector 3
 0
@@ -780,10 +783,13 @@ assets/sprites/groceries/toiletpaper.bmp
 0
 1
 0
+-1
 0
 2
 0
+-1
 5
+3
 4
 0
 
@@ -852,18 +858,107 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 21
 
-#objects in sector 4
+#object0 health1 in sector 4
+13
+550
+600
 0
+32
+0
+4
+13
+545
+595
+555
+595
+13
+555
+595
+555
+605
+13
+555
+605
+545
+605
+13
+545
+605
+545
+595
+
+
+#object1 health1 in sector 4
+14
+650
+600
+0
+32
+0
+4
+14
+645
+595
+655
+595
+14
+655
+595
+655
+605
+14
+655
+605
+645
+605
+14
+645
+605
+645
+595
+
+
+#object2 health1 in sector 4
+15
+700
+650
+0
+32
+0
+4
+15
+695
+645
+705
+645
+15
+705
+645
+705
+655
+15
+705
+655
+695
+655
+15
+695
+655
+695
+645
 
 #sector[5]
 15
 40
 1
 0
+-1
 0
 2
 0
+-1
 4
+3
 5
 0
 
@@ -918,9 +1013,6 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 1
 25
-
-#objects in sector 5
-3
 
 #apple pie
 #object0 in sector 5

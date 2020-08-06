@@ -5,26 +5,26 @@ void		add_coordinates_obj(t_sprite *sprite, int i, int safe)
 	int	mod;
 
 	mod = i % 5;
-	if (((((mod > 1 && mod < 5) || mod == 0) && i > 5 && \
-	i < sprite->amount * 5 + 6) || i == 1 || i == 2) && safe < 0)
-		error("Impossible to have negative coordinates", line_num(0));
+	if (((((mod > 1 && mod < 5) || mod == 0) && i > 6 && \
+	i < sprite->amount * 5 + 7) || i == 1 || i == 2) && safe < 0)
+		error("1Impossible to have negative coordinates", line_num(0));
 	if (i == 1)
 		sprite->pos.x = safe;
 	else if (i == 2)
 		sprite->pos.y = safe;
-	else if (mod == 2)
-		sprite->lines[(i - 6) / 5].start.x = safe;
 	else if (mod == 3)
-		sprite->lines[(i - 6) / 5].start.y = safe;
+		sprite->lines[(i - 7) / 5].start.x = safe;
 	else if (mod == 4)
-		sprite->lines[(i - 6) / 5].end.x = safe;
+		sprite->lines[(i - 7) / 5].start.y = safe;
 	else if (mod == 0)
-		sprite->lines[(i - 6) / 5].end.y = safe;
+		sprite->lines[(i - 7) / 5].end.x = safe;
+	else if (mod == 1)
+		sprite->lines[(i - 7) / 5].end.y = safe;
 }
 
 static void	add_lines(t_sprite *sprite, int i, int safe, int obj_len)
 {
-	if (i == 5)
+	if (i == 6)
 	{
 		if (safe > 0)
 		{
@@ -35,14 +35,17 @@ static void	add_lines(t_sprite *sprite, int i, int safe, int obj_len)
 		else
 			error("Sprite needs a texture", line_num(0));
 	}
-	if (i > 5 && i < sprite->amount * 5 + 6)
+	if (i > 6 && i < sprite->amount * 5 + 7)
 	{
-		if (i % 5 == 1)
+		if (i % 5 == 2)
 		{
 			if (safe >= 0 && safe < obj_len)
-				sprite->textures[(i - 6) / 5] = safe;
+				sprite->textures[(i - 7) / 5] = safe;
 			else
+			{
+				printf("save: %d, obj_len: %d\n", safe, obj_len);
 				error("Sprite texture is not available", line_num(0));
+			}
 		}
 		add_coordinates_obj(sprite, i, safe);
 	}
@@ -64,7 +67,9 @@ static void	add_inf_to_obj(t_sprite *sprite, int i, int safe, int obj_len)
 	{
 		sprite->size = safe;
 	}
-	else if (i >= 5)
+	else if (i == 5)
+		sprite->block = safe;
+	else if (i >= 6)
 		add_lines(sprite, i, safe, obj_len);
 }
 
@@ -79,7 +84,7 @@ t_sprite	object_inf(int fd, int sector, int obj_len)
 	(void)sector; //why is this here
 	sprite.amount = 0; //what is this?
 	// printf("obj_inf 2\n");
-	while (i < 6 + /*sprite.amount*/ 4 * 5) //added 4 in stead of sprite amount, because every sprite should have 4 lines
+	while (i < 7 + /*sprite.amount*/ 4 * 5) //added 4 in stead of sprite amount, because every sprite should have 4 lines
 	{
 		safe = get_line(&line, fd, "object informations does not exist", 1);
 		// printf("before add inf to obj 1\n");
