@@ -13,7 +13,7 @@ void	bend_down(t_doom *doom)
 
 void	step_down(t_doom *doom, double dt)
 {
-	static double	duration = 1;
+	static double	duration = 0.5;
 	int				height_floor;
 	int				step;
 
@@ -30,7 +30,7 @@ void	step_down(t_doom *doom, double dt)
 
 void	jump_player(t_doom *doom, double dt)
 {
-	static double	duration = 1;
+	static double	duration = 0.5;
 	double			og_height;
 	int				jumpheight;
 
@@ -46,7 +46,7 @@ void	jump_player(t_doom *doom, double dt)
 		doom->own_event.velocity = VELOCITY;
 		doom->player_height = og_height + doom->own_event.floor_diff;
 		doom->own_event.jump = FALSE;
-		duration = 1;
+		duration = 0.5;
 	}
 }
 

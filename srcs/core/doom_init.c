@@ -1,4 +1,8 @@
 #include "../../includes/doom.h"
+#include "../../includes/audio.h"
+#include "../../includes/gameplay.h"
+#include "../../includes/hud.h"
+#include "../../includes/menu.h"
 
 // void	set_lines(t_sidedef *sidedef)
 // {
@@ -120,7 +124,7 @@
 // 	sidedef[12].opp_sector = 1;
 // }
 
-void	doom_init_events(t_event *event)
+static void	doom_init_events(t_event *event)
 {
 	event->jump = FALSE;
 	event->velocity = VELOCITY;
@@ -128,30 +132,57 @@ void	doom_init_events(t_event *event)
 	event->step_down = FALSE;
 	event->jump = FALSE;
 	event->y_pitch = 0;
+	event->select = TRUE;
+	event->shoot = FALSE;
+}
+
+static void	init_infection(t_doom *doom)
+{
+	doom->lib.infection = (t_sidedef*)malloc(sizeof(t_sidedef) * 100);
+	doom->lib.tot_len_infection = 100;
+	doom->lib.cur_len_infection = 0;
+}
+
+static void		init_player(t_doom *doom)
+{
+	doom->pos.x = 32;
+	doom->pos.y = 130;
+	doom->player_height = 48;
+	doom->player_width = 48;
+	doom->player_std_height = 48;
+}
+
+static void		init_settings(t_doom *doom)
+{
+	doom->own_event.mouse_state_switched = TRUE;
+	doom->is_running = FALSE;
+	doom->light = TRUE;
+	doom->huds = TRUE;
+	doom->audio->engine = OFF;
+	doom->game_editor = FALSE;
 }
 
 void 	doom_init(t_doom *doom)
 {
-	if (sdl_init(doom) != 0)
-		doom_exit_failure(doom, "unable to initialize SDL\n");
-	doom->audio.engine = OFF;
-	if (doom->audio.engine){
-		init_audio(&doom->audio);
-		load_audio(&doom->audio);
-	}
+	 srand(time(0));
+	init_groceries(doom);
+	init_audio(doom);
+	init_player(doom);
+	init_settings(doom);
+	init_hud(doom);
+	init_menu(doom);
+	init_infection(doom);
+	doom_init_events(&doom->own_event);
+	if (doom->audio->engine)
+		load_audio(doom->audio);
 	// set_lines(doom->sidedef);
-	doom->is_running = TRUE;
-	doom->light = TRUE;
-	doom->hud = TRUE;
-	doom->basket = FALSE;
-	doom->shopping = FALSE;
-	doom->dir_angle = 90;
 	doom->ray_adjacent = FOV / WIDTH;
+	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom->pos.x = 400;
 	doom->pos.y = 20;
 	doom->max_ray = 10000;
+	doom->dir_angle = 90;
 	doom->i_sector = 0;
-	doom->player_height = 48;
 	doom->visible_sprites = 0;
 	doom->player_std_height = 48;
 	doom->lib.sector[0].slope_id = -1; //add to sector lib
@@ -164,6 +195,15 @@ void 	doom_init(t_doom *doom)
 	// doom->lib.sector[2].slope_floor =  4 * (PI / 180);
 	doom->lib.sector[5].slope_floor =  6 * (PI / 180);
 	// doom->lib.sector[5].slope_floor =  4 * (PI / 180);
+	// doom->lib.sector[0].slope_id = -1;
+	// doom->lib.sector[1].slope_id = -1;
+	// doom->lib.sector[2].slope_id = -1;
+	// doom->lib.sector[3].slope_id = -1;
+	// doom->lib.sector[4].slope_id = -1;
+	// doom->lib.sector[5].slope_floor =  21.80140949 * (PI / 180);
+	// doom->lib.sector[0].slope_id = 1;
+	// doom->lib.sector[0].slope_floor =  21.80140949 * (PI / 180);
+
 	// doom->sector[0].height_ceiling = 64;
 	// doom->sector[0].height_floor = 0;
 	// doom->sector[0].i_sidedefs = 0;
@@ -181,6 +221,4 @@ void 	doom_init(t_doom *doom)
 	// doom->sector[2].i_sidedefs = 9;
 	// doom->sector[2].n_sidedefs = 4;
 	// doom->sector[2].slope_id = -1;
-	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	doom_init_events(&doom->own_event);
 }

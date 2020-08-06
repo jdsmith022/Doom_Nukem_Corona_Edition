@@ -29,7 +29,7 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 		((HEIGHT / 2) + doom->player_height)));
 	// if (sector->slope_id != -1)
 	// 	sector->height_floor = calculate_new_floor_height(doom, sector);
-	sector->height_floor = fabs(sector->height_floor);
+	// sector->height_floor = fabs(sector->height_floor);
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
 	doom->horizontal_plane_dist = dist;
@@ -42,7 +42,7 @@ static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 	else if (sector.slope_id != -1 && sector.id != doom->i_sector)
 		*limit = sector.slope.bottom_plane;
 	else
-		*limit = sector.floor_end;
+		*limit = HEIGHT;//sector.floor_end;
 }
 
 void			draw_floor(t_doom *doom, int x,

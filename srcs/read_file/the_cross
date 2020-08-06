@@ -2,12 +2,19 @@
 
 #texture library
 3
-textures/walls/wine.bmp
-textures/floors_ceiling/ceiling96X96_clean.bmp
-textures/floors_ceiling/ceiling96X96_clean.bmp
+assets/textures/shelves/wine.bmp
+assets/textures/floors_ceiling/ceiling96X96_clean.bmp
+assets/textures/floors_ceiling/ceiling96X96_clean.bmp
 
 #object library
-0
+7
+assets/sprites/groceries/bacon.bmp
+assets/sprites/groceries/butter.bmp
+assets/sprites/groceries/cherry.bmp
+assets/sprites/groceries/coffee.bmp
+assets/sprites/groceries/wine1.bmp
+assets/sprites/groceries/mayonaisse.bmp
+assets/sprites/groceries/water.bmp
 
 #number of sectors
 6

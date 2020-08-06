@@ -26,7 +26,7 @@ t_hsv	rgb_to_hsv(double r, double g, double b)
 	double	min;
 	double	max;
 	double	diff;
-	
+
 	if (r < 0.0)
 		r += 255.0;
 	if (g < 0.0)
@@ -146,7 +146,6 @@ void		add_saturation(char *r, char *g, char *b, double light)
 	R = (double)*r;
 	G = (double)*g;
 	B = (double)*b;
-
 	// hsv = rgb_to_hsv((double)*r, (double)*g, (double)*b);
 	// hsv.b *= light;
 	// hsv_to_rgb(hsv, r, g, b);
@@ -186,10 +185,12 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	char	G;
 	char	B;
 
-	
+	// printf("end of put\n");
 	pixels = doom->surface->pixels;
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
+	// printf("texture: %d -- %d -- %d\n", tex_dex, index, pixel_dex);
 	R = texture[pixel_dex];
+	// printf("after sat\n");
 	G = texture[pixel_dex + 1];
 	B = texture[pixel_dex + 2];
 	add_saturation(&R, &G, &B, doom->distance);

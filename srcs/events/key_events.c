@@ -1,8 +1,7 @@
 #include "../../includes/doom.h"
 
-void	key_handler(t_doom *doom, t_event *event, double dt)
+void			key_handler(t_doom *doom, t_event *event, double dt)
 {
-	(void)dt;
 	if (event->cam_move_f == TRUE)
 		cam_move_fb(doom, dt, MOVE_SPEED);
 	else if (event->cam_move_b == TRUE)
@@ -16,11 +15,12 @@ void	key_handler(t_doom *doom, t_event *event, double dt)
 	if (event->step_down == TRUE)
 		step_down(doom, dt);
 	if (event->bend == TRUE || \
-		doom->player_height < doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor)
+	doom->player_height < \
+	doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor)
 		bend_down(doom);
 }
 
-void	key_release(t_event *event, SDL_KeyboardEvent *key)
+void			key_release(t_event *event, SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_w)
 		event->cam_move_f = FALSE;
@@ -34,7 +34,33 @@ void	key_release(t_event *event, SDL_KeyboardEvent *key)
 		event->bend = FALSE;
 }
 
-void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
+static void 	key_select_and_shoot(t_doom *doom, t_event *event,
+					SDL_KeyboardEvent *key)
+{
+	if (key->keysym.sym == SDLK_q)
+		event->select = event->select == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_e)
+		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
+}
+
+static void		key_press2(t_doom *doom, t_event *event,
+					SDL_KeyboardEvent *key)
+{
+	if (key->keysym.sym == SDLK_b)
+		add_to_game(doom);
+	if (key->keysym.sym == SDLK_q || key->keysym.sym == SDLK_e)
+		key_select_and_shoot(doom, event, key);
+	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
+		doom->light = doom->light == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_o) //needs to become a click on button event
+		doom->lib.sector[doom->i_sector].light =\
+			doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
+	if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
+		printing_map(&(doom->game_design));
+}
+
+void			key_press(t_doom *doom, t_event *event,
+					SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->is_running = FALSE;
@@ -49,31 +75,16 @@ void	key_press(t_doom *doom, t_event *event, SDL_KeyboardEvent *key)
 	if (key->keysym.sym == SDLK_SPACE)
 		event->jump = TRUE;
 	if (key->keysym.sym == SDLK_x)
-		event->bend = 1;
-	if (key->keysym.sym == SDLK_UP)
-	{
-		if (event->y_pitch < 200)
-			event->y_pitch += 10;
-	}
-	if (key->keysym.sym == SDLK_DOWN)
-	{
-		if (event->y_pitch > -250)
-			event->y_pitch -= 10;
-	}
+		event->bend = TRUE;
 	if (key->keysym.sym == SDLK_m)
 	{
 		doom->game_editor = TRUE;
-		doom->hud = FALSE;
+		doom->huds = FALSE;
 	}
 	if (key->keysym.sym == SDLK_n)
 	{
 		doom->game_editor = FALSE;
-		doom->hud = TRUE;
+		doom->huds = TRUE;
 	}
-	if (key->keysym.sym == SDLK_b)
-		add_to_game(doom);
-	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
-		doom->light = doom->light == TRUE ? FALSE : TRUE;
-	if (key->keysym.sym == SDLK_o) //needs to become a click on button event
-		doom->lib.sector[doom->i_sector].light = doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
+	key_press2(doom, event, key);
 }

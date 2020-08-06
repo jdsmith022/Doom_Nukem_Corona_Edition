@@ -1,70 +1,87 @@
 #include "../../includes/doom.h"
 
-void		check_visibility_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
+void		find_face_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 {
-	t_point	ray_delta;
-	t_point sprite_delta;
-	t_point intersect;
-	double	curr_distance;
-	double	temp_distance;
+	t_point		intersect;
+	t_line		line_sprite;
 
-	temp_distance = INFINITY;
-	curr_distance = 0;
-	// printf("test check_visibility,\n");
+	line_sprite.start = doom->pos;
+	line_sprite.end = sprite->pos;
 	while (i < 4)
 	{
-		ray_delta = line_delta(ray.line.start, ray.line.end);
-		sprite_delta = line_delta(sprite->lines[i].start, sprite->lines[i].end);
-		intersect = line_intersection(ray.line.start, ray_delta,\
-		sprite->lines[i].start, sprite_delta);
-		// printf("ray: %f;%f\t%f;%f\n", ray.line.start.x, ray.line.start.y, ray.line.end.x, ray.line.end.y);
-		// printf("sprite: %f;%f\t%f;%f\n", sprite->lines[i].start.x, sprite->lines[i].start.y, sprite->lines[i].end.x, sprite->lines[i].end.y);
-		// printf("intersect: %f, %f\n", intersect.x, intersect.y);
+		intersect = sidedef_sprite_intersect(sprite->lines[i], line_sprite);
 		if (!isnan(intersect.x) && !isnan(intersect.y))
 		{
-			// printf("intersect x: %f\n", intersect.x);
-			// printf("intersect y: %f\n", intersect.y);
-			curr_distance = point_distance(doom->pos, intersect, ray.angle);
-			if (curr_distance < temp_distance)
-			{
-				temp_distance = curr_distance;
-				sprite->visible = i;
-			}
-			sprite->distance = fabs(point_distance(doom->pos, sprite->pos, ray.angle));
+			sprite->visible = sprite->textures[i];
+			sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
 		}
 		i++;
 	}
-	// printf("sprite->visible: %d\n", sprite->visible);
-	if (sprite->visible != -1)
-	{
-		// printf("sprite face %d is visible\ndistance to player: %f\n", i - 1, sprite->distance);
-		doom->visible_sprites++;
-	}
-	// printf("here\n");
 }
 
-void		sprite_check(t_doom *doom, t_ray ray, int sector)
+/*
+**		do i need to loop through all sides? Once I've detected one sidedef,
+**		it can stop.
+**		if there are more faces, I need to loop through faces
+*/
+
+void		detect_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 {
-	//check line intersection with all not yet visible sprites
+	t_point		ray_delta;
+	t_point		sprite_delta;
+	t_point		intersect;
+
+	ray_delta = line_delta(ray.line.start, ray.line.end);
+	sprite_delta = line_delta(sprite->lines[i].start, sprite->lines[i].end);
+	intersect = line_intersection(ray.line.start, ray_delta,\
+	sprite->lines[i].start, sprite_delta);
+	if (!isnan(intersect.x) && !isnan(intersect.y))
+	{
+		sprite->visible = sprite->textures[i];
+	}
+}
+
+/*
+**	in while loop, second contition is added
+**	detect sprite is a new function
+**	if it has multiple faces: find the right one
+*/
+
+void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
+			int prev_sector)
+{
+	t_sprite	*sprite;
+	int			i;
+
+	sprite = &doom->lib.sprites[sprite_i];
+	i = 0;
+	while (i < 4 && sprite->visible == -1)
+	{
+		detect_sprite(doom, sprite, ray, i);
+		i++;
+	}
+	if (sprite->visible != -1)
+	{
+		find_face_sprite(doom, sprite, ray, 0);
+		doom->visible_sprites++;
+		sprite->sprite_x = ray.plane_x;
+		sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
+	}
+}
+
+void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
+{
 	int		i;
-	int		x;
 	int		sprite_i;
 
 	i = 0;
-	x = 0;
 	sprite_i = doom->lib.sector[sector].i_objects;
-	// printf("n_objects: %d\n", doom->lib.sector[sector].n_objects);
-	//TOTAL_SPRITES per sector
+	doom->lib.sprites[sprite_i].angle = ray.angle;
 	while (i < doom->lib.sector[sector].n_objects)
 	{
 		if (doom->lib.sprites[sprite_i].visible == -1)
-		{
-			// printf("test sprite check\n");
-			//loop through every line of particular object, save closest distance and line segment
-			check_visibility_sprite(doom, &doom->lib.sprites[sprite_i], ray, x);
-		}
+			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
 		i++;
 		sprite_i++;
 	}
-	// printf("outside sprite_check\n");
 }
