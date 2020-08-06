@@ -9,29 +9,17 @@ void		add_coordinates_obj(t_sprite *sprite, int i, int safe)
 	i < sprite->amount * 5 + 6) || i == 1 || i == 2) && safe < 0)
 		error("Impossible to have negative coordinates", line_num(0));
 	if (i == 1)
-	{
 		sprite->pos.x = safe;
-	}
 	else if (i == 2)
-	{
 		sprite->pos.y = safe;
-	}
 	else if (mod == 2)
-	{
 		sprite->lines[(i - 6) / 5].start.x = safe;
-	}
 	else if (mod == 3)
-	{
 		sprite->lines[(i - 6) / 5].start.y = safe;
-	}
 	else if (mod == 4)
-	{
 		sprite->lines[(i - 6) / 5].end.x = safe;
-	}
 	else if (mod == 0)
-	{
 		sprite->lines[(i - 6) / 5].end.y = safe;
-	}
 }
 
 static void	add_lines(t_sprite *sprite, int i, int safe, int obj_len)
@@ -52,9 +40,7 @@ static void	add_lines(t_sprite *sprite, int i, int safe, int obj_len)
 		if (i % 5 == 1)
 		{
 			if (safe >= 0 && safe < obj_len)
-			{
 				sprite->textures[(i - 6) / 5] = safe;
-			}
 			else
 				error("Sprite texture is not available", line_num(0));
 		}

@@ -96,22 +96,16 @@ void	create_object(t_lib *col_lib, int fd, int i)
 		l = 0;
 		obj_int = 0;
 	}
-	printf("test1\n");
 	col_lib->sector[i].i_objects = obj_int;
-	printf("test2\n");
 	j = 0;
 
 	while (j < col_lib->sector[i].n_objects)
 	{
-		// printf("test3, col_lib->sector[%d].n_objects: %d\n", i, col_lib->sector[i].n_objects);
-		printf("SPRITE #%d\n", j);
 		// col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
 		col_lib->sprites[l] = object_inf(fd, i, col_lib->sector[i].n_objects);
-		// printf("after adding an object to the sprites array\n");
 		l++;
 		j++;
 	}
-	printf("test4\n");
 	obj_int = obj_int + j;
 }
 
@@ -122,9 +116,6 @@ void	add_inf_to_lib(t_lib *col_lib, int len, int fd)
 	char	*line;
 
 	i = 0;
-	printf("before while aitl\n");
-	printf("len: %d\n", len);
-	//per sector
 	while (i < len)
 	{
 		create_sidedef(col_lib, fd, len, i);//check this is correct
