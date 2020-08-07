@@ -67,8 +67,8 @@ void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 	ft_bzero(plane, sizeof(plane));
 	ft_bzero(&sector->slope, sizeof(sector->slope));
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
-	sector->floor_end = set_floor_limit(doom, plane, sidedef, sector);
-	sector->ceiling_end = set_ceiling_limit(doom, plane, sidedef, sector);
+	// sector->floor_end = set_floor_limit(doom, plane, sidedef, sector);
+	// sector->ceiling_end = set_ceiling_limit(doom, plane, sidedef, sector);
 	if (sidedef.opp_sector != -1)
 	{
 		opp_sector = doom->lib.sector[sidedef.opp_sector];

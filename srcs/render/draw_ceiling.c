@@ -1,24 +1,24 @@
 #include "../../includes/doom.h"
 
-// static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
-// 					t_sector *sector)
-// {
-// 	double dist;
+static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
+					t_sector sector)
+{
+	double dist;
 
-// 	dist = (doom->player_std_height + sector->height_ceiling)\
-// 		/ ((HEIGHT / 2 + doom->player_height)\
-// 		- (y + doom->own_event.y_pitch));
-// 	dist *= doom->dist_to_plane;
-// 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
-// 	doom->horizontal_plane_dist = dist;
-// }
+	dist = (doom->player_std_height + sector.height_ceiling)\
+		/ ((HEIGHT / 2 + doom->player_height)\
+		- (y + doom->own_event.y_pitch));
+	dist *= doom->dist_to_plane;
+	dist /= cos(doom->ray_adjacent * x - FOV / 2);
+	doom->horizontal_plane_dist = dist;
+}
 
 static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 {
 	if (doom->lib.sector[doom->prev_sector].outside)
 		*limit = doom->lib.portal_ceiling;
 	else
-		*limit = sector.ceiling_end;
+		*limit = 0;//sector.ceiling_end;
 }
 
 void			draw_ceiling(t_doom *doom, int x,
@@ -36,12 +36,7 @@ void			draw_ceiling(t_doom *doom, int x,
 	while (y >= limit)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height + sector.height_ceiling)\
-			/ ((HEIGHT / 2 + doom->player_height)\
-			- (y + doom->own_event.y_pitch));
-		dist *= doom->dist_to_plane;
-		dist /= cos(doom->ray_adjacent * x - FOV / 2);
-		doom->horizontal_plane_dist = dist;
+		calculate_ceiling_dist(doom, x, y, sector);
 		light_floor_ceiling(doom, sector, x, y);
 		row_calculations(doom, doom->horizontal_plane_dist, index,\
 			doom->lib.tex_lib[tex_dex]);
