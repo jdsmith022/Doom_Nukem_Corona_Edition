@@ -9,6 +9,7 @@ void		init_menu(t_doom *doom)
 		doom_exit_failure(doom, MALLOC_ERR);
 	doom->menu->start = FALSE;
 	doom->menu->menu = TRUE;
+	// doom->menu->menu = FALSE;
 }
 
 void		init_hud(t_doom *doom)

@@ -36,9 +36,13 @@ void	save_libraries(t_doom *doom)
     doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
 	printf("2save libraries len_tex_lib: %d\n", doom->lib.len_obj_lib);
     doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
+	printf("after save sky\n");
     doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
+	printf("after save sector\n");
     doom->lib.sidedef = save_walls(doom, fd,  &doom->lib.len_sidedef);
+	printf("after save walls\n");
     doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
+	printf("after save sprites\n");
     add_inf_to_lib(doom, &doom->lib, doom->lib.n_sectors, fd);
     close(fd);
 }

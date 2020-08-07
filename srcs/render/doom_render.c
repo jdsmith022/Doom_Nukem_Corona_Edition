@@ -31,6 +31,7 @@ void	doom_render(t_doom *doom)
 	ray.angle = doom->dir_angle - (FOV / 2);
 	ray.line.start = doom->pos;
 	ray.filter = 0;
+	doom->visible_sprites = 0;
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);
@@ -42,4 +43,9 @@ void	doom_render(t_doom *doom)
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}
+	if (doom->visible_sprites > 0)
+	{
+		// printf("sprite_render starts, visible sprites: %d\n", doom->visible_sprites);
+		sprite_render(doom);
+	}	
 }

@@ -60,7 +60,7 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 		detect_sprite(doom, sprite, ray, i);
 		i++;
 	}
-	if (sprite->visible != -1)
+	if (sprite->visible >= 0)
 	{
 		find_face_sprite(doom, sprite, ray, 0);
 		doom->visible_sprites++;

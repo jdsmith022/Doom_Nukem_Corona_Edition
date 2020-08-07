@@ -43,9 +43,10 @@ void			game_loop(t_doom *doom)
 		doom_update(doom, dt);
 		if (doom->game_editor == FALSE)
 		{
+			// printf("loop: before spr reset\n");
 			sprite_reset(doom);
 			doom_render(doom);
-			sprite_render(doom);
+			// sprite_render(doom); moved to doom->render
 			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);

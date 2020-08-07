@@ -22,7 +22,9 @@ static void	add_amounts(t_sector *sector, int safe, int i)
 	if (i == 10)
 	{
 		if (safe >= 0)
+		{
 			sector->n_objects = safe;
+		}
 		else
 			error("object numbers can not be negative", line_num(0));
 	}
