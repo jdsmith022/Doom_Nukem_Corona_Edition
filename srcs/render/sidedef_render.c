@@ -143,5 +143,4 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		// if (sector > 2)
 		// 	find_infection(doom, ray, min_distance);
 	}
-	// printf("bottom\n");
 }

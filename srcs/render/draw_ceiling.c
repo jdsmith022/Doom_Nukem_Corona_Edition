@@ -17,14 +17,15 @@ void			draw_ceiling(t_doom *doom, int x,
 	while (y >= limit)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = (doom->player_std_height - sector.height_ceiling)\
+		dist = (doom->player_std_height + sector.height_ceiling)\
 			/ ((HEIGHT / 2 + doom->player_height)\
 			- (y + doom->own_event.y_pitch));
 		dist *= doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - FOV / 2);
 		doom->horizontal_plane_dist = dist;
 		light_floor_ceiling(doom, sector, x, y);
-		row_calculations(doom, doom->horizontal_plane_dist, index, doom->lib.tex_lib[tex_dex]);
+		row_calculations(doom, doom->horizontal_plane_dist, index,\
+			doom->lib.tex_lib[tex_dex]);
 		y--;
 	}
 }
