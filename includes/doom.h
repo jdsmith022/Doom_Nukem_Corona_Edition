@@ -203,7 +203,8 @@ typedef	struct		s_slope {
 	double			dist_to_bottom;
 	int				opp_side;
 	int				sidedef_id;
-	int				prev_id;
+	int				prev_floor_id;
+	int				prev_ceiling_id;
 	double			delta_height;
 	t_point			intersect;
 	t_point			prev_intersect;
@@ -219,7 +220,8 @@ typedef struct		s_sector {
 	int				i_objects;
 	double			light_level;
 	int				light;
-	int				slope_id;
+	int				slope_floor_id;
+	int				slope_ceiling_id;
 	int				slope_ceiling;
 	double			slope_floor;
 	int				floor_end;
@@ -277,6 +279,7 @@ typedef struct		s_gamedesign {
 }					t_gamedesign;
 
 typedef struct		s_doom {
+	t_line			tests;
 	SDL_Window		*window;
 	SDL_Surface		*surface;
 	SDL_Event		event;
@@ -394,7 +397,7 @@ void				set_slope_bottom_values(t_doom *doom,\
 double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
 t_sidedef			get_other_side_of_line(t_doom *doom,\
 						t_sidedef sidedef, t_sector sector);
-int					get_opp_side_of_slope(t_sector sector);
+int					get_opp_side_of_slope(t_sector sector, int slope_id);
 t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
 
 void				set_texture_properties(t_doom *doom);

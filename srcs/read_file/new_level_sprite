@@ -115,7 +115,7 @@ assets/sprites/shoppers/shopper_back.bmp
 3
 9
 3
-3
+4
 
 #5
 #poster2
@@ -128,7 +128,7 @@ assets/sprites/shoppers/shopper_back.bmp
 3
 9
 3
-3
+5
 
 #6
 #poster3
@@ -141,7 +141,7 @@ assets/sprites/shoppers/shopper_back.bmp
 3
 9
 3
-3
+6
 
 #7
 #poster4
@@ -154,7 +154,7 @@ assets/sprites/shoppers/shopper_back.bmp
 3
 9
 3
-3
+7
 
 #8
 #poster5
@@ -167,7 +167,7 @@ assets/sprites/shoppers/shopper_back.bmp
 3
 9
 3
-3
+8
 
 #9
 #poster6
@@ -180,7 +180,7 @@ assets/sprites/shoppers/shopper_back.bmp
 4
 9
 4
-0
+9
 
 #object1
 0
@@ -237,7 +237,7 @@ assets/sprites/shoppers/shopper_back.bmp
 1
 0
 1
-4
+10
 
 #11
 #sidedefs1
@@ -250,7 +250,7 @@ assets/sprites/shoppers/shopper_back.bmp
 5
 5
 5
-5
+11
 
 #12
 #sidedefs2
@@ -263,7 +263,7 @@ assets/sprites/shoppers/shopper_back.bmp
 1
 0
 1
-6
+12
 
 #13
 #sidedefs3
@@ -276,7 +276,7 @@ assets/sprites/shoppers/shopper_back.bmp
 6
 6
 6
-7
+13
 
 #sector[2]
 15
@@ -304,7 +304,7 @@ assets/sprites/shoppers/shopper_back.bmp
 1
 0
 1
-8
+14
 
 #15
 #sidedefs1
@@ -317,7 +317,7 @@ assets/sprites/shoppers/shopper_back.bmp
 8
 8
 8
-9
+15
 
 #16
 #sidedefs2
@@ -330,7 +330,7 @@ assets/sprites/shoppers/shopper_back.bmp
 1
 0
 1
-10
+16
 
 #17
 #sidedefs3
@@ -343,7 +343,7 @@ assets/sprites/shoppers/shopper_back.bmp
 7
 7
 7
-11
+17
 
 #18
 #poster
@@ -356,7 +356,7 @@ assets/sprites/shoppers/shopper_back.bmp
 7
 9
 7
-12
+18
 
 #sector[3]
 15
@@ -384,7 +384,7 @@ assets/sprites/shoppers/shopper_back.bmp
 7
 7
 7
-13
+19
 
 #20
 #sidedefs1
@@ -397,7 +397,7 @@ assets/sprites/shoppers/shopper_back.bmp
 8
 8
 8
-14
+20
 
 #21
 #sidedefs2
@@ -410,7 +410,7 @@ assets/sprites/shoppers/shopper_back.bmp
 1
 0
 1
-15
+21
 
 #22
 #sidedefs3
@@ -423,7 +423,7 @@ assets/sprites/shoppers/shopper_back.bmp
 1
 0
 1
-16
+22
 
 
 #moving objects

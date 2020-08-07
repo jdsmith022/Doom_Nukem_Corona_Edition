@@ -22,7 +22,7 @@ static double		calculate_new_floor_height(t_doom *doom, t_sector *sector)
 		(sector->slope.dist_to_bottom * cos(doom->ray_angle));
 	new_intersect.y = sector->slope.prev_intersect.y +\
 		(sector->slope.dist_to_bottom * sin(doom->ray_angle));
-	slope = doom->lib.sidedef[sector->slope_id].line;
+	slope = doom->lib.sidedef[sector->slope_floor_id].line;
 	dist_to_slope = fabs(point_line_distance(new_intersect, slope));
 	dist_to_slope /= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
 	height = tan(sector->slope_floor) * dist_to_slope;
@@ -36,7 +36,7 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 	dist = ((doom->player_std_height - sector->height_floor)\
 		/ ((y + doom->own_event.y_pitch) -\
 		((HEIGHT / 2) + doom->player_height)));
-	if (sector->slope_id != -1)
+	if (sector->slope_floor_id != -1)
 		sector->height_floor = calculate_new_floor_height(doom, sector);
 	sector->height_floor = fabs(sector->height_floor);
 	dist *= doom->dist_to_plane;
@@ -48,7 +48,7 @@ static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 {
 	if (doom->lib.sector[doom->prev_sector].outside)
 		*limit = doom->lib.portal_floor;
-	else if (sector.slope_id != -1 && sector.id != doom->i_sector)
+	else if (sector.slope_floor_id != -1 && sector.id != doom->i_sector)
 		*limit = sector.slope.bottom_plane;
 	else
 		*limit = HEIGHT;//sector.floor_end;
@@ -71,7 +71,7 @@ void			draw_floor(t_doom *doom, int x,
 		calculate_floor_dist(doom, x, y, &sector);
 		light_floor_ceiling(doom, sector, x, y);
 		index = (y * doom->surface->pitch) + (x * bpp);
-		if (sector.slope_id != -1)
+		if (sector.slope_floor_id != -1)
 			put_pixels(doom, index, x, y);
 		else
 			row_calculations(doom, doom->horizontal_plane_dist,\

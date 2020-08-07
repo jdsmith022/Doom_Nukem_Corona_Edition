@@ -12,7 +12,7 @@ double			set_slope_delta(t_doom *doom, t_sector *sector, int y)
 	delta_slope = delta_height / plane_distance;
 	delta_distance = sector->slope.dist_to_bottom / plane_distance;
 	delta_distance *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
-	sector->slope.prev_id = sector->slope.sidedef_id;
+	sector->slope.prev_floor_id = sector->slope.sidedef_id;
 	return (delta_distance);
 }
 
@@ -60,23 +60,24 @@ void			set_slope_bottom_values(t_doom *doom, t_sidedef sidedef,\
 
 	bottom_line = doom->lib.sidedef[sidedef.prev_sidedef.id];
 	opp_sector = doom->lib.sector[sidedef.sector];
-	if (opp_sector.slope_id == -1)
-		sector->slope.prev_id = -1;
+	if (opp_sector.slope_floor_id == -1)
+		sector->slope.prev_floor_id = -1;
 	bottom_line = get_other_side_of_line(doom, bottom_line, *sector);
-	if (bottom_line.id == sector->slope_id)
+	if (bottom_line.id == sector->slope_floor_id)
 		distance = 0;
-	opp_side = get_opp_side_of_slope(*sector);
+	opp_side = get_opp_side_of_slope(*sector, sector->slope_floor_id);
 	if (bottom_line.id == opp_side)
 	{
 		distance = fabs(point_line_distance(bottom_line.line.start,\
-			doom->lib.sidedef[sector->slope_id].line));
+			doom->lib.sidedef[sector->slope_floor_id].line));
 	}
-	else if (bottom_line.id != sector->slope_id && bottom_line.id != opp_side)
+	else if (bottom_line.id != sector->slope_floor_id && bottom_line.id != opp_side)
 	{
 		conn_point = get_connecting_point(bottom_line.line,\
-			doom->lib.sidedef[sector->slope_id].line);
+			doom->lib.sidedef[sector->slope_floor_id].line);
 		distance = points_distance(conn_point, sidedef.prev_sidedef.intersect);
-	}	set_sector_plane(doom, distance, sidedef, sector);
+	}
+	set_sector_plane(doom, distance, sidedef, sector);
 }
 
 t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
@@ -87,28 +88,27 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.distance = 0;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
+	sector->slope_floor = 6 * (PI / 180);
 	if (sidedef.sector != sector->id)
 		sidedef = get_other_side_of_line(doom, sidedef, *sector);
-	if (sidedef.id == sector->slope_id)
+	if (sidedef.id == sector->slope_floor_id)
 	{
 		slope.height = 0;
 		return (slope);
 	}
-	slope.opp_side = get_opp_side_of_slope(*sector);
+	slope.opp_side = get_opp_side_of_slope(*sector, sector->slope_floor_id);
 	if (sidedef.id == slope.opp_side)
 	{
 		slope.distance = fabs(point_line_distance(sidedef.line.end,\
-			doom->lib.sidedef[sector->slope_id].line));
-		// slope.distance *= cos(doom->ray_adjacent * doom->lib.sidedef[sector->slope_id].line.start.x - FOV / 2);
-
+			doom->lib.sidedef[sector->slope_floor_id].line));
 	}
-	if (sidedef.id != sector->slope_id && sidedef.id != slope.opp_side)
+	if (sidedef.id != sector->slope_floor_id && sidedef.id != slope.opp_side)
 	{
 		slope.conn_point = get_connecting_point(sidedef.line,\
-		doom->lib.sidedef[sector->slope_id].line);
+		doom->lib.sidedef[sector->slope_floor_id].line);
 		slope.distance = points_distance(sidedef.intersect, slope.conn_point);
 	}
-		slope.distance *= cos(doom->ray_adjacent * sidedef.intersect.x - FOV / 2);
+	slope.distance *= cos(doom->ray_adjacent * sidedef.intersect.x - FOV / 2);
 	slope.height = tan(sector->slope_floor) * slope.distance;
 	return (slope);
 }

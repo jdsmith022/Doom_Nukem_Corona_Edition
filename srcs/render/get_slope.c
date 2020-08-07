@@ -29,15 +29,15 @@ t_sidedef		get_other_side_of_line(t_doom *doom,\
 	return (doom->lib.sidedef[i]);
 }
 
-int				get_opp_side_of_slope(t_sector sector)
+int				get_opp_side_of_slope(t_sector sector, int slope_id)
 {
 	int		sidedef_index;
 
 	sidedef_index = sector.i_sidedefs;
-	if (sector.slope_id == sidedef_index ||\
-		sector.slope_id == sidedef_index + 1)
-		return (sector.slope_id + 2);
-	return (sector.slope_id - 2);
+	if (slope_id == sidedef_index ||\
+		slope_id == sidedef_index + 1)
+		return (slope_id + 2);
+	return (slope_id - 2);
 }
 
 t_point			get_connecting_point(t_line sidedef, t_line conn_sidedef)

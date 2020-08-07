@@ -15,7 +15,7 @@ static void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	mid_top = (new_height - (plane->height_standard / 2)) - \
 		doom->own_event.y_pitch - height_ceiling;
 	plane->mid_texture_top = ((mid_top >= 0) ? mid_top : 0);
-	if (opp_sector->slope_id != -1)
+	if (opp_sector->slope_floor_id != -1 || opp_sector->slope_ceiling_id != -1)
 	{
 		opp_sector->slope = set_properties_slope(doom, sidedef, opp_sector);
 		opp_sector->height_floor += opp_sector->slope.height;
@@ -44,7 +44,7 @@ static void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	sidedef_top = (new_height - (plane->height_standard / 2)) - \
 		doom->own_event.y_pitch - height_ceiling;
 	wall_offset(plane, sidedef_top);
-	if (sector->slope_id != -1)
+	if (sector->slope_floor_id != -1 || sector->slope_ceiling_id != -1)
 	{
 		sector->slope = set_properties_slope(doom, sidedef, sector);
 		if (doom->i_sector != sector->id)
@@ -80,7 +80,8 @@ void		set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 		doom->lib.portal_ceiling = plane->sidedef_top;
 		doom->lib.portal_floor = plane->sidedef_bottom;
 	}
-	if (sector->slope_id != -1 && sector->slope.prev_id != -1)
+	if ((sector->slope_floor_id != -1 && sector->slope.prev_floor_id != -1) || \
+	(sector->slope_ceiling_id != -1 && sector->slope.prev_ceiling_id != -1))
 		sector->slope.delta_height = set_slope_delta(doom, sector, plane->sidedef_bottom);
 }
 
