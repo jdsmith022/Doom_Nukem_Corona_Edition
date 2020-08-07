@@ -15,7 +15,7 @@ double		calculate_new_floor_height(t_doom *doom, t_sector *sector)
 		(sector->slope.dist_to_bottom * sin(doom->ray_angle));
 	slope = doom->lib.sidedef[sector->slope_id].line;
 	dist_to_slope = fabs(point_line_distance(new_intersect, slope));
-	// dist_to_slope /= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
+	dist_to_slope /= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
 	height = tan(sector->slope_floor) * dist_to_slope;
 	return (height);
 }
@@ -27,9 +27,9 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 	dist = ((doom->player_std_height - sector->height_floor)\
 		/ ((y + doom->own_event.y_pitch) -\
 		((HEIGHT / 2) + doom->player_height)));
-	// if (sector->slope_id != -1)
-	// 	sector->height_floor = calculate_new_floor_height(doom, sector);
-	// sector->height_floor = fabs(sector->height_floor);
+	if (sector->slope_id != -1)
+		sector->height_floor = calculate_new_floor_height(doom, sector);
+	sector->height_floor = fabs(sector->height_floor);
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
 	doom->horizontal_plane_dist = dist;
