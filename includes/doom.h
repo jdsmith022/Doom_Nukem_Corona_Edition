@@ -223,6 +223,7 @@ typedef struct		s_sector {
 	int				slope_ceiling;
 	double			slope_floor;
 	int				floor_end;
+	int				ceiling_end;
 	int				height_ceiling;
 	double			height_floor;
 	int				txt_ceiling;
@@ -429,7 +430,6 @@ void				draw_poster(t_doom *doom, t_plane plane,
 
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
-void				put_pixel(t_doom *doom, int x, int y, int color);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
 

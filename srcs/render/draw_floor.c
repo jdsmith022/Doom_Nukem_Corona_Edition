@@ -1,6 +1,15 @@
 #include "../../includes/doom.h"
 
-double		calculate_new_floor_height(t_doom *doom, t_sector *sector)
+static void			put_pixels(t_doom *doom, Uint32 index, int x, int y)
+{
+	Uint32 *pixels;
+
+	pixels = doom->surface->pixels;
+	if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
+		pixels[(y * WIDTH + x)] = 0X505052;
+}
+
+static double		calculate_new_floor_height(t_doom *doom, t_sector *sector)
 {
 	double	dist_to_plane;
 	double	dist_to_slope;
@@ -42,7 +51,7 @@ static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 	else if (sector.slope_id != -1 && sector.id != doom->i_sector)
 		*limit = sector.slope.bottom_plane;
 	else
-		*limit = HEIGHT;//sector.floor_end;
+		*limit = sector.floor_end;
 }
 
 void			draw_floor(t_doom *doom, int x,
@@ -62,8 +71,11 @@ void			draw_floor(t_doom *doom, int x,
 		calculate_floor_dist(doom, x, y, &sector);
 		light_floor_ceiling(doom, sector, x, y);
 		index = (y * doom->surface->pitch) + (x * bpp);
-		row_calculations(doom, doom->horizontal_plane_dist,\
-			index, doom->lib.tex_lib[tex_dex]);
+		if (sector.slope_id != -1)
+			put_pixels(doom, index, x, y);
+		else
+			row_calculations(doom, doom->horizontal_plane_dist,\
+				index, doom->lib.tex_lib[tex_dex]);
 		y++;
 	}
 }
