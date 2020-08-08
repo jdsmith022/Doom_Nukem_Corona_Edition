@@ -2,10 +2,15 @@
 
 int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
-	if (movement.end.x >= sprite.lines[0].start.x &&\
-	movement.end.x <= sprite.lines[0].end.x &&\
-	movement.end.y >= sprite.lines[1].start.y &&\
-	movement.end.y <= sprite.lines[1].end.y)
+	int		value;
+
+	value = 0;
+	if (sprite.action == 7 || sprite.action == 9)
+		value = 15;
+	if (movement.end.x >= sprite.lines[0].start.x - value &&\
+	movement.end.x <= sprite.lines[0].end.x + value &&\
+	movement.end.y >= sprite.lines[1].start.y - value &&\
+	movement.end.y <= sprite.lines[1].end.y + value)
 		return (1);
 	else
 		return (-1);
@@ -28,15 +33,15 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			{
 				if (doom->lib.sprites[index].action == 7)
 					printf("YOU ENTER THE SCISSOR LIFT\n");
-				else if (doom->lib.sprites[index].action == 9)
-					printf("INCREASE CORONA LEVEL, SHOPPER %d\n", index);
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 				return (1);
 		}
 		if (doom->lib.sprites[index].distance < 50)
 		{
-			if (doom->lib.sprites[index].action == 4)
+			if (doom->lib.sprites[index].action == 9)
+				printf("INCREASE CORONA LEVEL, SHOPPER %d\n", index);
+			else if (doom->lib.sprites[index].action == 4)
 			{
 				printf("INCREASE CORONA LEVEL! thanks to sprite %d\n", index);
 				doom->lib.sprites[index].action = 6;
