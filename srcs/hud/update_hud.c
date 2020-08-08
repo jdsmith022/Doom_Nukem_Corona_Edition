@@ -60,7 +60,9 @@ void		update_hud(t_doom *doom)
 	{
 		draw_hud_top_bar(doom);
 		draw_hud_bottom_bar(doom);
-		update_hud_levels(doom);
+		calculate_hud_levels(doom);
+		update_hud_levels(doom, doom->lib.font_lib.hud_font);
+		// update_timer(doom);
 	}
 	font_to_screen(doom);
 }

@@ -26,6 +26,7 @@ void		init_hud(t_doom *doom)
 	doom->hud->facemask = FALSE;
 	doom->hud->health_pack = FALSE;
 	doom->hud->health_pack_plus = FALSE;
+	doom->hud->sanitizer_shooting = FALSE;
 	doom->hud->shopper = FALSE;
 	doom->hud->sanitizer_level = 100;
 	doom->hud->corona_level = 0;

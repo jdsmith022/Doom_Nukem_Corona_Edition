@@ -17,13 +17,17 @@ static void		update_hud_levels_2(t_doom *doom)
 	}
 }
 
-void		update_hud_levels(t_doom *doom)
+void		calculate_hud_levels(t_doom *doom)
 {
 	if (doom->hud->sanitizer == TRUE)
 	{
-		printf("sani\n");
-		doom->hud->sanitizer_level += 10;
+		doom->hud->sanitizer_level += 20;
 		doom->hud->sanitizer = FALSE;
+	}
+	else if (doom->hud->sanitizer_shooting == TRUE)
+	{
+		doom->hud->sanitizer_level -= 5;
+		doom->hud->sanitizer_shooting = FALSE;
 	}
 	else if (doom->hud->facemask == TRUE)
 	{
