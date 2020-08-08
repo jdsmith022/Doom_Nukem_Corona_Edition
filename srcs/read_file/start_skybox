@@ -16,7 +16,7 @@ assets/textures/outside/enter_here.bmp
 #number of sectors
 2
 #number of walls
-13
+15
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -74,9 +74,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs3
 1
-60
+70
 96
-30
+20
 96
 2
 7
@@ -86,7 +86,7 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs4
 -1
-30
+20
 96
 0
 96
@@ -131,7 +131,7 @@ assets/textures/outside/enter_here.bmp
 0
 0
 96
-10
+0
 0
 3
 3
@@ -154,7 +154,7 @@ assets/textures/outside/enter_here.bmp
 -1
 96
 96
-60
+70
 96
 0
 3
@@ -164,9 +164,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs3
 0
-60
+70
 96
-30
+20
 96
 0
 3
@@ -177,7 +177,7 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs4
 -1
-30
+20
 96
 0
 96

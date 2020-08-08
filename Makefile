@@ -25,13 +25,15 @@ HUD = srcs/hud/
 MENU = srcs/menu/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
-				exit moving_sidedef free_library libs_init is_running
-EVENTS_FILES = key_events mouse_movement move_position move_position2 mouse_press
+				exit moving_sidedef free_library libs_init
+EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press 
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
-				draw_floor_and_ceiling slope_projections put_texture\
+				draw_row slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
 				render_sky_box set_offsets draw_poster action light_floor_ceiling \
-				find_infection
+				draw_floor draw_ceiling set_floor_limit get_slope \
+				find_infection set_ceiling_limit set_properties_plane \
+				set_slope_bottom_plane
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type
@@ -47,7 +49,7 @@ DRAW_FILES = img vector
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font basket_font shopping_font \
 				start_menu_font setting_window_font
-HUD_FILES = update_hud
+HUD_FILES = update_hud calculate_hud_levels
 MENU_FILES = start_menu mouse_settings
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)

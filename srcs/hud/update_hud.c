@@ -1,9 +1,39 @@
 #include "../../includes/doom.h"
+#include "../../includes/hud.h"
 
-// static void		update_values(t_doom *doom)
-// {
+static void		update_hud_levels_2(t_doom *doom)
+{
+	if (doom->hud->health_pack_plus == TRUE)
+	{
+		doom->hud->health_pack_plus = FALSE;
+	}
+	else if (doom->hud->shopper == TRUE)
+	{
+		doom->hud->shopper = FALSE;
+	}
+	else if (doom->hud->corona == TRUE)
+	{
+		doom->hud->corona = FALSE;
+	}
+}
 
-// }
+static void		update_hud_levels(t_doom *doom)
+{
+	if (doom->hud->sanitizer == TRUE)
+	{
+		doom->hud->sanitizer = FALSE;
+	}
+	else if (doom->hud->facemask == TRUE)
+	{
+		doom->hud->facemask = FALSE;
+	}
+	else if (doom->hud->health_pack == TRUE)
+	{
+		doom->hud->health_pack = FALSE;
+	}
+	else
+		update_hud_levels_2(doom);
+}
 
 static void	draw_hud_top_bar(t_doom *doom)
 {
@@ -64,7 +94,8 @@ void		update_hud(t_doom *doom)
 	{
 		draw_hud_top_bar(doom);
 		draw_hud_bottom_bar(doom);
-		// update_values(doom);
+		update_hud_levels(doom);
+		calculate_hud_levels(doom);
 	}
 	font_to_screen(doom);
 }

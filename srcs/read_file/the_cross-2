@@ -3,7 +3,7 @@
 #texture library
 3
 assets/textures/shelves/wine.bmp
-assets/textures/floors_ceiling/ceiling96X96_clean.bmp
+assets/textures/floors_ceiling/floor_spots.bmp
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
 
 #object library
@@ -19,7 +19,7 @@ assets/sprites/groceries/water.bmp
 #number of sectors
 6
 #number of walls
-28
+27
 #number of objects
 0
 
@@ -28,10 +28,13 @@ assets/sprites/groceries/water.bmp
 0
 1
 0
+-1
 0
 2
 0
+-1
 4
+0
 0
 0
 
@@ -83,18 +86,18 @@ assets/sprites/groceries/water.bmp
 0
 3
 
-#objs in sector
-0
-
 #sector[1]
 10
 0
 1
 0
+-1
 0
 2
 0
+-1
 4
+0
 1
 0
 
@@ -146,18 +149,18 @@ assets/sprites/groceries/water.bmp
 0
 7
 
-#objs in sector
-0
-
 #sector[2]
 10
-0
+20
 1
 0
-0
+-1
+-20
 2
 0
+-1
 4
+0
 2
 0
 
@@ -209,18 +212,18 @@ assets/sprites/groceries/water.bmp
 0
 11
 
-#objs in sector
-0
-
 #sector[3]
 10
 0
 1
 0
+-1
 0
 2
 0
+-1
 4
+0
 3
 0
 
@@ -272,18 +275,18 @@ assets/sprites/groceries/water.bmp
 0
 15
 
-#objs in sector
-0
-
 #sector[4]
 10
 0
 1
 0
-0
+-1
+10
 2
 0
+-1
 8
+0
 4
 0
 
@@ -383,18 +386,18 @@ assets/sprites/groceries/water.bmp
 0
 23
 
-#objs in sector
-0
-
 #sector[5]
 10
-10
+20
 0
-0
+4
+25
 0
 2
 0
+-1
 4
+0
 5
 0
 
@@ -445,9 +448,6 @@ assets/sprites/groceries/water.bmp
 0
 0
 27
-
-#objs in sector
-0
 
 #moving objects
 0

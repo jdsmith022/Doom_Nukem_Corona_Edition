@@ -17,10 +17,10 @@ int	main(void)
 	save_libraries(&doom);
 	// printf("before save font\n");
 	save_font_libraries(&doom);
-	// printf("before doom init\n");
+	// printf("everything saved\n");
 	doom_init(&doom);
 	doom_start(&doom);
-	// printf("before game loop\n");
+	// printf("begin game loop\n");
 	game_loop(&doom);
 	return (0);
 }

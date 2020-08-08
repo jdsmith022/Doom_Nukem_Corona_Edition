@@ -28,9 +28,6 @@ static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
 		tex_dex = sidedef.txt_2;
 	else if (pixel.y <= plane.mid_texture_top)
 		tex_dex = sidedef.txt_1;
-	// else if (pixel.y > plane.mid_texture_top &&\
-	// pixel.y < plane.mid_texture_bottom)
-	// 	tex_dex = sidedef.txt_2;
 	else if (pixel.y >= plane.mid_texture_bottom)
 		tex_dex = sidedef.txt_3;
 	return (tex_dex);
