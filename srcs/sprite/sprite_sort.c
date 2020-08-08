@@ -8,17 +8,14 @@ void		init_sprite_order_array(t_sprite *sprite, int *order,\
 
 	i = 0;
 	x = 0;
-	printf("\n");
 	while (i < visible_sprites)
 	{
 		while (sprite[x].visible == -1 && x < total_sprites)
 			x++;
 		order[i] = x;
-		printf("%d ", order[i]);
 		x++;
 		i++;
 	}
-	printf("\n");
 }
 
 void		sort_sprites(t_sprite *sprite, int *sprite_order, int total)

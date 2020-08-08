@@ -26,7 +26,7 @@ assets/sprites/scissor_lift/scissor_lift.bmp
 assets/sprites/scissor_lift/scissor_lift_side.bmp
 assets/sprites/shoppers/shopper_front.bmp
 assets/sprites/shoppers/shopper_side_left.bmp
-assets/sprites/shoppers/shopper_right_side.bmp
+assets/sprites/shoppers/shopper_side_right.bmp
 assets/sprites/shoppers/shopper_back.bmp
 
 #number of sectors
@@ -188,6 +188,7 @@ assets/sprites/shoppers/shopper_back.bmp
 50
 0
 8
+0
 4
 0
 46

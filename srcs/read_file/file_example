@@ -35,6 +35,7 @@ action flag
 texture number/name(3)
 sidedef id
 
+#sprite
 index
 vector location(x,y)
 action
