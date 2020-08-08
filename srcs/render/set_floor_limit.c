@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-int		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
+void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
 			t_sector *sector)
 {
 	double	height_floor;
@@ -9,17 +9,20 @@ int		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
 	int		plane_bottom;
 
 	if (doom->i_sector == sector->id)
-		return (HEIGHT);
-	new_height = (HEIGHT / 2) + doom->player_height;
-	plane_height_std = doom->texture_height / sidedef.prev_sidedef.distance\
-		* doom->dist_to_plane;
-	plane_height_std = plane_height_std / 2;
-	height_floor = (sector->height_floor)\
-		/ sidedef.prev_sidedef.distance * doom->dist_to_plane;
-	plane_bottom = (new_height + plane_height_std) - \
-		doom->own_event.y_pitch - height_floor;
-	plane_bottom = ((plane_bottom < HEIGHT ? plane_bottom : (HEIGHT)));
-	if (plane_bottom <= plane->sidedef_bottom)
-		plane_bottom = HEIGHT;
-	return (plane_bottom);
+		sector->floor_end = HEIGHT;
+	else
+	{
+		new_height = (HEIGHT / 2) + doom->player_height;
+		plane_height_std = doom->texture_height / sidedef.prev_sidedef.distance\
+			* doom->dist_to_plane;
+		plane_height_std = plane_height_std / 2;
+		height_floor = (sector->height_floor)\
+			/ sidedef.prev_sidedef.distance * doom->dist_to_plane;
+		plane_bottom = (new_height + plane_height_std) - \
+			doom->own_event.y_pitch - height_floor;
+		plane_bottom = ((plane_bottom < HEIGHT ? plane_bottom : (HEIGHT)));
+		if (plane_bottom <= plane->sidedef_bottom)
+			plane_bottom = HEIGHT;
+		sector->floor_end = plane_bottom;
+	}
 }

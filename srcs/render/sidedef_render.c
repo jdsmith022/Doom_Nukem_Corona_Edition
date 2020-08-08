@@ -1,27 +1,5 @@
 #include "../../includes/doom.h"
 
-void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
-						t_point intersect, t_doom *doom)
-{
-	t_point start;
-	t_point end;
-	Uint8	diff;
-
-	start = curr_sidedef.line.start;
-	end = curr_sidedef.line.end;
-	diff = find_slope_line_offset(start, end);
-	if (start.x == end.x || diff == 1)
-	{
-		sidedef->offset = ft_rounder(intersect.y) % doom->texture_width;
-		sidedef->dir = 0;
-	}
-	else if (start.y == end.y || diff == 2)
-	{
-		sidedef->offset = ft_rounder(intersect.x) % doom->texture_width;
-		sidedef->dir = 1;
-	}
-}
-
 t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
 {

@@ -80,7 +80,7 @@ void			set_slope_bottom_values(t_doom *doom, t_sidedef sidedef,\
 	set_sector_plane(doom, distance, sidedef, sector);
 }
 
-t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+static t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	t_sector *sector)
 {
 	t_slope		slope;
@@ -111,4 +111,23 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.distance *= cos(doom->ray_adjacent * sidedef.intersect.x - FOV / 2);
 	slope.height = tan(sector->slope_floor) * slope.distance;
 	return (slope);
+}
+
+void		slope_plane_settings(t_doom *doom, t_sidedef sidedef,
+					t_sector *sector, int flag)
+{
+	if (flag == 1 && (sector->slope_floor_id != -1 || \
+	sector->slope_ceiling_id != -1))
+	{
+		sector->slope = set_properties_slope(doom, sidedef, sector);
+		sector->height_floor += sector->slope.height;
+	}
+	if (flag == 0 && (sector->slope_floor_id != -1 || \
+	sector->slope_ceiling_id != -1))
+	{
+		sector->slope = set_properties_slope(doom, sidedef, sector);
+		if (doom->i_sector != sector->id)
+			set_slope_bottom_values(doom, sidedef, sector);
+		sector->height_floor += sector->slope.height;
+	}
 }

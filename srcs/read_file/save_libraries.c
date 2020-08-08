@@ -30,7 +30,7 @@ void		save_libraries(t_doom *doom)
 	// if (argc != 1)
 	//     error("Please compile program in this fashion: ./duke_nukem", 0);
 	modified();
-	fd = open_file("srcs/read_file/new_level_sprite");
+	fd = open_file("srcs/read_file/the_cross-2");
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
 	doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
