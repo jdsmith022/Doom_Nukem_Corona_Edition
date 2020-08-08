@@ -393,37 +393,37 @@ assets/sprites/groceries/toiletpaper.bmp
 
 
 
-
+#scissor lifts and shoppers need a bigger area 40 by 40
 #object0 in sector 2 scissor lift
 7
 450
 150
-6
+7
 64
 1
 4
 7
-445
-145
-455
-145
+440
+140
+460
+140
 8
-455
-145
-455
-155
+460
+140
+460
+160
 7
-455
-155
-445
-155
+460
+160
+440
+160
 8
-445
-155
-445
-145
+440
+160
+440
+140
 
-#object1 in sector 2 virus
+#object1 in sector 2 virus green
 18
 330
 160
@@ -525,7 +525,7 @@ assets/sprites/groceries/toiletpaper.bmp
 9
 450
 350
-8
+9
 48
 1
 4
@@ -791,9 +791,9 @@ assets/sprites/groceries/toiletpaper.bmp
 22
 815
 230
-7
-16
 0
+16
+1
 4
 22
 810
@@ -821,9 +821,9 @@ assets/sprites/groceries/toiletpaper.bmp
 22
 825
 230
-7
-16
 0
+16
+1
 4
 22
 820
@@ -851,9 +851,9 @@ assets/sprites/groceries/toiletpaper.bmp
 22
 835
 230
-7
-16
 0
+16
+1
 4
 22
 830
@@ -880,9 +880,9 @@ assets/sprites/groceries/toiletpaper.bmp
 0
 825
 260
-7
-16
 0
+16
+1
 4
 0
 820
@@ -909,9 +909,9 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 825
 290
-7
-16
 0
+16
+1
 4
 1
 820
@@ -939,9 +939,9 @@ assets/sprites/groceries/toiletpaper.bmp
 24
 825
 310
-7
-16
 0
+16
+1
 4
 24
 820
@@ -968,9 +968,9 @@ assets/sprites/groceries/toiletpaper.bmp
 23
 825
 340
-7
-16
 0
+16
+1
 4
 23
 820
@@ -997,9 +997,9 @@ assets/sprites/groceries/toiletpaper.bmp
 25
 825
 370
-7
-16
 0
+16
+1
 4
 25
 820
@@ -1026,9 +1026,9 @@ assets/sprites/groceries/toiletpaper.bmp
 26
 825
 400
-7
-16
 0
+16
+1
 4
 3
 820
@@ -1055,9 +1055,9 @@ assets/sprites/groceries/toiletpaper.bmp
 27
 825
 430
-7
-16
 0
+16
+1
 4
 27
 820
@@ -1085,9 +1085,9 @@ assets/sprites/groceries/toiletpaper.bmp
 5
 825
 460
-7
-32
 0
+32
+1
 4
 5
 820
@@ -1114,9 +1114,9 @@ assets/sprites/groceries/toiletpaper.bmp
 2
 825
 490
-7
-16
 0
+16
+1
 4
 2
 820
@@ -1143,9 +1143,9 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 825
 520
-7
-16
 0
+16
+1
 4
 3
 820

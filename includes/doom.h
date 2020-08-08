@@ -101,7 +101,7 @@ typedef struct			s_sprite {
 	double				height;
 	double				sprite_x;		//x cord translated to viewer space
 	double				sprite_y;		//y cord translated to viewer space
-	int					visible;
+	int					visible;		//this is only turned on for the drawing... can't use it for other options
 	double				distance;
 	int					face;
 	int					prev_sectors[50];	//where to empty them again?
@@ -439,6 +439,7 @@ void				draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, i
 void				sprite_reset(t_doom *doom);
 void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite);
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
+int					sprite_collision(t_doom *doom, t_line movement);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

@@ -79,7 +79,9 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	doom->lib.sprites[sprite_i].angle = ray.angle;
 	while (i < doom->lib.sector[sector].n_objects)
 	{
-		if (doom->lib.sprites[sprite_i].visible == -1)
+		if (doom->lib.sprites[sprite_i].visible == -1 &&\
+		doom->lib.sprites[sprite_i].action != 6 &&\
+		doom->lib.sprites[sprite_i].action != 8)
 			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
 		i++;
 		sprite_i++;

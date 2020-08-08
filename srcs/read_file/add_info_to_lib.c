@@ -102,7 +102,7 @@ void	create_object(t_lib *col_lib, int fd, int i, int total_sprites)
 	col_lib->sector[i].i_objects = obj_int;
 	j = 0;
 
-	printf("n_objects: %d\n", col_lib->sector[i].n_objects);
+	// printf("n_objects: %d\n", col_lib->sector[i].n_objects);
 	while (j < col_lib->sector[i].n_objects)
 	{
 		col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
@@ -129,7 +129,6 @@ void	add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd)
 		//check this is correct when objs is available
 		i++;
 	}
-	printf("after while aitl\n");
 	j = 0;
 	get_line(&line, fd, "the moving object number can not be read", 1);
 	col_lib->n_mov_sprites = ft_atoi(line);
