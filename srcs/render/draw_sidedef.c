@@ -28,9 +28,6 @@ static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
 		tex_dex = sidedef.txt_2;
 	else if (pixel.y <= plane.mid_texture_top)
 		tex_dex = sidedef.txt_1;
-	// else if (pixel.y > plane.mid_texture_top &&\
-	// pixel.y < plane.mid_texture_bottom)
-	// 	tex_dex = sidedef.txt_2;
 	else if (pixel.y >= plane.mid_texture_bottom)
 		tex_dex = sidedef.txt_3;
 	return (tex_dex);
@@ -50,10 +47,8 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
 		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
-	// printf("tex: %d -- %f -- text height: %d --- plane height: %f -- wallofset: %d --- top: %d\n", tex_dex, sidedef.offset, doom->texture_height, plane.height_standard, plane.wall_offset, plane.sidedef_top);
 	if (wall_y > doom->texture_height)
 		wall_y -= doom->texture_height;
-	// printf("wall_y: %f\n", wall_y);
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));

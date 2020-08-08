@@ -178,8 +178,8 @@ void 	doom_init(t_doom *doom)
 	// set_lines(doom->sidedef);
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	doom->pos.x = 400;
-	doom->pos.y = 20;
+	// doom->pos.x = 400;
+	// doom->pos.y = 20;
 	doom->max_ray = 10000;
 	doom->dir_angle = 90;
 	doom->i_sector = 0;

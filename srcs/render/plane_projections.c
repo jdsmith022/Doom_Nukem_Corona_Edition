@@ -20,10 +20,6 @@ static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 	(sector->slope_ceiling_id != -1 && sector->slope.prev_ceiling_id != -1))
 		sector->slope.delta_height = \
 			set_slope_delta(doom, sector, plane->sidedef_bottom);
-	doom->lib.sector[sidedef.sector].sidedef_bottom[sector->plane_x] = \
-		plane->sidedef_bottom;
-	doom->lib.sector[sidedef.sector].sidedef_top[sector->plane_x] = \
-		plane->sidedef_top;
 }
 
 void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
@@ -66,6 +62,8 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
 	if (!sector.outside)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
+	doom->lib.sector[sidedef.sector].sidedef_bottom[x] = plane.sidedef_bottom;
+	doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
 	if (sidedef.poster != -1)
 		draw_poster(doom, plane, sidedef, x);
 }
