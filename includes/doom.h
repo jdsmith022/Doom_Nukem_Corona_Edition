@@ -54,26 +54,26 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
-#pragma pack(push, 1)
+# pragma pack(push, 1)
 
-typedef struct 			t_rgb {
+typedef struct			s_rgb {
 	char				r;
 	char				g;
 	char				b;
 }						t_rgb;
 
-#pragma pack(pop)
+# pragma pack(pop)
+
+typedef struct			s_rgb_d {
+	double				r;
+	double				g;
+	double				b;
+}						t_rgb_d;
 
 typedef struct			s_coord {
 	uint16_t			x;
 	uint16_t			y;
 }						t_coord;
-
-typedef struct			s_hsv{
-	double				r;
-	double				g;
-	double				b;
-}						t_hsv;
 
 typedef struct			s_point {
 	double				x;
@@ -115,8 +115,12 @@ typedef struct		s_ray {
 }					t_ray;
 
 typedef struct		s_event {
-	int				mouse_press;
+	bool			mouse_press;
 	bool			mouse_state_switched;
+	bool			jump;
+	bool			bend;
+	bool			select;
+	bool			shoot;
 	int				hold_angle;
 	int				hold_x;
 	int				hold_y;
@@ -126,10 +130,6 @@ typedef struct		s_event {
 	int				cam_move_r;
 	int				floor_diff;
 	int				step_down;
-	int				jump;
-	int				bend;
-	int				select;
-	int				shoot;
 	double			velocity;
 	int				y_pitch;
 }					t_event;

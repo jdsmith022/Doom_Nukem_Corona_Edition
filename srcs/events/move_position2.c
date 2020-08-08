@@ -5,7 +5,7 @@ void	bend_down(t_doom *doom)
 	int		og_height;
 
 	og_height = 100 + doom->lib.sector[doom->i_sector].height_floor;
-	if (doom->player_height >= 0 && doom->own_event.bend == 1)
+	if (doom->player_height >= 0 && doom->own_event.bend == TRUE)
 		doom->player_height -= 20;
 	else if (doom->player_height < og_height && doom->own_event.bend == FALSE)
 		doom->player_height += 20;
@@ -62,7 +62,7 @@ int		check_floor_diff(t_doom *doom, int sector, int next_sector)
 	doom->own_event.floor_diff = next_floor_height - floor_height;
 	if (doom->own_event.floor_diff < 0)
 		doom->own_event.step_down = TRUE;
-	if (doom->own_event.floor_diff > 0 && doom->own_event.jump == 0)
+	if (doom->own_event.floor_diff > 0 && doom->own_event.jump == FALSE)
 		too_high = TRUE;
 	return (too_high);
 }
