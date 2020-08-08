@@ -19,7 +19,7 @@ void		set_ceiling_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
 		height_ceiling = (sector->height_ceiling) / \
 			sidedef.prev_sidedef.distance * doom->dist_to_plane;
 		plane_top = (new_height - plane_height_std) - \
-			doom->own_event.y_pitch - height_ceiling;
+			doom->own_event.y_pitch - height_ceiling - 1;
 		if (plane_top < 0)
 			plane_top = 0;
 		sector->ceiling_end = plane_top;

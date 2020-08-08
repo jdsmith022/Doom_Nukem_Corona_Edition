@@ -19,7 +19,7 @@ void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
 		height_floor = (sector->height_floor)\
 			/ sidedef.prev_sidedef.distance * doom->dist_to_plane;
 		plane_bottom = (new_height + plane_height_std) - \
-			doom->own_event.y_pitch - height_floor;
+			doom->own_event.y_pitch - height_floor + 1;
 		plane_bottom = ((plane_bottom < HEIGHT ? plane_bottom : (HEIGHT)));
 		if (plane_bottom <= plane->sidedef_bottom)
 			plane_bottom = HEIGHT;
