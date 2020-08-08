@@ -19,8 +19,8 @@ void		init_hud(t_doom *doom)
 	doom->hud = (t_hud*)ft_memalloc(sizeof(t_hud));
 	if (doom->hud == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
-	doom->hud->sanitizer = 100;
-	doom->hud->corona = 0;
+	doom->hud->sanitizer_level = 100;
+	doom->hud->corona_level = 0;
 	time = time / doom->difficulty;
 	doom->hud->time = time;
 }

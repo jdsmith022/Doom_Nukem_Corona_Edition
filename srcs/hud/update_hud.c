@@ -23,7 +23,7 @@ static void		update_hud_levels(t_doom *doom)
 	{
 		doom->hud->sanitizer = FALSE;
 	}
-	else if (doom->hud->facemask== TRUE)
+	else if (doom->hud->facemask == TRUE)
 	{
 		doom->hud->facemask = FALSE;
 	}

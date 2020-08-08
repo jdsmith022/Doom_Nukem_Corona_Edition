@@ -13,6 +13,8 @@ typedef struct	s_hud
 	bool		corona;
 	bool		start;
 	int			time;
+	Uint32		corona_level;
+	Uint32		sanitizer_level;
 }				t_hud;
 
 void			update_hud(t_doom *doom);
