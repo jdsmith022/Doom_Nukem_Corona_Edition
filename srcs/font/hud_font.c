@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/08 18:38:05 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/08 18:39:13 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 static void	set_levels(t_doom *doom, t_font *lib)
 {
-
 	lib[4].str = "0%";
 	lib[4].font_rect.x = 175;
 	lib[4].font_rect.y = HEIGHT - 35;
