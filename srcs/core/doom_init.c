@@ -32,6 +32,7 @@ static void		init_player(t_doom *doom)
 	doom->player_height = 48;
 	doom->player_width = 48;
 	doom->player_std_height = 48;
+	doom->difficulty = 1;
 }
 
 static void		init_settings(t_doom *doom)
@@ -57,7 +58,6 @@ void			doom_init(t_doom *doom)
 	doom_init_events(&doom->own_event);
 	if (doom->audio->engine)
 		load_audio(doom->audio);
-	doom->difficulty = 1;
 	// set_lines(doom->sidedef);
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);

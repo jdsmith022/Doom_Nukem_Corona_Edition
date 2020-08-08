@@ -21,6 +21,6 @@ void		init_hud(t_doom *doom)
 		doom_exit_failure(doom, MALLOC_ERR);
 	doom->hud->sanitizer = 100;
 	doom->hud->corona = 0;
-	time /= doom->difficulty;
+	time = time / doom->difficulty;
 	doom->hud->time = time;
 }
