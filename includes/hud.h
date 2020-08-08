@@ -5,14 +5,14 @@ typedef	struct s_doom	t_doom;
 
 typedef struct	s_hud
 {
-	int			sanitizer;
-	int			facemask;
-	int			health_pack;
-	int			health_pack_plus;
-	int			shopper;
-	int			corona;
-	int			time;
+	bool		sanitizer;
+	bool		facemask;
+	bool		health_pack;
+	bool		health_pack_plus;
+	bool		shopper;
+	bool		corona;
 	bool		start;
+	int			time;
 }				t_hud;
 
 void		update_hud(t_doom *doom);
