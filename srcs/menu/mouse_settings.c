@@ -11,10 +11,10 @@ static void		setting_game_over_click_event(t_doom *doom, SDL_Rect rect)
 	if (x >= (rect.x) && x <= (rect.x + 200) && \
 	y >= (rect.y) && y <= (rect.y + 25))
 	{
-		doom->menu->game_over = FALSE;
+		doom->menu->retry = TRUE;
+		// doom_exit_success(doom);
+		game_init();
 	}
-	doom->own_event.hold_x = 0;
-	doom->own_event.hold_y = 0;
 }
 
 static void		setting_menu_click_event(t_doom *doom, SDL_Rect rect)
@@ -63,7 +63,7 @@ static void		mouse_handler(t_doom *doom)
 	SDL_Rect	rect2;
 	SDL_Rect	rect3;
 
-	if (doom->menu->settings == FALSE)
+	if (doom->menu->menu == TRUE)
 	{
 		rect1 = doom->lib.font_lib.start_menu_font[2].font_rect;
 		rect2 = doom->lib.font_lib.start_menu_font[3].font_rect;

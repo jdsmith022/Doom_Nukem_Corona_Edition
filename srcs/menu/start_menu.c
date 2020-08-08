@@ -1,7 +1,8 @@
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
+#include "../../includes/font.h"
 
-void		doom_start(t_doom *doom)
+void		doom_start(t_doom *doom) // add difficulty
 {
 	while (doom->menu->menu == TRUE)
 	{
@@ -13,5 +14,6 @@ void		doom_start(t_doom *doom)
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
+	doom->lib.font_lib.instruction = TRUE;
 	doom->own_event.select = FALSE;
 }

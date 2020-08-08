@@ -94,14 +94,13 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 				min_distance = distance;
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
-				if (doom->lib.sidedef[x].action == 2)
+				if (doom->lib.sector.action == 2)//wrong
 					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
 			near_sidedef.poster = save_poster;
 		}
 		x++;
 	}
-	// printf("sr: before stripe_distance\n");
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
 	// printf("sr: befre sprite_check\n");
 	sprite_check(doom, ray, sector, prev_sector);

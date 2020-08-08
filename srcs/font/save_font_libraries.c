@@ -10,4 +10,5 @@ void	save_font_libraries(t_doom *doom)
 	save_start_menu_font(doom, &doom->lib.font_lib.start_font_len);
 	save_setting_window_font(doom, &doom->lib.font_lib.setting_font_len);
 	save_game_over_font(doom, &doom->lib.font_lib.game_font_len);
+	save_instruction_font(doom, &doom->lib.font_lib.instruction_font_len);
 }

@@ -9,6 +9,7 @@ typedef struct			s_menu {
 	bool				game_over;
 	bool				game_editor;
 	bool				settings;
+	bool				retry;
 }						t_menu;
 
 void					doom_start(t_doom *doom);

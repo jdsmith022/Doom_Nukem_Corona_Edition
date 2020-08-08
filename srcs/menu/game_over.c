@@ -4,11 +4,11 @@
 
 void		check_corona_level(t_doom *doom)
 {
-	if (doom->hud->corona_level >= 100 && doom->menu->game_over == FALSE)
+	if (doom->hud->corona_level >= 100)
 		doom->menu->game_over = TRUE;
 	while (doom->menu->game_over == TRUE)
 	{
-		doom->hud = FALSE;
+		doom->huds = FALSE;
 		SDL_SetRelativeMouseMode(SDL_FALSE);
 		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
 		SDL_SetCursor(doom->cursor);

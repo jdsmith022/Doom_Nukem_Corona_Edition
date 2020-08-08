@@ -5,16 +5,17 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 {
 	SDL_Rect	font_rect;
 
+	lib[0].len = len;
 	lib[0].str = "GAME OVER!";
-	lib[0].font_rect.x = WIDTH / 2.75;
+	lib[0].font_rect.x = WIDTH / 2.65;
 	lib[0].font_rect.y = 200;
 	lib[0].font_color = doom->lib.font_lib.font_color.green;
 	lib[1].str = "Time to self-quarantine";
-	lib[1].font_rect.x = WIDTH / 2.42;
+	lib[1].font_rect.x = WIDTH / 3.4;
 	lib[1].font_rect.y = 275;
 	lib[1].font_color = doom->lib.font_lib.font_color.green;
 	lib[2].str = "Retry";
-	lib[2].font_rect.x = WIDTH / 2.41;
+	lib[2].font_rect.x = WIDTH / 2.2;
 	lib[2].font_rect.y = 425;
 	lib[2].font_color = doom->lib.font_lib.font_color.green;
 	lib[3].str = "Press ESC to exit";

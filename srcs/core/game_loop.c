@@ -43,6 +43,7 @@ void				game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			// timer(doom);
+			// font_timer(doom);
 			sprite_reset(doom);
 			doom_render(doom);
 			audio(doom->audio, &doom->own_event);

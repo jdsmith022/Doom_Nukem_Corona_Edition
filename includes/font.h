@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/08 19:18:24 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/08 22:31:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,16 @@ typedef struct		s_font_lib
 	int				shopping_font_len;
 	t_font			*game_over_font;
 	int				game_font_len;
+	t_font			*instruction_font;
+	int				instruction_font_len;
+	bool			instruction;
+	double			timer;
 }					t_font_lib;
 
 /*font functions*/
 void				save_font(t_doom *doom, int *len);
 void				font_to_screen(t_doom *doom);
+void				draw_font(t_doom *doom, t_font *font_lib, uint8_t len);
 void				save_font_libraries(t_doom *doom);
 void				set_font_colors(t_doom *doom);
 void				font_to_sdl(t_doom *doom, t_font *lib, \
@@ -67,5 +72,6 @@ void				save_hud_font(t_doom *doom, int *len);
 void				save_start_menu_font(t_doom *doom, int *len);
 void				save_setting_window_font(t_doom *doom, int *len);
 void				save_game_over_font(t_doom *doom, int *len);
+void				save_instruction_font(t_doom *doom, int *len);
 
 #endif

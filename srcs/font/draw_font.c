@@ -6,14 +6,14 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/08 19:47:00 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/08 22:27:30 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
-static void	draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
+void	draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 {
 	Uint32	index;
 	int		ret;
@@ -21,7 +21,6 @@ static void	draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 	index = 0;
 	while (index < len)
 	{
-		printf("%s\n", font_lib[index].str);
 		ret = SDL_BlitSurface(font_lib[index].font_surface, NULL,\
 			doom->surface, &font_lib[index].font_rect);
 		if (ret == -1)
@@ -29,25 +28,6 @@ static void	draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 		index++;
 	}
 }
-
-// static void	font_to_screen_2(t_doom *doom)
-// {
-// 	t_font	*font_lib;
-// 	uint8_t	len;
-
-// 	if (doom->shopping == TRUE)
-// 	{
-// 		font_lib = doom->lib.font_lib.shopping_font;
-// 		len = doom->lib.font_lib.shopping_font_len;
-// 		draw_font(doom, font_lib, len);
-// 	}
-// 	if (doom->basket == TRUE)
-// 	{
-// 		font_lib = doom->lib.font_lib.basket_font;
-// 		len = doom->lib.font_lib.basket_font_len;
-// 		draw_font(doom, font_lib, len);
-// 	}
-// }
 
 void		font_to_screen(t_doom *doom)
 {
@@ -76,7 +56,6 @@ void		font_to_screen(t_doom *doom)
 	}
 	else if (doom->menu->game_over == TRUE)
 	{
-		printf("here\n");
 		font_lib = doom->lib.font_lib.game_over_font;
 		len = doom->lib.font_lib.game_font_len;
 	}
