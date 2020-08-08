@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/hud.h"
 
 int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
@@ -40,14 +41,19 @@ int			sprite_collision(t_doom *doom, t_line movement)
 		if (doom->lib.sprites[index].distance < 50)
 		{
 			if (doom->lib.sprites[index].action == 9)
+			{
+				doom->hud->shopper = TRUE;
 				printf("INCREASE CORONA LEVEL, SHOPPER %d\n", index);
+			}
 			else if (doom->lib.sprites[index].action == 4)
 			{
+				doom->hud->corona = TRUE;
 				printf("INCREASE CORONA LEVEL! thanks to sprite %d\n", index);
 				doom->lib.sprites[index].action = 6;
 			}
 			else if (doom->lib.sprites[index].action == 1)
 			{
+				doom->hud->health_pack = TRUE;
 				printf("You've found a health pack plus!\n\
 				Decrease Corona level with insane amount\n\
 				Set action flag to 8 == inactive health sprite\n");
@@ -55,6 +61,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			}
 			else if (doom->lib.sprites[index].action == 2)
 			{
+				doom->hud->health_pack = TRUE;
 				printf("You've found a health pack!\n\
 				Decrease Corona level with moderate amount\n\
 				Set action flag to 8 == inactive health sprite\n");
@@ -62,6 +69,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			}
 			else if (doom->lib.sprites[index].action == 3)
 			{
+				doom->hud->facemask = TRUE;
 				printf("You've found a face mask!\n\
 				Decrease Corona level with just a lil bit\n\
 				Set action flag to 8 == inactive health sprite\n");
