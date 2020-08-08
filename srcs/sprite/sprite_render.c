@@ -1,7 +1,8 @@
 #include "../../includes/doom.h"
 
 /*
-**	Some sectors get ignored when there is a corner and the sprite is quite wide.
+**	Some sectors get ignored when there is a corner and the sprite is
+**	quite wide.
 **	Solution is sending out another ray at the end of the sprite
 */
 
@@ -117,7 +118,5 @@ void		sprite_render(t_doom *doom)
 
 	sprite_order = sort_sprite_array(doom->lib.sprites,\
 	doom->visible_sprites, doom->total_sprites);
-	// printf("after sprite_order\n");
 	draw_sprite(doom, sprite_order);
-	// printf("after draw_Sprite\n");
 }

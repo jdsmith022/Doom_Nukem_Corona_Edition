@@ -89,10 +89,10 @@ typedef struct			s_sprite {
 	int					index;			//start index
 	int					amount;			//which side is viewed how many textures does the sprite have?
 	t_point				pos;
-	double				size;			//small: 8, medium: 12, large: 18
+	double				size;			//products: 16, shopper: 48
 	t_line				*lines;
 	double				angle;			//GEBRUIK IK NIET what is the angle on the map
-	int					action;
+	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 scissor lift, 7 groceries?, 8 hopper
 	int					*textures;		//index to texture, +0, +1, +2 or +3
 	int					block;			//can the player walk through it or not
 	int					sector;

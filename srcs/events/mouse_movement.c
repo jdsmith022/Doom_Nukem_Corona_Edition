@@ -47,7 +47,7 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 {
 	SDL_GetMouseState(&doom->own_event.hold_x, &doom->own_event.hold_y);
 	if (event->select == TRUE && event->shoot == FALSE)
-	{;
+	{
 		SDL_SetRelativeMouseMode(SDL_FALSE);
 		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
 		SDL_SetCursor(doom->cursor);
