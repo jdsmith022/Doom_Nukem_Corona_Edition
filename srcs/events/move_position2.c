@@ -36,7 +36,8 @@ void	jump_player(t_doom *doom, double dt)
 
 	doom->own_event.jump = 1;
 	duration += dt;
-	og_height = doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor;
+	og_height = \
+		doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor;
 	jumpheight = (int)(doom->own_event.velocity * duration);
 	doom->player_height += jumpheight;
 	doom->own_event.velocity += GRAVITY * duration;

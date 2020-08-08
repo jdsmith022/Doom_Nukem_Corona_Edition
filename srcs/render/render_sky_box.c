@@ -29,7 +29,7 @@ static void			set_properties(t_doom *doom, int set)
 		doom->dir_angle *= PI / 180;
 	if (set == 0)
 	{
-		doom->texture_width = 130;
+		doom->texture_width = 128;
 		doom->texture_height = 64;
 		doom->player_std_height = 32;
 	}
@@ -86,11 +86,6 @@ void			sidedef_render_skybox(t_doom *doom, t_ray ray,
 	set_ray(&ray, doom);
 	min_distance = find_min_distance(doom, ray, sky_sd, &plane);
 	set_properties_plane_sky(doom, &plane, ray.plane_x, min_distance);
-	// if (plane.floor_start != 0 && plane.ceiling_start != 0)
-	// {
-	// 	plane.sidedef_bottom = plane.floor_start;
-	// 	plane.sidedef_top = plane.ceiling_start;
-	// }
 	draw_sky(doom, ray.plane_x, plane.sidedef_top);
 	find_skybox_sidedef_texture(doom, ray.plane_x, plane);
 	draw_ground(doom, ray.plane_x, plane.sidedef_bottom);

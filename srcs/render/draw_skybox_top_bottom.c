@@ -70,7 +70,7 @@ void			draw_sky(t_doom *doom, int x, int y)
 	tex_dex = 0;
 	bpp = doom->surface->format->BytesPerPixel;
 	height = (HEIGHT + doom->player_height) / 2;
-	while (y >= 0)
+	while (y > 0)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = doom->player_std_height /\

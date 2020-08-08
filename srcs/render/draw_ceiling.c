@@ -15,7 +15,8 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 
 static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 {
-	if (doom->lib.sector[doom->prev_sector].outside)
+	if (doom->lib.sector[doom->prev_sector].outside \
+	&& doom->lib.sector[doom->i_sector].outside)
 		*limit = doom->lib.portal_ceiling;
 	else
 		*limit = sector.ceiling_end;
@@ -33,7 +34,7 @@ void			draw_ceiling(t_doom *doom, int x,
 	tex_dex = sector.txt_ceiling;
 	bpp = doom->surface->format->BytesPerPixel;
 	find_ceiling_limit(doom, sector, &limit);
-	while (y >= limit)
+	while (y > limit)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		calculate_ceiling_dist(doom, x, y, sector);

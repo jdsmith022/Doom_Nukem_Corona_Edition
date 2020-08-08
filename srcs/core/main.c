@@ -15,8 +15,10 @@ int	main(void)
 		doom_exit_failure(&doom, "unable to initialize SDL\n");
 	save_libraries(&doom);
 	save_font_libraries(&doom);
+	printf("everything sabed\n");
 	doom_init(&doom);
 	doom_start(&doom);
+	printf("begin game loop\n");
 	game_loop(&doom);
 	return (0);
 }

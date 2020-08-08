@@ -25,25 +25,20 @@ static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 					t_plane *plane, t_sector *sector)
 {
+	int x;
+
+	x = sector->plane_x;
 	ft_bzero(plane, sizeof(plane));
 	ft_bzero(&sector->slope, sizeof(sector->slope));
+	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	sidedef.prev_sidedef.distance *= \
+		cos(doom->ray_adjacent * x - FOV / 2);
+	*sector = doom->lib.sector[sidedef.sector];
+	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 	set_floor_limit(doom, plane, sidedef, sector);
 	set_ceiling_limit(doom, plane, sidedef, sector);
 	set_sector_properties(doom, sidedef, sector, plane);
-}
-
-static void			set_distance_and_intersect(t_doom *doom, t_sector *sector,
-						t_sidedef *sidedef, t_plane *plane)
-{
-	int x;
-
-	x = sector->plane_x;
-	*sector = doom->lib.sector[sidedef->sector];
-	plane->intersect = sidedef->intersect;
-	sidedef->distance *= cos(doom->ray_adjacent * x - FOV / 2);
-	sidedef->prev_sidedef.distance *= \
-		cos(doom->ray_adjacent * x - FOV / 2);
 }
 
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
@@ -52,7 +47,6 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_sector	sector;
 
 	sector.plane_x = x;
-	set_distance_and_intersect(doom, &sector, &sidedef, &plane);
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);

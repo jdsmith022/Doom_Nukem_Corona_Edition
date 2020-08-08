@@ -17,7 +17,7 @@ static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	pixels[index] = texture[pixel_dex];
 }
 
-static void		draw_side_textures(t_doom *doom, t_plane plane, int offset,
+static void		draw_side_textures(t_doom *doom, t_plane plane, double offset,
 					Uint32 tex_dex)
 {
 	Uint32	pixel_dex;
@@ -29,12 +29,12 @@ static void		draw_side_textures(t_doom *doom, t_plane plane, int offset,
 	pixel.x = plane.intersect.x;
 	pixel.y = plane.intersect.y;
 	bpp = doom->surface->format->BytesPerPixel;
-	index = (pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
+	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
 		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top);
 	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = ((int)wall_y * doom->lib.sky_lib[tex_dex]->pitch) +\
-		((int)offset * bpp);
+		(offset * bpp);
 	put_sky(doom, tex_dex, index, pixel_dex);
 }
 
@@ -44,7 +44,7 @@ static int		set_offset_skybox(t_line line, t_point intersect, t_doom *doom,
 	t_point start;
 	t_point end;
 	Uint8	diff;
-	int		offset;
+	double	offset;
 
 	start = line.start;
 	end = line.end;

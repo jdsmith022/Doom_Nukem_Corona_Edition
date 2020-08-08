@@ -27,6 +27,8 @@ static void		init_player(t_doom *doom)
 {
 	doom->pos.x = 32;
 	doom->pos.y = 130;
+	// doom->pos.x = 32; //skybox start
+	// doom->pos.y = 220;
 	doom->player_height = 48;
 	doom->player_width = 48;
 	doom->player_std_height = 48;
