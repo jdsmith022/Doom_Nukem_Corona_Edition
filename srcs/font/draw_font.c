@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/08 18:58:17 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/08 19:47:00 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 	index = 0;
 	while (index < len)
 	{
+		printf("%s\n", font_lib[index].str);
 		ret = SDL_BlitSurface(font_lib[index].font_surface, NULL,\
 			doom->surface, &font_lib[index].font_rect);
 		if (ret == -1)
@@ -72,6 +73,12 @@ void		font_to_screen(t_doom *doom)
 	{
 		font_lib = doom->lib.font_lib.hud_font;
 		len = doom->lib.font_lib.hud_font_len;
+	}
+	else if (doom->menu->game_over == TRUE)
+	{
+		printf("here\n");
+		font_lib = doom->lib.font_lib.game_over_font;
+		len = doom->lib.font_lib.game_font_len;
 	}
 	draw_font(doom, font_lib, len);
 }

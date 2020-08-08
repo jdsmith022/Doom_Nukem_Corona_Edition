@@ -1,6 +1,22 @@
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
+static void		setting_game_over_click_event(t_doom *doom, SDL_Rect rect)
+{
+	int			x;
+	int			y;
+
+	x = doom->own_event.hold_x;
+	y = doom->own_event.hold_y;
+	if (x >= (rect.x) && x <= (rect.x + 200) && \
+	y >= (rect.y) && y <= (rect.y + 25))
+	{
+		doom->menu->game_over = FALSE;
+	}
+	doom->own_event.hold_x = 0;
+	doom->own_event.hold_y = 0;
+}
+
 static void		setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 {
 	int			x;
@@ -54,10 +70,15 @@ static void		mouse_handler(t_doom *doom)
 		rect3 = doom->lib.font_lib.start_menu_font[4].font_rect;
 		start_menu_click_event(doom, rect1, rect2, rect3);
 	}
-	else
+	else if (doom->menu->settings == TRUE)
 	{
 		rect1 = doom->lib.font_lib.setting_menu_font[9].font_rect;
 		setting_menu_click_event(doom, rect1);
+	}
+	else if (doom->menu->game_over == TRUE)
+	{
+		rect1 = doom->lib.font_lib.game_over_font[2].font_rect;
+		setting_game_over_click_event(doom, rect1);
 	}
 }
 

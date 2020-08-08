@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/menu.h"
 
 static void	draw_hud_top_bar(t_doom *doom)
 {
@@ -56,7 +57,7 @@ static void	draw_hud_bottom_bar(t_doom *doom)
 
 void		update_hud(t_doom *doom)
 {
-	if (doom->game_editor == FALSE)
+	if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 	{
 		draw_hud_top_bar(doom);
 		draw_hud_bottom_bar(doom);
@@ -64,5 +65,6 @@ void		update_hud(t_doom *doom)
 		update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		// update_timer(doom);
 	}
-	font_to_screen(doom);
+	if (doom->menu->game_over == FALSE)
+		font_to_screen(doom);
 }

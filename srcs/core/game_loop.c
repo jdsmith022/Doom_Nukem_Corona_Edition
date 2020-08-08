@@ -40,21 +40,21 @@ void				game_loop(t_doom *doom)
 	{
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		if (doom->game_editor == FALSE)
+		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			// timer(doom);
 			sprite_reset(doom);
 			doom_render(doom);
-			// sprite_render(doom); moved to doom->render
 			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
 			sliding_door(doom, -1); //move to its own file
 			add_infection(doom); //move to a seprate file
 		}
-		else
+		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		update_hud(doom);
+		check_corona_level(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);
