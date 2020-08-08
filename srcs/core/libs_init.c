@@ -15,10 +15,17 @@ void		init_hud(t_doom *doom)
 {
 	int	time;
 
+	printf("hello\n");
 	time = 300;
 	doom->hud = (t_hud*)ft_memalloc(sizeof(t_hud));
 	if (doom->hud == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
+	doom->hud->corona = FALSE;
+	doom->hud->sanitizer = FALSE;
+	doom->hud->facemask = FALSE;
+	doom->hud->health_pack = FALSE;
+	doom->hud->health_pack_plus = FALSE;
+	doom->hud->shopper = FALSE;
 	doom->hud->sanitizer_level = 100;
 	doom->hud->corona_level = 0;
 	time = time / doom->difficulty;
