@@ -3,6 +3,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 #include "../../includes/hud.h"
+#include "../../includes/font.h"
 
 static void		set_to_window(t_doom *doom)
 {
@@ -43,7 +44,6 @@ void				game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			// timer(doom);
-			// font_timer(doom);
 			sprite_reset(doom);
 			doom_render(doom);
 			audio(doom->audio, &doom->own_event);
@@ -55,6 +55,7 @@ void				game_loop(t_doom *doom)
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		update_hud(doom);
+		font_timer(doom);
 		check_corona_level(doom);
 		set_to_window(doom);
 	}

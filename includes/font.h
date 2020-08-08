@@ -6,13 +6,14 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/08 22:31:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/09 00:43:57 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FONT_H
 # define FONT_H
 
+# include <time.h>
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 typedef	struct s_doom	t_doom;
@@ -33,11 +34,9 @@ typedef struct		s_font {
 	char			*str;
 }					t_font;
 
-typedef struct		s_font_lib
+typedef struct		s_font_lib //refactor this into index
 {
 	t_color			font_color;
-	char			**shopping_list;
-	char			**basket_list;
 	t_font			*setting_menu_font;
 	int				setting_font_len;
 	t_font			*start_menu_font;
@@ -55,8 +54,9 @@ typedef struct		s_font_lib
 	int				game_font_len;
 	t_font			*instruction_font;
 	int				instruction_font_len;
-	bool			instruction;
-	double			timer;
+	bool			walking_info;
+	bool			shooting_info;
+	struct timespec	timer;
 }					t_font_lib;
 
 /*font functions*/
@@ -73,5 +73,6 @@ void				save_start_menu_font(t_doom *doom, int *len);
 void				save_setting_window_font(t_doom *doom, int *len);
 void				save_game_over_font(t_doom *doom, int *len);
 void				save_instruction_font(t_doom *doom, int *len);
+void				font_timer(t_doom *doom);
 
 #endif

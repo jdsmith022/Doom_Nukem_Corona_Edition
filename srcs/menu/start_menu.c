@@ -14,6 +14,8 @@ void		doom_start(t_doom *doom) // add difficulty
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
-	doom->lib.font_lib.instruction = TRUE;
+	clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+	doom->lib.font_lib.walking_info = TRUE;
 	doom->own_event.select = FALSE;
+	doom->lib.font_lib.shooting_info = FALSE;
 }

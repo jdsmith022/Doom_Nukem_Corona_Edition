@@ -94,7 +94,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 				min_distance = distance;
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
-				if (doom->lib.sector.action == 2)//wrong
+				if (doom->lib.sidedef[x].action == 2)
 					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
 			near_sidedef.poster = save_poster;

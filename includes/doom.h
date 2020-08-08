@@ -8,6 +8,7 @@
 # include <time.h>
 # include <stdbool.h>
 # include <sys/stat.h>
+# include <time.h>
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
@@ -317,6 +318,7 @@ typedef struct		s_doom {
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
+	clockid_t 		game_time;
 	// int				sidedef_bottom[WIDTH];
 	// int				sidedef_top[WIDTH];
 }					t_doom;
