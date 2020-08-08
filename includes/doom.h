@@ -312,6 +312,7 @@ typedef struct		s_doom {
 	double			max_ray;
 	double			dist_to_plane;
 	int				visible_sprites;
+	int				difficulty;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
