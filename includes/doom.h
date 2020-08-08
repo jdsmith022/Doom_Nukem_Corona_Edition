@@ -296,6 +296,7 @@ typedef struct		s_doom {
 	bool			game_editor;
 	bool			huds;
 	bool			light;
+	bool			scissor_lift;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;

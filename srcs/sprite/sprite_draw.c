@@ -1,5 +1,12 @@
 #include "../../includes/doom.h"
 
+// void		draw_scissor_lift_bar(t_doom *doom)
+// {
+// 	int		end_y;
+
+// 	end_y =
+// }
+
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i)
 {
 	char	*pixels;

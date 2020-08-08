@@ -43,6 +43,7 @@ static void		init_settings(t_doom *doom)
 	doom->huds = TRUE;
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
+	doom->scissor_lift = FALSE;
 }
 
 void			doom_init(t_doom *doom)
