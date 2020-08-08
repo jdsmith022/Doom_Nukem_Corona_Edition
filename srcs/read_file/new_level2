@@ -14,7 +14,7 @@ assets/textures/shelves/sausage_bacon.bmp
 assets/sprites/misc/poster.bmp
 
 #object library
-28
+29
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -71,6 +71,8 @@ assets/sprites/groceries/chicken.bmp
 assets/sprites/groceries/chicken_leg.bmp
 #27
 assets/sprites/groceries/toiletpaper.bmp
+#28
+assets/sprites/scissor_lift/scissor_lift_bar.bmp
 
 #number of sectors
 6

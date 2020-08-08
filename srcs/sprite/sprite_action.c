@@ -33,7 +33,10 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			if (doom->lib.sprites[index].distance < 70)
 			{
 				if (doom->lib.sprites[index].action == 7)
+				{
 					printf("YOU ENTER THE SCISSOR LIFT\n");
+					// activate_scissor_lift()
+				}
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 				return (1);
