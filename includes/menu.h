@@ -1,8 +1,6 @@
 #ifndef MENU_H
 # define MENU_H
 
-# include "../libft/libft.h"
-
 typedef	struct s_doom	t_doom;
 
 typedef struct			s_menu {

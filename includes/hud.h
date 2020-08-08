@@ -1,8 +1,6 @@
 #ifndef HUD_H
 # define HUD_H
 
-# include "../libft/libft.h"
-
 typedef	struct s_doom	t_doom;
 
 typedef struct	s_hud

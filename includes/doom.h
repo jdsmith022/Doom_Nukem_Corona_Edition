@@ -1,7 +1,7 @@
 #ifndef DOOM_H
 # define DOOM_H
 
-# include <stdio.h>
+# include <stdio.h> //remove
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
@@ -13,7 +13,7 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "font.h"
-# include "hud.h"
+// # include "render.h"
 
 # include "../sdl/includes/SDL.h"
 # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
