@@ -15,6 +15,7 @@ typedef struct	s_hud
 	int			time;
 }				t_hud;
 
-void		update_hud(t_doom *doom);
+void			update_hud(t_doom *doom);
+void			calculate_hud_levels(t_doom *doom);
 
 #endif

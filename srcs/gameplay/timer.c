@@ -5,12 +5,10 @@ void		timer(t_doom *doom)
 {
 	if (doom->hud->start == TRUE)
 	{
-
 	}
 	else
 	{
 		doom->hud->start == FALSE;
-
 	}
 	
 }
