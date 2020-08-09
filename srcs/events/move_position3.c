@@ -5,7 +5,8 @@ void				scissor_lift_up(t_doom *doom)
 	double		max_height;
 
 	printf("doom->texture_height = %d\n", doom->texture_height);
-	max_height = doom->texture_height;
+	max_height = doom->texture_height +\
+	doom->lib.sector[doom->i_sector].height_ceiling + 20;
 	while (doom->own_event.scissor_lift_up == TRUE &&\
 	doom->player_height <= max_height)
 	{

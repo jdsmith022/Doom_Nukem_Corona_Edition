@@ -43,7 +43,7 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				printing_map
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
-				sprite_sort sprite_reset sprite_action
+				sprite_sort sprite_reset sprite_action sprite_draw2
 GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries \
 				init_groceries grocery_ui add_infection
 DRAW_FILES = img vector

@@ -92,11 +92,11 @@ typedef struct			s_sprite {
 	double				size;			//products: 16, shopper: 48
 	t_line				*lines;
 	double				angle;			//GEBRUIK IK NIET what is the angle on the map
-	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 scissor lift, 7 groceries?, 8 hopper
+	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 inactive virus 7 scissor lift, 8 inactive health sprite 9 shopper
 	int					*textures;		//index to texture, +0, +1, +2 or +3
 	int					block;			//can the player walk through it or not
 	int					sector;
-	int					n_sector;
+	int					n_sector; //gebruik ik niet
 	double				width;
 	double				height;
 	double				sprite_x;		//x cord translated to viewer space
@@ -492,6 +492,8 @@ void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
 int					sprite_collision(t_doom *doom, t_line movement);
 void				exit_scissor_lift(t_doom *doom);
+void				draw_scissor_lift_bar(t_doom *doom);
+void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

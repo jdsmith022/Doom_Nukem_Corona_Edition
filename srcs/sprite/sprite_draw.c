@@ -101,9 +101,9 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	int			tex_y;
 	int			tex_x;
 	int			screen_y;
-	t_sprite	sprite;
+	t_sprite	sprite; //remove
 
-	sprite = doom->lib.sprites[index_sp];
+	sprite = doom->lib.sprites[index_sp]; //remove
 	i_sprite = doom->lib.sprites[index_sp].visible;
 	stripe = (int)sprite_begin->x;
 	screen_y = (int)sprite_begin->y;
