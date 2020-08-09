@@ -1,6 +1,5 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
-# include "../../includes/menu.h"
 
 static void		set_shelf_type(t_doom *doom, uint8_t *type)
 {
@@ -54,8 +53,4 @@ void			handle_groceries(t_doom *doom)
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}
-	printf("%f\n", doom->pos.x);
-	printf("%f\n", doom->pos.y);
-	if (SECTORS[doom->i_sector].outside == 2)
-		doom->menu->game_over = TRUE;
 }

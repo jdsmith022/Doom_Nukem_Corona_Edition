@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/menu.h"
 
 void			groceries(t_doom *doom)
 {
@@ -11,8 +12,11 @@ void			groceries(t_doom *doom)
 		draw_basket_ui(doom, doom->groceries);
 	if (doom->groceries->shopping_list)
 		draw_shopping_ui(doom, doom->groceries);
-	// printf("i_sidef: %d\n", SECTORS[doom->i_sector].i_sidedefs);
-	// printf("n_sidedef: %d\n", SECTORS[doom->i_sector].n_sidedefs);
-	// if (SECTORS[doom->i_sector] == CHECKOUT)
-	// 	checkout(doom->groceries);
+	if (SECTORS[doom->i_sector].outside == 2){
+		if (checkout(doom->groceries))
+			printf("YEAH U WON!\n");
+		else
+			printf("srry u lost..\n");
+		doom->menu->game_over = TRUE;
+	}
 }
