@@ -395,7 +395,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 
 
 #object1
-#scissor lifts and shoppers need a bigger area 40 by 40
+#scissor lifts and shoppers need a bigger area 20 by 20
 #object0 in sector 2 scissor lift
 7
 450

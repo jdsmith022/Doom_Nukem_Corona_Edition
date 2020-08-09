@@ -6,7 +6,7 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 	int		value;
 
 	value = 0;
-	if ((sprite.action == 7 && doom->scissor_lift == FALSE) || sprite.action == 9)
+	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE) || sprite.action == 9)
 		value = 15;
 	if (movement.end.x >= sprite.lines[0].start.x - value &&\
 	movement.end.x <= sprite.lines[0].end.x + value &&\
@@ -17,11 +17,43 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 		return (-1);
 }
 
+void		exit_scissor_lift(t_doom *doom)
+{
+	//check cords and surroundings (no close walls)
+	printf("EXIT SCISSOR LIFT\n");
+	printf("put scissor lift back at original sport\n");
+	//park scissor lift next to you
+	// doom->lib.sprites[doom->save_scissor_lift].lines[0].start.x = doom->pos.x - 70;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[0].start.y = doom->pos.y - 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[0].end.x = doom->pos.x - 50;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[0].end.y = doom->pos.y - 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[1].start.x = doom->pos.x - 50;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[1].start.y = doom->pos.y - 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[1].end.x = doom->pos.x - 50;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[1].end.y = doom->pos.y + 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[2].start.x = doom->pos.x - 50;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[2].start.y = doom->pos.y + 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[2].end.x = doom->pos.x - 70;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[2].end.y = doom->pos.y + 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[3].start.x = doom->pos.x - 70;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[3].start.y = doom->pos.y + 10;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.x = doom->pos.x - 70;
+	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.y = doom->pos.y - 10;
+	//park yourself next to it
+	doom->save_scissor_lift = -1;
+	doom->own_event.scissor_lift_down = FALSE;
+	doom->own_event.scissor_lift = FALSE;
+	printf("deactivate scissor lift\n");
+}
+
 void		activate_scissor_lift(t_doom *doom, int index)
 {
-	doom->scissor_lift = TRUE;
+	printf("activate scissor lift\n");
+	doom->own_event.scissor_lift = TRUE;
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
+	doom->save_scissor_lift = index;
+	doom->player_height += 10;
 	printf("CHANGED CORDS\n");
 	//deactivate jumping
 	//doom->pos = sprite pos
@@ -55,7 +87,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 				if (doom->lib.sprites[index].action == 7)
 				{
 					printf("YOU ENTER THE SCISSOR LIFT\n");
-					if (doom->scissor_lift == FALSE)
+					if (doom->own_event.scissor_lift == FALSE)
 						activate_scissor_lift(doom, index);
 				}
 			}

@@ -132,6 +132,9 @@ typedef struct		s_event {
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
+	bool			scissor_lift;
+	bool			scissor_lift_up;
+	bool			scissor_lift_down;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -296,7 +299,6 @@ typedef struct		s_doom {
 	bool			game_editor;
 	bool			huds;
 	bool			light;
-	bool			scissor_lift;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;
@@ -318,8 +320,7 @@ typedef struct		s_doom {
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
-	// int				sidedef_bottom[WIDTH];
-	// int				sidedef_top[WIDTH];
+	int				save_scissor_lift;
 }					t_doom;
 
 /*core functions*/
@@ -383,6 +384,8 @@ void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 bool				handle_mouse_state(t_doom *doom);
+void				scissor_lift_up(t_doom *doom);
+void				scissor_lift_down(t_doom *doom);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
@@ -488,6 +491,7 @@ void				sprite_reset(t_doom *doom);
 void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite);
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
 int					sprite_collision(t_doom *doom, t_line movement);
+void				exit_scissor_lift(t_doom *doom);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

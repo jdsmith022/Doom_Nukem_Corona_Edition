@@ -59,7 +59,7 @@ void		update_hud(t_doom *doom)
 	if (doom->game_editor == FALSE)
 	{
 		draw_hud_top_bar(doom);
-		// if (doom->scissor_lift == TRUE)
+		// if (doom->own_event->scissor_lift == TRUE)
 			// draw_scissor_lift_bar(doom);
 		draw_hud_bottom_bar(doom);
 		calculate_hud_levels(doom);

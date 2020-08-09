@@ -71,7 +71,7 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 
 int			scissor_lift_check(t_doom *doom, t_sprite sprite)
 {
-	if (doom->scissor_lift == TRUE && sprite.action == 7)
+	if (doom->own_event.scissor_lift == TRUE && sprite.action == 7)
 		return (1);
 	else
 		return (-1);
