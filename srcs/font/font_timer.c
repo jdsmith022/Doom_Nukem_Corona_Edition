@@ -24,7 +24,7 @@ void		font_timer(t_doom *doom)
 	struct timespec	time;
 	time_t			set;
 
-	if (doom->lib.font_lib.walking_info == TRUE)
+	if (doom->lib.font_lib.walking_info == TRUE && doom->game_editor == FALSE)
 	{
 		clock_gettime(doom->game_time, &time);
 		set = doom->lib.font_lib.timer.tv_sec;

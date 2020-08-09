@@ -25,10 +25,10 @@ static void		init_infection(t_doom *doom)
 
 static void		init_player(t_doom *doom)
 {
-	// doom->pos.x = 32;
-	// doom->pos.y = 130;
-	doom->pos.x = 32; //skybox start
-	doom->pos.y = 220;
+	doom->pos.x = 32;
+	doom->pos.y = 130;
+	// doom->pos.x = 32; //skybox start
+	// doom->pos.y = 220;
 	doom->player_height = 48;
 	doom->player_width = 48;
 	doom->player_std_height = 48;
@@ -38,7 +38,7 @@ static void		init_player(t_doom *doom)
 static void		init_settings(t_doom *doom)
 {
 	doom->own_event.mouse_state_switched = TRUE;
-	doom->is_running = FALSE;
+	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->huds = TRUE;
 	doom->audio->engine = OFF;

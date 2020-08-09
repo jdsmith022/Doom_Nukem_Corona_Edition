@@ -2,7 +2,7 @@
 #include "../../includes/menu.h"
 #include "../../includes/font.h"
 
-void		doom_start(t_doom *doom) // add difficulty
+void		doom_start(t_doom *doom)
 {
 	while (doom->menu->menu == TRUE)
 	{
@@ -14,7 +14,8 @@ void		doom_start(t_doom *doom) // add difficulty
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
-	clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+	if (doom->game_editor == FALSE)
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
 	doom->lib.font_lib.walking_info = TRUE;
 	doom->own_event.select = FALSE;
 	doom->lib.font_lib.shooting_info = FALSE;
