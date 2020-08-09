@@ -66,13 +66,6 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 		sin(doom->dir_angle + direction);
 	if (sprite_collision(doom, movement) == 1)
 		movement.end = doom->pos;
-	// if (doom->lib.sector[doom->i_sector].outside == 1 \
-	// && (doom->pos.x >= 250 || doom->pos.x <= -100))
-	// 	movement.end = doom->pos;
-	// if (doom->pos.y > 350)
-	// 	doom->pos.y = 348;
-	// if (doom->pos.y < -100)
-	// 	doom->pos.y = -99;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
@@ -100,10 +93,6 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 	if (doom->lib.sector[doom->i_sector].outside == 1 \
 	&& (doom->pos.y >= 350 || doom->pos.y <= 100))
 		movement.end = doom->pos;
-	if (doom->pos.x > 250)
-		doom->pos.x = 248;
-	if (doom->pos.x < -100)
-		doom->pos.x = -99;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
