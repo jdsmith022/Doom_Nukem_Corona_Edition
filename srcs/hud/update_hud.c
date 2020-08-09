@@ -93,8 +93,8 @@ void		update_hud(t_doom *doom)
 		draw_hud_top_bar(doom);
 		draw_hud_bottom_bar(doom);
 		draw_hud_side_bar(doom);
-		if (calculate_hud_levels(doom) == 1)
-			update_hud_levels(doom, doom->lib.font_lib.hud_font);
+		calculate_hud_levels(doom);
+		update_hud_levels(doom, doom->lib.font_lib.hud_font); //only go intwo in levels change
 		update_timer(doom, doom->lib.font_lib.hud_font);
 	}
 	if (doom->menu->game_over == FALSE)

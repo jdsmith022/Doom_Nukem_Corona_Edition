@@ -4,9 +4,7 @@
 
 void	check_levels_and_time(t_doom *doom)
 {
-	if (doom->hud->corona_level >= 100)
-		doom->menu->game_over = TRUE;
-	while (doom->menu->game_over == TRUE || doom->hud->curr_time <= 0)
+	while (doom->menu->game_over == TRUE)
 	{
 		doom->huds = FALSE;
 		SDL_SetRelativeMouseMode(SDL_FALSE);
