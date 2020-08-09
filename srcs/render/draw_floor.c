@@ -46,8 +46,8 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 
 static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 {
-	if (doom->lib.sector[doom->prev_sector].outside && \
-	doom->lib.sector[doom->i_sector].outside)
+	if (doom->lib.sector[doom->prev_sector].outside == 1 && \
+	doom->lib.sector[doom->i_sector].outside == 1)
 		*limit = doom->lib.portal_floor;
 	else if (sector.slope_floor_id != -1 && sector.id != doom->i_sector)
 		*limit = sector.slope.bottom_plane;

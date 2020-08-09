@@ -43,18 +43,18 @@ void				game_loop(t_doom *doom)
 		if (doom->game_editor == FALSE)
 		{
 			// timer(doom);
-			sprite_reset(doom);
+			// sprite_reset(doom);
 			doom_render(doom);
 			// sprite_render(doom); moved to doom->render
-			audio(doom->audio, &doom->own_event);
-			doom_gui(doom);
+			// audio(doom->audio, &doom->own_event);
+			// doom_gui(doom);
 			groceries(doom);
 			sliding_door(doom, -1); //move to its own file
-			add_infection(doom); //move to a seprate file
+			// add_infection(doom); //move to a seprate file
 		}
 		else
 			open_game_editor(doom);
-		update_hud(doom);
+		// update_hud(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

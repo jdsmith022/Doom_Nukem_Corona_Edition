@@ -316,6 +316,7 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				difficulty;
 	int				total_sprites;
+	t_line			level_exit;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;

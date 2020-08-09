@@ -20,6 +20,10 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.intersect = intersect;
 	sidedef.line = curr_sidedef.line;
 	sidedef.action = curr_sidedef.action;
+	if (sidedef.action == CHECKOUT){
+		doom->level_exit.start = sidedef.line.start;
+		doom->level_exit.end = sidedef.line.end;
+	}
 	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
 }
@@ -72,7 +76,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
-	if (doom->lib.sector[sector].outside)
+	if (doom->lib.sector[sector].outside == 1)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
 	save_poster = -1;
 	while (x < doom->lib.sector[sector].n_sidedefs +\
