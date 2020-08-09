@@ -26,12 +26,10 @@
 #define AR_DOWN_M_X WIDTH / 2
 #define AR_DOWN_M_Y 0
 
-#define D_45_X SIDEBAR_SECTOR / 3 / 5
-#define D_45_Y HEIGHT / 8
-#define STRAIGHT_X SIDEBAR_SECTOR / 3 + D_45_X
-#define STRAIGHT_Y HEIGHT / 8
-#define D_M45_X SIDEBAR_SECTOR / 3 * 2 + D_45_X
-#define D_M45_Y HEIGHT / 8
+#define DEL_SECTOR_X SIDEBAR_SECTOR - FRAME_WIDTH - AR_LEFT_X
+#define DEL_SECTOR_Y HEIGHT / 8
+#define ADD_SECTOR_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH) / 2
+#define ADD_SECTOR_Y HEIGHT / 8
 
 #define AR_LEFT_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH) / 2
 #define AR_LEFT_Y 0
@@ -94,6 +92,12 @@
 #define AR_RIGHT_TS3_X WIDTH - FRAME_WIDTH
 #define AR_RIGHT_TS3_Y HEIGHT / 8 * 7
 
+#define SIDEDEF_BUTTON_X SIDEBAR_SIDEDEF
+#define SIDEDEF_BUTTON_Y HEIGHT - FRAME_WIDTH
+
+#define SECTOR_BUTTON_X WIDTH - FRAME_WIDTH
+#define SECTOR_BUTTON_Y HEIGHT - FRAME_WIDTH
+
 #define HF_MAX 30
 #define HF_MIN -30
 #define HF_DIFF 60
@@ -117,7 +121,8 @@
 #define LL_Y HEIGHT / 8 * 4
 #define LL_HEIGHT 5
 #define LL_LEN (float)(WIDTH / 5)
-enum game_editor_im{plus, arrow_left, arrow_right, arrow_up, arrow_down, garbage};
+
+enum game_editor_im{plus, arrow_left, arrow_right, arrow_up, arrow_down, garbage, player};
 
 typedef struct s_bar
 {

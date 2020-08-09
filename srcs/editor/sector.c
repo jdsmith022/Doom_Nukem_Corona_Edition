@@ -65,6 +65,7 @@ void	add_sector(t_doom *doom)
 				SECTOR = cpy_sector(SECTOR, &EDIT.s_size);
 		EDIT.s_len++;
 		SECTOR[EDIT.s_len].slope_floor = 0;
+		SECTOR[EDIT.s_len].slope_floor_id = -1;
 		SECTOR[EDIT.s_len].slope_ceiling = 0;
 		SECTOR[EDIT.s_len].height_ceiling = 0;
 		SECTOR[EDIT.s_len].height_floor = 0;

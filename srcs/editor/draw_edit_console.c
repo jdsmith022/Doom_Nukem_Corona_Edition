@@ -104,8 +104,8 @@ void    draw_screen_colors(Uint32 *pixels, t_doom *doom)
 
 void    draw_images(Uint32 *pixels, t_doom *doom)
 {
-	// //put_images(MINUS_X, MINUS_Y, minus);
-	put_images(PLUS_X, PLUS_Y, plus, doom);
+	put_images(DEL_SECTOR_X, DEL_SECTOR_Y, garbage, doom);
+	put_images(ADD_SECTOR_X, ADD_SECTOR_Y, plus, doom);
 
 	put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 	put_images(AR_RIGHT_X, AR_RIGHT_Y, arrow_right, doom);
@@ -115,11 +115,10 @@ void    draw_images(Uint32 *pixels, t_doom *doom)
 
 	put_images(AR_LEFT_M_X, AR_LEFT_M_Y, arrow_left, doom);
 	put_images(AR_RIGHT_M_X, AR_RIGHT_M_Y, arrow_right, doom);
-	put_images(AR_UP_M_X, AR_UP_M_Y, arrow_up, doom);
-	put_images(AR_DOWN_M_X, AR_DOWN_M_Y, arrow_down, doom);
+	put_images(AR_UP_M_X, AR_UP_M_Y, arrow_down, doom);
+	put_images(AR_DOWN_M_X, AR_DOWN_M_Y, arrow_up, doom);
 
-	// put_images(CROSS_X, CROSS_Y, garbage, doom);
-	//put_images(CROSS_P_X, CROSS_P_Y, garbage, doom);
+	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 
 	put_textures(TEX_FL_X, TEX_FL_Y, SECTOR[EDIT.cur_sec].txt_floor, doom);
 	put_images(AR_LEFT_TF_X, AR_LEFT_TF_Y, arrow_left, doom);
@@ -129,7 +128,7 @@ void    draw_images(Uint32 *pixels, t_doom *doom)
 	put_images(AR_LEFT_TC_X, AR_LEFT_TC_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TC_X, AR_RIGHT_TC_Y, arrow_right, doom);
 
-	if (EDIT.cur_sd >= SECTOR[EDIT.cur_sec].i_sidedefs)
+	if (EDIT.cur_sd >= SECTOR[EDIT.cur_sec].i_sidedefs && EDIT.sidedef_bar == 1)
 	{
 		put_images(RM_SD_X, RM_SD_Y, garbage, doom);
 		put_images(PORTAL_X, PORTAL_Y, plus, doom);
@@ -157,4 +156,7 @@ void    draw_images(Uint32 *pixels, t_doom *doom)
 		put_images(AR_LEFT_SC_X, AR_LEFT_SC_Y, arrow_left, doom);
 		put_images(AR_RIGHT_SC_X, AR_RIGHT_SC_Y, arrow_right, doom);
 	}
+
+	put_images(SIDEDEF_BUTTON_X, SIDEDEF_BUTTON_Y, plus, doom);
+	put_images(SECTOR_BUTTON_X, SECTOR_BUTTON_Y, plus, doom);
 }

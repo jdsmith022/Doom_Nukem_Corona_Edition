@@ -24,7 +24,7 @@ void	draw_portal(t_doom *doom, Uint32 **pixels, int sector)
 		i = 0.0;
 		while ((int)i < abs(x_dif) + abs(y_dif))
 		{
-			if ((int)y * WIDTH + (int)x > 0 && (int)y * WIDTH + (int)x < WIDTH * HEIGHT)
+			if ((int)x < SIDEBAR_SIDEDEF && (int)x > SIDEBAR_SECTOR && (int)y > 0 && (int)y < HEIGHT)
 				pixels[0][((int)y * WIDTH) + (int)x] = 0xff696969;
 			x += x_steps * 2;
 			y += y_steps * 2;
@@ -42,6 +42,7 @@ void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 	double	i;
 	double	x;
 	double 	y;
+	int		color;
 
 	x_dif = (SIDEDEF[b].line.end.x) - (SIDEDEF[b].line.start.x);
 	y_dif = (SIDEDEF[b].line.end.y) - (SIDEDEF[b].line.start.y);
@@ -53,28 +54,19 @@ void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 	(void)*pixels;
 	if (SIDEDEF[b].opp_sidedef != -1)
 			draw_portal(doom, pixels, SIDEDEF[b].opp_sector);
+	if (SIDEDEF[b].opp_sidedef != -1 && EDIT.cur_sd != b)
+		color = 0xffFFA07A;
+	else if (EDIT.cur_sd != b)
+		color = 0x8c3cde6;
+	else
+		color = 0xff4287f5;
 	while ((int)i < abs(x_dif) + abs(y_dif))
 	{
-		if ((int)y * WIDTH + (int)x > 0 && (int)y * WIDTH + (int)x < WIDTH * HEIGHT)
+		if ((int)x < SIDEBAR_SIDEDEF && (int)x > SIDEBAR_SECTOR && (int)y > 0 && (int)y < HEIGHT)
 		{
-			if (SIDEDEF[b].opp_sidedef != -1 && EDIT.cur_sd != b)
-			{
-				pixels[0][((int)y * WIDTH) + (int)x] = 0xffFFA07A;
-				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0xffFFA07A;
-				pixels[0][((int)y * WIDTH) + (int)x + 1] = 0xffFFA07A;
-			}
-			else if (EDIT.cur_sd != b)
-			{
-				pixels[0][((int)y * WIDTH) + (int)x] = 0x8c3cde6;
-				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0x8c3cde6;
-				pixels[0][((int)y * WIDTH) + (int)x + 1] = 0x8c3cde6;
-			}
-			else
-			{
-				pixels[0][((int)y * WIDTH) + (int)x] = 0xff4287f5;
-				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = 0xff4287f5;
-				pixels[0][((int)y * WIDTH) + (int)x + 1] = 0xff4287f5;
-			}
+				pixels[0][((int)y * WIDTH) + (int)x] = color;
+				pixels[0][((int)(y + 1) * WIDTH) + (int)x] = color;
+				pixels[0][((int)y * WIDTH) + (int)x + 1] = color;
 		}
 		x += x_steps;
 		y += y_steps;

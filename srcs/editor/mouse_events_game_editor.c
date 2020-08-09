@@ -3,14 +3,7 @@
 
 void    mouse_press_map(t_doom *doom, int x, int y)
 {
-    if (x > MINUS_X && x < MINUS_X + FRAME_WIDTH && y > MINUS_Y && y < MINUS_Y + FRAME_HEIGHT)
-	{
-		if (EDIT.s_len > 0)
-			del_sector(doom);
-	}
-	else if (x > PLUS_X && x < PLUS_X + FRAME_WIDTH && y > PLUS_Y && y < PLUS_Y + FRAME_HEIGHT)
-			add_sector(doom);
-	else if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
+	if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
 		SECTOR[EDIT.cur_sec].diff_x -= 10;
 	else if (x > AR_LEFT_M_X && x < AR_LEFT_M_X + FRAME_WIDTH && y > AR_LEFT_M_Y && y < AR_LEFT_M_Y + FRAME_HEIGHT)
 		SECTOR[EDIT.cur_sec].diff_x += 10;
@@ -31,12 +24,13 @@ void    mouse_press_map(t_doom *doom, int x, int y)
 
 void    mouse_press_sector(t_doom *doom, int x, int y)
 {
-	if (x > D_45_X && x < D_45_X + FRAME_WIDTH && y > D_45_Y && y < D_45_Y + FRAME_HEIGHT)
-		SECTOR[EDIT.cur_sec].slope_floor = 45;
-	else if (x > D_M45_X && x < D_M45_X + FRAME_WIDTH && y > D_M45_Y && y < D_M45_Y + FRAME_HEIGHT)
-		SECTOR[EDIT.cur_sec].slope_floor = -45;
-	else if (x > STRAIGHT_X && x < STRAIGHT_X + FRAME_WIDTH && y > STRAIGHT_Y && y < STRAIGHT_Y + FRAME_HEIGHT)
-		SECTOR[EDIT.cur_sec].slope_floor = 0;
+	if (x > DEL_SECTOR_X && x < DEL_SECTOR_X + FRAME_WIDTH && y > DEL_SECTOR_Y && y < DEL_SECTOR_Y + FRAME_HEIGHT)
+	{
+		if (EDIT.s_len > 0)
+			del_sector(doom);
+	}
+	else if (x > ADD_SECTOR_X && x < ADD_SECTOR_X + FRAME_WIDTH && y > ADD_SECTOR_Y && y < ADD_SECTOR_Y + FRAME_HEIGHT)
+			add_sector(doom);
 	else if (x > HF_X && x < HF_X + HF_LEN && y > HF_Y && y < HF_Y + HF_HEIGHT)
 	{
 		SECTOR[EDIT.cur_sec].height_floor = (float)(x - HF_X) / HF_LEN * HF_DIFF + HF_MIN;
@@ -94,6 +88,8 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 		if (EDIT.cur_sd + 1< SECTOR[EDIT.cur_sec].i_sidedefs + SECTOR[EDIT.cur_sec].n_sidedefs)
 					EDIT.cur_sd++;
 	}
+	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
+		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
 	else if (x > AR_LEFT_S_X && x < AR_LEFT_S_X + FRAME_WIDTH && y > AR_LEFT_S_Y && y < AR_LEFT_S_Y + FRAME_HEIGHT)
 	{
 		if (EDIT.cur_sd > SECTOR[EDIT.cur_sec].i_sidedefs - 1)
@@ -147,6 +143,10 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 	
 }
 
+void	mouse_press_object(t_doom *doom, int x, int y)
+{
+}
+
 void	mouse_press_game_editor(t_doom *doom, int x, int y)
 {
 	if (EDIT.portal_sec != -1 && 
@@ -159,6 +159,18 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y)
 	}
     mouse_press_map(doom, x, y);
     mouse_press_sector(doom, x, y);
-	if (EDIT.w_len > 0)
+	if (x > SIDEDEF_BUTTON_X && x < SIDEDEF_BUTTON_X + FRAME_WIDTH && y > SIDEDEF_BUTTON_Y && y < SIDEDEF_BUTTON_Y + FRAME_WIDTH)
+	{
+		EDIT.sidedef_bar = 1;
+		EDIT.object_bar = 0;
+	}
+	if (x > SECTOR_BUTTON_X && x < SECTOR_BUTTON_X + FRAME_WIDTH && y > SECTOR_BUTTON_Y && y < SECTOR_BUTTON_Y + FRAME_WIDTH)
+	{
+		EDIT.sidedef_bar = 0;
+		EDIT.object_bar = 1;
+	}
+	if (EDIT.w_len > 0 && EDIT.sidedef_bar == 1)
     	mouse_press_sidedef(doom, x, y);
+	if (EDIT.object_bar == 1)
+    	mouse_press_object(doom, x, y);
 }

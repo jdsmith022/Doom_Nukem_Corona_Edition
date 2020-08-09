@@ -19,8 +19,8 @@ void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 
 void		new_portal(t_doom *doom)
 {
-    add_sidedef(doom,  SIDEDEF[EDIT.portal_sd].line.start.x, SIDEDEF[EDIT.portal_sd].line.start.y);
-	add_sidedef(doom,  SIDEDEF[EDIT.portal_sd].line.end.x, SIDEDEF[EDIT.portal_sd].line.end.y);
+    add_sidedef(doom, SIDEDEF[EDIT.portal_sd].line.start.x, SIDEDEF[EDIT.portal_sd].line.start.y);
+	add_sidedef(doom, SIDEDEF[EDIT.portal_sd].line.end.x, SIDEDEF[EDIT.portal_sd].line.end.y);
 	if (EDIT.portal_sd > EDIT.cur_sd)
 		EDIT.portal_sd++;
 	SIDEDEF[EDIT.portal_sd].opp_sidedef = EDIT.cur_sd;
