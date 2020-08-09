@@ -19,6 +19,7 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 
 void		exit_scissor_lift(t_doom *doom)
 {
+	double		distance;
 	//check cords and surroundings (no close walls)
 	printf("EXIT SCISSOR LIFT\n");
 	printf("put scissor lift back at original sport\n");
@@ -40,10 +41,22 @@ void		exit_scissor_lift(t_doom *doom)
 	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.x = doom->pos.x - 70;
 	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.y = doom->pos.y - 10;
 	//park yourself next to it
-	doom->save_scissor_lift = -1;
-	doom->own_event.scissor_lift_down = FALSE;
-	doom->own_event.scissor_lift = FALSE;
-	printf("deactivate scissor lift\n");
+	distance = points_distance(doom->pos, doom->lib.sprites[doom->save_scissor_lift].pos);
+	if (distance > 75 && distance < 100)
+	{
+		doom->save_scissor_lift = -1;
+		doom->own_event.scissor_lift_down = FALSE;
+		doom->own_event.scissor_lift = FALSE;
+		printf("deactivate scissor lift\n");
+	}
+	else if (distance < 75)
+	{
+		printf("Please move further away from scissor lift parking spot\n");
+	}
+	else
+	{
+		printf("Please go back to the parking spot of the scissor lift.");
+	}
 }
 
 void		activate_scissor_lift(t_doom *doom, int index)
@@ -86,9 +99,11 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			{
 				if (doom->lib.sprites[index].action == 7)
 				{
-					printf("YOU ENTER THE SCISSOR LIFT\n");
 					if (doom->own_event.scissor_lift == FALSE)
+					{
+						printf("YOU ENTER THE SCISSOR LIFT\n");
 						activate_scissor_lift(doom, index);
+					}
 				}
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)

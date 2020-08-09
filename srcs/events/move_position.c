@@ -11,7 +11,7 @@ t_point		check_line_intersection(t_line move, t_sidedef sidedef,
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
 	sidedef.line.start, sidedef_delta);
-	if (point_distance(intersect, move.start, angle)
+	if (point_distance(intersect, move.start, angle)\
 		< 40.0 && sidedef.action == 2) //create_enum and than use the name
 		sliding_door(NULL, x);
 	return (intersect);
@@ -21,7 +21,8 @@ static int	check_collision(t_doom *doom, t_sidedef sidedef,
 				t_line move, t_point intersect)
 {
 	if (sidedef.opp_sector == -1 ||\
-	check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
+	check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE ||
+	doom->own_event.scissor_lift == TRUE)
 		return (-1);
 	else if (sidedef.opp_sector != -1)
 	{
