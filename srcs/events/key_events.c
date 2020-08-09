@@ -56,7 +56,7 @@ static void		key_press2(t_doom *doom, t_event *event,
 		doom->lib.sector[doom->i_sector].light =\
 			doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
-		printing_map(&(doom->game_design));
+		printing_map(&(EDIT));
 }
 
 void			key_press(t_doom *doom, t_event *event,

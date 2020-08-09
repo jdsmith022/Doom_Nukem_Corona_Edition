@@ -1,3 +1,12 @@
+#symbol library
+6
+assets/symbols/plus.bmp
+assets/symbols/arrow_left.bmp
+assets/symbols/arrow_right.bmp
+assets/symbols/arrow_up.bmp
+assets/symbols/arrow_down.bmp
+assets/symbols/garbage.bmp
+
 #texture library
 8
 assets/textures/outside/outside_store.bmp

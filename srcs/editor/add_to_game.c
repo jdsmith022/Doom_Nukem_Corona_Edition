@@ -8,17 +8,17 @@ void	change_pos(double x, double y, t_doom *doom)
 
 	i = 0;
 	j = 0;
-	while (i <= doom->game_design.s_len)
+	while (i <= EDIT.s_len)
 	{
-		doom->game_design.sector[i].diff_x += fabs(x);
-		doom->game_design.sector[i].diff_y += fabs(y);
-		while (j < doom->game_design.sector[i].i_sidedefs \
-		+ doom->game_design.sector[i].n_sidedefs)
+		SECTOR[i].diff_x += fabs(x);
+		SECTOR[i].diff_y += fabs(y);
+		while (j < SECTOR[i].i_sidedefs \
+		+ SECTOR[i].n_sidedefs)
 		{
-			doom->game_design.sidedef[j].line.start.x += fabs(x);
-			doom->game_design.sidedef[j].line.end.x += fabs(x);
-			doom->game_design.sidedef[j].line.start.y += fabs(y);
-			doom->game_design.sidedef[j].line.end.y += fabs(y);
+			SIDEDEF[j].line.start.x += fabs(x);
+			SIDEDEF[j].line.end.x += fabs(x);
+			SIDEDEF[j].line.start.y += fabs(y);
+			SIDEDEF[j].line.end.y += fabs(y);
 			j++;
 		}
 		i++;
@@ -35,16 +35,16 @@ void	coor_pos(t_doom *doom)
 	i = 0;
 	x = 0.0;
 	y = 0.0;
-	while (i < doom->game_design.w_len)
+	while (i < EDIT.w_len)
 	{
-		if (doom->game_design.sidedef[i].line.start.x < x)
-			x = doom->game_design.sidedef[i].line.start.x;
-		if (doom->game_design.sidedef[i].line.end.x < x)
-			x = doom->game_design.sidedef[i].line.end.x;
-		if (doom->game_design.sidedef[i].line.start.y < y)
-			y = doom->game_design.sidedef[i].line.start.y;
-		if (doom->game_design.sidedef[i].line.end.y < y)
-			y = doom->game_design.sidedef[i].line.end.y;
+		if (SIDEDEF[i].line.start.x < x)
+			x = SIDEDEF[i].line.start.x;
+		if (SIDEDEF[i].line.end.x < x)
+			x = SIDEDEF[i].line.end.x;
+		if (SIDEDEF[i].line.start.y < y)
+			y = SIDEDEF[i].line.start.y;
+		if (SIDEDEF[i].line.end.y < y)
+			y = SIDEDEF[i].line.end.y;
 		i++;
 	}
 	if (x < 0.0 || y < 0.0)
@@ -102,25 +102,25 @@ t_sector	*light_correction(t_sector *sector, int len)
 
 void		add_to_game(t_doom *doom)
 {
-	if (doom->game_design.sector != NULL && doom->game_design.w_len > 2)
+	if (SECTOR != NULL && EDIT.w_len > 2)
 	{
-		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
+		if (EDIT.pl_x > 0 && EDIT.pl_y > 0)
 		{
 			coor_pos(doom);
-			box_in_sectors(doom);
+			// box_in_sectors(doom); // give these walls a flag so that they are not drawn if the sector is outside
 			free(doom->lib.sector); //rm when there are multiple levels		
 			free(doom->lib.sidedef); //rm when there are multiple levels		
 			doom->lib.sector = new_level_sector(doom,\
-				doom->game_design.sector, doom->game_design.s_len + 1);
+				SECTOR, EDIT.s_len + 1);
 			doom->lib.sidedef = new_level_sidedef(doom,\
-				doom->game_design.sidedef, doom->game_design.w_len + 1);				
+				SIDEDEF, EDIT.w_len + 1);				
 			doom->lib.sector = light_correction(\
-				doom->lib.sector, doom->game_design.s_len);		
-			doom->pos.x = doom->game_design.pl_x;
-			doom->pos.y = doom->game_design.pl_y;
-			doom->i_sector = doom->game_design.pl_sec;
+				doom->lib.sector, EDIT.s_len);		
+			doom->pos.x = EDIT.pl_x;
+			doom->pos.y = EDIT.pl_y;
+			doom->i_sector = EDIT.pl_sec;
 			doom->player_height = doom->player_height \
-			+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
+			+ doom->lib.sector[EDIT.pl_sec].height_floor;
 			doom->light = TRUE;
 		}
 	}

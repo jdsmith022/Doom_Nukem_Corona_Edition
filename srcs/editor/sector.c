@@ -7,37 +7,37 @@ void		del_sector(t_doom *doom)
 	int i;
 	int n_sidedef;
 
-	i =	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs;
-	while (i < doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
+	i =	SECTOR[EDIT.cur_sec].i_sidedefs;
+	while (i < SECTOR[EDIT.cur_sec].i_sidedefs + SECTOR[EDIT.cur_sec].n_sidedefs)
 	{
-		if (doom->game_design.sidedef[i].opp_sidedef != -1) //causes segfault: why?
+		if (SIDEDEF[i].opp_sidedef != -1) //causes segfault: why?
 		{
-			doom->game_design.sidedef[doom->game_design.sidedef\
+			SIDEDEF[SIDEDEF\
 			[i].opp_sidedef].opp_sidedef = -1;
-			doom->game_design.sidedef[doom->game_design.sidedef\
+			SIDEDEF[SIDEDEF\
 			[i].opp_sidedef].opp_sector = -1;
 		}
 		i++;
 	}
-	i = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs;
-	while (i < doom->game_design.w_len - doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs)
+	i = SECTOR[EDIT.cur_sec].i_sidedefs;
+	while (i < EDIT.w_len - SECTOR[EDIT.cur_sec].n_sidedefs)
 	{
-		doom->game_design.sidedef[i] = doom->game_design.sidedef[i + doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs];
+		SIDEDEF[i] = SIDEDEF[i + SECTOR[EDIT.cur_sec].n_sidedefs];
 		i++;
 	}
-	doom->game_design.w_len -= doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs;
-	i = doom->game_design.cur_sec;
-	n_sidedef = doom->game_design.sector[i].n_sidedefs;
-	while (i < doom->game_design.s_len)
+	EDIT.w_len -= SECTOR[EDIT.cur_sec].n_sidedefs;
+	i = EDIT.cur_sec;
+	n_sidedef = SECTOR[i].n_sidedefs;
+	while (i < EDIT.s_len)
 	{
-		doom->game_design.sector[i] = doom->game_design.sector[i + 1];
-		doom->game_design.sector[i].i_sidedefs -= n_sidedef;
+		SECTOR[i] = SECTOR[i + 1];
+		SECTOR[i].i_sidedefs -= n_sidedef;
 		i++;
 	}
-	if (doom->game_design.cur_sec == doom->game_design.s_len)
-		doom->game_design.cur_sec--;
-	doom->game_design.s_len--;
-	doom->game_design.cur_sd = doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1;
+	if (EDIT.cur_sec == EDIT.s_len)
+		EDIT.cur_sec--;
+	EDIT.s_len--;
+	EDIT.cur_sd = SECTOR[EDIT.cur_sec].i_sidedefs - 1;
 }
 
 t_sector *cpy_sector(t_sector *sector, int *s_size)
@@ -61,20 +61,20 @@ t_sector *cpy_sector(t_sector *sector, int *s_size)
 void	add_sector(t_doom *doom)
 {
 
-		if (doom->game_design.s_len + 1 == doom->game_design.s_size)
-				doom->game_design.sector = cpy_sector(doom->game_design.sector, &doom->game_design.s_size);
-		doom->game_design.s_len++;
-		doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
-		doom->game_design.sector[doom->game_design.s_len].slope_ceiling = 0;
-		doom->game_design.sector[doom->game_design.s_len].height_ceiling = 0;
-		doom->game_design.sector[doom->game_design.s_len].height_floor = 0;
-		doom->game_design.sector[doom->game_design.s_len].txt_floor = 0;
-		doom->game_design.sector[doom->game_design.s_len].txt_ceiling = 0;
-		doom->game_design.sector[doom->game_design.s_len].i_sidedefs = doom->game_design.w_len;
-		doom->game_design.sector[doom->game_design.s_len].n_sidedefs = 0;
-		doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
-		doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
-		doom->game_design.sector[doom->game_design.s_len].outside = 0;
-		doom->game_design.sector[doom->game_design.s_len].light_level = 10;
+		if (EDIT.s_len + 1 == EDIT.s_size)
+				SECTOR = cpy_sector(SECTOR, &EDIT.s_size);
+		EDIT.s_len++;
+		SECTOR[EDIT.s_len].slope_floor = 0;
+		SECTOR[EDIT.s_len].slope_ceiling = 0;
+		SECTOR[EDIT.s_len].height_ceiling = 0;
+		SECTOR[EDIT.s_len].height_floor = 0;
+		SECTOR[EDIT.s_len].txt_floor = 0;
+		SECTOR[EDIT.s_len].txt_ceiling = 0;
+		SECTOR[EDIT.s_len].i_sidedefs = EDIT.w_len;
+		SECTOR[EDIT.s_len].n_sidedefs = 0;
+		SECTOR[EDIT.s_len].diff_x = 0;
+		SECTOR[EDIT.s_len].diff_y = 0;
+		SECTOR[EDIT.s_len].outside = 0;
+		SECTOR[EDIT.s_len].light_level = 10;
 
 }
