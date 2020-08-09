@@ -53,6 +53,7 @@ static int	movement_collision(t_doom *doom, t_line move, double angle)
 	return (0);
 }
 
+//move right left
 void	cam_move_rl(t_doom *doom, double dt, int direction)
 {
 	t_line	movement;
@@ -63,6 +64,8 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 		cos(doom->dir_angle + direction);
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
 		sin(doom->dir_angle + direction);
+	if (sprite_collision(doom, movement) == 1)
+		movement.end = doom->pos;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
@@ -75,14 +78,21 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 	}
 }
 
+//move front back
+//what sprite?
 void	cam_move_fb(t_doom *doom, double dt, int direction)
 {
 	t_line	movement;
 	int		collision;
 
 	movement.start = doom->pos;
-	movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
+	movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle); //check movement end x and end y, am I hitting something?
 	movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
+	if (sprite_collision(doom, movement) == 1)
+		movement.end = doom->pos;
+	if (doom->lib.sector[doom->i_sector].outside == 1 \
+	&& (doom->pos.y >= 350 || doom->pos.y <= 100))
+		movement.end = doom->pos;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{

@@ -1,83 +1,73 @@
 #include "../../includes/doom.h"
 
-t_point		get_opp_point(t_sidedef sidedef, t_sidedef opp_sidedef)
+double			set_slope_delta(t_doom *doom, t_sector *sector, int y)
 {
-	t_point		start;
-	t_point		end;
-	t_point		opp_start;
-	t_point		opp_end;
+	double		plane_distance;
+	double		delta_slope;
+	double		delta_height;
+	double		delta_distance;
 
-	start = sidedef.line.start;
-	end = sidedef.line.end;
-	opp_start = opp_sidedef.line.start;
-	opp_end = opp_sidedef.line.end;
-	if ((start.x == opp_start.x && start.y == opp_start.y) ||
-		(start.x == opp_end.x && start.y == opp_end.y))
-		return (start);
-	return (end);
+	delta_height = sector->slope.height - sector->slope.bottom_height;
+	plane_distance = y - sector->slope.bottom_plane;
+	delta_slope = delta_height / plane_distance;
+	delta_distance = sector->slope.dist_to_bottom / plane_distance;
+	delta_distance *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
+	sector->slope.prev_floor_id = sector->slope.sidedef_id;
+	return (delta_distance);
 }
 
-int		select_opp_sidedef(t_sector sector)
+static void		find_line_connections(t_doom *doom, t_sector *sector,
+					t_slope *slope, t_sidedef sidedef)
 {
-	int		first_sidedef;
-
-	first_sidedef = sector.i_sidedefs;
-	if (sector.slope_id == first_sidedef || sector.slope_id == first_sidedef + 1)
-		return (sector.slope_id + 2);
-	return (sector.slope_id - 2);
-}
-
-t_point		get_biggest_distance(t_doom *doom, t_sector sector, t_sidedef hinge)
-{
-	int		i;
-	int		max;
-	double	dist;
-	double	max_dist;
-	t_point	side_point;
-	t_point max_point;
-
-	i = sector.i_sidedefs;
-	max_dist = 0;
-	max = i + sector.n_sidedefs;
-	while (i < max)
+	slope->opp_side = get_opp_side_of_slope(*sector, sector->slope_floor_id);
+	if (sidedef.id == slope->opp_side)
 	{
-		if (i != hinge.id)
-		{
-			side_point = doom->lib.sidedef[i].line.start;
-			dist = point_line_distance(side_point, hinge.line);
-			if (dist > max_dist)
-				max_dist = dist;
-			side_point = doom->lib.sidedef[i].line.end;
-			dist = point_line_distance(side_point, hinge.line);
-			if (dist > max_dist)
-			{
-				max_dist = dist;
-				max_point = side_point;
-			}
-		}
-		i++;
+		slope->distance = fabs(point_line_distance(sidedef.line.end,\
+			doom->lib.sidedef[sector->slope_floor_id].line));
 	}
-	return (max_point);
+	if (sidedef.id != sector->slope_floor_id && sidedef.id != slope->opp_side)
+	{
+		slope->conn_point = get_connecting_point(sidedef.line,\
+		doom->lib.sidedef[sector->slope_floor_id].line);
+		slope->distance = points_distance(sidedef.intersect, slope->conn_point);
+	}
 }
 
-int			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
-	t_plane *plane)
+t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
+	t_sector *sector)
 {
-	t_sector	sector;
-	//int			opp_side;
-	t_point		opp_point;
-	double		distance;
+	t_slope		slope;
 
-	sector = doom->lib.sector[sidedef.sector];
-	opp_point = get_biggest_distance(doom, sector, sidedef);
-	if (sidedef.id == sector.slope_id)
-		return (doom->lib.sector[sidedef.sector].height_floor);
-	//opp_side = select_opp_sidedef(sector);
-	//if (sidedef.id == opp_side)
-	//	return (plane->sidedef_bottom);
-	//else if (sidedef.id == sector.slope_id)
-	//	return (doom->lib.sector[sidedef.opp_sector].height_floor);
-	//opp_point = get_opp_point(sidedef, doom->lib.sidedef[opp_side]);
-	distance = points_distance(plane->intersect, opp_point);
-	return ((int)(tan(sector.slope_floor) * distance));
+	slope.distance = 0;
+	slope.intersect = sidedef.intersect;
+	slope.sidedef_id = sidedef.id;
+	sector->slope_floor = 6 * (PI / 180);
+	if (sidedef.sector != sector->id)
+		sidedef = get_other_side_of_line(doom, sidedef, *sector);
+	if (sidedef.id == sector->slope_floor_id)
+	{
+		slope.height = 0;
+		return (slope);
+	}
+	find_line_connections(doom, sector, &slope, sidedef);
+	slope.distance *= cos(doom->ray_adjacent * sidedef.intersect.x - FOV / 2);
+	slope.height = tan(sector->slope_floor) * slope.distance;
+	return (slope);
+}
+
+void		slope_plane_settings(t_doom *doom, t_sidedef sidedef,
+					t_sector *sector, int flag)
+{
+	if (flag == 1 && sector->slope_floor_id != -1)
+	{
+		sector->slope = set_properties_slope(doom, sidedef, sector);
+		sector->height_floor += sector->slope.height;
+	}
+	if (flag == 0 && sector->slope_floor_id != -1)
+	{
+		sector->slope = set_properties_slope(doom, sidedef, sector);
+		if (doom->i_sector != sector->id)
+			set_slope_bottom_values(doom, sidedef, sector);
+		sector->height_floor += sector->slope.height;
+	}
 }

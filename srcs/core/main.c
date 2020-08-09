@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/menu.h"
 
 int	main(void)
 {
@@ -14,10 +15,8 @@ int	main(void)
 		doom_exit_failure(&doom, "unable to initialize SDL\n");
 	save_libraries(&doom);
 	save_font_libraries(&doom);
-	doom.game_editor = FALSE;
 	doom_init(&doom);
-	//load_default(); //loads default settings ie menu, player settings
-	//init_HUD/UI
+	doom_start(&doom);
 	game_loop(&doom);
 	return (0);
 }

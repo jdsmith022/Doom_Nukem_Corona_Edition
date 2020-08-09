@@ -55,5 +55,5 @@ t_bmp				read_bmp(int fd)
 	if (bmp.info.height < 0)
 		exit_with_error("Error: bmp reader only supports bottom-up pixel format\n");
 	read_pixels(&bmp, fd); // Read pixels
-	return bmp;
+	return (bmp);
 }

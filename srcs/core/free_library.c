@@ -6,48 +6,34 @@ static void		void_free_lib(void *lib)
 	free(lib);
 }
 
-static void	free_font_lib(t_doom *doom)
+void		free_struct_lib(t_doom *doom)
 {
-	t_font		*font;
-
+	if (doom->lib.sector)
+		void_free_lib(doom->lib.sector);
+	if (doom->lib.sidedef)
+		void_free_lib(doom->lib.sidedef);
+	if (doom->lib.sprites)
+		void_free_lib(doom->lib.sprites);
+	if (doom->game_design.sector)
+		void_free_lib(doom->game_design.sector);
+	if (doom->lib.mov_sprites)
+		void_free_lib(doom->lib.mov_sprites);
 	if (doom->lib.font_lib.game_editor_font)
-	{
-		font = doom->lib.font_lib.game_editor_font;
-		void_free_lib(font);
-	}
+		void_free_lib(doom->lib.font_lib.game_editor_font);
 	if (doom->lib.font_lib.hud_font)
-	{
-		font = doom->lib.font_lib.hud_font;
-		void_free_lib(font);
-	}
+		void_free_lib(doom->lib.font_lib.hud_font);
+	if (doom->lib.font_lib.start_menu_font)
+		void_free_lib(doom->lib.font_lib.start_menu_font);
+	if (doom->lib.font_lib.setting_menu_font)
+		void_free_lib(doom->lib.font_lib.setting_menu_font);
+	if (doom->hud)
+		void_free_lib(doom->hud);
+	if (doom->menu)
+		void_free_lib(doom->menu);
 	//add other font libs to be freed
 }
 
-void		free_struct_lib(t_doom *doom)
-{
-	t_sector	*sector;
-	t_sidedef	*sidedef;
-	t_sprite	*sprites;
-
-	if (doom->lib.sector)
-	{
-		sector = doom->lib.sector;
-		void_free_lib(sector);
-	}
-	if (doom->lib.sidedef)
-	{
-		sidedef = doom->lib.sidedef;
-		void_free_lib(sidedef);
-	}
-	if (doom->lib.sprites)
-	{
-		sprites = doom->lib.sprites;
-		void_free_lib(sprites);
-	}
-	free_font_lib(doom);
-}
-
-static void		free_sld_lib(SDL_Surface **lib, int len)
+static void		free_sld_libs(SDL_Surface **lib, int len)
 {
 	size_t index;
 
@@ -70,18 +56,18 @@ void		free_sdl_lib(t_doom *doom)
 	{
 		lib = doom->lib.tex_lib;
 		len = doom->lib.len_tex_lib;
-		free_sld_lib(lib, len);
+		free_sld_libs(lib, len);
 	}
 	if (doom->lib.obj_lib)
 	{
 		lib = doom->lib.obj_lib;
 		len = doom->lib.len_obj_lib;
-		free_sld_lib(lib, len);
+		free_sld_libs(lib, len);
 	}
 	if (doom->lib.sky_lib)
 	{
 		lib = doom->lib.sky_lib;
 		len = doom->lib.len_sky_lib;
-		free_sld_lib(lib, len);
+		free_sld_libs(lib, len);
 	}
 }

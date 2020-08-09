@@ -79,12 +79,12 @@ void			key_press(t_doom *doom, t_event *event,
 	if (key->keysym.sym == SDLK_m)
 	{
 		doom->game_editor = TRUE;
-		doom->hud = FALSE;
+		doom->huds = FALSE;
 	}
 	if (key->keysym.sym == SDLK_n)
 	{
 		doom->game_editor = FALSE;
-		doom->hud = TRUE;
+		doom->huds = TRUE;
 	}
 	key_press2(doom, event, key);
 }

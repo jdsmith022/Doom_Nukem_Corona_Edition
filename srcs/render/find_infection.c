@@ -4,10 +4,9 @@ static void		put_infection(t_doom *doom, t_sidedef infection, int x)
 {
 	t_plane		plane;
 
-	// infection.action = 4;
 	doom->texture_height = 16;
 	doom->texture_width = 16;
-	set_properties_plane(doom, infection, &plane, x);
+	set_properties_plane(doom, infection, &plane, &doom->lib.sector[doom->i_sector]);
 	draw_onesided_sidedef(doom, plane, infection, x);
 	doom->texture_height = 96;
 	doom->texture_width = 96;

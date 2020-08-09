@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/03 14:20:47 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/06 14:23:33 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ typedef struct		s_font_lib
 	t_color			font_color;
 	char			**shopping_list;
 	char			**basket_list;
+	t_font			*setting_menu_font;
+	int				setting_font_len;
+	t_font			*start_menu_font;
+	int				start_font_len;
 	t_font			*hud_font;
 	int				hud_font_len;
 	t_font			*game_editor_font;
@@ -58,7 +62,7 @@ void				font_to_sdl(t_doom *doom, t_font *lib, \
 						char *font_style, int font_size);
 void				save_game_editor_font(t_doom *doom, int *len);
 void				save_hud_font(t_doom *doom, int *len);
-void				save_basket_font(t_doom *doom, int *len);
-void				save_shopping_list_font(t_doom *doom, int *len);
+void				save_start_menu_font(t_doom *doom, int *len);
+void				save_setting_window_font(t_doom *doom, int *len);
 
 #endif

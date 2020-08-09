@@ -22,7 +22,9 @@ static void	add_amounts(t_sector *sector, int safe, int i)
 	if (i == 10)
 	{
 		if (safe >= 0)
+		{
 			sector->n_objects = safe;
+		}
 		else
 			error("object numbers can not be negative", line_num(0));
 	}
@@ -58,13 +60,13 @@ static void	add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 	if (i == 3)
 		sector->slope_floor = safe;
 	if (i == 4)
-		sector->slope_id = safe;
+		sector->slope_floor_id = safe;
 	if (i == 5)
 		sector->height_ceiling = safe;
 	if (i == 7)
 		sector->slope_ceiling = safe;
 	if (i == 8)
-		sector->slope_id = safe;
+		sector->slope_ceiling_id = safe;
 	if (i == 11)
 		sector->id = safe;
 	add_amounts(sector, safe, i);

@@ -33,6 +33,7 @@ static void		save_sky_2(t_doom *doom, t_bmp *images,\
 	if (sky_fd < 0)
 		doom_exit_failure(doom, OPEN_ERR);
 	images[1] = read_bmp(sky_fd);
+	save_bpm_to_sdl(doom, images, lib, 1);
 	sky_fd = open_file("assets/textures/sky_box/meadow_rt.bmp");
 	if (sky_fd < 0)
 		doom_exit_failure(doom, OPEN_ERR);

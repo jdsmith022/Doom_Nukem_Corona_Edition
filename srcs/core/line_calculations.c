@@ -53,11 +53,30 @@ double		point_line_distance(t_point point, t_line line)
 	double	denominator;
 	t_point	delta;
 	double	distance;
+	t_point	closest_point;
+	double	clip_dist;
 
 	delta = line_delta(line.start, line.end);
-	denominator = sqrt(pow(delta.y, 2) + pow(delta.x, 2));
-	distance = delta.y * point.x - delta.x * point.y +\
-	line.end.x * line.start.y - line.end.y * line.start.x / denominator;
+	if (delta.x == 0 && delta.y == 0)
+	{
+		closest_point = line.start;
+		delta = line_delta(line.start, point);
+		return (sqrt(pow(delta.x, 2) + pow(delta.y, 2)));
+	}
+	denominator = (pow(delta.x, 2) + pow(delta.y, 2));
+	clip_dist = ((point.x - line.start.x) * delta.x +\
+		(point.y - line.start.y) * delta.y) / denominator;
+	if (clip_dist < 0)
+		closest_point = line.start;
+	else if (clip_dist > 1)
+		closest_point = line.end;
+	else
+	{
+		closest_point.x = line.start.x + clip_dist * delta.x;
+		closest_point.y = line.start.y + clip_dist * delta.y;
+	}
+	delta = line_delta(closest_point, point);
+	distance = sqrt(pow(delta.x, 2) + pow(delta.y, 2));
 	return (distance);
 }
 

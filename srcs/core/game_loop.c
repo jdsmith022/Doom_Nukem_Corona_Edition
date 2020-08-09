@@ -1,15 +1,21 @@
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/menu.h"
+#include "../../includes/hud.h"
 
-#include <stdio.h>
+static void		set_to_window(t_doom *doom)
+{
+	SDL_UpdateWindowSurface(doom->window);
+	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
+}
 
-void	doom_gui(t_doom *doom)
+void			doom_gui(t_doom *doom)
 {
 	(void)doom;
 }
 
-double	get_timeframe(long *last_frame_time)
+double			get_timeframe(long *last_frame_time)
 {
 	struct timespec t;
 	double			dt;
@@ -23,7 +29,7 @@ double	get_timeframe(long *last_frame_time)
 	return (dt);
 }
 
-void	game_loop(t_doom *doom)
+void				game_loop(t_doom *doom)
 {
 	long			last_frame_time;
 	double			dt;
@@ -36,8 +42,10 @@ void	game_loop(t_doom *doom)
 		doom_update(doom, dt);
 		if (doom->game_editor == FALSE)
 		{
-			// sprite_reset(doom);
+			// timer(doom);
+			sprite_reset(doom);
 			doom_render(doom);
+			// sprite_render(doom); moved to doom->render
 			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
@@ -45,12 +53,9 @@ void	game_loop(t_doom *doom)
 			add_infection(doom); //move to a seprate file
 		}
 		else
-		{
 			open_game_editor(doom);
-		}
-		font_to_screen(doom);
-		SDL_UpdateWindowSurface(doom->window);
-		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
+		update_hud(doom);
+		set_to_window(doom);
 	}
 	doom_exit_success(doom);
 }
