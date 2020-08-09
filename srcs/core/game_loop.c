@@ -3,6 +3,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 #include "../../includes/hud.h"
+#include "../../includes/font.h"
 
 static void		set_to_window(t_doom *doom)
 {
@@ -40,7 +41,7 @@ void				game_loop(t_doom *doom)
 	{
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		if (doom->game_editor == FALSE)
+		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			// timer(doom);
 			// sprite_reset(doom);
@@ -52,9 +53,10 @@ void				game_loop(t_doom *doom)
 			sliding_door(doom, -1); //move to its own file
 			// add_infection(doom); //move to a seprate file
 		}
-		else
+		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		// update_hud(doom);
+		check_levels_and_time(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

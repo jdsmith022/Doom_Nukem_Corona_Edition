@@ -39,7 +39,7 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 			 set_texture_type
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
-				printing_map
+				printing_map init_game
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action
@@ -49,9 +49,10 @@ GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 DRAW_FILES = img
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font basket_font shopping_font \
-				start_menu_font setting_window_font
+				start_menu_font setting_window_font game_over_font instruction_font \
+				font_timer
 HUD_FILES = update_hud calculate_hud_levels update_level
-MENU_FILES = start_menu mouse_settings
+MENU_FILES = start_menu mouse_settings game_over print_background
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)

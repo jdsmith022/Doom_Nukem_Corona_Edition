@@ -5,28 +5,28 @@ void		del_sidedef(t_doom *doom)
 {
 	int i;
 
-	if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1)
+	if (SIDEDEF[EDIT.cur_sd].opp_sidedef != -1)
 	{
-		doom->game_design.sidedef[doom->game_design.sidedef\
-		[doom->game_design.cur_sd].opp_sidedef].opp_sidedef = -1;
-		doom->game_design.sidedef[doom->game_design.sidedef\
-		[doom->game_design.cur_sd].opp_sidedef].opp_sector = -1;
+		SIDEDEF[SIDEDEF\
+		[EDIT.cur_sd].opp_sidedef].opp_sidedef = -1;
+		SIDEDEF[SIDEDEF\
+		[EDIT.cur_sd].opp_sidedef].opp_sector = -1;
 	}
-	i = doom->game_design.cur_sec + 1;
-	while (i <= doom->game_design.s_len)
+	i = EDIT.cur_sec + 1;
+	while (i <= EDIT.s_len)
 	{
-		doom->game_design.sector[i].i_sidedefs--;
+		SECTOR[i].i_sidedefs--;
 		i++;
 	}
-	i = doom->game_design.cur_sd;
-	while (i < doom->game_design.w_len - 1)
+	i = EDIT.cur_sd;
+	while (i < EDIT.w_len - 1)
 	{
-		doom->game_design.sidedef[i] = doom->game_design.sidedef[i + 1];
+		SIDEDEF[i] = SIDEDEF[i + 1];
 		i++;
 	}
-	doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs--;
-	doom->game_design.w_len--;
-	doom->game_design.cur_sd--;
+	SECTOR[EDIT.cur_sec].n_sidedefs--;
+	EDIT.w_len--;
+	EDIT.cur_sd--;
 }
 
 t_sidedef	*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size)
@@ -72,34 +72,34 @@ void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
 {
 	int i;
 
-	doom->game_design.sidedef[doom->game_design.w_len].line.end.x = \
-	x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
-	doom->game_design.sidedef[doom->game_design.w_len].line.end.y = \
-	y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
-	doom->game_design.sidedef[doom->game_design.w_len].id = id;
-	doom->game_design.sidedef[doom->game_design.w_len].sector = \
-	doom->game_design.cur_sec;
-	doom->game_design.sidedef[doom->game_design.w_len].opp_sidedef = -1;
-	doom->game_design.sidedef[doom->game_design.w_len].opp_sector = -1;
-	doom->game_design.sidedef[doom->game_design.w_len].txt_1 = 0;
-	doom->game_design.sidedef[doom->game_design.w_len].txt_2 = 0;
-	doom->game_design.sidedef[doom->game_design.w_len].txt_3 = 0;
-	doom->game_design.sidedef[doom->game_design.w_len].action = 0;
-	if (doom->game_design.cur_sec != doom->game_design.s_len)
-		mv_sidedef(&doom->game_design.sidedef, doom->game_design.w_len, \
-		doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs);
-	i = doom->game_design.cur_sec + 1;
-	while (i <= doom->game_design.s_len)
+	SIDEDEF[EDIT.w_len].line.end.x = \
+	x + SECTOR[EDIT.cur_sec].diff_x;
+	SIDEDEF[EDIT.w_len].line.end.y = \
+	y + SECTOR[EDIT.cur_sec].diff_y;
+	SIDEDEF[EDIT.w_len].id = id;
+	SIDEDEF[EDIT.w_len].sector = \
+	EDIT.cur_sec;
+	SIDEDEF[EDIT.w_len].opp_sidedef = -1;
+	SIDEDEF[EDIT.w_len].opp_sector = -1;
+	SIDEDEF[EDIT.w_len].txt_1 = 0;
+	SIDEDEF[EDIT.w_len].txt_2 = 0;
+	SIDEDEF[EDIT.w_len].txt_3 = 0;
+	SIDEDEF[EDIT.w_len].action = 0;
+	if (EDIT.cur_sec != EDIT.s_len)
+		mv_sidedef(&SIDEDEF, EDIT.w_len, \
+		SECTOR[EDIT.cur_sec].i_sidedefs);
+	i = EDIT.cur_sec + 1;
+	while (i <= EDIT.s_len)
 	{
-		doom->game_design.sector[i].i_sidedefs++;
+		SECTOR[i].i_sidedefs++;
 		i++;
 	}
-	doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs++;
-	doom->game_design.cur_sd = doom->game_design.cur_sec != \
-	doom->game_design.s_len ? \
-	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs \
-	: doom->game_design.w_len;
-	doom->game_design.w_len++;
+	SECTOR[EDIT.cur_sec].n_sidedefs++;
+	EDIT.cur_sd = EDIT.cur_sec != \
+	EDIT.s_len ? \
+	SECTOR[EDIT.cur_sec].i_sidedefs \
+	: EDIT.w_len;
+	EDIT.w_len++;
 }
 
 void		add_sidedef(t_doom *doom, int x, int y)
@@ -108,22 +108,23 @@ void		add_sidedef(t_doom *doom, int x, int y)
 	static int	id;
 	int			i;
 
-	if (doom->game_design.sidedef == NULL)
+	if (SIDEDEF == NULL)
 	{
-		doom->game_design.sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * 2);
-		doom->game_design.w_size = 2;
-		doom->game_design.w_len = 0;
+		SIDEDEF = (t_sidedef*)malloc(sizeof(t_sidedef) * 2);
+		EDIT.w_size = 2;
+		EDIT.w_len = 0;
+		start = 0;
 		id = 0;
 	}
 	if (!start)
 	{
-		if (doom->game_design.w_size < doom->game_design.w_len + 1)
-			doom->game_design.sidedef = cpy_sidedef(doom,\
-			doom->game_design.sidedef, &doom->game_design.w_size);
-		doom->game_design.sidedef[doom->game_design.w_len].line.start.x = \
-		x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
-		doom->game_design.sidedef[doom->game_design.w_len].line.start.y = \
-		y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+		if (EDIT.w_size < EDIT.w_len + 1)
+			SIDEDEF = cpy_sidedef(doom,\
+			SIDEDEF, &EDIT.w_size);
+		SIDEDEF[EDIT.w_len].line.start.x = \
+		x + SECTOR[EDIT.cur_sec].diff_x;
+		SIDEDEF[EDIT.w_len].line.start.y = \
+		y + SECTOR[EDIT.cur_sec].diff_y;
 		start = 1;
 	}
 	else

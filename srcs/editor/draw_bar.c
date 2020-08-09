@@ -57,7 +57,7 @@ void    bars(Uint32 **pixels, t_doom *doom)
 	bar.y = HF_Y;
 	bar.height = HF_HEIGHT;
 	bar.len = HF_LEN;
-	bar.cur_height = doom->game_design.sector[doom->game_design.cur_sec].height_floor;
+	bar.cur_height = SECTOR[EDIT.cur_sec].height_floor;
 	draw_bar(doom, pixels, bar);
 	draw_bar_point(doom, pixels, bar);
 	bar.min = HC_MIN;
@@ -67,7 +67,7 @@ void    bars(Uint32 **pixels, t_doom *doom)
 	bar.y = HC_Y;
 	bar.height = HC_HEIGHT;
 	bar.len = HC_LEN;
-	bar.cur_height = doom->game_design.sector[doom->game_design.cur_sec].height_ceiling;
+	bar.cur_height = SECTOR[EDIT.cur_sec].height_ceiling;
 	draw_bar(doom, pixels, bar);
 	draw_bar_point(doom, pixels, bar);
 	bar.min = LL_MIN;
@@ -77,7 +77,7 @@ void    bars(Uint32 **pixels, t_doom *doom)
 	bar.y = LL_Y;
 	bar.height = LL_HEIGHT;
 	bar.len = LL_LEN;
-	bar.cur_height = doom->game_design.sector[doom->game_design.cur_sec].light_level;
+	bar.cur_height = SECTOR[EDIT.cur_sec].light_level;
 	draw_bar(doom, pixels, bar);
 	draw_bar_point(doom, pixels, bar);
 }

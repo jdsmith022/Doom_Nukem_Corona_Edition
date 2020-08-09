@@ -105,7 +105,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		}
 		x++;
 	}
-	// printf("sr: before stripe_distance\n");
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
 	// printf("sr: befre sprite_check\n");
 	sprite_check(doom, ray, sector, prev_sector);

@@ -8,6 +8,7 @@
 # include <time.h>
 # include <stdbool.h>
 # include <sys/stat.h>
+# include <time.h>
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
@@ -270,6 +271,8 @@ typedef struct		s_gamedesign {
 	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
+	int				o_len;
+	int				o_size;
 	int				cur_sec;
 	int				cur_sd;
 	int				portal_sd;
@@ -278,6 +281,9 @@ typedef struct		s_gamedesign {
 	int				pl_x;
 	int				pl_y;
 	int				pl_sec;
+	int				object_bar;
+	int 			sidedef_bar;
+	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
 typedef struct		s_doom {
@@ -298,6 +304,7 @@ typedef struct		s_doom {
 	bool			game_editor;
 	bool			huds;
 	bool			light;
+	bool			start_timer;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;
@@ -320,12 +327,16 @@ typedef struct		s_doom {
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
+	int 			game_time;
+	int				game_start_time;
+	int				start;
 	// int				sidedef_bottom[WIDTH];
 	// int				sidedef_top[WIDTH];
 }					t_doom;
 
 /*core functions*/
 int					main(void);
+void 				game_init(t_doom *doom);
 void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);
@@ -337,9 +348,11 @@ double				points_distance(t_point p1, t_point p2);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+void				doom_retry(t_doom *doom);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
+void				timer(t_doom *doom);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
@@ -353,16 +366,17 @@ t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
 void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
-void				add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd);
+void				add_inf_to_lib(t_doom *doom, t_lib *col_lib,\
+						int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 void				set_texture_type(const char *name, SDL_Surface *surface);
 t_bmp				*malloc_images_lib(t_doom *doom, int len);
 SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
 int					open_file(char *filename);
 int					line_num(int i);
-t_sprite   			object_inf(int fd, int sector, int obj_len);
+t_sprite			object_inf(int fd, int sector, int obj_len);
 t_sidedef			wall_inf(int fd, int sector, int tex_len, int sec_len);
-t_sector  			sector_inf(int fd, int tex_len);
+t_sector			sector_inf(int fd, int tex_len);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
@@ -478,6 +492,8 @@ void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
+void				init_game_design(t_doom *doom);
+void				init_game_design(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
