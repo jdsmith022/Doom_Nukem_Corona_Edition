@@ -16,6 +16,6 @@ void					doom_start(t_doom *doom);
 void					mouse_settings(t_doom *doom);
 void					instruction_window(t_doom *doom);
 void					print_background(t_doom *doom, Uint32 color);
-void					check_corona_level(t_doom *doom);
+void					check_levels_and_time(t_doom *doom);
 
 #endif

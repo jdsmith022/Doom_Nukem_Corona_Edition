@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 #include "../../includes/font.h"
+#include "../../includes/hud.h"
 
 void		doom_start(t_doom *doom)
 {
@@ -19,4 +20,6 @@ void		doom_start(t_doom *doom)
 	doom->lib.font_lib.walking_info = TRUE;
 	doom->own_event.select = FALSE;
 	doom->lib.font_lib.shooting_info = FALSE;
+	doom->start_timer = TRUE; //move to when player crosses sidedef
+	doom->hud->hold_time /= doom->difficulty;
 }

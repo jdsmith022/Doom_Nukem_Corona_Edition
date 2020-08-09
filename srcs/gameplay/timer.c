@@ -1,15 +1,24 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/menu.h"
 
 void		timer(t_doom *doom)
 {
-	time_t   sec;
-	int		ret;
+	int diff;
+	int	curr_time;
 
-	if (doom->hud->start == TRUE)
+	if (doom->start_timer == TRUE)
 	{
-		ret = clock_gettime(doom->game_time, sec);
-		if (ret == -1)
-			doom_exit_failure(doom, "error: Timer failure.");
+		doom->game_start_time = SDL_GetTicks();
+		doom->start_timer = FALSE;
+	}
+	else
+	{
+		curr_time = SDL_GetTicks();
+		diff = curr_time - doom->game_start_time;
+		doom->hud->curr_time = doom->hud->hold_time - diff;
+		doom->hud->curr_time /= 1000;
+		if (doom->hud->curr_time == 0)
+			doom->menu->game_over = TRUE;
 	}
 }

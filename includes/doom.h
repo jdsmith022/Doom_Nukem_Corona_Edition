@@ -297,6 +297,7 @@ typedef struct		s_doom {
 	bool			game_editor;
 	bool			huds;
 	bool			light;
+	bool			start_timer;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;
@@ -318,7 +319,8 @@ typedef struct		s_doom {
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
-	clockid_t 		game_time;
+	int 			game_time;
+	int				game_start_time;
 	int				start;
 	// int				sidedef_bottom[WIDTH];
 	// int				sidedef_top[WIDTH];
@@ -342,6 +344,7 @@ void				doom_retry(t_doom *doom);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
+void				timer(t_doom *doom);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
