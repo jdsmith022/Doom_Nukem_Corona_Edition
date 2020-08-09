@@ -111,33 +111,32 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 		add_portal(doom, 1);
 	else if (SIDEDEF[EDIT.cur_sd].opp_sidedef != -1 && x > AR_LEFT_TS1_X && x < AR_LEFT_TS1_X + FRAME_WIDTH && y > AR_LEFT_TS1_Y && y < AR_LEFT_TS1_Y + FRAME_HEIGHT)
 	{
-		if (SIDEDEF[EDIT.cur_sd].txt_1 - 1 >= -1)
+		if (SIDEDEF[EDIT.cur_sd].txt_1 - 1 >= 0)
 			SIDEDEF[EDIT.cur_sd].txt_1--;
 	}
 	else if (SIDEDEF[EDIT.cur_sd].opp_sidedef != -1 && x > AR_RIGHT_TS1_X && x < AR_RIGHT_TS1_X + FRAME_WIDTH && y > AR_RIGHT_TS1_Y && y < AR_RIGHT_TS1_Y + FRAME_HEIGHT)
 	{
-		if (doom->lib.len_tex_lib > SIDEDEF[EDIT.cur_sec].txt_1 + 1)
-		
-		SIDEDEF[EDIT.cur_sd].txt_1++;
+		if (doom->lib.len_tex_lib > SIDEDEF[EDIT.cur_sd].txt_1 + 1)
+			SIDEDEF[EDIT.cur_sd].txt_1++;
 	}
 	else if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && y > AR_LEFT_TS2_Y && y < AR_LEFT_TS2_Y + FRAME_HEIGHT)
 	{
-		if (SIDEDEF[EDIT.cur_sd].txt_2 - 1 >= -1)
+		if (SIDEDEF[EDIT.cur_sd].txt_2 - 1 >= 0)
 			SIDEDEF[EDIT.cur_sd].txt_2--;
 	}
 	else if (x > AR_RIGHT_TS2_X && x < AR_RIGHT_TS2_X + FRAME_WIDTH && y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT)
 	{
-		if (doom->lib.len_tex_lib > SIDEDEF[EDIT.cur_sec].txt_2 + 1)
+		if (doom->lib.len_tex_lib > SIDEDEF[EDIT.cur_sd].txt_2 + 1)
 			SIDEDEF[EDIT.cur_sd].txt_2++;
 	}
 	else if (SIDEDEF[EDIT.cur_sd].opp_sidedef != -1 && x > AR_LEFT_TS3_X && x < AR_LEFT_TS3_X + FRAME_WIDTH && y > AR_LEFT_TS3_Y && y < AR_LEFT_TS3_Y + FRAME_HEIGHT)
 	{
-		if (SIDEDEF[EDIT.cur_sd].txt_3 - 1 >= -1)
+		if (SIDEDEF[EDIT.cur_sd].txt_3 - 1 >= 0)
 		SIDEDEF[EDIT.cur_sd].txt_3--;
 	}
 	else if (SIDEDEF[EDIT.cur_sd].opp_sidedef != -1 && x > AR_RIGHT_TS3_X && x < AR_RIGHT_TS3_X + FRAME_WIDTH && y > AR_RIGHT_TS3_Y && y < AR_RIGHT_TS3_Y + FRAME_HEIGHT)
 	{
-		if (doom->lib.len_tex_lib > SIDEDEF[EDIT.cur_sec].txt_3 + 1)
+		if (doom->lib.len_tex_lib > SIDEDEF[EDIT.cur_sd].txt_3 + 1)
 			SIDEDEF[EDIT.cur_sd].txt_3++;
 	}
 	
