@@ -1,7 +1,3 @@
-# include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
-
-
 int		find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	t_point		isect;
@@ -28,4 +24,15 @@ int		find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		SIDEDEFS[safe_x].opp_sector != prev_sector)
 		return (find_shelf(doom, ray, SIDEDEFS[safe_x].opp_sector, sector));
 	return (*((int *)TEXTURES[SIDEDEFS[safe_x].txt_2]->userdata));
+}
+
+
+void    shoot(t_doom *doom, int x, int y)
+{
+    t_ray   ray;
+    int     object;
+
+    ray = init_ray(doom, x);
+    object = hit_check(doom, ray, doom->i_sector, doom->i_sector);
+
 }

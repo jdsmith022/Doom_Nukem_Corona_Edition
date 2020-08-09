@@ -268,6 +268,8 @@ typedef struct		s_gamedesign {
 	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
+	int				o_len;
+	int				o_size;
 	int				cur_sec;
 	int				cur_sd;
 	int				portal_sd;
@@ -276,6 +278,9 @@ typedef struct		s_gamedesign {
 	int				pl_x;
 	int				pl_y;
 	int				pl_sec;
+	int				object_bar;
+	int 			sidedef_bar;
+	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
 typedef struct		s_doom {
@@ -475,6 +480,8 @@ void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
+void				init_game_design(t_doom *doom);
+void				init_game_design(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);
