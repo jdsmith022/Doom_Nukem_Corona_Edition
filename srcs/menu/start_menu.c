@@ -1,26 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
-
-static void		print_background(t_doom *doom, Uint32 color)
-{
-	Uint32	*pixels;
-	int		x;
-	int		y;
-
-	pixels = doom->surface->pixels;
-	x = 0;
-	while (x < WIDTH)
-	{
-		y = 0;
-		while (y < HEIGHT)
-		{
-			if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
-				pixels[(y * WIDTH + x)] = color;
-			y++;
-		}
-		x++;
-	}
-}
+#include "../../includes/font.h"
+#include "../../includes/hud.h"
 
 void		doom_start(t_doom *doom)
 {
@@ -34,5 +15,11 @@ void		doom_start(t_doom *doom)
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
+	if (doom->game_editor == FALSE)
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+	doom->lib.font_lib.walking_info = TRUE;
 	doom->own_event.select = FALSE;
+	doom->lib.font_lib.shooting_info = FALSE;
+	doom->start_timer = TRUE; //move to when player crosses sidedef
+	doom->hud->hold_time /= doom->difficulty;
 }

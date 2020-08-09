@@ -44,13 +44,14 @@ AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action
 GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries \
-				init_groceries grocery_ui add_infection
+				init_groceries grocery_ui add_infection timer
 DRAW_FILES = img vector
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font basket_font shopping_font \
-				start_menu_font setting_window_font
+				start_menu_font setting_window_font game_over_font instruction_font \
+				font_timer
 HUD_FILES = update_hud calculate_hud_levels update_level
-MENU_FILES = start_menu mouse_settings
+MENU_FILES = start_menu mouse_settings game_over print_background
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)

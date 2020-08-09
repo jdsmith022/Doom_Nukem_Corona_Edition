@@ -6,17 +6,32 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/08 18:54:38 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/09 14:26:03 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 
-// static void	set_timer(t_doom *doom, t_font *lib)
-// {
-	
-// }
+static void	set_timer(t_doom *doom, t_font *lib)
+{
+	char	*timer;
+	int		time;
+
+	time = doom->hud->curr_time;
+	time /= 1000;
+	time /= 60;
+	timer = ft_itoa(time);
+	timer = ft_strcat(timer, ":00");
+	lib[6].str = "Time";
+	lib[6].font_rect.x = WIDTH / 2.4;
+	lib[6].font_rect.y = 15;
+	lib[6].font_color = doom->lib.font_lib.font_color.white;
+	lib[7].str = timer;
+	lib[7].font_rect.x = WIDTH / 1.9;
+	lib[7].font_rect.y = 15;
+	lib[7].font_color = doom->lib.font_lib.font_color.white;
+}
 
 static void	set_levels(t_doom *doom, t_font *lib)
 {
@@ -28,7 +43,7 @@ static void	set_levels(t_doom *doom, t_font *lib)
 	lib[5].font_rect.x = WIDTH - 250;
 	lib[5].font_rect.y = HEIGHT - 35;
 	lib[5].font_color = doom->lib.font_lib.font_color.white;
-	// set_timer(doom, lib);
+	set_timer(doom, lib);
 }
 
 static void	set_text(t_doom *doom, t_font *lib, int len)
@@ -60,7 +75,7 @@ void		save_hud_font(t_doom *doom, int *len)
 	char		*font_path;
 	int			font_size;
 
-	*len = 6;
+	*len = 8;
 	doom->lib.font_lib.hud_font = (t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.hud_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);

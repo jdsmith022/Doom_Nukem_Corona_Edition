@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/menu.h"
 
 void			doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge)
 {
@@ -31,13 +32,24 @@ void			doom_exit_failure(t_doom *doom, const char *exit_message)
 	exit(EXIT_FAILURE);
 }
 
+void			doom_retry(t_doom *doom)
+{
+	ft_bzero(doom->lib.sector, sizeof(doom->lib.sector));
+	ft_bzero(doom->lib.sidedef, sizeof(doom->lib.sidedef));
+	ft_bzero(doom->lib.sprites, sizeof(doom->lib.sprites));
+	ft_bzero(doom->game_design.sector, sizeof(doom->game_design.sector));
+	ft_bzero(doom->lib.tex_lib, sizeof(doom->lib.tex_lib));
+	ft_bzero(doom->lib.obj_lib, sizeof(doom->lib.obj_lib));
+	ft_bzero(doom->lib.sky_lib, sizeof(doom->lib.sky_lib));
+	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
+}
+
 void			doom_exit_success(t_doom *doom)
 {
-	sdl_window_screen_free(doom);
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
 	ft_bzero(doom, sizeof(doom));
-	SDL_DestroyWindow(doom->window);  // Closes and destroys the window and image
-	// SDL_Quit();
+	sdl_window_screen_free(doom);
+	SDL_DestroyWindow(doom->window);
 	exit(EXIT_SUCCESS);
 }

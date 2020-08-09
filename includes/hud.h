@@ -13,7 +13,8 @@ typedef struct	s_hud
 	bool		shopper;
 	bool		corona;
 	bool		start;
-	int			time;
+	int			hold_time;
+	int			curr_time;
 	Uint32		corona_level;
 	Uint32		sanitizer_level;
 }				t_hud;
@@ -21,5 +22,6 @@ typedef struct	s_hud
 void			update_hud(t_doom *doom);
 void			update_hud_levels(t_doom *doom, t_font *lib);
 void			calculate_hud_levels(t_doom *doom);
+void			update_timer(t_doom *doom, t_font *lib);
 
 #endif

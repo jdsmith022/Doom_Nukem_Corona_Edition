@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/26 17:55:44 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/08 20:52:12 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,17 @@
 static void	set_menu_text(t_doom *doom, t_font *lib, int len)
 {
 	SDL_Rect	font_rect;
-	size_t		index;
 	char		**str;
 
-	index = 0;
-	lib[index].len = len;
-	lib[index].str = "Create Sector";
-	lib[index].font_rect.x = 30;
-	lib[index].font_rect.y = 40;
-	lib[index].font_color = doom->lib.font_lib.font_color.black;
-	index++;
-	lib[index].str = "Design Sector";
-	lib[index].font_rect.x = 670;
-	lib[index].font_rect.y = 40;
-	lib[index].font_color = doom->lib.font_lib.font_color.black;
+	lib[0].len = len;
+	lib[0].str = "Create Sector";
+	lib[0].font_rect.x = 30;
+	lib[0].font_rect.y = 40;
+	lib[0].font_color = doom->lib.font_lib.font_color.black;
+	lib[1].str = "Design Sector";
+	lib[1].font_rect.x = 670;
+	lib[1].font_rect.y = 40;
+	lib[1].font_color = doom->lib.font_lib.font_color.black;
 }
 
 static t_font	*editor_menu(t_doom *doom, int *len)

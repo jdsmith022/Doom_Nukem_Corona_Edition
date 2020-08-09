@@ -3,7 +3,7 @@
 int			open_file(char *filename)
 {
 	int		fd;
-	char 	*message;
+	char	*message;
 
 	message = ft_strjoin(filename, "can't open");
 	fd = open(filename, O_RDONLY);
