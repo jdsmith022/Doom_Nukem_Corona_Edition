@@ -48,6 +48,8 @@
 # define SIDEDEFS	doom->lib.sidedef
 # define TEXTURES	doom->lib.tex_lib
 
+# define CHECKOUT	6
+
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 

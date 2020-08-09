@@ -11,5 +11,8 @@ void			groceries(t_doom *doom)
 		draw_basket_ui(doom, doom->groceries);
 	if (doom->groceries->shopping_list)
 		draw_shopping_ui(doom, doom->groceries);
-	checkout(doom->groceries);
+	// printf("i_sidef: %d\n", SECTORS[doom->i_sector].i_sidedefs);
+	// printf("n_sidedef: %d\n", SECTORS[doom->i_sector].n_sidedefs);
+	// if (SECTORS[doom->i_sector] == CHECKOUT)
+	// 	checkout(doom->groceries);
 }
