@@ -68,7 +68,6 @@ void	update_hud_levels(t_doom *doom, t_font *lib)
 	char	*font_path;
 	int		font_size;
 
-	printf("hello\n");
 	level = doom->hud->corona_level;
 	corona_level = ft_itoa(level);
 	percent = ft_strcat(corona_level, "%");
