@@ -42,21 +42,21 @@ void		exit_scissor_lift(t_doom *doom)
 	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.y = doom->pos.y - 10;
 	//park yourself next to it
 	distance = points_distance(doom->pos, doom->lib.sprites[doom->save_scissor_lift].pos);
-	if (distance > 75 && distance < 100)
+	if (distance > 75/* && distance < 100*/)
 	{
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift_down = FALSE;
 		doom->own_event.scissor_lift = FALSE;
 		printf("deactivate scissor lift\n");
 	}
-	else if (distance < 75)
-	{
-		printf("Please move further away from scissor lift parking spot\n");
-	}
 	else
 	{
-		printf("Please go back to the parking spot of the scissor lift.");
+		printf("Please move further away from scissor lift parking spot\ndistance: %f\n", distance);
 	}
+	// else
+	// {
+		// printf("Please go back to the parking spot of the scissor lift.");
+	// }
 }
 
 void		activate_scissor_lift(t_doom *doom, int index)
