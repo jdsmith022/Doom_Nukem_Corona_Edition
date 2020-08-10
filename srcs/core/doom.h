@@ -50,9 +50,6 @@
 # define SIDEDEFS	doom->lib.sidedef
 # define TEXTURES	doom->lib.tex_lib
 
-# define CHECKOUT	6
-# define EXIT_LEVEL 2
-
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
@@ -272,8 +269,6 @@ typedef struct		s_gamedesign {
 	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
-	int				o_len;
-	int				o_size;
 	int				cur_sec;
 	int				cur_sd;
 	int				portal_sd;
@@ -282,9 +277,6 @@ typedef struct		s_gamedesign {
 	int				pl_x;
 	int				pl_y;
 	int				pl_sec;
-	int				object_bar;
-	int 			sidedef_bar;
-	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
 typedef struct		s_doom {
@@ -305,7 +297,6 @@ typedef struct		s_doom {
 	bool			game_editor;
 	bool			huds;
 	bool			light;
-	bool			start_timer;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;
@@ -324,20 +315,17 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				difficulty;
 	int				total_sprites;
-	t_line			level_exit;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
-	int 			game_time;
-	int				game_start_time;
-	int				start;
+	clockid_t 		game_time;
 	// int				sidedef_bottom[WIDTH];
 	// int				sidedef_top[WIDTH];
 }					t_doom;
 
 /*core functions*/
 int					main(void);
-void 				game_init(t_doom *doom);
+void 				game_init(void);
 void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);
@@ -353,7 +341,6 @@ void				doom_retry(t_doom *doom);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
-void				timer(t_doom *doom);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
@@ -493,8 +480,6 @@ void				bars(Uint32 **pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
 void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
-void				init_game_design(t_doom *doom);
-void				init_game_design(t_doom *doom);
 
 /*sprite functions*/
 void				sprite_init(t_doom *doom);

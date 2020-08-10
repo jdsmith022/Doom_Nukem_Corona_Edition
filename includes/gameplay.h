@@ -34,6 +34,12 @@ typedef struct			s_groceries {
 	TTF_Font			*font;
 }						t_groceries;
 
+typedef struct			s_game_over_info {
+	bool				won;
+	t_groceries			*curr_groceries;
+	t_groceries			*missing_groceries;
+}						t_game_over_info;
+
 void					init_groceries(t_doom *doom);
 void					groceries(t_doom *doom);
 void					handle_groceries(t_doom *doom);

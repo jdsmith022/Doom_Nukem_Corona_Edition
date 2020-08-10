@@ -12,7 +12,7 @@ void			groceries(t_doom *doom)
 		draw_basket_ui(doom, doom->groceries);
 	if (doom->groceries->shopping_list)
 		draw_shopping_ui(doom, doom->groceries);
-	if (SECTORS[doom->i_sector].outside == 2){
+	if (SECTORS[doom->i_sector].action == 2){
 		if (checkout(doom->groceries))
 			printf("YEAH U WON!\n");
 		else

@@ -52,7 +52,7 @@
 // 	SECTOR[0].i_sidedefs = 0;
 // 	SECTOR[0].diff_x = 0;
 // 	SECTOR[0].diff_y = 0;
-// 	SECTOR[0].outside = 1; 
+// 	SECTOR[0].action = 1; 
 // 	SECTOR[0].light_level = 10;
 // 	SECTOR[0].id = 0;
 // 	EDIT.portal_sec = -1;
@@ -109,7 +109,7 @@ void	init_game_design(t_doom *doom)
 	doom->game_design.sector[doom->game_design.s_len].i_sidedefs = 0;
 	doom->game_design.sector[doom->game_design.s_len].diff_x = 0;
 	doom->game_design.sector[doom->game_design.s_len].diff_y = 0;
-	doom->game_design.sector[doom->game_design.s_len].outside = 0;
+	doom->game_design.sector[doom->game_design.s_len].action = 0;
 	doom->game_design.sector[doom->game_design.s_len].light_level = 10;
 	doom->game_design.portal_sec = -1;
 	doom->game_design.portal_sd = -1;
