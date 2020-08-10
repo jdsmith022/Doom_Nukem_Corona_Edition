@@ -100,7 +100,7 @@ void			key_press(t_doom *doom, t_event *event,
 	{
 		doom->game_editor = FALSE;
 		doom->huds = TRUE;
-		if (doom->lib.font_lib.walking_info == TRUE)
+		if (doom->lib.font_lib.bools.walking_info == TRUE)
 			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
 	}
 	key_press2(doom, event, key);

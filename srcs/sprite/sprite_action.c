@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/font.h"
 
 int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
@@ -46,6 +47,7 @@ void		exit_scissor_lift(t_doom *doom)
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift_down = FALSE;
 		doom->own_event.scissor_lift = FALSE;
+		doom->lib.font_lib.bools.scissor_lift = TRUE;
 		printf("deactivate scissor lift\n");
 	}
 	else
