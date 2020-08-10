@@ -41,15 +41,3 @@ void			generate_shopping_list(t_doom *doom)
 		i++;
 	}
 }
-
-void			print_shopping_list(t_groceries *groceries)
-{
-	uint8_t		i;
-
-	i = 0;
-	while (i < groceries->shopping_list_len){
-		printf("type: %d  amount: %d  ", groceries->shopping_list[i].type, groceries->shopping_list[i].amount);
-		i++;
-	}
-	printf("\n");
-}

@@ -10,6 +10,8 @@
 #define MAX_SHOPPING_LIST_LENGTH 2
 
 #define SHOPPING_LIST 	doom->groceries->shopping_list
+#define BASKET			doom->groceries->basket
+#define SHOPPING_LIST_L doom->groceries->shopping_list_len
 
 #define MOUSE_Y			doom->own_event.hold_y
 #define MOUSE_X			doom->own_event.hold_x
@@ -31,13 +33,14 @@ typedef struct			s_groceries {
 	t_item 				*shopping_list;
 	uint8_t				shopping_list_len;
 	t_list				*basket;
+	uint8_t				basket_len;
 	TTF_Font			*font;
 }						t_groceries;
 
 typedef struct			s_game_over_info {
 	bool				won;
-	t_groceries			*curr_groceries;
-	t_groceries			*missing_groceries;
+	t_item				*groceries_to_display;
+	uint8_t				groceries_len;
 }						t_game_over_info;
 
 void					init_groceries(t_doom *doom);
@@ -58,8 +61,12 @@ void					draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text);
 void					draw_text_at(t_doom *doom, SDL_Rect rect, char *text);
 t_ray					init_ray(t_doom *doom, int x);
 int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
+uint8_t					get_basket_len(t_list **head);
+t_item					*get_item_from_basket(uint8_t type, t_list **head);
 SDL_Rect				get_position(uint16_t index, int start_x);
 void					set_positions(t_list **basket);
-void					print_shopping_list(t_groceries *groceries);
+bool					search_basket(t_item *itema, t_list **head);
+bool					search_basket_for_item(t_item *itema, t_list **head);
+t_game_over_info		get_game_over_info(t_doom *doom);
 
 #endif

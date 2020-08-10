@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 
-static uint8_t	get_basket_len(t_list **head)
+uint8_t	get_basket_len(t_list **head)
 {
 	uint8_t		len;
 	t_list		*temp;
@@ -16,26 +16,6 @@ static uint8_t	get_basket_len(t_list **head)
 		temp = temp->next;
 	}
 	return len;
-}
-
-static bool		search_basket(t_item *itema, t_list **head)
-{
-	t_list		*temp;
-	t_item		*itemb;
-
-	temp = *head;
-	if (!temp)
-		return false;
-	while (temp)
-	{
-		itemb = (t_item *)temp->content;
-		if (itema->type == itemb->type && itema->amount == itemb->amount)
-			return true;
-		if (temp->next)
-			temp = temp->next;
-		else break ;
-	}
-	return false;
 }
 
 bool			checkout(t_groceries *groceries)

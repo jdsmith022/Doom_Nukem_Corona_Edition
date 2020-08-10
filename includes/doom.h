@@ -50,7 +50,6 @@
 # define SIDEDEFS	doom->lib.sidedef
 # define TEXTURES	doom->lib.tex_lib
 
-# define CHECKOUT	6
 # define EXIT_LEVEL 2
 
 typedef struct s_audio		t_audio;

@@ -20,7 +20,7 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.intersect = intersect;
 	sidedef.line = curr_sidedef.line;
 	sidedef.action = curr_sidedef.action;
-	if (sidedef.action == CHECKOUT){
+	if (sidedef.action == EXIT_LEVEL){
 		doom->level_exit.start = sidedef.line.start;
 		doom->level_exit.end = sidedef.line.end;
 	}

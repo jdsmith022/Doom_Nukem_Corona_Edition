@@ -50,5 +50,4 @@ void			init_groceries(t_doom *doom)
 	generate_shopping_list(doom);
 	doom->groceries->basket = NULL;
 	set_grocery_font(&doom->groceries->font);
-	print_shopping_list(doom->groceries);
 }

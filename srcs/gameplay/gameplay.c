@@ -2,7 +2,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 
-void			groceries(t_doom *doom)
+void				groceries(t_doom *doom)
 {
 	if (MOUSE_PRESSED)
 		handle_groceries(doom);
@@ -12,11 +12,8 @@ void			groceries(t_doom *doom)
 		draw_basket_ui(doom, doom->groceries);
 	if (doom->groceries->shopping_list)
 		draw_shopping_ui(doom, doom->groceries);
-	if (SECTORS[doom->i_sector].action == 2){
-		if (checkout(doom->groceries))
-			printf("YEAH U WON!\n");
-		else
-			printf("srry u lost..\n");
+	if (SECTORS[doom->i_sector].action == EXIT_LEVEL){
+		get_game_over_info(doom);
 		doom->menu->game_over = TRUE;
 	}
 }
