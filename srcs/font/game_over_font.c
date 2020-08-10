@@ -14,14 +14,10 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[1].font_rect.x = WIDTH / 3.4;
 	lib[1].font_rect.y = 275;
 	lib[1].font_color = doom->lib.font_lib.font_color.green;
-	lib[2].str = "Retry";
-	lib[2].font_rect.x = WIDTH / 2.2;
-	lib[2].font_rect.y = 425;
+	lib[2].str = "Press ESC to exit";
+	lib[2].font_rect.x = WIDTH / 2.7;
+	lib[2].font_rect.y = 500;
 	lib[2].font_color = doom->lib.font_lib.font_color.green;
-	lib[3].str = "Press ESC to exit";
-	lib[3].font_rect.x = WIDTH / 2.7;
-	lib[3].font_rect.y = 500;
-	lib[3].font_color = doom->lib.font_lib.font_color.green;
 }
 
 void	save_game_over_font(t_doom *doom, int *len)
@@ -29,7 +25,7 @@ void	save_game_over_font(t_doom *doom, int *len)
 	char		*font_path;
 	int			font_size;
 
-	*len = 4;
+	*len = 3;
 	doom->lib.font_lib.game_over_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.game_over_font == NULL)

@@ -337,7 +337,6 @@ double				points_distance(t_point p1, t_point p2);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
-void				doom_retry(t_doom *doom);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 double				get_timeframe(long *last_frame_time);

@@ -43,7 +43,7 @@ void				game_loop(t_doom *doom)
 		doom_update(doom, dt);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
-			// timer(doom);
+			timer(doom);
 			sprite_reset(doom);
 			doom_render(doom);
 			audio(doom->audio, &doom->own_event);
@@ -56,7 +56,7 @@ void				game_loop(t_doom *doom)
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		update_hud(doom);
-		check_levels_and_time(doom);
+		menus(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

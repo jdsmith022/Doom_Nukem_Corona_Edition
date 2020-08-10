@@ -10,7 +10,6 @@ void		init_menu(t_doom *doom)
 	doom->menu->start = FALSE;
 	doom->menu->menu = TRUE;
 	doom->menu->game_over = FALSE;
-	doom->menu->retry = FALSE;
 }
 
 void		init_hud(t_doom *doom)

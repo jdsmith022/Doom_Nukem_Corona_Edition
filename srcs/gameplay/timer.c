@@ -12,7 +12,7 @@ void		timer(t_doom *doom)
 		doom->game_start_time = SDL_GetTicks();
 		doom->start_timer = FALSE;
 	}
-	else
+	else if (doom->menu->pause == FALSE && doom->game_editor == FALSE)
 	{
 		curr_time = SDL_GetTicks();
 		diff = curr_time - doom->game_start_time;

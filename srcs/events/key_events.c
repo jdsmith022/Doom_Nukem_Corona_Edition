@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/menu.h"
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
@@ -48,6 +49,8 @@ static void		key_press2(t_doom *doom, t_event *event,
 {
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
+	if (key->keysym.sym == SDLK_y)
+		doom->menu->pause = TRUE;
 	if (key->keysym.sym == SDLK_q || key->keysym.sym == SDLK_e)
 		key_select_and_shoot(doom, event, key);
 	if (key->keysym.sym == SDLK_p) //needs to become an click on button event

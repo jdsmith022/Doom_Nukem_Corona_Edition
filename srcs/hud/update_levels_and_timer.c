@@ -11,10 +11,10 @@ static char	*set_seconds(char *timer, char *sec_str)
 	{
 		zero = "0";
 		sec_str = ft_strjoin(zero, sec_str);
-		timer = ft_strcat(timer, sec_str);
+		timer = ft_strjoin(timer, sec_str);
 	}
 	else
-		timer = ft_strcat(timer, sec_str);
+		timer = ft_strjoin(timer, sec_str);
 	return (timer);
 }
 
@@ -30,12 +30,12 @@ static char	*time_to_string(t_doom *doom, int time)
 	sec = time % 60;
 	min_str = ft_itoa(min);
 	sec_str = ft_itoa(sec);
-	timer = ft_strcat(min_str, ":");
+	timer = ft_strjoin(min_str, ":");
 	timer = set_seconds(timer, sec_str);
 	return (timer);
 }
 
-void	update_timer(t_doom *doom, t_font *lib)
+void		update_timer(t_doom *doom, t_font *lib)
 {
 	char	*font_path;
 	int		font_size;
@@ -60,13 +60,11 @@ void	update_timer(t_doom *doom, t_font *lib)
 	font_to_sdl(doom, doom->lib.font_lib.hud_font, font_path, font_size);
 }
 
-void	update_hud_levels(t_doom *doom, t_font *lib)
+static void	update_corona_sanitizer_levels(t_doom *doom, t_font *lib)
 {
 	int		level;
 	char	*corona_level;
 	char	*percent;
-	char	*font_path;
-	int		font_size;
 
 	level = doom->hud->corona_level;
 	corona_level = ft_itoa(level);
@@ -88,6 +86,14 @@ void	update_hud_levels(t_doom *doom, t_font *lib)
 		lib[5].font_color = doom->lib.font_lib.font_color.red;
 	else
 		lib[5].font_color = doom->lib.font_lib.font_color.white;
+}
+
+void		update_hud_levels(t_doom *doom, t_font *lib)
+{
+	char	*font_path;
+	int		font_size;
+
+	update_corona_sanitizer_levels(doom, lib);
 	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
 	font_size = 22;
 	font_to_sdl(doom, doom->lib.font_lib.hud_font, font_path, font_size);

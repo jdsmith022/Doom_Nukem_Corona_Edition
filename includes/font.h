@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/09 00:43:57 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/10 15:35:30 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct		s_font_lib //refactor this into index
 	int				game_font_len;
 	t_font			*instruction_font;
 	int				instruction_font_len;
+	t_font			*pause_font;
+	int				pause_font_len;
 	bool			walking_info;
 	bool			shooting_info;
 	struct timespec	timer;
@@ -73,6 +75,7 @@ void				save_start_menu_font(t_doom *doom, int *len);
 void				save_setting_window_font(t_doom *doom, int *len);
 void				save_game_over_font(t_doom *doom, int *len);
 void				save_instruction_font(t_doom *doom, int *len);
+void				save_pause_font(t_doom *doom, int *len);
 void				font_timer(t_doom *doom);
 
 #endif

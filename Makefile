@@ -26,7 +26,7 @@ MENU = srcs/menu/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit moving_sidedef free_library libs_init
-EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press 
+EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_row slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
@@ -49,9 +49,10 @@ DRAW_FILES = img vector
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font basket_font shopping_font \
 				start_menu_font setting_window_font game_over_font instruction_font \
-				font_timer
-HUD_FILES = update_hud calculate_hud_levels update_level
-MENU_FILES = start_menu mouse_settings game_over print_background
+				font_timer pause_font
+HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
+MENU_FILES = start_menu mouse_settings game_over print_background game_over_and_pause \
+			menu_click_events
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)

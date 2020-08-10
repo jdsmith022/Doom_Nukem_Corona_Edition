@@ -78,7 +78,10 @@ void	open_game_editor(t_doom *doom)
 {
 	Uint32	*pixels;
 	int		i;
+	int		hold_time;
+	int		curr_time;
 
+	hold_time = SDL_GetTicks();
 	SDL_SetRelativeMouseMode(SDL_FALSE);
 	doom->distance = 1;
 	pixels = doom->surface->pixels;
@@ -94,4 +97,6 @@ void	open_game_editor(t_doom *doom)
 		draw_lines(doom, &pixels, i);
 		i++;
 	}
+	curr_time = SDL_GetTicks();
+	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
 }
