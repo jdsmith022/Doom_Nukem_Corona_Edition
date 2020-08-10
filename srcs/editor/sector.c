@@ -75,7 +75,7 @@ void	add_sector(t_doom *doom)
 		SECTOR[EDIT.s_len].n_sidedefs = 0;
 		SECTOR[EDIT.s_len].diff_x = 0;
 		SECTOR[EDIT.s_len].diff_y = 0;
-		SECTOR[EDIT.s_len].outside = 0;
+		SECTOR[EDIT.s_len].action = 0;
 		SECTOR[EDIT.s_len].light_level = 10;
 
 }

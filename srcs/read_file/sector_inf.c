@@ -31,9 +31,9 @@ static void	add_amounts(t_sector *sector, int safe, int i)
 	if (i == 12)
 	{
 		if (safe != 0 || safe != 1)
-			sector->outside = safe;
+			sector->action = safe;
 		else
-			error("outside needs to be 1 or 2 (on or off)", line_num(0));
+			error("action needs to be 1 or 2 (on or off)", line_num(0));
 	}
 }
 

@@ -72,7 +72,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
-	if (doom->lib.sector[sector].outside)
+	if (doom->lib.sector[sector].action)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
 	save_poster = -1;
 	while (x < doom->lib.sector[sector].n_sidedefs +\

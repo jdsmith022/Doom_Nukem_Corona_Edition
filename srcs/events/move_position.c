@@ -11,8 +11,7 @@ t_point		check_line_intersection(t_line move, t_sidedef sidedef,
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
 	sidedef.line.start, sidedef_delta);
-	if (point_distance(intersect, move.start, angle)
-		< 40.0 && sidedef.action == 2) //create_enum and than use the name
+	if (sidedef.action == 2 && sidedef.distance < 70.0)
 		sliding_door(NULL, x);
 	return (intersect);
 }
@@ -90,7 +89,7 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 	movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
 	if (sprite_collision(doom, movement) == 1)
 		movement.end = doom->pos;
-	if (doom->lib.sector[doom->i_sector].outside == 1 \
+	if (doom->lib.sector[doom->i_sector].action == 1 \
 	&& (doom->pos.y >= 350 || doom->pos.y <= 100))
 		movement.end = doom->pos;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);

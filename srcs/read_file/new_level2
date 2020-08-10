@@ -1,5 +1,15 @@
 #albert heijn
 
+#symbol library
+7
+assets/symbols/plus.bmp
+assets/symbols/arrow_left.bmp
+assets/symbols/arrow_right.bmp
+assets/symbols/arrow_up.bmp
+assets/symbols/arrow_down.bmp
+assets/symbols/garbage.bmp
+assets/symbols/player.bmp
+
 #texture library
 10
 assets/textures/shelves/96X96-Shelf.bmp

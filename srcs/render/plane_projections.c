@@ -11,7 +11,7 @@ static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 		set_properties_plane_portal(doom, sidedef,\
 			&opp_sector, plane);
 	}
-	if (sector->outside)
+	if (sector->action == 1)
 	{
 		doom->lib.portal_ceiling = plane->sidedef_top;
 		doom->lib.portal_floor = plane->sidedef_bottom;
@@ -52,9 +52,9 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
-	if (!sector.outside)
+	if (!sector.action)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
-	if (!sector.outside)
+	if (!sector.action)
 		draw_floor(doom, x, sector, plane.sidedef_bottom);
 	doom->lib.sector[sidedef.sector].sidedef_bottom[x] = plane.sidedef_bottom;
 	doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
