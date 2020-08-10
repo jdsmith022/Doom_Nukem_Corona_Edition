@@ -493,7 +493,7 @@ t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
 int					sprite_collision(t_doom *doom, t_line movement);
 void				exit_scissor_lift(t_doom *doom);
 void				draw_scissor_lift_bar(t_doom *doom);
-void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i);
+void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i, double distance);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

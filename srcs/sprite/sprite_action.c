@@ -5,6 +5,7 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
 	int		value;
 
+	printf("sprite is hit\n");
 	value = 0;
 	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE) || sprite.action == 9)
 		value = 15;
@@ -13,8 +14,8 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 	movement.end.y >= sprite.lines[1].start.y - value &&\
 	movement.end.y <= sprite.lines[1].end.y + value)
 		return (1);
-	else
-		return (-1);
+	printf("einde sprite is hit\n");
+	return (-1);
 }
 
 void		exit_scissor_lift(t_doom *doom)
@@ -95,16 +96,21 @@ int			sprite_collision(t_doom *doom, t_line movement)
 	{
 		if (doom->lib.sprites[index].block == 1)
 		{
-			if (doom->lib.sprites[index].distance < 70)
+			if (doom->lib.sprites[index].distance < 70\
+			&& doom->own_event.scissor_lift == FALSE &&\
+			doom->lib.sprites[index].action == 7)
 			{
-				if (doom->lib.sprites[index].action == 7)
-				{
-					if (doom->own_event.scissor_lift == FALSE)
-					{
+				printf("getting closer than 70\n");
+				// if (doom->lib.sprites[index].action == 7)
+				// {
+					// printf("action == 7\n");
+					// if (doom->own_event.scissor_lift == FALSE)
+					// {
 						printf("YOU ENTER THE SCISSOR LIFT\n");
 						activate_scissor_lift(doom, index);
-					}
-				}
+					// }
+					printf("after enter scissor lift if statement\n");
+				// }
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 				return (1);

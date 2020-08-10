@@ -94,7 +94,7 @@ void		draw_stripes_bar(t_doom *doom, t_point bar_begin, t_point bar_end)
 			pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
 			+ ((int)tex_x *\
 			doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-			put_pixel_tex(doom, pix_dex, index, i_sprite);
+			put_pixel_tex(doom, pix_dex, index, i_sprite, 0);
 			screen_y++;
 		}
 		stripe++;
