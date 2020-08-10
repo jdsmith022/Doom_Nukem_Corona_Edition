@@ -11,7 +11,7 @@ t_point		check_line_intersection(t_line move, t_sidedef sidedef,
 	sidedef_delta = line_delta(sidedef.line.start, sidedef.line.end);
 	intersect = line_intersection(move.start, move_delta,\
 	sidedef.line.start, sidedef_delta);
-	if (sidedef.action == 2 && sidedef.distance < 70.0)
+	if (point_distance(intersect, move.start, angle) < 10.0 && sidedef.action == 2 && sidedef.distance < 70.0)
 		sliding_door(NULL, x);
 	return (intersect);
 }
