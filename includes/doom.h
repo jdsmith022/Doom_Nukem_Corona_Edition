@@ -92,20 +92,20 @@ typedef struct			s_sprite {
 	t_point				pos;
 	double				size;			//products: 16, shopper: 48
 	t_line				*lines;
-	double				angle;			//GEBRUIK IK NIET what is the angle on the map
-	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 scissor lift, 7 groceries?, 8 hopper
+	// double				angle;			//GEBRUIK IK NIET what is the angle on the map
+	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 inactive virus 7 scissor lift, 8 inactive health sprite 9 shopper
 	int					*textures;		//index to texture, +0, +1, +2 or +3
 	int					block;			//can the player walk through it or not
 	int					sector;
-	int					n_sector;
+	int					n_sector; //amount of checked sector stored in prev_sectors
 	double				width;
 	double				height;
 	double				sprite_x;		//x cord translated to viewer space
 	double				sprite_y;		//y cord translated to viewer space
 	int					visible;		//this is only turned on for the drawing... can't use it for other options
 	double				distance;
-	int					face;
-	int					prev_sectors[50];	//where to empty them again?
+	// int					face;
+	int					prev_sectors[50];	//where to empty them again? don't forget to protect
 }						t_sprite;
 
 typedef struct		s_ray {
@@ -133,6 +133,9 @@ typedef struct		s_event {
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
+	bool			scissor_lift;
+	bool			scissor_lift_up;
+	bool			scissor_lift_down;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -327,8 +330,7 @@ typedef struct		s_doom {
 	int 			game_time;
 	int				game_start_time;
 	int				start;
-	// int				sidedef_bottom[WIDTH];
-	// int				sidedef_top[WIDTH];
+	int				save_scissor_lift;
 }					t_doom;
 
 /*core functions*/
@@ -396,6 +398,8 @@ void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 bool				handle_mouse_state(t_doom *doom);
+void				scissor_lift_up(t_doom *doom);
+void				scissor_lift_down(t_doom *doom);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
@@ -503,6 +507,9 @@ void				sprite_reset(t_doom *doom);
 void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite);
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
 int					sprite_collision(t_doom *doom, t_line movement);
+void				exit_scissor_lift(t_doom *doom);
+void				draw_scissor_lift_bar(t_doom *doom);
+void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i, double distance);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

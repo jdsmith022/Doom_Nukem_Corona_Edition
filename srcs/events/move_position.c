@@ -20,7 +20,8 @@ static int	check_collision(t_doom *doom, t_sidedef sidedef,
 				t_line move, t_point intersect)
 {
 	if (sidedef.opp_sector == -1 ||\
-	check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE)
+	check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE ||
+	doom->own_event.scissor_lift == TRUE)
 		return (-1);
 	else if (sidedef.opp_sector != -1)
 	{

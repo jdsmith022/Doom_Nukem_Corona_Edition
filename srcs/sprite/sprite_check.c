@@ -69,6 +69,14 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 	}
 }
 
+int			scissor_lift_check(t_doom *doom, t_sprite sprite)
+{
+	if (doom->own_event.scissor_lift == TRUE && sprite.action == 7)
+		return (1);
+	else
+		return (-1);
+}
+
 void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	int		i;
@@ -76,12 +84,13 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 
 	i = 0;
 	sprite_i = doom->lib.sector[sector].i_objects;
-	doom->lib.sprites[sprite_i].angle = ray.angle;
+	// doom->lib.sprites[sprite_i].angle = ray.angle;
 	while (i < doom->lib.sector[sector].n_objects)
 	{
 		if (doom->lib.sprites[sprite_i].visible == -1 &&\
 		doom->lib.sprites[sprite_i].action != 6 &&\
-		doom->lib.sprites[sprite_i].action != 8)
+		doom->lib.sprites[sprite_i].action != 8 &&\
+		scissor_lift_check(doom, doom->lib.sprites[sprite_i]) == -1)
 			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
 		i++;
 		sprite_i++;

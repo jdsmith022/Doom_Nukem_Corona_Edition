@@ -10,10 +10,12 @@ static void		doom_init_events(t_event *event)
 	event->velocity = VELOCITY;
 	event->floor_diff = 0;
 	event->step_down = FALSE;
-	event->jump = FALSE;
 	event->y_pitch = 0;
 	event->select = TRUE;
 	event->shoot = FALSE;
+	event->scissor_lift = FALSE;
+	event->scissor_lift_down = FALSE;
+	event->scissor_lift_up = FALSE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -66,4 +68,5 @@ void			doom_init(t_doom *doom)
 	doom->i_sector = 0;
 	doom->visible_sprites = 0;
 	doom->player_std_height = 48;
+	doom->save_scissor_lift = -1;
 }

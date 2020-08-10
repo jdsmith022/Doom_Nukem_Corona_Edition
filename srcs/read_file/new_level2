@@ -24,7 +24,7 @@ assets/textures/shelves/sausage_bacon.bmp
 assets/textures/poster/do_not_push.bmp
 
 #object library
-28
+29
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -81,6 +81,8 @@ assets/sprites/groceries/chicken.bmp
 assets/sprites/groceries/chicken_leg.bmp
 #27
 assets/sprites/groceries/toiletpaper.bmp
+#28
+assets/sprites/scissor_lift/scissor_lift_bar.bmp
 
 #number of sectors
 6
@@ -142,7 +144,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-1
+2
 
 #3
 #sidedefs3
@@ -168,7 +170,7 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 9
 3
-3
+4
 
 #5
 #poster2
@@ -181,7 +183,7 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 9
 3
-3
+5
 
 #6
 #poster3
@@ -194,7 +196,7 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 9
 3
-3
+6
 
 #7
 #poster4
@@ -207,7 +209,7 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 9
 3
-3
+7
 
 #8
 #poster5
@@ -220,7 +222,7 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 9
 3
-3
+8
 
 
 
@@ -250,7 +252,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-4
+9
 
 #10
 #sidedefs1
@@ -263,7 +265,7 @@ assets/sprites/groceries/toiletpaper.bmp
 5
 5
 5
-5
+10
 
 #11
 #sidedefs2
@@ -276,7 +278,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-6
+11
 
 #12
 #sidedefs3
@@ -289,7 +291,7 @@ assets/sprites/groceries/toiletpaper.bmp
 6
 6
 6
-7
+12
 
 #object 0 in sector 1 virus green
 18
@@ -347,7 +349,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-8
+13
 
 #14
 #sidedefs1
@@ -360,7 +362,7 @@ assets/sprites/groceries/toiletpaper.bmp
 8
 8
 8
-9
+14
 
 #15
 #sidedefs2
@@ -373,7 +375,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-10
+15
 
 #16
 #sidedefs3
@@ -386,7 +388,7 @@ assets/sprites/groceries/toiletpaper.bmp
 7
 7
 7
-11
+16
 
 #17
 #poster
@@ -399,11 +401,11 @@ assets/sprites/groceries/toiletpaper.bmp
 7
 9
 7
-12
+17
 
 
-
-#scissor lifts and shoppers need a bigger area 40 by 40
+#object1
+#scissor lifts and shoppers need a bigger area 20 by 20
 #object0 in sector 2 scissor lift
 7
 450
@@ -433,7 +435,8 @@ assets/sprites/groceries/toiletpaper.bmp
 440
 140
 
-#object1 in sector 2 virus green
+#object2
+#object1 in sector 2 corona virus green
 18
 330
 160
@@ -488,7 +491,7 @@ assets/sprites/groceries/toiletpaper.bmp
 7
 7
 7
-13
+18
 
 #19
 #sidedefs1
@@ -501,7 +504,7 @@ assets/sprites/groceries/toiletpaper.bmp
 8
 8
 8
-14
+19
 
 #20
 #sidedefs2
@@ -514,7 +517,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-15
+20
 
 #21
 #sidedefs3
@@ -527,10 +530,10 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-16
+21
 
 
-
+#object3
 #object0 shopper in sector 3
 9
 450
@@ -586,7 +589,7 @@ assets/sprites/groceries/toiletpaper.bmp
 7
 7
 7
-17
+22
 
 #23
 #sidedefs1
@@ -599,7 +602,7 @@ assets/sprites/groceries/toiletpaper.bmp
 8
 8
 8
-18
+23
 
 #24
 #sidedefs2
@@ -612,7 +615,7 @@ assets/sprites/groceries/toiletpaper.bmp
 3
 4
 1
-19
+24
 
 #25
 #sidedefs3
@@ -625,7 +628,7 @@ assets/sprites/groceries/toiletpaper.bmp
 5
 3
 1
-20
+25
 
 #26
 #sidedefs3
@@ -638,8 +641,9 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 0
 1
-21
+26
 
+#object4
 #object0 facemask in sector 4
 13
 550
@@ -669,7 +673,7 @@ assets/sprites/groceries/toiletpaper.bmp
 545
 595
 
-
+#object5
 #object1 health pack plus (green) in sector 4
 14
 650
@@ -699,7 +703,7 @@ assets/sprites/groceries/toiletpaper.bmp
 645
 595
 
-
+#object6
 #object2 health pack red in sector 4
 15
 700
@@ -734,7 +738,9 @@ assets/sprites/groceries/toiletpaper.bmp
 40
 1
 0
+#4
 -1
+#30
 0
 2
 0
@@ -755,7 +761,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 1
 1
-22
+27
 
 #28
 #sidedefs1
@@ -768,7 +774,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 1
 1
-23
+28
 
 #29
 #sidedefs2
@@ -781,7 +787,7 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 1
 1
-24
+29
 
 #30
 #sidedefs3
@@ -794,8 +800,9 @@ assets/sprites/groceries/toiletpaper.bmp
 1
 1
 1
-25
+30
 
+#object7
 #apple pie
 #object0 in sector 5
 22
@@ -826,6 +833,7 @@ assets/sprites/groceries/toiletpaper.bmp
 810
 225
 
+#object8
 #apple pie
 #object1 in sector 5
 22
@@ -856,6 +864,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 225
 
+#object9
 #apple pie
 #object2 in sector 5
 22
@@ -886,6 +895,7 @@ assets/sprites/groceries/toiletpaper.bmp
 830
 225
 
+#object10
 #object3 in sector 5 bacon
 0
 825
@@ -915,6 +925,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 255
 
+#object11
 #object4 in sector 5 butter
 1
 825
@@ -944,7 +955,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 285
 
-
+#object12
 #object5 in sector 5 cucumber
 24
 825
@@ -974,6 +985,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 305
 
+#object13
 #object6 in sector 5 brownie
 23
 825
@@ -1003,6 +1015,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 335
 
+#object14
 #object7 in sector 5 chicken
 25
 825
@@ -1032,6 +1045,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 365
 
+#object15
 #object8 in sector 5 chicken leg
 26
 825
@@ -1061,6 +1075,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 395
 
+#object16
 #object9 in sector 5 toiletpaper
 27
 825
@@ -1090,7 +1105,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 425
 
-
+#object17
 #object10 in sector 5 mayonaisse
 5
 825
@@ -1120,6 +1135,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 455
 
+#object18
 #object11 in sector 5 cherry
 2
 825
@@ -1149,6 +1165,7 @@ assets/sprites/groceries/toiletpaper.bmp
 820
 485
 
+#object19
 #object12 in sector 5 coffee
 3
 825

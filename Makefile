@@ -26,7 +26,8 @@ MENU = srcs/menu/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit moving_sidedef free_library libs_init
-EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press
+EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press\
+				move_position3
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_row slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
@@ -42,7 +43,7 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				printing_map init_game
 AUDIO_FILES = audio playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
-				sprite_sort sprite_reset sprite_action
+				sprite_sort sprite_reset sprite_action sprite_draw2
 GAMEPLAY_FILES = groceries basket node search shopping_list collect_groceries \
 				init_groceries grocery_ui add_infection timer
 DRAW_FILES = img vector
