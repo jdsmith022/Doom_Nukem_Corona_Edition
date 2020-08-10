@@ -5,7 +5,6 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
 	int		value;
 
-	printf("sprite is hit\n");
 	value = 0;
 	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE) || sprite.action == 9)
 		value = 15;
@@ -14,7 +13,6 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 	movement.end.y >= sprite.lines[1].start.y - value &&\
 	movement.end.y <= sprite.lines[1].end.y + value)
 		return (1);
-	printf("einde sprite is hit\n");
 	return (-1);
 }
 
