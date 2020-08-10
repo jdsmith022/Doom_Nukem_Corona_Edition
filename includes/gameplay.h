@@ -53,4 +53,10 @@ void					draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text);
 SDL_Rect				get_position(uint16_t index, int start_x);
 void					print_shopping_list(t_groceries *groceries);
 
+/*
+**						Shooting
+*/
+
+void					shooting(t_doom *doom);
+
 #endif

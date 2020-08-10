@@ -47,9 +47,17 @@ static void 	key_select_and_shoot(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_q)
+	{
 		event->select = event->select == TRUE ? FALSE : TRUE;
+		if (event->select == TRUE)
+			event->shoot = FALSE;
+	}
 	if (key->keysym.sym == SDLK_e)
+	{
 		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
+		if (event->select == TRUE)
+			event->select = FALSE;
+	}
 }
 
 static void		key_press2(t_doom *doom, t_event *event,

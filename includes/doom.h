@@ -306,6 +306,7 @@ typedef struct		s_doom {
 	bool			huds;
 	bool			light;
 	bool			start_timer;
+	bool			parked_too_close;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;

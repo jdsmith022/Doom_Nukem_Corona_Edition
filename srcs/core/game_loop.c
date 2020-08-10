@@ -43,12 +43,13 @@ void				game_loop(t_doom *doom)
 		doom_update(doom, dt);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
-			timer(doom);
+			// timer(doom);
 			sprite_reset(doom);
 			doom_render(doom);
 			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
+			shooting(doom);
 			sliding_door(doom, -1); //move to its own file
 			add_infection(doom); //move to a seprate file
 			font_timer(doom);

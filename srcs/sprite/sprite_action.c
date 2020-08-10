@@ -50,6 +50,8 @@ void		exit_scissor_lift(t_doom *doom)
 	}
 	else
 	{
+		//ADD FLAG
+		doom->parked_too_close = TRUE;
 		printf("Please move further away from scissor lift parking spot\ndistance: %f\n", distance);
 	}
 	// else
