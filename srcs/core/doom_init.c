@@ -10,10 +10,12 @@ static void		doom_init_events(t_event *event)
 	event->velocity = VELOCITY;
 	event->floor_diff = 0;
 	event->step_down = FALSE;
-	event->jump = FALSE;
 	event->y_pitch = 0;
 	event->select = TRUE;
 	event->shoot = FALSE;
+	event->scissor_lift = FALSE;
+	event->scissor_lift_down = FALSE;
+	event->scissor_lift_up = FALSE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -61,11 +63,10 @@ void			doom_init(t_doom *doom)
 		init_hud(doom);
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
-	// doom->pos.x = 400;
-	// doom->pos.y = 20;
 	doom->max_ray = 10000;
 	doom->dir_angle = 90;
 	doom->i_sector = 0;
 	doom->visible_sprites = 0;
 	doom->player_std_height = 48;
+	doom->save_scissor_lift = -1;
 }

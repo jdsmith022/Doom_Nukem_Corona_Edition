@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/menu.h"
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
@@ -10,7 +11,7 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		cam_move_rl(doom, dt, -90 * PI / 180);
 	else if (event->cam_move_r == TRUE)
 		cam_move_rl(doom, dt, 90 * PI / 180);
-	if (event->jump == TRUE)
+	if (event->jump == TRUE && event->scissor_lift == FALSE)
 		jump_player(doom, dt);
 	if (event->step_down == TRUE)
 		step_down(doom, dt);
@@ -18,6 +19,10 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 	doom->player_height < \
 	doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor)
 		bend_down(doom);
+	if (event->scissor_lift_up == TRUE)
+		scissor_lift_up(doom);
+	if (event->scissor_lift_down == TRUE)
+		scissor_lift_down(doom);
 }
 
 void			key_release(t_event *event, SDL_KeyboardEvent *key)
@@ -30,6 +35,10 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 		event->cam_move_l = FALSE;
 	else if (key->keysym.sym == SDLK_d)
 		event->cam_move_r = FALSE;
+	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
+		event->scissor_lift_up = FALSE;
+	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
+		event->scissor_lift_down = FALSE;
 	if (key->keysym.sym == SDLK_x)
 		event->bend = FALSE;
 }
@@ -48,6 +57,8 @@ static void		key_press2(t_doom *doom, t_event *event,
 {
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
+	if (key->keysym.sym == SDLK_y)
+		doom->menu->pause = TRUE;
 	if (key->keysym.sym == SDLK_q || key->keysym.sym == SDLK_e)
 		key_select_and_shoot(doom, event, key);
 	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
@@ -72,6 +83,10 @@ void			key_press(t_doom *doom, t_event *event,
 		event->cam_move_l = TRUE;
 	else if (key->keysym.sym == SDLK_d)
 		event->cam_move_r = TRUE;
+	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
+		event->scissor_lift_up = TRUE;
+	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
+		event->scissor_lift_down = TRUE;
 	if (key->keysym.sym == SDLK_SPACE)
 		event->jump = TRUE;
 	if (key->keysym.sym == SDLK_x)
@@ -85,7 +100,7 @@ void			key_press(t_doom *doom, t_event *event,
 	{
 		doom->game_editor = FALSE;
 		doom->huds = TRUE;
-		if (doom->lib.font_lib.walking_info == TRUE)
+		if (doom->lib.font_lib.bools.walking_info == TRUE)
 			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
 	}
 	key_press2(doom, event, key);

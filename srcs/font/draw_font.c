@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/09 15:53:25 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/10 15:30:55 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void		font_to_screen(t_doom *doom)
 	{
 		font_lib = doom->lib.font_lib.hud_font;
 		len = doom->lib.font_lib.hud_font_len;
+	}
+	else if (doom->menu->pause == TRUE)
+	{
+		font_lib = doom->lib.font_lib.pause_font;
+		len = doom->lib.font_lib.pause_font_len;
 	}
 	else if (doom->menu->game_over == TRUE)
 	{
