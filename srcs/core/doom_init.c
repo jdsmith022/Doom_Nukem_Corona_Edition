@@ -41,7 +41,7 @@ static void		init_settings(t_doom *doom)
 	doom->own_event.mouse_state_switched = TRUE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
-	doom->huds = TRUE;
+	doom->hud_display = TRUE;
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;

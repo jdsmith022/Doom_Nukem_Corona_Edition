@@ -1,20 +1,5 @@
 #include "../../includes/doom.h"
-#include "../../includes/hud.h"
 #include "../../includes/menu.h"
-#include "../../includes/gameplay.h"
-
-static void		menu_print_loop(t_doom *doom)
-{
-	doom->huds = FALSE;
-	SDL_SetRelativeMouseMode(SDL_FALSE);
-	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
-	SDL_SetCursor(doom->cursor);
-	mouse_settings(doom);
-	print_background(doom, 0x00002E);
-	font_to_screen(doom);
-	SDL_UpdateWindowSurface(doom->window);
-	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
-}
 
 static void		finished_menu(t_doom *doom)
 {
@@ -39,7 +24,7 @@ static void		pause_menu(t_doom *doom)
 		menu_print_loop(doom);
 	curr_time = SDL_GetTicks();
 	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
-	doom->huds = TRUE;
+	doom->hud_display = TRUE;
 }
 
 void	menus(t_doom* doom)

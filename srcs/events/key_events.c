@@ -94,12 +94,12 @@ void			key_press(t_doom *doom, t_event *event,
 	if (key->keysym.sym == SDLK_m)
 	{
 		doom->game_editor = TRUE;
-		doom->huds = FALSE;
+		doom->hud_display = FALSE;
 	}
 	if (key->keysym.sym == SDLK_n)
 	{
 		doom->game_editor = FALSE;
-		doom->huds = TRUE;
+		doom->hud_display = TRUE;
 		if (doom->lib.font_lib.bools.walking_info == TRUE)
 			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
 	}

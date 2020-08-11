@@ -3,50 +3,53 @@
 #include "../../includes/hud.h"
 #include "../../includes/gameplay.h"
 
-// static char	*tally_score(t_doom *doom, t_font *lib)
-// {
-	// 	char *score;
+static void		missing_groceries(t_doom *doom, t_font *lib)
+{
+	lib[2].str = "What you missed:";
+	lib[2].font_rect.x = WIDTH / 2.7;
+	lib[2].font_rect.y = HEIGHT / 3 * 1.7;
+	lib[2].font_color = doom->lib.font_lib.font_color.blue;
+}
 
-	// 	lib[3].str = score;
-	// 	lib[3].font_rect.x = WIDTH / 2.7;
-	// 	lib[3].font_rect.y = HEIGHT / 4;
-	// 	lib[3].font_color = doom->lib.font_lib.font_color.red;
-	// while(index < doom->groceries->info->)
-	// 	draw_img(item.sprite, doom, item.position);
-// }
+static char		*win_lose_status_2(t_doom *doom, t_font *lib)
+{
+	char *status;
 
-static char	*win_lose_status(t_doom *doom, t_font *lib)
+	status = "You didn't find all you're groceries! \
+	Try again!";
+	lib[1].font_color = doom->lib.font_lib.font_color.red;
+	lib[1].font_rect.x = WIDTH / 12;
+	lib[1].font_rect.y = HEIGHT / 2.5;
+	missing_groceries(doom, lib);
+	return (status);
+}
+
+static char		*win_lose_status(t_doom *doom, t_font *lib)
 {
 	char	*status;
 
+	lib[1].font_rect.x = WIDTH / 14;
+	lib[1].font_rect.y = HEIGHT / 2;
 	if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level < 75)
 	{
 		status = "You found all you're groceries without \
 		contracting Corona Virus! Well done!";
-		lib[1].font_color = doom->lib.font_lib.font_color.green;
+		lib[1].font_color = doom->lib.font_lib.font_color.blue;
 	}
 	else if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level >= 75)
 	{
 		status ="Oh no! You contracted the Corona Virus! \
 		Self-quarantine immeidately!";
-		lib[1].font_color = doom->lib.font_lib.font_color.red;
-		lib[1].font_rect.x = WIDTH / 14;
-		lib[1].font_rect.y = HEIGHT / 2;
+		lib[1].font_color = doom->lib.font_lib.font_color.green;
 	}
 	else if (doom->groceries->info.won == FALSE)
-	{
-		status = "You didn't find all you're groceries! \
-		Try again!";
-		lib[1].font_color = doom->lib.font_lib.font_color.red;
-		lib[1].font_rect.x = WIDTH / 12;
-		lib[1].font_rect.y = HEIGHT / 2;
-	}
+		status = win_lose_status_2(doom, lib);
 	return (status);
 }
 
-static void	set_text(t_doom *doom, t_font *lib, int len)
+static void		set_text(t_doom *doom, t_font *lib, int len)
 {
 	SDL_Rect	font_rect;
 	char		*status;
@@ -59,25 +62,17 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[0].font_color = doom->lib.font_lib.font_color.blue;
 	status = win_lose_status(doom, lib);
 	lib[1].str = status;
-	// if (doom->groceries->info.won == FALSE)
-	// {
-		// 	lib[2].str = "What you missed:";
-		// 	lib[2].font_rect.x = WIDTH / 2.7;
-		// 	lib[2].font_rect.y = HEIGHT / 3;
-		// 	lib[2].font_color = doom->lib.font_lib.font_color.red
-		// 	score = tally_score(doom, lib);
-	// }
 }
 
-void		add_score_to_sdl_text(t_doom *doom)
+void			add_score_to_sdl_text(t_doom *doom)
 {
 	char		*font_path;
 	int			font_size;
 	int			len;
 
-	// if (doom->groceries->info.won == FALSE)
-	// 	len = 4;
-	// else
+	if (doom->groceries->info.won == FALSE)
+		len = 3;
+	else
 		len = 2;
 	doom->lib.font_lib.finished_font_len = len;
 	len = doom->lib.font_lib.finished_font_len;
@@ -88,5 +83,6 @@ void		add_score_to_sdl_text(t_doom *doom)
 	set_text(doom, doom->lib.font_lib.finished_font, len);
 	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
 	font_size = 30;
-	font_to_sdl(doom, doom->lib.font_lib.finished_font, font_path, font_size);
+	font_to_sdl(doom, doom->lib.font_lib.finished_font, \
+		font_path, font_size);
 }

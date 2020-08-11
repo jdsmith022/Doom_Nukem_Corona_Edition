@@ -53,8 +53,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				start_menu_font setting_window_font game_over_font instruction_font \
 				font_timer pause_font vanishing_text_box
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
-MENU_FILES = start_menu mouse_settings game_over print_background game_over_and_pause \
-			menu_click_events finished
+MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
+			menu_click_events finished_text print_menu
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)

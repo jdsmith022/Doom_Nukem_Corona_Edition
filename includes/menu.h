@@ -24,5 +24,6 @@ void					instruction_window(t_doom *doom);
 void					add_score_to_sdl_text(t_doom *doom);
 void					print_background(t_doom *doom, Uint32 color);
 void					menus(t_doom *doom);
+void					menu_print_loop(t_doom *doom);
 
 #endif

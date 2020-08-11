@@ -305,7 +305,7 @@ typedef struct		s_doom {
 	t_hud			*hud;
 	bool			is_running;
 	bool			game_editor;
-	bool			huds;
+	bool			hud_display;
 	bool			light;
 	bool			start_timer;
 	double			player_std_height;
