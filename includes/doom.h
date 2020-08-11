@@ -132,6 +132,8 @@ typedef struct		s_event {
 	int				cam_move_l;
 	int				cam_move_r;
 	int				floor_diff;
+	int				ceiling_diff;
+	int				next_sector_height;
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
@@ -397,6 +399,8 @@ void				move_cam_direction(t_doom *doom,\
 void				cam_move_fb(t_doom *doom, double dt, int direction);
 void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
+int 				check_sector_height_diff(t_doom *doom,\
+						int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
