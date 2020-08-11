@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/11 10:40:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/11 16:24:03 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_bools {
 	bool			walking_info;
 	bool			shooting_info;
 	bool			scissor_lift;
+	bool			boxes;
 }					t_bools;
 
 typedef struct		s_font_lib //refactor this into index

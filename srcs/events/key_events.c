@@ -3,21 +3,23 @@
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
-	if (event->cam_move_f == TRUE)
+	if (event->cam_move_f == TRUE && event->fall == FALSE)
 		cam_move_fb(doom, dt, MOVE_SPEED);
-	else if (event->cam_move_b == TRUE)
+	else if (event->cam_move_b == TRUE && event->fall == FALSE)
 		cam_move_fb(doom, dt, -MOVE_SPEED);
-	else if (event->cam_move_l == TRUE)
+	else if (event->cam_move_l == TRUE && event->fall == FALSE)
 		cam_move_rl(doom, dt, -90 * PI / 180);
-	else if (event->cam_move_r == TRUE)
+	else if (event->cam_move_r == TRUE && event->fall == FALSE)
 		cam_move_rl(doom, dt, 90 * PI / 180);
 	if (event->jump == TRUE && event->scissor_lift == FALSE)
 		jump_player(doom, dt);
-	if (event->step_down == TRUE)
+	if (event->step_down == TRUE && event->fall == FALSE)
 		step_down(doom, dt);
-	if (event->bend == TRUE || \
+	if ((event->bend == TRUE || \
 	doom->player_height < \
-	doom->player_std_height + doom->lib.sector[doom->i_sector].height_floor)
+	doom->player_std_height +\
+	doom->lib.sector[doom->i_sector].height_floor) \
+	&& event->fall == FALSE)
 		bend_down(doom);
 	if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);

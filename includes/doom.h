@@ -41,7 +41,7 @@
 # define MOVE_SPEED 200
 # define CAM_SPEED 3
 # define GRAVITY -1
-# define VELOCITY 12
+# define VELOCITY 10
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
@@ -138,7 +138,13 @@ typedef struct		s_event {
 	bool			scissor_lift;
 	bool			scissor_lift_up;
 	bool			scissor_lift_down;
+	bool			fall;
 }					t_event;
+
+typedef struct		s_text
+{
+	bool			walking_info;
+}					t_text;
 
 typedef struct		s_m_object{
 	int				amount;
@@ -303,6 +309,7 @@ typedef struct		s_doom {
 	t_groceries		*groceries;
 	t_menu			*menu;
 	t_hud			*hud;
+	t_text			text;
 	bool			is_running;
 	bool			game_editor;
 	bool			hud_display;
@@ -346,14 +353,14 @@ void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
 double				points_distance(t_point p1, t_point p2);
+void				timer(t_doom *doom);
+double				get_timeframe(long *last_frame_time);
+void				update_hud_ui(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
-void				doom_retry(t_doom *doom);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
-double				get_timeframe(long *last_frame_time);
-void				timer(t_doom *doom);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
@@ -402,6 +409,7 @@ void				bend_down(t_doom *doom);
 bool				handle_mouse_state(t_doom *doom);
 void				scissor_lift_up(t_doom *doom);
 void				scissor_lift_down(t_doom *doom);
+void				player_fall(t_doom *doom,  t_sprite *sprite);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\

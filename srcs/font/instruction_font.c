@@ -1,7 +1,21 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
-static void	set_instruction_text2(t_doom *doom, t_font *lib)
+static void	set_instruction_text_3(t_doom *doom, t_font *lib)
+{
+	lib[8].str = "Watch out! You tripped over the box! \
+	Jump to stand up.";
+	lib[8].font_rect.x = WIDTH / 2 - 235;
+	lib[8].font_rect.y = HEIGHT / 2 - 15 ;
+	lib[8].font_color = doom->lib.font_lib.font_color.red;
+	lib[9].str = "You're corona level has increased!";
+	lib[9].font_rect.x = WIDTH / 2 - 135;
+	lib[9].font_rect.y = HEIGHT / 2 + 15;
+	lib[9].font_color = doom->lib.font_lib.font_color.green;
+
+}
+
+static void	set_instruction_text_2(t_doom *doom, t_font *lib)
 {
 	lib[3].str = "Scissor lift operations:";
 	lib[3].font_rect.x = WIDTH / 12;
@@ -24,6 +38,7 @@ static void	set_instruction_text2(t_doom *doom, t_font *lib)
 	lib[7].font_rect.x = WIDTH / 2 - 100;
 	lib[7].font_rect.y = HEIGHT / 2 - 100;
 	lib[7].font_color = doom->lib.font_lib.font_color.red;
+	set_instruction_text_3(doom, lib);
 }
 
 static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
@@ -44,7 +59,7 @@ static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
 	lib[2].font_rect.x = WIDTH / 12;
 	lib[2].font_rect.y = 145;
 	lib[2].font_color = doom->lib.font_lib.font_color.black;
-	set_instruction_text2(doom, lib);
+	set_instruction_text_2(doom, lib);
 }
 
 void	save_instruction_font(t_doom *doom, int *len)
@@ -52,7 +67,7 @@ void	save_instruction_font(t_doom *doom, int *len)
 	char		*font_path;
 	int			font_size;
 
-	*len = 8;
+	*len = 10;
 	doom->lib.font_lib.instruction_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.instruction_font == NULL)

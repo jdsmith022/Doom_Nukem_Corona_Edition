@@ -12,6 +12,7 @@ typedef struct	s_hud
 	bool		health_pack_plus;
 	bool		shopper;
 	bool		corona;
+	bool		boxes;
 	bool		start;
 	int			hold_time;
 	int			curr_time;
