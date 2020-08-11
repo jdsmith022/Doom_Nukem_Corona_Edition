@@ -46,9 +46,11 @@
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
-# define SECTORS	doom->lib.sector
-# define SIDEDEFS	doom->lib.sidedef
-# define TEXTURES	doom->lib.tex_lib
+# define SECTORS		doom->lib.sector
+# define SIDEDEFS		doom->lib.sidedef
+# define TEXTURES		doom->lib.tex_lib
+# define SPRITES		doom->lib.sprites
+# define OBJ_LIB		doom->lib.obj_lib
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
@@ -90,6 +92,7 @@ typedef struct			s_sprite {
 	int					index;			//start index
 	int					amount;			//which side is viewed how many textures does the sprite have?
 	t_point				pos;
+	t_point				sprite_begin;
 	double				size;			//products: 16, shopper: 48
 	t_line				*lines;
 	// double				angle;			//GEBRUIK IK NIET what is the angle on the map

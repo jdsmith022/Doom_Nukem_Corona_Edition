@@ -51,7 +51,7 @@ void				game_loop(t_doom *doom)
 			groceries(doom);
 			shooting(doom);
 			sliding_door(doom, -1); //move to its own file
-			add_infection(doom); //move to a seprate file
+			// add_infection(doom); //move to a seprate file
 			font_timer(doom);
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
