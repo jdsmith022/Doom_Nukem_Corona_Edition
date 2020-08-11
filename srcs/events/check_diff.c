@@ -8,7 +8,10 @@ int check_sector_height_diff(t_doom *doom, int sector, int next_sector)
 	doom->own_event.next_sector_height = \
 	doom->texture_height - \
 	(doom->own_event.floor_diff + doom->own_event.ceiling_diff);
-	if (doom->own_event.next_sector_height < PLAYER_HEIGHT)
+	if (doom->own_event.bend == FALSE && \
+	doom->own_event.next_sector_height < PLAYER_HEIGHT)
+		enough_height = FALSE;
+	if (doom->own_event.bend == TRUE && doom->own_event.next_sector_height < doom->player_height)
 		enough_height = FALSE;
 	return (enough_height);
 }
