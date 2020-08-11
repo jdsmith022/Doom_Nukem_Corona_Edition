@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/11 20:19:03 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/11 23:21:19 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct		s_font_lib //refactor this into index
 /*font functions*/
 void				save_font(t_doom *doom, int *len);
 void				font_to_screen(t_doom *doom);
-void				draw_font(t_doom *doom, t_font *font_lib, uint8_t len);
 void				save_font_libraries(t_doom *doom);
 void				set_font_colors(t_doom *doom);
 void				font_to_sdl(t_doom *doom, t_font *lib, \

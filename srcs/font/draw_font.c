@@ -6,28 +6,48 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/11 22:56:23 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/11 23:27:33 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
-void	draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
+static void		draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 {
 	Uint32	index;
-	int		ret;
 
 	index = 0;
 	while (index < len)
 	{
-		ret = SDL_BlitSurface(font_lib[index].font_surface, NULL,\
+		SDL_BlitSurface(font_lib[index].font_surface, NULL,\
 			doom->surface, &font_lib[index].font_rect);
 		index++;
 	}
 }
 
-void		font_to_screen(t_doom *doom)
+static t_font	*font_to_screen_2(t_doom *doom,
+					t_font *font_lib, uint8_t *len)
+{
+	if (doom->menu->pause == TRUE)
+	{
+		font_lib = doom->lib.font_lib.pause_font;
+		*len = doom->lib.font_lib.pause_font_len;
+	}
+	else if (doom->menu->game_over == TRUE)
+	{
+		font_lib = doom->lib.font_lib.game_over_font;
+		*len = doom->lib.font_lib.game_font_len;
+	}
+	else if (doom->menu->finished == TRUE)
+	{
+		font_lib = doom->lib.font_lib.finished_font;
+		*len = doom->lib.font_lib.finished_font_len;
+	}
+	return (font_lib);
+}
+
+void			font_to_screen(t_doom *doom)
 {
 	t_font	*font_lib;
 	uint8_t	len;
@@ -52,20 +72,7 @@ void		font_to_screen(t_doom *doom)
 		font_lib = doom->lib.font_lib.hud_font;
 		len = doom->lib.font_lib.hud_font_len;
 	}
-	else if (doom->menu->pause == TRUE)
-	{
-		font_lib = doom->lib.font_lib.pause_font;
-		len = doom->lib.font_lib.pause_font_len;
-	}
-	else if (doom->menu->game_over == TRUE)
-	{
-		font_lib = doom->lib.font_lib.game_over_font;
-		len = doom->lib.font_lib.game_font_len;
-	}
-	else if (doom->menu->finished == TRUE)
-	{
-		font_lib = doom->lib.font_lib.finished_font;
-		len = doom->lib.font_lib.finished_font_len;
-	}
+	else
+		font_lib = font_to_screen_2(doom, font_lib, &len);
 	draw_font(doom, font_lib, len);
 }
