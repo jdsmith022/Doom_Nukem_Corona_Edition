@@ -11,7 +11,8 @@
 	// 	lib[3].font_rect.x = WIDTH / 2.7;
 	// 	lib[3].font_rect.y = HEIGHT / 4;
 	// 	lib[3].font_color = doom->lib.font_lib.font_color.red;
-	// print_grocery_sprite();
+	// while(index < doom->groceries->info->)
+	// 	draw_img(item.sprite, doom, item.position);
 // }
 
 static char	*win_lose_status(t_doom *doom, t_font *lib)
