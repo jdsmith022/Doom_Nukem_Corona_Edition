@@ -39,7 +39,7 @@ static void				set_missing_groceries(t_doom *doom, t_game_over_info *info)
 	info->groceries_len = j;
 }
 
-t_game_over_info		get_game_over_info(t_doom *doom)
+void			get_game_over_info(t_doom *doom)
 {
 	t_game_over_info	info;
 	uint8_t				i;
@@ -62,5 +62,5 @@ t_game_over_info		get_game_over_info(t_doom *doom)
 		printf("amount: %d\n", info.groceries_to_display[i].amount);
 		i++;
 	}
-	return info;
+	doom->groceries->info = info;
 }

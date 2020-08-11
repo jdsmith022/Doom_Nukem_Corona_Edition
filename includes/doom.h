@@ -332,7 +332,6 @@ typedef struct		s_doom {
 	int				save_poster;
 	int 			game_time;
 	int				game_start_time;
-	int				start;
 	int				save_scissor_lift;
 }					t_doom;
 

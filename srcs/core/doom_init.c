@@ -59,8 +59,6 @@ void			doom_init(t_doom *doom)
 	doom_init_events(&doom->own_event);
 	if (doom->audio->engine)
 		load_audio(doom->audio);
-	if (doom->start == FALSE)
-		init_hud(doom);
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom->max_ray = 10000;

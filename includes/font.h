@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/10 21:05:43 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/11 10:40:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct		s_font_lib //refactor this into index
 	int				instruction_font_len;
 	t_font			*pause_font;
 	int				pause_font_len;
+	t_font			*finished_font;
+	int				finished_font_len;
 	struct timespec	timer;
 }					t_font_lib;
 

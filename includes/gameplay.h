@@ -28,6 +28,12 @@ typedef struct			s_item {
 	SDL_Rect			position;
 }						t_item;
 
+typedef struct			s_game_over_info {
+	bool				won;
+	t_item				*groceries_to_display;
+	uint8_t				groceries_len;
+}						t_game_over_info;
+
 typedef struct			s_groceries {
 	uint8_t				num_of_groceries;
 	t_item 				*shopping_list;
@@ -35,13 +41,8 @@ typedef struct			s_groceries {
 	t_list				*basket;
 	uint8_t				basket_len;
 	TTF_Font			*font;
+	t_game_over_info	info;
 }						t_groceries;
-
-typedef struct			s_game_over_info {
-	bool				won;
-	t_item				*groceries_to_display;
-	uint8_t				groceries_len;
-}						t_game_over_info;
 
 void					init_groceries(t_doom *doom);
 void					groceries(t_doom *doom);
@@ -67,6 +68,6 @@ SDL_Rect				get_position(uint16_t index, int start_x);
 void					set_positions(t_list **basket);
 bool					search_basket(t_item *itema, t_list **head);
 bool					search_basket_for_item(t_item *itema, t_list **head);
-t_game_over_info		get_game_over_info(t_doom *doom);
+void					get_game_over_info(t_doom *doom);
 
 #endif

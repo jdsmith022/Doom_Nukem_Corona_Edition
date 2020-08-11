@@ -14,6 +14,6 @@ void				groceries(t_doom *doom)
 		draw_shopping_ui(doom, doom->groceries);
 	if (SECTORS[doom->i_sector].action == EXIT_LEVEL){
 		get_game_over_info(doom);
-		doom->menu->game_over = TRUE;
+		doom->menu->finished = TRUE;
 	}
 }

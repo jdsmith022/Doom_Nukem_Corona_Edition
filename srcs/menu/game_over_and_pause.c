@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/menu.h"
+#include "../../includes/gameplay.h"
 
 static void		menu_print_loop(t_doom *doom)
 {
@@ -15,12 +16,17 @@ static void		menu_print_loop(t_doom *doom)
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 }
 
+static void		finished_menu(t_doom *doom)
+{
+	add_score_to_sdl_text(doom);
+	while(doom->menu->finished == TRUE)
+		menu_print_loop(doom);
+}
+
 static void		game_over_menu(t_doom *doom)
 {
 	while (doom->menu->game_over == TRUE)
 		menu_print_loop(doom);
-	doom->start = FALSE;
-	doom->huds = TRUE;
 }
 
 static void		pause_menu(t_doom *doom)
@@ -42,4 +48,6 @@ void	menus(t_doom* doom)
 		game_over_menu(doom);
 	if (doom->menu->pause == TRUE)
 		pause_menu(doom);
+	if (doom->menu->finished == TRUE)
+		finished_menu(doom);
 }
