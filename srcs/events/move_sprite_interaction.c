@@ -11,7 +11,7 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 	{
 		doom->hud->boxes = TRUE;
 		doom->own_event.fall = TRUE;
-		doom->lib.font_lib.bools.boxes = TRUE;
+		doom->lib.font_lib.bools.text = TRUE;
 		doom->player_height = min_height;
 	}
 }

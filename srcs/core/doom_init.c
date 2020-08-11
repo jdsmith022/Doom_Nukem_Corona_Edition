@@ -46,9 +46,7 @@ static void		init_settings(t_doom *doom)
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
-	doom->lib.font_lib.bools.shooting_info = FALSE;
-	doom->lib.font_lib.bools.boxes = FALSE;
-	doom->lib.font_lib.bools.scissor_lift = FALSE;
+	doom->lib.font_lib.bools.text = FALSE;
 }
 
 void			doom_init(t_doom *doom)

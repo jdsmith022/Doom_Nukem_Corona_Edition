@@ -6,7 +6,8 @@
 static void	set_menu_game_variables(t_doom *doom)
 {
 	doom->lib.font_lib.bools.walking_info = TRUE;
-	doom->text.walking_info = TRUE;
+	doom->lib.font_lib.bools.walking_text = TRUE;
+	doom->lib.font_lib.bools.text = FALSE;
 	doom->own_event.select = FALSE;
 	doom->start_timer = TRUE; //move to when player crosses sidedef
 	doom->hud->hold_time /= doom->difficulty;

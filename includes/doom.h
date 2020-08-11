@@ -141,11 +141,6 @@ typedef struct		s_event {
 	bool			fall;
 }					t_event;
 
-typedef struct		s_text
-{
-	bool			walking_info;
-}					t_text;
-
 typedef struct		s_m_object{
 	int				amount;
 	int*			textures;
@@ -309,7 +304,6 @@ typedef struct		s_doom {
 	t_groceries		*groceries;
 	t_menu			*menu;
 	t_hud			*hud;
-	t_text			text;
 	bool			is_running;
 	bool			game_editor;
 	bool			hud_display;
