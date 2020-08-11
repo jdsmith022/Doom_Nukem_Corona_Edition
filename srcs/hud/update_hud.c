@@ -104,6 +104,6 @@ void		update_hud(t_doom *doom)
 			update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		update_timer(doom, doom->lib.font_lib.hud_font);
-		font_to_screen(doom);
 	}
+	font_to_screen(doom);
 }
