@@ -14,9 +14,6 @@ void		init_menu(t_doom *doom)
 
 void		init_hud(t_doom *doom)
 {
-	int	time;
-
-	time = 30000;
 	doom->hud = (t_hud*)ft_memalloc(sizeof(t_hud));
 	if (doom->hud == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
@@ -29,6 +26,6 @@ void		init_hud(t_doom *doom)
 	doom->hud->shopper = FALSE;
 	doom->hud->sanitizer_level = 100;
 	doom->hud->corona_level = 0;
-	doom->hud->hold_time = time;
-	doom->hud->curr_time = 42;
+	doom->hud->hold_time = 360000;
+	doom->hud->curr_time = 360000;
 }

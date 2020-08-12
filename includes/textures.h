@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-#define NUM_OF_GROCERIES 7
+#define NUM_OF_GROCERIES 10
 
 # define APPLE		1
 # define BACON		2
@@ -12,6 +12,10 @@
 # define SODA		5
 # define WATER		6
 # define WINE		7
+# define CHEESE		8
+# define COOKIE		9
+# define BREAD		10
+# define POTATO		11
 
 #define TEX_APPLE	"assets/textures/shelves/apple.bmp"
 #define TEX_BACON	"assets/textures/shelves/sausage_bacon.bmp"
@@ -20,14 +24,40 @@
 #define TEX_SODA	"assets/textures/shelves/soda.bmp"
 #define TEX_WATER	"assets/textures/shelves/water.bmp"
 #define TEX_WINE	"assets/textures/shelves/wine.bmp"
+#define TEX_COOKIE	"assets/textures/shelves/cookies.bmp"
+#define TEX_CHEESE	"assets/textures/shelves/cheese.bmp"
+#define TEX_BREAD	"assets/textures/shelves/bread.bmp"
+#define TEX_POTATO	"assets/textures/shelves/potatoes.bmp"
 
-#define SPR_APPLE	"assets/sprites/groceries/butter.bmp"
+#define SPR_APPLE	"assets/sprites/groceries/red_apple.bmp"
 #define SPR_BACON	"assets/sprites/groceries/bacon.bmp"
 #define SPR_CHERRY	"assets/sprites/groceries/cherry.bmp"
 #define SPR_JARS	"assets/sprites/groceries/jam.bmp"
-#define SPR_SODA	"assets/sprites/groceries/mayonaisse.bmp"
+#define SPR_SODA	"assets/sprites/groceries/cola.bmp"
 #define SPR_WATER	"assets/sprites/groceries/water.bmp"
 #define SPR_WINE	"assets/sprites/groceries/wine1.bmp"
+#define SPR_COOKIE	"assets/sprites/groceries/Cookie.bmp"
+#define SPR_CHEESE	"assets/sprites/groceries/Cheese.bmp"
+#define SPR_BREAD 	"assets/sprites/groceries/bread.bmp"
+#define SPR_POTATO 	"assets/sprites/groceries/potato.bmp"
+
+// assets/textures/shelves/soaps.bmp
+// assets/textures/shelves/citrus-wall.bmp
+// assets/textures/shelves/round_jars.bmp
+// assets/textures/shelves/grapes.bmp
+// assets/textures/shelves/chocolate.bmp
+// assets/textures/shelves/cherry_strawberry.bmp
+// assets/textures/shelves/potatoes.bmp
+// assets/textures/shelves/paprika.bmp
+// assets/textures/shelves/fish.bmp
+// assets/textures/shelves/citrus.bmp
+// assets/textures/shelves/sausage_bacon.bmp
+// assets/textures/shelves/citrus2.bmp
+// assets/textures/shelves/sauces.bmp
+// assets/textures/shelves/jar4.bmp
+// assets/textures/shelves/jar-wall.bmp
+// assets/textures/shelves/wine.bmp
+// assets/textures/shelves/meat.bmp
 
 typedef struct s_doom	t_doom;
 typedef struct s_item	t_item;
@@ -45,7 +75,11 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	{TEX_JARS, SPR_JARS, JARS},
 	{TEX_SODA, SPR_SODA, SODA},
 	{TEX_WATER, SPR_WATER, WATER},
-	{TEX_WINE, SPR_WINE, WINE}
+	{TEX_WINE, SPR_WINE, WINE},
+	{TEX_COOKIE, SPR_COOKIE, COOKIE},
+	{TEX_CHEESE, SPR_CHEESE, CHEESE},
+	{TEX_BREAD, SPR_BREAD, BREAD},
+	{TEX_POTATO, SPR_POTATO, POTATO}
 };
 
 void				set_sprite(t_doom *doom, uint8_t type, t_item *item);

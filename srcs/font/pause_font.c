@@ -15,7 +15,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[1].font_rect.y = HEIGHT / 2;
 	lib[1].font_color = doom->lib.font_lib.font_color.green;
 	lib[2].str = "Press ESC to exit";
-	lib[2].font_rect.x = WIDTH / 2.7;
+	lib[2].font_rect.x = WIDTH / 2.8;
 	lib[2].font_rect.y = HEIGHT - 100;
 	lib[2].font_color = doom->lib.font_lib.font_color.red;
 }
@@ -32,6 +32,6 @@ void	save_pause_font(t_doom *doom, int *len)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_text(doom, doom->lib.font_lib.pause_font, *len);
 	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 30;
+	font_size = 32;
 	font_to_sdl(doom, doom->lib.font_lib.pause_font, font_path, font_size);
 }

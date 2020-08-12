@@ -6,7 +6,7 @@ void	check_levels_and_time(t_doom *doom)
 {
 	while (doom->menu->game_over == TRUE)
 	{
-		doom->huds = FALSE;
+		doom->hud_display = FALSE;
 		SDL_SetRelativeMouseMode(SDL_FALSE);
 		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
 		SDL_SetCursor(doom->cursor);

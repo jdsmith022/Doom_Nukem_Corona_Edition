@@ -1,42 +1,37 @@
 #include "../../includes/doom.h" 
 #include "../../includes/audio.h"
 
-// FUNCTIONS
-// play_sound --> triggers a sound once
-// loop_sound --> loops a sound infinitely, until paused/stopped
-// stop_sound --> stops a sound
-// play_music --> plays a track
-// pause_music --> yep
-// stop_music --> yep
-// fade_out --> fades out a sound
-// fade_in  --> fades in a sound
-// get_volume --> decides volume for a sound (based on distance to an object)
-// pause_sound --> pauses all sounds (when opening a menu for example)
-// play_sound_rr --> plays a sound in round robin (footsteps, gunshots etc.)
+static void	init_paths(t_doom *doom){
+	char			path_buff[PATH_MAX];
 
-// Channels
-// 1 2 3 4
+	getcwd(path_buff, sizeof(path_buff));
+	if (!ft_strlen(path_buff))
+		exit_error("Cannot find working directory\n");
+	doom->audio->path = ft_strjoin(path_buff, "/sounds"); // NOTE: FREE
+}
 
 void	init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
-	char			path_buff[PATH_MAX];
 
 	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // NOTE: FREE
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
 	doom->audio->event = event;
 	doom->audio->music_vol = FALSE;
 	doom->audio->sound_vol = TRUE;
-	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, AUDIO_BUFF) == -1)
+	if (Mix_OpenAudio(
+			MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 
+			MIX_DEFAULT_CHANNELS, AUDIO_BUFF
+		) == -1)
     	exit_error(Mix_GetError());
-	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format, &doom->audio->channels);
+	Mix_QuerySpec(
+		&doom->audio->sample_rate, 
+		&doom->audio->format, 
+		&doom->audio->channels
+	);
 	Mix_AllocateChannels(3);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
-	SDL_Log("%dHz %dbit %d %d buff\n", doom->audio->sample_rate, (doom->audio->format&0xFF), doom->audio->channels, AUDIO_BUFF);
-	getcwd(path_buff, sizeof(path_buff));
-	doom->audio->path = ft_strjoin(path_buff, "/sounds"); // NOTE: FREE
-	if (!ft_strlen(doom->audio->path))
-		exit_error("Cannot find working directory\n");
+	init_paths(doom);
 }
 
 void	load_audio(t_audio *audio)

@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/09 01:03:10 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/10 20:39:19 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ void				save_setting_window_font(t_doom *doom, int *len);
 void				save_game_over_font(t_doom *doom, int *len);
 void				save_instruction_font(t_doom *doom, int *len);
 void				font_timer(t_doom *doom);
+void				print_vanishing_text_box(t_doom *doom,
+						int start, int stop);
 
 #endif

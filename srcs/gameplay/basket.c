@@ -2,29 +2,11 @@
 # include "../../includes/gameplay.h"
 # include "../../includes/textures.h"
 
-uint8_t get_basket_len(t_list **head)
-{
-	uint8_t len;
-	t_list *temp;
-
-	temp = *head;
-	if (!temp)
-		return 0;
-	len = 1;
-	while (temp->next)
-	{
-		temp = temp->next;
-		len++;
-	}
-	return len;
-}
-
 void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
 {
-	uint8_t i;
+	uint8_t	i;
 
 	i = 0;
-
 	while (i < doom->lib.len_obj_lib)
 	{
 		if (!doom->lib.obj_lib[i])
@@ -37,10 +19,10 @@ void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
 	return ;
 }
 
-void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
+void		add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 {
-	t_list *temp;
-	t_item item;
+	t_list	*temp;
+	t_item	item;
 
 	temp = *head;
 	if (!type || type > NUM_OF_GROCERIES)
@@ -65,10 +47,10 @@ void	add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 		temp->next = ft_lstnew(&item, sizeof(t_item));
 }
 
-bool	remove_item_from_basket(t_list **head, uint8_t type)
+bool		remove_item_from_basket(t_list **head, uint8_t type)
 {
-	t_list *temp;
-	t_item *item;
+	t_list	*temp;
+	t_item	*item;
 
 	temp = *head;
 	if (!temp)
@@ -87,10 +69,10 @@ bool	remove_item_from_basket(t_list **head, uint8_t type)
 	return true;
 }
 
-void	print_basket(t_list **basket)
+void		print_basket(t_list **basket)
 {
-	t_list *temp;
-	t_item item;
+	t_list	*temp;
+	t_item	item;
 
 	temp = *basket;
 	if (!temp)

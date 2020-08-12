@@ -18,6 +18,8 @@ static void		doom_init_events(t_event *event)
 	event->scissor_lift_up = FALSE;
 	event->virus_hit_index = -1;
 	event->parked_too_close = FALSE;
+	event->fall = FALSE;
+	event->mouse_state_switched = TRUE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -40,10 +42,9 @@ static void		init_player(t_doom *doom)
 
 static void		init_settings(t_doom *doom)
 {
-	doom->own_event.mouse_state_switched = TRUE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
-	doom->huds = TRUE;
+	doom->hud_display = TRUE;
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
@@ -61,8 +62,6 @@ void			doom_init(t_doom *doom)
 	doom_init_events(&doom->own_event);
 	if (doom->audio->engine)
 		load_audio(doom->audio);
-	if (doom->start == FALSE)
-		init_hud(doom);
 	doom->ray_adjacent = FOV / WIDTH;
 	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
 	doom->max_ray = 10000;

@@ -17,7 +17,7 @@ void	doom_update(t_doom *doom, double dt)
 			mouse_press(doom, &event.button, doom->own_event);
 		if (event.type == SDL_MOUSEBUTTONUP)
 			mouse_release(doom, &event.button);
-		if (event.type == SDL_MOUSEMOTION)
+		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
 	key_handler(doom, &doom->own_event, dt);

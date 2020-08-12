@@ -11,7 +11,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-10
+11
 assets/textures/shelves/96X96-Shelf.bmp
 assets/textures/floors_ceiling/floor.bmp
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
@@ -21,14 +21,16 @@ assets/textures/shelves/water.bmp
 assets/textures/shelves/wine.bmp
 assets/textures/shelves/soda.bmp
 assets/textures/shelves/sausage_bacon.bmp
-assets/textures/poster/do_not_push.bmp
+assets/textures/poster/light_switch_on.bmp
+assets/textures/poster/light_switch_off.bmp
+
 
 #object library
-29
+30
 #0
 assets/sprites/groceries/bacon.bmp
 #1
-assets/sprites/groceries/butter.bmp
+assets/sprites/groceries/red_apple.bmp
 #2
 assets/sprites/groceries/cherry.bmp
 #3
@@ -36,7 +38,7 @@ assets/sprites/groceries/coffee.bmp
 #4
 assets/sprites/groceries/wine1.bmp
 #5
-assets/sprites/groceries/mayonaisse.bmp
+assets/sprites/groceries/cola.bmp
 #6
 assets/sprites/groceries/water.bmp
 #7
@@ -83,13 +85,15 @@ assets/sprites/groceries/chicken_leg.bmp
 assets/sprites/groceries/toiletpaper.bmp
 #28
 assets/sprites/scissor_lift/scissor_lift_bar.bmp
+#29
+assets/sprites/misc/crate.bmp
 
 #number of sectors
-6
+8
 #number of walls
-31
+39
 #number of objects
-20
+21
 
 
 #sector[0]
@@ -476,7 +480,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 0
 -1
 4
-1
+2
 3
 0
 
@@ -563,6 +567,36 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 445
 345
 
+#object4
+#object1 crate in sector 3
+29
+390
+295
+10
+16
+1
+4
+29
+385
+285
+395
+285
+29
+395
+285
+395
+295
+29
+395
+295
+385
+295
+29
+385
+295
+395
+285
+
 #sector[4]
 15
 0
@@ -576,7 +610,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 5
 3
 4
-0
+2
 
 #22
 #sidedefs0
@@ -643,7 +677,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 1
 26
 
-#object4
+#object5
 #object0 facemask in sector 4
 13
 550
@@ -673,7 +707,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 545
 595
 
-#object5
+#object6
 #object1 health pack plus (green) in sector 4
 14
 650
@@ -703,7 +737,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 645
 595
 
-#object6
+#object7
 #object2 health pack red in sector 4
 15
 700
@@ -802,7 +836,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 1
 30
 
-#object7
+#object8
 #apple pie
 #object0 in sector 5
 22
@@ -833,7 +867,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 810
 225
 
-#object8
+#object9
 #apple pie
 #object1 in sector 5
 22
@@ -864,7 +898,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 225
 
-#object9
+#object10
 #apple pie
 #object2 in sector 5
 22
@@ -895,7 +929,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 830
 225
 
-#object10
+#object11
 #object3 in sector 5 bacon
 0
 825
@@ -925,7 +959,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 255
 
-#object11
+#object12
 #object4 in sector 5 butter
 1
 825
@@ -955,7 +989,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 285
 
-#object12
+#object13
 #object5 in sector 5 cucumber
 24
 825
@@ -985,7 +1019,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 305
 
-#object13
+#object14
 #object6 in sector 5 brownie
 23
 825
@@ -1015,7 +1049,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 335
 
-#object14
+#object15
 #object7 in sector 5 chicken
 25
 825
@@ -1045,7 +1079,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 365
 
-#object15
+#object16
 #object8 in sector 5 chicken leg
 26
 825
@@ -1075,7 +1109,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 395
 
-#object16
+#object17
 #object9 in sector 5 toiletpaper
 27
 825
@@ -1105,7 +1139,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 425
 
-#object17
+#object18
 #object10 in sector 5 mayonaisse
 5
 825
@@ -1135,7 +1169,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 455
 
-#object18
+#object19
 #object11 in sector 5 cherry
 2
 825
@@ -1165,7 +1199,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 820
 485
 
-#object19
+#object20
 #object12 in sector 5 coffee
 3
 825
@@ -1194,6 +1228,140 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 525
 820
 515
+
+#sector[6]
+15
+40
+1
+0
+-1
+0
+2
+0
+-1
+4
+0
+6
+0
+
+#31
+#sidedefs0
+-1
+800
+200
+850
+200
+0
+1
+1
+1
+31
+
+#32
+#sidedefs1
+-1
+850
+200
+850
+700
+0
+1
+1
+1
+32
+
+#33
+#sidedefs2
+-1
+850
+700
+800
+700
+0
+1
+1
+1
+33
+
+#34
+#sidedefs3
+4
+800
+700
+800
+200
+0
+1
+1
+1
+34
+
+#sector[7]
+15
+40
+1
+0
+-1
+0
+2
+0
+-1
+4
+0
+7
+0
+
+#35
+#sidedefs0
+-1
+800
+200
+850
+200
+0
+1
+1
+1
+35
+
+#36
+#sidedefs1
+-1
+850
+200
+850
+700
+0
+1
+1
+1
+36
+
+#37
+#sidedefs2
+-1
+850
+700
+800
+700
+0
+1
+1
+1
+37
+
+#38
+#sidedefs3
+4
+800
+700
+800
+200
+0
+1
+1
+1
+38
 
 #moving objects
 0

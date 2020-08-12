@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/font.h"
 
 int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
@@ -60,6 +61,7 @@ void		activate_scissor_lift(t_doom *doom, int index)
 {
 	printf("activate scissor lift\n");
 	doom->own_event.scissor_lift = TRUE;
+	doom->lib.font_lib.bools.text = TRUE;
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
@@ -114,6 +116,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 		if (doom->lib.sprites[index].distance > 0.1 &&\
 		doom->lib.sprites[index].distance < 50)
 		{
+			printf("action: %d\n", doom->lib.sprites[index].action);
 			if (doom->lib.sprites[index].action == 9)
 			{
 				doom->hud->shopper = TRUE;
@@ -138,6 +141,11 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			{
 				doom->hud->facemask = TRUE;
 				doom->lib.sprites[index].action = 8;
+			}
+			else if (doom->lib.sprites[index].action == 10)
+			{
+				player_fall(doom, &doom->lib.sprites[index]);
+
 			}
 		}
 		index++;

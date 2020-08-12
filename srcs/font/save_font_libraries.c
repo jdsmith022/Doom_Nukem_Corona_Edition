@@ -2,7 +2,6 @@
 
 void	save_font_libraries(t_doom *doom)
 {
-	doom->difficulty = 1; //remove later
 	init_hud(doom);
 	set_font_colors(doom);
 	save_game_editor_font(doom, &doom->lib.font_lib.ge_font_len);

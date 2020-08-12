@@ -41,7 +41,7 @@
 # define MOVE_SPEED 200
 # define CAM_SPEED 3
 # define GRAVITY -1
-# define VELOCITY 12
+# define VELOCITY 10
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
@@ -51,6 +51,8 @@
 # define TEXTURES		doom->lib.tex_lib
 # define SPRITES		doom->lib.sprites
 # define OBJ_LIB		doom->lib.obj_lib
+
+# define EXIT_LEVEL 2
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
@@ -133,6 +135,8 @@ typedef struct		s_event {
 	int				cam_move_l;
 	int				cam_move_r;
 	int				floor_diff;
+	int				ceiling_diff;
+	int				next_sector_height;
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
@@ -141,6 +145,7 @@ typedef struct		s_event {
 	bool			scissor_lift_down;
 	int				virus_hit_index;
 	bool			parked_too_close;
+	bool			fall;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -308,7 +313,7 @@ typedef struct		s_doom {
 	t_hud			*hud;
 	bool			is_running;
 	bool			game_editor;
-	bool			huds;
+	bool			hud_display;
 	bool			light;
 	bool			start_timer;
 	double			player_std_height;
@@ -329,12 +334,12 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				difficulty;
 	int				total_sprites;
+	t_line			level_exit;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
 	int 			game_time;
 	int				game_start_time;
-	int				start;
 	int				save_scissor_lift;
 }					t_doom;
 
@@ -349,14 +354,14 @@ void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
 double				points_distance(t_point p1, t_point p2);
+void				timer(t_doom *doom);
+double				get_timeframe(long *last_frame_time);
+void				update_hud_ui(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
-void				doom_retry(t_doom *doom);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
-double				get_timeframe(long *last_frame_time);
-void				timer(t_doom *doom);
 
 /*read functions*/
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
@@ -399,12 +404,15 @@ void				move_cam_direction(t_doom *doom,\
 void				cam_move_fb(t_doom *doom, double dt, int direction);
 void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
+int 				check_sector_height_diff(t_doom *doom,\
+						int sector, int next_sector);
 void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 bool				handle_mouse_state(t_doom *doom);
 void				scissor_lift_up(t_doom *doom);
 void				scissor_lift_down(t_doom *doom);
+void				player_fall(t_doom *doom,  t_sprite *sprite);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\

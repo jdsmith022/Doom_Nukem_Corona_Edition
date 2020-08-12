@@ -22,9 +22,8 @@ static uint8_t	get_next_grocery(t_doom *doom, uint8_t *curr_texture)
 	return type;
 }
 
-t_item 		*get_shopping_list(t_doom *doom, uint8_t *groceries)
+void			generate_shopping_list(t_doom *doom)
 {
-	t_item		*shopping_list;
 	uint8_t		curr_texture;
 	uint8_t 	shopping_list_len;
 	uint8_t		i;
@@ -32,26 +31,13 @@ t_item 		*get_shopping_list(t_doom *doom, uint8_t *groceries)
 	i = 0;
 	curr_texture = 0;
 	shopping_list_len = doom->groceries->shopping_list_len;
-	shopping_list = ft_memalloc(sizeof(t_item) * shopping_list_len);
+	SHOPPING_LIST = ft_memalloc(sizeof(t_item) * shopping_list_len);
 	while (i < shopping_list_len)
 	{
-		shopping_list[i].type = get_next_grocery(doom, &curr_texture);
-		shopping_list[i].amount = (rand() % 5) + 1;
-		set_sprite(doom, shopping_list[i].type, &shopping_list[i]);
-		shopping_list[i].position = get_position(i, WIDTH - 300);
+		SHOPPING_LIST[i].type = get_next_grocery(doom, &curr_texture);
+		SHOPPING_LIST[i].amount = (rand() % 5) + 1;
+		set_sprite(doom, SHOPPING_LIST[i].type, &SHOPPING_LIST[i]);
+		SHOPPING_LIST[i].position = get_position(i, WIDTH - 80, 60);
 		i++;
 	}
-	return shopping_list;
-}
-
-void	print_shopping_list(t_groceries *groceries)
-{
-	uint8_t i;
-
-	i = 0;
-	while (i < groceries->shopping_list_len){
-		printf("type: %d  amount: %d  ", groceries->shopping_list[i].type, groceries->shopping_list[i].amount);
-		i++;
-	}
-	printf("\n");
 }

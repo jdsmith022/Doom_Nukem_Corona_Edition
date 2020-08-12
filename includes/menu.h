@@ -10,6 +10,7 @@ typedef struct			s_menu {
 	bool				game_editor;
 	bool				settings;
 	bool				pause;
+	bool				finished;
 }						t_menu;
 
 void					doom_start(t_doom *doom);
@@ -20,7 +21,9 @@ void					setting_menu_click_event(t_doom *doom, SDL_Rect rect);
 void					start_menu_click_event(t_doom *doom, SDL_Rect rect1,\
 							SDL_Rect rect2, SDL_Rect rect3);
 void					instruction_window(t_doom *doom);
+void					add_score_to_sdl_text(t_doom *doom);
 void					print_background(t_doom *doom, Uint32 color);
 void					menus(t_doom *doom);
+void					menu_print_loop(t_doom *doom);
 
 #endif

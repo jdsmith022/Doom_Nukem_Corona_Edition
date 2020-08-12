@@ -3,8 +3,19 @@
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
 
+static void	set_menu_game_variables(t_doom *doom)
+{
+	doom->lib.font_lib.bools.walking_info = TRUE;
+	doom->lib.font_lib.bools.walking_text = TRUE;
+	doom->lib.font_lib.bools.text = FALSE;
+	doom->own_event.select = FALSE;
+	doom->start_timer = TRUE; //move to when player crosses sidedef
+	doom->hud->hold_time /= doom->difficulty;
+}
+
 void		doom_start(t_doom *doom)
 {
+	doom->difficulty = 1;
 	while (doom->menu->menu == TRUE)
 	{
 		mouse_settings(doom);
@@ -17,9 +28,5 @@ void		doom_start(t_doom *doom)
 	}
 	if (doom->game_editor == FALSE)
 		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
-	doom->lib.font_lib.walking_info = TRUE;
-	doom->own_event.select = FALSE;
-	doom->lib.font_lib.shooting_info = FALSE;
-	doom->start_timer = TRUE; //move to when player crosses sidedef
-	doom->hud->hold_time /= doom->difficulty;
+	set_menu_game_variables(doom);
 }
