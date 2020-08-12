@@ -43,8 +43,6 @@ void	jump_player_2(t_doom *doom, double dt, \
 	duration += dt;
 	og_height = PLAYER_HEIGHT + height_floor;
 	jumpheight = (int)(doom->own_event.velocity * duration);
-	if (prev_height > height_floor)
-		jumpheight += prev_height - height_floor;
 	doom->player_height += jumpheight;
 	doom->own_event.velocity += GRAVITY * duration;
 	if (doom->player_height <= og_height && \
@@ -64,7 +62,7 @@ void	jump_player(t_doom *doom, double dt)
 
 	if (doom->own_event.fall == TRUE)
 	{
-		jumpheight = (int)(doom->own_event.velocity * duration) + 298;
+		jumpheight = (int)(doom->own_event.velocity * duration) + 48;
 		doom->player_height += jumpheight;
 		doom->own_event.fall = FALSE;
 		return ;

@@ -29,7 +29,9 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 	{
 		diff = find_time_difference(doom);
 		if (diff <= 3)
+		{
 			print_vanishing_text_box(doom, start_dex, end_dex);
+		}
 	}
 }
 
@@ -97,4 +99,5 @@ void				font_timer(t_doom *doom)
 	// else if (doom->lib.font_lib.bools.shooting_info == TRUE)
 	// 	font_timer_box_short(doom, \
 	// 		&doom->lib.font_lib.bools.shooting_info, 0, 3);
+	// printf("end font timer\n");
 }

@@ -39,14 +39,18 @@ void	doom_render(t_doom *doom)
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		ray.plane_x = x;
+		// printf("O");
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
+		// printf("X");
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}
+	// printf("before sprite_render\n");
 	if (doom->visible_sprites > 0)
 	{
 		// printf("sprite_render starts, visible sprites: %d\n", doom->visible_sprites);
 		sprite_render(doom);
 		// printf("after sprite_render\n");
-	}	
+	}
+	// printf("after sprinte_render");	
 }

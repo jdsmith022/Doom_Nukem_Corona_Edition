@@ -21,4 +21,5 @@ void	doom_update(t_doom *doom, double dt)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
 	key_handler(doom, &doom->own_event, dt);
+	// printf("end doom update\n");
 }
