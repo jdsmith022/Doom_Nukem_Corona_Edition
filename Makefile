@@ -50,7 +50,7 @@ GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font \
 				start_menu_font setting_window_font game_over_font instruction_font \
-				font_timer pause_font vanishing_text_box
+				font_timer pause_font vanishing_text_box set_font_style
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
 MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu

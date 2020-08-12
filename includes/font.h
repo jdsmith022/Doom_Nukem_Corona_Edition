@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 02:56:33 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 09:27:07 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ typedef struct		s_font_lib
 	t_color			font_color;
 	t_font			*setting_menu_font;
 	t_bools			bools;
+	TTF_Font		*font_30;
+	TTF_Font		*font_22;
+	TTF_Font		*font_20;
+	TTF_Font		*font_18;
 	t_limit			limit_x;
 	t_limit			limit_y;
 	int				setting_font_len;
@@ -76,8 +80,9 @@ void				save_font(t_doom *doom, int *len);
 void				font_to_screen(t_doom *doom);
 void				save_font_libraries(t_doom *doom);
 void				set_font_colors(t_doom *doom);
+void				set_font_style(t_doom *doom);
 void				font_to_sdl(t_doom *doom, t_font *lib, \
-						char *font_style, int font_size);
+						TTF_Font *font);
 void				save_game_editor_font(t_doom *doom, int *len);
 void				save_hud_font(t_doom *doom, int *len);
 void				save_start_menu_font(t_doom *doom, int *len);

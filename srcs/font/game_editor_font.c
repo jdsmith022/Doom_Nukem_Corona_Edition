@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/11 23:15:30 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 09:28:09 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	set_editor_text(t_doom *doom, t_font *lib, int len)
 
 void		save_game_editor_font(t_doom *doom, int *len)
 {
-	char		*font_path;
+	TTF_Font	*font;
 	int			font_size;
 
 	*len = 14;
@@ -97,8 +97,6 @@ void		save_game_editor_font(t_doom *doom, int *len)
 	if (doom->lib.font_lib.game_editor_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_editor_text(doom, doom->lib.font_lib.game_editor_font, *len);
-	font_path = "srcs/font/font_style/Cicle_Semi.ttf";
-	font_size = 20;
-	font_to_sdl(doom, doom->lib.font_lib.game_editor_font,\
-		font_path, font_size);
+	font = doom->lib.font_lib.font_20;
+	font_to_sdl(doom, doom->lib.font_lib.game_editor_font, font);
 }

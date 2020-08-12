@@ -44,7 +44,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 
 void	save_game_over_font(t_doom *doom, int *len)
 {
-	char		*font_path;
+	TTF_Font	*font;
 	int			font_size;
 
 	*len = 4;
@@ -53,7 +53,6 @@ void	save_game_over_font(t_doom *doom, int *len)
 	if (doom->lib.font_lib.game_over_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_text(doom, doom->lib.font_lib.game_over_font, *len);
-	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 30;
-	font_to_sdl(doom, doom->lib.font_lib.game_over_font, font_path, font_size);
+	font = doom->lib.font_lib.font_30;
+	font_to_sdl(doom, doom->lib.font_lib.game_over_font, font);
 }
