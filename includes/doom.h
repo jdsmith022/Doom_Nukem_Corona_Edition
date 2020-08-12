@@ -140,6 +140,7 @@ typedef struct		s_event {
 	bool			scissor_lift_up;
 	bool			scissor_lift_down;
 	int				virus_hit_index;
+	bool			parked_too_close;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -310,7 +311,6 @@ typedef struct		s_doom {
 	bool			huds;
 	bool			light;
 	bool			start_timer;
-	bool			parked_too_close;
 	double			player_std_height;
 	double			player_height;
 	double			player_width;

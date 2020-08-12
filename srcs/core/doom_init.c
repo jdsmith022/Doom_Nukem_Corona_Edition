@@ -17,6 +17,7 @@ static void		doom_init_events(t_event *event)
 	event->scissor_lift_down = FALSE;
 	event->scissor_lift_up = FALSE;
 	event->virus_hit_index = -1;
+	event->parked_too_close = FALSE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -46,7 +47,6 @@ static void		init_settings(t_doom *doom)
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
-	doom->parked_too_close = FALSE;
 }
 
 void			doom_init(t_doom *doom)

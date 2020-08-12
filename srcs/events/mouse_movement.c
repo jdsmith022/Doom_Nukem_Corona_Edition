@@ -39,7 +39,8 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 		doom->dir_angle += 360 * radian;
 	if (doom->dir_angle > 360 * radian)
 		doom->dir_angle -= 360 * radian;
-	set_pitch(doom, motion, event);
+	if (doom->own_event.scissor_lift == FALSE)
+		set_pitch(doom, motion, event);
 }
 
 void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
