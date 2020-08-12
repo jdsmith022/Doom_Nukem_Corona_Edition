@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 09:28:09 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 19:44:35 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,11 @@
 
 static void	set_timer(t_doom *doom, t_font *lib)
 {
-	char	*timer;
-	int		time;
-
-	time = doom->hud->curr_time;
-	time /= 1000;
-	time /= 60;
-	timer = ft_itoa(time);
-	timer = ft_strcat(timer, ":00");
 	lib[6].str = "Time";
 	lib[6].font_rect.x = WIDTH / 2.4;
 	lib[6].font_rect.y = 15;
 	lib[6].font_color = doom->lib.font_lib.font_color.white;
-	lib[7].str = timer;
+	lib[7].str = "0:00";
 	lib[7].font_rect.x = WIDTH / 1.9;
 	lib[7].font_rect.y = 15;
 	lib[7].font_color = doom->lib.font_lib.font_color.white;

@@ -4,6 +4,7 @@
 
 void				groceries(t_doom *doom)
 {
+	printf("sector: %d\n", SECTORS[doom->i_sector].action);
 	if (doom->own_event.select == TRUE)
 	{
 		if (MOUSE_PRESSED)
@@ -16,6 +17,7 @@ void				groceries(t_doom *doom)
 			draw_shopping_ui(doom, doom->groceries);
 		if (SECTORS[doom->i_sector].action == EXIT_LEVEL)
 		{
+			printf("yo\n");
 			get_game_over_info(doom);
 			doom->menu->finished = TRUE;
 		}

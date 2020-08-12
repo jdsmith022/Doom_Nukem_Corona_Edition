@@ -103,7 +103,8 @@ void		update_hud(t_doom *doom)
 		if (calculate_hud_levels(doom) == 1)
 			update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		update_hud_levels(doom, doom->lib.font_lib.hud_font);
-		update_timer(doom, doom->lib.font_lib.hud_font);
+		if (doom->menu->start_timer == FALSE)
+			update_timer(doom, doom->lib.font_lib.hud_font);
 	}
 	font_to_screen(doom);
 }
