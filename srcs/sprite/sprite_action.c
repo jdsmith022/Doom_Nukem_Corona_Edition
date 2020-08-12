@@ -125,6 +125,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			else if (doom->lib.sprites[index].action == 4)
 			{
 				doom->hud->corona = TRUE;
+				printf("VIRUS #%d HIT, action: %d\n", index, doom->lib.sprites[index].action);
 				doom->lib.sprites[index].action = 6;
 			}
 			else if (doom->lib.sprites[index].action == 1)

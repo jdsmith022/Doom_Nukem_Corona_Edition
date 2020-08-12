@@ -16,6 +16,7 @@ static void		doom_init_events(t_event *event)
 	event->scissor_lift = FALSE;
 	event->scissor_lift_down = FALSE;
 	event->scissor_lift_up = FALSE;
+	event->virus_hit_index = -1;
 }
 
 static void		init_infection(t_doom *doom)

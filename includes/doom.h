@@ -139,6 +139,7 @@ typedef struct		s_event {
 	bool			scissor_lift;
 	bool			scissor_lift_up;
 	bool			scissor_lift_down;
+	int				virus_hit_index;
 }					t_event;
 
 typedef struct		s_m_object{

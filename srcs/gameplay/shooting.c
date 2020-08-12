@@ -1,44 +1,16 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
-
-/*
-**	Het is een recursieve functie dus ik kan niet zomaar -1 returnen.
-MOUSE_X: 602
-MOUSE_Y: 335
-sprite_begin_x: 532.000000
-sprite_end_x: 651.270764
-sprite_begin_y: 283.729236
-sprite_end_y: 403.000000
-sprite is hit
-virus in range #2 is hit
-start check_hit
-start find_virus
-start check_hit
-start find_virus
-start check_hit
-start find_virus
-YOU HIT NOTHING!! Try again.
-*/
+# include "../../includes/hud.h"
 
 int		virus_in_shooting_area(t_doom *doom, int sprite_i)
 {
-	printf("virus in shooting area\n");
-	printf("MOUSE_X: %d\n", MOUSE_X);
-	printf("MOUSE_Y: %d\n", MOUSE_Y);
-	printf("sprite_begin_x: %f\n", SPRITES[sprite_i].sprite_begin.x);
-	printf("sprite_end_x: %f\n", SPRITES[sprite_i].sprite_begin.x + SPRITES[sprite_i].width);
-	printf("sprite_begin_y: %f\n", SPRITES[sprite_i].sprite_begin.y);
-	printf("sprite_end_y: %f\n", SPRITES[sprite_i].sprite_begin.y + SPRITES[sprite_i].height);
 	if (MOUSE_X >= (int)SPRITES[sprite_i].sprite_begin.x &&\
 	MOUSE_X <= (int)SPRITES[sprite_i].sprite_begin.x + \
 	(int)SPRITES[sprite_i].width &&\
 	MOUSE_Y >= (int)SPRITES[sprite_i].sprite_begin.y &&\
 	MOUSE_Y <= (int)SPRITES[sprite_i].sprite_begin.y + \
 	(int)SPRITES[sprite_i].height)
-	{
-		printf("sprite is hit\n");
 		return (sprite_i);
-	}
 	return (-1);
 }
 
@@ -50,7 +22,6 @@ int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 	t_point		sprite_delta;
 	t_point		intersect;
 
-	printf("start virus in range\n");
 	i = 0;
 	while (i < 4)
 	{
@@ -62,7 +33,6 @@ int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 		{
 			if (virus_in_shooting_area(doom, sprite_i) == -1)
 				return (-1);
-			printf("virus in range #%d is hit\n", sprite_i);
 			return (sprite_i);
 		}
 		i++;
@@ -76,21 +46,23 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	int		i;
 	int		sprite_i;
 	int		temp_virus;
-	double	temp_dist_sprite;
+	double	current_dist_sprite;
 
-	printf("start find_virus\n");
-	temp_dist_sprite = INFINITY;
+	sprite_hit = doom->own_event.virus_hit_index;
+	if (sprite_hit == -1)
+		current_dist_sprite = INFINITY;
+	else
+		current_dist_sprite = SPRITES[sprite_hit].distance;
 	temp_virus = -1;
-	sprite_hit = -1;
 	i = 0;
 	sprite_i = SECTORS[sector].i_objects;
 	while (i < SECTORS[sector].n_objects)
 	{
 		if (SPRITES[sprite_i].action == 4)
 			temp_virus = virus_in_range(doom, ray, sprite_i, prev_sector);
-		if (temp_virus != -1 && SPRITES[temp_virus].distance < temp_dist_sprite)
+		if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
 		{
-			temp_dist_sprite = SPRITES[temp_virus].distance;
+			current_dist_sprite = SPRITES[temp_virus].distance;
 			sprite_hit = temp_virus;
 		}
 		i++;
@@ -99,7 +71,7 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	return (sprite_hit);
 }
 
-int		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	t_point		isect;
 	int			safe_x;
@@ -107,13 +79,15 @@ int		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	double		dist;
 	double		min_dist;
 	int			hit_virus;
-	double		temp_dist_sprite;
+	double		current_dist_sprite;
 	int			temp_virus;
 
-	printf("start check_hit\n");
 	temp_virus = -1;
-	temp_dist_sprite = INFINITY;
-	hit_virus = -1;
+	hit_virus = doom->own_event.virus_hit_index;
+	if (hit_virus != -1)
+		current_dist_sprite = SPRITES[hit_virus].distance;
+	else
+		current_dist_sprite = INFINITY;
 	x = SECTORS[sector].i_sidedefs;
 	min_dist = INFINITY;
 	while (x < SECTORS[sector].n_sidedefs + SECTORS[sector].i_sidedefs)
@@ -127,56 +101,49 @@ int		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		x++;
 	}
 	temp_virus = find_virus(doom, ray, sector, prev_sector);
-	if (temp_virus != -1 && SPRITES[temp_virus].distance < temp_dist_sprite)
+	if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
 	{
-		temp_dist_sprite = SPRITES[hit_virus].distance;
-		hit_virus = temp_virus;
+		current_dist_sprite = SPRITES[temp_virus].distance;
+		doom->own_event.virus_hit_index = temp_virus;
 	}
 	//check distance of hit sprite
 	if (SIDEDEFS[safe_x].opp_sector != -1 &&
 		SIDEDEFS[safe_x].opp_sector != prev_sector)
 		check_hit(doom, ray, SIDEDEFS[safe_x].opp_sector, sector);
-	return (hit_virus);
 }
 
 
-void    shoot(t_doom *doom, int x, int y)
+void    shoot(t_doom *doom)
 {
     t_ray   ray;
-    int     object;
 
-	printf("x: %d, y: %d\n", x, y);
-    ray = init_ray(doom, x);
-    object = check_hit(doom, ray, doom->i_sector, doom->i_sector);
-	if (object == -1)
+	doom->hud->sanitizer_shooting = TRUE;
+    ray = init_ray(doom, MOUSE_X);
+    check_hit(doom, ray, doom->i_sector, doom->i_sector);
+	if (doom->own_event.virus_hit_index == -1)
 		printf("YOU HIT NOTHING!! Try again.\n");
 	else
 	{
-		printf("Object #%d has been hit\n", object);
+		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
 		//change color to red for 5 seconds
-		SPRITES[object].visible = 17;
-		SPRITES[object].textures[0] = 17;
-		SPRITES[object].textures[1] = 17;
-		SPRITES[object].textures[2] = 17;
-		SPRITES[object].textures[3] = 17;
-		// SPRITES[object].action = 5;
+		SPRITES[doom->own_event.virus_hit_index].visible = 17;
+		SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;
+		SPRITES[doom->own_event.virus_hit_index].textures[1] = 17;
+		SPRITES[doom->own_event.virus_hit_index].textures[2] = 17;
+		SPRITES[doom->own_event.virus_hit_index].textures[3] = 17;
+		SPRITES[doom->own_event.virus_hit_index].action = 5;
+		doom->own_event.virus_hit_index = -1;
 		//let sprite dissapear
 		//by setting it to FLAG 6
 	}
-	
-	// if (object = -1)
-		//nothing is hit
-	// else
-	// {
-		//sprite[object] turns red for 5 seconds and then disappears
-	// }
 }
 
 void	handle_shooting(t_doom *doom)
 {
 	if (!handle_mouse_state(doom))
 		return ;
-	shoot(doom, MOUSE_X, MOUSE_Y);
+	if (doom->hud->sanitizer_level > 0)
+		shoot(doom);
 }
 
 void	shooting(t_doom *doom)
