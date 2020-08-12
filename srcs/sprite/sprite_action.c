@@ -45,14 +45,15 @@ void		exit_scissor_lift(t_doom *doom)
 	if (distance > 75/* && distance < 100*/)
 	{
 		doom->save_scissor_lift = -1;
+		doom->lib.font_lib.bools.text = FALSE;
 		doom->own_event.scissor_lift_down = FALSE;
-		doom->own_event.scissor_lift = FALSE;
 		printf("deactivate scissor lift\n");
 	}
 	else
 	{
 		//ADD FLAG
 		doom->own_event.parked_too_close = TRUE;
+		doom->lib.font_lib.bools.text = TRUE;
 		printf("Please move further away from scissor lift parking spot\ndistance: %f\n", distance);
 	}
 }

@@ -150,6 +150,7 @@ typedef struct		s_event {
 	int				virus_hit_index;
 	bool			parked_too_close;
 	bool			fall;
+	int				fall_count;
 }					t_event;
 
 typedef struct		s_m_object{

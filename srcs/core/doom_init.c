@@ -19,6 +19,7 @@ static void		doom_init_events(t_event *event)
 	event->virus_hit_index = -1;
 	event->parked_too_close = FALSE;
 	event->fall = FALSE;
+	event->fall_count = 2;
 	event->mouse_state_switched = TRUE;
 }
 

@@ -65,6 +65,7 @@ void	jump_player(t_doom *doom, double dt)
 		jumpheight = (int)(doom->own_event.velocity * duration) + 48;
 		doom->player_height += jumpheight;
 		doom->own_event.fall = FALSE;
+		doom->own_event.y_pitch = 0;
 		return ;
 	}
 	jump_player_2(doom, dt, jumpheight);

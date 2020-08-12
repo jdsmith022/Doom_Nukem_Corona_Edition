@@ -17,25 +17,25 @@ static void	set_instruction_text_3(t_doom *doom, t_font *lib)
 static void	set_instruction_text_2(t_doom *doom, t_font *lib)
 {
 	lib[3].str = "Scissor lift operations:";
-	lib[3].font_rect.x = WIDTH / 12;
-	lib[3].font_rect.y = 65;
-	lib[3].font_color = doom->lib.font_lib.font_color.black;
+	lib[3].font_rect.x = WIDTH / 2 - 100;
+	lib[3].font_rect.y = HEIGHT / 2 - 45;
+	lib[3].font_color = doom->lib.font_lib.font_color.red;
 	lib[4].str = "Forward = W			Backwards = S			\
 	Left = A				Right = D";
-	lib[4].font_rect.x = WIDTH / 2 - 120;
-	lib[4].font_rect.y = HEIGHT / 2 - 40;
-	lib[4].font_color = doom->lib.font_lib.font_color.blue;
+	lib[4].font_rect.x = WIDTH / 2 - 220;
+	lib[4].font_rect.y = HEIGHT / 2 - 20;
+	lib[4].font_color = doom->lib.font_lib.font_color.black;
 	lib[5].str = "UP = up arrow key				DOWN = down arrow key";
-	lib[5].font_rect.x = WIDTH / 2 - 20;
-	lib[5].font_rect.y = HEIGHT / 2 - 10;
+	lib[5].font_rect.x = WIDTH / 2 - 180;
+	lib[5].font_rect.y = HEIGHT / 2 + 5;
 	lib[5].font_color = doom->lib.font_lib.font_color.black;
 	lib[6].str = "Exit = Return scissor lift to lowest level and press S.";
 	lib[6].font_rect.x = WIDTH / 2 - 200;
-	lib[6].font_rect.y = HEIGHT / 2;
+	lib[6].font_rect.y = HEIGHT / 2 + 27;
 	lib[6].font_color = doom->lib.font_lib.font_color.black;
 	lib[7].str = "You're too close to the wall! Reverse and try again.";
 	lib[7].font_rect.x = WIDTH / 2 - 200;
-	lib[7].font_rect.y = HEIGHT / 2 + 20;
+	lib[7].font_rect.y = HEIGHT / 2;
 	lib[7].font_color = doom->lib.font_lib.font_color.red;
 	set_instruction_text_3(doom, lib);
 }

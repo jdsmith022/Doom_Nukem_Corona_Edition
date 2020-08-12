@@ -15,9 +15,17 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 		doom->player_height = min_height;
 		if (doom->own_event.cam_move_b == TRUE ||
 		doom->own_event.cam_move_l == TRUE)
+		{
 			doom->own_event.y_pitch = -240;
+			if (doom->own_event.fall_count > 0)
+				doom->own_event.fall_count = 1;
+		}
 		else
+		{
 			doom->own_event.y_pitch = 240;
+			if (doom->own_event.fall_count != -1)
+				doom->own_event.fall_count *= -1;
+		}
 	}
 }
 

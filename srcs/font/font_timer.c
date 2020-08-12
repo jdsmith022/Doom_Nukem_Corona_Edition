@@ -80,13 +80,14 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 void				font_timer(t_doom *doom)
 {
 	set_background_coords_middle_small(doom);
-	if (doom->save_scissor_lift == TRUE)
+	if (doom->own_event.parked_too_close == TRUE)
 		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 7, 8);
+	else if (doom->save_scissor_lift == TRUE)
+		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.text, 3, 7);
-	// else if (doom->scissor_lift_prox == TRUE)
-		// font_timer_scissor_lift(doom, \
-				doom->lib.font_lib.bools.scissor_lift, 7, 8);
-	else if (doom->own_event.fall == TRUE)
+	else if (doom->own_event.fall == TRUE && \
+	doom->own_event.fall_count != -1)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
 	else if (doom->lib.font_lib.bools.walking_text == TRUE \
