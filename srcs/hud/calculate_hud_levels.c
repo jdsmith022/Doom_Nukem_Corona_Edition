@@ -25,6 +25,12 @@ static int		update_hud_levels_3(t_doom *doom)
 		doom->hud->corona = FALSE;
 		change = 1;
 	}
+	else if (doom->hud->boxes == TRUE)
+	{
+		doom->hud->corona_level += 5;
+		doom->hud->boxes = FALSE;
+		change = 1;
+	}
 	return (change);
 }
 

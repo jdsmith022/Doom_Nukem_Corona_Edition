@@ -23,6 +23,9 @@ static int	check_collision(t_doom *doom, t_sidedef sidedef,
 	check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE ||
 	doom->own_event.scissor_lift == TRUE)
 		return (-1);
+	else if (check_sector_height_diff(doom, doom->i_sector, \
+	sidedef.opp_sector) == FALSE)
+		return (-1);
 	else if (sidedef.opp_sector != -1)
 	{
 		doom->i_sector = sidedef.opp_sector;

@@ -1,4 +1,20 @@
 #include "../../includes/doom.h"
+#include "../../includes/hud.h"
+
+void	player_fall(t_doom *doom, t_sprite *sprite)
+{
+	double	min_height;
+
+	min_height = -250.0;
+	sprite->action = 8;
+	if (doom->player_height > min_height)
+	{
+		doom->hud->boxes = TRUE;
+		doom->own_event.fall = TRUE;
+		doom->lib.font_lib.bools.text = TRUE;
+		doom->player_height = min_height;
+	}
+}
 
 void				scissor_lift_up(t_doom *doom)
 {

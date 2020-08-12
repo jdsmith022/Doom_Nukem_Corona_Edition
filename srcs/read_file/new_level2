@@ -11,7 +11,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-10
+11
 assets/textures/shelves/96X96-Shelf.bmp
 assets/textures/floors_ceiling/floor.bmp
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
@@ -21,10 +21,12 @@ assets/textures/shelves/water.bmp
 assets/textures/shelves/wine.bmp
 assets/textures/shelves/soda.bmp
 assets/textures/shelves/sausage_bacon.bmp
-assets/textures/poster/do_not_push.bmp
+assets/textures/poster/light_switch_on.bmp
+assets/textures/poster/light_switch_off.bmp
+
 
 #object library
-29
+30
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -83,13 +85,15 @@ assets/sprites/groceries/chicken_leg.bmp
 assets/sprites/groceries/toiletpaper.bmp
 #28
 assets/sprites/scissor_lift/scissor_lift_bar.bmp
+#29
+assets/sprites/misc/crate.bmp
 
 #number of sectors
 8
 #number of walls
 39
 #number of objects
-20
+21
 
 
 #sector[0]
@@ -476,7 +480,7 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 0
 -1
 4
-1
+2
 3
 0
 
@@ -562,6 +566,36 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 355
 445
 345
+
+#object4
+#object0 box in sector 3
+29
+390
+295
+10
+16
+1
+1
+29
+385
+285
+395
+285
+29
+395
+285
+295
+285
+29
+395
+285
+385
+285
+29
+385
+295
+385
+285
 
 #sector[4]
 15

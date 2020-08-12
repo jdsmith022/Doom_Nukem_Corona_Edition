@@ -14,7 +14,26 @@ static int			find_time_difference(t_doom *doom)
 	return (diff);
 }
 
-static void		font_timer_scissor_lift(t_doom *doom, bool scissor_flag,
+static void		font_timer_box_short(t_doom *doom, bool *flag,
+					int start_dex, int end_dex)
+{
+	int				diff;
+
+	set_background_coords_middle(doom);
+	if (*flag == TRUE)
+	{
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		*flag = FALSE;
+	}
+	else
+	{
+		diff = find_time_difference(doom);
+		if (diff <= 3)
+			print_vanishing_text_box(doom, start_dex, end_dex);
+	}
+}
+
+static void		font_timer_box_long(t_doom *doom, bool *flag,
 					int start_dex, int end_dex)
 {
 	int				diff;
@@ -24,46 +43,58 @@ static void		font_timer_scissor_lift(t_doom *doom, bool scissor_flag,
 
 	// if (doom->proximity == TRUE)
 	// 	set_background_coords_middle(doom);
-	if (scissor_flag == TRUE)
+	if (*flag == TRUE)
 	{
 		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
-		scissor_flag = FALSE;
+		*flag = FALSE;
 	}
 	else
 	{
 		diff = find_time_difference(doom);
-		if (diff <= 20)
+		if (diff <= 5)
 			print_vanishing_text_box(doom, start_dex, end_dex);
 	}
 }
 
+static void		font_timer_box_start(t_doom *doom, bool *flag)
+{
+	int				diff;
+	clockid_t		clkid;
+	struct timespec	time;
+	time_t			sec;
+
+	if (*flag == TRUE)
+	{
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		*flag = FALSE;
+	}
+	else
+	{
+		diff = find_time_difference(doom);
+		if (diff <= 5)
+			print_vanishing_text_box(doom, 0, 3);
+		else
+			doom->lib.font_lib.bools.walking_text = FALSE;
+	}
+}
 
 void				font_timer(t_doom *doom)
 {
-	int				diff;
-
 	set_background_coords_top(doom);
-	if (doom->lib.font_lib.bools.walking_info == TRUE \
-	&& doom->game_editor == FALSE)
-	{
-		diff = find_time_difference(doom);
-		if (diff <= 10)
-			print_vanishing_text_box(doom, 0, 3);
-		else
-			doom->lib.font_lib.bools.walking_info = FALSE;
-	}
-	if (doom->lib.font_lib.bools.shooting_info == TRUE)
-	{
-		diff = find_time_difference(doom);
-		if (diff <= 10)
-			print_vanishing_text_box(doom, 3, 5);
-		else
-			doom->lib.font_lib.bools.shooting_info = FALSE;
-	}
-	else if (doom->save_scissor_lift == TRUE)
-		font_timer_scissor_lift(doom, \
-			doom->lib.font_lib.bools.scissor_lift, 3, 7);
+	if (doom->save_scissor_lift == TRUE)
+		font_timer_box_long(doom, \
+			&doom->lib.font_lib.bools.text, 3, 7);
 	// else if (doom->scissor_lift_prox == TRUE)
 		// font_timer_scissor_lift(doom, \
 				doom->lib.font_lib.bools.scissor_lift, 7, 8);
+	else if (doom->own_event.fall == TRUE)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 8, 10);
+	else if (doom->lib.font_lib.bools.walking_text == TRUE \
+	&& doom->game_editor == FALSE)
+		font_timer_box_start(doom, \
+			&doom->lib.font_lib.bools.text);
+	// else if (doom->lib.font_lib.bools.shooting_info == TRUE)
+	// 	font_timer_box_short(doom, \
+	// 		&doom->lib.font_lib.bools.shooting_info, 0, 3);
 }

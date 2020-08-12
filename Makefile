@@ -25,9 +25,9 @@ HUD = srcs/hud/
 MENU = srcs/menu/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
-				exit moving_sidedef free_library libs_init
+				exit moving_sidedef free_library libs_init update_hud_ui
 EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press\
-				move_position3
+				move_sprite_interaction check_diff
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_row slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\

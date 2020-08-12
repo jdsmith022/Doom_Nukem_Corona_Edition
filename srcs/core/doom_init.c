@@ -16,6 +16,8 @@ static void		doom_init_events(t_event *event)
 	event->scissor_lift = FALSE;
 	event->scissor_lift_down = FALSE;
 	event->scissor_lift_up = FALSE;
+	event->fall = FALSE;
+	event->mouse_state_switched = TRUE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -38,7 +40,6 @@ static void		init_player(t_doom *doom)
 
 static void		init_settings(t_doom *doom)
 {
-	doom->own_event.mouse_state_switched = TRUE;
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud_display = TRUE;

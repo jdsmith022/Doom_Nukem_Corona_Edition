@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/09 14:26:03 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/11 20:44:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void		save_hud_font(t_doom *doom, int *len)
 	int			font_size;
 
 	*len = 8;
-	doom->lib.font_lib.hud_font = (t_font*)ft_memalloc(sizeof(t_font) * (*len));
+	doom->lib.font_lib.hud_font = \
+		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.hud_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_text(doom, doom->lib.font_lib.hud_font, *len);
 	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
 	font_size = 22;
 	font_to_sdl(doom, doom->lib.font_lib.hud_font, font_path, font_size);
-	printf("done\n");
 }

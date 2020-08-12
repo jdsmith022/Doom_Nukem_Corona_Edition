@@ -32,7 +32,8 @@ void		menu_print_loop(t_doom *doom)
 	SDL_SetCursor(doom->cursor);
 	mouse_settings(doom);
 	print_background(doom, 0x00002E);
-	if (doom->groceries->info.won == FALSE)
+	if (doom->groceries->info.won == FALSE && \
+	doom->menu->finished == TRUE)
 		print_missing_groceries(doom);
 	font_to_screen(doom);
 	SDL_UpdateWindowSurface(doom->window);
