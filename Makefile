@@ -48,7 +48,7 @@ GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui add_infection \
 				 position gameplay game_over timer
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
-				save_font_libraries hud_font \
+				save_font_libraries hud_font set_vanishing_box_coordinates \
 				start_menu_font setting_window_font game_over_font instruction_font \
 				font_timer pause_font vanishing_text_box set_font_style
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer

@@ -43,13 +43,9 @@ void	doom_render(t_doom *doom)
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}
-	printf("beforeif\n");
 	if (doom->visible_sprites > 0)
 	{
-		printf("in if before sprite\n");
 		// printf("sprite_render starts, visible sprites: %d\n", doom->visible_sprites);
 		sprite_render(doom);
-		printf("in if after sprite\n");
 	}
-	printf("after if\n");
 }
