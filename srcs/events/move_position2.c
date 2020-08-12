@@ -62,6 +62,7 @@ void	jump_player(t_doom *doom, double dt)
 	static double	duration = 0.1;
 	int				jumpheight;
 
+	printf("yoo\n");
 	if (doom->own_event.fall == TRUE)
 	{
 		jumpheight = (int)(doom->own_event.velocity * duration) + 298;
@@ -69,5 +70,6 @@ void	jump_player(t_doom *doom, double dt)
 		doom->own_event.fall = FALSE;
 		return ;
 	}
+	printf("doom\n");
 	jump_player_2(doom, dt, jumpheight);
 }

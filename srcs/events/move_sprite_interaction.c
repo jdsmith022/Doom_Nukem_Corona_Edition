@@ -13,7 +13,9 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 		doom->own_event.fall = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
 		doom->player_height = min_height;
+		printf("here\n");
 	}
+	printf("boom\n");
 }
 
 void				scissor_lift_up(t_doom *doom)

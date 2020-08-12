@@ -44,6 +44,7 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_sector	sector;
 
 	sector.plane_x = x;
+	// printf("id: %d\n", sidedef.id);
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);

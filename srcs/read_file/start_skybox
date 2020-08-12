@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-16
+17
 #0
 assets/textures/outside/outside_store.bmp
 #1
@@ -42,15 +42,17 @@ assets/sprites/health/fill_up.bmp
 assets/sprites/corona/corona_virus.bmp
 #15
 assets/textures/outside/enter_here.bmp
+#16
+assets/textures/outside/fresh_food_reverse.bmp
 
 #object library
 0
 #1 will be trollyyyyyy
 
 #number of sectors
-2
+5
 #number of walls
-27
+41
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -70,35 +72,36 @@ assets/textures/outside/enter_here.bmp
 0
 1
 
-#sidedefs0
+#box around sector1
+#sidedefs0 //back of box
 -1
 96
-0
+384
+96
 192
-0
 0
 10
 10
 10
 0
 
-#sidedefs1
+#sidedefs1 //right side
 -1
 192
-0
+384
 192
 192
 0
-10
-10
-10
+16
+16
+16
 1
 
-#sidedefs2
+#sidedefs2 //70
 -1
+96
 192
-192
-156
+136
 192
 0
 15
@@ -108,9 +111,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs3 sliding sidedef
 1
-166
+136
 192
-116
+176
 192
 2
 15
@@ -120,9 +123,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs4
 -1
-116
+176
 192
-96
+192
 192
 0
 15
@@ -132,11 +135,11 @@ assets/textures/outside/enter_here.bmp
 
 
 #sidedefs5
--1
+2
 96
-0
-96
+384
 192
+384
 0
 0
 0
@@ -201,9 +204,9 @@ assets/textures/outside/enter_here.bmp
 #sidedefs 9
 -1
 0
-384
+0
 96
-384
+0
 0
 4
 4
@@ -213,9 +216,9 @@ assets/textures/outside/enter_here.bmp
 #sidedefs10
 -1
 96
-384
+0
 192
-384
+0
 0
 6
 6
@@ -226,9 +229,9 @@ assets/textures/outside/enter_here.bmp
 #sidedefs11
 -1
 192
-384
+0
 288
-384
+0
 0
 5
 5
@@ -289,26 +292,26 @@ assets/textures/outside/enter_here.bmp
 #sidedefs15
 -1
 0
-0
+384
 96
+384
 0
-0
-10
-10
-10
+16
+16
+16
 17
 
 
 #sidedefs16
 -1
-192
-0
 288
+384
+192
+384
 0
-0
-10
-10
-10
+16
+16
+16
 18
 
 
@@ -329,22 +332,22 @@ assets/textures/outside/enter_here.bmp
 3
 
 #sidedefs0 //must match all levels to this sidedef //portal to sector number 2
--1
+2
 96
-0
+384
 192
-0
+384
 0
 3
-3
+-1
 3
 19
 
 #sidedefs1
 -1
-192
-0
-192
+96
+384
+96
 192
 0
 3
@@ -354,9 +357,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs2
 -1
+96
 192
-192
-166
+126
 192
 0
 3
@@ -366,9 +369,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs3
 0
-166
+126
 192
-116
+176
 192
 0
 3
@@ -379,9 +382,9 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs4
 -1
-116
+176
 192
-96
+192
 192
 0
 3
@@ -392,10 +395,10 @@ assets/textures/outside/enter_here.bmp
 
 #sidedefs5
 -1
-96
 192
-96
-0
+192
+192
+384
 0
 3
 3
@@ -405,9 +408,9 @@ assets/textures/outside/enter_here.bmp
 #poster1 ->sanitizer
 -1
 192
-116
+216
 192
-132
+232
 8
 13
 13
@@ -417,14 +420,231 @@ assets/textures/outside/enter_here.bmp
 #poster2 ->corona
 -1
 96
-116
+216
 96
-132
+232
 4
 14
 14
 14
 26
+
+
+#sector[2] #action flag to start time == 4
+10
+0
+1
+0
+-1
+0
+2
+0
+-1
+6
+0
+2
+4
+
+#sidedefs0 //must match all levels to this sidedef //portal to sector number 2
+1
+96
+384
+192
+384
+0
+3
+-1
+3
+27
+
+#sidedefs1
+-1
+96
+384
+0
+384
+0
+3
+3
+3
+28
+
+#sidedefs2
+-1
+96
+384
+0
+384
+0
+3
+3
+3
+29
+
+#sidedefs3
+-1
+288
+384
+288
+480
+0
+3
+3
+3
+30
+
+
+#sidedefs4
+3
+288
+480
+0
+480
+0
+3
+-1
+3
+31
+
+
+#sidedefs5
+-1
+0
+384
+0
+480
+0
+3
+3
+3
+32
+
+
+#sector[3]
+10
+0
+1
+0
+-1
+0
+2
+0
+-1
+4
+0
+3
+0
+
+#sidedefs0
+2
+0
+480
+288
+480
+0
+3
+3
+3
+33
+
+#sidedefs1
+-1
+0
+480
+0
+672
+0
+3
+3
+3
+34
+
+#sidedefs2
+-1
+0
+672
+288
+672
+0
+3
+3
+3
+35
+
+#sidedefs3
+4
+288
+672
+288
+480
+0
+3
+3
+3
+36
+
+#sector[4]
+10
+0
+1
+0
+-1
+0
+2
+0
+-1
+4
+0
+4
+2
+
+#sidedefs0
+3
+288
+480
+288
+672
+0
+3
+3
+3
+37
+
+#sidedefs1
+-1
+288
+672
+480
+672
+0
+3
+3
+3
+38
+
+#sidedefs2
+-1
+480
+672
+480
+480
+0
+3
+3
+3
+39
+
+#sidedefs3
+-1
+480
+480
+288
+480
+0
+3
+3
+3
+40
 
 #moving objects
 0

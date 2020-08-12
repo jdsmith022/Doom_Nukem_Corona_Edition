@@ -54,7 +54,7 @@ void				game_loop(t_doom *doom)
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
-		update_hud_ui(doom);
+		// update_hud_ui(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);
