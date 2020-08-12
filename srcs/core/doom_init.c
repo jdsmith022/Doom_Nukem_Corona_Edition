@@ -16,6 +16,8 @@ static void		doom_init_events(t_event *event)
 	event->scissor_lift = FALSE;
 	event->scissor_lift_down = FALSE;
 	event->scissor_lift_up = FALSE;
+	event->virus_hit_index = -1;
+	event->parked_too_close = FALSE;
 	event->fall = FALSE;
 	event->mouse_state_switched = TRUE;
 }

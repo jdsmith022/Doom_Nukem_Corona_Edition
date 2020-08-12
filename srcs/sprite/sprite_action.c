@@ -51,12 +51,10 @@ void		exit_scissor_lift(t_doom *doom)
 	}
 	else
 	{
+		//ADD FLAG
+		doom->own_event.parked_too_close = TRUE;
 		printf("Please move further away from scissor lift parking spot\ndistance: %f\n", distance);
 	}
-	// else
-	// {
-		// printf("Please go back to the parking spot of the scissor lift.");
-	// }
 }
 
 void		activate_scissor_lift(t_doom *doom, int index)
@@ -126,6 +124,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			else if (doom->lib.sprites[index].action == 4)
 			{
 				doom->hud->corona = TRUE;
+				printf("VIRUS #%d HIT, action: %d\n", index, doom->lib.sprites[index].action);
 				doom->lib.sprites[index].action = 6;
 			}
 			else if (doom->lib.sprites[index].action == 1)
@@ -145,8 +144,9 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			}
 			else if (doom->lib.sprites[index].action == 10)
 			{
+				printf("before player_fall\n");
 				player_fall(doom, &doom->lib.sprites[index]);
-
+				printf("after player_fall\n");
 			}
 		}
 		index++;

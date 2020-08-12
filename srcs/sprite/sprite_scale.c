@@ -75,4 +75,6 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin,\
 		sprite_begin->x = 0;
 	if (sprite_end->x > WIDTH)
 		sprite_end->x = WIDTH - 1;
+	sprite->sprite_begin.x = sprite_begin->x;
+	sprite->sprite_begin.y = sprite_begin->y;
 }

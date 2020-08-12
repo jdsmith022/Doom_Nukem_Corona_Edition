@@ -47,5 +47,6 @@ void	doom_render(t_doom *doom)
 	{
 		// printf("sprite_render starts, visible sprites: %d\n", doom->visible_sprites);
 		sprite_render(doom);
+		// printf("after sprite_render\n");
 	}
 }

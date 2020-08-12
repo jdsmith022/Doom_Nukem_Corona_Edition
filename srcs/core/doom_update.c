@@ -10,7 +10,10 @@ void	doom_update(t_doom *doom, double dt)
 		if (event.type == SDL_QUIT)
 			doom->is_running = FALSE;
 		if (event.type == SDL_KEYDOWN)
+		{
+			printf("here\n");
 			key_press(doom, &doom->own_event, &event.key);
+		}
 		if (event.type == SDL_KEYUP)
 			key_release(&doom->own_event, &event.key);
 		if (event.type == SDL_MOUSEBUTTONDOWN)

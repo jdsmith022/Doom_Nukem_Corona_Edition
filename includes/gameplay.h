@@ -69,4 +69,10 @@ bool					search_basket(t_item *itema, t_list **head);
 bool					search_basket_for_item(t_item *itema, t_list **head);
 void					get_game_over_info(t_doom *doom);
 
+/*
+**						Shooting
+*/
+
+void					shooting(t_doom *doom);
+
 #endif

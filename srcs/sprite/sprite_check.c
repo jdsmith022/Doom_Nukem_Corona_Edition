@@ -63,6 +63,7 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 	if (sprite->visible >= 0)
 	{
 		find_face_sprite(doom, sprite, ray, 0);
+		// printf("sprite_i: %d ", sprite_i);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
 		sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
