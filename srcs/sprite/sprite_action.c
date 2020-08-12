@@ -144,8 +144,9 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			}
 			else if (doom->lib.sprites[index].action == 10)
 			{
+				printf("before player_fall\n");
 				player_fall(doom, &doom->lib.sprites[index]);
-
+				printf("after player_fall\n");
 			}
 		}
 		index++;
