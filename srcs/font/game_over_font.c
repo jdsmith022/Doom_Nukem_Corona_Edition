@@ -29,7 +29,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[0].font_color = doom->lib.font_lib.font_color.green;
 	set_reason(doom, lib, &reason, &status);
 	lib[1].str = reason;
-	lib[1].font_rect.x = WIDTH / 3.6;
+	lib[1].font_rect.x = WIDTH / 3.8;
 	lib[1].font_rect.y = 275;
 	lib[1].font_color = doom->lib.font_lib.font_color.green;
 	lib[2].str = status;

@@ -94,7 +94,7 @@ void				font_timer(t_doom *doom)
 	&& doom->game_editor == FALSE)
 		font_timer_box_start(doom, \
 			&doom->lib.font_lib.bools.text);
-	// else if (doom->lib.font_lib.bools.shooting_info == TRUE)
-	// 	font_timer_box_short(doom, \
-	// 		&doom->lib.font_lib.bools.shooting_info, 0, 3);
+	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR)
+		font_timer_box_long(doom, \
+			&doom->lib.font_lib.bools.start_sector, 10, 16);
 }

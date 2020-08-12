@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 09:27:07 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 12:38:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_bools
 {
 	bool			walking_info;
 	bool			walking_text;
+	bool			start_sector;
 	bool			text;
 }					t_bools;
 

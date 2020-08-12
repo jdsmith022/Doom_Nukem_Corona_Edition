@@ -50,7 +50,11 @@
 # define SIDEDEFS	doom->lib.sidedef
 # define TEXTURES	doom->lib.tex_lib
 
+# define OUTSIDE 1
 # define EXIT_LEVEL 2
+# define START_SECTOR 3
+# define START_TIMER 4
+
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;

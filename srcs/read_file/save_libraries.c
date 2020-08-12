@@ -31,7 +31,7 @@ void		save_libraries(t_doom *doom)
 	// if (argc != 1)
 	//     error("Please compile program in this fashion: ./duke_nukem", 0);
 	modified();
-	fd = open_file("srcs/read_file/new_level2");
+	fd = open_file("srcs/read_file/start_skybox");
 	EDIT.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);

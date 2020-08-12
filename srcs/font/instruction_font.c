@@ -1,6 +1,36 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
+static void	set_instruction_text_4(t_doom *doom, t_font *lib)
+{
+	lib[10].str = "Keep a look out for the Covid-19 virus!";
+	lib[10].font_rect.x = WIDTH / 2 - 235;
+	lib[10].font_rect.y = 65;
+	lib[10].font_color = doom->lib.font_lib.font_color.red;
+	lib[11].str = "Press Q to enter spray mode and click the \
+		mouse to spray sanitizer at the virus.";
+	lib[11].font_rect.x = WIDTH / 2 - 135;
+	lib[11].font_rect.y = 100;
+	lib[11].font_color = doom->lib.font_lib.font_color.green;
+	lib[12].str = "Press Q again to exit spray mode.";
+	lib[12].font_rect.x = WIDTH / 2 - 135;
+	lib[12].font_rect.y = 135;
+	lib[12].font_color = doom->lib.font_lib.font_color.green;
+	lib[13].str = "Don't worry! You can fill santizer at refill stations.";
+	lib[13].font_rect.x = WIDTH / 2 - 235;
+	lib[13].font_rect.y = 65;
+	lib[13].font_color = doom->lib.font_lib.font_color.red;
+	lib[14].str = "Press E to enter collection mode and click the \
+		mouse to collect the desired item.";
+	lib[14].font_rect.x = WIDTH / 2 - 135;
+	lib[14].font_rect.y = 100;
+	lib[14].font_color = doom->lib.font_lib.font_color.green;
+	lib[15].str = "Press E again to exit collection mode.";
+	lib[15].font_rect.x = WIDTH / 2 - 135;
+	lib[15].font_rect.y = 135;
+	lib[15].font_color = doom->lib.font_lib.font_color.green;
+}
+
 static void	set_instruction_text_3(t_doom *doom, t_font *lib)
 {
 	lib[8].str = "Watch out! You tripped over the crate! \
@@ -59,6 +89,7 @@ static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
 	lib[2].font_rect.y = 145;
 	lib[2].font_color = doom->lib.font_lib.font_color.black;
 	set_instruction_text_2(doom, lib);
+	set_instruction_text_4(doom, lib);
 }
 
 void	save_instruction_font(t_doom *doom, int *len)
@@ -66,7 +97,7 @@ void	save_instruction_font(t_doom *doom, int *len)
 	TTF_Font *font;
 	int			font_size;
 
-	*len = 10;
+	*len = 15;
 	doom->lib.font_lib.instruction_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.instruction_font == NULL)
