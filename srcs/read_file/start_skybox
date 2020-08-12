@@ -9,11 +9,11 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-17
+16
 #0
 assets/textures/outside/outside_store.bmp
 #1
-assets/textures/floors_ceiling/floor.bmp
+assets/textures/outside/outside_floor.bmp
 #2
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
 #3
@@ -42,8 +42,6 @@ assets/sprites/health/fill_up.bmp
 assets/sprites/corona/corona_virus.bmp
 #15
 assets/textures/outside/enter_here.bmp
-#16
-assets/textures/outside/outside_floor.bmp
 
 #object library
 0
@@ -52,7 +50,7 @@ assets/textures/outside/outside_floor.bmp
 #number of sectors
 2
 #number of walls
-26
+27
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -64,7 +62,7 @@ assets/textures/outside/outside_floor.bmp
 0
 -1
 0
-16
+1
 0
 -1
 19

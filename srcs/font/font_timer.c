@@ -99,4 +99,10 @@ void				font_timer(t_doom *doom)
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.start_sector, 10, 16);
 	}
+	// else if (doom->start_sidedef == TRUE && doom->trolly == FALSE)
+	// {
+	// 	set_background_coords_middle_small(doom);
+	// 	font_timer_box_long(doom, \
+	// 		&doom->lib.font_lib.bools.start_sector, 16, 17);
+	// }
 }

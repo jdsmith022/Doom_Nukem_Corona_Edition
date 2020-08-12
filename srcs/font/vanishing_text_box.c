@@ -10,8 +10,8 @@ static void		draw_font_instructions(t_doom *doom, t_font *font_lib,
 	{
 		ret = SDL_BlitSurface(font_lib[start_dex].font_surface, NULL,\
 			doom->surface, &font_lib[start_dex].font_rect);
-		// if (ret < 0)
-		// 	doom_exit_failure(doom, "error: Font to screen");
+		if (ret < 0)
+			doom_exit_failure(doom, "error: Font to screen");
 		start_dex++;
 	}
 }

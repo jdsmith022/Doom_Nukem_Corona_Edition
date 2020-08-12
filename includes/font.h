@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 13:07:29 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 14:10:02 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void				save_start_menu_font(t_doom *doom, int *len);
 void				save_setting_window_font(t_doom *doom, int *len);
 void				save_game_over_font(t_doom *doom, int *len);
 void				save_instruction_font(t_doom *doom, int *len);
+void				set_instruction_text_4(t_doom *doom, t_font *lib);
 void				save_pause_font(t_doom *doom, int *len);
 void				font_timer(t_doom *doom);
 void				print_vanishing_text_box(t_doom *doom,

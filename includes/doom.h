@@ -260,7 +260,6 @@ typedef struct		s_lib {
 	t_line			*sky_sd;
 	t_font_lib		font_lib;
 	int				portal_ceiling;
-	int				portal_floor;
 	int				len_sky_lib;
 	t_sector		*sector;
 	int				n_sectors;

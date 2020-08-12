@@ -10,7 +10,7 @@ void		set_ceiling_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
 
 	if (doom->i_sector == sector->id)
 		sector->ceiling_end = 0;
-	else 
+	else
 	{
 		new_height = (HEIGHT / 2) + doom->player_height;
 		plane_height_std = doom->texture_height / sidedef.prev_sidedef.distance\
