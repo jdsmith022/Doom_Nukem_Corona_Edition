@@ -37,7 +37,7 @@ void			generate_shopping_list(t_doom *doom)
 		SHOPPING_LIST[i].type = get_next_grocery(doom, &curr_texture);
 		SHOPPING_LIST[i].amount = (rand() % 5) + 1;
 		set_sprite(doom, SHOPPING_LIST[i].type, &SHOPPING_LIST[i]);
-		SHOPPING_LIST[i].position = get_position(i, WIDTH - 300);
+		SHOPPING_LIST[i].position = get_position(i, WIDTH - 80, 60);
 		i++;
 	}
 }

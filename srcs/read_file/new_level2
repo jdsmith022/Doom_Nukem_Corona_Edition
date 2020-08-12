@@ -28,7 +28,7 @@ assets/textures/poster/do_not_push.bmp
 #0
 assets/sprites/groceries/bacon.bmp
 #1
-assets/sprites/groceries/butter.bmp
+assets/sprites/groceries/red_apple.bmp
 #2
 assets/sprites/groceries/cherry.bmp
 #3
@@ -36,7 +36,7 @@ assets/sprites/groceries/coffee.bmp
 #4
 assets/sprites/groceries/wine1.bmp
 #5
-assets/sprites/groceries/mayonaisse.bmp
+assets/sprites/groceries/cola.bmp
 #6
 assets/sprites/groceries/water.bmp
 #7

@@ -15,7 +15,7 @@
 
 #define S_UI_1 			"/General Sounds/Buttons/sfx_sounds_button1.wav"
 #define S_FOOTSTEPS 	"/Movement/Footsteps/sfx_movement_footstepsloop4_slow.wav"
-#define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump15.wav"
+#define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump4.wav"
 #define MU_1			"/music/main_theme.wav"
 
 typedef struct s_event	t_event;

@@ -6,8 +6,7 @@
 #include "../sdl/includes/SDL.h"
 #include "font.h"
 
-#define GROCERY_LENGTH 5
-#define MAX_SHOPPING_LIST_LENGTH 2
+#define MAX_SHOPPING_LIST_LENGTH 4
 
 #define SHOPPING_LIST 	doom->groceries->shopping_list
 #define BASKET			doom->groceries->basket
@@ -64,7 +63,7 @@ t_ray					init_ray(t_doom *doom, int x);
 int						find_shelf(t_doom *doom, t_ray ray, int sector, int prev_sector);
 uint8_t					get_basket_len(t_list **head);
 t_item					*get_item_from_basket(uint8_t type, t_list **head);
-SDL_Rect				get_position(uint16_t index, int start_x);
+SDL_Rect				get_position(uint16_t index, int start_x, int start_y);
 void					set_positions(t_list **basket);
 bool					search_basket(t_item *itema, t_list **head);
 bool					search_basket_for_item(t_item *itema, t_list **head);

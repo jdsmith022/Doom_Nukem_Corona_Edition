@@ -1,21 +1,6 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 
-static uint8_t	*get_groceries()
-{
-	uint8_t		*groceries;
-	uint8_t		i;
-
-	i = 0;
-	groceries = ft_memalloc(sizeof(uint8_t) * GROCERY_LENGTH);
-	while (i < GROCERY_LENGTH)
-	{
-		groceries[i] = (i + i);
-		i++;
-	}
-	return groceries;
-}
-
 void			set_grocery_font(TTF_Font **font)
 {
 	*font = TTF_OpenFont("srcs/font/font_style/Cicle_Semi.ttf", 16);
