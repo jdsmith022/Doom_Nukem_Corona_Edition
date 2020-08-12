@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 20:03:17 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/11 19:08:21 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 03:00:22 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	font_to_sdl(t_doom *doom, t_font *lib, char *font_path,
 	{
 		font_surface =
 			TTF_RenderText_Solid(font, lib[index].str, lib[index].font_color);
+		if (font_surface == NULL)
+			doom_exit_failure(doom, "error: font to surface");
 		lib[index].font_surface = font_surface;
 		index++;
 	}

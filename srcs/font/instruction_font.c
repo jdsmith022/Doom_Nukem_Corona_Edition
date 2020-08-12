@@ -3,16 +3,15 @@
 
 static void	set_instruction_text_3(t_doom *doom, t_font *lib)
 {
-	lib[8].str = "Watch out! You tripped over the box! \
+	lib[8].str = "Watch out! You tripped over the crate! \
 	Jump to stand up.";
 	lib[8].font_rect.x = WIDTH / 2 - 235;
-	lib[8].font_rect.y = HEIGHT / 2 - 15 ;
+	lib[8].font_rect.y = HEIGHT / 2 - 15;
 	lib[8].font_color = doom->lib.font_lib.font_color.red;
 	lib[9].str = "You're corona level has increased!";
 	lib[9].font_rect.x = WIDTH / 2 - 135;
 	lib[9].font_rect.y = HEIGHT / 2 + 15;
 	lib[9].font_color = doom->lib.font_lib.font_color.green;
-
 }
 
 static void	set_instruction_text_2(t_doom *doom, t_font *lib)

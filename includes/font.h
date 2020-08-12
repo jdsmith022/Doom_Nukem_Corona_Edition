@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/11 23:21:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 02:56:33 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,20 @@ typedef struct		s_font {
 	char			*str;
 }					t_font;
 
-typedef struct		s_bools {
+typedef struct		s_bools
+{
 	bool			walking_info;
 	bool			walking_text;
 	bool			text;
 }					t_bools;
 
-typedef struct		s_font_lib //refactor this into index
+typedef struct		s_font_lib
 {
 	t_color			font_color;
 	t_font			*setting_menu_font;
 	t_bools			bools;
-	t_limit 		limit_x;
-	t_limit 		limit_y;
+	t_limit			limit_x;
+	t_limit			limit_y;
 	int				setting_font_len;
 	t_font			*start_menu_font;
 	int				start_font_len;
@@ -59,11 +60,6 @@ typedef struct		s_font_lib //refactor this into index
 	int				hud_font_len;
 	t_font			*game_editor_font;
 	int				ge_font_len;
-	t_font			*basket_font;
-	int				basket_font_len;
-	int				items_in_basket;
-	t_font			*shopping_font;
-	int				shopping_font_len;
 	t_font			*game_over_font;
 	int				game_font_len;
 	t_font			*instruction_font;

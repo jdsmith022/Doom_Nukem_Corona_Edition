@@ -1,23 +1,45 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
+#include "../../includes/hud.h"
+
+static void	set_reason(t_doom *doom, t_font *lib, char **reason, char **status)
+{
+	if (doom->hud->corona_level < 100)
+	{
+		*reason = "You're corona level reached 100!";
+		*status = "Time to self-quarantine!";
+	}
+	else
+	{
+		*reason = "Oh bummer! You ran out of time!";
+		*status = "Try again and keep safe!";
+	}
+}
 
 static void	set_text(t_doom *doom, t_font *lib, int len)
 {
 	SDL_Rect	font_rect;
+	char		*reason;
+	char		*status;
 
 	lib[0].len = len;
 	lib[0].str = "GAME OVER!";
 	lib[0].font_rect.x = WIDTH / 2.65;
 	lib[0].font_rect.y = 200;
 	lib[0].font_color = doom->lib.font_lib.font_color.green;
-	lib[1].str = "Time to self-quarantine";
-	lib[1].font_rect.x = WIDTH / 3.4;
+	set_reason(doom, lib, &reason, &status);
+	lib[1].str = reason;
+	lib[1].font_rect.x = WIDTH / 3.6;
 	lib[1].font_rect.y = 275;
 	lib[1].font_color = doom->lib.font_lib.font_color.green;
-	lib[2].str = "Press ESC to exit";
-	lib[2].font_rect.x = WIDTH / 2.7;
-	lib[2].font_rect.y = 500;
+	lib[2].str = status;
+	lib[2].font_rect.x = WIDTH / 3.4;
+	lib[2].font_rect.y = 325;
 	lib[2].font_color = doom->lib.font_lib.font_color.green;
+	lib[3].str = "Press ESC to exit";
+	lib[3].font_rect.x = WIDTH / 2.7;
+	lib[3].font_rect.y = 500;
+	lib[3].font_color = doom->lib.font_lib.font_color.green;
 }
 
 void	save_game_over_font(t_doom *doom, int *len)
@@ -25,7 +47,7 @@ void	save_game_over_font(t_doom *doom, int *len)
 	char		*font_path;
 	int			font_size;
 
-	*len = 3;
+	*len = 4;
 	doom->lib.font_lib.game_over_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.game_over_font == NULL)

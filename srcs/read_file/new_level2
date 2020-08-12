@@ -11,7 +11,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-10
+11
 assets/textures/shelves/96X96-Shelf.bmp
 assets/textures/floors_ceiling/floor.bmp
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
@@ -21,7 +21,9 @@ assets/textures/shelves/water.bmp
 assets/textures/shelves/wine.bmp
 assets/textures/shelves/soda.bmp
 assets/textures/shelves/sausage_bacon.bmp
-assets/textures/poster/do_not_push.bmp
+assets/textures/poster/light_switch_on.bmp
+assets/textures/poster/light_switch_off.bmp
+
 
 #object library
 30
@@ -84,7 +86,7 @@ assets/sprites/groceries/toiletpaper.bmp
 #28
 assets/sprites/scissor_lift/scissor_lift_bar.bmp
 #29
-assets/sprites/misc/box.bmp
+assets/sprites/misc/crate.bmp
 
 #number of sectors
 8

@@ -15,6 +15,7 @@ static void	set_menu_game_variables(t_doom *doom)
 
 void		doom_start(t_doom *doom)
 {
+	doom->difficulty = 1;
 	while (doom->menu->menu == TRUE)
 	{
 		mouse_settings(doom);

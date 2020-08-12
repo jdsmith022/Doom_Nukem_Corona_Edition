@@ -20,14 +20,14 @@ void			set_background_coords_top(t_doom *doom)
 static void		draw_font_instructions(t_doom *doom, t_font *font_lib,
 				int start_dex, int end_dex)
 {
-	int		ret;
+	int ret;
 
 	while (start_dex < end_dex)
 	{
 		ret = SDL_BlitSurface(font_lib[start_dex].font_surface, NULL,\
 			doom->surface, &font_lib[start_dex].font_rect);
-		if (ret == -1)
-			doom_exit_failure(doom, FONT_ERR);
+		if (ret < 0)
+			doom_exit_failure(doom, "error: Font to screen");
 		start_dex++;
 	}
 }

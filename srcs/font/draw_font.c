@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/11 23:27:33 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/12 03:04:13 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 static void		draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 {
 	Uint32	index;
+	int		ret;
 
 	index = 0;
 	while (index < len)
 	{
-		SDL_BlitSurface(font_lib[index].font_surface, NULL,\
+		ret = SDL_BlitSurface(font_lib[index].font_surface, NULL,\
 			doom->surface, &font_lib[index].font_rect);
+		if (ret < 0)
+			doom_exit_failure(doom, "error: Font to screen");
 		index++;
 	}
 }
@@ -33,6 +36,11 @@ static t_font	*font_to_screen_2(t_doom *doom,
 	{
 		font_lib = doom->lib.font_lib.pause_font;
 		*len = doom->lib.font_lib.pause_font_len;
+	}
+	else if (doom->hud_display == TRUE)
+	{
+		font_lib = doom->lib.font_lib.hud_font;
+		*len = doom->lib.font_lib.hud_font_len;
 	}
 	else if (doom->menu->game_over == TRUE)
 	{
@@ -52,6 +60,7 @@ void			font_to_screen(t_doom *doom)
 	t_font	*font_lib;
 	uint8_t	len;
 
+	len = 0;
 	if (doom->menu->menu == TRUE && doom->menu->settings == FALSE)
 	{
 		font_lib = doom->lib.font_lib.start_menu_font;
@@ -67,12 +76,8 @@ void			font_to_screen(t_doom *doom)
 		font_lib = doom->lib.font_lib.game_editor_font;
 		len = doom->lib.font_lib.ge_font_len;
 	}
-	else if (doom->hud_display == TRUE)
-	{
-		font_lib = doom->lib.font_lib.hud_font;
-		len = doom->lib.font_lib.hud_font_len;
-	}
 	else
 		font_lib = font_to_screen_2(doom, font_lib, &len);
-	draw_font(doom, font_lib, len);
+	if (len != 0)
+		draw_font(doom, font_lib, len);
 }

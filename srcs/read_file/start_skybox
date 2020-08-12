@@ -9,14 +9,39 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-8
+16
+#0
 assets/textures/outside/outside_store.bmp
+#1
 assets/textures/floors_ceiling/floor.bmp
+#2
 assets/textures/floors_ceiling/ceiling96X96_clean.bmp
+#3
 assets/textures/outside/start_sector_walls.bmp
-assets/textures/outside/outside_reverse.bmp
+#4
+assets/textures/outside/bank_1.bmp
+#5
+assets/textures/outside/bank_2.bmp
+#6
+assets/textures/outside/bank_3.bmp
+#7
+#8
+assets/textures/outside/spa.bmp
+#9
+assets/textures/outside/spa_1.bmp
+#10
+assets/textures/outside/bank_2.bmp
+#11
+assets/textures/outside/fresh_food.bmp
+#12
+assets/textures/outside/closing_down.bmp
+#13
+assets/textures/outside/closeing_down_sides.bmp
+#14
 assets/sprites/health/fill_up.bmp
+#15
 assets/sprites/corona/corona_virus.bmp
+#16
 assets/textures/outside/enter_here.bmp
 
 #object library
@@ -24,9 +49,9 @@ assets/textures/outside/enter_here.bmp
 #1 will be trollyyyyyy
 
 #number of sectors
-2
+3
 #number of walls
-15
+20
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -233,6 +258,96 @@ assets/textures/outside/enter_here.bmp
 6
 6
 13
+
+
+#sector[2]
+10
+0
+1
+0
+-1
+0
+2
+0
+-1
+5
+0
+1
+0
+
+#sidedefs14
+-1
+0
+0
+96
+0
+0
+3
+3
+3
+14
+
+#sidedefs15
+-1
+96
+0
+96
+96
+0
+3
+3
+3
+15
+
+#sidedefs16
+-1
+96
+96
+70
+96
+0
+3
+3
+3
+16
+
+#sidedefs17
+0
+70
+96
+20
+96
+0
+3
+-1
+3
+17
+
+
+#sidedefs18
+-1
+20
+96
+0
+96
+0
+3
+3
+3
+18
+
+
+#sidedefs9
+-1
+0
+96
+0
+0
+0
+3
+3
+3
+19
 
 #moving objects
 0
