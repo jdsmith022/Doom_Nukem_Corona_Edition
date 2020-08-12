@@ -106,7 +106,9 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
+	printf("sprite\n");
 	sprite_check(doom, ray, sector, prev_sector);
+	printf("out\n");
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 &&\
@@ -126,4 +128,5 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		// if (sector > 2)
 		// 	find_infection(doom, ray, min_distance);
 	}
+	printf("end of sidedef\n");
 }

@@ -40,7 +40,7 @@ static char		*win_lose_status(t_doom *doom, t_font *lib)
 	else if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level >= 75)
 	{
-		status ="Oh no! You contracted the Corona Virus! \
+		status = "Oh no! You contracted the Corona Virus! \
 		Self-quarantine immeidately!";
 		lib[1].font_color = doom->lib.font_lib.font_color.green;
 	}
@@ -66,7 +66,7 @@ static void		set_text(t_doom *doom, t_font *lib, int len)
 
 void			add_score_to_sdl_text(t_doom *doom)
 {
-	char		*font_path;
+	TTF_Font	*font;
 	int			font_size;
 	int			len;
 
@@ -81,8 +81,7 @@ void			add_score_to_sdl_text(t_doom *doom)
 	if (doom->lib.font_lib.finished_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_text(doom, doom->lib.font_lib.finished_font, len);
-	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 30;
+	font = doom->lib.font_lib.font_30;
 	font_to_sdl(doom, doom->lib.font_lib.finished_font, \
-		font_path, font_size);
+		font);
 }

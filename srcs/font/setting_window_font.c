@@ -61,7 +61,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 
 void	save_setting_window_font(t_doom *doom, int *len)
 {
-	char		*font_path;
+	TTF_Font *font;
 	int			font_size;
 
 	*len = 10;
@@ -70,8 +70,6 @@ void	save_setting_window_font(t_doom *doom, int *len)
 	if (doom->lib.font_lib.setting_menu_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_text(doom, doom->lib.font_lib.setting_menu_font, *len);
-	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 20;
-	font_to_sdl(doom, doom->lib.font_lib.setting_menu_font, \
-		font_path, font_size);
+	font = doom->lib.font_lib.font_20;
+	font_to_sdl(doom, doom->lib.font_lib.setting_menu_font, font);
 }

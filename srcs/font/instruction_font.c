@@ -63,7 +63,7 @@ static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
 
 void	save_instruction_font(t_doom *doom, int *len)
 {
-	char		*font_path;
+	TTF_Font *font;
 	int			font_size;
 
 	*len = 10;
@@ -72,8 +72,6 @@ void	save_instruction_font(t_doom *doom, int *len)
 	if (doom->lib.font_lib.instruction_font == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	set_instruction_text(doom, doom->lib.font_lib.instruction_font, *len);
-	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 18;
-	font_to_sdl(doom, doom->lib.font_lib.instruction_font,\
-	font_path, font_size);
+	font = doom->lib.font_lib.font_18;
+	font_to_sdl(doom, doom->lib.font_lib.instruction_font, font);
 }
