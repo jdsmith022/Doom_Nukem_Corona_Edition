@@ -79,7 +79,7 @@ assets/textures/checkout/checkout.bmp
 #number of walls
 43
 #number of objects
-0
+1
 #1 this will be the trolly/cart
 
 #sector[0]
@@ -451,6 +451,9 @@ assets/textures/checkout/checkout.bmp
 26
 
 
+
+#START OF GAME#
+
 #sector[2] #action flag to start time == 4 this starts timer
 10
 0
@@ -528,7 +531,6 @@ assets/textures/checkout/checkout.bmp
 18
 31
 
-
 #sidedefs5
 -1
 0
@@ -541,7 +543,10 @@ assets/textures/checkout/checkout.bmp
 22
 32
 
-#sector[3] //checkout sector
+
+
+
+#sector[3]
 10
 0
 17
@@ -603,6 +608,9 @@ assets/textures/checkout/checkout.bmp
 23
 23
 36
+
+
+#END OF LEVEL#
 
 #sector[4] //end sector ->action flag must be 2
 10
