@@ -198,9 +198,9 @@ assets/textures/checkout/checkout.bmp
 0
 #1 will be trollyyyyyy
 #number of sectors
-20
+23
 #number of walls
-152
+171
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -1715,7 +1715,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-94
+106
 
 #sidedef
 10
@@ -1727,7 +1727,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-106
+107
 
 #sector[13]## SECTOR 13##########################################################
 10
@@ -1754,7 +1754,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-107
+108
 
 #sidedef
 10
@@ -1762,18 +1762,6 @@ assets/textures/checkout/checkout.bmp
 1440
 800
 1440
-5
-78
-78
-78
-108
-
-#sidedef
-10
-800
-1440
-800
-1380
 5
 78
 78
@@ -1782,6 +1770,18 @@ assets/textures/checkout/checkout.bmp
 
 #sidedef
 10
+800
+1440
+800
+1380
+5
+78
+78
+78
+110
+
+#sidedef
+10
 704
 1380
 800
@@ -1790,7 +1790,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-110
+111
 
 
 #sector[14]## SECTOR 14##########################################################
@@ -1818,7 +1818,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-111
+112
 
 #sidedef
 -1
@@ -1830,7 +1830,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-112
+113
 
 #sidedef
 -1
@@ -1842,7 +1842,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-113
+114
 
 #sidedef ##PORTAL TO SECTOR 15
 15
@@ -1854,7 +1854,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-114
+115
 
 
 #sector[15]## SECTOR 15##########################################################
@@ -1882,7 +1882,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-115
+116
 
 #sidedef
 -1
@@ -1894,7 +1894,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-116
+117
 
 #sidedef
 -1
@@ -1906,7 +1906,7 @@ assets/textures/checkout/checkout.bmp
 66
 66
 66
-117
+118
 
 #sidedef##PORTAL TO SECTOR 19##
 19
@@ -1918,7 +1918,7 @@ assets/textures/checkout/checkout.bmp
 66
 66
 66
-118
+119
 
 #sidedef
 -1
@@ -1930,7 +1930,7 @@ assets/textures/checkout/checkout.bmp
 56
 56
 56
-119
+120
 
 #sidedef
 -1
@@ -1942,7 +1942,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-120
+121
 
 #sidedef
 -1
@@ -1954,7 +1954,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-121
+122
 
 #sidedef
 -1
@@ -1966,7 +1966,7 @@ assets/textures/checkout/checkout.bmp
 57
 57
 57
-122
+123
 
 #sidedef
 -1
@@ -1978,7 +1978,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-123
+124
 
 #sidedef##PROTAL TO SECTOR????
 -1
@@ -1990,7 +1990,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-124
+125
 
 #sidedef
 -1
@@ -2002,7 +2002,7 @@ assets/textures/checkout/checkout.bmp
 58
 58
 58
-125
+126
 
 #sidedef
 -1
@@ -2014,7 +2014,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-126
+127
 
 #sidedef##PORTAL TO SECTOR 18##
 18
@@ -2026,7 +2026,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-127
+128
 
 #sidedef
 -1
@@ -2038,7 +2038,7 @@ assets/textures/checkout/checkout.bmp
 58
 58
 58
-128
+129
 
 ##walls into sector 16
 #sidedef
@@ -2051,31 +2051,31 @@ assets/textures/checkout/checkout.bmp
 14
 17
 78
-129
-
-#sidedef
-16
-672
-1888
-672
-2048
-0
-14
-17
-78
 130
 
 #sidedef
 16
-892
+672
 1888
-892
+672
 2048
 0
 14
 17
 78
 131
+
+#sidedef
+16
+892
+1888
+892
+2048
+0
+14
+17
+78
+132
 
 #sector[16]## SECTOR 16##########################################################
 10
@@ -2102,7 +2102,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 17
-132
+133
 
 #sidedef
 15
@@ -2114,7 +2114,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 17
-133
+134
 
 #sidedef
 -1
@@ -2126,7 +2126,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 17
-134
+135
 
 #sidedef
 15
@@ -2138,7 +2138,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 17
-135
+136
 
 ##wall into sector 17##
 #sidedef
@@ -2151,31 +2151,31 @@ assets/textures/checkout/checkout.bmp
 14
 16
 78
-136
-
-#sidedef
-17
-704
-1920
-704
-2048
-5
-14
-16
-78
 137
 
 #sidedef
 17
-856
+704
 1920
-856
+704
 2048
 5
 14
 16
 78
 138
+
+#sidedef
+17
+856
+1920
+856
+2048
+5
+14
+16
+78
+139
 
 #sector[17]## SECTOR 17##########################################################
 10
@@ -2202,7 +2202,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 78
-139
+140
 
 #sidedef
 16
@@ -2214,7 +2214,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 78
-140
+141
 
 #sidedef
 -1
@@ -2226,7 +2226,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 78
-141
+142
 
 #sidedef
 16
@@ -2238,7 +2238,7 @@ assets/textures/checkout/checkout.bmp
 14
 16
 78
-142
+143
 
 #sector[18]## SECTOR 18##########################################################
 10
@@ -2265,7 +2265,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-143
+144
 
 #sidedef
 -1
@@ -2277,31 +2277,31 @@ assets/textures/checkout/checkout.bmp
 67
 67
 67
-144
-
-#sidedef
--1
-960
-1760
-960
-1824
-0
-16
-16
-16
 145
 
 #sidedef
 -1
 960
 1760
+960
+1824
+0
+16
+16
+16
+146
+
+#sidedef
+-1
+960
+1760
 864
 1760
 0
 30
 30
 30
-146
+147
 
 #sidedef
 -1
@@ -2313,10 +2313,10 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-147
+148
 
 #sector[19]## SECTOR 19##########################################################
-10
+5
 0
 17
 0
@@ -2340,7 +2340,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-148
+149
 
 #sidedef
 -1
@@ -2352,10 +2352,10 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-149
+150
 
 #sidedef##PORTAL TO SECTOR 20###
--1
+20
 480
 1920
 480
@@ -2364,7 +2364,7 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-150
+151
 
 #sidedef
 -1
@@ -2376,7 +2376,271 @@ assets/textures/checkout/checkout.bmp
 16
 16
 16
-151
+152
+
+#sector[20]## SECTOR 20##########################################################
+15
+0
+17
+0
+-1
+10
+14
+0
+-1
+7
+0
+20
+0
+
+#sidedef##PORTAL TO SECTOR 19###
+19
+480
+1920
+480
+2016
+0
+16
+16
+16
+153
+
+#sidedef
+-1
+480
+1920
+352
+1920
+0
+16
+16
+16
+154
+
+#sidedef
+-1
+352
+1920
+288
+2016
+0
+16
+16
+16
+155
+
+#sidedef
+-1
+288
+2016
+288
+2112
+0
+16
+16
+16
+156
+
+#sidedef##PORTAL TO SECTOR 21##
+21
+288
+2112
+352
+2112
+0
+16
+16
+16
+157
+
+#sidedef
+-1
+352
+2112
+480
+2112
+0
+16
+16
+16
+158
+
+#sidedef
+-1
+480
+2112
+480
+2016
+0
+16
+16
+16
+159
+
+
+#sector[21]## SECTOR 21##########################################################
+7
+0
+17
+0
+-1
+10
+14
+0
+-1
+4
+0
+21
+0
+
+#sidedef##PORTAL TO SECTOR 20##
+20
+288
+2112
+352
+2112
+0
+16
+16
+16
+160
+
+#sidedef
+-1
+288
+2112
+292
+2304
+0
+16
+16
+16
+161
+
+#sidedef##PROTAL TO SECTO 22##
+22
+292
+2304
+416
+2304
+0
+16
+16
+16
+162
+
+#sidedef
+-1
+416
+2304
+352
+2112
+0
+16
+16
+16
+163
+
+#sector[22]## SECTOR 22##########################################################
+10
+0
+17
+0
+-1
+20
+14
+0
+-1
+7
+0
+22
+0
+
+#sidedef##PROTAL TO SECTO 21##
+21
+292
+2304
+416
+2304
+0
+16
+16
+16
+164
+
+#sidedef
+-1
+292
+2304
+192
+2304
+0
+16
+16
+16
+165
+
+
+#sidedef
+-1
+192
+2304
+192
+2496
+0
+76
+76
+76
+166
+
+#sidedef
+-1
+192
+2496
+192
+2784
+0
+16
+16
+16
+167
+
+#sidedef
+-1
+192
+2784
+480
+2784
+0
+76
+76
+76
+168
+
+#sidedef
+-1
+480
+2784
+480
+2304
+0
+18
+18
+18
+169
+
+#sidedef
+-1
+480
+2304
+416
+2304
+0
+16
+16
+16
+170
+
 
 
 #moving objects
