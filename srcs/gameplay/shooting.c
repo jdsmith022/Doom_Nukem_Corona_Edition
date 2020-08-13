@@ -202,10 +202,14 @@ void	handle_shooting(t_doom *doom)
 
 void	shooting(t_doom *doom)
 {
+	printf("check shooting\n");
 	if (doom->own_event.shoot == TRUE)
 	{
 		if (MOUSE_PRESSED)
+		{
+			printf("handle shooting\n");
 			handle_shooting(doom);
+		}
 		else
 			doom->own_event.mouse_state_switched = false;
 	}
