@@ -74,7 +74,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	int			x;
 	int			save_poster;
 
-	printf("doom: %d\n", doom->i_sector);
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
 	if (doom->lib.sector[sector].action == OUTSIDE)

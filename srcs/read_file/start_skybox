@@ -77,7 +77,7 @@ assets/textures/checkout/checkout.bmp
 #number of sectors
 5
 #number of walls
-42
+43
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -92,7 +92,7 @@ assets/textures/checkout/checkout.bmp
 1
 0
 -1
-19
+18
 0
 0
 1
@@ -122,7 +122,7 @@ assets/textures/checkout/checkout.bmp
 16
 1
 
-#sidedefs2 //70
+#sidedefs2
 -1
 96
 192
@@ -157,20 +157,6 @@ assets/textures/checkout/checkout.bmp
 15
 15
 4
-
-
-#sidedefs5
-2
-96
-384
-192
-384
-0
-0
-0
-0
-5
-
 
 #border walls:
 
@@ -355,7 +341,7 @@ assets/textures/checkout/checkout.bmp
 1
 3
 
-#sidedefs0 //must match all levels to this sidedef //portal to sector number 2
+#sidedefs19//must match all levels to this sidedef //portal to sector number 2
 2
 96
 384
@@ -367,7 +353,7 @@ assets/textures/checkout/checkout.bmp
 3
 19
 
-#sidedefs1
+#sidedefs20
 -1
 96
 384
@@ -379,7 +365,7 @@ assets/textures/checkout/checkout.bmp
 3
 20
 
-#sidedefs2
+#sidedefs21
 -1
 96
 192
@@ -391,7 +377,7 @@ assets/textures/checkout/checkout.bmp
 3
 21
 
-#sidedefs3
+#sidedefs22
 0
 126
 192
@@ -403,7 +389,7 @@ assets/textures/checkout/checkout.bmp
 3
 22
 
-#sidedefs4
+#sidedefs23
 -1
 176
 192
@@ -416,7 +402,7 @@ assets/textures/checkout/checkout.bmp
 23
 
 
-#sidedefs5
+#sidedefs24
 -1
 192
 192
@@ -428,7 +414,7 @@ assets/textures/checkout/checkout.bmp
 3
 24
 
-#sidedefs1
+#sidedefs25
 -1
 0
 96
@@ -443,9 +429,9 @@ assets/textures/checkout/checkout.bmp
 #poster1 ->sanitizer
 -1
 192
-216
+316
 192
-232
+332
 8
 13
 13
@@ -455,9 +441,9 @@ assets/textures/checkout/checkout.bmp
 #poster2 ->corona
 -1
 96
-216
+316
 96
-232
+332
 4
 14
 14
@@ -465,7 +451,7 @@ assets/textures/checkout/checkout.bmp
 26
 
 
-#sector[2] #action flag to start time == 4
+#sector[2] #action flag to start time == 4 this starts timer
 10
 0
 17
@@ -481,7 +467,7 @@ assets/textures/checkout/checkout.bmp
 4
 
 
-#sidedefs0 //must match all levels to this sidedef //portal to sector number 2
+#sidedefs27 //must match all levels to this sidedef //portal to sector number 1
 1
 96
 384
@@ -489,7 +475,7 @@ assets/textures/checkout/checkout.bmp
 384
 0
 3
-3
+-1
 3
 27
 
@@ -522,7 +508,7 @@ assets/textures/checkout/checkout.bmp
 288
 384
 288
-480
+576
 0
 21
 21
@@ -533,9 +519,9 @@ assets/textures/checkout/checkout.bmp
 #sidedefs4
 3
 288
-480
+576
 0
-480
+576
 0
 18
 18
@@ -548,15 +534,14 @@ assets/textures/checkout/checkout.bmp
 0
 384
 0
-480
+576
 0
 22
 22
 22
 32
 
-
-#sector[3]
+#sector[3] //checkout sector
 10
 0
 17
@@ -574,9 +559,9 @@ assets/textures/checkout/checkout.bmp
 #sidedefs0
 2
 0
-480
+576
 288
-480
+576
 0
 23
 23
@@ -586,9 +571,9 @@ assets/textures/checkout/checkout.bmp
 #sidedefs1
 -1
 0
-480
+576
 0
-672
+768
 0
 23
 23
@@ -598,9 +583,9 @@ assets/textures/checkout/checkout.bmp
 #sidedefs2
 -1
 0
-672
+768
 288
-672
+768
 0
 18
 18
@@ -610,16 +595,16 @@ assets/textures/checkout/checkout.bmp
 #sidedefs3
 4
 288
-672
+768
 288
-480
+576
 0
 23
 23
 23
 36
 
-#sector[4]
+#sector[4] //end sector ->action flag must be 2
 10
 0
 17
@@ -629,7 +614,7 @@ assets/textures/checkout/checkout.bmp
 2
 0
 -1
-4
+6
 0
 4
 2
@@ -637,50 +622,75 @@ assets/textures/checkout/checkout.bmp
 #sidedefs0
 3
 288
-480
+576
 288
-672
+768
 0
 25
 25
 25
 37
 
-#sidedefs1
+#sidedefs1 tabacco
 -1
 288
-672
-480
-672
+768
+576
+768
 0
 3
 3
 3
-3
+38
 
 #sidedefs2
 -1
-480
-672
-480
-480
+576
+768
+576
+576
 0
 28
 28
 28
 39
 
-#sidedefs3
+#sidedefs3 //tabacco
 -1
-480
-480
 288
-480
+576
+384
+576
 0
 27
 27
 27
 40
+
+#sidedefs3 //keep distance
+-1
+384
+576
+480
+576
+0
+27
+27
+27
+41
+
+#sidedefs3 //lottery
+-1
+480
+576
+576
+576
+0
+26
+26
+26
+42
+
 
 #moving objects
 0

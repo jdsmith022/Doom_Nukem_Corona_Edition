@@ -28,21 +28,26 @@ static char		*win_lose_status(t_doom *doom, t_font *lib)
 {
 	char	*status;
 
-	lib[1].font_rect.x = WIDTH / 14;
-	lib[1].font_rect.y = HEIGHT / 2;
+	lib[1].font_rect.x = WIDTH / 9;
+	lib[1].font_rect.y = HEIGHT / 2 - 25;
+	lib[2].font_rect.x = WIDTH / 4.2;
+	lib[2].font_rect.y = HEIGHT / 2 + 25;
 	if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level < 75)
 	{
-		status = "You found all you're groceries without \
-		contracting Corona Virus! Well done!";
+		status = "Well done! You found all you're groceries";
 		lib[1].font_color = doom->lib.font_lib.font_color.blue;
+		lib[2].str = "without contracting Covid-19!";
+		lib[2].font_color = doom->lib.font_lib.font_color.blue;
+
 	}
 	else if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level >= 75)
 	{
-		status = "Oh no! You contracted the Corona Virus! \
-		Self-quarantine immeidately!";
+		status = "Oh no! You contracted Covid-19!";
 		lib[1].font_color = doom->lib.font_lib.font_color.green;
+		lib[2].str = "Self-quarantine immeidately!";
+		lib[2].font_color = doom->lib.font_lib.font_color.green;
 	}
 	else if (doom->groceries->info.won == FALSE)
 		status = win_lose_status_2(doom, lib);
@@ -57,11 +62,15 @@ static void		set_text(t_doom *doom, t_font *lib, int len)
 
 	lib[0].len = len;
 	lib[0].str = "You're Checked Out";
-	lib[0].font_rect.x = WIDTH / 3;
+	lib[0].font_rect.x = WIDTH / 3.2;
 	lib[0].font_rect.y = HEIGHT / 4;
 	lib[0].font_color = doom->lib.font_lib.font_color.blue;
 	status = win_lose_status(doom, lib);
 	lib[1].str = status;
+	lib[3].str = "Press ESC to exit";
+	lib[3].font_rect.x = WIDTH / 2.8;
+	lib[3].font_rect.y = HEIGHT - 100;
+	lib[3].font_color = doom->lib.font_lib.font_color.red;
 }
 
 void			add_score_to_sdl_text(t_doom *doom)
@@ -70,10 +79,7 @@ void			add_score_to_sdl_text(t_doom *doom)
 	int			font_size;
 	int			len;
 
-	if (doom->groceries->info.won == FALSE)
-		len = 3;
-	else
-		len = 2;
+	len = 4;
 	doom->lib.font_lib.finished_font_len = len;
 	len = doom->lib.font_lib.finished_font_len;
 	doom->lib.font_lib.finished_font = \
