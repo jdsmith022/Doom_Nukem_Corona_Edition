@@ -48,9 +48,10 @@ GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui add_infection \
 				 position gameplay game_over timer shooting
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
-				save_font_libraries hud_font \
-				start_menu_font setting_window_font game_over_font instruction_font \
-				font_timer pause_font vanishing_text_box
+				save_font_libraries hud_font set_vanishing_box_coordinates \
+				start_menu_font setting_window_font game_over_font \
+				font_timer pause_font vanishing_text_box set_font_style \
+				instruction_font instruction_font_2
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
 MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu
@@ -82,12 +83,13 @@ O_FILES_MENU = $(MENU_FILES:%=$(MENU).objects/%.o)
 SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) \
 			$(SPRITE) $(FONT) $(GAMEPLAY) $(HUD) $(MENU)
 O_FILES_DIRS = $(SRCS_DIRS:%=%.objects)
-O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) $(O_FILES_GAMEPLAY) \
-		$(O_FILES_RENDER) $(O_FILES_READ) $(O_FILES_AUDIO) \
-		$(O_FILES_SPRITE) $(O_FILES_FONT) $(O_FILES_HUD) $(O_FILES_MENU)
+O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
+		$(O_FILES_GAMEPLAY) $(O_FILES_RENDER) $(O_FILES_READ) \
+		$(O_FILES_AUDIO) $(O_FILES_SPRITE) $(O_FILES_FONT) \
+		$(O_FILES_HUD) $(O_FILES_MENU)
 
-HEADERS = includes/doom.h includes/audio.h includes/gameplay.h includes/font.h includes/textures.h \
-			includes/menu.h includes/hud.h
+HEADERS = includes/doom.h includes/audio.h includes/gameplay.h \
+		includes/font.h  includes/textures.h includes/menu.h includes/hud.h
 ADD_FILES = Makefile textures
 
 all: $(NAME)

@@ -13,7 +13,7 @@ static void	set_text(t_doom *doom, t_font *lib, char *message)
 void		action_font(t_doom *doom, char *message)
 {
 	t_font		*font_lib;
-	char		*font_path;
+	TTF_Font *font;
 	int			font_size;
 
 	font_lib = (t_font*)ft_memalloc(sizeof(t_font) * 1);

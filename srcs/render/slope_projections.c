@@ -70,4 +70,5 @@ void		slope_plane_settings(t_doom *doom, t_sidedef sidedef,
 			set_slope_bottom_values(doom, sidedef, sector);
 		sector->height_floor += sector->slope.height;
 	}
+	printf("id: %d\n", sector->slope_floor_id);
 }

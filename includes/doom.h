@@ -52,7 +52,11 @@
 # define SPRITES		doom->lib.sprites
 # define OBJ_LIB		doom->lib.obj_lib
 
+# define OUTSIDE 1
 # define EXIT_LEVEL 2
+# define START_SECTOR 3
+# define START_TIMER 4
+
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
@@ -150,6 +154,7 @@ typedef struct		s_event {
 	int				virus_red_i;
 	bool			mist;
 	bool			spray_mist;
+	int				fall_count;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -265,7 +270,6 @@ typedef struct		s_lib {
 	t_line			*sky_sd;
 	t_font_lib		font_lib;
 	int				portal_ceiling;
-	int				portal_floor;
 	int				len_sky_lib;
 	t_sector		*sector;
 	int				n_sectors;

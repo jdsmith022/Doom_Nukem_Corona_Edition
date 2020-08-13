@@ -39,7 +39,7 @@ void				game_loop(t_doom *doom)
 	dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
-		// timer(doom);
+		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		// printf("before doom_update\n");
 		doom_update(doom, dt);
@@ -51,9 +51,9 @@ void				game_loop(t_doom *doom)
 			doom_render(doom);
 			// printf("after doom_render\n");
 			// audio(doom->audio, &doom->own_event);
-			doom_gui(doom);
+			// doom_gui(doom);
 			groceries(doom);
-			shooting(doom);
+			// shooting(doom);
 			sliding_door(doom, -1); //move to its own file
 			// add_infection(doom); //move to a seprate file
 		}

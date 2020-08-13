@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/font.h"
 
 static char	*set_seconds(char *timer, char *sec_str)
 {
@@ -31,16 +32,15 @@ static char	*time_to_string(t_doom *doom, int time)
 	min_str = ft_itoa(min);
 	sec_str = ft_itoa(sec);
 	timer = ft_strjoin(min_str, ":");
-	timer = set_seconds(timer, sec_str);
-	return (timer);
+	return (set_seconds(timer, sec_str));
 }
 
 void		update_timer(t_doom *doom, t_font *lib)
 {
-	char	*font_path;
-	int		font_size;
-	char	*timer;
-	int		time;
+	TTF_Font	*font;
+	int			font_size;
+	char		*timer;
+	int			time;
 
 	time = doom->hud->curr_time;
 	timer = time_to_string(doom, time);
@@ -55,9 +55,8 @@ void		update_timer(t_doom *doom, t_font *lib)
 		lib[7].font_color = doom->lib.font_lib.font_color.red;
 	else
 		lib[7].font_color = doom->lib.font_lib.font_color.white;
-	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 22;
-	font_to_sdl(doom, doom->lib.font_lib.hud_font, font_path, font_size);
+	font = doom->lib.font_lib.font_22;
+	font_to_sdl(doom, doom->lib.font_lib.hud_font, font);
 }
 
 static void	update_corona_sanitizer_levels(t_doom *doom, t_font *lib)
@@ -90,11 +89,10 @@ static void	update_corona_sanitizer_levels(t_doom *doom, t_font *lib)
 
 void		update_hud_levels(t_doom *doom, t_font *lib)
 {
-	char	*font_path;
-	int		font_size;
+	TTF_Font	*font;
+	int			font_size;
 
 	update_corona_sanitizer_levels(doom, lib);
-	font_path = "srcs/font/font_style/JosefinSans-Bold.ttf";
-	font_size = 22;
-	font_to_sdl(doom, doom->lib.font_lib.hud_font, font_path, font_size);
+	font = doom->lib.font_lib.font_22;
+	font_to_sdl(doom, doom->lib.font_lib.hud_font, font);
 }

@@ -16,7 +16,7 @@ static void		modified(void)
 {
 	struct stat filestat;
 
-	stat("srcs/read_file/new_level2", &filestat);
+	stat("srcs/read_file/start_skybox", &filestat);
 	// stat("srcs/read_file/the_cross-2", &filestat);
 	printf("%s", ctime(&filestat.st_mtime));
 	/* turn on and add the last modified date before handing in*/
@@ -31,7 +31,7 @@ void		save_libraries(t_doom *doom)
 	// if (argc != 1)
 	//     error("Please compile program in this fashion: ./duke_nukem", 0);
 	modified();
-	fd = open_file("srcs/read_file/new_level2");
+	fd = open_file("srcs/read_file/start_skybox");
 	EDIT.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);

@@ -1,22 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
-void			set_background_coords_middle(t_doom *doom)
-{
-	doom->lib.font_lib.limit_x.x = WIDTH / 2 - 300;
-	doom->lib.font_lib.limit_x.y = WIDTH / 2 + 300;
-	doom->lib.font_lib.limit_y.x = HEIGHT / 2 - 50;
-	doom->lib.font_lib.limit_y.y = HEIGHT / 2 + 50;
-}
-
-void			set_background_coords_top(t_doom *doom)
-{
-	doom->lib.font_lib.limit_x.x = 25;
-	doom->lib.font_lib.limit_x.y = 550;
-	doom->lib.font_lib.limit_y.x = 50;
-	doom->lib.font_lib.limit_y.y = 200;
-}
-
 static void		draw_font_instructions(t_doom *doom, t_font *font_lib,
 				int start_dex, int end_dex)
 {

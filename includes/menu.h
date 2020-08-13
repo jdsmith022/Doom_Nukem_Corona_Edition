@@ -11,6 +11,7 @@ typedef struct			s_menu {
 	bool				settings;
 	bool				pause;
 	bool				finished;
+	bool				start_timer;
 }						t_menu;
 
 void					doom_start(t_doom *doom);

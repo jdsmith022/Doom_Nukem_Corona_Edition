@@ -52,5 +52,4 @@ void	doom_render(t_doom *doom)
 		sprite_render(doom);
 		// printf("after sprite_render\n");
 	}
-	// printf("after sprinte_render");	
 }

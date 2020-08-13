@@ -19,7 +19,6 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 {
 	int				diff;
 
-	set_background_coords_middle(doom);
 	if (*flag == TRUE)
 	{
 		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
@@ -53,7 +52,7 @@ static void		font_timer_box_long(t_doom *doom, bool *flag,
 	else
 	{
 		diff = find_time_difference(doom);
-		if (diff <= 5)
+		if (diff <= 15)
 			print_vanishing_text_box(doom, start_dex, end_dex);
 	}
 }
@@ -73,7 +72,7 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 	else
 	{
 		diff = find_time_difference(doom);
-		if (diff <= 5)
+		if (diff <= 8)
 			print_vanishing_text_box(doom, 0, 3);
 		else
 			doom->lib.font_lib.bools.walking_text = FALSE;
@@ -82,22 +81,31 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 
 void				font_timer(t_doom *doom)
 {
-	set_background_coords_top(doom);
-	if (doom->save_scissor_lift == TRUE)
+	set_background_coords_middle_small(doom);
+	if (doom->own_event.parked_too_close == TRUE)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 7, 8);
+	else if (doom->save_scissor_lift == TRUE)
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.text, 3, 7);
-	// else if (doom->scissor_lift_prox == TRUE)
-		// font_timer_scissor_lift(doom, \
-				doom->lib.font_lib.bools.scissor_lift, 7, 8);
-	else if (doom->own_event.fall == TRUE)
+	else if (doom->own_event.fall == TRUE && \
+	doom->own_event.fall_count != -1)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
 	else if (doom->lib.font_lib.bools.walking_text == TRUE \
 	&& doom->game_editor == FALSE)
 		font_timer_box_start(doom, \
 			&doom->lib.font_lib.bools.text);
-	// else if (doom->lib.font_lib.bools.shooting_info == TRUE)
-	// 	font_timer_box_short(doom, \
-	// 		&doom->lib.font_lib.bools.shooting_info, 0, 3);
-	// printf("end font timer\n");
+	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR)
+	{
+		set_background_coords_middle_large(doom);
+		font_timer_box_long(doom, \
+			&doom->lib.font_lib.bools.start_sector, 10, 16);
+	}
+	// else if (doom->start_sidedef == TRUE && doom->trolly == FALSE)
+	// {
+	// 	set_background_coords_middle_small(doom);
+	// 	font_timer_box_long(doom, \
+	// 		&doom->lib.font_lib.bools.start_sector, 16, 17);
+	// }
 }

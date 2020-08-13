@@ -3,15 +3,17 @@
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
-	// printf("key begin\n");
-	if (event->cam_move_f == TRUE && event->fall == FALSE)
-		cam_move_fb(doom, dt, MOVE_SPEED);
-	else if (event->cam_move_b == TRUE && event->fall == FALSE)
-		cam_move_fb(doom, dt, -MOVE_SPEED);
-	else if (event->cam_move_l == TRUE && event->fall == FALSE)
-		cam_move_rl(doom, dt, -90 * PI / 180);
-	else if (event->cam_move_r == TRUE && event->fall == FALSE)
-		cam_move_rl(doom, dt, 90 * PI / 180);
+	if (event->fall == FALSE)
+	{
+		if (event->cam_move_f == TRUE)
+			cam_move_fb(doom, dt, MOVE_SPEED);
+		else if (event->cam_move_b == TRUE)
+			cam_move_fb(doom, dt, -MOVE_SPEED);
+		else if (event->cam_move_l == TRUE)
+			cam_move_rl(doom, dt, -90 * PI / 180);
+		else if (event->cam_move_r == TRUE)
+			cam_move_rl(doom, dt, 90 * PI / 180);
+	}
 	if (event->jump == TRUE && event->scissor_lift == FALSE)
 		jump_player(doom, dt);
 	if (event->step_down == TRUE && event->fall == FALSE)

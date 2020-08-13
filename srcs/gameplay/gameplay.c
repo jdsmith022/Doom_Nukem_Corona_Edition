@@ -14,10 +14,10 @@ void				groceries(t_doom *doom)
 			draw_basket_ui(doom, doom->groceries);
 		if (doom->groceries->shopping_list)
 			draw_shopping_ui(doom, doom->groceries);
-		if (SECTORS[doom->i_sector].action == EXIT_LEVEL)
-		{
-			get_game_over_info(doom);
-			doom->menu->finished = TRUE;
-		}
+	}
+	if (SECTORS[doom->i_sector].action == EXIT_LEVEL)
+	{
+		get_game_over_info(doom);
+		doom->menu->finished = TRUE;
 	}
 }

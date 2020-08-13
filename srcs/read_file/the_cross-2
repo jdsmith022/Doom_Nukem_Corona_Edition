@@ -1,10 +1,20 @@
 #the cross
+#symbol library
+7
+assets/symbols/plus.bmp
+assets/symbols/arrow_left.bmp
+assets/symbols/arrow_right.bmp
+assets/symbols/arrow_up.bmp
+assets/symbols/arrow_down.bmp
+assets/symbols/garbage.bmp
+assets/symbols/player.bmp
+
 
 #texture library
 3
 assets/textures/shelves/wine.bmp
 assets/textures/floors_ceiling/floor_spots.bmp
-assets/textures/floors_ceiling/ceiling96X96_clean.bmp
+assets/textures/floors_ceiling/ceiling_clean.bmp
 
 #object library
 7

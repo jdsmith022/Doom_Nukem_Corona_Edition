@@ -7,12 +7,21 @@ void		timer(t_doom *doom)
 	int diff;
 	int	curr_time;
 
+	if (doom->lib.sector[doom->i_sector].action == START_TIMER)
+	{
+		if (doom->menu->start_timer == TRUE)
+		{
+			doom->start_timer = TRUE;
+			doom->menu->start_timer = FALSE;
+		}
+	}
 	if (doom->start_timer == TRUE)
 	{
 		doom->game_start_time = SDL_GetTicks();
 		doom->start_timer = FALSE;
 	}
-	else if (doom->menu->pause == FALSE && doom->game_editor == FALSE)
+	else if (doom->menu->pause == FALSE && doom->game_editor == FALSE \
+	&& doom->menu->start_timer == FALSE)
 	{
 		curr_time = SDL_GetTicks();
 		diff = curr_time - doom->game_start_time;
