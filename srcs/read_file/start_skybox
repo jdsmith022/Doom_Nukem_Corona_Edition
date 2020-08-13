@@ -198,9 +198,9 @@ assets/textures/checkout/checkout.bmp
 0
 #1 will be trollyyyyyy
 #number of sectors
-15
+16
 #number of walls
-115
+129
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -1805,7 +1805,7 @@ assets/textures/checkout/checkout.bmp
 -1
 4
 0
-13
+14
 0
 
 #sidedef ##PORTAL TO SECTOR 10
@@ -1847,7 +1847,7 @@ assets/textures/checkout/checkout.bmp
 #sidedef ##PORTAL TO SECTOR 15
 15
 768
-1632
+1824
 672
 1824
 0
@@ -1867,15 +1867,15 @@ assets/textures/checkout/checkout.bmp
 14
 0
 -1
-4
-0
 14
+0
+15
 0
 
 #sidedef ##PORTAL TO SECTOR 14
 14
 768
-1632
+1824
 672
 1824
 0
@@ -1887,7 +1887,7 @@ assets/textures/checkout/checkout.bmp
 #sidedef
 -1
 672
-1632
+1824
 576
 1824
 0
@@ -1899,14 +1899,150 @@ assets/textures/checkout/checkout.bmp
 #sidedef
 -1
 576
-1632
+1824
 576
+1920
+0
+66
+66
+66
+117
+
+#sidedef##PORTAL TO SECTOR 19##
+-1
+576
+1920
+576
+1984
+0
+66
+66
+66
+118
+
+#sidedef
+-1
+576
+1984
+576
+2048
+0
+56
+56
+56
+119
+
+#sidedef
+-1
+576
+2048
+672
+2048
+0
+16
+16
+16
+120
+
+#sidedef
+-1
+672
+2048
+892
+2048
+0
+16
+16
+16
+121
+
+#sidedef
+-1
+892
+2048
+960
+2048
+0
+57
+57
+57
+122
+
+#sidedef
+-1
+960
+2048
+960
+2016
+0
+16
+16
+16
+123
+
+#sidedef##PROTAL TO SECTOR????
+-1
+960
+2016
+960
 1920
 0
 16
 16
 16
-117
+124
+
+#sidedef
+-1
+960
+1824
+960
+1920
+0
+59
+59
+59
+125
+
+#sidedef
+-1
+960
+1824
+928
+1824
+0
+16
+16
+16
+126
+
+#sidedef##PORTAL TO SECTOR 18##
+-1
+928
+1824
+864
+1824
+0
+16
+16
+16
+127
+
+#sidedef
+-1
+864
+1824
+768
+1824
+0
+16
+16
+16
+128
+
+
+
+
 
 
 
