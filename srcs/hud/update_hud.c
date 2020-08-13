@@ -96,14 +96,16 @@ void		update_hud(t_doom *doom)
 	if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 	{
 		draw_hud_top_bar(doom);
-		if (doom->own_event.scissor_lift == TRUE)
-			draw_scissor_lift_bar(doom);
+		if (doom->own_event.scissor_lift == TRUE || doom->own_event.shoot == TRUE)
+			draw_player_adds(doom);
 		draw_hud_bottom_bar(doom);
 		draw_hud_side_bar(doom);
 		if (calculate_hud_levels(doom) == 1)
 			update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		update_timer(doom, doom->lib.font_lib.hud_font);
+		if (doom->own_event.virus_red_i != -1)
+			remove_red_virus(doom);
 	}
 	font_to_screen(doom);
 }

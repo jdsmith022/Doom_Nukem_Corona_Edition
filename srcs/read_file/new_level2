@@ -26,7 +26,7 @@ assets/textures/poster/light_switch_off.bmp
 
 
 #object library
-30
+31
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -86,7 +86,9 @@ assets/sprites/groceries/toiletpaper.bmp
 #28
 assets/sprites/scissor_lift/scissor_lift_bar.bmp
 #29
-assets/sprites/misc/crate.bmp
+assets/sprites/player/spray_hand.bmp
+#30
+assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
 8
@@ -569,29 +571,29 @@ assets/sprites/misc/crate.bmp
 
 #object4
 #object1 crate in sector 3
-29
+21
 390
 295
 10
 16
 1
 4
-29
+21
 385
 285
 395
 285
-29
+21
 395
 285
 395
 295
-29
+21
 395
 295
 385
 295
-29
+21
 385
 295
 395

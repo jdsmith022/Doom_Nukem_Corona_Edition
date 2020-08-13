@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/10 20:39:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/13 14:48:48 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void				save_instruction_font(t_doom *doom, int *len);
 void				font_timer(t_doom *doom);
 void				print_vanishing_text_box(t_doom *doom,
 						int start, int stop);
+int					find_time_difference(t_doom *doom);
 
 #endif

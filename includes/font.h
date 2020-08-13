@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 21:05:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 02:56:33 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/13 20:08:46 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct		s_font_lib
 	t_font			*finished_font;
 	int				finished_font_len;
 	struct timespec	timer;
+	struct timespec	mist;
 }					t_font_lib;
 
 /*font functions*/
@@ -90,5 +91,6 @@ void				print_vanishing_text_box(t_doom *doom,
 						int start, int stop);
 void				set_background_coords_top(t_doom *doom);
 void				set_background_coords_middle(t_doom *doom);
+int					find_time_difference(t_doom *doom);
 
 #endif

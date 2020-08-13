@@ -3,7 +3,9 @@
 void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 {
 	if (button->button == SDL_BUTTON_LEFT)
+	{
 		doom->own_event.mouse_press = FALSE;
+	}
 }
 
 void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
@@ -12,8 +14,10 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
 	{
 		doom->own_event.hold_x = button->x;
 		doom->own_event.hold_y = button->y;
-		printf("%d\n", doom->own_event.hold_x);
+		printf("mouse press: %d\n", doom->own_event.hold_x);
 		doom->own_event.mouse_press = TRUE;
+		if (doom->own_event.shoot == TRUE)
+			doom->own_event.mist = TRUE;
 	}
 	if (doom->game_editor == TRUE)
 		mouse_press_game_editor(doom, button->x, button->y);

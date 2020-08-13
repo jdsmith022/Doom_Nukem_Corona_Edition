@@ -48,6 +48,10 @@ static void		init_settings(t_doom *doom)
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
+	doom->own_event.virus_red_i = -1;
+	doom->own_event.virus_red = FALSE;
+	doom->own_event.mist = FALSE;
+	doom->own_event.spray_mist = FALSE;
 }
 
 void			doom_init(t_doom *doom)

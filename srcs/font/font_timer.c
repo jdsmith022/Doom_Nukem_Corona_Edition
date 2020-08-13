@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
-static int			find_time_difference(t_doom *doom)
+int				find_time_difference(t_doom *doom)
 {
 	int				diff;
 	clockid_t		clkid;
