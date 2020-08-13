@@ -9,79 +9,200 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-29
+83
+
+## OUTSIDE ASSETS##
 #0
 assets/textures/outside/outside_store.bmp
 #1
 assets/textures/outside/outside_floor.bmp
 #2
-assets/textures/floors_ceiling/ceiling96X96_clean.bmp
-#3
-assets/textures/outside/start_sector_walls.bmp
-#4
 assets/textures/outside/bank_1.bmp
-#5
+#3
 assets/textures/outside/bank_2.bmp
-#6
+#4
 assets/textures/outside/bank_3.bmp
-#7
+#5
 assets/textures/outside/spa.bmp
-#8
+#6
 assets/textures/outside/spa_1.bmp
-#9
+#7
 assets/textures/outside/spa_2.bmp
-#10
+#8
 assets/textures/outside/fresh_food.bmp
-#11
+#9
 assets/textures/outside/closing_down.bmp
-#12
+#10
 assets/textures/outside/closing_down_sides.bmp
-#13
+#11
 assets/sprites/health/fill_up.bmp
-#14
-assets/sprites/corona/corona_virus.bmp
-#15
+#12
 assets/textures/outside/enter_here.bmp
-#16
+#13
 assets/textures/outside/fresh_food_reverse.bmp
+
+
+##FLOOR AND CEILING ASSETS##
+#14
+assets/textures/floors_ceiling/ceiling_clean.bmp
+#15
+assets/textures/walls/plane_sector_walls.bmp
+#16
+assets/textures/walls/empty_shelf.bmp
 #17
 assets/textures/floors_ceiling/spots.bmp
-#18
-assets/textures/shelves/apple.bmp
-#19
-assets/textures/shelves/boxes.bmp
-#20
-assets/textures/shelves/chicken.bmp
-#21
-assets/textures/shelves/jam.bmp
-#22
-assets/textures/shelves/jar1.bmp
-#24
-assets/textures/shelves/meat.bmp
-#25
-assets/textures/checkout/card_only.bmp
-#26
-assets/textures/checkout/keep_distance.bmp
-#27
-assets/textures/checkout/lottery.bmp
-#28
-assets/textures/checkout/tabacco.bmp
-#29
-assets/textures/checkout/checkout.bmp
 
+
+
+##SHELF ASSETS##
+#18
+assets/textures/shelves/alcohol.bmp
+#19
+assets/textures/shelves/apple.bmp
+#20
+assets/textures/shelves/beef.bmp
+#21
+assets/textures/shelves/boxes.bmp
+#22
+assets/textures/shelves/bread.bmp
+#23
+assets/textures/shelves/breakfast.bmp
+#24
+assets/textures/shelves/butter.bmp
+#25
+assets/textures/shelves/cereal.bmp
+#26
+assets/textures/shelves/cereal2.bmp
+#27
+assets/textures/shelves/cheese.bmp
+#28
+assets/textures/shelves/cherry_strawberry.bmp
+#29
+assets/textures/shelves/chicken.bmp
+#30
+assets/textures/shelves/chocolate.bmp
+#31
+assets/textures/shelves/citrus-wall.bmp
+#32
+assets/textures/shelves/citrus.bmp
+#33
+assets/textures/shelves/citrus2.bmp
+#34
+assets/textures/shelves/cookies.bmp
+#35
+assets/textures/shelves/fish.bmp
+#36
+assets/textures/shelves/fish2.bmp
+#37
+assets/textures/shelves/fruit.bmp
+#38
+assets/textures/shelves/grapes.bmp
+#39
+assets/textures/shelves/jam.bmp
+#40
+assets/textures/shelves/jar-wall.bmp
+#41
+assets/textures/shelves/jar1.bmp
+#42
+assets/textures/shelves/jar2.bmp
+#43
+assets/textures/shelves/jar3.bmp
+#44
+assets/textures/shelves/jar4.bmp
+#45
+assets/textures/shelves/jar5.bmp
+#46
+assets/textures/shelves/jar6.bmp
+#47
+assets/textures/shelves/meat.bmp
+#48
+assets/textures/shelves/melon.bmp
+#49
+assets/textures/shelves/melon.bmp
+#50
+assets/textures/shelves/milk.bmp
+#51
+assets/textures/shelves/milk2.bmp
+#52
+assets/textures/shelves/milk3.bmp
+#53
+assets/textures/shelves/onions.bmp
+#54
+assets/textures/shelves/paprika.bmp
+#55
+assets/textures/shelves/peppers.bmp
+#56
+assets/textures/shelves/pie1.bmp
+#57
+assets/textures/shelves/pie2.bmp
+#58
+assets/textures/shelves/pie3.bmp
+#59
+assets/textures/shelves/potatoes.bmp
+#60
+assets/textures/shelves/round_jars.bmp
+#61
+assets/textures/shelves/sauces.bmp
+#62
+assets/textures/shelves/sausage_bacon.bmp
+#63
+assets/textures/shelves/soaps.bmp
+#64
+assets/textures/shelves/soda.bmp
+#65
+assets/textures/shelves/spray_bottles.bmp
+#66
+assets/textures/shelves/sweets.bmp
+#67
+assets/textures/shelves/tarts.bmp
+#68
+assets/textures/shelves/tea.bmp
+#69 need to make full shelves
+assets/textures/shelves/toiletpaper.bmp
+#70
+assets/textures/shelves/veggies.bmp
+#71
+assets/textures/shelves/veggies2.bmp
+#72
+assets/textures/shelves/veggies3.bmp
+#73 need to put tp on top
+assets/textures/shelves/warehouse_shelf.bmp
+#74
+assets/textures/shelves/water.bmp
+#75
+assets/textures/shelves/wine.bmp
+#76
+assets/textures/shelves/wine1.bmp
+#77
+assets/textures/shelves/wine2.bmp
+
+##CHECKOUT ASSETS##
+#78
+assets/textures/checkout/card_only.bmp
+#79
+assets/textures/checkout/keep_distance.bmp
+#80
+assets/textures/checkout/lottery.bmp
+#81
+assets/textures/checkout/tabacco.bmp
+#82
+assets/textures/checkout/checkout.bmp
 
 #object library
 0
 #1 will be trollyyyyyy
 
 #number of sectors
-5
+8
 #number of walls
-43
+62
 #number of objects
-1
+0
 #1 this will be the trolly/cart
 
+
+##OUTSIDE SECTOR 0 ###############################################
+## TO ADD: plant sprites and clock sprite##
 #sector[0]
 10
 0
@@ -92,7 +213,7 @@ assets/textures/checkout/checkout.bmp
 1
 0
 -1
-18
+17
 0
 0
 1
@@ -105,9 +226,9 @@ assets/textures/checkout/checkout.bmp
 96
 192
 0
-10
-10
-10
+8
+8
+8
 0
 
 #sidedefs1 //right side
@@ -117,9 +238,9 @@ assets/textures/checkout/checkout.bmp
 192
 192
 0
-16
-16
-16
+13
+13
+13
 1
 
 #sidedefs2
@@ -129,9 +250,9 @@ assets/textures/checkout/checkout.bmp
 136
 192
 0
-15
-15
-15
+12
+12
+12
 2
 
 #sidedefs3 sliding sidedef
@@ -141,9 +262,9 @@ assets/textures/checkout/checkout.bmp
 176
 192
 2
-15
-15
-15
+12
+12
+12
 3
 
 #sidedefs4
@@ -153,114 +274,101 @@ assets/textures/checkout/checkout.bmp
 192
 192
 0
-15
-15
-15
+12
+12
+12
 4
 
-#border walls:
+#outside store walls########################
 
 #left
-#sidedefs 6
+#sidedefs 5
 -1
 0
 0
 0
 96
 0
-12
-12
-12
+10
+10
+10
+5
+
+#sidedefs6
+-1
+0
+96
+0
+192
+0
+9
+9
+9
 6
+
 
 #sidedefs7
 -1
 0
-96
-0
 192
-0
-11
-11
-11
-7
-
-
-#sidedefs8
--1
-0
-192
-0
-288
-0
-12
-12
-12
-8
-
-#sidedefs8
--1
-0
-288
 0
 384
 0
-12
-12
-12
-9
+10
+10
+10
+7
 
 
 #back
-#sidedefs 9
+#sidedefs8
 -1
 0
 0
 96
 0
 0
-4
-4
-4
-10
+2
+2
+2
+8
 
-#sidedefs10
+#sidedefs9
 -1
 96
 0
 192
 0
 0
-6
-6
-6
-11
+4
+4
+4
+9
 
-
-#sidedefs11
+#sidedefs10
 -1
 192
 0
 288
 0
 0
-5
-5
-5
-12
+3
+3
+3
+10
 
 #right
-#sidedefs 12
+#sidedefs 11
 -1
 288
 288
 288
 384
 0
-9
-9
-9
-13
+7
+7
+7
+11
 
 #sidedefs 12
 -1
@@ -269,10 +377,10 @@ assets/textures/checkout/checkout.bmp
 288
 192
 0
-7
-7
-7
-14
+5
+5
+5
+12
 
 #sidedefs13
 -1
@@ -281,10 +389,10 @@ assets/textures/checkout/checkout.bmp
 288
 96
 0
-8
-8
-8
-15
+6
+6
+6
+13
 
 
 #sidedefs14
@@ -294,10 +402,10 @@ assets/textures/checkout/checkout.bmp
 288
 0
 0
-9
-9
-9
-16
+7
+7
+7
+14
 
 #small sides
 #sidedefs15
@@ -307,10 +415,10 @@ assets/textures/checkout/checkout.bmp
 96
 384
 0
-16
-16
-16
-17
+13
+13
+13
+15
 
 
 #sidedefs16
@@ -320,12 +428,12 @@ assets/textures/checkout/checkout.bmp
 192
 384
 0
+13
+13
+13
 16
-16
-16
-18
 
-
+##SECTOR 1########################################################################
 #sector[1]
 10
 0
@@ -333,7 +441,7 @@ assets/textures/checkout/checkout.bmp
 0
 -1
 0
-2
+14
 0
 -1
 9
@@ -341,90 +449,90 @@ assets/textures/checkout/checkout.bmp
 1
 3
 
-#sidedefs19//must match all levels to this sidedef //portal to sector number 2
+#sidedefs17//must match all levels to this sidedef //portal to sector number 2
 2
 96
 384
 192
 384
 0
-3
--1
-3
-19
+15
+15
+15
+17
 
-#sidedefs20
+#sidedefs18
 -1
 96
 384
 96
 192
 0
+15
+15
+15
+18
+
+#sidedefs19
+-1
+96
+192
+126
+192
+0
+15
+15
+15
+19
+
+#sidedefs20
+0
+126
+192
+176
+192
+0
 3
-3
+-1
 3
 20
 
 #sidedefs21
 -1
-96
+176
 192
-126
+192
 192
 0
-3
-3
-3
+15
+15
+15
 21
 
+
 #sidedefs22
-0
-126
-192
-176
-192
-0
-3
--1
-3
-22
-
-#sidedefs23
--1
-176
-192
-192
-192
-0
-3
-3
-3
-23
-
-
-#sidedefs24
 -1
 192
 192
 192
 384
 0
-3
-3
-3
-24
+15
+15
+15
+22
 
-#sidedefs25
+#sidedefs23
 -1
 0
 96
 192
 0
 0
-3
-3
-3
-20
+15
+15
+15
+23
 
 #poster1 ->sanitizer
 -1
@@ -433,10 +541,10 @@ assets/textures/checkout/checkout.bmp
 192
 332
 8
-13
-13
-13
-25
+11
+11
+11
+24
 
 #poster2 ->corona
 -1
@@ -445,15 +553,16 @@ assets/textures/checkout/checkout.bmp
 96
 332
 4
-14
-14
-14
-26
+11
+11
+11
+25
 
 
 
-#START OF GAME#
+#START OF GAME#################################################################
 
+##SECTOR 2 START OF GAME######################################################
 #sector[2] #action flag to start time == 4 this starts timer
 10
 0
@@ -461,91 +570,102 @@ assets/textures/checkout/checkout.bmp
 0
 -1
 0
-2
+14
 0
 -1
-6
+7
 0
 2
 4
 
-
-#sidedefs27 //must match all levels to this sidedef //portal to sector number 1
+#sidedefs26 //must match all levels to this sidedef //portal to sector number 1
 1
 96
 384
 192
 384
 0
-3
--1
-3
-27
+16
+16
+16
+26
 
-#sidedefs1
+#sidedefs27
 -1
 96
 384
 0
 384
 0
-19
-19
-19
-28
+16
+16
+16
+27
 
-#sidedefs2//change
+#sidedefs28
 -1
 192
 384
 288
 384
 0
-20
-20
-20
-29
+16
+16
+16
+28
 
-#sidedefs3
+#sidedefs29
 -1
 288
 384
 288
 576
 0
-21
-21
-21
+79
+79
+79
+29
+
+
+#sidedef30
+-1
+0
+576
+192
+576
+0
+16
+16
+16
 30
 
 
-#sidedefs4
+#sidedef31#### PORTAL to sector 2
 3
+192
+576
 288
 576
 0
-576
-0
-18
-18
-18
+16
+16
+16
 31
 
-#sidedefs5
+#sidedefs32
 -1
 0
 384
 0
 576
 0
-22
-22
-22
+16
+16
+16
 32
 
 
-
-
+##SECTOR 3 #############################################################
 #sector[3]
 10
 0
@@ -553,127 +673,212 @@ assets/textures/checkout/checkout.bmp
 0
 -1
 0
-2
+14
 0
 -1
-4
+9
 0
 3
 0
 
-#sidedefs0
-2
+#sidedefs
+-1
 0
 576
-288
+96
 576
 0
-23
-23
-23
+16
+16
+16
 33
 
-#sidedefs1
+#sidedefs
+-1
+96
+576
+192
+576
+0
+21
+21
+21
+34
+
+#sidedefs##PORTAL TO 2###
+2
+192
+576
+288
+576
+0
+16
+16
+16
+35
+
+#sidedefs
 -1
 0
 576
 0
 768
 0
-23
-23
-23
-34
+16
+16
+16
+36
 
-#sidedefs2
+#sidedefs
 -1
 0
+672
+0
+768
+0
+68
+68
+68
+37
+
+#sidedefs
+-1
+0
+768
+96
+768
+0
+68
+68
+68
+38
+
+#sidedefs##PORTAL TO SECTOR 5###
+5
+96
+768
+192
+768
+0
+16
+16
+16
+39
+
+#sidedefs
+-1
+192
 768
 288
 768
 0
-18
-18
-18
-35
+21
+21
+21
+40
 
-#sidedefs3
+#sidedefs35
 4
 288
 768
 288
 576
 0
-23
-23
-23
-36
+16
+16
+16
+41
 
 
-#END OF LEVEL#
+##SECTOR 4###########################################################3
 
-#sector[4] //end sector ->action flag must be 2
+#sector[4]
 10
 0
 17
 0
 -1
 0
-2
+14
 0
 -1
-6
+8
 0
 4
-2
+0
 
-#sidedefs0
+#sidedefs0##PORTAL TO SECTOR 3##
 3
 288
 576
 288
 768
 0
-25
-25
-25
-37
+16
+16
+16
+42
 
-#sidedefs1 tabacco
+#sidedefs1
 -1
 288
 768
+384
+768
+0
+65
+65
+65
+43
+
+#sidedefs
+-1
+384
+768
 576
 768
 0
-3
-3
-3
-38
+16
+16
+16
+44
 
-#sidedefs2
+
+#sidedefs!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11PORTAL to beyond sector 4
 -1
 576
 768
 576
+672
+0
+16
+16
+16
+45
+
+#sidedefs
+-1
+576
+672
+576
 576
 0
-28
-28
-28
-39
+63
+63
+63
+46
 
-#sidedefs3 //tabacco
+#sidedefs3
 -1
 288
 576
 384
 576
 0
-27
-27
-27
-40
+63
+63
+63
+47
 
 #sidedefs3 //keep distance
 -1
@@ -682,22 +887,223 @@ assets/textures/checkout/checkout.bmp
 480
 576
 0
-27
-27
-27
-41
+79
+79
+79
+48
 
-#sidedefs3 //lottery
+#sidedefs3
 -1
 480
 576
 576
 576
 0
-26
-26
-26
-42
+16
+16
+16
+49
+
+#sector[5]## SECTOR 5##########################################################
+10
+0
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+5
+0
+
+#sidedef##PORTAL TO SECTOR 3##
+3
+96
+768
+192
+768
+0
+16
+16
+16
+50
+
+#sidedef
+-1
+96
+768
+96
+960
+0
+16
+16
+16
+51
+
+#sidedef#PORTAL TO SECTOR 6##
+6
+96
+960
+192
+862
+0
+16
+16
+16
+52
+
+#sidedef
+-1
+192
+862
+192
+768
+0
+16
+16
+16
+53
+
+#sector[6]## SECTOR 6##########################################################
+10
+0
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+6
+0
+
+#sidedef##PORTAL TO SECTOR 5##
+5
+96
+960
+192
+862
+0
+16
+16
+16
+54
+
+#sidedef
+-1
+192
+862
+288
+1065
+0
+16
+16
+16
+55
+
+#sidedef#PORTAL TO SECTOR 7##
+7
+288
+1056
+288
+1152
+0
+16
+16
+16
+56
+
+#sidedef
+-1
+96
+960
+288
+1152
+0
+16
+16
+16
+57
+
+#sector[7]## SECTOR 7##########################################################
+10
+0
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+7
+0
+
+#sidedef#PORTAL TO SECTOR 6##
+6
+288
+1056
+288
+1152
+0
+16
+16
+16
+58
+
+#sidedef
+-1
+288
+1152
+480
+1152
+0
+16
+16
+16
+59
+
+#sidedef#PORTAL TO SECTOR 8##
+-1
+480
+1056
+480
+1152
+0
+16
+16
+16
+60
+
+#sidedef
+-1
+480
+1056
+288
+1056
+0
+16
+16
+16
+61
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #moving objects
