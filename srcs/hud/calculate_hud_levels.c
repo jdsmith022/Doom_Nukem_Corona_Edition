@@ -31,6 +31,12 @@ static int		update_hud_levels_3(t_doom *doom)
 		doom->hud->boxes = FALSE;
 		change = 1;
 	}
+	else if (doom->hud->sanitizer_shooting == TRUE)
+	{
+		doom->hud->sanitizer_level -= 5;
+		doom->hud->sanitizer == FALSE;
+		change = 1;
+	}
 	return (change);
 }
 

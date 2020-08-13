@@ -1845,7 +1845,7 @@ assets/textures/checkout/checkout.bmp
 113
 
 #sidedef ##PORTAL TO SECTOR 15
--1
+15
 768
 1632
 672
@@ -1857,7 +1857,56 @@ assets/textures/checkout/checkout.bmp
 114
 
 
+#sector[15]## SECTOR 15##########################################################
+10
+0
+78
+0
+-1
+0
+14
+0
+-1
+4
+0
+14
+0
 
+#sidedef ##PORTAL TO SECTOR 14
+14
+768
+1632
+672
+1824
+0
+16
+16
+16
+115
+
+#sidedef
+-1
+672
+1632
+576
+1824
+0
+16
+16
+16
+116
+
+#sidedef
+-1
+576
+1632
+576
+1920
+0
+16
+16
+16
+117
 
 
 
