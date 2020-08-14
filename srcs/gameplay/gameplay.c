@@ -4,7 +4,6 @@
 
 void				groceries(t_doom *doom)
 {
-	printf("check groceries\n");
 	if (doom->own_event.select == TRUE)
 	{
 		if (MOUSE_PRESSED)
