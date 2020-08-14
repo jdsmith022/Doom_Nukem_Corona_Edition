@@ -264,11 +264,11 @@ assets/sprites/player/spray_hand.bmp
 assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
-50
+49
 #number of walls
-361
+355
 #number of objects
-0
+15
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -643,7 +643,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 7
-0
+3
 2
 4
 
@@ -733,6 +733,95 @@ assets/sprites/player/spraying_hand.bmp
 16
 32
 
+#OBJECTS IN SECTOR 2
+#object0 in sector2 box
+0
+45
+500
+10
+16
+0
+4
+20
+40
+495
+50
+495
+20
+50
+495
+50
+505
+20
+50
+505
+40
+505
+20
+40
+505
+40
+495
+
+#object1 in sector2 crate
+1
+200
+520
+10
+16
+0
+4
+21
+195
+515
+205
+515
+21
+205
+515
+205
+525
+21
+205
+525
+195
+525
+21
+195
+525
+195
+515
+
+#object2 in sector2 crate
+2
+40
+530
+10
+16
+0
+4
+21
+35
+525
+45
+525
+21
+45
+525
+45
+535
+21
+45
+535
+35
+535
+21
+35
+535
+35
+525
+
+
 
 ##SECTOR 3 #############################################################
 #sector[3]
@@ -746,7 +835,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 9
-0
+2
 3
 0
 
@@ -858,6 +947,66 @@ assets/sprites/player/spraying_hand.bmp
 16
 41
 
+#OBJECTS IN SECTOR 3
+#object0 in sector3 shopper
+3
+40
+600
+9
+60
+1
+4
+10
+30
+590
+50
+590
+9
+50
+590
+50
+610
+11
+50
+610
+30
+610
+12
+30
+610
+30
+590
+
+#object1 in sector3 shopper
+4
+210
+650
+9
+60
+1
+4
+9
+200
+640
+220
+640
+10
+220
+640
+220
+655
+12
+220
+655
+200
+655
+11
+200
+655
+200
+640
+
+
 
 ##SECTOR 4###########################################################3
 
@@ -872,7 +1021,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 8
-0
+7
 4
 0
 
@@ -973,6 +1122,238 @@ assets/sprites/player/spraying_hand.bmp
 16
 49
 
+#OBJECTS IN SECTOR4
+#object0 in sector4 virus
+5
+300
+650
+4
+16
+0
+4
+#line
+18
+295
+645
+305
+645
+#line
+18
+305
+645
+305
+655
+#line
+18
+305
+655
+295
+655
+#line
+18
+295
+655
+295
+645
+
+#object1 in sector4 virus
+6
+430
+600
+4
+16
+0
+4
+#line
+18
+425
+595
+435
+595
+#line
+18
+435
+595
+435
+605
+#line
+18
+435
+605
+425
+605
+#line
+18
+425
+605
+425
+595
+
+#object2 in sector4 virus
+7
+350
+670
+4
+16
+0
+4
+#line
+18
+345
+665
+355
+665
+#line
+18
+355
+665
+355
+675
+#line
+18
+355
+675
+345
+675
+#line
+18
+345
+675
+345
+665
+
+#object3 in sector4 virus
+8
+500
+680
+4
+16
+0
+4
+#line
+18
+495
+675
+505
+675
+#line
+18
+505
+675
+505
+685
+#line
+18
+505
+685
+495
+685
+#line
+18
+495
+685
+495
+675
+
+#object4 in sector4 virus
+9
+320
+710
+4
+8
+0
+4
+#line
+18
+315
+705
+320
+705
+#line
+18
+320
+705
+320
+715
+#line
+18
+320
+715
+315
+715
+#line
+18
+315
+715
+315
+705
+
+#object5 in sector4 virus
+10
+400
+700
+4
+16
+0
+4
+#line
+18
+395
+695
+405
+695
+#line
+18
+405
+695
+405
+705
+#line
+18
+405
+705
+395
+705
+#line
+18
+395
+705
+395
+695
+
+#object6 in sector4 virus
+11
+495
+750
+4
+16
+0
+4
+#line
+18
+490
+745
+500
+745
+#line
+18
+500
+745
+500
+755
+#line
+18
+500
+755
+490
+755
+#line
+18
+490
+755
+490
+745
+
 #sector[5]## SECTOR 5##########################################################
 5
 0
@@ -984,7 +1365,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 4
-0
+3
 5
 0
 
@@ -1036,6 +1417,106 @@ assets/sprites/player/spraying_hand.bmp
 16
 53
 
+##OBJECTS IN SECTOR 5##
+#object0 in sector5 box
+12
+130
+800
+10
+32
+0
+4
+#line
+20
+125
+795
+135
+795
+#line
+20
+135
+795
+135
+805
+#line
+20
+135
+805
+125
+805
+#line
+20
+125
+805
+125
+795
+
+#object1 in sector5 box
+13
+170
+860
+10
+16
+0
+4
+#line
+20
+165
+855
+175
+855
+#line
+20
+175
+855
+175
+865
+#line
+20
+175
+865
+165
+865
+#line
+20
+165
+865
+165
+855
+
+#object2 in sector5 crate
+14
+160
+900
+10
+32
+0
+4
+#line
+21
+155
+855
+165
+855
+#line
+21
+165
+855
+165
+905
+#line
+21
+165
+905
+155
+905
+#line
+21
+155
+905
+155
+855
+
 #sector[6]## SECTOR 6##########################################################
 5
 0
@@ -1068,7 +1549,7 @@ assets/sprites/player/spraying_hand.bmp
 192
 862
 288
-1065
+1056
 0
 16
 16
@@ -1119,7 +1600,7 @@ assets/sprites/player/spraying_hand.bmp
 288
 1056
 288
-1052
+1152
 0
 16
 16
@@ -1334,7 +1815,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-27
+26
 0
 10
 0
@@ -1471,22 +1952,11 @@ assets/sprites/player/spraying_hand.bmp
 15
 317
 
-#sidedef
--1
-864
-1318
-864
-1344
-0
-35
-35
-35
-84
 
 #sidedef
 -1
 864
-1344
+1318
 864
 1248
 0
@@ -2638,9 +3108,9 @@ assets/sprites/player/spraying_hand.bmp
 192
 2304
 0
-16
-16
-16
+75
+75
+75
 165
 
 #sidedef
@@ -2674,9 +3144,9 @@ assets/sprites/player/spraying_hand.bmp
 544
 2784
 0
-76
-76
-76
+77
+77
+77
 168
 
 #sidedef
@@ -3222,7 +3692,7 @@ assets/sprites/player/spraying_hand.bmp
 4
 0
 27
-0
+5
 
 #sidedef##PORTAL TO 26#####
 26
@@ -3494,9 +3964,9 @@ assets/sprites/player/spraying_hand.bmp
 1248
 480
 0
-28
-28
-28
+16
+16
+16
 227
 
 #sidedefs
@@ -4746,12 +5216,12 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef###EASTER EGG PORTAL###
-41
+39
 1152
 1318
 1056
 1318
-2
+0
 15
 15
 15
@@ -5220,7 +5690,7 @@ assets/sprites/player/spraying_hand.bmp
 350
 
 #sidedef##PORTAL TO SECTOR 49###
-49
+-1
 2816
 1547
 1952
@@ -5306,68 +5776,7 @@ assets/sprites/player/spraying_hand.bmp
 73
 356
 
-#sector[49]## SECTOR 49 WAREHOUSE##########################################################
-10
-96
-10
-0
--1
-96
-14
-0
--1
-4
-0
-49
-0
 
-#sidedef##PORTAL TO SECTOR 47###
-47
-2816
-1547
-1952
-1547
-0
-73
-73
-73
-357
-
-#sidedef
--1
-2816
-1547
-2816
-1638
-0
-73
-73
-73
-358
-
-#sidedef
--1
-2816
-1638
-1952
-1638
-0
-73
-73
-73
-359
-
-#sidedef
--1
-1952
-1638
-1952
-1547
-0
-73
-73
-73
-360
 
 #moving objects
 0
