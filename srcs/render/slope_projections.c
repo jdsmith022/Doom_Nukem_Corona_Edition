@@ -41,7 +41,7 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.distance = 0;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
-	sector->slope_floor = 6 * (PI / 180);
+	//sector->slope_floor = 6 * (PI / 180);
 	if (sidedef.sector != sector->id)
 		sidedef = get_other_side_of_line(doom, sidedef, *sector);
 	if (sidedef.id == sector->slope_floor_id)
