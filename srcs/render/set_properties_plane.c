@@ -10,10 +10,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	int			new_height;
 
 	if (opp_sector->slope_floor_id != -1)
-	{
-		printf("here\n");
 		slope_plane_settings(doom, sidedef, opp_sector, 1);
-	}
 	new_height = (HEIGHT / 2) + doom->player_height;
 	height_ceiling = opp_sector->height_ceiling / \
 		sidedef.distance * doom->dist_to_plane;
@@ -37,11 +34,7 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	int			new_height;
 
 	if (sector->slope_floor_id != -1)
-	{
-		// printf("here\n");
 		slope_plane_settings(doom, sidedef, sector, 0);
-	}
-		// slope_plane_settings(doom, sidedef, sector, 0);
 	new_height = (HEIGHT / 2) + doom->player_height;
 	plane->height_standard = doom->texture_height / \
 		sidedef.distance * doom->dist_to_plane;
