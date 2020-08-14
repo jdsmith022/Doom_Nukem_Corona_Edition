@@ -4,13 +4,12 @@
 
 void			draw_item(t_doom *doom, t_item item)
 {
-	if (!item.sprite)
-		printf("Sprite not found!\n");
-	else
-	{
-		draw_img(item.sprite, doom, item.position);
-		draw_grocery_amount(doom, item.position, ft_itoa(item.amount));
+	if (!item.sprite){
+		printf("Sprite not found. Type: %d\n", item.type);
+		return ;
 	}
+	draw_img(item.sprite, doom, item.position);
+	draw_grocery_amount(doom, item.position, ft_itoa(item.amount));
 }
 
 void			draw_basket_ui(t_doom *doom, t_groceries *groceries)

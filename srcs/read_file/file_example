@@ -36,7 +36,7 @@ texture number/name(3)
 sidedef id
 
 #sprite
-index
+index (t_sprite index)
 vector location(x,y)
 action
 size

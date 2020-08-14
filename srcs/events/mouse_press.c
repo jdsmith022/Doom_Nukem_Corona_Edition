@@ -1,4 +1,6 @@
 #include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
+#include "../../includes/hud.h"
 
 void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 {
@@ -14,10 +16,16 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
 	{
 		doom->own_event.hold_x = button->x;
 		doom->own_event.hold_y = button->y;
-		printf("mouse press: %d\n", doom->own_event.hold_x);
 		doom->own_event.mouse_press = TRUE;
 		if (doom->own_event.shoot == TRUE)
-			doom->own_event.mist = TRUE;
+		{
+			if (doom->hud->sanitizer_level > 0)
+			{
+				doom->hud->sanitizer_shooting = TRUE;
+				doom->own_event.mist = TRUE;
+				shooting(doom);
+			}
+		}
 	}
 	if (doom->game_editor == TRUE)
 		mouse_press_game_editor(doom, button->x, button->y);
