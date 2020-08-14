@@ -56,6 +56,8 @@
 # define EXIT_LEVEL 2
 # define START_SECTOR 3
 # define START_TIMER 4
+# define CHECKOUT 5
+# define TROLLY 6
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
@@ -153,6 +155,7 @@ typedef struct		s_event {
 	int				virus_red_i;
 	bool			mist;
 	bool			spray_mist;
+	bool			trolly;
 	int				fall_count;
 }					t_event;
 

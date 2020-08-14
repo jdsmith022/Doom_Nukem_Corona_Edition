@@ -26,6 +26,9 @@ static int	check_collision(t_doom *doom, t_sidedef sidedef,
 	else if (check_sector_height_diff(doom, doom->i_sector, \
 	sidedef.opp_sector) == FALSE)
 		return (-1);
+	else if (sidedef.distance < 2 && \
+	(sidedef.opp_sector == -1 || sidedef.action == 2))
+		return (-1);
 	else if (sidedef.opp_sector != -1)
 	{
 		doom->i_sector = sidedef.opp_sector;
@@ -58,8 +61,8 @@ static int	movement_collision(t_doom *doom, t_line move, double angle)
 
 void	cam_move_rl(t_doom *doom, double dt, int direction)
 {
-	t_line	movement;
-	int		collision;
+	t_line		movement;
+	int			collision;
 
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x + (MOVE_SPEED * dt) *\
@@ -68,6 +71,7 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 		sin(doom->dir_angle + direction);
 	if (sprite_collision(doom, movement) == 1)
 		movement.end = doom->pos;
+	// if (doom->lib.sector[doom->i_sector].action == TROLLY && doom->own_event.trolly = FALSE)
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
