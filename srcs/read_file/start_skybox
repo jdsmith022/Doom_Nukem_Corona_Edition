@@ -263,9 +263,9 @@ assets/sprites/player/spray_hand.bmp
 assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
-41
+43
 #number of walls
-320
+327
 #number of objects
 0
 
@@ -1333,22 +1333,10 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-28
+27
 0
 10
 0
-
-#sidedef#PORTAL TO SECTOR 40###
-40
-864
-1318
-864
-1382
-0
-15
-15
-15
-317
 
 #sidedef ##PROTAL TO SECTOR 8##
 8
@@ -1470,22 +1458,22 @@ assets/sprites/player/spraying_hand.bmp
 16
 82
 
+#sidedef#PORTAL TO SECTOR 40###
+40
+864
+1318
+864
+1382
+0
+15
+15
+15
+317
+
 #sidedef
 -1
 864
 1318
-864
-1344
-0
-35
-35
-35
-83
-
-#sidedef## PORTAL TO?????????????
--1
-864
-1312
 864
 1344
 0
@@ -1497,7 +1485,7 @@ assets/sprites/player/spraying_hand.bmp
 #sidedef
 -1
 864
-1312
+1344
 864
 1248
 0
@@ -4617,16 +4605,16 @@ assets/sprites/player/spraying_hand.bmp
 15
 309
 
-#sidedef
--1
+#sidedef###EASTER EGG PORTAL###
+41
 1152
 1318
 1056
 1318
-0
-16
-16
-16
+2
+15
+15
+15
 310
 
 #sidedef##PORTAL TO SECTOR 40
@@ -4690,7 +4678,7 @@ assets/sprites/player/spraying_hand.bmp
 -1
 4
 0
-37
+40
 0
 
 #sidedef##PORTAL TO SECTOR 39##
@@ -4705,7 +4693,7 @@ assets/sprites/player/spraying_hand.bmp
 15
 315
 
-#sidedef#
+#sidedef
 -1
 1056
 1318
@@ -4740,6 +4728,134 @@ assets/sprites/player/spraying_hand.bmp
 15
 15
 318
+
+#sector[41]## SECTOR 41##########################################################
+12
+0
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+41
+0
+
+#sidedef###EASTER EGG PORTAL###
+41
+1152
+1318
+1056
+1318
+2
+15
+15
+15
+320
+
+#sidedef-1
+-1
+1152
+1318
+1152
+1030
+0
+15
+15
+15
+321
+
+#sidedef-1##PORTAL TO SECTOR 42##
+42
+1152
+1030
+1056
+1030
+0
+15
+15
+15
+322
+
+#sidedef
+-1
+1056
+1030
+1056
+1318
+0
+15
+15
+15
+323
+
+#sector[42]## SECTOR 42##########################################################
+12
+40
+17
+0
+-1
+0
+78
+0
+-1
+4
+0
+42
+0
+
+
+#sidedef##PORTAL TO SECTOR 41##
+41
+1152
+1030
+1056
+1030
+2
+78
+78
+78
+324
+
+#sidedef
+-1
+1152
+1030
+1152
+998
+0
+78
+78
+78
+325
+
+#sidedef
+-1
+1152
+998
+1056
+998
+0
+78
+78
+78
+326
+
+#sidedef
+-1
+1056
+998
+1056
+1030
+0
+78
+78
+78
+326
+
 
 #moving objects
 0
