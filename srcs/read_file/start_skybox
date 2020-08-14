@@ -200,7 +200,7 @@ assets/textures/checkout/checkout.bmp
 #number of sectors
 31
 #number of walls
-237
+260
 #number of objects
 0
 #1 this will be the trolly/cart
@@ -2337,9 +2337,9 @@ assets/textures/checkout/checkout.bmp
 576
 1984
 0
-16
-16
-16
+15
+15
+15
 149
 
 #sidedef
@@ -2349,9 +2349,9 @@ assets/textures/checkout/checkout.bmp
 480
 1920
 0
-16
-16
-16
+15
+15
+15
 150
 
 #sidedef##PORTAL TO SECTOR 20###
@@ -2361,9 +2361,9 @@ assets/textures/checkout/checkout.bmp
 480
 2016
 0
-16
-16
-16
+15
+15
+15
 151
 
 #sidedef
@@ -2373,9 +2373,9 @@ assets/textures/checkout/checkout.bmp
 576
 1984
 0
-16
-16
-16
+15
+15
+15
 152
 
 #sector[20]## SECTOR 20##########################################################
@@ -2448,9 +2448,9 @@ assets/textures/checkout/checkout.bmp
 352
 2112
 0
-16
-16
-16
+15
+15
+15
 157
 
 #sidedef
@@ -2460,9 +2460,9 @@ assets/textures/checkout/checkout.bmp
 480
 2112
 0
-16
-16
-16
+15
+15
+15
 158
 
 #sidedef
@@ -2472,11 +2472,10 @@ assets/textures/checkout/checkout.bmp
 480
 2016
 0
-16
-16
-16
+15
+15
+15
 159
-
 
 #sector[21]## SECTOR 21##########################################################
 7
@@ -3335,7 +3334,7 @@ assets/textures/checkout/checkout.bmp
 14
 10
 -1
-13
+31
 0
 29
 0
@@ -3496,11 +3495,235 @@ assets/textures/checkout/checkout.bmp
 32
 232
 
+#sidedefs
+-1
+672
+520
+736
+520
+0
+16
+16
+16
+237
+
+
+##First column###
+#sidedefs
+-1
+672
+520
+672
+712
+0
+70
+70
+70
+238
+
+#sidedefs
+-1
+672
+712
+672
+808
+0
+16
+16
+16
+239
+
+#sidedefs
+-1
+672
+808
+736
+808
+0
+16
+16
+16
+240
+
+#sidedefs
+-1
+736
+808
+736
+744
+0
+16
+16
+16
+241
+
+#sidedefs
+-1
+736
+744
+736
+552
+0
+71
+71
+71
+242
+
+#sidedefs
+-1
+736
+552
+736
+520
+0
+72
+72
+72
+243
+
+##Second Column##
+
+#sidedefs
+-1
+1088
+520
+1088
+712
+0
+55
+55
+55
+244
+
+#sidedefs
+-1
+1088
+712
+1088
+864
+0
+71
+71
+71
+245
+
+#sidedefs
+-1
+1088
+520
+1152
+520
+0
+16
+16
+16
+246
+
+#sidedefs
+-1
+1152
+520
+1152
+520
+0
+54
+54
+54
+247
+
+#sidedefs
+-1
+1152
+520
+1152
+672
+0
+16
+16
+16
+248
+
+#sidedefs
+-1
+1152
+672
+1152
+864
+0
+53
+53
+53
+249
+
+
+##MIDDLE SQUARE
+#sidedefs
+-1
+800
+570
+896
+570
+0
+16
+16
+16
+250
+
+#sidedefs##PORTAL TO SECTOR 31####
+-1
+896
+570
+922
+570
+0
+16
+16
+16
+251
+
+#sidedefs
+-1
+800
+570
+800
+762
+0
+16
+16
+16
+252
+
+#sidedefs
+-1
+800
+762
+922
+762
+0
+16
+16
+16
+253
+
+#sidedefs
+-1
+922
+762
+922
+570
+0
+48
+48
+48
+254
+
+
+
 #sector[30]## SECTOR 30##########################################################
 10
 30
 17
-0
+-10
 -1
 -10
 14
@@ -3521,7 +3744,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-233
+255
 
 #sidedefs
 -1
@@ -3533,7 +3756,7 @@ assets/textures/checkout/checkout.bmp
 17
 17
 17
-234
+256
 
 #sidedefs
 -1
@@ -3545,7 +3768,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-235
+257
 
 #sidedefs
 -1
@@ -3557,9 +3780,7 @@ assets/textures/checkout/checkout.bmp
 78
 78
 78
-236
-
-
+258
 
 
 
