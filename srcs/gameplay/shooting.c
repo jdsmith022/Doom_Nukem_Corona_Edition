@@ -168,6 +168,7 @@ void    shoot(t_doom *doom)
 	// doom->own_event.mist = TRUE;
 	// add_mist_to_sanitizer(doom);
 	// doom->hud->sanitizer_shooting = TRUE;
+	printf("start shoot\n");
     ray = init_ray(doom, MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index == -1)
@@ -192,12 +193,16 @@ void    shoot(t_doom *doom)
 
 void	handle_shooting(t_doom *doom)
 {
-	if (!handle_mouse_state(doom))
-		return ;
-	if (doom->hud->sanitizer_level > 0)
-	{
+	printf("start handle shooting\n");
+	// if (!handle_mouse_state(doom))
+	// {
+		// printf("handle mouse state is negative\n");
+		// return ;
+	// }
+	// if (doom->hud->sanitizer_level > 0)
+	// {
 		shoot(doom);
-	}
+	// }
 }
 
 void	shooting(t_doom *doom)
@@ -210,7 +215,7 @@ void	shooting(t_doom *doom)
 			printf("handle shooting\n");
 			handle_shooting(doom);
 		}
-		else
-			doom->own_event.mouse_state_switched = false;
+		// else
+			// doom->own_event.mouse_state_switched = false;
 	}
 }
