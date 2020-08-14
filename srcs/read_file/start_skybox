@@ -264,9 +264,9 @@ assets/sprites/player/spray_hand.bmp
 assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
-48
+49
 #number of walls
-353
+357
 #number of objects
 0
 
@@ -5186,21 +5186,21 @@ assets/sprites/player/spraying_hand.bmp
 #sidedef
 -1
 1952
-1191
-1952
 1382
+1952
+1255
 0
 73
 73
 73
 348
 
-#sidedef
--1
+#sidedef#PORTAL TO SECTOR 48 ##
+48
 1952
-1191
-3296
-1192
+1255
+2816
+1255
 0
 73
 73
@@ -5209,22 +5209,22 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedef
 -1
-3296
-1382
-3296
-1638
+2816
+1255
+2816
+1547
 0
 73
 73
 73
 350
 
-#sidedef
+#sidedef##PORTAL TO SECTOR 49###
 -1
-3296
-1638
+2816
+1547
 1952
-1638
+1547
 0
 73
 73
@@ -5234,7 +5234,7 @@ assets/sprites/player/spraying_hand.bmp
 #sidedef
 -1
 1952
-1638
+1547
 1952
 1446
 0
@@ -5242,6 +5242,69 @@ assets/sprites/player/spraying_hand.bmp
 73
 73
 352
+
+#sector[48]## SECTOR 48 WAREHOUSE##########################################################
+10
+96
+10
+0
+-1
+96
+14
+0
+-1
+4
+0
+48
+0
+
+#sidedef#PORTAL TO SECTOR 47 ##
+47
+1952
+1255
+2816
+1255
+0
+73
+73
+73
+353
+
+#sidedef
+-1
+1952
+1255
+1952
+1191
+0
+73
+73
+73
+354
+
+#sidedef
+-1
+1952
+1191
+2816
+1191
+0
+73
+73
+73
+355
+
+#sidedef
+-1
+2816
+1191
+2816
+1255
+0
+73
+73
+73
+356
 
 #moving objects
 0
