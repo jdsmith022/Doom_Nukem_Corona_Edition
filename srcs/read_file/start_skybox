@@ -194,16 +194,18 @@ assets/textures/checkout/tabacco.bmp
 #83
 assets/textures/checkout/checkout.bmp
 
-#object library
+
+
+
+#object library #trolley and trolle handle bar needs to be added
 0
-#1 will be trollyyyyyy
+
 #number of sectors
-31
+365
 #number of walls
-260
+281
 #number of objects
 0
-#1 this will be the trolly/cart
 
 
 ##OUTSIDE SECTOR 0 ###############################################
@@ -3423,8 +3425,8 @@ assets/textures/checkout/checkout.bmp
 28
 226
 
-#sidedefs##PORTAL WALL TO SECTOR 35##
--1
+#sidedefs##PORTAL WALL TO SECTOR 31##
+31
 1248
 576
 1248
@@ -3669,7 +3671,7 @@ assets/textures/checkout/checkout.bmp
 16
 250
 
-#sidedefs##PORTAL TO SECTOR 31####
+#sidedefs##PORTAL TO SECTOR INSIDE SQUARE####
 -1
 896
 570
@@ -3717,8 +3719,6 @@ assets/textures/checkout/checkout.bmp
 48
 254
 
-
-
 #sector[30]## SECTOR 30##########################################################
 10
 30
@@ -3734,16 +3734,16 @@ assets/textures/checkout/checkout.bmp
 30
 0
 
-#sidedefs##PORTAL WALL TO SECTOR 30##
+#sidedefs##PORTAL WALL TO SECTOR 29##
 29
 1248
 384
 576
 384
 0
-78
-78
-78
+15
+15
+15
 255
 
 #sidedefs
@@ -3782,6 +3782,329 @@ assets/textures/checkout/checkout.bmp
 78
 258
 
+#sector[31]## SECTOR 31##########################################################
+10
+0
+17
+-10
+-1
+-10
+14
+10
+-1
+7
+0
+31
+0
+
+#sidedefs##PORTAL WALL TO SECTOR29##
+29
+1248
+576
+1248
+480
+0
+28
+28
+28
+259
+
+#sidedefs
+-1
+1248
+480
+1440
+500
+0
+16
+16
+16
+260
+
+#sidedefs
+-1
+1440
+500
+1440
+672
+0
+15
+15
+15
+261
+
+#sidedefs##PORTAL TO SECTOR ####
+-1
+1440
+672
+1440
+768
+0
+15
+15
+15
+262
+
+#sidedefs
+-1
+1440
+768
+1312
+768
+0
+16
+16
+16
+263
+
+#sidedefs##PORTAL TO SECTOR ##
+32
+1312
+768
+1248
+768
+0
+16
+16
+16
+264
+
+#sidedef
+-1
+1248
+768
+1248
+576
+0
+15
+15
+165
+265
+
+#sector[32]## SECTOR 32##########################################################
+15
+-10
+17
+-10
+-1
+-10
+14
+10
+-1
+4
+0
+32
+0
+
+#sidedefs##PORTAL TO SECTOR 31##
+31
+1312
+768
+1248
+768
+0
+16
+16
+16
+266
+
+#sidedef
+-1
+1312
+768
+1312
+1152
+0
+15
+15
+15
+267
+
+#sidedef##PORTAL TO SECTOR 33##
+33
+1312
+1152
+1248
+1152
+0
+15
+15
+15
+268
+
+#sidedef
+-1
+1248
+1152
+1248
+768
+0
+15
+15
+15
+269
+
+#sector[33]## SECTOR 33##########################################################
+5
+0
+17
+-10
+-1
+0
+14
+10
+-1
+5
+0
+33
+0
+
+#sidedef##PORTAL TO SECTOR 32##
+32
+1312
+1152
+1248
+1152
+0
+78
+78
+78
+270
+
+#sidedef
+-1
+1312
+1152
+1376
+1184
+0
+16
+16
+16
+271
+
+#sidedef##PORTAL TO SECTOR 34###
+34
+1376
+1184
+1376
+1248
+0
+78
+78
+78
+272
+
+#sidedef
+-1
+1376
+1248
+1248
+1248
+0
+16
+16
+16
+273
+
+#sidedef
+-1
+1247
+1152
+1248
+1248
+0
+16
+16
+16
+274
+
+#sector[34]## SECTOR 34##########################################################
+10
+0
+17
+-10
+-1
+0
+14
+10
+-1
+6
+0
+34
+0
+
+#sidedef##PORTAL TO SECTOR 33###
+33
+1376
+1184
+1376
+1248
+0
+78
+78
+78
+275
+
+#sidedef
+-1
+1376
+1248
+1376
+1312
+0
+15
+15
+15
+276
+
+#sidedef
+-1
+1376
+1312
+1600
+1312
+0
+16
+16
+16
+277
+
+#sidedef##PORTAL TO SECTOR 35###
+35
+1600
+1312
+1664
+1312
+0
+16
+16
+16
+278
+
+#sidedef
+-1
+1664
+1312
+1664
+1184
+0
+15
+15
+15
+279
+
+#sidedef
+-1
+1376
+1184
+1664
+1184
+0
+16
+16
+16
+280
 
 
 #moving objects
