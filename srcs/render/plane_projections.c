@@ -32,6 +32,7 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 		cos(doom->ray_adjacent * x - FOV / 2);
 	*sector = doom->lib.sector[sidedef.sector];
 	plane->intersect = sidedef.intersect;
+	doom->i_sidedef = sidedef.id;
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
 	set_floor_limit(doom, plane, sidedef, sector);
 	set_ceiling_limit(doom, plane, sidedef, sector);

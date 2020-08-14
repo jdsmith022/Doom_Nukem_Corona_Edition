@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-84
+85
 
 ## OUTSIDE ASSETS##
 #0
@@ -193,6 +193,10 @@ assets/textures/checkout/lottery.bmp
 assets/textures/checkout/tabacco.bmp
 #83
 assets/textures/checkout/checkout.bmp
+
+##EASTER TEXTURES##
+#84
+assets/textures/shelves/toiletpaper_full_wall.bmp
 
 
 
@@ -4741,9 +4745,9 @@ assets/sprites/player/spraying_hand.bmp
 1056
 1318
 0
-15
-15
-15
+84
+84
+84
 320
 
 #sidedef-1
@@ -4753,21 +4757,21 @@ assets/sprites/player/spraying_hand.bmp
 1152
 1030
 0
-15
-15
-15
+84
+84
+84
 321
 
-#sidedef-1##PORTAL TO SECTOR 42##
+#sidedef-##PORTAL TO SECTOR 42##
 42
 1152
 1030
 1056
 1030
 0
-15
-15
-15
+84
+84
+84
 322
 
 #sidedef
@@ -4777,9 +4781,9 @@ assets/sprites/player/spraying_hand.bmp
 1056
 1318
 0
-15
-15
-15
+84
+84
+84
 323
 
 #sector[42]## SECTOR 42##########################################################
@@ -4803,7 +4807,7 @@ assets/sprites/player/spraying_hand.bmp
 1030
 1056
 1030
-2
+0
 78
 78
 78
@@ -5083,7 +5087,7 @@ assets/sprites/player/spraying_hand.bmp
 342
 
 #sector[46]## SECTOR 46##########################################################
-8
+3
 10
 17
 0
@@ -5234,7 +5238,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10
-96
+70
 10
 0
 -1

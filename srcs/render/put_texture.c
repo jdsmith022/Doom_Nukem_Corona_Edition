@@ -50,9 +50,17 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	g = texture[pixel_dex + 1];
 	b = texture[pixel_dex + 2];
 	add_saturation(&r, &g, &b, doom->distance);
-	pixels[index] = r;
-	index++;
-	pixels[index] = g;
-	index++;
-	pixels[index] = b;
+	if (texture[pixel_dex] == (char)255 && texture[pixel_dex + 1] == (char)255 &&\
+		texture[pixel_dex + 2] == (char)255 && doom->lib.sidedef[doom->i_sidedef].action == 2)
+	{
+			;
+	}
+	else
+	{
+		pixels[index] = r;
+		index++;
+		pixels[index] = g;
+		index++;
+		pixels[index] = b;
+	}
 }

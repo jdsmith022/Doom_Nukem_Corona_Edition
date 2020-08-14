@@ -13,7 +13,7 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[16].font_color = doom->lib.font_lib.font_color.black;
 	lib[17].str = "Make sure you're read to checkout!";
 	lib[17].font_rect.x = WIDTH / 2 - 140;
-	lib[17].font_rect.y = HEIGHT / 2- 30;
+	lib[17].font_rect.y = HEIGHT / 2- 10;
 	lib[17].font_color = doom->lib.font_lib.font_color.red;
 }
 
