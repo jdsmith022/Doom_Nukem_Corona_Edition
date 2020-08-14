@@ -264,9 +264,9 @@ assets/sprites/player/spray_hand.bmp
 assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
-49
+50
 #number of walls
-357
+361
 #number of objects
 0
 
@@ -5220,7 +5220,7 @@ assets/sprites/player/spraying_hand.bmp
 350
 
 #sidedef##PORTAL TO SECTOR 49###
--1
+49
 2816
 1547
 1952
@@ -5305,6 +5305,69 @@ assets/sprites/player/spraying_hand.bmp
 73
 73
 356
+
+#sector[49]## SECTOR 49 WAREHOUSE##########################################################
+10
+96
+10
+0
+-1
+96
+14
+0
+-1
+4
+0
+49
+0
+
+#sidedef##PORTAL TO SECTOR 47###
+47
+2816
+1547
+1952
+1547
+0
+73
+73
+73
+357
+
+#sidedef
+-1
+2816
+1547
+2816
+1638
+0
+73
+73
+73
+358
+
+#sidedef
+-1
+2816
+1638
+1952
+1638
+0
+73
+73
+73
+359
+
+#sidedef
+-1
+1952
+1638
+1952
+1547
+0
+73
+73
+73
+360
 
 #moving objects
 0
