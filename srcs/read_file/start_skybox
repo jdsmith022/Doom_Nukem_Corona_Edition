@@ -198,10 +198,76 @@ assets/textures/checkout/checkout.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-0
+31
+#0
+assets/sprites/groceries/bacon.bmp
+#1
+assets/sprites/groceries/red_apple.bmp
+#2
+assets/sprites/groceries/cherry.bmp
+#3
+assets/sprites/groceries/coffee.bmp
+#4
+assets/sprites/groceries/wine1.bmp
+#5
+assets/sprites/groceries/cola.bmp
+#6
+assets/sprites/groceries/water.bmp
+#7
+assets/sprites/scissor_lift/scissor_lift.bmp
+#8
+assets/sprites/scissor_lift/scissor_lift_side.bmp
+#9
+assets/sprites/shoppers/shopper_front.bmp
+#10
+assets/sprites/shoppers/shopper_side_left.bmp
+#11
+assets/sprites/shoppers/shopper_side_right.bmp
+#12
+assets/sprites/shoppers/shopper_back.bmp
+#13
+assets/sprites/health/facemask_2.bmp
+#14
+assets/sprites/health/health_pack_plus.bmp
+#15
+assets/sprites/health/health_pack.bmp
+#16
+assets/sprites/health/refill.bmp
+#17
+assets/sprites/corona/corona_virus_red.bmp
+#18
+assets/sprites/corona/corona_virus.bmp
+#19
+assets/sprites/corona/corona.bmp
+#20
+assets/sprites/misc/box.bmp
+#21
+assets/sprites/misc/crate.bmp
+#22
+assets/sprites/groceries/apple_tart.bmp
+#23
+assets/sprites/groceries/brownie.bmp
+#24
+assets/sprites/groceries/cucumber.bmp
+#25
+assets/sprites/groceries/chicken.bmp
+#26
+assets/sprites/groceries/chicken_leg.bmp
+#27
+assets/sprites/groceries/toiletpaper.bmp
+#28
+assets/sprites/scissor_lift/scissor_lift_bar.bmp
+#29
+assets/sprites/player/spray_hand.bmp
+#30
+assets/sprites/player/spraying_hand.bmp
+
+
+
+
 
 #number of sectors
-365
+35
 #number of walls
 281
 #number of objects
@@ -4071,7 +4137,7 @@ assets/textures/checkout/checkout.bmp
 277
 
 #sidedef##PORTAL TO SECTOR 35###
-35
+-1
 1600
 1312
 1664

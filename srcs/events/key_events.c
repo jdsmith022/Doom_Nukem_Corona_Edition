@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
@@ -28,6 +29,7 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		scissor_lift_up(doom);
 	if (event->scissor_lift_down == TRUE)
 		scissor_lift_down(doom);
+	// printf("key end\n");
 }
 
 void			key_release(t_event *event, SDL_KeyboardEvent *key)
@@ -60,8 +62,11 @@ static void 	key_select_and_shoot(t_doom *doom, t_event *event,
 	if (key->keysym.sym == SDLK_e)
 	{
 		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
-		if (event->select == TRUE)
+		if (event->shoot == TRUE)
+		{
 			event->select = FALSE;
+			shooting(doom);
+		}
 	}
 }
 

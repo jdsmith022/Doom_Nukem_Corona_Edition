@@ -47,7 +47,7 @@ void		exit_scissor_lift(t_doom *doom)
 		doom->save_scissor_lift = -1;
 		doom->lib.font_lib.bools.text = FALSE;
 		doom->own_event.scissor_lift_down = FALSE;
-		printf("deactivate scissor lift\n");
+		doom->own_event.scissor_lift = FALSE;
 	}
 	else
 	{
@@ -60,14 +60,12 @@ void		exit_scissor_lift(t_doom *doom)
 
 void		activate_scissor_lift(t_doom *doom, int index)
 {
-	printf("activate scissor lift\n");
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
 	doom->player_height += 10;
-	printf("CHANGED CORDS\n");
 	//deactivate jumping
 	//doom->pos = sprite pos
 	//add a bit of height
@@ -99,17 +97,9 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			&& doom->own_event.scissor_lift == FALSE &&\
 			doom->lib.sprites[index].action == 7)
 			{
-				printf("getting closer than 70\n");
-				// if (doom->lib.sprites[index].action == 7)
-				// {
-					// printf("action == 7\n");
-					// if (doom->own_event.scissor_lift == FALSE)
-					// {
-						printf("YOU ENTER THE SCISSOR LIFT\n");
-						activate_scissor_lift(doom, index);
-					// }
-					printf("after enter scissor lift if statement\n");
-				// }
+				printf("YOU ENTER THE SCISSOR LIFT\n");
+				activate_scissor_lift(doom, index);
+				printf("after enter scissor lift if statement\n");
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 				return (1);
@@ -117,7 +107,6 @@ int			sprite_collision(t_doom *doom, t_line movement)
 		if (doom->lib.sprites[index].distance > 0.1 &&\
 		doom->lib.sprites[index].distance < 50)
 		{
-			printf("action: %d\n", doom->lib.sprites[index].action);
 			if (doom->lib.sprites[index].action == 9)
 			{
 				doom->hud->shopper = TRUE;
@@ -125,7 +114,6 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			else if (doom->lib.sprites[index].action == 4)
 			{
 				doom->hud->corona = TRUE;
-				printf("VIRUS #%d HIT, action: %d\n", index, doom->lib.sprites[index].action);
 				doom->lib.sprites[index].action = 6;
 			}
 			else if (doom->lib.sprites[index].action == 1)
@@ -144,11 +132,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 				doom->lib.sprites[index].action = 8;
 			}
 			else if (doom->lib.sprites[index].action == 10)
-			{
-				printf("before player_fall\n");
 				player_fall(doom, &doom->lib.sprites[index]);
-				printf("after player_fall\n");
-			}
 		}
 		index++;
 		x++;

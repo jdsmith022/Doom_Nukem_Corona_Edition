@@ -56,7 +56,6 @@ static int	movement_collision(t_doom *doom, t_line move, double angle)
 	return (0);
 }
 
-//move right left
 void	cam_move_rl(t_doom *doom, double dt, int direction)
 {
 	t_line	movement;
@@ -81,8 +80,6 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 	}
 }
 
-//move front back
-//what sprite?
 void	cam_move_fb(t_doom *doom, double dt, int direction)
 {
 	t_line	movement;

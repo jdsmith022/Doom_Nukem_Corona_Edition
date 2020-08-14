@@ -75,6 +75,7 @@ int			calculate_hud_levels(t_doom *doom)
 	}
 	else if (doom->hud->sanitizer_shooting == TRUE)
 	{
+		printf("CHECK\n");
 		doom->hud->sanitizer_level -= 5;
 		doom->hud->sanitizer_shooting = FALSE;
 		change = 1;

@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
-static int			find_time_difference(t_doom *doom)
+int				find_time_difference(t_doom *doom)
 {
 	int				diff;
 	clockid_t		clkid;
@@ -28,7 +28,9 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 	{
 		diff = find_time_difference(doom);
 		if (diff <= 3)
+		{
 			print_vanishing_text_box(doom, start_dex, end_dex);
+		}
 	}
 }
 

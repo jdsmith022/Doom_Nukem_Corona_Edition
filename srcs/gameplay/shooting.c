@@ -1,6 +1,54 @@
 # include "../../includes/doom.h"
 # include "../../includes/gameplay.h"
 # include "../../includes/hud.h"
+# include "../../includes/font.h"
+
+void		add_mist_to_sanitizer(t_doom *doom)
+{
+	int				diff;
+	
+	diff = 0;
+	if (doom->own_event.mist == TRUE)
+	{
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		doom->own_event.mist = FALSE;
+	}
+	else
+	{
+		diff = find_time_difference(doom);
+		if (diff == 0)
+		{
+			draw_add_on(doom, SPRAYING_HAND);
+		}
+	}
+}
+
+/*
+**		timer for letting red virus disappear after 5 seconds
+**		eventually you could send a function as parameter
+**		if you put this function in a different file take font.h with you
+*/
+void		remove_red_virus(t_doom *doom)
+{
+	int				diff;
+
+	diff = 0;
+	if (doom->own_event.virus_red == TRUE)
+	{
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		doom->own_event.virus_red = FALSE;
+	}
+	else
+	{
+		diff = find_time_difference(doom);
+		if (diff <= 3)
+		{
+			SPRITES[doom->own_event.virus_red_i].action = 6;
+			doom->own_event.virus_red_i = -1;
+		}
+	}
+}
+
 
 int		virus_in_shooting_area(t_doom *doom, int sprite_i)
 {
@@ -117,6 +165,8 @@ void    shoot(t_doom *doom)
 {
     t_ray   ray;
 
+	// doom->own_event.mist = TRUE;
+	// add_mist_to_sanitizer(doom);
 	doom->hud->sanitizer_shooting = TRUE;
     ray = init_ray(doom, MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
@@ -132,6 +182,8 @@ void    shoot(t_doom *doom)
 		SPRITES[doom->own_event.virus_hit_index].textures[2] = 17;
 		SPRITES[doom->own_event.virus_hit_index].textures[3] = 17;
 		SPRITES[doom->own_event.virus_hit_index].action = 5;
+		doom->own_event.virus_red_i = doom->own_event.virus_hit_index;
+		doom->own_event.virus_red = TRUE;
 		doom->own_event.virus_hit_index = -1;
 		//let sprite dissapear
 		//by setting it to FLAG 6
@@ -143,15 +195,21 @@ void	handle_shooting(t_doom *doom)
 	if (!handle_mouse_state(doom))
 		return ;
 	if (doom->hud->sanitizer_level > 0)
+	{
 		shoot(doom);
+	}
 }
 
 void	shooting(t_doom *doom)
 {
+	printf("check shooting\n");
 	if (doom->own_event.shoot == TRUE)
 	{
 		if (MOUSE_PRESSED)
+		{
+			printf("handle shooting\n");
 			handle_shooting(doom);
+		}
 		else
 			doom->own_event.mouse_state_switched = false;
 	}

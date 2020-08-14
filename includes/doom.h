@@ -150,6 +150,10 @@ typedef struct		s_event {
 	int				virus_hit_index;
 	bool			parked_too_close;
 	bool			fall;
+	bool			virus_red;
+	int				virus_red_i;
+	bool			mist;
+	bool			spray_mist;
 	int				fall_count;
 }					t_event;
 
@@ -525,8 +529,13 @@ void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
 int					sprite_collision(t_doom *doom, t_line movement);
 void				exit_scissor_lift(t_doom *doom);
-void				draw_scissor_lift_bar(t_doom *doom);
+// void				draw_scissor_lift_bar(t_doom *doom);
+// void				draw_spraying_hand(t_doom *doom);
 void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i, double distance);
+void				remove_red_virus(t_doom *doom);
+void				add_mist_to_sanitizer(t_doom *doom);
+void				draw_player_adds(t_doom *doom);
+void				draw_add_on(t_doom *doom, int sprite_i);
 
 /*actions*/
 void				sliding_door(t_doom *doom, int sd_index);

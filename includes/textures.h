@@ -16,6 +16,10 @@
 # define COOKIE		9
 # define BREAD		10
 # define POTATO		11
+# define MELON		12
+# define SOAP		13
+# define ONION		14
+# define PEPPER		15
 
 #define TEX_APPLE	"assets/textures/shelves/apple.bmp"
 #define TEX_BACON	"assets/textures/shelves/sausage_bacon.bmp"
@@ -28,6 +32,8 @@
 #define TEX_CHEESE	"assets/textures/shelves/cheese.bmp"
 #define TEX_BREAD	"assets/textures/shelves/bread.bmp"
 #define TEX_POTATO	"assets/textures/shelves/potatoes.bmp"
+#define TEX_MELON	"assets/textures/shelves/melon.bmp"
+#define TEX_SOAP	"assets/textures/shelves/soaps.bmp"
 
 #define SPR_APPLE	"assets/sprites/groceries/red_apple.bmp"
 #define SPR_BACON	"assets/sprites/groceries/bacon.bmp"
@@ -40,24 +46,8 @@
 #define SPR_CHEESE	"assets/sprites/groceries/Cheese.bmp"
 #define SPR_BREAD 	"assets/sprites/groceries/bread.bmp"
 #define SPR_POTATO 	"assets/sprites/groceries/potato.bmp"
-
-// assets/textures/shelves/soaps.bmp
-// assets/textures/shelves/citrus-wall.bmp
-// assets/textures/shelves/round_jars.bmp
-// assets/textures/shelves/grapes.bmp
-// assets/textures/shelves/chocolate.bmp
-// assets/textures/shelves/cherry_strawberry.bmp
-// assets/textures/shelves/potatoes.bmp
-// assets/textures/shelves/paprika.bmp
-// assets/textures/shelves/fish.bmp
-// assets/textures/shelves/citrus.bmp
-// assets/textures/shelves/sausage_bacon.bmp
-// assets/textures/shelves/citrus2.bmp
-// assets/textures/shelves/sauces.bmp
-// assets/textures/shelves/jar4.bmp
-// assets/textures/shelves/jar-wall.bmp
-// assets/textures/shelves/wine.bmp
-// assets/textures/shelves/meat.bmp
+#define SPR_MELON	"assets/textures/shelves/melon.bmp"
+#define SPR_SOAP	"assets/sprites/groceries/soap.bmp"
 
 typedef struct s_doom	t_doom;
 typedef struct s_item	t_item;
@@ -79,7 +69,32 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	{TEX_COOKIE, SPR_COOKIE, COOKIE},
 	{TEX_CHEESE, SPR_CHEESE, CHEESE},
 	{TEX_BREAD, SPR_BREAD, BREAD},
-	{TEX_POTATO, SPR_POTATO, POTATO}
+	{TEX_POTATO, SPR_POTATO, POTATO},
+	{
+		"assets/textures/shelves/melon.bmp", 
+		"assets/sprites/groceries/watermelon.bmp", 
+		MELON
+	},
+	{
+		"assets/textures/shelves/soaps.bmp",
+		"assets/sprites/groceries/soap.bmp", 
+		SOAP
+	},
+	{
+		"assets/textures/shelves/onions.bmp",
+		"assets/sprites/groceries/red_onion.bmp",
+		ONION
+	},
+	{
+		"assets/textures/shelves/onions.bmp",
+		"assets/sprites/groceries/red_onion.bmp",
+		ONION
+	},
+	{
+		"assets/textures/shelves/peppers.bmp",
+		"assets/sprites/groceries/red_pepper.bmp",
+		PEPPER
+	}
 };
 
 void				set_sprite(t_doom *doom, uint8_t type, t_item *item);

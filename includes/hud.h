@@ -1,6 +1,10 @@
 #ifndef HUD_H
 # define HUD_H
 
+# define SCISSOR 28
+# define SPRAY_HAND 29
+# define SPRAYING_HAND 30
+
 typedef	struct s_doom	t_doom;
 
 typedef struct	s_hud

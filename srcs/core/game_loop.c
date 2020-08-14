@@ -41,21 +41,27 @@ void				game_loop(t_doom *doom)
 	{
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
+		// printf("before doom_update\n");
 		doom_update(doom, dt);
+		// printf("after doom_update\n");
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			sprite_reset(doom);
+			// printf("before doom_renderyes\n");
 			doom_render(doom);
+			// printf("after doom_render\n");
 			// audio(doom->audio, &doom->own_event);
 			// doom_gui(doom);
 			groceries(doom);
-			// shooting(doom);
+			// shooting(doom); alleen als er geklikt is
 			sliding_door(doom, -1); //move to its own file
 			// add_infection(doom); //move to a seprate file
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
-		// update_hud_ui(doom);
+		// printf("before update hud ui\n");
+		update_hud_ui(doom);
+		// printf("after update hud ui\n");
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

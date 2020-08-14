@@ -92,7 +92,11 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		doom->lib.sprites[sprite_i].action != 6 &&\
 		doom->lib.sprites[sprite_i].action != 8 &&\
 		scissor_lift_check(doom, doom->lib.sprites[sprite_i]) == -1)
+		{
+			// printf("begin sprite_check\n");
 			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
+			// printf("eind sprite check\n");
+		}	
 		i++;
 		sprite_i++;
 	}
