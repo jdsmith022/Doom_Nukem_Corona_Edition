@@ -57,7 +57,6 @@
 # define START_SECTOR 3
 # define START_TIMER 4
 
-
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
