@@ -32,6 +32,7 @@ typedef struct		s_bools
 	bool			walking_info;
 	bool			walking_text;
 	bool			start_sector;
+	bool			checkout;
 	bool			text;
 }					t_bools;
 

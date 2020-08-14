@@ -3692,7 +3692,7 @@ assets/sprites/player/spraying_hand.bmp
 4
 0
 27
-0
+5
 
 #sidedef##PORTAL TO 26#####
 26
@@ -3964,9 +3964,9 @@ assets/sprites/player/spraying_hand.bmp
 1248
 480
 0
-28
-28
-28
+16
+16
+16
 227
 
 #sidedefs
@@ -5216,12 +5216,12 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef###EASTER EGG PORTAL###
-41
+39
 1152
 1318
 1056
 1318
-2
+0
 15
 15
 15
