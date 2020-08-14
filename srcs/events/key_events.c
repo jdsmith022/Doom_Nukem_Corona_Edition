@@ -65,7 +65,7 @@ static void 	key_select_and_shoot(t_doom *doom, t_event *event,
 		if (event->shoot == TRUE)
 		{
 			event->select = FALSE;
-			shooting(doom);
+			// shooting(doom); changed location to click event
 		}
 	}
 }

@@ -96,12 +96,12 @@ void				font_timer(t_doom *doom)
 	&& doom->game_editor == FALSE)
 		font_timer_box_start(doom, \
 			&doom->lib.font_lib.bools.text);
-	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR)
-	{
-		set_background_coords_middle_large(doom);
-		font_timer_box_long(doom, \
-			&doom->lib.font_lib.bools.start_sector, 10, 16);
-	}
+	// else if (doom->lib.sector[doom->i_sector].action == START_SECTOR)
+	// {
+	// 	set_background_coords_middle_large(doom);
+	// 	font_timer_box_long(doom, \
+	// 		&doom->lib.font_lib.bools.start_sector, 10, 16);
+	// }
 	// else if (doom->start_sidedef == TRUE && doom->trolly == FALSE)
 	// {
 	// 	set_background_coords_middle_small(doom);

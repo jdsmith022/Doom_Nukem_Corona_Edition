@@ -167,7 +167,7 @@ void    shoot(t_doom *doom)
 
 	// doom->own_event.mist = TRUE;
 	// add_mist_to_sanitizer(doom);
-	doom->hud->sanitizer_shooting = TRUE;
+	// doom->hud->sanitizer_shooting = TRUE;
     ray = init_ray(doom, MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index == -1)

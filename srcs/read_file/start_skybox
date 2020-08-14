@@ -271,7 +271,7 @@ assets/sprites/player/spraying_hand.bmp
 #number of walls
 281
 #number of objects
-0
+5
 
 
 ##OUTSIDE SECTOR 0 ###############################################
@@ -647,7 +647,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 7
-0
+3
 2
 4
 
@@ -737,6 +737,95 @@ assets/sprites/player/spraying_hand.bmp
 16
 32
 
+#OBJECTS IN SECTOR 2
+#object0 in sector2 box
+20
+45
+500
+10
+16
+0
+4
+20
+40
+495
+50
+495
+20
+50
+495
+50
+505
+20
+50
+505
+40
+505
+20
+40
+505
+40
+495
+
+#object1 in sector2 crate
+21
+200
+520
+10
+16
+0
+4
+21
+195
+515
+205
+515
+21
+205
+515
+205
+525
+21
+205
+525
+195
+525
+21
+195
+525
+195
+515
+
+#object2 in sector2 crate
+21
+40
+530
+10
+16
+0
+4
+21
+35
+525
+45
+525
+21
+45
+525
+45
+535
+21
+45
+535
+35
+535
+21
+35
+535
+35
+525
+
+
 
 ##SECTOR 3 #############################################################
 #sector[3]
@@ -750,7 +839,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 9
-0
+2
 3
 0
 
@@ -861,6 +950,66 @@ assets/sprites/player/spraying_hand.bmp
 16
 16
 41
+
+#OBJECTS IN SECTOR 3
+#object0 in sector3 shopper
+9
+40
+600
+9
+48
+0
+4
+10
+35
+595
+45
+595
+9
+45
+595
+45
+605
+11
+45
+605
+35
+605
+12
+35
+605
+35
+595
+
+#object1 in sector3 shopper
+9
+210
+650
+9
+48
+0
+4
+9
+205
+645
+215
+645
+10
+215
+645
+215
+655
+12
+215
+655
+205
+655
+11
+205
+655
+205
+645
+
 
 
 ##SECTOR 4###########################################################3
