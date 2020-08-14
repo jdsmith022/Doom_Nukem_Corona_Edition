@@ -8,7 +8,7 @@
 # define APPLE		1
 # define BACON		2
 # define CHERRY		3
-# define JARS		4
+# define JAM		4
 # define SODA		5
 # define WATER		6
 # define WINE		7
@@ -28,12 +28,28 @@
 # define GRAPES		21
 # define TOILET		22
 # define LEMON		23
+# define ALCOHOL	24
+# define WINE2		25
+# define WINE3		26
+# define TART		27
+# define BUTTER		28
+# define PIE_CHERRY	29
+# define PIE_LEMON	30
+# define KETCHUP	31
+# define TOMATO		32
+# define CHOCOLATE	33
+# define KIWI		34
+# define OLIVE		35
+# define CUCUMBER	36
+# define PAPRIKA	37
+# define MARMELADE	38
+
 
 #define TEX_APPLE	"assets/textures/shelves/apple.bmp"
 #define TEX_BACON	"assets/textures/shelves/sausage_bacon.bmp"
 #define TEX_CHERRY	"assets/textures/shelves/cherry-strawberry.bmp"
-#define TEX_JARS	"assets/textures/shelves/jar-wall.bmp"
-#define TEX_SODA	"assets/textures/shelves/soda.bmp"
+#define TEX_JAM		"assets/textures/shelves/jar6.bmp"
+#define TEX_COLA	"assets/textures/shelves/soda2.bmp"
 #define TEX_WATER	"assets/textures/shelves/water.bmp"
 #define TEX_WINE	"assets/textures/shelves/wine.bmp"
 #define TEX_COOKIE	"assets/textures/shelves/cookies.bmp"
@@ -45,8 +61,8 @@
 #define SPR_APPLE	"assets/sprites/groceries/red_apple.bmp"
 #define SPR_BACON	"assets/sprites/groceries/bacon.bmp"
 #define SPR_CHERRY	"assets/sprites/groceries/cherry.bmp"
-#define SPR_JARS	"assets/sprites/groceries/jam.bmp"
-#define SPR_SODA	"assets/sprites/groceries/cola.bmp"
+#define SPR_JAM		"assets/sprites/groceries/jam.bmp"
+#define SPR_COLA	"assets/sprites/groceries/cola.bmp"
 #define SPR_WATER	"assets/sprites/groceries/water.bmp"
 #define SPR_WINE	"assets/sprites/groceries/wine1.bmp"
 #define SPR_COOKIE	"assets/sprites/groceries/Cookie.bmp"
@@ -68,8 +84,8 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	{TEX_APPLE, SPR_APPLE, APPLE},
 	{TEX_BACON, SPR_BACON, BACON},
 	{TEX_CHERRY, SPR_CHERRY, CHERRY},
-	{TEX_JARS, SPR_JARS, JARS},
-	{TEX_SODA, SPR_SODA, SODA},
+	{TEX_JAM, SPR_JAM, JAM},
+	{TEX_COLA, SPR_COLA, SODA},
 	{TEX_WATER, SPR_WATER, WATER},
 	{TEX_WINE, SPR_WINE, WINE},
 	{TEX_CHEESE, SPR_CHEESE, CHEESE},
@@ -112,7 +128,7 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	},
 	{
 		"assets/textures/shelves/meat.bmp",
-		"assets/sprites/groceries/steak.bmp",
+		"assets/sprites/groceries/jerky.bmp",
 		MEAT
 	},
 	{
@@ -130,17 +146,91 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 		"assets/sprites/groceries/red_grapes.bmp",
 		GRAPES
 	},
-
 	{
 		"assets/textures/shelves/toiletpaper.bmp",
 		"assets/sprites/groceries/toiletpaper.bmp",
 		TOILET
 	},
 	{
-		"assets/textures/shelves/citrus.bmp",
+		"assets/textures/shelves/citrus2.bmp",
 		"assets/sprites/groceries/lemon.bmp",
 		LEMON
 	},
+	{
+		"assets/textures/shelves/alcohol.bmp",
+		"assets/sprites/groceries/whiskey.bmp",
+		ALCOHOL
+	},
+	{
+		"assets/textures/shelves/wine1.bmp",
+		"assets/sprites/groceries/wine2.bmp",
+		WINE2
+	},
+	{
+		"assets/textures/shelves/wine2.bmp",
+		"assets/sprites/groceries/wine3.bmp",
+		WINE3
+	},
+	{
+		"assets/textures/shelves/tarts.bmp",
+		"assets/sprites/groceries/tart.bmp",
+		TART
+	},
+	{
+		"assets/textures/shelves/butter.bmp",
+		"assets/sprites/groceries/butter.bmp",
+		BUTTER
+	},
+	{
+		"assets/textures/shelves/pie1.bmp",
+		"assets/sprites/groceries/cherry_pie.bmp",
+		PIE_CHERRY
+	},
+	{
+		"assets/textures/shelves/pie2.bmp",
+		"assets/sprites/groceries/lemon_pie.bmp",
+		PIE_LEMON
+	},
+	{
+		"assets/textures/shelves/sauces.bmp",
+		"assets/sprites/groceries/ketchup.bmp",
+		KETCHUP
+	},
+	{
+		"assets/textures/shelves/veggies.bmp",
+		"assets/sprites/groceries/tomato.bmp",
+		TOMATO
+	},
+	{
+		"assets/textures/shelves/chocolate.bmp",
+		"assets/sprites/groceries/tony1.bmp",
+		CHOCOLATE
+	},
+	{
+		"assets/textures/shelves/fruit.bmp",
+		"assets/sprites/groceries/kiwi.bmp",
+		KIWI
+	},
+	{
+		"assets/textures/shelves/veggies2.bmp",
+		"assets/sprites/groceries/olive.bmp",
+		OLIVE
+	},
+	{
+		"assets/textures/shelves/veggies3.bmp",
+		"assets/sprites/groceries/cucumber.bmp",
+		CUCUMBER
+	},
+	{
+		"assets/textures/shelves/paprika.bmp",
+		"assets/sprites/groceries/red_paprika.bmp",
+		PAPRIKA
+	},
+	{
+		"assets/textures/shelves/jar5.bmp",
+		"assets/sprites/groceries/marmelade.bmp",
+		MARMELADE
+	}
 };
 
 void				set_sprite(t_doom *doom, uint8_t type, t_item *item);
