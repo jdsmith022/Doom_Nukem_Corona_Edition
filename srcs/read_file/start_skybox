@@ -197,6 +197,7 @@ assets/textures/checkout/checkout.bmp
 
 
 
+
 #object library #trolley and trolle handle bar needs to be added
 31
 #0
@@ -263,9 +264,9 @@ assets/sprites/player/spray_hand.bmp
 assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
-43
+48
 #number of walls
-327
+353
 #number of objects
 0
 
@@ -3184,8 +3185,8 @@ assets/sprites/player/spraying_hand.bmp
 15
 205
 
-#sidedef##PORTAL TO SECTOR ????###
--1
+#sidedef##PORTAL TO SECTOR 44###
+44
 1504
 2016
 1440
@@ -4201,9 +4202,9 @@ assets/sprites/player/spraying_hand.bmp
 1408
 1312
 0
-39
-39
-39
+23
+23
+23
 282
 
 #sidedef
@@ -4266,8 +4267,8 @@ assets/sprites/player/spraying_hand.bmp
 16
 287
 
-#sidedef##PORTAL TO SECTOR ##
--1
+#sidedef##PORTAL TO SECTOR 43##
+43
 1440
 1510
 1504
@@ -4302,16 +4303,16 @@ assets/sprites/player/spraying_hand.bmp
 23
 290
 
-#sidedef##PORTAL TO SECTOR
--1
+#sidedef##PORTAL TO SECTOR 46##
+46
 1664
 1446
 1664
 1382
 0
-16
-16
-16
+78
+78
+78
 291
 
 #sidedef
@@ -4321,9 +4322,9 @@ assets/sprites/player/spraying_hand.bmp
 1664
 1312
 0
-16
-16
-16
+15
+15
+15
 292
 
 
@@ -4397,7 +4398,7 @@ assets/sprites/player/spraying_hand.bmp
 1312
 1408
 1382
-0
+5
 15
 15
 15
@@ -4409,7 +4410,7 @@ assets/sprites/player/spraying_hand.bmp
 1382
 1376
 1382
-0
+5
 15
 15
 15
@@ -4729,7 +4730,7 @@ assets/sprites/player/spraying_hand.bmp
 15
 318
 
-#sector[41]## SECTOR 41##########################################################
+#sector[41]## SECTOR 41 EASTER EGG##########################################################
 12
 0
 17
@@ -4807,7 +4808,6 @@ assets/sprites/player/spraying_hand.bmp
 42
 0
 
-
 #sidedef##PORTAL TO SECTOR 41##
 41
 1152
@@ -4856,6 +4856,392 @@ assets/sprites/player/spraying_hand.bmp
 78
 326
 
+#sector[43]## SECTOR 43##########################################################
+10
+0
+17
+0
+-1
+0
+14
+0
+-1
+8
+0
+43
+0
+
+#sidedef##PORTAL TO SECTOR 35##
+35
+1440
+1510
+1504
+1510
+0
+16
+16
+16
+327
+
+#sidedef
+-1
+1504
+1510
+1504
+1702
+0
+46
+46
+46
+328
+
+#sidedef
+-1
+1504
+1510
+1504
+1702
+0
+61
+61
+61
+329
+
+#sidedef##PORTAL TO SECTOR 44##
+44
+1504
+1702
+1408
+1702
+0
+61
+61
+61
+330
+
+#sidedef
+-1
+1408
+1702
+1216
+1702
+0
+60
+60
+60
+331
+
+#sidedef
+-1
+1216
+1702
+1120
+1702
+0
+16
+16
+16
+332
+
+#sidedef##PORTAL TO SECTOR 45##
+45
+1120
+1702
+1120
+1510
+0
+16
+16
+16
+333
+
+#sidedef
+-1
+1120
+1510
+1440
+1510
+0
+46
+46
+46
+334
+
+#sector[44]## SECTOR 44##########################################################
+10
+0
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+44
+0
+
+#sidedef##PORTAL TO SECTOR 43##
+43
+1504
+1702
+1408
+1702
+0
+61
+61
+61
+335
+
+#sidedef
+-1
+1504
+1702
+1504
+2016
+0
+16
+16
+16
+336
+
+#sidedef##PORTAL TO SECTOR 26##
+26
+1504
+2016
+1440
+2016
+0
+80
+80
+80
+337
+
+#sidedef
+-1
+1440
+2016
+1408
+1702
+0
+15
+15
+15
+338
+
+#sector[45]## SECTOR 45##########################################################
+10
+35
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+45
+0
+
+#sidedef##PORTAL TO SECTOR 43##
+43
+1120
+1702
+1120
+1510
+0
+78
+78
+78
+339
+
+#sidedef
+-1
+1120
+1702
+1088
+1702
+0
+78
+78
+78
+340
+
+#sidedef
+-1
+1088
+1510
+1088
+1702
+0
+78
+78
+78
+341
+
+#sidedef
+-1
+1088
+1510
+1120
+1510
+0
+78
+78
+78
+342
+
+#sector[46]## SECTOR 46##########################################################
+8
+10
+17
+0
+-1
+0
+14
+0
+-1
+4
+0
+46
+0
+
+#sidedef##PORTAL TO SECTOR 35##
+35
+1664
+1446
+1664
+1382
+0
+15
+15
+15
+343
+
+#sidedef
+-1
+1664
+1446
+1952
+1446
+0
+15
+15
+15
+344
+
+#sidedef##PORTAL TO SECTOR  47##
+47
+1952
+1446
+1952
+1382
+0
+15
+15
+15
+345
+
+#sidedef
+-1
+1952
+1382
+1664
+1382
+0
+15
+15
+15
+346
+
+#sector[47]## SECTOR 47 WAREHOUSE##########################################################
+8
+0
+17
+0
+-1
+96
+14
+0
+-1
+6
+0
+47
+0
+
+#sidedef##PORTAL TO SECTOR  46##
+46
+1952
+1446
+1952
+1382
+0
+73
+73
+73
+347
+
+#sidedef
+-1
+1952
+1191
+1952
+1382
+0
+73
+73
+73
+348
+
+#sidedef
+-1
+1952
+1191
+3296
+1192
+0
+73
+73
+73
+349
+
+#sidedef
+-1
+3296
+1382
+3296
+1638
+0
+73
+73
+73
+350
+
+#sidedef
+-1
+3296
+1638
+1952
+1638
+0
+73
+73
+73
+351
+
+#sidedef
+-1
+1952
+1638
+1952
+1446
+0
+73
+73
+73
+352
 
 #moving objects
 0
