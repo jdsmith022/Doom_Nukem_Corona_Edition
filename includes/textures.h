@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-#define NUM_OF_GROCERIES 10
+#define NUM_OF_GROCERIES 23
 
 # define APPLE		1
 # define BACON		2
@@ -20,6 +20,14 @@
 # define SOAP		13
 # define ONION		14
 # define PEPPER		15
+# define CHICKEN	16
+# define FISH		17
+# define MEAT		18
+# define CEREAL		19
+# define TEA		20
+# define GRAPES		21
+# define TOILET		22
+# define LEMON		23
 
 #define TEX_APPLE	"assets/textures/shelves/apple.bmp"
 #define TEX_BACON	"assets/textures/shelves/sausage_bacon.bmp"
@@ -30,7 +38,6 @@
 #define TEX_WINE	"assets/textures/shelves/wine.bmp"
 #define TEX_COOKIE	"assets/textures/shelves/cookies.bmp"
 #define TEX_CHEESE	"assets/textures/shelves/cheese.bmp"
-#define TEX_BREAD	"assets/textures/shelves/bread.bmp"
 #define TEX_POTATO	"assets/textures/shelves/potatoes.bmp"
 #define TEX_MELON	"assets/textures/shelves/melon.bmp"
 #define TEX_SOAP	"assets/textures/shelves/soaps.bmp"
@@ -44,7 +51,6 @@
 #define SPR_WINE	"assets/sprites/groceries/wine1.bmp"
 #define SPR_COOKIE	"assets/sprites/groceries/Cookie.bmp"
 #define SPR_CHEESE	"assets/sprites/groceries/Cheese.bmp"
-#define SPR_BREAD 	"assets/sprites/groceries/bread.bmp"
 #define SPR_POTATO 	"assets/sprites/groceries/potato.bmp"
 #define SPR_MELON	"assets/textures/shelves/melon.bmp"
 #define SPR_SOAP	"assets/sprites/groceries/soap.bmp"
@@ -66,9 +72,13 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	{TEX_SODA, SPR_SODA, SODA},
 	{TEX_WATER, SPR_WATER, WATER},
 	{TEX_WINE, SPR_WINE, WINE},
-	{TEX_COOKIE, SPR_COOKIE, COOKIE},
 	{TEX_CHEESE, SPR_CHEESE, CHEESE},
-	{TEX_BREAD, SPR_BREAD, BREAD},
+	{TEX_COOKIE, SPR_COOKIE, COOKIE},
+	{
+		"assets/sprites/groceries/bread.bmp", 
+		"assets/textures/shelves/bread.bmp", 
+		BREAD
+	},
 	{TEX_POTATO, SPR_POTATO, POTATO},
 	{
 		"assets/textures/shelves/melon.bmp", 
@@ -86,15 +96,51 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 		ONION
 	},
 	{
-		"assets/textures/shelves/onions.bmp",
-		"assets/sprites/groceries/red_onion.bmp",
-		ONION
-	},
-	{
 		"assets/textures/shelves/peppers.bmp",
 		"assets/sprites/groceries/red_pepper.bmp",
 		PEPPER
-	}
+	},
+	{
+		"assets/textures/shelves/chicken.bmp",
+		"assets/sprites/groceries/chicken.bmp",
+		CHICKEN
+	},
+	{
+		"assets/textures/shelves/fish.bmp",
+		"assets/sprites/groceries/fish.bmp",
+		FISH
+	},
+	{
+		"assets/textures/shelves/meat.bmp",
+		"assets/sprites/groceries/steak.bmp",
+		MEAT
+	},
+	{
+		"assets/textures/shelves/cereal.bmp",
+		"assets/sprites/groceries/cereal.bmp",
+		CEREAL
+	},
+	{
+		"assets/textures/shelves/tea.bmp",
+		"assets/sprites/groceries/tea.bmp",
+		TEA
+	},
+	{
+		"assets/textures/shelves/grapes.bmp",
+		"assets/sprites/groceries/red_grapes.bmp",
+		GRAPES
+	},
+
+	{
+		"assets/textures/shelves/toiletpaper.bmp",
+		"assets/sprites/groceries/toiletpaper.bmp",
+		TOILET
+	},
+	{
+		"assets/textures/shelves/citrus.bmp",
+		"assets/sprites/groceries/lemon.bmp",
+		LEMON
+	},
 };
 
 void				set_sprite(t_doom *doom, uint8_t type, t_item *item);
