@@ -41,7 +41,6 @@ void			handle_groceries(t_doom *doom)
 {
 	uint8_t		type;
 
-	
 	if (!handle_mouse_state(doom))
 		return ;
 	if (click_on_basket(&doom->groceries->basket, &type, MOUSE_X, MOUSE_Y)){

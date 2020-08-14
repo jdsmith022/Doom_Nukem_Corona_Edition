@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-#define NUM_OF_GROCERIES 23
+#define NUM_OF_GROCERIES 38
 
 # define APPLE		1
 # define BACON		2
@@ -43,7 +43,8 @@
 # define CUCUMBER	36
 # define PAPRIKA	37
 # define MARMELADE	38
-
+# define STEAK		39
+# define BROWNIE	40
 
 #define TEX_APPLE	"assets/textures/shelves/apple.bmp"
 #define TEX_BACON	"assets/textures/shelves/sausage_bacon.bmp"
@@ -230,6 +231,16 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 		"assets/textures/shelves/jar5.bmp",
 		"assets/sprites/groceries/marmelade.bmp",
 		MARMELADE
+	},
+	{
+		"assets/textures/shelves/beef.bmp",
+		"assets/sprites/groceries/steak.bmp",
+		STEAK
+	},
+	{
+		"assets/textures/shelves/sweets.bmp",
+		"assets/sprites/groceries/brownie.bmp",
+		BROWNIE
 	}
 };
 
