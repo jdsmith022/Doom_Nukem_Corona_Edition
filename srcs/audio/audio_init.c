@@ -51,6 +51,7 @@ void	load_audio(t_audio *audio)
 	}
 	audio->music[0] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
 	audio->music[1] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_2));
+	Mix_PlayMusic(audio->music[0], -1);
 	while (i < NUM_OF_SOUNDS){
 		if (!audio->sounds[i])
 			printf("Mix_LoadWAV: %s\n", Mix_GetError());

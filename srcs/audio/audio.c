@@ -40,11 +40,6 @@ void	audio(t_doom *doom, t_event *event)
 		return ;
 	if (AUDIO->music_vol && doom->is_running)
 		play_music(AUDIO->music[1]);
-	if (doom->menu->pause){
-		Mix_VolumeMusic(MIX_MAX_VOLUME / 10);
-	}
-	else
-		Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	if (doom->audio->sound_vol){
 		play_movement_sounds(AUDIO, event);
 		play_action_sounds(AUDIO, event);

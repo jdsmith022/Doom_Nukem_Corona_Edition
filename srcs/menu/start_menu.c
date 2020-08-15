@@ -2,6 +2,7 @@
 #include "../../includes/menu.h"
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
+#include "../../includes/audio.h"
 
 static void	set_menu_game_variables(t_doom *doom)
 {
@@ -29,6 +30,7 @@ void		doom_start(t_doom *doom)
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
+	Mix_HaltMusic();
 	if (doom->game_editor == FALSE)
 		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
 	set_menu_game_variables(doom);
