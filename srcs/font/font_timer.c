@@ -13,7 +13,7 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 	}
 	else
 	{
-		diff = find_time_difference(doom);
+		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
 		if (diff <= 3)
 		{
 			print_vanishing_text_box(doom, start_dex, end_dex);
@@ -36,7 +36,7 @@ static void		font_timer_box_long(t_doom *doom, bool *flag,
 	}
 	else
 	{
-		diff = find_time_difference(doom);
+		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
 		if (diff <= 10)
 			print_vanishing_text_box(doom, start_dex, end_dex);
 	}
@@ -56,7 +56,7 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 	}
 	else
 	{
-		diff = find_time_difference(doom);
+		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
 		if (diff <= 8)
 			print_vanishing_text_box(doom, 0, 3);
 		else

@@ -161,7 +161,8 @@ typedef struct		s_event {
 	bool			light_timer;
 	struct timespec	light_time;
 	double			hold_light;
-
+	int				hold_light_sector;
+	int				click_light;
 	int				fall_count;
 }					t_event;
 

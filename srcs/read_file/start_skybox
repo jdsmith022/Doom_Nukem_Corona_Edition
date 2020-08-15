@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-85
+87
 
 ## OUTSIDE ASSETS##
 #0
@@ -194,9 +194,15 @@ assets/textures/checkout/tabacco.bmp
 #83
 assets/textures/checkout/checkout.bmp
 
-##EASTER TEXTURES##
+##EXTRA TEXTURES##
 #84
 assets/textures/shelves/toiletpaper_full_wall.bmp
+
+###POSTERS
+#85
+assets/textures/poster/light_switch_off.bmp
+#86
+assets/textures/poster/light_switch_on.bmp
 
 
 
@@ -517,7 +523,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-9
+8
 0
 1
 3
@@ -606,18 +612,6 @@ assets/sprites/player/spraying_hand.bmp
 15
 15
 23
-
-#poster1 ->sanitizer
--1
-192
-316
-192
-332
-8
-11
-11
-11
-24
 
 #poster2 ->corona
 -1
@@ -1368,7 +1362,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-4
+5
 3
 5
 0
@@ -1420,6 +1414,19 @@ assets/sprites/player/spraying_hand.bmp
 16
 16
 53
+
+##LIGHT SWITCH##
+#poster
+-1
+96
+790
+96
+806
+4
+85
+85
+85
+24
 
 ##OBJECTS IN SECTOR 5##
 #object0 in sector5 box

@@ -92,8 +92,11 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		{
 			if (doom->lib.sidedef[x].action == 4 || \
 			doom->lib.sidedef[x].action == 8)
+			{
+				doom->i_sidedef = x;
 				save_poster = init_poster(x, distance, intersect,\
 					&doom->lib.sidedef[x]);
+			}
 			else
 			{
 				min_distance = distance;

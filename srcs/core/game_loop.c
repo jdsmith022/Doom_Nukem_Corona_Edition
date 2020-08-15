@@ -48,7 +48,6 @@ void				game_loop(t_doom *doom)
 			// audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
-			sliding_door(doom, -1); //move to its own file
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);

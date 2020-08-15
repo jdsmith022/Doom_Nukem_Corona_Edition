@@ -57,7 +57,7 @@ HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
 MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu
 ACTION_FILES = action light_switch find_infection moving_sidedef sprite_interaction \
-				player_action
+				player_action action_handler
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)

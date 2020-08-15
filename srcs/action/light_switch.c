@@ -4,6 +4,7 @@
 static void		light_timer(t_doom *doom, bool *flag)
 {
 	int diff;
+	int	sector;
 
 	if (*flag == TRUE)
 	{
@@ -12,11 +13,13 @@ static void		light_timer(t_doom *doom, bool *flag)
 	}
 	else
 	{
-		diff = find_time_difference(doom);
+		sector = doom->own_event.hold_light_sector;
+		diff = find_time_difference(doom, doom->own_event.light_time.tv_sec);
 		if (diff > 5)
 		{
 			doom->own_event.light_switch = FALSE;
-			doom->lib.sector[doom->i_sector].light_level = \
+			doom->own_event.click_light = -1;
+			doom->lib.sector[sector].light_level = \
 				doom->own_event.hold_light;
 		}
 	}
@@ -24,14 +27,18 @@ static void		light_timer(t_doom *doom, bool *flag)
 
 static void		change_sector_light(t_doom *doom)
 {
-	t_sector sector;
+	t_sector	*sector;
+	int			id;
 
-	sector = doom->lib.sector[doom->i_sector];
-	doom->own_event.hold_light = sector.light_level;
-	if (sector.light_level > 10)
-		sector.light_level = 10;
+	id = doom->lib.sidedef[doom->i_sidedef].sector;
+	sector = &doom->lib.sector[id];
+	doom->own_event.hold_light = sector->light_level;
+	doom->own_event.hold_light_sector = sector->id;
+	if (sector->light_level < 1.0)
+		sector->light_level = 1.0;
 	else
-		sector.light_level = 10;
+		sector->light_level = 0.5;
+	doom->own_event.click_light = 1;
 }
 
 static void		check_poster_location(t_doom *doom)
@@ -39,7 +46,7 @@ static void		check_poster_location(t_doom *doom)
 	t_sidedef poster;
 
 	poster = doom->lib.sidedef[doom->i_sidedef];
-	if (poster.action == 5)
+	if (poster.action == 4)
 	{
 		doom->own_event.light_switch = TRUE;
 		doom->own_event.light_timer = TRUE;
@@ -48,10 +55,13 @@ static void		check_poster_location(t_doom *doom)
 
 void			light_switch(t_doom *doom)
 {
-	check_poster_location(doom);
+	if (doom->own_event.light_switch == FALSE && \
+	doom->own_event.mouse_press == TRUE)
+		check_poster_location(doom);
 	if (doom->own_event.light_switch == TRUE)
 	{
-		change_sector_light(doom);
+		if (doom->own_event.click_light == -1)
+			change_sector_light(doom);
 		light_timer(doom, &doom->own_event.light_timer);
 	}
 }
