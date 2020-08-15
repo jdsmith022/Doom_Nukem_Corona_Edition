@@ -1,6 +1,17 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
+#include "../../includes/gameplay.h"
+#include "../../includes/hud.h"
 
+void	sanitizer_refill(t_doom *doom)
+{
+	if (MOUSE_PRESSED && \
+	doom->lib.sidedef[doom->i_sidedef].action == 8)
+	{
+		doom->hud->sanitizer = TRUE;
+		doom->own_event.mouse_press = FALSE;
+	}
+}
 
 int		init_poster(int x, double distance, t_point intersect,
 			t_sidedef *poster)

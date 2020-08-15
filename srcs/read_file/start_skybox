@@ -276,7 +276,7 @@ assets/sprites/player/spraying_hand.bmp
 #number of sectors
 50
 #number of walls
-368
+371
 #number of objects
 15
 
@@ -613,13 +613,14 @@ assets/sprites/player/spraying_hand.bmp
 15
 23
 
-#poster2 ->corona
+##Sanitizer Refill##
+#poster
 -1
-96
+192
 316
-96
+192
 332
-4
+8
 11
 11
 11
@@ -707,7 +708,7 @@ assets/sprites/player/spraying_hand.bmp
 30
 
 
-#sidedef31#### PORTAL to sector 2
+#sidedef31#### PORTAL to sector 3
 3
 192
 576
@@ -851,7 +852,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedefs
 -1
-0
+96
 576
 192
 576
@@ -933,7 +934,7 @@ assets/sprites/player/spraying_hand.bmp
 21
 40
 
-#sidedefs35
+#sidedefs## PORTAL TO SECTOR 4##
 4
 288
 768
@@ -3147,7 +3148,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-15
+16
 0
 22
 0
@@ -3332,6 +3333,19 @@ assets/sprites/player/spraying_hand.bmp
 16
 16
 178
+
+##LIGHT SWITCH##
+#poster
+-1
+416
+2304
+432
+2304
+4
+85
+85
+85
+370
 
 
 #sector[23]## SECTOR 23##########################################################
@@ -3931,7 +3945,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 10
 -1
-31
+32
 0
 29
 0
@@ -4313,6 +4327,19 @@ assets/sprites/player/spraying_hand.bmp
 48
 48
 254
+
+##SANITIZER REFILL##
+#poster
+-1
+576
+656
+576
+672
+8
+11
+11
+11
+369
 
 #sector[30]## SECTOR 30##########################################################
 12
@@ -4875,7 +4902,6 @@ assets/sprites/player/spraying_hand.bmp
 15
 292
 
-
 ##portal walls to 36##
 #sidedef
 36
@@ -4890,7 +4916,7 @@ assets/sprites/player/spraying_hand.bmp
 293
 
 #sidedef
-36
+-1
 1408
 1382
 1376
@@ -4940,25 +4966,25 @@ assets/sprites/player/spraying_hand.bmp
 15
 296
 
-#sidedef
+#sidedef##PORTAL TO SECTOR 35##
 35
 1408
 1312
 1408
 1382
-5
+0
 15
 15
 15
 297
 
 #sidedef
-35
+-1
 1408
 1382
 1376
 1382
-5
+0
 15
 15
 15
@@ -5137,8 +5163,7 @@ assets/sprites/player/spraying_hand.bmp
 85
 85
 85
-365
-
+370
 
 #sector[39]## SECTOR 39##########################################################
 4
@@ -5150,7 +5175,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-7
+8
 0
 39
 0
@@ -5239,6 +5264,19 @@ assets/sprites/player/spraying_hand.bmp
 85
 85
 366
+
+##SANITIZER##
+#poster
+-1
+1095
+1574
+1111
+1574
+8
+11
+11
+11
+370
 
 #sector[40]## SECTOR 40##########################################################
 7
@@ -5778,7 +5816,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-6
+7
 0
 47
 0
@@ -5854,6 +5892,20 @@ assets/sprites/player/spraying_hand.bmp
 73
 73
 352
+
+##LIGHT SWITCH##
+#poster
+-1
+2816
+1393
+2816
+1409
+4
+85
+85
+85
+370
+
 
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10

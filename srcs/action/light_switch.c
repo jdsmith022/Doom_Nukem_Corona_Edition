@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
+#include "../../includes/gameplay.h"
 
 static void		light_timer(t_doom *doom, bool *flag)
 {
@@ -57,8 +58,7 @@ static void		check_poster_location(t_doom *doom)
 
 void			light_switch(t_doom *doom)
 {
-	if (doom->own_event.light_switch == FALSE && \
-	doom->own_event.mouse_press == TRUE)
+	if (MOUSE_PRESSED && doom->own_event.light_switch == FALSE)
 		check_poster_location(doom);
 	if (doom->own_event.light_switch == TRUE)
 	{

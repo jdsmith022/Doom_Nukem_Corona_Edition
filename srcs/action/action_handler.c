@@ -6,8 +6,11 @@
 void	action_handler(t_doom *doom)
 {
 	sliding_door(doom, -1);
+	light_switch(doom);
 	if (doom->own_event.select == TRUE)
-		light_switch(doom);
+	{
+		sanitizer_refill(doom);
+	}
 	if (doom->own_event.shoot == TRUE && doom->hud->sanitizer_level > 0)
 	{
 		if (MOUSE_PRESSED)
