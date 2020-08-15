@@ -18,7 +18,7 @@ static void	sanitizer_pause(t_doom *doom)
 		if (diff > 10)
 		{
 			doom->own_event.refill = FALSE;
-			doom->own_event.sanitizer_refills = -1;
+			doom->own_event.sanitizer_refills = 0;
 		}
 	}
 }
@@ -40,7 +40,7 @@ void	sanitizer_refill(t_doom *doom)
 	{
 		doom->own_event.sanitizer_refills += 1;
 		if (doom->own_event.sanitizer_refills < 3 \
-		&& doom->own_event.sanitizer_refills > -1)
+		&& doom->own_event.sanitizer_refills > 0)
 			doom->hud->sanitizer = TRUE;
 		doom->own_event.mouse_press = FALSE;
 	}
