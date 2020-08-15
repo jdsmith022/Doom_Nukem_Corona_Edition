@@ -119,7 +119,7 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	return (sprite_hit);
 }
 
-void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave non-static
 {
 	t_point		isect;
 	int			safe_x;
@@ -159,7 +159,6 @@ void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		SIDEDEFS[safe_x].opp_sector != prev_sector)
 		check_hit(doom, ray, SIDEDEFS[safe_x].opp_sector, sector);
 }
-
 
 void    shoot(t_doom *doom)
 {
