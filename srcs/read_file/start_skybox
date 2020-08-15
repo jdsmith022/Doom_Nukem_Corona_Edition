@@ -553,15 +553,8 @@ assets/sprites/groceries/jam3.bmp
 #OBJECTS IN SECTOR 0
 #object0 in sector0 plant
 0
-<<<<<<< HEAD
 30
 30
-=======
-14
-0
--1
-8
->>>>>>> master
 0
 32
 1
@@ -822,7 +815,7 @@ assets/sprites/groceries/jam3.bmp
 253
 349
 
-#change bock to 0 once you can fetch the clock
+#change block to 0 once you can fetch the clock
 #object8 in sector0 clock
 8
 100
@@ -1738,13 +1731,8 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-<<<<<<< HEAD
 4
 4
-=======
-5
-3
->>>>>>> master
 5
 0
 
@@ -1952,13 +1940,8 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-<<<<<<< HEAD
 4
 5
-=======
-5
-0
->>>>>>> master
 6
 0
 
@@ -2010,7 +1993,6 @@ assets/sprites/groceries/jam3.bmp
 16
 57
 
-<<<<<<< HEAD
 #object0 in sector6 virus
 26
 130
@@ -2175,21 +2157,6 @@ assets/sprites/groceries/jam3.bmp
 1105
 245
 1095
-=======
-##LIGHT SWITCH##
-#poster
--1
-288
-1152
-273
-1136
-4
-85
-85
-85
-361
-
->>>>>>> master
 
 #sector[7]## SECTOR 7##########################################################
 5
@@ -2201,13 +2168,8 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-<<<<<<< HEAD
 4
 4
-=======
-5
-0
->>>>>>> master
 7
 0
 
@@ -2259,7 +2221,6 @@ assets/sprites/groceries/jam3.bmp
 16
 61
 
-<<<<<<< HEAD
 #OBJECTS IN SECTOR 7 total: 3
 #object0 in sector7 virus
 31
@@ -2392,20 +2353,6 @@ assets/sprites/groceries/jam3.bmp
 1115
 445
 1105
-=======
-##LIGHT SWITCH##
-#poster
--1
-470
-1056
-454
-1056
-4
-85
-85
-85
-362
->>>>>>> master
 
 #sector[8]## SECTOR 8##########################################################
 10
