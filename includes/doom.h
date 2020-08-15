@@ -328,6 +328,7 @@ typedef struct		s_doom {
 	bool			start_timer;
 	double			player_std_height;
 	double			player_height;
+	double			cam_slope_height;
 	double			player_width;
 	int				texture_width;
 	int				texture_height;

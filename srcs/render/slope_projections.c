@@ -1,5 +1,19 @@
 #include "../../includes/doom.h"
 
+static double		update_cam_height(t_doom *doom, t_sidedef sidedef,\
+					t_sector *sector)
+{
+	double		distance;
+	t_line		slope;
+	double		slope_height;
+
+	slope = doom->lib.sidedef[sector->slope_floor_id].line;
+	distance = fabs(point_line_distance(doom->pos, slope));
+	slope_height = tan(sector->slope_floor) * distance;
+	printf("%f\n", slope_height);
+	return (slope_height);
+}
+
 double			set_slope_delta(t_doom *doom, t_sector *sector, int y)
 {
 	double		plane_distance;
@@ -41,7 +55,6 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.distance = 0;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
-	//sector->slope_floor = 6 * (PI / 180);
 	if (sidedef.sector != sector->id)
 		sidedef = get_other_side_of_line(doom, sidedef, *sector);
 	if (sidedef.id == sector->slope_floor_id)
@@ -70,4 +83,8 @@ void		slope_plane_settings(t_doom *doom, t_sidedef sidedef,
 			set_slope_bottom_values(doom, sidedef, sector);
 		sector->height_floor += sector->slope.height;
 	}
+	//if (doom->i_sector == sector->id)
+	//	doom->cam_slope_height = 0; //update_cam_height(doom, sidedef, sector);
+	//else
+	//	doom->cam_slope_height = 0;
 }
