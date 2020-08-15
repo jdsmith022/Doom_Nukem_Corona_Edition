@@ -58,13 +58,13 @@ static void	add_inf_to_sect(t_sector *sector, int safe, int i, int tex_len)
 		sector->height_floor = safe;
 	add_texture_sect(sector, safe, i, tex_len);
 	if (i == 3)
-		sector->slope_floor = safe;
+		sector->slope_floor =  safe * (PI / 180);
 	if (i == 4)
 		sector->slope_floor_id = safe;
 	if (i == 5)
 		sector->height_ceiling = safe;
 	if (i == 7)
-		sector->slope_ceiling = safe;
+		sector->slope_ceiling =  safe * (PI / 180);
 	if (i == 8)
 		sector->slope_ceiling_id = safe;
 	if (i == 11)
