@@ -203,7 +203,7 @@ assets/textures/shelves/toiletpaper_full_wall.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-38
+49
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -280,7 +280,28 @@ assets/sprites/plants/plant_2.bmp
 assets/sprites/plants/plant_3.bmp
 #37
 assets/sprites/health/clock.bmp
-
+#38
+assets/sprites/groceries/glass_jar1.bmp
+#39 glas jar 2 does not work
+assets/sprites/groceries/glass_jar3.bmp
+#40
+assets/sprites/groceries/glass_jar3.bmp
+#41
+assets/sprites/groceries/glass_jar4.bmp
+#42
+assets/sprites/groceries/glass_jar5.bmp
+#43
+assets/sprites/groceries/glass_jar6.bmp
+#44
+assets/sprites/groceries/glass_jar7.bmp
+#45
+assets/sprites/groceries/glass_jar8.bmp
+#46
+assets/sprites/groceries/jam.bmp
+#47
+assets/sprites/groceries/jam2.bmp
+#48
+assets/sprites/groceries/jam3.bmp
 
 
 
@@ -289,7 +310,7 @@ assets/sprites/health/clock.bmp
 #number of walls
 359
 #number of objects
-35
+52
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -949,7 +970,7 @@ assets/sprites/health/clock.bmp
 
 #OBJECTS IN SECTOR 1
 #object0 in sector1 virus
-10
+9
 170
 364
 4
@@ -1087,7 +1108,7 @@ assets/sprites/health/clock.bmp
 
 #OBJECTS IN SECTOR 2
 #object0 in sector2 box
-11
+10
 45
 500
 10
@@ -1116,7 +1137,7 @@ assets/sprites/health/clock.bmp
 495
 
 #object1 in sector2 crate
-12
+11
 200
 520
 10
@@ -1145,7 +1166,7 @@ assets/sprites/health/clock.bmp
 515
 
 #object2 in sector2 crate
-13
+12
 40
 530
 10
@@ -1301,7 +1322,7 @@ assets/sprites/health/clock.bmp
 
 #OBJECTS IN SECTOR 3
 #object0 in sector3 shopper
-14
+13
 40
 600
 9
@@ -1330,7 +1351,7 @@ assets/sprites/health/clock.bmp
 590
 
 #object1 in sector3 shopper
-15
+14
 210
 650
 9
@@ -1476,7 +1497,7 @@ assets/sprites/health/clock.bmp
 
 #OBJECTS IN SECTOR4
 #object0 in sector4 virus
-16
+15
 300
 650
 4
@@ -1509,7 +1530,7 @@ assets/sprites/health/clock.bmp
 645
 
 #object1 in sector4 virus
-17
+16
 430
 600
 4
@@ -1542,7 +1563,7 @@ assets/sprites/health/clock.bmp
 595
 
 #object2 in sector4 virus
-18
+17
 350
 670
 4
@@ -1575,7 +1596,7 @@ assets/sprites/health/clock.bmp
 665
 
 #object3 in sector4 virus
-19
+18
 500
 680
 4
@@ -1608,7 +1629,7 @@ assets/sprites/health/clock.bmp
 675
 
 #object4 in sector4 virus
-20
+19
 320
 710
 4
@@ -1641,7 +1662,7 @@ assets/sprites/health/clock.bmp
 705
 
 #object5 in sector4 virus
-21
+20
 400
 700
 4
@@ -1674,7 +1695,7 @@ assets/sprites/health/clock.bmp
 695
 
 #object6 in sector4 virus
-22
+21
 495
 750
 4
@@ -1771,7 +1792,7 @@ assets/sprites/health/clock.bmp
 
 ##OBJECTS IN SECTOR 5##
 #object0 in sector5 box
-23
+22
 130
 800
 10
@@ -1804,7 +1825,7 @@ assets/sprites/health/clock.bmp
 795
 
 #object1 in sector5 box
-24
+23
 170
 860
 10
@@ -1837,7 +1858,7 @@ assets/sprites/health/clock.bmp
 855
 
 #object2 in sector5 crate
-25
+24
 160
 900
 10
@@ -1870,7 +1891,7 @@ assets/sprites/health/clock.bmp
 855
 
 #object3 in sector5 virus
-26
+25
 135
 915
 4
@@ -1966,7 +1987,7 @@ assets/sprites/health/clock.bmp
 57
 
 #object0 in sector6 virus
-27
+26
 130
 970
 4
@@ -1999,7 +2020,7 @@ assets/sprites/health/clock.bmp
 965
 
 #object1 in sector6 virus
-28
+27
 200
 1000
 4
@@ -2032,7 +2053,7 @@ assets/sprites/health/clock.bmp
 995
 
 #object2 in sector6 virus
-29
+28
 210
 970
 4
@@ -2065,7 +2086,7 @@ assets/sprites/health/clock.bmp
 965
 
 #object3 in sector6 virus
-30
+29
 235
 1050
 4
@@ -2098,7 +2119,7 @@ assets/sprites/health/clock.bmp
 1045
 
 #object4 in sector6 virus
-31
+30
 250
 1100
 4
@@ -2195,7 +2216,7 @@ assets/sprites/health/clock.bmp
 
 #OBJECTS IN SECTOR 7 total: 3
 #object0 in sector7 virus
-32
+31
 320
 1100
 4
@@ -2228,7 +2249,7 @@ assets/sprites/health/clock.bmp
 1095
 
 #object1 in sector7 virus
-33
+32
 300
 1120
 4
@@ -2261,7 +2282,7 @@ assets/sprites/health/clock.bmp
 1115
 
 #object2 in sector7 virus
-34
+33
 450
 1110
 4
@@ -2294,7 +2315,7 @@ assets/sprites/health/clock.bmp
 1105
 
 #object3 in sector7 virus
-35
+34
 450
 1110
 4
@@ -2431,14 +2452,14 @@ assets/sprites/health/clock.bmp
 10
 30
 17
-4
-71
+0
+-1
 0
 14
 0
 -1
 4
-0
+9
 9
 0
 
@@ -2490,6 +2511,268 @@ assets/sprites/health/clock.bmp
 78
 72
 
+#OBJECTS in SECTOR 9
+#object0 in sector 9 glass_jar1
+35
+700
+1075
+0
+16
+1
+4
+38
+695
+1070
+705
+1070
+38
+705
+1070
+705
+1080
+38
+705
+1080
+695
+1080
+38
+695
+1080
+695
+1070
+
+#object1 in sector 9 glass_jar6
+36
+690
+1100
+0
+16
+1
+4
+43
+685
+1095
+695
+1095
+43
+695
+1095
+695
+1105
+43
+695
+1105
+685
+1105
+43
+685
+1105
+685
+1095
+
+#object2 in sector 9 glass_jar3
+37
+710
+1110
+0
+16
+1
+4
+40
+705
+1105
+715
+1105
+40
+715
+1105
+715
+1115
+40
+715
+1115
+705
+1115
+40
+705
+1115
+705
+1105
+
+#object3 in sector 9 glass_jar4
+38
+690
+1175
+0
+16
+1
+4
+41
+685
+1170
+695
+1170
+41
+695
+1170
+695
+1180
+41
+695
+1180
+685
+1180
+41
+685
+1180
+685
+1170
+
+#object4 in sector 9 glass_jar5
+39
+705
+1190
+0
+16
+1
+4
+42
+700
+1185
+710
+1185
+42
+710
+1185
+710
+1195
+42
+710
+1195
+700
+1195
+42
+700
+1195
+700
+1185
+
+#object5 in sector 9 jam1
+40
+690
+1220
+0
+16
+1
+4
+46
+685
+1215
+695
+1215
+46
+695
+1215
+695
+1225
+46
+695
+1225
+685
+1225
+46
+685
+1225
+685
+1215
+
+#object6 in sector 9 jam3
+41
+710
+1160
+0
+16
+1
+4
+48
+705
+1155
+715
+1155
+48
+715
+1155
+715
+1165
+48
+715
+1165
+705
+1165
+48
+705
+1165
+705
+1155
+
+#object7 in sector 9 virus
+42
+690
+1150
+4
+24
+0
+4
+18
+685
+1145
+695
+1145
+18
+695
+1145
+695
+1154
+18
+695
+1154
+685
+1154
+18
+685
+1154
+685
+1145
+
+#object8 in sector 9 jam3
+43
+710
+1160
+0
+16
+1
+4
+48
+705
+1155
+715
+1155
+48
+715
+1155
+715
+1165
+48
+715
+1165
+705
+1165
+48
+705
+1165
+705
+1155
+
 #sector[10]## SECTOR 10##########################################################
 10
 0
@@ -2501,7 +2784,7 @@ assets/sprites/health/clock.bmp
 0
 -1
 26
-0
+8
 10
 0
 
@@ -2820,6 +3103,242 @@ assets/sprites/health/clock.bmp
 78
 78
 99
+
+#OBJECTS IN SECTOR 10
+#VIRUSES IN SECTOR 10
+#object 0 in sector 10 virus green
+44
+630
+1270
+4
+16
+0
+4
+18
+625
+1265
+635
+1265
+18
+635
+1265
+635
+1275
+18
+635
+1275
+625
+1275
+18
+625
+1275
+625
+1265
+
+#object 1 in sector 10 virus green
+45
+650
+1280
+4
+32
+0
+4
+18
+635
+1275
+655
+1275
+18
+655
+1275
+655
+1285
+18
+655
+1285
+635
+1285
+18
+635
+1285
+635
+1275
+
+#object 2 in sector 10 virus green
+46
+750
+1300
+4
+40
+0
+4
+18
+745
+1295
+755
+1295
+18
+755
+1295
+755
+1305
+18
+755
+1305
+745
+1305
+18
+745
+1305
+745
+1295
+
+#object 3 in sector 10 virus green
+47
+800
+1280
+4
+16
+0
+4
+18
+795
+1275
+805
+1275
+18
+805
+1275
+805
+1285
+18
+805
+1285
+795
+1285
+18
+795
+1285
+795
+1275
+
+#object 4 in sector 10 virus green
+48
+420
+1370
+4
+16
+0
+4
+18
+415
+1365
+425
+1365
+18
+425
+1365
+425
+1375
+18
+425
+1375
+415
+1375
+18
+415
+1375
+415
+1365
+
+#object 5 in sector 10 virus green
+49
+550
+1370
+4
+16
+0
+4
+18
+545
+1365
+555
+1365
+18
+555
+1365
+555
+1375
+18
+555
+1375
+545
+1375
+18
+545
+1375
+545
+1365
+
+#object 6 in sector 10 virus green
+50
+525
+1400
+4
+24
+0
+4
+18
+520
+1395
+530
+1395
+18
+530
+1395
+530
+1405
+18
+530
+1405
+520
+1405
+18
+520
+1405
+520
+1395
+
+#object 7 in sector 10 virus green
+51
+545
+1390
+4
+16
+0
+4
+18
+540
+1385
+550
+1385
+18
+550
+1385
+550
+1395
+18
+550
+1395
+540
+1395
+18
+540
+1395
+540
+1385
+
+#SHOPPERS IN SECTOR 10
 
 
 #sector[11]## SECTOR 11##########################################################
