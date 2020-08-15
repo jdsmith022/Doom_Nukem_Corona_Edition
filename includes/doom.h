@@ -158,14 +158,20 @@ typedef struct		s_event {
 	bool			spray_mist;
 	bool			trolly;
 	bool			light_switch;
-	bool			light_timer;
+	bool			refill;
+	bool			action;
 	struct timespec	light_time;
 	double			hold_light;
 	int				hold_light_sector;
 	int				click_light;
 	int				fall_count;
+<<<<<<< HEAD
 	bool			groc_pickup;
 	bool			died;
+=======
+	int				sanitizer_refills;
+	struct timespec	refill_pause;
+>>>>>>> bd83ceac0df20fb981f036bfdb788ef36d020383
 }					t_event;
 
 typedef struct		s_m_object{

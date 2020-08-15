@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
-
+#include "../../includes/gameplay.h"
+#include "../../includes/hud.h"
 
 int		init_poster(int x, double distance, t_point intersect,
 			t_sidedef *poster)
