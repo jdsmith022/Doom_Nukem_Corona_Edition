@@ -10,17 +10,19 @@ static void		light_timer(t_doom *doom, bool *flag)
 	{
 		clock_gettime(doom->game_time, &doom->own_event.light_time);
 		*flag = FALSE;
+		doom->lib.sidedef[doom->i_sidedef].txt_2 = 86;
 	}
 	else
 	{
 		sector = doom->own_event.hold_light_sector;
 		diff = find_time_difference(doom, doom->own_event.light_time.tv_sec);
-		if (diff > 5)
+		if (diff > 3)
 		{
 			doom->own_event.light_switch = FALSE;
 			doom->own_event.click_light = -1;
 			doom->lib.sector[sector].light_level = \
 				doom->own_event.hold_light;
+			doom->lib.sidedef[doom->i_sidedef].txt_2 = 85;
 		}
 	}
 }

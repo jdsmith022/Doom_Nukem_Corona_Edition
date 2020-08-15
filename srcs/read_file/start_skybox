@@ -276,7 +276,7 @@ assets/sprites/player/spraying_hand.bmp
 #number of sectors
 50
 #number of walls
-359
+368
 #number of objects
 15
 
@@ -851,7 +851,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedefs
 -1
-96
+0
 576
 192
 576
@@ -1426,7 +1426,7 @@ assets/sprites/player/spraying_hand.bmp
 85
 85
 85
-24
+361
 
 ##OBJECTS IN SECTOR 5##
 #object0 in sector5 box
@@ -1538,7 +1538,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-4
+5
 0
 6
 0
@@ -1591,6 +1591,20 @@ assets/sprites/player/spraying_hand.bmp
 16
 57
 
+##LIGHT SWITCH##
+#poster
+-1
+288
+1152
+273
+1136
+4
+85
+85
+85
+361
+
+
 #sector[7]## SECTOR 7##########################################################
 5
 0
@@ -1601,7 +1615,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-4
+5
 0
 7
 0
@@ -1653,6 +1667,19 @@ assets/sprites/player/spraying_hand.bmp
 16
 16
 61
+
+##LIGHT SWITCH##
+#poster
+-1
+470
+1056
+454
+1056
+4
+85
+85
+85
+362
 
 #sector[8]## SECTOR 8##########################################################
 10
@@ -2401,7 +2428,6 @@ assets/sprites/player/spraying_hand.bmp
 16
 115
 
-
 #sector[15]## SECTOR 15##########################################################
 10
 0
@@ -2924,7 +2950,7 @@ assets/sprites/player/spraying_hand.bmp
 152
 
 #sector[20]## SECTOR 20##########################################################
-15
+3
 0
 17
 0
@@ -2933,7 +2959,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-7
+9
 0
 20
 0
@@ -3021,6 +3047,32 @@ assets/sprites/player/spraying_hand.bmp
 15
 15
 159
+
+##LIGHT SWITCH##
+#poster
+-1
+480
+1920
+454
+1920
+4
+85
+85
+85
+367
+
+##LIGHT SWITCH##
+#poster
+-1
+288
+2096
+288
+2112
+4
+85
+85
+85
+368
 
 #sector[21]## SECTOR 21##########################################################
 7
@@ -4497,7 +4549,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 10
 -1
-5
+6
 0
 33
 0
@@ -4552,7 +4604,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedef
 -1
-1247
+1248
 1152
 1248
 1248
@@ -4561,6 +4613,19 @@ assets/sprites/player/spraying_hand.bmp
 16
 16
 274
+
+##LIGHT SWITCH##
+#poster
+-1
+1248
+1152
+1248
+1168
+4
+85
+85
+85
+363
 
 #sector[34]## SECTOR 34##########################################################
 4
@@ -4572,7 +4637,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 10
 -1
-6
+7
 0
 34
 0
@@ -4649,6 +4714,19 @@ assets/sprites/player/spraying_hand.bmp
 16
 280
 
+##LIGHT SWITCH##
+#poster
+-1
+1600
+1312
+1584
+1312
+4
+85
+85
+85
+364
+
 #sector[35]## SECTOR 35##########################################################
 10
 0
@@ -4659,7 +4737,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-15
+14
 0
 35
 0
@@ -4712,17 +4790,6 @@ assets/sprites/player/spraying_hand.bmp
 16
 284
 
-#sidedef#
--1
-1376
-1446
-1376
-1446
-0
-16
-16
-16
-285
 
 #sidedef#
 -1
@@ -4994,7 +5061,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-5
+6
 0
 37
 0
@@ -5059,6 +5126,19 @@ assets/sprites/player/spraying_hand.bmp
 15
 308
 
+##LIGHT SWITCH##
+#poster
+-1
+1280
+1366
+1280
+1382
+4
+85
+85
+85
+365
+
 
 #sector[39]## SECTOR 39##########################################################
 4
@@ -5070,7 +5150,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-6
+7
 0
 39
 0
@@ -5147,6 +5227,18 @@ assets/sprites/player/spraying_hand.bmp
 78
 314
 
+##LIGHT SWITCH##
+#poster
+-1
+1056
+1382
+1056
+1398
+4
+85
+85
+85
+366
 
 #sector[40]## SECTOR 40##########################################################
 7
@@ -5158,7 +5250,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-4
+5
 0
 40
 0
@@ -5210,6 +5302,19 @@ assets/sprites/player/spraying_hand.bmp
 15
 15
 318
+
+##LIGHT SWITCH##
+#poster
+-1
+1318
+864
+1318
+880
+4
+85
+85
+85
+366
 
 #sector[41]## SECTOR 41 EASTER EGG##########################################################
 12
@@ -5584,7 +5689,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-4
+6
 0
 46
 0
@@ -5636,6 +5741,32 @@ assets/sprites/player/spraying_hand.bmp
 15
 15
 346
+
+##LIGHT SWITCH##
+#poster
+-1
+1664
+1446
+1680
+1446
+4
+85
+85
+85
+365
+
+##LIGHT SWITCH##
+#poster
+-1
+1952
+1382
+1936
+1382
+4
+85
+85
+85
+366
 
 #sector[47]## SECTOR 47 WAREHOUSE##########################################################
 8
