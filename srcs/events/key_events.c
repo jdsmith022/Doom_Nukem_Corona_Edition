@@ -87,6 +87,8 @@ static void		key_press2(t_doom *doom, t_event *event,
 			doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
 		printing_map(&(EDIT));
+	// if (key->keysym.sym == SDLK_y && !doom->game_editor)
+	// 	doom->menu->pause = TRUE;
 }
 
 void			key_press(t_doom *doom, t_event *event,

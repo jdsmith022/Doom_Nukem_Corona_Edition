@@ -1,4 +1,6 @@
 #include "../../includes/doom.h" 
+#include "../../includes/gameplay.h"
+#include "../../includes/menu.h"
 #include "../../includes/audio.h"
 
 void	play_movement_sounds(t_audio *audio, t_event *event)
@@ -20,18 +22,31 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 
 void	play_action_sounds(t_audio *audio, t_event *event)
 {
-	if (event->shoot)
+	if (event->shoot && event->mouse_press)
 		play_sound(audio->sounds[GUNSHOT], 2);
+	if (event->fall && !event->died){
+		play_sound(audio->sounds[SCREAM], 2);
+		event->died = TRUE;
+	}
+	if (event->groc_pickup){
+		play_sound(audio->sounds[HIT], 2);
+		event->groc_pickup = FALSE;
+	}
 }
 
-void	audio(t_audio *audio, t_event *event)
+void	audio(t_doom *doom, t_event *event)
 {
-	if (audio->engine == OFF)
+	if (doom->audio->engine == OFF)
 		return ;
-	if (audio->music_vol)
-		play_music(audio->music[0]);
-	if (audio->sound_vol){
-		play_movement_sounds(audio, event);
-		play_action_sounds(audio, event);
+	if (AUDIO->music_vol && doom->is_running)
+		play_music(AUDIO->music[1]);
+	if (doom->menu->pause){
+		Mix_VolumeMusic(MIX_MAX_VOLUME / 10);
+	}
+	else
+		Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
+	if (doom->audio->sound_vol){
+		play_movement_sounds(AUDIO, event);
+		play_action_sounds(AUDIO, event);
 	}
 }

@@ -17,8 +17,9 @@ void	init_audio(t_doom *doom)
 	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // NOTE: FREE
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
 	doom->audio->event = event;
-	doom->audio->music_vol = FALSE;
+	doom->audio->music_vol = TRUE;
 	doom->audio->sound_vol = TRUE;
+	doom->audio->event->groc_pickup = FALSE;
 	if (Mix_OpenAudio(
 			MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 
 			MIX_DEFAULT_CHANNELS, AUDIO_BUFF
@@ -31,6 +32,7 @@ void	init_audio(t_doom *doom)
 	);
 	Mix_AllocateChannels(3);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
+	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);
 }
 
@@ -47,11 +49,8 @@ void	load_audio(t_audio *audio)
 		);
 		i++;
 	}
-
 	audio->music[0] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
 	audio->music[1] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_2));
-
-	printf("%s\n", audio->path);
 	while (i < NUM_OF_SOUNDS){
 		if (!audio->sounds[i])
 			printf("Mix_LoadWAV: %s\n", Mix_GetError());

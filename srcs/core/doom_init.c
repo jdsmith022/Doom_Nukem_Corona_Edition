@@ -21,6 +21,8 @@ static void		doom_init_events(t_event *event)
 	event->fall = FALSE;
 	event->fall_count = 2;
 	event->mouse_state_switched = TRUE;
+	event->groc_pickup = FALSE;
+	event->died = FALSE;
 }
 
 static void		init_infection(t_doom *doom)

@@ -164,6 +164,8 @@ typedef struct		s_event {
 	int				hold_light_sector;
 	int				click_light;
 	int				fall_count;
+	bool			groc_pickup;
+	bool			died;
 }					t_event;
 
 typedef struct		s_m_object{

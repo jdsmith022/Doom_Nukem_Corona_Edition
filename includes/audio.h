@@ -7,8 +7,9 @@
 # include <unistd.h>
 
 #define AUDIO_BUFF 	1042
+#define AUDIO		doom->audio
 #define AUDIO_PATH 	audio->path
-#define NUM_OF_SOUNDS 6
+#define NUM_OF_SOUNDS 8
 
 #define OFF 0
 #define ON 1
@@ -19,8 +20,10 @@
 #define GUNSHOT		3
 #define SCREAM		4
 #define	HIT			5
-#define THEME		6
-#define BOSSA		7
+#define	PICKUP		6
+#define FINISH		7
+#define THEME		8
+#define BOSSA		9
 
 #define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 #define S_FOOTSTEPS "/Movement/Footsteps/sfx_movement_footstepsloop4_slow.wav"
@@ -42,6 +45,7 @@ typedef struct s_doom	t_doom;
 
 typedef struct			s_audio_event {
 	bool				jump_toggled;
+	bool				groc_pickup;
 }						t_audio_event;
 
 typedef struct			s_audio {
@@ -57,11 +61,12 @@ typedef struct			s_audio {
 	uint8_t				music_vol;
 }						t_audio;
 
-void					audio(t_audio *audio, t_event *event);
+void					audio(t_doom *doom, t_event *event);
 void					exit_error(const char *message);
 void					init_audio(t_doom *doom);
 void					load_audio(t_audio *audio);
 void					play_music(Mix_Music *music);
+void					resume_music();
 void					play_sound(Mix_Chunk *sample, int channel);
 void					loop_sound(Mix_Chunk *sample, int channel);
 void					pause_sound(Mix_Chunk *sample, int channel);
