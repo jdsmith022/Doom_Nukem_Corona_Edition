@@ -5,7 +5,7 @@
 void			draw_item(t_doom *doom, t_item item)
 {
 	if (!item.sprite){
-		printf("Sprite not found. Type: %d\n", item.type);
+		// printf("Sprite not found. Type: %d\n", item.type);
 		return ;
 	}
 	draw_img(item.sprite, doom, item.position);

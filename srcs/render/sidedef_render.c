@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/action.h"
 
 t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
@@ -91,8 +92,11 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		{
 			if (doom->lib.sidedef[x].action == 4 || \
 			doom->lib.sidedef[x].action == 8)
+			{
+				doom->i_sidedef = x;
 				save_poster = init_poster(x, distance, intersect,\
 					&doom->lib.sidedef[x]);
+			}
 			else
 			{
 				min_distance = distance;

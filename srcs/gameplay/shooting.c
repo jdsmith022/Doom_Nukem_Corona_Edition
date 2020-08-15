@@ -10,12 +10,12 @@ void		add_mist_to_sanitizer(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.mist == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);//make own timer
 		doom->own_event.mist = FALSE;
 	}
 	else
 	{
-		diff = find_time_difference(doom);
+		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);//send here
 		if (diff == 0)
 		{
 			draw_add_on(doom, SPRAYING_HAND);
@@ -35,12 +35,12 @@ void		remove_red_virus(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.virus_red == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		clock_gettime(doom->game_time, &doom->lib.font_lib.timer); //make own timer
 		doom->own_event.virus_red = FALSE;
 	}
 	else
 	{
-		diff = find_time_difference(doom);
+		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);//send here
 		if (diff <= 3)
 		{
 			SPRITES[doom->own_event.virus_red_i].action = 6;

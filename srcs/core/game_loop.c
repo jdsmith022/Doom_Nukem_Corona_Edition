@@ -2,8 +2,7 @@
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
-#include "../../includes/hud.h"
-#include "../../includes/font.h"
+#include "../../includes/action.h"
 
 static void		set_to_window(t_doom *doom)
 {
@@ -49,7 +48,6 @@ void				game_loop(t_doom *doom)
 			// audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
-			sliding_door(doom, -1); //move to its own file
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);

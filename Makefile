@@ -23,17 +23,18 @@ DRAW = srcs/draw/
 FONT = srcs/font/
 HUD = srcs/hud/
 MENU = srcs/menu/
+ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
-				exit moving_sidedef free_library libs_init update_hud_ui
-EVENTS_FILES = key_events move_position move_position2 mouse_movement mouse_press\
-				move_sprite_interaction check_diff
+				exit free_library libs_init update_hud_ui
+EVENTS_FILES = key_events move_position mouse_movement mouse_press\
+				check_diff
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_row slope_projections put_texture\
 				draw_skybox_top_bottom draw_skybox set_texture_properties\
-				render_sky_box set_offsets draw_poster action light_floor_ceiling \
+				render_sky_box set_offsets draw_poster light_floor_ceiling \
 				draw_floor draw_ceiling set_floor_limit get_slope \
-				find_infection set_ceiling_limit set_properties_plane \
+				 set_ceiling_limit set_properties_plane \
 				set_slope_bottom_plane img
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
@@ -55,6 +56,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
 MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu
+ACTION_FILES = action light_switch find_infection moving_sidedef sprite_interaction \
+				player_action action_handler
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
 C_FILES_EVENTS = $(EVENTS_FILES:%=%.c)
@@ -67,6 +70,7 @@ C_FILES_SPRITE = $(SPRITE_FILES:%=%.c)
 C_FILES_FONT = $(FONT_FILES:%=%.c)
 C_FILES_HUD = $(HUD_FILES:%=%.c)
 C_FILES_MENU = $(MENU_FILES:%=%.c)
+C_FILES_ACTION = $(ACTION_FILES:%=%.c)
 
 O_FILES_CORE = $(CORE_FILES:%=$(CORE).objects/%.o)
 O_FILES_EVENTS = $(EVENTS_FILES:%=$(EVENTS).objects/%.o)
@@ -79,17 +83,19 @@ O_FILES_FONT = $(FONT_FILES:%=$(FONT).objects/%.o)
 O_FILES_GAMEPLAY = $(GAMEPLAY_FILES:%=$(GAMEPLAY).objects/%.o)
 O_FILES_HUD = $(HUD_FILES:%=$(HUD).objects/%.o)
 O_FILES_MENU = $(MENU_FILES:%=$(MENU).objects/%.o)
+O_FILES_ACTION = $(ACTION_FILES:%=$(ACTION).objects/%.o)
 
 SRCS_DIRS = $(CORE) $(EVENTS) $(RENDER) $(READ) $(EDITOR) $(AUDIO) \
-			$(SPRITE) $(FONT) $(GAMEPLAY) $(HUD) $(MENU)
+			$(SPRITE) $(FONT) $(GAMEPLAY) $(HUD) $(MENU) $(ACTION)
 O_FILES_DIRS = $(SRCS_DIRS:%=%.objects)
 O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
 		$(O_FILES_GAMEPLAY) $(O_FILES_RENDER) $(O_FILES_READ) \
 		$(O_FILES_AUDIO) $(O_FILES_SPRITE) $(O_FILES_FONT) \
-		$(O_FILES_HUD) $(O_FILES_MENU)
+		$(O_FILES_HUD) $(O_FILES_MENU) $(O_FILES_ACTION)
 
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h \
-		includes/font.h  includes/textures.h includes/menu.h includes/hud.h
+		includes/font.h  includes/textures.h includes/menu.h includes/hud.h \
+		includes/action.h
 ADD_FILES = Makefile textures
 
 all: $(NAME)
@@ -143,6 +149,10 @@ $(MENU).objects/%.o: $(MENU)%.c $(HEADERS)
 	@$(CC) -o $@ -c $<
 	@echo "$(GREEN)[+]$(WHITE) $@"
 
+$(ACTION).objects/%.o: $(ACTION)%.c $(HEADERS)
+	@$(CC) -o $@ -c $<
+	@echo "$(GREEN)[+]$(WHITE) $@"
+
 %/.objects:
 	@mkdir $@
 
@@ -170,7 +180,7 @@ add: fclean
 	@git add $(LIBFT) $(HEADERS) $(ADD_FILES) $(SDL) $(BMP) \
 	$(C_FILES_CORE) $(C_FILES_EVENTS) $(C_FILES_RENDER) $(C_FILES_READ) \
 	$(C_FILES_EDITOR) $(C_FILES_AUDIO) $(C_FILES_SPRITE) $(C_FILES_FONT) \
-	$(HUD) $(MENU)
+	$(C_FILES_HUD) $(C_FILES_MENU) $(C_FILES_ACTION)
 	@git status
 
 push:

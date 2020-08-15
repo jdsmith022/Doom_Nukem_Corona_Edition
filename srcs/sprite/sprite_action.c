@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/font.h"
+#include "../../includes/action.h"
 
 int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {

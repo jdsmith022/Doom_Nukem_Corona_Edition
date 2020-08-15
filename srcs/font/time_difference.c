@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
-int				find_time_difference(t_doom *doom)
+int				find_time_difference(t_doom *doom, time_t lib_timer)
 {
 	int				diff;
 	clockid_t		clkid;
@@ -9,7 +9,7 @@ int				find_time_difference(t_doom *doom)
 	time_t			sec;
 
 	clock_gettime(doom->game_time, &time);
-	sec = doom->lib.font_lib.timer.tv_sec;
+	sec = lib_timer;
 	diff = time.tv_sec - sec;
 	return (diff);
 }
