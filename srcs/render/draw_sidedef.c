@@ -33,6 +33,27 @@ static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
 	return (tex_dex);
 }
 
+static void		reverse_pixels(t_doom *doom, Uint32 tex_dex)
+{
+	SDL_Surface	*surface;
+	SDL_Surface *temp_surface;
+	Uint32		temp;
+	Uint32		temp_dex;
+	int			len;
+
+	surface = doom->lib.tex_lib[tex_dex];
+	temp_surface = doom->lib.tex_lib[tex_dex];
+	len = ft_strlen((char *)surface->pixels);
+	while (temp_dex < len)
+	{
+		temp_surface[tex_dex] = surface[tex_dex];
+		surface[tex_dex] = surface[len];
+		surface[len] = temp_surface[tex_dex];
+		temp_dex++;
+		len--;
+	}
+}
+
 static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 					t_sidedef sidedef)
 {
@@ -43,6 +64,8 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	int		bpp;
 
 	tex_dex = find_sidedef_texture(doom, sidedef, pixel, plane);
+		if (sidedef.dir == 2)
+		reverse_pixels(doom, tex_dex);
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\

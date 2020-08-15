@@ -2,8 +2,7 @@
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
-#include "../../includes/hud.h"
-#include "../../includes/font.h"
+#include "../../includes/action.h"
 
 static void		set_to_window(t_doom *doom)
 {

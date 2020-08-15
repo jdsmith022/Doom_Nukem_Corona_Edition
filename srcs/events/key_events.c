@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
+#include "../../includes/action.h"
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
