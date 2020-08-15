@@ -41,8 +41,8 @@
 # define PLAYER_HEIGHT 48
 # define MOVE_SPEED 200
 # define CAM_SPEED 3
-# define GRAVITY -1
-# define VELOCITY 10
+# define GRAVITY -10
+# define VELOCITY 30
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
