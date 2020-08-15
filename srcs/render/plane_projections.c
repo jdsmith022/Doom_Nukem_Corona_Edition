@@ -13,10 +13,6 @@ static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 	}
 	if (sector->action == 1)
 		doom->lib.portal_ceiling = plane->sidedef_top;
-	if ((sector->slope_floor_id != -1 && sector->slope.prev_floor_id != -1) || \
-	(sector->slope_ceiling_id != -1 && sector->slope.prev_ceiling_id != -1))
-		sector->slope.delta_height = \
-			set_slope_delta(doom, sector, plane->sidedef_bottom);
 }
 
 void			set_properties_plane(t_doom *doom, t_sidedef sidedef,

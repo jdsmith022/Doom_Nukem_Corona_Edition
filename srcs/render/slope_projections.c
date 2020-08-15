@@ -1,21 +1,5 @@
 #include "../../includes/doom.h"
 
-double			set_slope_delta(t_doom *doom, t_sector *sector, int y)
-{
-	double		plane_distance;
-	double		delta_slope;
-	double		delta_height;
-	double		delta_distance;
-
-	delta_height = sector->slope.height - sector->slope.bottom_height;
-	plane_distance = y - sector->slope.bottom_plane;
-	delta_slope = delta_height / plane_distance;
-	delta_distance = sector->slope.dist_to_bottom / plane_distance;
-	delta_distance *= cos(doom->ray_adjacent * sector->plane_x - FOV / 2);
-	sector->slope.prev_floor_id = sector->slope.sidedef_id;
-	return (delta_distance);
-}
-
 static void		find_line_connections(t_doom *doom, t_sector *sector,
 					t_slope *slope, t_sidedef sidedef)
 {
@@ -41,7 +25,6 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 	slope.distance = 0;
 	slope.intersect = sidedef.intersect;
 	slope.sidedef_id = sidedef.id;
-	//sector->slope_floor = 6 * (PI / 180);
 	if (sidedef.sector != sector->id)
 		sidedef = get_other_side_of_line(doom, sidedef, *sector);
 	if (sidedef.id == sector->slope_floor_id)
@@ -56,18 +39,8 @@ t_slope			set_properties_slope(t_doom *doom, t_sidedef sidedef,\
 }
 
 void		slope_plane_settings(t_doom *doom, t_sidedef sidedef,
-					t_sector *sector, int flag)
+					t_sector *sector)
 {
-	if (flag == 1 && sector->slope_floor_id != -1)
-	{
-		sector->slope = set_properties_slope(doom, sidedef, sector);
-		sector->height_floor += sector->slope.height;
-	}
-	if (flag == 0 && sector->slope_floor_id != -1)
-	{
-		sector->slope = set_properties_slope(doom, sidedef, sector);
-		if (doom->i_sector != sector->id)
-			set_slope_bottom_values(doom, sidedef, sector);
-		sector->height_floor += sector->slope.height;
-	}
+	sector->slope = set_properties_slope(doom, sidedef, sector);
+	sector->height_floor += sector->slope.height;
 }
