@@ -13,7 +13,7 @@ void	bend_down(t_doom *doom)
 
 void	step_down(t_doom *doom, double dt)
 {
-	static double	duration = -1;
+	static double	duration = -0.1;
 	int				height_floor;
 	int				step;
 	double			hold_height;
