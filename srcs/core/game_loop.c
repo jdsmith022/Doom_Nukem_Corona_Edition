@@ -47,7 +47,7 @@ void				game_loop(t_doom *doom)
 			sprite_reset(doom);
 			doom_render(doom);
 			// audio(doom->audio, &doom->own_event);
-			// doom_gui(doom);
+			doom_gui(doom);
 			groceries(doom);
 			sliding_door(doom, -1); //move to its own file
 		}

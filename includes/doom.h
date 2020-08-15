@@ -331,6 +331,7 @@ typedef struct		s_doom {
 	double			player_width;
 	int				texture_width;
 	int				texture_height;
+	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
 	double			ray_angle;

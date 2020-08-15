@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-84
+85
 
 ## OUTSIDE ASSETS##
 #0
@@ -194,6 +194,10 @@ assets/textures/checkout/tabacco.bmp
 #83
 assets/textures/checkout/checkout.bmp
 
+##EASTER TEXTURES##
+#84
+assets/textures/shelves/toiletpaper_full_wall.bmp
+
 
 
 
@@ -253,7 +257,7 @@ assets/sprites/groceries/cucumber.bmp
 #25
 assets/sprites/groceries/chicken.bmp
 #26
-assets/sprites/groceries/chicken_leg.bmp
+assets/sprites/groceries/bread.bmp
 #27
 assets/sprites/groceries/toiletpaper.bmp
 #28
@@ -264,9 +268,9 @@ assets/sprites/player/spray_hand.bmp
 assets/sprites/player/spraying_hand.bmp
 
 #number of sectors
-49
+50
 #number of walls
-355
+359
 #number of objects
 21
 
@@ -2336,7 +2340,7 @@ assets/sprites/player/spraying_hand.bmp
 
 
 #sector[11]## SECTOR 11##########################################################
-10
+12
 20
 78
 0
@@ -2399,7 +2403,7 @@ assets/sprites/player/spraying_hand.bmp
 103
 
 #sector[12]## SECTOR 12##########################################################
-10
+12
 20
 78
 0
@@ -2462,7 +2466,7 @@ assets/sprites/player/spraying_hand.bmp
 107
 
 #sector[13]## SECTOR 13##########################################################
-10
+12
 20
 78
 0
@@ -2837,7 +2841,7 @@ assets/sprites/player/spraying_hand.bmp
 133
 
 #sidedef
-15
+-1
 672
 1888
 672
@@ -2856,12 +2860,12 @@ assets/sprites/player/spraying_hand.bmp
 2048
 5
 14
-16
+57
 17
 135
 
 #sidedef
-15
+-1
 892
 1888
 892
@@ -2910,7 +2914,7 @@ assets/sprites/player/spraying_hand.bmp
 139
 
 #sector[17]## SECTOR 17##########################################################
-10
+12
 30
 17
 0
@@ -2956,7 +2960,7 @@ assets/sprites/player/spraying_hand.bmp
 2048
 5
 14
-16
+57
 78
 142
 
@@ -3470,7 +3474,7 @@ assets/sprites/player/spraying_hand.bmp
 
 
 #sector[23]## SECTOR 23##########################################################
-10
+12
 30
 17
 0
@@ -3533,7 +3537,7 @@ assets/sprites/player/spraying_hand.bmp
 182
 
 #sector[24]## SECTOR 24##########################################################
-10
+12
 30
 17
 0
@@ -4402,7 +4406,7 @@ assets/sprites/player/spraying_hand.bmp
 250
 
 #sidedefs##PORTAL TO SECTOR INSIDE SQUARE####
--1
+29
 896
 570
 922
@@ -4426,7 +4430,7 @@ assets/sprites/player/spraying_hand.bmp
 252
 
 #sidedefs
--1
+29
 800
 762
 922
@@ -4450,10 +4454,10 @@ assets/sprites/player/spraying_hand.bmp
 254
 
 #sector[30]## SECTOR 30##########################################################
-10
+12
 30
 17
--10
+0
 -1
 -10
 14
@@ -4514,7 +4518,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[31]## SECTOR 31##########################################################
 10
-0
+15
 17
 -10
 -1
@@ -4613,7 +4617,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[32]## SECTOR 32##########################################################
 15
--10
+10
 17
 -10
 -1
@@ -4678,7 +4682,7 @@ assets/sprites/player/spraying_hand.bmp
 5
 0
 17
--10
+0
 -1
 0
 14
@@ -4750,7 +4754,7 @@ assets/sprites/player/spraying_hand.bmp
 274
 
 #sector[34]## SECTOR 34##########################################################
-10
+4
 0
 17
 -10
@@ -5034,7 +5038,7 @@ assets/sprites/player/spraying_hand.bmp
 295
 
 #sector[36]## SECTOR 36##########################################################
-10
+12
 40
 17
 0
@@ -5098,7 +5102,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[37]## SECTOR 37##########################################################
 10
--10
+0
 17
 0
 -1
@@ -5173,7 +5177,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[38]## SECTOR 38##########################################################
 7
--10
+10
 17
 0
 -1
@@ -5195,7 +5199,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 15
 15
-15
+78
 305
 
 #sidedef
@@ -5231,7 +5235,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 15
 15
-15
+78
 308
 
 #sidedef
@@ -5249,11 +5253,11 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[39]## SECTOR 39##########################################################
 4
--15
+15
 17
 0
 -1
-0
+96
 14
 0
 -1
@@ -5271,7 +5275,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 15
 15
-15
+78
 309
 
 #sidedef###EASTER EGG PORTAL###
@@ -5283,7 +5287,7 @@ assets/sprites/player/spraying_hand.bmp
 2
 15
 15
-15
+78
 310
 
 #sidedef##PORTAL TO SECTOR 40
@@ -5295,49 +5299,49 @@ assets/sprites/player/spraying_hand.bmp
 0
 15
 15
-15
+78
 311
 
 #sidedef
 -1
-1055
+1056
 1382
-1055
+1056
 1670
 0
 16
 16
-16
+78
 312
 
 #sidedef
 -1
-1055
+1056
 1670
 1152
 1670
 0
 16
 16
-16
+78
 313
 
 #sidedef
 -1
 1152
 1670
-1153
+1152
 1382
 0
 16
 16
-16
+78
 314
 
 
 #sector[40]## SECTOR 40##########################################################
 7
--5
+8
 17
 0
 -1
@@ -5359,7 +5363,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 15
 15
-15
+78
 315
 
 #sidedef
@@ -5420,9 +5424,9 @@ assets/sprites/player/spraying_hand.bmp
 1056
 1318
 0
-15
-15
-15
+84
+84
+84
 320
 
 #sidedef-1
@@ -5432,21 +5436,21 @@ assets/sprites/player/spraying_hand.bmp
 1152
 1030
 0
-15
-15
-15
+84
+84
+84
 321
 
-#sidedef-1##PORTAL TO SECTOR 42##
+#sidedef-##PORTAL TO SECTOR 42##
 42
 1152
 1030
 1056
 1030
 0
-15
-15
-15
+84
+84
+84
 322
 
 #sidedef
@@ -5456,9 +5460,9 @@ assets/sprites/player/spraying_hand.bmp
 1056
 1318
 0
-15
-15
-15
+84
+84
+84
 323
 
 #sector[42]## SECTOR 42##########################################################
@@ -5482,7 +5486,7 @@ assets/sprites/player/spraying_hand.bmp
 1030
 1056
 1030
-2
+0
 78
 78
 78
@@ -5699,7 +5703,7 @@ assets/sprites/player/spraying_hand.bmp
 338
 
 #sector[45]## SECTOR 45##########################################################
-10
+12
 35
 17
 0
@@ -5762,7 +5766,7 @@ assets/sprites/player/spraying_hand.bmp
 342
 
 #sector[46]## SECTOR 46##########################################################
-8
+3
 10
 17
 0
@@ -5888,7 +5892,7 @@ assets/sprites/player/spraying_hand.bmp
 350
 
 #sidedef##PORTAL TO SECTOR 49###
--1
+49
 2816
 1547
 1952
@@ -5913,7 +5917,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10
-96
+70
 10
 0
 -1
@@ -5974,7 +5978,68 @@ assets/sprites/player/spraying_hand.bmp
 73
 356
 
+#sector[49]## SECTOR 49 WAREHOUSE##########################################################
+10
+70
+10
+0
+-1
+96
+14
+0
+-1
+4
+0
+49
+0
 
+#sidedef##PORTAL TO SECTOR 49###
+47
+2816
+1547
+1952
+1547
+0
+73
+73
+73
+357
+
+#sidedef
+-1
+2816
+1547
+2816
+1638
+0
+73
+73
+73
+358
+
+#sidedef
+-1
+2816
+1638
+1952
+1638
+0
+73
+73
+73
+359
+
+#sidedef
+-1
+1952
+1638
+1952
+1547
+0
+73
+73
+73
+360
 
 #moving objects
 0

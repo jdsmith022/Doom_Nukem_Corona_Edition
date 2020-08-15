@@ -63,7 +63,9 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 {
 	t_line		movement;
 	int			collision;
+	t_sector	sector;
 
+	sector = doom->lib.sector[doom->i_sector];
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x + (MOVE_SPEED * dt) *\
 		cos(doom->dir_angle + direction);
@@ -71,7 +73,8 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 		sin(doom->dir_angle + direction);
 	if (sprite_collision(doom, movement) == 1)
 		movement.end = doom->pos;
-	// if (doom->lib.sector[doom->i_sector].action == TROLLY && doom->own_event.trolly = FALSE)
+	// if (sector.action == TROLLY && doom->own_event.trolly == FALSE)
+		// movement.end = doom->pos;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{
