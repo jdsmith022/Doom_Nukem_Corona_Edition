@@ -203,7 +203,7 @@ assets/textures/shelves/toiletpaper_full_wall.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-31
+38
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -266,13 +266,30 @@ assets/sprites/scissor_lift/scissor_lift_bar.bmp
 assets/sprites/player/spray_hand.bmp
 #30
 assets/sprites/player/spraying_hand.bmp
+#31
+assets/sprites/player/trolly.bmp
+#32
+assets/sprites/player/trolly_side.bmp
+#33
+assets/sprites/player/shopping_cart.bmp
+#34
+assets/sprites/plants/plant_1.bmp
+#35
+assets/sprites/plants/plant_2.bmp
+#36
+assets/sprites/plants/plant_3.bmp
+#37
+assets/sprites/health/clock.bmp
+
+
+
 
 #number of sectors
 50
 #number of walls
 359
 #number of objects
-21
+35
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -287,7 +304,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 17
-0
+9
 0
 1
 
@@ -506,6 +523,305 @@ assets/sprites/player/spraying_hand.bmp
 13
 16
 
+#OBJECTS IN SECTOR 0
+#object0 in sector0 plant
+0
+30
+30
+0
+32
+1
+4
+#line
+34
+25
+25
+35
+25
+#line
+34
+35
+25
+35
+35
+#line
+34
+35
+35
+25
+35
+#line
+34
+25
+35
+25
+25
+
+#object1 in sector0 plant
+1
+258
+30
+0
+32
+1
+4
+#line
+34
+253
+25
+263
+25
+#line
+34
+263
+25
+263
+35
+#line
+34
+263
+35
+253
+35
+#line
+34
+253
+35
+253
+25
+
+#object2 in sector0 plant
+2
+88
+180
+0
+16
+1
+4
+#line
+35
+83
+175
+93
+175
+#line
+35
+93
+175
+93
+185
+#line
+35
+93
+185
+83
+185
+#line
+35
+83
+185
+83
+175
+
+#object3 in sector0 plant
+3
+200
+180
+0
+16
+1
+4
+#line
+35
+195
+175
+205
+175
+#line
+35
+205
+175
+205
+185
+#line
+35
+205
+185
+195
+185
+#line
+35
+195
+185
+195
+175
+
+#object4 in sector0 plant
+4
+30
+354
+0
+16
+1
+4
+#line
+36
+25
+349
+35
+349
+#line
+36
+35
+349
+35
+359
+#line
+36
+35
+359
+25
+359
+#line
+36
+25
+359
+25
+349
+
+#object5 in sector0 plant
+5
+66
+354
+0
+16
+1
+4
+#line
+36
+61
+349
+71
+349
+#line
+36
+71
+349
+71
+359
+#line
+36
+71
+359
+61
+359
+#line
+36
+61
+359
+61
+349
+
+#object6 in sector0 plant
+6
+222
+354
+0
+16
+1
+4
+#line
+36
+217
+349
+227
+349
+#line
+36
+227
+349
+227
+359
+#line
+36
+227
+359
+217
+359
+#line
+36
+217
+359
+217
+349
+
+#object7 in sector0 plant
+7
+258
+354
+0
+16
+1
+4
+#line
+36
+253
+349
+263
+349
+#line
+36
+263
+349
+263
+359
+#line
+36
+263
+359
+253
+359
+#line
+36
+253
+359
+253
+349
+
+#change bock to 0 once you can fetch the clock
+#object8 in sector0 clock
+8
+100
+100
+11
+16
+1
+4
+#line
+37
+95
+95
+105
+95
+#line
+37
+105
+95
+105
+105
+#line
+37
+105
+105
+95
+105
+#line
+37
+95
+105
+95
+95
+
 ##SECTOR 1########################################################################
 #sector[1]
 10
@@ -518,7 +834,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 9
-0
+1
 1
 3
 
@@ -631,7 +947,39 @@ assets/sprites/player/spraying_hand.bmp
 11
 25
 
-
+#OBJECTS IN SECTOR 1
+#object0 in sector1 virus
+10
+170
+364
+4
+16
+0
+4
+#line
+18
+165
+359
+175
+359
+#line
+18
+175
+359
+175
+369
+#line
+18
+175
+369
+165
+369
+#line
+18
+165
+369
+165
+359
 
 #START OF GAME#################################################################
 
@@ -739,7 +1087,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #OBJECTS IN SECTOR 2
 #object0 in sector2 box
-0
+11
 45
 500
 10
@@ -768,7 +1116,7 @@ assets/sprites/player/spraying_hand.bmp
 495
 
 #object1 in sector2 crate
-1
+12
 200
 520
 10
@@ -797,7 +1145,7 @@ assets/sprites/player/spraying_hand.bmp
 515
 
 #object2 in sector2 crate
-2
+13
 40
 530
 10
@@ -953,7 +1301,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #OBJECTS IN SECTOR 3
 #object0 in sector3 shopper
-3
+14
 40
 600
 9
@@ -982,7 +1330,7 @@ assets/sprites/player/spraying_hand.bmp
 590
 
 #object1 in sector3 shopper
-4
+15
 210
 650
 9
@@ -1128,7 +1476,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #OBJECTS IN SECTOR4
 #object0 in sector4 virus
-5
+16
 300
 650
 4
@@ -1161,7 +1509,7 @@ assets/sprites/player/spraying_hand.bmp
 645
 
 #object1 in sector4 virus
-6
+17
 430
 600
 4
@@ -1194,7 +1542,7 @@ assets/sprites/player/spraying_hand.bmp
 595
 
 #object2 in sector4 virus
-7
+18
 350
 670
 4
@@ -1227,7 +1575,7 @@ assets/sprites/player/spraying_hand.bmp
 665
 
 #object3 in sector4 virus
-8
+19
 500
 680
 4
@@ -1260,7 +1608,7 @@ assets/sprites/player/spraying_hand.bmp
 675
 
 #object4 in sector4 virus
-9
+20
 320
 710
 4
@@ -1293,7 +1641,7 @@ assets/sprites/player/spraying_hand.bmp
 705
 
 #object5 in sector4 virus
-10
+21
 400
 700
 4
@@ -1326,7 +1674,7 @@ assets/sprites/player/spraying_hand.bmp
 695
 
 #object6 in sector4 virus
-11
+22
 495
 750
 4
@@ -1423,7 +1771,7 @@ assets/sprites/player/spraying_hand.bmp
 
 ##OBJECTS IN SECTOR 5##
 #object0 in sector5 box
-12
+23
 130
 800
 10
@@ -1456,7 +1804,7 @@ assets/sprites/player/spraying_hand.bmp
 795
 
 #object1 in sector5 box
-13
+24
 170
 860
 10
@@ -1489,7 +1837,7 @@ assets/sprites/player/spraying_hand.bmp
 855
 
 #object2 in sector5 crate
-14
+25
 160
 900
 10
@@ -1522,7 +1870,7 @@ assets/sprites/player/spraying_hand.bmp
 855
 
 #object3 in sector5 virus
-15
+26
 135
 915
 4
@@ -1618,7 +1966,7 @@ assets/sprites/player/spraying_hand.bmp
 57
 
 #object0 in sector6 virus
-16
+27
 130
 970
 4
@@ -1651,7 +1999,7 @@ assets/sprites/player/spraying_hand.bmp
 965
 
 #object1 in sector6 virus
-17
+28
 200
 1000
 4
@@ -1684,7 +2032,7 @@ assets/sprites/player/spraying_hand.bmp
 995
 
 #object2 in sector6 virus
-18
+29
 210
 970
 4
@@ -1717,7 +2065,7 @@ assets/sprites/player/spraying_hand.bmp
 965
 
 #object3 in sector6 virus
-19
+30
 235
 1050
 4
@@ -1750,7 +2098,7 @@ assets/sprites/player/spraying_hand.bmp
 1045
 
 #object4 in sector6 virus
-20
+31
 250
 1100
 4
@@ -1793,7 +2141,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 -1
 4
-0
+4
 7
 0
 
@@ -1845,6 +2193,139 @@ assets/sprites/player/spraying_hand.bmp
 16
 61
 
+#OBJECTS IN SECTOR 7 total: 3
+#object0 in sector7 virus
+32
+320
+1100
+4
+16
+0
+4
+#line
+18
+315
+1095
+225
+1095
+#line
+18
+225
+1095
+225
+1105
+#line
+18
+225
+1105
+315
+1105
+#line
+18
+315
+1105
+315
+1095
+
+#object1 in sector7 virus
+33
+300
+1120
+4
+8
+0
+4
+#line
+18
+295
+1115
+225
+1115
+#line
+18
+225
+1115
+225
+1125
+#line
+18
+225
+1125
+295
+1125
+#line
+18
+295
+1125
+295
+1115
+
+#object2 in sector7 virus
+34
+450
+1110
+4
+8
+0
+4
+#line
+18
+445
+1105
+455
+1105
+#line
+18
+455
+1105
+455
+1115
+#line
+18
+455
+1115
+445
+1115
+#line
+18
+445
+1115
+445
+1105
+
+#object3 in sector7 virus
+35
+450
+1110
+4
+32
+0
+4
+#line
+18
+445
+1105
+455
+1105
+#line
+18
+455
+1105
+455
+1115
+#line
+18
+455
+1115
+445
+1115
+#line
+18
+445
+1115
+445
+1105
+
 #sector[8]## SECTOR 8##########################################################
 10
 0
@@ -1859,6 +2340,8 @@ assets/sprites/player/spraying_hand.bmp
 0
 8
 0
+
+
 
 #sidedef#PORTAL TO SECTOR 7##
 7
