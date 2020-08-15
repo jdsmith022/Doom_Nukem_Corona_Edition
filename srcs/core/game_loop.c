@@ -45,7 +45,7 @@ void				game_loop(t_doom *doom)
 		{
 			sprite_reset(doom);
 			doom_render(doom);
-			// audio(doom->audio, &doom->own_event);
+			audio(doom->audio, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
 		}

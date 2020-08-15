@@ -20,11 +20,11 @@ void	play_sound(Mix_Chunk *sample, int channel){
 void	loop_sound(Mix_Chunk *sample, int channel){
 	if (!Mix_Playing(channel)){
 		Mix_PlayChannel(channel, sample, -1);
-		SDL_Log("Looping channel %d", channel);
+		// SDL_Log("Looping channel %d", channel);
 	}
 	else if (Mix_Paused(channel)){
 		Mix_Resume(channel);
-		SDL_Log("Resuming looping channel %d", channel);
+		// SDL_Log("Resuming looping channel %d", channel);
 	}
 }
 
@@ -33,6 +33,6 @@ void	pause_sound(Mix_Chunk *sample, int channel){
 		return ;
 	else if (!Mix_Paused(channel)){
 		Mix_Pause(channel);
-		SDL_Log("Pausing channel %d", channel);
+		// SDL_Log("Pausing channel %d", channel);
 	}
 }

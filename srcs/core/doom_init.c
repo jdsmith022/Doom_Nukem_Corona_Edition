@@ -48,7 +48,7 @@ static void		init_settings(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud_display = TRUE;
-	doom->audio->engine = OFF;
+	doom->audio->engine = ON;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
 	doom->own_event.virus_red_i = -1;

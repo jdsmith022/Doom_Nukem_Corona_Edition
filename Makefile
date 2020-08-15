@@ -42,7 +42,7 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
 				printing_map init_game
-AUDIO_FILES = audio playback helpers
+AUDIO_FILES = audio audio_init playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_draw2
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
