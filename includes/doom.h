@@ -14,6 +14,7 @@
 # include "../bmp/srcs/bmp.h"
 # include "../srcs/editor/game_editor.h"
 # include "font.h"
+// # include "struct.h"
 // # include "render.h"
 
 # include "../sdl/includes/SDL.h"
@@ -145,17 +146,23 @@ typedef struct		s_event {
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
+	int				virus_hit_index;
+	bool			virus_red;
+	int				virus_red_i;
 	bool			scissor_lift;
 	bool			scissor_lift_up;
 	bool			scissor_lift_down;
-	int				virus_hit_index;
 	bool			parked_too_close;
 	bool			fall;
-	bool			virus_red;
-	int				virus_red_i;
 	bool			mist;
 	bool			spray_mist;
 	bool			trolly;
+	bool			light_switch;
+	bool			light_timer;
+	struct timespec	light_time;
+	double			hold_light;
+	int				hold_light_sector;
+	int				click_light;
 	int				fall_count;
 }					t_event;
 
@@ -244,6 +251,7 @@ typedef struct		s_sector {
 	int				n_objects;
 	int				i_objects;
 	double			light_level;
+	double			hold_light;
 	int				light;
 	int				slope_floor_id;
 	int				slope_ceiling_id;
@@ -303,7 +311,7 @@ typedef struct		s_gamedesign {
 	int				pl_y;
 	int				pl_sec;
 	int				object_bar;
-	int 			sidedef_bar;
+	int				sidedef_bar;
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
@@ -416,15 +424,9 @@ void				move_cam_direction(t_doom *doom,\
 void				cam_move_fb(t_doom *doom, double dt, int direction);
 void				cam_move_rl(t_doom *doom, double dt, int direction);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
-int 				check_sector_height_diff(t_doom *doom,\
+int					check_sector_height_diff(t_doom *doom,\
 						int sector, int next_sector);
-void				jump_player(t_doom *doom, double dt);
-void				step_down(t_doom *doom, double dt);
-void				bend_down(t_doom *doom);
 bool				handle_mouse_state(t_doom *doom);
-void				scissor_lift_up(t_doom *doom);
-void				scissor_lift_down(t_doom *doom);
-void				player_fall(t_doom *doom,  t_sprite *sprite);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
@@ -540,16 +542,5 @@ void				remove_red_virus(t_doom *doom);
 void				add_mist_to_sanitizer(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
 void				draw_add_on(t_doom *doom, int sprite_i);
-
-/*actions*/
-void				sliding_door(t_doom *doom, int sd_index);
-void				create_mv_sidedef(t_sidedef **sidedef, int k, int len);
-void				relocate_moving_wall(t_point *intersect,\
-						t_sidedef *near_sidedef, t_doom *doom, int x);
-void				relocate_poster(t_doom *doom, t_sidedef *poster);
-int					init_poster(int x, double distance, t_point intersect,\
-						t_sidedef *poster);
-void				add_infection(t_doom *doom);
-void				find_infection(t_doom *doom, t_ray ray, double min_distance);
 
 #endif

@@ -4,9 +4,14 @@
 
 void			draw_item(t_doom *doom, t_item item)
 {
+<<<<<<< HEAD
 	if (!item.sprite)
 	//{
 	//	printf("Sprite not found. Type: %d\n", item.type);
+=======
+	if (!item.sprite){
+		// printf("Sprite not found. Type: %d\n", item.type);
+>>>>>>> origin/JS_Light
 		return ;
 	//}
 	draw_img(item.sprite, doom, item.position);

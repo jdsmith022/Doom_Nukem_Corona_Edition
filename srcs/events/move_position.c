@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/action.h"
 
 t_point		check_line_intersection(t_line move, t_sidedef sidedef,
 				double angle, int x)

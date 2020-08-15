@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/action.h"
 
 #include <stdio.h>
 

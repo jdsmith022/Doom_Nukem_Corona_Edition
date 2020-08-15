@@ -1,4 +1,6 @@
 #include "../../includes/doom.h"
+#include "../../includes/action.h"
+
 
 int		init_poster(int x, double distance, t_point intersect,
 			t_sidedef *poster)

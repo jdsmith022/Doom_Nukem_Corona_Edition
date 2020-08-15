@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/action.h"
 
 void	bend_down(t_doom *doom)
 {
@@ -22,7 +23,7 @@ void	step_down(t_doom *doom, double dt)
 	height_floor = doom->lib.sector[doom->i_sector].height_floor;
 	step = (int)(GRAVITY * duration);
 	doom->player_height += step;
- 	if (doom->player_height <= (PLAYER_HEIGHT + height_floor))
+	if (doom->player_height <= (PLAYER_HEIGHT + height_floor))
 	{
 		doom->player_height = PLAYER_HEIGHT + height_floor;
 		doom->own_event.step_down = FALSE;

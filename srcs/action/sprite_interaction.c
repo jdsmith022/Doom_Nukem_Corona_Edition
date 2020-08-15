@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/action.h"
 
 void	player_fall(t_doom *doom, t_sprite *sprite)
 {
@@ -17,14 +18,14 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 		doom->own_event.cam_move_l == TRUE)
 		{
 			doom->own_event.y_pitch = -240;
-			if (doom->own_event.fall_count > 0)
+			if (doom->own_event.fall_count > 1)
 				doom->own_event.fall_count = 1;
 		}
 		else
 		{
 			doom->own_event.y_pitch = 240;
-			if (doom->own_event.fall_count != -1)
-				doom->own_event.fall_count *= -1;
+			if (doom->own_event.fall_count == 1)
+				doom->own_event.fall_count = -1;
 		}
 	}
 }

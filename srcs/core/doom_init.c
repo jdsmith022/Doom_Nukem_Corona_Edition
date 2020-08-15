@@ -55,6 +55,8 @@ static void		init_settings(t_doom *doom)
 	doom->own_event.virus_red = FALSE;
 	doom->own_event.mist = FALSE;
 	doom->own_event.spray_mist = FALSE;
+	doom->own_event.light_switch = FALSE;
+	doom->own_event.click_light = -1;
 }
 
 void			doom_init(t_doom *doom)

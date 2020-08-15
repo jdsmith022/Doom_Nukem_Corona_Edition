@@ -86,7 +86,7 @@ void				font_timer(t_doom *doom);
 void				print_vanishing_text_box(t_doom *doom,
 						int start, int stop);
 void				set_background_coords_top(t_doom *doom);
-int					find_time_difference(t_doom *doom);
+int					find_time_difference(t_doom *doom, time_t lib_timer);
 void				set_background_coords_middle_small(t_doom *doom);
 void				set_background_coords_middle_large(t_doom *doom);
 

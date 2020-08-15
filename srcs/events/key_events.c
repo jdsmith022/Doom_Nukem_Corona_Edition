@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
+#include "../../includes/action.h"
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
@@ -53,13 +54,13 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 static void 	key_select_and_shoot(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
-	if (key->keysym.sym == SDLK_q)
+	if (key->keysym.sym == SDLK_e)
 	{
 		event->select = event->select == TRUE ? FALSE : TRUE;
 		if (event->select == TRUE)
 			event->shoot = FALSE;
 	}
-	if (key->keysym.sym == SDLK_e)
+	if (key->keysym.sym == SDLK_r)
 	{
 		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
 		if (event->shoot == TRUE)
@@ -77,7 +78,7 @@ static void		key_press2(t_doom *doom, t_event *event,
 		add_to_game(doom);
 	if (key->keysym.sym == SDLK_y)
 		doom->menu->pause = TRUE;
-	if (key->keysym.sym == SDLK_q || key->keysym.sym == SDLK_e)
+	if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e)
 		key_select_and_shoot(doom, event, key);
 	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
 		doom->light = doom->light == TRUE ? FALSE : TRUE;

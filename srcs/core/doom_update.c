@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/action.h"
 
 void	doom_update(t_doom *doom, double dt)
 {
@@ -21,5 +22,7 @@ void	doom_update(t_doom *doom, double dt)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
 	key_handler(doom, &doom->own_event, dt);
+	if (doom->game_editor == FALSE)
+		action_handler(doom);
 	// printf("end doom update\n");
 }
