@@ -10,8 +10,12 @@ void	action_handler(t_doom *doom)
 		light_switch(doom);
 	if (doom->own_event.shoot == TRUE && doom->hud->sanitizer_level > 0)
 	{
-		doom->hud->sanitizer_shooting = TRUE;
-		doom->own_event.mist = TRUE;
-		shooting(doom);
+		if (MOUSE_PRESSED)
+		{
+			doom->hud->sanitizer_shooting = TRUE;
+			doom->own_event.mist = TRUE;
+			shooting(doom);
+			doom->own_event.mouse_press = FALSE;
+		}
 	}
 }
