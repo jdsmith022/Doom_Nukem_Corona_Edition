@@ -25,9 +25,9 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	sector.plane_x = x;
 	doom->distance = sidedef.distance;
 	plane.intersect = doom->lib.sidedef[sidedef.poster].intersect;
-	poster_resize(doom, &plane);
 	set_properties_plane(doom, \
 		doom->lib.sidedef[sidedef.poster], &plane, &sector);
+	// poster_resize(doom, &plane);
 	draw_onesided_sidedef(doom, plane, doom->lib.sidedef[sidedef.poster], x);
 	doom->texture_height = 96;
 	doom->texture_width = 96;

@@ -52,7 +52,7 @@ static void		check_poster_location(t_doom *doom)
 	if (poster.action == 4)
 	{
 		doom->own_event.light_switch = TRUE;
-		doom->own_event.light_timer = TRUE;
+		doom->own_event.action = TRUE;
 	}
 }
 
@@ -64,6 +64,6 @@ void			light_switch(t_doom *doom)
 	{
 		if (doom->own_event.click_light == -1)
 			change_sector_light(doom);
-		light_timer(doom, &doom->own_event.light_timer);
+		light_timer(doom, &doom->own_event.action);
 	}
 }

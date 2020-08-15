@@ -32,8 +32,9 @@ void	set_instruction_text_4(t_doom *doom, t_font *lib)
 	lib[12].font_rect.x = WIDTH / 2 - 145;
 	lib[12].font_rect.y = HEIGHT / 2 - 25;
 	lib[12].font_color = doom->lib.font_lib.font_color.black;
-	lib[13].str = "Don't worry! You can fill santizer at refill stations.";
-	lib[13].font_rect.x = WIDTH / 2 - 200;
+	lib[13].str = "Don't worry! You can fill santizer at refill stations,\
+	but don't be greedy!";
+	lib[13].font_rect.x = WIDTH / 2 - 300;
 	lib[13].font_rect.y = HEIGHT / 2 + 10;
 	lib[13].font_color = doom->lib.font_lib.font_color.blue;
 	lib[14].str = "Press Q to enter collection mode and left mouse\
