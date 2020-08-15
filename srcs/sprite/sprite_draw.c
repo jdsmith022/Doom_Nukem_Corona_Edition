@@ -85,13 +85,14 @@ int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 {
 	int		i;
-	int		y_cord;
+	int		y_bottom;
+	int		y_top;
 
 	i = 0;
 	while (i < sprite.n_sector)
 	{
-		y_cord = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
-		if (y_cord > 0 && y_cord < HEIGHT && y_cord < screen_y)
+		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
+		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
 			return (-1);
 		i++;
 	}

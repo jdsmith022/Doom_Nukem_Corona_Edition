@@ -4,12 +4,12 @@
 
 static void		check_level_limits(t_doom *doom)
 {
-	if (doom->hud->corona_level >= 100)
-		doom->menu->game_over = TRUE;
+	// if (doom->hud->corona_level >= 100)
+		// doom->menu->game_over = TRUE;
 	if (doom->hud->corona_level < 0)
 		doom->hud->corona_level = 0;
-	if (doom->hud->sanitizer_level >= 100)
-		doom->hud->sanitizer_level = 100;
+	// if (doom->hud->sanitizer_level >= 100) //adjusted
+		// doom->hud->sanitizer_level = 100;
 	if (doom->hud->sanitizer_level < 0)
 		doom->hud->sanitizer_level = 0;
 }
@@ -76,7 +76,7 @@ int			calculate_hud_levels(t_doom *doom)
 	else if (doom->hud->sanitizer_shooting == TRUE)
 	{
 		printf("CHECK\n");
-		doom->hud->sanitizer_level -= 5;
+		doom->hud->sanitizer_level -= 1;
 		doom->hud->sanitizer_shooting = FALSE;
 		change = 1;
 	}
