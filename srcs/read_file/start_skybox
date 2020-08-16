@@ -276,7 +276,7 @@ assets/sprites/player/spraying_hand.bmp
 #number of sectors
 50
 #number of walls
-371
+372
 #number of objects
 15
 
@@ -2659,7 +2659,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-7
+8
 0
 16
 0
@@ -2714,40 +2714,52 @@ assets/sprites/player/spraying_hand.bmp
 
 ##wall into sector 17##
 #sidedef
-17
-704
+-1
+736
 1920
-856
+824
 1920
-5
+0
 14
-16
+30
 78
-137
+140
 
 #sidedef
-17
-704
+-1
+736
 1920
-704
-2048
-5
+736
+1952
+0
 14
 16
 78
-138
+141
 
 #sidedef
-17
-856
+-1
+736
+1952
+824
+1952
+0
+14
+57
+78
+142
+
+#sidedef
+-1
+824
 1920
-856
-2048
-5
+824
+1952
+0
 14
 16
 78
-139
+143
 
 #sector[17]## SECTOR 17##########################################################
 12
@@ -2765,24 +2777,24 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-16
-704
+-1
+736
 1920
-856
+824
 1920
-5
+0
 14
 16
 78
 140
 
 #sidedef
-16
-704
+-1
+736
 1920
-704
-2048
-5
+736
+1952
+0
 14
 16
 78
@@ -2790,23 +2802,23 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedef
 -1
-704
-2048
-856
-2048
-5
+736
+1952
+824
+1952
+0
 14
 57
 78
 142
 
 #sidedef
-16
-856
+-1
+824
 1920
-856
-2048
-5
+824
+1952
+0
 14
 16
 78
