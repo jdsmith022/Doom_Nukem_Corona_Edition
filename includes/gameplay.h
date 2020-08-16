@@ -6,6 +6,10 @@
 #include "../sdl/includes/SDL.h"
 #include "font.h"
 
+typedef struct s_doom	t_doom;
+typedef struct s_ray	t_ray;
+typedef struct s_coord	t_coord;
+
 #define MAX_SHOPPING_LIST_LENGTH 4
 
 #define SHOPPING_LIST 	doom->groceries->shopping_list
@@ -15,10 +19,6 @@
 #define MOUSE_Y			doom->own_event.hold_y
 #define MOUSE_X			doom->own_event.hold_x
 #define MOUSE_PRESSED 	doom->own_event.mouse_press
-
-typedef struct s_doom	t_doom;
-typedef struct s_ray	t_ray;
-typedef struct s_coord	t_coord;
 
 typedef struct			s_item {
 	uint8_t				type;
@@ -74,5 +74,6 @@ void					get_game_over_info(t_doom *doom);
 */
 
 void					shooting(t_doom *doom);
-
+void					check_hit(t_doom *doom, t_ray ray, int sector, \
+						int prev_sector);
 #endif

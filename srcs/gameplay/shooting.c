@@ -119,7 +119,7 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	return (sprite_hit);
 }
 
-void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave non-static
 {
 	t_point		isect;
 	int			temp_x;
@@ -181,7 +181,6 @@ void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	printf("the end\n");
 }
 
-
 void    shoot(t_doom *doom)
 {
     t_ray   ray;
@@ -193,12 +192,27 @@ void    shoot(t_doom *doom)
     ray = init_ray(doom, MOUSE_X);
 	printf("after init_ray, %d", MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
-	printf("after check hit\n");
+	printf("how far: %d\n", doom->own_event.virus_hit_index);
 	if (doom->own_event.virus_hit_index == -1)
 		printf("YOU HIT NOTHING!! Try again.\n");
+	else if (SPRITES[doom->own_event.virus_hit_index].distance > 000.00)
+		;
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
+		{
+			// printf("index: %d\n", sprite_i);
+			doom->own_event.hit_shopper = TRUE;
+			doom->lib.font_lib.bools.text = TRUE;
+			printf("HIT SHOPPER!!!!\n");
+		}
+	// else if (SPRITES[doom->own_event.virus_hit_index].action == 9)
+	// {
+	// 	printf("HIT A SHOPPER\n");
+	// 	shopper_hit_font(doom);
+	// }
 	else
 	{
 		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
+		printf("distance is: %f\n", SPRITES[doom->own_event.virus_hit_index].distance);
 		//change color to red for 5 seconds
 		SPRITES[doom->own_event.virus_hit_index].visible = 17;
 		SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;

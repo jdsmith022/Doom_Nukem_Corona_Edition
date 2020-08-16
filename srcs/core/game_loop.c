@@ -40,17 +40,17 @@ void				game_loop(t_doom *doom)
 	{
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
-		doom_update(doom, dt);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			sprite_reset(doom);
 			doom_render(doom);
-			// audio(doom->audio, &doom->own_event);
+			audio(doom, &doom->own_event);
 			doom_gui(doom);
 			groceries(doom);
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
+		doom_update(doom, dt);
 		update_hud_ui(doom);
 		set_to_window(doom);
 	}

@@ -158,12 +158,18 @@ typedef struct		s_event {
 	bool			spray_mist;
 	bool			trolly;
 	bool			light_switch;
-	bool			light_timer;
+	bool			refill;
+	bool			action;
+	bool			hit_shopper;
 	struct timespec	light_time;
 	double			hold_light;
 	int				hold_light_sector;
 	int				click_light;
 	int				fall_count;
+	bool			groc_pickup;
+	bool			died;
+	int				sanitizer_refills;
+	struct timespec	refill_pause;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -337,6 +343,7 @@ typedef struct		s_doom {
 	bool			start_timer;
 	double			player_std_height;
 	double			player_height;
+	double			cam_slope_height;
 	double			player_width;
 	int				texture_width;
 	int				texture_height;
@@ -453,7 +460,7 @@ t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 void				wall_offset(t_plane *plane, int sidedef_top);
 
 void				slope_plane_settings(t_doom *doom, t_sidedef sidedef,
-						t_sector *sector, int flag);
+						t_sector *sector);
 void				set_slope_bottom_values(t_doom *doom,\
 						t_sidedef sidedef, t_sector *sector);
 double				set_slope_delta(t_doom *doom, t_sector *sector, int y);

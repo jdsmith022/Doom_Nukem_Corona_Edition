@@ -21,13 +21,13 @@ static int		update_hud_levels_3(t_doom *doom)
 	change = -1;
 	if (doom->hud->corona == TRUE)
 	{
-		doom->hud->corona_level += 15;
+		doom->hud->corona_level += 8;
 		doom->hud->corona = FALSE;
 		change = 1;
 	}
 	else if (doom->hud->boxes == TRUE)
 	{
-		doom->hud->corona_level += 5;
+		doom->hud->corona_level += 2;
 		doom->hud->boxes = FALSE;
 		change = 1;
 	}
@@ -41,19 +41,19 @@ static int		update_hud_levels_2(t_doom *doom)
 	change = -1;
 	if (doom->hud->health_pack == TRUE)
 	{
-		doom->hud->corona_level -= 5;
+		doom->hud->corona_level -= 2;
 		doom->hud->health_pack = FALSE;
 		change = 1;
 	}
 	else if (doom->hud->shopper == TRUE)
 	{
-		doom->hud->corona_level += 10;
+		doom->hud->corona_level += 5;
 		doom->hud->shopper = FALSE;
 		change = 1;
 	}
 	else if (doom->hud->health_pack_plus == TRUE)
 	{
-		doom->hud->corona_level -= 15;
+		doom->hud->corona_level -= 10;
 		doom->hud->health_pack_plus = FALSE;
 		change = 1;
 	}
@@ -69,20 +69,19 @@ int			calculate_hud_levels(t_doom *doom)
 	change = -1;
 	if (doom->hud->sanitizer == TRUE)
 	{
-		doom->hud->sanitizer_level += 20;
+		doom->hud->sanitizer_level += 15;
 		doom->hud->sanitizer = FALSE;
 		change = 1;
 	}
 	else if (doom->hud->sanitizer_shooting == TRUE)
 	{
-		printf("CHECK\n");
 		doom->hud->sanitizer_level -= 1;
 		doom->hud->sanitizer_shooting = FALSE;
 		change = 1;
 	}
 	else if (doom->hud->facemask == TRUE)
 	{
-		doom->hud->corona_level -= 10;
+		doom->hud->corona_level -= 8;
 		doom->hud->facemask = FALSE;
 		change = 1;
 	}

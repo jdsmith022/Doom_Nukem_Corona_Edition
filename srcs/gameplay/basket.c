@@ -30,6 +30,7 @@ void		add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	item.type = type;
 	item.amount = 1;
 	set_sprite(doom, type, &item);
+	doom->own_event.groc_pickup = TRUE;
 	if (!temp){
 		temp = ft_lstnew(&item, sizeof(t_item));
 		*head = temp;

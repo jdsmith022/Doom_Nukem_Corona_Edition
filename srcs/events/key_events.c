@@ -20,12 +20,13 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		jump_player(doom, dt);
 	if (event->step_down == TRUE && event->fall == FALSE)
 		step_down(doom, dt);
-	if ((event->bend == TRUE || \
-	doom->player_height < \
-	doom->player_std_height +\
-	doom->lib.sector[doom->i_sector].height_floor) \
-	&& event->fall == FALSE)
+	if ((event->bend == TRUE && event->scissor_lift == FALSE) || \
+	(doom->player_height < doom->player_std_height +\
+	doom->lib.sector[doom->i_sector].height_floor \
+	&& event->fall == FALSE))
 		bend_down(doom);
+	if (event->bend == TRUE && event->scissor_lift == TRUE)
+		exit_scissor_lift(doom);
 	if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);
 	if (event->scissor_lift_down == TRUE)
@@ -87,6 +88,8 @@ static void		key_press2(t_doom *doom, t_event *event,
 			doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
 		printing_map(&(EDIT));
+	// if (key->keysym.sym == SDLK_y && !doom->game_editor)
+	// 	doom->menu->pause = TRUE;
 }
 
 void			key_press(t_doom *doom, t_event *event,

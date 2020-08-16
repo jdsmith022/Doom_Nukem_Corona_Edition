@@ -25,4 +25,6 @@ void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
 			plane_bottom = HEIGHT;
 		sector->floor_end = plane_bottom;
 	}
+	if (sector->id == 38)
+		printf("bottom: %d\n", plane_bottom);
 }
