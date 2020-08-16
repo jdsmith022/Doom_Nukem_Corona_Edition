@@ -38,8 +38,9 @@ void	init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
 
+	if (!doom->audio || doom->audio->engine == OFF)
+		return ;
 	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // NOTE: FREE
-	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
 	doom->audio->event = event;
 	doom->audio->music_vol = TRUE;
 	doom->audio->sound_vol = TRUE;
