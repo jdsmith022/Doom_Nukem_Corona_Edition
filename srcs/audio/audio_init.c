@@ -10,6 +10,30 @@ static void	init_paths(t_doom *doom){
 	doom->audio->path = ft_strjoin(path_buff, "/sounds"); // NOTE: FREE
 }
 
+static void	load_audio(t_audio *audio)
+{
+	uint8_t i;
+
+	i = 0;
+	printf("Loading audio...\n");
+	while (i < NUM_OF_SOUNDS)
+	{
+		audio->sounds[i] = Mix_LoadWAV(
+			ft_strjoin(AUDIO_PATH, AUDIO_PATHS[i])
+		);
+		i++;
+	}
+	audio->music[0] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
+	audio->music[1] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_2));
+	Mix_PlayMusic(audio->music[0], -1);
+	while (i < NUM_OF_SOUNDS){
+		if (!audio->sounds[i])
+			printf("Mix_LoadWAV: %s\n", Mix_GetError());
+		i++;
+	}
+	printf("Loading audio completed\n");
+}
+
 void	init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
@@ -34,28 +58,5 @@ void	init_audio(t_doom *doom)
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);
-}
-
-void	load_audio(t_audio *audio)
-{
-	uint8_t i;
-
-	i = 0;
-	printf("Loading audio...\n");
-	while (i < NUM_OF_SOUNDS)
-	{
-		audio->sounds[i] = Mix_LoadWAV(
-			ft_strjoin(AUDIO_PATH, AUDIO_PATHS[i])
-		);
-		i++;
-	}
-	audio->music[0] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
-	audio->music[1] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_2));
-	Mix_PlayMusic(audio->music[0], -1);
-	while (i < NUM_OF_SOUNDS){
-		if (!audio->sounds[i])
-			printf("Mix_LoadWAV: %s\n", Mix_GetError());
-		i++;
-	}
-	printf("Loading audio completed\n");
+	load_audio(doom->audio);
 }

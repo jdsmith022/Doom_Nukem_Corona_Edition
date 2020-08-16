@@ -40,7 +40,7 @@
 
 # define PLAYER_HEIGHT 48
 # define MOVE_SPEED 200
-# define CAM_SPEED 3
+# define SENSITIVITY 0.5
 # define GRAVITY -10
 # define VELOCITY 30
 
