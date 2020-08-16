@@ -58,7 +58,7 @@ static void		check_poster_location(t_doom *doom)
 
 void			light_switch(t_doom *doom)
 {
-	if (doom->lib.sprites[doom->own_event.virus_hit_index].distance < 100.00 \
+	if (doom->lib.sidedef[doom->i_sidedef].distance < 100.00 \
 	&& doom->own_event.select == TRUE)
 		if (MOUSE_PRESSED && doom->own_event.light_switch == FALSE)
 			check_poster_location(doom);
