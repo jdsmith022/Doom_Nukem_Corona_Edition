@@ -15,12 +15,12 @@ static void	check_virus_select(t_doom *doom)
 
 void	action_handler(t_doom *doom)
 {
+	light_switch(doom);
 	sliding_door(doom, -1);
 	if (doom->own_event.select == TRUE)
 	{
 		if (MOUSE_PRESSED)
 		{
-			light_switch(doom);
 			check_virus_select(doom); //check for tp in here too!!!
 			sanitizer_refill(doom);
 			doom->own_event.mouse_press = FALSE;
