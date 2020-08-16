@@ -1991,7 +1991,6 @@ assets/sprites/player/spraying_hand.bmp
 15
 317
 
-
 #sidedef
 -1
 864
@@ -2030,7 +2029,7 @@ assets/sprites/player/spraying_hand.bmp
 
 ##protal walls to sector 11
 #sidedef
-11
+-1
 448
 1344
 512
@@ -2054,7 +2053,7 @@ assets/sprites/player/spraying_hand.bmp
 89
 
 #sidedef
-11
+-1
 512
 1536
 448
@@ -2066,7 +2065,7 @@ assets/sprites/player/spraying_hand.bmp
 90
 
 #sidedef
-11
+-1
 512
 1536
 512
@@ -2079,7 +2078,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #portal walls for sector 12 #
 #sidedef
-12
+-1
 576
 1344
 640
@@ -2103,7 +2102,7 @@ assets/sprites/player/spraying_hand.bmp
 93
 
 #sidedef
-12
+-1
 576
 1536
 640
@@ -2115,7 +2114,7 @@ assets/sprites/player/spraying_hand.bmp
 94
 
 #sidedef
-12
+-1
 640
 1536
 640
@@ -2128,7 +2127,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #portal walls for sector 13 ##
 #sidedef
-13
+-1
 704
 1380
 704
@@ -2140,7 +2139,7 @@ assets/sprites/player/spraying_hand.bmp
 96
 
 #sidedef
-13
+-1
 704
 1440
 800
@@ -2152,7 +2151,7 @@ assets/sprites/player/spraying_hand.bmp
 97
 
 #sidedef
-13
+-1
 800
 1440
 800
@@ -2192,12 +2191,12 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-10
+-1
 448
 1344
 512
 1344
-5
+0
 78
 78
 78
@@ -2209,31 +2208,31 @@ assets/sprites/player/spraying_hand.bmp
 1344
 448
 1536
-5
+0
 78
 78
 78
 101
 
 #sidedef
-10
+-1
 512
 1536
 448
 1536
-5
+0
 78
 78
 78
 102
 
 #sidedef
-10
+-1
 512
 1536
 512
 1344
-5
+0
 78
 78
 78
@@ -2255,7 +2254,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-10
+-1
 576
 1344
 640
@@ -2279,7 +2278,7 @@ assets/sprites/player/spraying_hand.bmp
 105
 
 #sidedef
-10
+-1
 576
 1536
 640
@@ -2291,7 +2290,7 @@ assets/sprites/player/spraying_hand.bmp
 106
 
 #sidedef
-10
+-1
 640
 1536
 640
@@ -2318,7 +2317,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-10
+-1
 704
 1380
 704
@@ -2330,7 +2329,7 @@ assets/sprites/player/spraying_hand.bmp
 108
 
 #sidedef
-10
+-1
 704
 1440
 800
@@ -2342,7 +2341,7 @@ assets/sprites/player/spraying_hand.bmp
 109
 
 #sidedef
-10
+-1
 800
 1440
 800
