@@ -146,6 +146,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 	x = 0;
 	sector = doom->i_sector;
 	index = doom->lib.sector[sector].i_objects;
+	printf("start sprite coll\n");
 	while (x < doom->lib.sector[sector].n_objects)
 	{
 		if (doom->lib.sprites[index].block == 1)
@@ -159,11 +160,15 @@ int			sprite_collision(t_doom *doom, t_line movement)
 				printf("after enter scissor lift if statement\n");
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
+			{
+				printf("sprite_is_hit\n");
 				return (1);
+			}
 		}
 		check_sprite_distance(doom, index);
 		index++;
 		x++;
 	}
+	printf("sprite_coll -1\n");
 	return (-1);
 }

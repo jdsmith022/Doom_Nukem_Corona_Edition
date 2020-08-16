@@ -974,6 +974,10 @@ assets/sprites/groceries/toiletpaper2.bmp
 11
 25
 
+
+
+
+
 #OBJECTS IN SECTOR 1
 #object0 in sector1 virus
 9
@@ -6439,7 +6443,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 #sidedef
 -1
-1247
+1248
 1152
 1248
 1248
@@ -7681,7 +7685,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 378
 
 #sector[47]## SECTOR 47 WAREHOUSE##########################################################
-8
+2
 0
 17
 0

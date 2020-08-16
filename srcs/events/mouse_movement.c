@@ -14,12 +14,17 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 
 	if (doom->own_event.scissor_lift == FALSE)
 	{
-		event->y_pitch = event->y_pitch > 300 ? 300 : event->y_pitch;
-		event->y_pitch = event->y_pitch < -300 ? -300 : event->y_pitch;
+		event->y_pitch = event->y_pitch > 200 ? 200 : event->y_pitch;
+		event->y_pitch = event->y_pitch < -200 ? -200 : event->y_pitch;
 	}
 	next_pitch = event->y_pitch + (motion->yrel * SENSITIVITY);
-	if (next_pitch <= 300 && next_pitch >= -300)
+	if (next_pitch <= 200 && next_pitch >= -200)
 		event->y_pitch += motion->yrel;
+	if (event->y_pitch > 200)
+		event->y_pitch = 200;
+	if (event->y_pitch < -200)
+		event->y_pitch = -200;
+	printf("motion->yrel: %d\n", motion->yrel);
 	doom->own_event.hold_x = motion->x;
 	doom->own_event.hold_y = motion->y;
 }
