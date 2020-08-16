@@ -59,6 +59,7 @@ static void		init_settings(t_doom *doom)
 	doom->own_event.click_light = -1;
 	doom->own_event.sanitizer_refills = 0;
 	doom->own_event.refill = FALSE;
+	doom->own_event.hit_shopper = FALSE;
 }
 
 void			doom_init(t_doom *doom)

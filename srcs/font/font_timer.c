@@ -67,6 +67,8 @@ static void			font_timer_2(t_doom *doom)
 	if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.checkout, 17, 18);
+	else if (doom->own_event.hit_shopper == TRUE)
+		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE)
 	{

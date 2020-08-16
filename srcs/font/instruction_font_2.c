@@ -13,20 +13,20 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[16].font_color = doom->lib.font_lib.font_color.black;
 	lib[17].str = "Make sure you're read to checkout!";
 	lib[17].font_rect.x = WIDTH / 2 - 140;
-	lib[17].font_rect.y = HEIGHT / 2- 10;
+	lib[17].font_rect.y = HEIGHT / 2 - 10;
 	lib[17].font_color = doom->lib.font_lib.font_color.red;
 	lib[18].str = "HEY! Don't shoot at me brat!";
-	lib[18].font_rect.x = WIDTH / 2 - 140;
-	lib[18].font_rect.y = HEIGHT / 2- 10;
+	lib[18].font_rect.x = WIDTH / 2 - 125;
+	lib[18].font_rect.y = HEIGHT / 2 + 15;
 	lib[18].font_color = doom->lib.font_lib.font_color.red;
 	lib[19].str = "Oh thank you! Now I'm clean!";
-	lib[19].font_rect.x = WIDTH / 2 - 140;
-	lib[19].font_rect.y = HEIGHT / 2- 10;
+	lib[19].font_rect.x = WIDTH / 2 - 130;
+	lib[19].font_rect.y = HEIGHT / 2 + 15;
 	lib[19].font_color = doom->lib.font_lib.font_color.blue;
 	lib[20].str = "Rude! I'm getting the manager!";
-	lib[20].font_rect.x = WIDTH / 2 - 140;
-	lib[20].font_rect.y = HEIGHT / 2- 10;
-	lib[20].font_color = doom->lib.font_lib.font_color.blue;
+	lib[20].font_rect.x = WIDTH / 2 - 135;
+	lib[20].font_rect.y = HEIGHT / 2 + 15;
+	lib[20].font_color = doom->lib.font_lib.font_color.red;
 }
 
 void	set_instruction_text_4(t_doom *doom, t_font *lib)
