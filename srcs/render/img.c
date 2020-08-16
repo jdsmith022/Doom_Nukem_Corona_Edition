@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 
-static void		put_pixel_from_img(char *img_pixels, t_doom *doom, uint32_t index)
+static void		put_pixel_from_img(char *img_pixels, t_doom *doom,
+					uint32_t index)
 {
 	char		*pixels;
 	t_rgb		rgb;
@@ -17,28 +18,26 @@ static void		put_pixel_from_img(char *img_pixels, t_doom *doom, uint32_t index)
 void			draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect coord)
 {
 	uint32_t	shift;
-    uint16_t	prev_x;
-    uint16_t	sx;
+	uint16_t	prev_x;
+	uint16_t	sx;
 	uint32_t	screen_index;
 
-    prev_x = coord.x;
-    sx = 0;
-	if (!texture){
-		printf("No texture found\n");
+	prev_x = coord.x;
+	sx = 0;
+	if (!texture)
 		return ;
-	}
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
-    while (sx < (texture->h * texture->w))
-    {
+	while (sx < (texture->h * texture->w))
+	{
 		screen_index = (coord.y * WIDTH + coord.x) * 4;
 		put_pixel_from_img(texture->pixels + (sx * shift), doom, screen_index);
 		coord.x++;
 		sx++;
-        if (sx % (texture->w) == 0)
-        {
-            coord.x = prev_x;
-            coord.y++;
-        }
-    }
+		if (sx % (texture->w) == 0)
+		{
+			coord.x = prev_x;
+			coord.y++;
+		}
+	}
 	return ;
 }

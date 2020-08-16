@@ -58,8 +58,10 @@ static void		check_poster_location(t_doom *doom)
 
 void			light_switch(t_doom *doom)
 {
-	if (MOUSE_PRESSED && doom->own_event.light_switch == FALSE)
-		check_poster_location(doom);
+	if (doom->lib.sidedef[doom->i_sidedef].distance < 100.00 \
+	&& doom->own_event.select == TRUE)
+		if (MOUSE_PRESSED && doom->own_event.light_switch == FALSE)
+			check_poster_location(doom);
 	if (doom->own_event.light_switch == TRUE)
 	{
 		if (doom->own_event.click_light == -1)

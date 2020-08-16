@@ -29,7 +29,7 @@ static void		print_random_font(t_doom *doom, bool *flag, Uint32 index)
 		if (diff <= 2)
 			draw_random_font(doom, doom->lib.font_lib.instruction_font, index);
 		else
-			doom->own_event.hit_shopper = FALSE;
+			doom->own_event.spray_shopper = FALSE;
 	}
 }
 

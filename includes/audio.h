@@ -64,7 +64,6 @@ typedef struct			s_audio {
 void					audio(t_doom *doom, t_event *event);
 void					exit_error(const char *message);
 void					init_audio(t_doom *doom);
-void					load_audio(t_audio *audio);
 void					play_music(Mix_Music *music);
 void					resume_music();
 void					play_sound(Mix_Chunk *sample, int channel);

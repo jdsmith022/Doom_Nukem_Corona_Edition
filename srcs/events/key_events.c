@@ -52,7 +52,7 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 		event->bend = FALSE;
 }
 
-static void 	key_select_and_shoot(t_doom *doom, t_event *event,
+static void		key_select_and_shoot(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_e)
@@ -65,10 +65,7 @@ static void 	key_select_and_shoot(t_doom *doom, t_event *event,
 	{
 		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
 		if (event->shoot == TRUE)
-		{
 			event->select = FALSE;
-			// shooting(doom); changed location to click event
-		}
 	}
 }
 
