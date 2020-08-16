@@ -107,30 +107,20 @@ void		add_to_game(t_doom *doom)
 		if (EDIT.pl_x > 0 && EDIT.pl_y > 0)
 		{
 			coor_pos(doom);
-			printf("1\n");
 			box_in_sectors(doom); // give these walls a flag so that they are not drawn if the sector is outside
-			printf("2\n");
 			free(doom->lib.sector); //rm when there are multiple levels		
-			printf("3\n");
 			free(doom->lib.sidedef); //rm when there are multiple levels		
-			printf("4\n");
 			doom->lib.sector = new_level_sector(doom,\
 				SECTOR, EDIT.s_len + 1);
-			printf("5\n");
 			doom->lib.sidedef = new_level_sidedef(doom,\
 				SIDEDEF, EDIT.w_len + 1);				
-			printf("6\n");
 			doom->lib.sector = light_correction(\
 				doom->lib.sector, EDIT.s_len);	
-			printf("7\n");	
 			doom->pos.x = EDIT.pl_x;
 			doom->pos.y = EDIT.pl_y;
-			printf("8\n");
 			doom->i_sector = EDIT.pl_sec;
-			printf("9\n");
 			doom->player_height = doom->player_height \
 			+ doom->lib.sector[EDIT.pl_sec].height_floor;
-			printf("10\n");
 			doom->light = TRUE;
 		}
 	}
