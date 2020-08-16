@@ -27,7 +27,8 @@ static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 	if (sector.slope_floor_id != -1)
 		*limit = HEIGHT;
 	else
-		*limit = sector.floor_end;
+		//*limit = sector.floor_end;
+		*limit = HEIGHT;
 }
 
 void			draw_floor(t_doom *doom, int x,

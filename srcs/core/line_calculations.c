@@ -36,6 +36,19 @@ t_point		line_delta(t_point start, t_point end)
 	return (delta);
 }
 
+t_point		check_line_intersection(t_line line1, t_line line2)
+{
+	t_point	intersect;
+	t_point	line1_delta;
+	t_point line2_delta;
+
+	line1_delta = line_delta(line1.start, line1.end);
+	line2_delta = line_delta(line2.start, line2.end);
+	intersect = line_intersection(line1.start, line1_delta,\
+	line2.start, line2_delta);
+	return (intersect);
+}
+
 double		point_distance(t_point point1,
 				t_point point2, double angle)
 {
