@@ -42,6 +42,7 @@ void				scissor_lift_up(t_doom *doom)
 	doom->player_height <= max_height)
 	{
 		doom->player_height += 10;
+		doom->own_event.y_pitch += 10;
 	}
 }
 
