@@ -24,7 +24,7 @@ void		init_hud(t_doom *doom)
 	doom->hud->health_pack_plus = FALSE;
 	doom->hud->sanitizer_shooting = FALSE;
 	doom->hud->shopper = FALSE;
-	doom->hud->sanitizer_level = 100;
+	doom->hud->sanitizer_level = 1000; //changed
 	doom->hud->corona_level = 0;
 	doom->hud->hold_time = 360000;
 	doom->hud->curr_time = 360000;

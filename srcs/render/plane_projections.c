@@ -50,6 +50,10 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
 	doom->lib.sector[sidedef.sector].sidedef_bottom[x] = plane.sidedef_bottom;
 	doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
+	if (sidedef.opp_sector != -1) //for clipping sprites (above two as well)
+		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = plane.mid_texture_bottom;
+	else
+		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
 	if (sidedef.poster != -1)
 		draw_poster(doom, plane, sidedef, x);
 }
