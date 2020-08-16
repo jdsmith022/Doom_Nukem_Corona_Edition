@@ -39,7 +39,6 @@ static char		*win_lose_status(t_doom *doom, t_font *lib)
 		lib[1].font_color = doom->lib.font_lib.font_color.blue;
 		lib[2].str = "without contracting Covid-19!";
 		lib[2].font_color = doom->lib.font_lib.font_color.blue;
-
 	}
 	else if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level >= 75)

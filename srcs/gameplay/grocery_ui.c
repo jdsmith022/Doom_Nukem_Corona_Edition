@@ -48,9 +48,10 @@ void			draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text)
 	TTF_Font	*font;
 	SDL_Surface *font_surface;
 
+	TTF_Init();
+	font = doom->groceries->font;
 	if (!font)
 		doom_exit_failure(doom, "font error\n");
-	font = doom->groceries->font;
 	font_color = (SDL_Color){.r = 255, .g = 255, .b = 255};
 	font_surface = TTF_RenderText_Solid(font, text, font_color);
 	if (!font_surface)

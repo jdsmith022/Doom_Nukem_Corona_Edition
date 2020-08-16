@@ -14,7 +14,7 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 	else
 	{
 		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
-		if (diff <= 3)
+		if (diff <= 2)
 			print_vanishing_text_box(doom, start_dex, end_dex);
 	}
 }
@@ -65,10 +65,7 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 static void			font_timer_2(t_doom *doom)
 {
 	set_background_coords_middle_narrow(doom);
-	if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
-		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.checkout, 17, 18);
-	else if (doom->own_event.spray_shopper == TRUE)
+	if (doom->own_event.spray_shopper == TRUE)
 		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE)
@@ -87,17 +84,24 @@ static void			font_timer_2(t_doom *doom)
 
 void				font_timer(t_doom *doom)
 {
+	printf("%d\n", doom->own_event.scissor_lift );
 	set_background_coords_middle_small(doom);
 	if (doom->own_event.parked_too_close == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 7, 8);
-	else if (doom->save_scissor_lift == TRUE)
+	else if (doom->own_event.scissor_lift== TRUE && doom->lib.font_lib.bools.scissor_lift == FALSE)
+	{
+		printf("here\n");
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.text, 3, 7);
+	}
 	else if (doom->own_event.fall == TRUE && \
 	doom->own_event.fall_count != -1)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
+	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.checkout, 17, 18);
 	else if (doom->lib.font_lib.bools.walking_text == TRUE \
 	&& doom->game_editor == FALSE && \
 	doom->lib.sector[doom->i_sector].action == OUTSIDE)

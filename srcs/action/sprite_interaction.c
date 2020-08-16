@@ -19,13 +19,13 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 			if (doom->own_event.cam_move_b == TRUE ||
 			doom->own_event.cam_move_l == TRUE)
 			{
-				doom->own_event.y_pitch = 240;
+				doom->own_event.y_pitch = -200;
 				if (doom->own_event.fall_count > 1)
 					doom->own_event.fall_count = 1;
 			}
 			else
 			{
-				doom->own_event.y_pitch = -240;
+				doom->own_event.y_pitch = 200;
 				if (doom->own_event.fall_count == 1)
 					doom->own_event.fall_count = -1;
 			}
@@ -55,11 +55,16 @@ void				scissor_lift_down(t_doom *doom)
 	printf("pitch: %d\n", doom->own_event.y_pitch);
 	if (doom->own_event.scissor_lift_down == TRUE)
 	{
-		if (doom->player_height > doom->player_std_height)
+		if (doom->player_height >= 50)
+		{
 			doom->player_height -= 10;
+			if (doom->player_height < 50)
+				doom->player_height = 50;
+		}
+
 		// printf("GOING DOWN %f\n", doom->player_height);
-		if (doom->player_height == doom->player_std_height)
-			exit_scissor_lift(doom);
+		// if (doom->player_height == 58)
+		// 	exit_scissor_lift(doom);
 		// doom->own_event.scissor_lift_down = FALSE; //don't need it, it's press up and down
 	}
 }

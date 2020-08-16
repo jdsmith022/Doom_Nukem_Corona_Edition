@@ -34,6 +34,7 @@ typedef struct		s_bools
 	bool			start_sector;
 	bool			checkout;
 	bool			text;
+	bool			scissor_lift;
 }					t_bools;
 
 typedef struct		s_font_lib

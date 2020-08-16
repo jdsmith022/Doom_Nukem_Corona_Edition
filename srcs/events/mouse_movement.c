@@ -12,11 +12,15 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 {
 	int next_pitch;
 
-	event->y_pitch = event->y_pitch > 240 ? 240 : event->y_pitch;
-	event->y_pitch = event->y_pitch < -240 ? -240 : event->y_pitch;
+	event->y_pitch = event->y_pitch > 200 ? 200 : event->y_pitch;
+	event->y_pitch = event->y_pitch < -200 ? -200 : event->y_pitch;
 	next_pitch = event->y_pitch + (motion->yrel * SENSITIVITY);
-	if (next_pitch <= 300 && next_pitch >= -300)
+	if (next_pitch <= 200 && next_pitch >= -200)
 		event->y_pitch += motion->yrel;
+	if (event->y_pitch > 200)
+		event->y_pitch = 200;
+	if (event->y_pitch < -200)
+		event->y_pitch = -200;
 	doom->own_event.hold_x = motion->x;
 	doom->own_event.hold_y = motion->y;
 }
@@ -42,17 +46,15 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 	SDL_GetMouseState(&doom->own_event.hold_x, &doom->own_event.hold_y);
 	if (event->select == TRUE && event->shoot == FALSE)
 	{
-		// SDL_SetRelativeMouseMode(SDL_FALSE);
+		SDL_SetRelativeMouseMode(SDL_FALSE);
 		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
 		SDL_SetCursor(doom->cursor);
-		SDL_ShowCursor(1);
 	}
 	else if (event->shoot == TRUE && event->select == FALSE)
 	{
-		// SDL_SetRelativeMouseMode(SDL_FALSE);
+		SDL_SetRelativeMouseMode(SDL_FALSE);
 		doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR);
 		SDL_SetCursor(doom->cursor);
-		SDL_ShowCursor(1);
 	}
 	else if ((event->select == FALSE && event->shoot == FALSE) || \
 		(event->select == TRUE && event->shoot == TRUE))

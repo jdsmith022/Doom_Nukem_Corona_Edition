@@ -5,12 +5,12 @@ static void	set_instruction_text_3(t_doom *doom, t_font *lib)
 {
 	lib[8].str = "Watch out! You tripped over the crate! \
 	Jump to stand up.";
-	lib[8].font_rect.x = WIDTH / 2 - 235;
-	lib[8].font_rect.y = HEIGHT / 2 - 15;
+	lib[8].font_rect.x = WIDTH / 2 - 220;
+	lib[8].font_rect.y = HEIGHT / 2 - 25;
 	lib[8].font_color = doom->lib.font_lib.font_color.red;
 	lib[9].str = "You're corona level has increased!";
-	lib[9].font_rect.x = WIDTH / 2 - 135;
-	lib[9].font_rect.y = HEIGHT / 2 + 15;
+	lib[9].font_rect.x = WIDTH / 2 - 130;
+	lib[9].font_rect.y = HEIGHT / 2 + 10;
 	lib[9].font_color = doom->lib.font_lib.font_color.green;
 }
 
@@ -29,7 +29,7 @@ static void	set_instruction_text_2(t_doom *doom, t_font *lib)
 	lib[5].font_rect.x = WIDTH / 2 - 180;
 	lib[5].font_rect.y = HEIGHT / 2 + 5;
 	lib[5].font_color = doom->lib.font_lib.font_color.black;
-	lib[6].str = "Exit = Return scissor lift to lowest level and press S.";
+	lib[6].str = "Exit = Return scissor lift to lowest level and press X.";
 	lib[6].font_rect.x = WIDTH / 2 - 200;
 	lib[6].font_rect.y = HEIGHT / 2 + 27;
 	lib[6].font_color = doom->lib.font_lib.font_color.black;
@@ -64,7 +64,7 @@ static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
 
 void	save_instruction_font(t_doom *doom, int *len)
 {
-	TTF_Font *font;
+	TTF_Font	*font;
 	int			font_size;
 
 	*len = 21;
