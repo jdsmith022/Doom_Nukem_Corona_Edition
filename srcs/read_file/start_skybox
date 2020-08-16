@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-85
+89
 
 ## OUTSIDE ASSETS##
 #0
@@ -35,7 +35,7 @@ assets/textures/outside/closing_down.bmp
 #10
 assets/textures/outside/closing_down_sides.bmp
 #11
-assets/sprites/health/fill_up.bmp
+assets/textures/poster/fill_up.bmp
 #12
 assets/textures/outside/enter_here.bmp
 #13
@@ -198,8 +198,17 @@ assets/textures/checkout/checkout.bmp
 #84
 assets/textures/shelves/toiletpaper_full_wall.bmp
 
+###POSTERS
+#85
+assets/textures/poster/light_switch_off.bmp
+#86
+assets/textures/poster/light_switch_on.bmp
+#87
+assets/textures/poster/fill_up_clean.bmp
 
-
+##GLASS DOOR
+#88
+assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
@@ -315,7 +324,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 #number of sectors
 50
 #number of walls
-374
+378
 #number of objects
 96
 
@@ -1443,9 +1452,9 @@ assets/sprites/groceries/toiletpaper2.bmp
 576
 672
 0
-16
-16
-16
+88
+88
+88
 45
 
 #sidedefs
@@ -1738,7 +1747,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-4
+5
 4
 5
 0
@@ -1790,6 +1799,19 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 16
 53
+
+##LIGHT SWITCH##
+#poster
+-1
+96
+768
+96
+784
+4
+85
+85
+85
+370
 
 ##OBJECTS IN SECTOR 5##
 #object0 in sector5 box
@@ -1934,7 +1956,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-4
+5
 5
 6
 0
@@ -1986,6 +2008,19 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 16
 57
+
+##LIGHT SWITCH##
+#poster
+-1
+288
+1152
+273
+1136
+4
+85
+85
+85
+371
 
 #object0 in sector6 virus
 26
@@ -2162,7 +2197,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-4
+5
 4
 7
 0
@@ -2214,6 +2249,19 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 16
 61
+
+##LIGHT SWITCH##
+#poster
+-1
+480
+1056
+464
+1056
+4
+85
+85
+85
+372
 
 #OBJECTS IN SECTOR 7 total: 3
 #object0 in sector7 virus
@@ -5115,7 +5163,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 #sector[23]## SECTOR 23##########################################################
 12
 30
-74
+78
 0
 -1
 -10
@@ -5178,7 +5226,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 #sector[24]## SECTOR 24##########################################################
 12
 30
-74
+78
 0
 -1
 -10
@@ -5721,9 +5769,9 @@ assets/sprites/groceries/toiletpaper2.bmp
 576
 672
 0
-16
-16
-16
+88
+88
+88
 220
 
 #sidedefs
@@ -5807,7 +5855,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 0
 16
 16
-16
+78
 227
 
 #sidedefs
@@ -6100,15 +6148,15 @@ assets/sprites/groceries/toiletpaper2.bmp
 576
 672
 8
-11
-11
-11
+87
+87
+87
 369
 
 #sector[30]## SECTOR 30##########################################################
 12
 30
-17
+78
 0
 -1
 -10
@@ -6139,9 +6187,9 @@ assets/sprites/groceries/toiletpaper2.bmp
 1248
 352
 0
-17
-17
-17
+78
+78
+78
 256
 
 #sidedefs
@@ -6340,7 +6388,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 10
 -1
-5
+6
 0
 33
 0
@@ -6405,6 +6453,19 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 274
 
+##LIGHT SWITCH##
+#poster
+-1
+1248
+1152
+1248
+1168
+4
+85
+85
+85
+374
+
 #sector[34]## SECTOR 34##########################################################
 4
 0
@@ -6415,7 +6476,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 10
 -1
-6
+8
 0
 34
 0
@@ -6491,6 +6552,32 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 16
 280
+
+##LIGHT SWITCH##
+#poster
+-1
+1376
+1184
+1392
+1184
+4
+85
+85
+85
+373
+
+##LIGHT SWITCH##
+#poster
+-1
+1600
+1312
+1584
+1312
+4
+85
+85
+85
+374
 
 #sector[35]## SECTOR 35##########################################################
 10
@@ -7060,13 +7147,13 @@ assets/sprites/groceries/toiletpaper2.bmp
 #poster
 -1
 1095
-1574
+1670
 1111
-1574
+1670
 8
-11
-11
-11
+87
+87
+87
 370
 
 #sector[40]## SECTOR 40##########################################################
@@ -7079,7 +7166,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-4
+5
 0
 40
 0
@@ -7131,6 +7218,19 @@ assets/sprites/groceries/toiletpaper2.bmp
 15
 15
 318
+
+##LIGHT SWITCH##
+#poster
+-1
+864
+1318
+880
+1318
+4
+85
+85
+85
+376
 
 #sector[41]## SECTOR 41 EASTER EGG##########################################################
 12
@@ -7505,7 +7605,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-4
+6
 0
 46
 0
@@ -7558,6 +7658,32 @@ assets/sprites/groceries/toiletpaper2.bmp
 15
 346
 
+##LIGHT SWITCH#
+#poster
+-1
+1664
+1446
+1680
+1446
+4
+85
+85
+85
+377
+
+##LIGHT SWITCH##
+#poster
+-1
+1952
+1382
+1936
+1382
+4
+85
+85
+85
+378
+
 #sector[47]## SECTOR 47 WAREHOUSE##########################################################
 8
 0
@@ -7568,7 +7694,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-6
+9
 14
 47
 0
@@ -7647,16 +7773,42 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 ##LIGHT SWITCH##
 #poster
-#-1
-#2816
-#1393
-#2816
-#1409
-#4
-#85
-#85
-#85
-#370
+-1
+2816
+1393
+2816
+1409
+4
+85
+85
+85
+370
+
+##SANITIZER##
+#poster
+-1
+2816
+1410
+2816
+1426
+4
+87
+87
+87
+375
+
+##LIGHT SWITCH##
+#poster
+-1
+1952
+1382
+1952
+1366
+4
+85
+85
+85
+376
 
 #OBJECT IN SECTOR 47
 #object0 in sector 47 scissor lift
@@ -8073,7 +8225,6 @@ assets/sprites/groceries/toiletpaper2.bmp
 1405
 2545
 1395
-
 
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10

@@ -1,38 +1,43 @@
 #include "../../includes/doom.h"
 
+static void	light_correct(double *r, double *g, double *b, double light)
+{
+	if (*r < 0.0)
+		*r += 255.0;
+	if (*g < 0.0)
+		*g += 255.0;
+	if (*b < 0.0)
+		*b += 255.0;
+	*r *= light;
+	*g *= light;
+	*b *= light;
+}
+
 void		add_saturation(char *r, char *g, char *b, double light)
 {
-	double R;
-	double G;
-	double B;
+	double r1;
+	double g1;
+	double b1;
 
-	R = (double)*r;
-	G = (double)*g;
-	B = (double)*b;
-	if (R < 0.0)
-		R += 255.0;
-	if (G < 0.0)
-		G += 255.0;
-	if (B < 0.0)
-		B += 255.0;
-	 R *= light;
-	 G *= light;
-	 B *= light;
-	if (R < 0.0)
-		R = 0;
-	if (G < 0.0)
-		G = 0;
-	if (B < 0.0)
-		B = 0;
-	if (R > 255.0)
-		R = 255.0;
-	if (G > 255.0)
-		G = 255.0;
-	if (B > 255.0)
-		B = 255.0;
-	*r = R;
-	*g = G;
-	*b = B;
+	r1 = (double)*r;
+	g1 = (double)*g;
+	b1 = (double)*b;
+	light_correct(&r1, &g1, &b1, light);
+	if (r1 < 0.0)
+		r1 = 0;
+	if (g1 < 0.0)
+		g1 = 0;
+	if (b1 < 0.0)
+		b1 = 0;
+	if (r1 > 255.0)
+		r1 = 255.0;
+	if (g1 > 255.0)
+		g1 = 255.0;
+	if (b1 > 255.0)
+		b1 = 255.0;
+	*r = r1;
+	*g = g1;
+	*b = b1;
 }
 
 void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
@@ -49,10 +54,19 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	r = texture[pixel_dex];
 	g = texture[pixel_dex + 1];
 	b = texture[pixel_dex + 2];
-	add_saturation(&r, &g, &b, doom->distance);
-	pixels[index] = r;
-	index++;
-	pixels[index] = g;
-	index++;
-	pixels[index] = b;
+	if (texture[pixel_dex] == (char)255 && \
+	texture[pixel_dex + 1] == (char)255 && \
+	texture[pixel_dex + 2 ]== (char)255)
+	{
+		;
+	}
+	else
+	{
+		add_saturation(&r, &g, &b, doom->distance);
+		pixels[index] = r;
+		index++;
+		pixels[index] = g;
+		index++;
+		pixels[index] = b;
+	}
 }
