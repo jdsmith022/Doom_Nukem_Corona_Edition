@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
+#include "../../includes/audio.h"
 
 static void		finished_menu(t_doom *doom)
 {
@@ -20,8 +21,12 @@ static void		pause_menu(t_doom *doom)
 	int curr_time;
 
 	hold_time = SDL_GetTicks();
-	while (doom->menu->pause == TRUE)
+	while (doom->menu->pause == TRUE){
+		Mix_PauseMusic();
 		menu_print_loop(doom);
+	}
+	doom->menu->pause = FALSE;
+	resume_music();
 	curr_time = SDL_GetTicks();
 	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
 	doom->hud_display = TRUE;

@@ -33,7 +33,6 @@ void	action_handler(t_doom *doom)
 			doom->hud->sanitizer_shooting = TRUE;
 			doom->own_event.mist = TRUE;
 			shooting(doom);
-			doom->own_event.mouse_press = FALSE;
 		}
 	}
 }

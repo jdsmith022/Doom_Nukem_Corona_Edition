@@ -166,6 +166,8 @@ typedef struct		s_event {
 	int				hold_light_sector;
 	int				click_light;
 	int				fall_count;
+	bool			groc_pickup;
+	bool			died;
 	int				sanitizer_refills;
 	struct timespec	refill_pause;
 }					t_event;
