@@ -20,8 +20,6 @@ static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 		*limit = doom->lib.portal_ceiling;
 	else
 		*limit = 0;
-	// else
-		// *limit = sector.ceiling_end;
 }
 
 void			draw_ceiling(t_doom *doom, int x,
