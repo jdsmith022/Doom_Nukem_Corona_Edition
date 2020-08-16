@@ -23,6 +23,17 @@ static void		doom_init_events(t_event *event)
 	event->mouse_state_switched = TRUE;
 	event->groc_pickup = FALSE;
 	event->died = FALSE;
+	event->sprite_collision = FALSE;
+	event->virus_red_i = -1;
+	event->virus_red = FALSE;
+	event->mist = FALSE;
+	event->spray_mist = FALSE;
+	event->light_switch = FALSE;
+	event->click_light = -1;
+	event->sanitizer_refills = 0;
+	event->refill = FALSE;
+	event->spray_shopper = FALSE;
+	event->sprite_index = -1;
 }
 
 static void		init_infection(t_doom *doom)
@@ -53,15 +64,6 @@ static void		init_settings(t_doom *doom)
 	doom->audio->engine = ON;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
-	doom->own_event.virus_red_i = -1;
-	doom->own_event.virus_red = FALSE;
-	doom->own_event.mist = FALSE;
-	doom->own_event.spray_mist = FALSE;
-	doom->own_event.light_switch = FALSE;
-	doom->own_event.click_light = -1;
-	doom->own_event.sanitizer_refills = 0;
-	doom->own_event.refill = FALSE;
-	doom->own_event.spray_shopper = FALSE;
 }
 
 void			doom_init(t_doom *doom)

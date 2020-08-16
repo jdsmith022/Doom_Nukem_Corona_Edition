@@ -163,6 +163,7 @@ typedef struct		s_event {
 	bool			spray_shopper;
 	bool			sprite_collision;
 	int				sprite_collision_dist;
+	int				sprite_index;
 	struct timespec	light_time;
 	double			hold_light;
 	int				hold_light_sector;
@@ -275,8 +276,9 @@ typedef struct		s_sector {
 	int				diff_y;
 	int				plane_x;
 	t_slope			slope;
-	int				sidedef_bottom[WIDTH];
-	int				sidedef_top[WIDTH];
+	int				sidedef_bottom[WIDTH]; //for cutting sprites
+	int				sidedef_top[WIDTH]; //for clipping sprites
+	int				sidedef_mid_bottom[WIDTH]; //for clipping sprites
 }					t_sector;
 
 typedef struct		s_lib {

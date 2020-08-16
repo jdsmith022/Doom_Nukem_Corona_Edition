@@ -113,7 +113,10 @@ void	create_object(t_lib *col_lib, int fd, int i, int total_sprites)
 	}
 	obj_int = obj_int + j;
 	if (obj_int > total_sprites)
+	{
+		printf("obj_int: %d, total_sprite: %d\n", obj_int, total_sprites);
 		exit_with_error("Error: number of objects in file is incorrect\n");
+	}
 }
 
 void	add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd)

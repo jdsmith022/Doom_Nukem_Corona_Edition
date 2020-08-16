@@ -1,12 +1,5 @@
 #include "../../includes/doom.h"
 
-// void		draw_scissor_lift_bar(t_doom *doom)
-// {
-// 	int		end_y;
-
-// 	end_y =
-// }
-
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i,\
 			double distance)
 {
@@ -85,13 +78,20 @@ int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 {
 	int		i;
-	int		y_cord;
+	int		y_bottom;
+	// int		y_top;
+	int		mid_bottom;
 
+	mid_bottom = 0;
 	i = 0;
 	while (i < sprite.n_sector)
 	{
-		y_cord = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
-		if (y_cord > 0 && y_cord < HEIGHT && y_cord < screen_y)
+		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x] > 0)
+			mid_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
+		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
+		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
+			return (-1);
+		if (mid_bottom > 0 && mid_bottom < HEIGHT && mid_bottom < screen_y)
 			return (-1);
 		i++;
 	}
