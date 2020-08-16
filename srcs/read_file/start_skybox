@@ -7590,7 +7590,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-7
+6
 14
 47
 0
@@ -7669,16 +7669,16 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 ##LIGHT SWITCH##
 #poster
--1
-2816
-1393
-2816
-1409
-4
-85
-85
-85
-370
+#-1
+#2816
+#1393
+#2816
+#1409
+#4
+#85
+#85
+#85
+#370
 
 #OBJECT IN SECTOR 47
 #object0 in sector 47 scissor lift
