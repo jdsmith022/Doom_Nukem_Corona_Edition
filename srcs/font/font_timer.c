@@ -15,9 +15,7 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 	{
 		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
 		if (diff <= 3)
-		{
 			print_vanishing_text_box(doom, start_dex, end_dex);
-		}
 	}
 }
 

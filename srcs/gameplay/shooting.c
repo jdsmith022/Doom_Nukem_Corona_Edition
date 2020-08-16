@@ -108,6 +108,11 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	{
 		if (SPRITES[sprite_i].action == 4)
 			temp_virus = virus_in_range(doom, ray, sprite_i, prev_sector);
+		if (SPRITES[sprite_i].action == 9 && SPRITES[sprite_i].distance < 100.0)
+		{
+			printf("HIT SHOPPER!!!!");
+			shopper_hit_font(doom);
+		}
 		if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
 		{
 			current_dist_sprite = SPRITES[temp_virus].distance;
@@ -174,6 +179,11 @@ void    shoot(t_doom *doom)
 		printf("YOU HIT NOTHING!! Try again.\n");
 	else if (SPRITES[doom->own_event.virus_hit_index].distance > 000.00)
 		;
+	// else if (SPRITES[doom->own_event.virus_hit_index].action == 9)
+	// {
+	// 	printf("HIT A SHOPPER\n");
+	// 	shopper_hit_font(doom);
+	// }
 	else
 	{
 		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);

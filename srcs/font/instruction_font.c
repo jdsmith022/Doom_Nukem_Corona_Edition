@@ -67,7 +67,7 @@ void	save_instruction_font(t_doom *doom, int *len)
 	TTF_Font *font;
 	int			font_size;
 
-	*len = 18;
+	*len = 21;
 	doom->lib.font_lib.instruction_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.instruction_font == NULL)

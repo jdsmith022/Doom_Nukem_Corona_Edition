@@ -89,5 +89,7 @@ void				set_background_coords_top(t_doom *doom);
 int					find_time_difference(t_doom *doom, time_t lib_timer);
 void				set_background_coords_middle_small(t_doom *doom);
 void				set_background_coords_middle_large(t_doom *doom);
+void				print_instruction_background(t_doom *doom,
+						t_limit limit_x, t_limit limit_y);
 
 #endif
