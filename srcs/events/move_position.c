@@ -92,26 +92,23 @@ void	cam_move(t_doom *doom, double dt, double direction)
 		movement.end = doom->pos;
 	sidedef = sidedef_intersection(doom, movement, doom->i_sector, prev_intersect);
 	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
-	{
-		printf("%d\n", sidedef.action);
 		doom->pos = movement.end;
-		if (sidedef.action == 2)
-		{
-			check_sliding_door(doom, sidedef, movement.start, direction);
-		}
-	}
 	else
 		collision = check_collision(doom, sidedef, movement);
+	printf("1: sidef_id = %d, collision = %d\n", sidedef.id, collision);
 	if (collision == 1)
 	{
 		prev_intersect = sidedef.intersect;
 		sidedef = sidedef_intersection(doom, movement, doom->i_sector, prev_intersect);
 		collision = check_collision(doom, sidedef, movement);
+		printf("2: sidef_id = %d , collision = %d\n", sidedef.id, collision);
 		if (collision == -1)
 			doom->i_sector = doom->prev_sector;
 		if (collision == 0)
 			doom->pos = movement.end;
 	}
+	if (sidedef.action == 2)
+		check_sliding_door(doom, sidedef, movement.start, direction);
 }
 
 //void	cam_move_fb(t_doom *doom, double dt, double direction)
