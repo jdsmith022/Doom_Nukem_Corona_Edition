@@ -21,10 +21,6 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.intersect = intersect;
 	sidedef.line = curr_sidedef.line;
 	sidedef.action = curr_sidedef.action;
-	if (sidedef.action == EXIT_LEVEL){
-		doom->level_exit.start = sidedef.line.start;
-		doom->level_exit.end = sidedef.line.end;
-	}
 	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
 }
@@ -111,7 +107,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
 	// printf("before sprite_check\n");
-	// sprite_check(doom, ray, sector, prev_sector);
+	sprite_check(doom, ray, sector, prev_sector);
 	// printf("after sprite_check\n");
 	if (min_distance != INFINITY)
 	{

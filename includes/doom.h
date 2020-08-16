@@ -160,7 +160,9 @@ typedef struct		s_event {
 	bool			light_switch;
 	bool			refill;
 	bool			action;
-	bool			hit_shopper;
+	bool			spray_shopper;
+	bool			sprite_collision;
+	int				sprite_collision_dist;
 	struct timespec	light_time;
 	double			hold_light;
 	int				hold_light_sector;
@@ -360,18 +362,17 @@ typedef struct		s_doom {
 	int				visible_sprites;
 	int				difficulty;
 	int				total_sprites;
-	t_line			level_exit;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
-	int 			game_time;
+	int				game_time;
 	int				game_start_time;
 	int				save_scissor_lift;
 }					t_doom;
 
 /*core functions*/
 int					main(void);
-void 				game_init(t_doom *doom);
+void				game_init(t_doom *doom);
 void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);

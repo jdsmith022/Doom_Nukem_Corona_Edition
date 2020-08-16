@@ -177,7 +177,7 @@ void    shoot(t_doom *doom)
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
 		{
 			// printf("index: %d\n", sprite_i);
-			doom->own_event.hit_shopper = TRUE;
+			doom->own_event.spray_shopper = TRUE;
 			doom->lib.font_lib.bools.text = TRUE;
 			printf("HIT SHOPPER!!!!\n");
 		}

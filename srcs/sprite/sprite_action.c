@@ -81,6 +81,54 @@ void		activate_scissor_lift(t_doom *doom, int index)
 		//deactivatie moving up an down
 }
 
+static void	check_walking(t_doom *doom, t_sprite shopper)
+{
+	double new_dist;
+
+	if (doom->own_event.sprite_collision == FALSE)
+	{
+		doom->own_event.sprite_collision_dist = shopper.distance;
+		doom->own_event.sprite_collision == TRUE;
+	}
+	if (shopper.distance < doom->own_event.sprite_collision_dist)
+	{
+		doom->hud->shopper = TRUE;
+		doom->own_event.sprite_collision == FALSE;
+	}
+}
+
+static void	check_sprite_distance(t_doom *doom, int index)
+{
+	if (doom->lib.sprites[index].distance > 0.1 &&\
+	doom->lib.sprites[index].distance < 50)
+	{
+		if (doom->lib.sprites[index].action == 9)
+			check_walking(doom, doom->lib.sprites[index]);
+		else if (doom->lib.sprites[index].action == 4)
+		{
+			doom->hud->corona = TRUE;
+			doom->lib.sprites[index].action = 6;
+		}
+		else if (doom->lib.sprites[index].action == 1)
+		{
+			doom->hud->health_pack_plus = TRUE;
+			doom->lib.sprites[index].action = 8;
+		}
+		else if (doom->lib.sprites[index].action == 2)
+		{
+			doom->hud->health_pack = TRUE;
+			doom->lib.sprites[index].action = 8;
+		}
+		else if (doom->lib.sprites[index].action == 3)
+		{
+			doom->hud->facemask = TRUE;
+			doom->lib.sprites[index].action = 8;
+		}
+		else if (doom->lib.sprites[index].action == 10)
+			player_fall(doom, &doom->lib.sprites[index]);
+	}
+}
+
 int			sprite_collision(t_doom *doom, t_line movement)
 {
 	int		x;
@@ -105,36 +153,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 				return (1);
 		}
-		if (doom->lib.sprites[index].distance > 0.1 &&\
-		doom->lib.sprites[index].distance < 50)
-		{
-			if (doom->lib.sprites[index].action == 9)
-			{
-				doom->hud->shopper = TRUE;
-			}
-			else if (doom->lib.sprites[index].action == 4)
-			{
-				doom->hud->corona = TRUE;
-				doom->lib.sprites[index].action = 6;
-			}
-			else if (doom->lib.sprites[index].action == 1)
-			{
-				doom->hud->health_pack_plus = TRUE;
-				doom->lib.sprites[index].action = 8;
-			}
-			else if (doom->lib.sprites[index].action == 2)
-			{
-				doom->hud->health_pack = TRUE;
-				doom->lib.sprites[index].action = 8;
-			}
-			else if (doom->lib.sprites[index].action == 3)
-			{
-				doom->hud->facemask = TRUE;
-				doom->lib.sprites[index].action = 8;
-			}
-			else if (doom->lib.sprites[index].action == 10)
-				player_fall(doom, &doom->lib.sprites[index]);
-		}
+		check_sprite_distance(doom, index);
 		index++;
 		x++;
 	}
