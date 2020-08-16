@@ -482,6 +482,8 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
+void				draw_window(t_doom *doom, t_plane plane,
+						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\

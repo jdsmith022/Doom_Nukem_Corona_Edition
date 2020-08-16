@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-87
+89
 
 ## OUTSIDE ASSETS##
 #0
@@ -35,7 +35,7 @@ assets/textures/outside/closing_down.bmp
 #10
 assets/textures/outside/closing_down_sides.bmp
 #11
-assets/sprites/health/fill_up.bmp
+assets/textures/poster/fill_up.bmp
 #12
 assets/textures/outside/enter_here.bmp
 #13
@@ -203,9 +203,12 @@ assets/textures/shelves/toiletpaper_full_wall.bmp
 assets/textures/poster/light_switch_off.bmp
 #86
 assets/textures/poster/light_switch_on.bmp
+#87
+assets/textures/poster/fill_up_clean.bmp
 
-
-
+##GLASS DOOR
+#88
+assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
@@ -276,7 +279,7 @@ assets/sprites/player/spraying_hand.bmp
 #number of sectors
 50
 #number of walls
-374
+376
 #number of objects
 15
 
@@ -1068,9 +1071,9 @@ assets/sprites/player/spraying_hand.bmp
 576
 672
 0
-16
-16
-16
+88
+88
+88
 45
 
 #sidedefs
@@ -3969,9 +3972,9 @@ assets/sprites/player/spraying_hand.bmp
 576
 672
 0
-16
-16
-16
+88
+88
+88
 220
 
 #sidedefs
@@ -4055,7 +4058,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 16
 16
-16
+78
 227
 
 #sidedefs
@@ -4348,15 +4351,15 @@ assets/sprites/player/spraying_hand.bmp
 576
 672
 8
-11
-11
-11
+87
+87
+87
 369
 
 #sector[30]## SECTOR 30##########################################################
 12
 30
-17
+78
 0
 -1
 -10
@@ -4387,9 +4390,9 @@ assets/sprites/player/spraying_hand.bmp
 1248
 352
 0
-17
-17
-17
+78
+78
+78
 256
 
 #sidedefs
@@ -5305,13 +5308,13 @@ assets/sprites/player/spraying_hand.bmp
 #poster
 -1
 1095
-1574
+1670
 1111
-1574
+1670
 8
-11
-11
-11
+87
+87
+87
 370
 
 #sector[40]## SECTOR 40##########################################################
@@ -5852,7 +5855,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-7
+9
 0
 47
 0
@@ -5942,6 +5945,31 @@ assets/sprites/player/spraying_hand.bmp
 85
 370
 
+##SANITIZER##
+#poster
+-1
+2816
+1382
+2816
+1411
+4
+87
+87
+87
+375
+
+##LIGHT SWITCH##
+#poster
+-1
+1952
+1393
+1952
+1409
+4
+85
+85
+85
+376
 
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10
