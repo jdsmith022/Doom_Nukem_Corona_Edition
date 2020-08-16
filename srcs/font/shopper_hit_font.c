@@ -47,7 +47,6 @@ void		shopper_hit_random_font(t_doom *doom)
 {
 	if (doom->lib.font_lib.bools.text == TRUE)
 		select_index(doom);
-	set_background_coords_middle_narrow(doom);
 	print_instruction_background(doom, doom->lib.font_lib.limit_x, \
 		doom->lib.font_lib.limit_y);
 	print_random_font(doom, &doom->lib.font_lib.bools.text,\

@@ -64,6 +64,7 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 
 static void			font_timer_2(t_doom *doom)
 {
+	set_background_coords_middle_narrow(doom);
 	if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.checkout, 17, 18);
