@@ -6870,7 +6870,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 0
 -1
-6
+5
 1
 37
 0
@@ -6937,16 +6937,16 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 ##LIGHT SWITCH##
 #poster
--1
-1280
-1318
-1264
-1318
-4
-85
-85
-85
-370
+#-1
+#1280
+#1318
+#1264
+#1318
+#4
+#85
+#85
+#85
+#370
 
 #OBJECTS IN SECTOR 38
 #object0 in sector 38 plant
