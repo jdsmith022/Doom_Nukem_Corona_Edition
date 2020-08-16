@@ -34,9 +34,9 @@ static void	check_poster(t_doom *doom)
 
 void	sanitizer_refill(t_doom *doom)
 {
-	if (MOUSE_PRESSED && doom->own_event.refill == FALSE)
+	if (doom->own_event.refill == FALSE)
 		check_poster(doom);
-	if (MOUSE_PRESSED && doom->own_event.refill == TRUE)
+	if (doom->own_event.refill == TRUE)
 	{
 		doom->own_event.sanitizer_refills += 1;
 		if (doom->own_event.sanitizer_refills < 3 \

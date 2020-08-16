@@ -5,7 +5,7 @@
 static void		finished_menu(t_doom *doom)
 {
 	add_score_to_sdl_text(doom);
-	while(doom->menu->finished == TRUE)
+	while (doom->menu->finished == TRUE)
 		menu_print_loop(doom);
 }
 
@@ -32,7 +32,7 @@ static void		pause_menu(t_doom *doom)
 	doom->hud_display = TRUE;
 }
 
-void	menus(t_doom* doom)
+void	menus(t_doom *doom)
 {
 	if (doom->menu->game_over == TRUE)
 		game_over_menu(doom);

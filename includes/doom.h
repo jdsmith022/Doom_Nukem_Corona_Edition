@@ -160,6 +160,7 @@ typedef struct		s_event {
 	bool			light_switch;
 	bool			refill;
 	bool			action;
+	bool			hit_shopper;
 	struct timespec	light_time;
 	double			hold_light;
 	int				hold_light_sector;

@@ -42,7 +42,7 @@ void				game_loop(t_doom *doom)
 		dt = get_timeframe(&last_frame_time);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
-			// sprite_reset(doom);
+			sprite_reset(doom);
 			doom_render(doom);
 			audio(doom, &doom->own_event);
 			doom_gui(doom);

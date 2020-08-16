@@ -276,7 +276,7 @@ assets/sprites/player/spraying_hand.bmp
 #number of sectors
 50
 #number of walls
-371
+374
 #number of objects
 15
 
@@ -1986,11 +1986,10 @@ assets/sprites/player/spraying_hand.bmp
 864
 1382
 0
-15
-15
-15
+78
+78
+78
 317
-
 
 #sidedef
 -1
@@ -2030,7 +2029,7 @@ assets/sprites/player/spraying_hand.bmp
 
 ##protal walls to sector 11
 #sidedef
-11
+-1
 448
 1344
 512
@@ -2054,7 +2053,7 @@ assets/sprites/player/spraying_hand.bmp
 89
 
 #sidedef
-11
+-1
 512
 1536
 448
@@ -2066,7 +2065,7 @@ assets/sprites/player/spraying_hand.bmp
 90
 
 #sidedef
-11
+-1
 512
 1536
 512
@@ -2079,7 +2078,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #portal walls for sector 12 #
 #sidedef
-12
+-1
 576
 1344
 640
@@ -2103,7 +2102,7 @@ assets/sprites/player/spraying_hand.bmp
 93
 
 #sidedef
-12
+-1
 576
 1536
 640
@@ -2115,7 +2114,7 @@ assets/sprites/player/spraying_hand.bmp
 94
 
 #sidedef
-12
+-1
 640
 1536
 640
@@ -2128,7 +2127,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #portal walls for sector 13 ##
 #sidedef
-13
+-1
 704
 1380
 704
@@ -2140,7 +2139,7 @@ assets/sprites/player/spraying_hand.bmp
 96
 
 #sidedef
-13
+-1
 704
 1440
 800
@@ -2152,7 +2151,7 @@ assets/sprites/player/spraying_hand.bmp
 97
 
 #sidedef
-13
+-1
 800
 1440
 800
@@ -2192,12 +2191,12 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-10
+-1
 448
 1344
 512
 1344
-5
+0
 78
 78
 78
@@ -2209,31 +2208,31 @@ assets/sprites/player/spraying_hand.bmp
 1344
 448
 1536
-5
+0
 78
 78
 78
 101
 
 #sidedef
-10
+-1
 512
 1536
 448
 1536
-5
+0
 78
 78
 78
 102
 
 #sidedef
-10
+-1
 512
 1536
 512
 1344
-5
+0
 78
 78
 78
@@ -2255,7 +2254,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-10
+-1
 576
 1344
 640
@@ -2279,7 +2278,7 @@ assets/sprites/player/spraying_hand.bmp
 105
 
 #sidedef
-10
+-1
 576
 1536
 640
@@ -2291,7 +2290,7 @@ assets/sprites/player/spraying_hand.bmp
 106
 
 #sidedef
-10
+-1
 640
 1536
 640
@@ -2318,7 +2317,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-10
+-1
 704
 1380
 704
@@ -2330,7 +2329,7 @@ assets/sprites/player/spraying_hand.bmp
 108
 
 #sidedef
-10
+-1
 704
 1440
 800
@@ -2342,7 +2341,7 @@ assets/sprites/player/spraying_hand.bmp
 109
 
 #sidedef
-10
+-1
 800
 1440
 800
@@ -2560,8 +2559,8 @@ assets/sprites/player/spraying_hand.bmp
 1920
 0
 16
-16
-16
+15
+78
 125
 
 #sidedef
@@ -2659,7 +2658,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-7
+8
 0
 16
 0
@@ -2714,40 +2713,52 @@ assets/sprites/player/spraying_hand.bmp
 
 ##wall into sector 17##
 #sidedef
-17
-704
+-1
+736
 1920
-856
+824
 1920
-5
+0
 14
-16
+30
 78
-137
+140
 
 #sidedef
-17
-704
+-1
+736
 1920
-704
-2048
-5
+736
+1952
+0
 14
 16
 78
-138
+141
 
 #sidedef
-17
-856
+-1
+736
+1952
+824
+1952
+0
+14
+57
+78
+142
+
+#sidedef
+-1
+824
 1920
-856
-2048
-5
+824
+1952
+0
 14
 16
 78
-139
+143
 
 #sector[17]## SECTOR 17##########################################################
 12
@@ -2765,24 +2776,24 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-16
-704
+-1
+736
 1920
-856
+824
 1920
-5
+0
 14
 16
 78
 140
 
 #sidedef
-16
-704
+-1
+736
 1920
-704
-2048
-5
+736
+1952
+0
 14
 16
 78
@@ -2790,23 +2801,23 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedef
 -1
-704
-2048
-856
-2048
-5
+736
+1952
+824
+1952
+0
 14
 57
 78
 142
 
 #sidedef
-16
-856
+-1
+824
 1920
-856
-2048
-5
+824
+1952
+0
 14
 16
 78
@@ -3237,9 +3248,9 @@ assets/sprites/player/spraying_hand.bmp
 16
 170
 
-##sector 23 walls ##
+##sector 24 walls ##
 #sidedef
-24
+-1
 288
 2592
 288
@@ -3263,7 +3274,7 @@ assets/sprites/player/spraying_hand.bmp
 172
 
 #sidedef
-24
+-1
 480
 2592
 480
@@ -3275,7 +3286,7 @@ assets/sprites/player/spraying_hand.bmp
 173
 
 #sidedef
-24
+-1
 480
 2592
 288
@@ -3286,8 +3297,9 @@ assets/sprites/player/spraying_hand.bmp
 16
 174
 
+##sector 23 walls ##
 #sidedef
-23
+-1
 288
 2400
 288
@@ -3299,7 +3311,7 @@ assets/sprites/player/spraying_hand.bmp
 175
 
 #sidedef
-23
+-1
 288
 2496
 480
@@ -3311,7 +3323,7 @@ assets/sprites/player/spraying_hand.bmp
 176
 
 #sidedef
-23
+-1
 480
 2496
 480
@@ -3351,7 +3363,7 @@ assets/sprites/player/spraying_hand.bmp
 #sector[23]## SECTOR 23##########################################################
 12
 30
-17
+74
 0
 -1
 -10
@@ -3364,36 +3376,36 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-22
+-1
 288
 2400
 288
 2496
-5
+0
 16
 16
 16
 179
 
 #sidedef
-22
+-1
 288
 2496
 480
 2496
-5
+0
 16
 16
 16
 180
 
 #sidedef
-22
+-1
 480
 2496
 480
 2400
-5
+0
 16
 16
 16
@@ -3405,7 +3417,7 @@ assets/sprites/player/spraying_hand.bmp
 2400
 288
 2400
-5
+0
 16
 16
 16
@@ -3414,7 +3426,7 @@ assets/sprites/player/spraying_hand.bmp
 #sector[24]## SECTOR 24##########################################################
 12
 30
-17
+74
 0
 -1
 -10
@@ -3427,7 +3439,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 
 #sidedef
-22
+-1
 288
 2592
 288
@@ -3451,7 +3463,7 @@ assets/sprites/player/spraying_hand.bmp
 184
 
 #sidedef
-22
+-1
 480
 2592
 480
@@ -3463,7 +3475,7 @@ assets/sprites/player/spraying_hand.bmp
 185
 
 #sidedef
-22
+-1
 480
 2592
 288
@@ -3510,7 +3522,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 16
 16
-16
+15
 188
 
 #sidedef##PORTAL TO SECTOR 26####
@@ -3520,9 +3532,9 @@ assets/sprites/player/spraying_hand.bmp
 1344
 2016
 0
-16
-16
-16
+78
+78
+78
 189
 
 #sidedef
@@ -3546,7 +3558,7 @@ assets/sprites/player/spraying_hand.bmp
 0
 16
 16
-16
+15
 191
 
 #sector[26]## SECTOR 26##########################################################
@@ -5012,7 +5024,7 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-5
+6
 0
 37
 0
@@ -5033,7 +5045,7 @@ assets/sprites/player/spraying_hand.bmp
 -1
 1376
 1446
-1216
+1152
 1446
 0
 15
@@ -5041,35 +5053,47 @@ assets/sprites/player/spraying_hand.bmp
 15
 301
 
-#sidedef##PORTAL TO SECTOR 38##
-38
-1280
-1382
-1216
+#sidedef## PORTAL TO SECTOR 39 ##
+39
+1152
+1446
+1152
 1382
 0
 15
 15
 15
+373
+
+#sidedef
+-1
+1152
+1382
+1304
+1382
+0
+15
+15
+15
+374
+
+#sidedef##PORTAL TO SECTOR 38##
+38
+1304
+1382
+1344
+1382
+0
+15
+15
+75
 302
 
 #sidedef
 -1
-1216
+1344
 1382
-1216
-1446
-0
-15
-15
-15
-303
-
-#sidedef
--1
 1376
-1382
-1280
 1382
 0
 15
@@ -5094,9 +5118,9 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedef##PORTAL TO SECTOR 37##
 37
-1280
+1304
 1382
-1216
+1344
 1382
 0
 15
@@ -5106,7 +5130,7 @@ assets/sprites/player/spraying_hand.bmp
 
 #sidedef
 -1
-1280
+1344
 1382
 1280
 1318
@@ -5128,8 +5152,8 @@ assets/sprites/player/spraying_hand.bmp
 15
 307
 
-#sidedef##PORTAL TO SECTOR 39
-39
+#sidedef#
+-1
 1152
 1318
 1152
@@ -5144,7 +5168,7 @@ assets/sprites/player/spraying_hand.bmp
 -1
 1152
 1382
-1216
+1304
 1382
 0
 15
@@ -5156,9 +5180,9 @@ assets/sprites/player/spraying_hand.bmp
 #poster
 -1
 1280
-1366
-1280
-1382
+1318
+1264
+1318
 4
 85
 85
@@ -5175,13 +5199,13 @@ assets/sprites/player/spraying_hand.bmp
 14
 0
 -1
-8
+9
 0
 39
 0
 
-#sidedef##PORTAL TO SECTOR 38##
-38
+#sidedef#
+-1
 1152
 1318
 1152
@@ -5191,6 +5215,18 @@ assets/sprites/player/spraying_hand.bmp
 15
 78
 309
+
+#sidedef## PORTAL TO SECTOR 37 ##
+37
+1152
+1382
+1152
+1446
+0
+15
+15
+15
+374
 
 #sidedef###EASTER EGG PORTAL###
 41
@@ -5245,7 +5281,7 @@ assets/sprites/player/spraying_hand.bmp
 1152
 1670
 1152
-1382
+1446
 0
 16
 16
@@ -5538,9 +5574,9 @@ assets/sprites/player/spraying_hand.bmp
 1408
 1702
 0
-61
-61
-61
+16
+16
+78
 330
 
 #sidedef
@@ -5637,9 +5673,9 @@ assets/sprites/player/spraying_hand.bmp
 1440
 2016
 0
-80
-80
-80
+78
+78
+78
 337
 
 #sidedef
@@ -5657,7 +5693,7 @@ assets/sprites/player/spraying_hand.bmp
 #sector[45]## SECTOR 45##########################################################
 12
 35
-17
+78
 0
 -1
 0

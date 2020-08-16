@@ -15,9 +15,7 @@ static void		font_timer_box_short(t_doom *doom, bool *flag,
 	{
 		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
 		if (diff <= 3)
-		{
 			print_vanishing_text_box(doom, start_dex, end_dex);
-		}
 	}
 }
 
@@ -66,9 +64,12 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 
 static void			font_timer_2(t_doom *doom)
 {
+	set_background_coords_middle_narrow(doom);
 	if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.checkout, 17, 18);
+	else if (doom->own_event.hit_shopper == TRUE)
+		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE)
 	{
