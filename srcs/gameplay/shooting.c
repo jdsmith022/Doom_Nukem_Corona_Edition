@@ -154,7 +154,6 @@ void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave no
 		current_dist_sprite = SPRITES[temp_virus].distance;
 		doom->own_event.virus_hit_index = temp_virus;
 	}
-	//check distance of hit sprite
 	if (SIDEDEFS[safe_x].opp_sector != -1 &&
 		SIDEDEFS[safe_x].opp_sector != prev_sector)
 		check_hit(doom, ray, SIDEDEFS[safe_x].opp_sector, sector);
@@ -170,11 +169,15 @@ void    shoot(t_doom *doom)
 	printf("start shoot\n");
     ray = init_ray(doom, MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
+	printf("how far: %d\n", doom->own_event.virus_hit_index);
 	if (doom->own_event.virus_hit_index == -1)
 		printf("YOU HIT NOTHING!! Try again.\n");
+	else if (SPRITES[doom->own_event.virus_hit_index].distance > 000.00)
+		;
 	else
 	{
 		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
+		printf("distance is: %f\n", SPRITES[doom->own_event.virus_hit_index].distance);
 		//change color to red for 5 seconds
 		SPRITES[doom->own_event.virus_hit_index].visible = 17;
 		SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;
