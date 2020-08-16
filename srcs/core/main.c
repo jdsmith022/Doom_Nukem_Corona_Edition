@@ -13,9 +13,9 @@ int	main(void)
 	if (sdl_init(&doom) != 0)
 		doom_exit_failure(&doom, "unable to initialize SDL\n");
 	save_libraries(&doom);
-	save_font_libraries(&doom);
+	// save_font_libraries(&doom);
 	doom_init(&doom);
-	doom_start(&doom);
+	// doom_start(&doom);
 	game_loop(&doom);
 	return (0);
 }

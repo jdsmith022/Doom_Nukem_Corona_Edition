@@ -38,7 +38,7 @@ void				game_loop(t_doom *doom)
 	dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
-		timer(doom);
+		// timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
@@ -51,7 +51,7 @@ void				game_loop(t_doom *doom)
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		doom_update(doom, dt);
-		update_hud_ui(doom);
+		// update_hud_ui(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

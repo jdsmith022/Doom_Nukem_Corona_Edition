@@ -18,7 +18,7 @@
 // # include "render.h"
 
 # include "../sdl/includes/SDL.h"
-# include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
+// # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
