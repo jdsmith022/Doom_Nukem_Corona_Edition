@@ -29,6 +29,21 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	return (sidedef);
 }
 
+static int			find_index(t_doom *doom, int id)
+{
+	int i;
+
+	i = 0;
+	while (i < doom->lib.len_sidedef)
+	{
+		if (id == doom->lib.sidedef[i].id)
+			return (i);
+		i++;
+	}
+	printf("can not find id\n");
+	exit(0); //make a safety check
+}
+
 static int			is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
 {
 	t_point start;
@@ -37,6 +52,7 @@ static int			is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
 	t_point opp_end;
 	t_line	line;
 
+	id = find_index(doom, id);
 	line = doom->lib.sidedef[id].line;
 	start = line.start;
 	end = line.end;

@@ -24,9 +24,9 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 
 static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 {
-	if (sector.slope_floor_id != -1)
-		*limit = HEIGHT;
-	else
+	// if (sector.slope_floor_id != -1)
+	// 	*limit = HEIGHT;
+	// else
 		*limit = sector.floor_end;
 }
 

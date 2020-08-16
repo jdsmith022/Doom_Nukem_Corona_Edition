@@ -15,10 +15,10 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 
 static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 {
-	if (doom->lib.sector[doom->prev_sector].action == 1 \
-	&& doom->lib.sector[doom->i_sector].action == 1)
-		*limit = doom->lib.portal_ceiling;
-	else
+	// if (doom->lib.sector[doom->prev_sector].action == 1 \
+	// && doom->lib.sector[doom->i_sector].action == 1)
+	// 	*limit = doom->lib.portal_ceiling;
+	// else
 		*limit = sector.ceiling_end;
 }
 
