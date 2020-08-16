@@ -6388,7 +6388,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 14
 10
 -1
-5
+6
 0
 33
 0
@@ -6452,6 +6452,19 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 16
 274
+
+##LIGHT SWITCH##
+#poster
+-1
+1248
+1152
+1248
+1168
+4
+85
+85
+85
+374
 
 #sector[34]## SECTOR 34##########################################################
 4
@@ -6558,8 +6571,8 @@ assets/sprites/groceries/toiletpaper2.bmp
 -1
 1600
 1312
-1600
 1584
+1312
 4
 85
 85
