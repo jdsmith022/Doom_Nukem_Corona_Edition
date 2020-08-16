@@ -324,7 +324,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 #number of sectors
 50
 #number of walls
-378
+379
 #number of objects
 96
 
@@ -7685,7 +7685,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 378
 
 #sector[47]## SECTOR 47 WAREHOUSE##########################################################
-8
+2
 0
 17
 0
