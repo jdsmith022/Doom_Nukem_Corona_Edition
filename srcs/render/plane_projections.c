@@ -34,17 +34,17 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 	}
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, sector, plane);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("plane_sidedef_bottom1: %d\n", plane->sidedef_bottom);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("plane_sidedef_bottom1: %d\n", plane->sidedef_bottom);
 	set_floor_limit(doom, plane, sidedef, sector);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("plane_sidedef_bottom2: %d\n", plane->sidedef_bottom);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("plane_sidedef_bottom2: %d\n", plane->sidedef_bottom);
 	set_ceiling_limit(doom, plane, sidedef, sector);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("plane_sidedef_bottom3: %d\n", plane->sidedef_bottom);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("plane_sidedef_bottom3: %d\n", plane->sidedef_bottom);
 	set_sector_properties(doom, sidedef, sector, plane);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("plane_sidedef_bottom4: %d\n", plane->sidedef_bottom);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("plane_sidedef_bottom4: %d\n", plane->sidedef_bottom);
 	if (plane->sidedef_bottom < 0)
 		plane->sidedef_bottom = 0;
 }
@@ -67,8 +67,8 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	
 	if (sidedef.opp_sector != -1) //for clipping sprites (above two as well)
 	{
-		if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-			printf("%d ", plane.mid_texture_bottom);
+		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			// printf("%d ", plane.mid_texture_bottom);
 		
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = plane.mid_texture_bottom;
 	}	
@@ -81,16 +81,16 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_plane		plane;
 	t_sector	sector;
 
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("start project on plane\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("start project on plane\n");
 	sector.plane_x = x;
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("POP 1\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("POP 1\n");
 	set_properties_plane(doom, sidedef, &plane, &sector);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("plane_sidedef_bottom: %d\n", plane.sidedef_bottom);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("POP 2\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("plane_sidedef_bottom: %d\n", plane.sidedef_bottom);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("POP 2\n");
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
@@ -105,11 +105,11 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		// printf("POP 5\n");
 	if (sector.action != 1)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("POP 6\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("POP 6\n");
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("POP 7\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("POP 7\n");
 	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
 		// printf("before setting values\n");
 

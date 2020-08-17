@@ -40,18 +40,18 @@ void	doom_render(t_doom *doom)
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 		ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
 		ray.plane_x = x;
-		if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-			printf("before sidedef_render\n");
+		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			// printf("before sidedef_render\n");
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
-		if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-			printf("after sidedef_render\n");
+		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			// printf("after sidedef_render\n");
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("before sprite render\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("before sprite render\n");
 	if (doom->visible_sprites > 0)
 		sprite_render(doom);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("after sprite render\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("after sprite render\n");
 }

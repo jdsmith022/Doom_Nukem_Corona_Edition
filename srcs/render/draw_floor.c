@@ -39,17 +39,17 @@ void			draw_floor(t_doom *doom, int x,
 	Uint8	bpp;
 	int		limit;
 
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("draw_floor 1\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("draw_floor 1\n");
 	tex_dex = sector.txt_floor;
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("draw_floor 2\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("draw_floor 2\n");
 	bpp = doom->surface->format->BytesPerPixel;
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("draw_floor 3\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("draw_floor 3\n");
 	find_floor_limit(doom, sector, &limit);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("draw_floor 4, y: %d, limit: %d\n", y, limit);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("draw_floor 4, y: %d, limit: %d\n", y, limit);
 	while (y < limit)
 	{
 		calculate_floor_dist(doom, x, y, &sector);
@@ -62,6 +62,6 @@ void			draw_floor(t_doom *doom, int x,
 				index, doom->lib.tex_lib[tex_dex]);
 		y++;
 	}
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("draw_floor 5\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("draw_floor 5\n");
 }

@@ -84,14 +84,14 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	int		sprite_i;
 
 	i = 0;
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("begin sprite_check\n");
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("begin sprite_check\n");
 	sprite_i = doom->lib.sector[sector].i_objects;
 	// doom->lib.sprites[sprite_i].angle = ray.angle;
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("sprite_i: %d\n", sprite_i);
-	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-		printf("n_obj: %d\n", doom->lib.sector[sector].n_objects);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("sprite_i: %d\n", sprite_i);
+	// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		// printf("n_obj: %d\n", doom->lib.sector[sector].n_objects);
 	while (i < doom->lib.sector[sector].n_objects)
 	{
 
