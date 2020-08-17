@@ -61,7 +61,8 @@ static void		init_settings(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud_display = TRUE;
-	doom->audio->engine = ON;
+	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
+	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
 }
@@ -70,9 +71,9 @@ void			doom_init(t_doom *doom)
 {
 	srand(time(0));
 	init_groceries(doom);
-	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
+	init_audio(doom);
 	init_menu(doom);
 	init_infection(doom);
 	doom_init_events(&doom->own_event);

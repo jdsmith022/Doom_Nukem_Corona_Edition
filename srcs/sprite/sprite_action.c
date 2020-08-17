@@ -61,8 +61,8 @@ void		exit_scissor_lift(t_doom *doom)
 
 void		activate_scissor_lift(t_doom *doom, int index)
 {
-	if (doom->own_event.scissor_lift == FALSE)
-		doom->own_event.y_pitch = 0;
+	// if (doom->own_event.scissor_lift == FALSE)
+	doom->own_event.y_pitch = 40;
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->pos.x = doom->lib.sprites[index].pos.x;

@@ -4,22 +4,36 @@
 
 void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
 {
-	uint8_t	i;
+	uint16_t	i;
 
 	i = 0;
+	item->sprite = NULL;
 	while (i < doom->lib.len_obj_lib)
 	{
 		if (!doom->lib.obj_lib[i])
-			item->sprite = NULL;
+			return ;
 		else if (*((uint8_t *)doom->lib.obj_lib[i]->userdata) == type){
 			item->sprite = doom->lib.obj_lib[i];
+			return ;
 		}
 		i++;
 	}
 	return ;
 }
 
-void		add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
+static t_item	init_item(t_doom *doom, uint8_t type)
+{
+	t_item item;
+
+	item.type = type;
+	item.amount = 1;
+	set_sprite(doom, type, &item);
+	if (!item.sprite)
+		printf("Sprite not found\n");
+	return (item);
+}
+
+void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 {
 	t_list	*temp;
 	t_item	item;
@@ -27,9 +41,9 @@ void		add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	temp = *head;
 	if (!type || type > NUM_OF_GROCERIES)
 		return ;
-	item.type = type;
-	item.amount = 1;
-	set_sprite(doom, type, &item);
+	if (get_basket_len(head) >= MAX_BASKET_LEN)
+		return ;
+	item = init_item(doom, type);
 	doom->own_event.groc_pickup = TRUE;
 	if (!temp){
 		temp = ft_lstnew(&item, sizeof(t_item));
