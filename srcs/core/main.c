@@ -13,6 +13,13 @@ int	main(void)
 	if (sdl_init(&doom) != 0)
 		doom_exit_failure(&doom, "unable to initialize SDL\n");
 	save_libraries(&doom);
+	int i;
+	i = 0;
+	while (i < doom.lib.len_sidedef)
+	{
+		printf("id = %d	| sector = %d	| portal = %d	| %f, %f - %f, %f\n", doom.lib.sidedef[i].id, doom.lib.sidedef[i].sector, doom.lib.sidedef[i].opp_sector, doom.lib.sidedef[i].line.start.x, doom.lib.sidedef[i].line.start.y, doom.lib.sidedef[i].line.end.x, doom.lib.sidedef[i].line.end.y);
+		i++;
+	}
 	save_font_libraries(&doom);
 	doom_init(&doom);
 	doom_start(&doom);

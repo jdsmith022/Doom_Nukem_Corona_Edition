@@ -45,95 +45,35 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 	return (sidedef);
 }
 
-static void		check_sliding_door(t_doom *doom, t_sidedef sidedef, \
-	t_point pos, double direction)
+void	move_position(t_doom *doom, t_line move, double angle)
 {
-	double	angle;
-
-	if (direction == abs(MOVE_SPEED))
-		angle = doom->dir_angle;
-	else
-		angle = doom->dir_angle + direction;
-	if (point_distance(sidedef.intersect, pos, angle) < 20.0)
-		sliding_door(NULL, sidedef.id);
-}
-
-static t_line	set_movement(t_doom *doom, double dt, double direction)
-{
-	t_line movement;
-
-	movement.start = doom->pos;
-	if (direction == MOVE_SPEED || direction == -MOVE_SPEED)
-	{
-		movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
-		movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
-	}
-	else
-	{
-		movement.end.x = doom->pos.x + (MOVE_SPEED * dt) *\
-		cos(doom->dir_angle + direction);
-		movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
-		sin(doom->dir_angle + direction);
-	}
-	return (movement);
-}
-
-void	cam_move(t_doom *doom, double dt, double direction)
-{
-	t_line		movement;
 	t_sidedef	sidedef;
 	t_point		prev_intersect;
 	int			collision;
 
-	movement = set_movement(doom, dt, direction);
+	if (sprite_collision(doom, move) == 1)
+		return ;
 	prev_intersect.x = -1;
 	prev_intersect.y = -1;
-	if (sprite_collision(doom, movement) == 1)
-		movement.end = doom->pos;
-	sidedef = sidedef_intersection(doom, movement, doom->i_sector, prev_intersect);
+	sidedef = sidedef_intersection(doom, move, doom->i_sector, prev_intersect);
 	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
-		doom->pos = movement.end;
+		doom->pos = move.end;
 	else
-		collision = check_collision(doom, sidedef, movement);
-	printf("1: sidef_id = %d, collision = %d\n", sidedef.id, collision);
+		collision = check_collision(doom, sidedef, move);
 	if (collision == 1)
 	{
 		prev_intersect = sidedef.intersect;
-		sidedef = sidedef_intersection(doom, movement, doom->i_sector, prev_intersect);
-		collision = check_collision(doom, sidedef, movement);
-		printf("2: sidef_id = %d , collision = %d\n", sidedef.id, collision);
+		sidedef = sidedef_intersection(doom, move, doom->i_sector, prev_intersect);
+		if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
+			doom->pos = move.end;
+		else
+			collision = check_collision(doom, sidedef, move);
 		if (collision == -1)
 			doom->i_sector = doom->prev_sector;
 		if (collision == 0)
-			doom->pos = movement.end;
+			doom->pos = move.end;
 	}
-	if (sidedef.action == 2)
-		check_sliding_door(doom, sidedef, movement.start, direction);
+	if (sidedef.action == 2 && point_distance(sidedef.intersect, doom->pos, angle) < 20.0)
+		sliding_door(NULL, sidedef.id);
 }
 
-//void	cam_move_fb(t_doom *doom, double dt, double direction)
-//{
-//	t_line	movement;
-//	int		collision;
-
-//	movement.start = doom->pos;
-//	movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
-//	movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
-//	if (sprite_collision(doom, movement) == 1)
-//		movement.end = doom->pos;
-//	collision = movement_intersection(doom, movement, \
-//		doom->i_sector, doom->dir_angle);
-//	printf("1: collision = %d\n", collision);
-//	if (collision == 1)
-//	{
-//		collision = movement_intersection(doom, movement, doom->i_sector, \
-//			doom->dir_angle + direction);
-//		if (collision == -1)
-//			doom->i_sector = doom->prev_sector;
-//		printf("2: collision = %d\n\n", collision);
-//		if (collision == 0)
-//			doom->pos = movement.end;
-//	}
-//	else if (collision == 0)
-//		doom->pos = movement.end;
-//}
