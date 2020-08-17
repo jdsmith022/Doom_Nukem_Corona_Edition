@@ -10,7 +10,6 @@ void				groceries(t_doom *doom)
 		else
 			doom->own_event.mouse_state_switched = false;
 	}
-	print_basket(&doom->groceries->basket);
 	if (doom->groceries->basket){
 		draw_basket_ui(doom, doom->groceries);
 	}
