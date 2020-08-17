@@ -136,8 +136,8 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	index = 0;
 	while (stripe < (int)sprite_end->x && stripe >= 0 && stripe < WIDTH)
 	{
-		// if (doom->stripe_distance[stripe] >\
-		// doom->lib.sprites[index_sp].distance)
+		if (doom->stripe_distance[stripe] >\
+		doom->lib.sprites[index_sp].distance)
 		{
 			sprite_light(doom, sprite, &light_distance);
 			screen_y = (int)sprite_begin->y;

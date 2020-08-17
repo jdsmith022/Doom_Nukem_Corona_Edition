@@ -50,6 +50,11 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 		sidedef.distance * doom->dist_to_plane;
 	sidedef_bottom = ((new_height + (plane->height_standard / 2)) - \
 		doom->own_event.y_pitch - height_floor);
+	if (plane->sidedef_bottom < 0)
+	{
+		printf("negative; %d\n", plane->sidedef_bottom);
+		plane->sidedef_bottom = 0;
+	}
 	plane->sidedef_bottom = \
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 }

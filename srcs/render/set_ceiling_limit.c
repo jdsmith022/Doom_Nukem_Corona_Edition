@@ -22,6 +22,8 @@ void		set_ceiling_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
 			doom->own_event.y_pitch - height_ceiling - 1;
 		if (plane_top < 0)
 			plane_top = 0;
+		else if (plane_top > HEIGHT)
+			plane_top = HEIGHT;
 		sector->ceiling_end = plane_top;
 	}
 }

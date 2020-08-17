@@ -153,6 +153,9 @@ void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave no
 		dist = sidedef_intersection_distance(ray, SIDEDEFS[x].line, &isect);
 		if (dist <= min_dist && SIDEDEFS[x].opp_sector != prev_sector)
 		{
+		if (doom->lib.sidedef[x].action == 4 \
+		|| doom->lib.sidedef[x].action == 8)
+			doom->i_sidedef = x;
 			min_dist = dist;
 			temp_x = x;
 		}
