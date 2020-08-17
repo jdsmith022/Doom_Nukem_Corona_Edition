@@ -5,6 +5,8 @@
 void	player_fall(t_doom *doom, t_sprite *sprite)
 {
 	double	min_height;
+	static double duration = 0.5;
+	int		fall_direction;
 	t_event	*event;
 
 	event = &doom->own_event;
@@ -22,9 +24,11 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 			doom->player_height = min_height;
 			if (event->cam_move_b == TRUE ||
 			event->cam_move_l == TRUE)
-				event->y_pitch = -200;
+				fall_direction = -10;
 			else
-				event->y_pitch = 200;
+				fall_direction = 10;
+			doom->own_event.velocity += (duration + 0.05);
+			event->y_pitch = fall_direction + (GRAVITY * doom->own_event.velocity);
 		}
 	}
 }
@@ -37,16 +41,17 @@ void				scissor_lift_up(t_doom *doom)
 	event = &doom->own_event;
 	printf("up\n");
 	max_height = doom->texture_height +\
-	doom->lib.sector[doom->i_sector].height_ceiling + 50;
+	doom->lib.sector[doom->i_sector].height_ceiling + 600;
 	if (event->scissor_lift_up == TRUE &&\
 	doom->player_height <= max_height)
 	{
+		printf("lift up\n");
 		doom->player_height += 10;
 		if (doom->player_height > max_height)
+		{
 			doom->player_height = max_height;
-		event->y_pitch += 20;
-		if (event->y_pitch > 400)
-			event->y_pitch = 400;
+			event->scissor_lift_up = FALSE;
+		}
 		printf("up pitch: %d\n", event->y_pitch);
 	}
 }
@@ -65,10 +70,13 @@ void				scissor_lift_down(t_doom *doom)
 			// event->y_pitch += 10;
 			// if (event->y_pitch > 240)
 			// 	event->y_pitch = 240;
-			doom->player_height -= 10;
+			// doom->player_height -= 10;
 		}
 		if (doom->player_height < 50)
+		{
 			doom->player_height = 50;
+			event->scissor_lift_down = FALSE;
+		}
 
 		// printf("GOING DOWN %f\n", doom->player_height);
 		// if (doom->player_height == 58)

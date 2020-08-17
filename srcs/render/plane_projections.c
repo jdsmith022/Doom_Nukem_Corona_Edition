@@ -44,6 +44,7 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_plane		plane;
 	t_sector	sector;
 
+	// printf("top projection\n");
 	sector.plane_x = x;
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
@@ -63,4 +64,5 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
 	if (sidedef.poster != -1)
 		draw_poster(doom, plane, sidedef, x);
+	// printf("bottom projection\n");
 }

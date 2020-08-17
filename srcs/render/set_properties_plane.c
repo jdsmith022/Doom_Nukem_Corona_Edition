@@ -50,8 +50,26 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 		sidedef.distance * doom->dist_to_plane;
 	sidedef_bottom = ((new_height + (plane->height_standard / 2)) - \
 		doom->own_event.y_pitch - height_floor);
+	if (doom->own_event.scissor_lift_up == TRUE)
+	{
+		// printf("2\n");
+		plane->sidedef_top += 10;
+		plane->sidedef_bottom += 10;
+		// if (doom->own_event.y_pitch < 450)
+			// doom->own_event.y_pitch += 10;
+		// printf("1\n");
+	}
+	if (doom->own_event.scissor_lift_down == TRUE)
+	{
+		plane->sidedef_top -= 20;
+		plane->sidedef_bottom -= 20;
+	}
 	if (plane->sidedef_bottom < 0)
 		plane->sidedef_bottom = 0;
+	if (plane->sidedef_top > HEIGHT)
+		plane->sidedef_top = HEIGHT;
+	else if (plane->sidedef_top < 0)
+		plane->sidedef_top = 0;
 	plane->sidedef_bottom = \
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 }
