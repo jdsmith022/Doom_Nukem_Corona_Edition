@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-#define NUM_OF_GROCERIES 38
+#define NUM_OF_GROCERIES 40
 
 # define APPLE		1
 # define BACON		2
@@ -92,8 +92,8 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 	{TEX_CHEESE, SPR_CHEESE, CHEESE},
 	{TEX_COOKIE, SPR_COOKIE, COOKIE},
 	{
-		"assets/sprites/groceries/bread.bmp", 
 		"assets/textures/shelves/bread.bmp", 
+		"assets/sprites/groceries/bread.bmp", 
 		BREAD
 	},
 	{TEX_POTATO, SPR_POTATO, POTATO},
