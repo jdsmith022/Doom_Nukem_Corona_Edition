@@ -66,6 +66,7 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 	int			collision;
 	t_sector	sector;
 
+	collision = 0;
 	sector = doom->lib.sector[doom->i_sector];
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x + (MOVE_SPEED * dt) *\
@@ -73,10 +74,16 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
 		sin(doom->dir_angle + direction);
 	if (sprite_collision(doom, movement) == 1)
-		movement.end = doom->pos;
+	{
+		doom->pos = movement.start;
+		return ;
+	}
+		//movement.end = doom->pos;
 	// if (sector.action == TROLLY && doom->own_event.trolly == FALSE)
 		// movement.end = doom->pos;
+	printf("after sprite_collision rl\n");
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
+	printf("after normal collision rl\n");
 	if (collision != -1)
 	{
 		doom->pos = movement.end;
@@ -86,6 +93,7 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 			doom->pos.y += 5 * sin(doom->dir_angle + direction);
 		}
 	}
+	printf("end cam mov fb collision = %d\n", collision);
 }
 
 void	cam_move_fb(t_doom *doom, double dt, int direction)
@@ -93,12 +101,19 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 	t_line	movement;
 	int		collision;
 
+	collision = 0;
 	movement.start = doom->pos;
 	movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle); //check movement end x and end y, am I hitting something?
 	movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
 	if (sprite_collision(doom, movement) == 1)
-		movement.end = doom->pos;
+	{
+		doom->pos = movement.start;
+		return ;
+	}
+		// movement.end = doom->pos;
+	printf("after sprite collision fb\n");
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
+	printf("after normal collision fb\n");
 	if (collision != -1)
 	{
 		doom->pos = movement.end;
@@ -108,4 +123,5 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 			doom->pos.y += direction / 10 * sin(doom->dir_angle);
 		}
 	}
+	printf("end cam mov fb collision = %d\n", collision);
 }

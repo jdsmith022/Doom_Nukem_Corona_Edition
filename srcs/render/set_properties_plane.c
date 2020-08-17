@@ -21,6 +21,8 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 		sidedef.distance * doom->dist_to_plane;
 	mid_bottom = ((new_height + (plane->height_standard / 2)) - \
 		doom->own_event.y_pitch - height_floor) - 2;
+	if (plane->mid_texture_bottom < 0)
+		plane->mid_texture_bottom = 0;
 	plane->mid_texture_bottom = ((mid_bottom < HEIGHT) ? mid_bottom : (HEIGHT));
 }
 
@@ -47,6 +49,8 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 		sidedef.distance * doom->dist_to_plane;
 	sidedef_bottom = ((new_height + (plane->height_standard / 2)) - \
 		doom->own_event.y_pitch - height_floor);
+	if (plane->sidedef_bottom < 0)
+		plane->sidedef_bottom = 0;
 	plane->sidedef_bottom = \
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));
 }

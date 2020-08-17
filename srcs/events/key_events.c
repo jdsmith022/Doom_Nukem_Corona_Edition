@@ -31,7 +31,7 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		scissor_lift_up(doom);
 	if (event->scissor_lift_down == TRUE)
 		scissor_lift_down(doom);
-	// printf("key end\n");
+	printf("key end\n");
 }
 
 void			key_release(t_event *event, SDL_KeyboardEvent *key)

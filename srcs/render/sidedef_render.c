@@ -106,9 +106,11 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	// printf("before sprite_check\n");
-	// sprite_check(doom, ray, sector, prev_sector);
-	// printf("after sprite_check\n");
+	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		printf("before sprite_check\n");
+	sprite_check(doom, ray, sector, prev_sector);
+	if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+		printf("after sprite_check\n");
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 &&\
@@ -124,7 +126,11 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		doom->distance = min_distance;
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
+		if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			printf("before project on plane\n");
 		project_on_plane(doom, near_sidedef, ray.plane_x);
+		if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			printf("after project on plane\n");
 		// if (sector > 2)
 		// 	find_infection(doom, ray, min_distance);
 	}

@@ -9,7 +9,7 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-87
+89
 
 ## OUTSIDE ASSETS##
 #0
@@ -35,7 +35,7 @@ assets/textures/outside/closing_down.bmp
 #10
 assets/textures/outside/closing_down_sides.bmp
 #11
-assets/sprites/health/fill_up.bmp
+assets/textures/poster/fill_up.bmp
 #12
 assets/textures/outside/enter_here.bmp
 #13
@@ -194,7 +194,7 @@ assets/textures/checkout/tabacco.bmp
 #83
 assets/textures/checkout/checkout.bmp
 
-##EXTRA TEXTURES##
+##EASTER TEXTURES##
 #84
 assets/textures/shelves/toiletpaper_full_wall.bmp
 
@@ -203,13 +203,16 @@ assets/textures/shelves/toiletpaper_full_wall.bmp
 assets/textures/poster/light_switch_off.bmp
 #86
 assets/textures/poster/light_switch_on.bmp
+#87
+assets/textures/poster/fill_up_clean.bmp
 
-
-
+##GLASS DOOR
+#88
+assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-49
+53
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -308,15 +311,22 @@ assets/sprites/groceries/jam.bmp
 assets/sprites/groceries/jam2.bmp
 #48
 assets/sprites/groceries/jam3.bmp
-
+#49
+assets/sprites/groceries/tony1.bmp
+#50
+assets/sprites/groceries/tony2.bmp
+#51
+assets/sprites/groceries/orange_tart.bmp
+#52
+assets/sprites/groceries/toiletpaper2.bmp
 
 
 #number of sectors
 50
 #number of walls
-368
+375
 #number of objects
-52
+96
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -550,6 +560,7 @@ assets/sprites/groceries/jam3.bmp
 13
 16
 
+
 #OBJECTS IN SECTOR 0
 #object0 in sector0 plant
 0
@@ -693,10 +704,10 @@ assets/sprites/groceries/jam3.bmp
 4
 #line
 36
-25
-349
-35
-349
+15
+15
+15
+23
 #line
 36
 35
@@ -815,7 +826,7 @@ assets/sprites/groceries/jam3.bmp
 253
 349
 
-#change block to 0 once you can fetch the clock
+#change bock to 0 once you can fetch the clock
 #object8 in sector0 clock
 8
 100
@@ -860,7 +871,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-9
+8
 1
 1
 3
@@ -926,7 +937,7 @@ assets/sprites/groceries/jam3.bmp
 21
 
 
-#sidedefs22
+#sidedef31#### PORTAL to sector
 -1
 192
 192
@@ -950,13 +961,14 @@ assets/sprites/groceries/jam3.bmp
 15
 23
 
-#poster2 ->corona
+##Sanitizer Refill##
+#poster
 -1
-96
+192
 316
-96
+192
 332
-4
+8
 11
 11
 11
@@ -1220,7 +1232,7 @@ assets/sprites/groceries/jam3.bmp
 
 #sidedefs
 -1
-0
+96
 576
 192
 576
@@ -1302,7 +1314,7 @@ assets/sprites/groceries/jam3.bmp
 21
 40
 
-#sidedefs35
+#sidedefs## PORTAL TO SECTOR 4##
 4
 288
 768
@@ -1436,9 +1448,9 @@ assets/sprites/groceries/jam3.bmp
 576
 672
 0
-16
-16
-16
+88
+88
+88
 45
 
 #sidedefs
@@ -1731,7 +1743,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-4
+5
 4
 5
 0
@@ -1788,14 +1800,14 @@ assets/sprites/groceries/jam3.bmp
 #poster
 -1
 96
-790
+768
 96
-806
+784
 4
 85
 85
 85
-361
+370
 
 ##OBJECTS IN SECTOR 5##
 #object0 in sector5 box
@@ -1902,7 +1914,7 @@ assets/sprites/groceries/jam3.bmp
 135
 915
 4
-32
+16
 0
 4
 #line
@@ -1940,7 +1952,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-4
+5
 5
 6
 0
@@ -1993,12 +2005,25 @@ assets/sprites/groceries/jam3.bmp
 16
 57
 
+##LIGHT SWITCH##
+#poster
+-1
+288
+1152
+273
+1136
+4
+85
+85
+85
+371
+
 #object0 in sector6 virus
 26
 130
 970
 4
-32
+8
 0
 4
 #line
@@ -2031,7 +2056,7 @@ assets/sprites/groceries/jam3.bmp
 200
 1000
 4
-24
+16
 0
 4
 #line
@@ -2064,7 +2089,7 @@ assets/sprites/groceries/jam3.bmp
 210
 970
 4
-32
+8
 0
 4
 #line
@@ -2130,7 +2155,7 @@ assets/sprites/groceries/jam3.bmp
 250
 1100
 4
-48
+16
 0
 4
 #line
@@ -2168,7 +2193,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-4
+5
 4
 7
 0
@@ -2220,6 +2245,19 @@ assets/sprites/groceries/jam3.bmp
 16
 16
 61
+
+##LIGHT SWITCH##
+#poster
+-1
+480
+1056
+464
+1056
+4
+85
+85
+85
+372
 
 #OBJECTS IN SECTOR 7 total: 3
 #object0 in sector7 virus
@@ -2326,7 +2364,7 @@ assets/sprites/groceries/jam3.bmp
 450
 1110
 4
-32
+16
 0
 4
 #line
@@ -2459,8 +2497,8 @@ assets/sprites/groceries/jam3.bmp
 10
 30
 17
-0
--1
+5
+71
 0
 14
 0
@@ -2727,7 +2765,7 @@ assets/sprites/groceries/jam3.bmp
 690
 1150
 4
-24
+16
 0
 4
 18
@@ -2791,7 +2829,7 @@ assets/sprites/groceries/jam3.bmp
 0
 -1
 26
-8
+21
 10
 0
 
@@ -2922,11 +2960,10 @@ assets/sprites/groceries/jam3.bmp
 864
 1382
 0
-15
-15
-15
+78
+78
+78
 317
-
 
 #sidedef
 -1
@@ -2966,7 +3003,7 @@ assets/sprites/groceries/jam3.bmp
 
 ##protal walls to sector 11
 #sidedef
-11
+-1
 448
 1344
 512
@@ -2990,7 +3027,7 @@ assets/sprites/groceries/jam3.bmp
 89
 
 #sidedef
-11
+-1
 512
 1536
 448
@@ -3002,7 +3039,7 @@ assets/sprites/groceries/jam3.bmp
 90
 
 #sidedef
-11
+-1
 512
 1536
 512
@@ -3015,7 +3052,7 @@ assets/sprites/groceries/jam3.bmp
 
 #portal walls for sector 12 #
 #sidedef
-12
+-1
 576
 1344
 640
@@ -3039,7 +3076,7 @@ assets/sprites/groceries/jam3.bmp
 93
 
 #sidedef
-12
+-1
 576
 1536
 640
@@ -3051,7 +3088,7 @@ assets/sprites/groceries/jam3.bmp
 94
 
 #sidedef
-12
+-1
 640
 1536
 640
@@ -3064,7 +3101,7 @@ assets/sprites/groceries/jam3.bmp
 
 #portal walls for sector 13 ##
 #sidedef
-13
+-1
 704
 1380
 704
@@ -3076,7 +3113,7 @@ assets/sprites/groceries/jam3.bmp
 96
 
 #sidedef
-13
+-1
 704
 1440
 800
@@ -3088,7 +3125,7 @@ assets/sprites/groceries/jam3.bmp
 97
 
 #sidedef
-13
+-1
 800
 1440
 800
@@ -3147,11 +3184,11 @@ assets/sprites/groceries/jam3.bmp
 650
 1280
 4
-32
+16
 0
 4
 18
-635
+645
 1275
 655
 1275
@@ -3163,12 +3200,12 @@ assets/sprites/groceries/jam3.bmp
 18
 655
 1285
-635
+645
 1285
 18
-635
+645
 1285
-635
+645
 1275
 
 #object 2 in sector 10 virus green
@@ -3176,7 +3213,7 @@ assets/sprites/groceries/jam3.bmp
 750
 1300
 4
-40
+16
 0
 4
 18
@@ -3292,7 +3329,7 @@ assets/sprites/groceries/jam3.bmp
 525
 1400
 4
-24
+16
 0
 4
 18
@@ -3345,6 +3382,383 @@ assets/sprites/groceries/jam3.bmp
 540
 1385
 
+#object 8 in sector 10 virus green
+52
+660
+1390
+4
+16
+0
+4
+18
+655
+1385
+665
+1385
+18
+665
+1385
+665
+1395
+18
+665
+1395
+655
+1395
+18
+655
+1395
+655
+1385
+
+#object 9 in sector 10 virus green
+53
+840
+1390
+4
+16
+0
+4
+18
+835
+1385
+845
+1385
+18
+845
+1385
+845
+1395
+18
+845
+1395
+835
+1395
+18
+835
+1395
+835
+1385
+
+#object 10 in sector 10 virus green
+54
+430
+1420
+4
+8
+0
+4
+18
+425
+1415
+435
+1415
+18
+435
+1415
+435
+1424
+18
+435
+1424
+425
+1424
+18
+425
+1424
+425
+1415
+
+#object 11 in sector 10 virus green
+55
+400
+1460
+4
+16
+0
+4
+18
+395
+1455
+404
+1455
+18
+404
+1455
+404
+1465
+18
+404
+1465
+395
+1465
+18
+395
+1465
+395
+1455
+
+#object 12 in sector 10 virus green
+56
+425
+1500
+4
+16
+0
+4
+18
+420
+1495
+430
+1495
+18
+430
+1495
+430
+1505
+18
+430
+1505
+420
+1505
+18
+420
+1505
+420
+1495
+
+#object 13 in sector 10 virus green
+57
+560
+1600
+4
+16
+0
+4
+18
+555
+1595
+565
+1595
+18
+565
+1595
+565
+1605
+18
+565
+1605
+555
+1605
+18
+555
+1605
+555
+1595
+
+#object 14 in sector 10 virus green
+58
+580
+1610
+4
+16
+0
+4
+18
+575
+1605
+585
+1605
+18
+585
+1605
+585
+1615
+18
+585
+1615
+575
+1615
+18
+575
+1615
+575
+1605
+
+#object 15 in sector 10 virus green
+59
+630
+1580
+4
+16
+0
+4
+18
+625
+1575
+635
+1575
+18
+635
+1575
+635
+1585
+18
+635
+1585
+625
+1585
+18
+625
+1585
+625
+1575
+
+#object 16 in sector 10 virus green
+60
+660
+1610
+4
+16
+0
+4
+18
+655
+1605
+665
+1605
+18
+665
+1605
+665
+1615
+18
+665
+1615
+655
+1615
+18
+655
+1615
+655
+1605
+
+#object 17 in sector 10 virus green
+61
+720
+1590
+4
+16
+0
+4
+18
+715
+1585
+725
+1585
+18
+725
+1585
+725
+1595
+18
+725
+1595
+715
+1595
+18
+715
+1595
+715
+1585
+
+#object 18 in sector 10 virus green
+62
+770
+1550
+4
+16
+0
+4
+18
+765
+1545
+775
+1545
+18
+775
+1545
+775
+1555
+18
+775
+1555
+765
+1555
+18
+765
+1555
+765
+1545
+
+#object 19 in sector 10 virus green
+63
+840
+1340
+4
+16
+0
+4
+18
+835
+1335
+845
+1335
+18
+845
+1335
+845
+1345
+18
+845
+1345
+835
+1345
+18
+835
+1345
+835
+1335
+
+#object 20 in sector 10 virus green
+64
+820
+1420
+4
+16
+0
+4
+18
+815
+1415
+825
+1415
+18
+825
+1415
+825
+1424
+18
+825
+1424
+815
+1424
+18
+815
+1424
+815
+1415
+
 #SHOPPERS IN SECTOR 10
 
 
@@ -3364,12 +3778,12 @@ assets/sprites/groceries/jam3.bmp
 0
 
 #sidedef
-10
+-1
 448
 1344
 512
 1344
-5
+0
 78
 78
 78
@@ -3381,31 +3795,31 @@ assets/sprites/groceries/jam3.bmp
 1344
 448
 1536
-5
+0
 78
 78
 78
 101
 
 #sidedef
-10
+-1
 512
 1536
 448
 1536
-5
+0
 78
 78
 78
 102
 
 #sidedef
-10
+-1
 512
 1536
 512
 1344
-5
+0
 78
 78
 78
@@ -3427,7 +3841,7 @@ assets/sprites/groceries/jam3.bmp
 0
 
 #sidedef
-10
+-1
 576
 1344
 640
@@ -3451,7 +3865,7 @@ assets/sprites/groceries/jam3.bmp
 105
 
 #sidedef
-10
+-1
 576
 1536
 640
@@ -3463,7 +3877,7 @@ assets/sprites/groceries/jam3.bmp
 106
 
 #sidedef
-10
+-1
 640
 1536
 640
@@ -3490,7 +3904,7 @@ assets/sprites/groceries/jam3.bmp
 0
 
 #sidedef
-10
+-1
 704
 1380
 704
@@ -3502,7 +3916,7 @@ assets/sprites/groceries/jam3.bmp
 108
 
 #sidedef
-10
+-1
 704
 1440
 800
@@ -3514,7 +3928,7 @@ assets/sprites/groceries/jam3.bmp
 109
 
 #sidedef
-10
+-1
 800
 1440
 800
@@ -3601,6 +4015,7 @@ assets/sprites/groceries/jam3.bmp
 16
 115
 
+
 #sector[15]## SECTOR 15##########################################################
 10
 0
@@ -3612,7 +4027,7 @@ assets/sprites/groceries/jam3.bmp
 0
 -1
 17
-0
+4
 15
 0
 
@@ -3732,8 +4147,8 @@ assets/sprites/groceries/jam3.bmp
 1920
 0
 16
-16
-16
+15
+78
 125
 
 #sidedef
@@ -3821,6 +4236,123 @@ assets/sprites/groceries/jam3.bmp
 78
 132
 
+#OBJECTS IN SECTOR 15
+#object0 in sector 15 brownie
+65
+610
+1900
+0
+16
+1
+4
+23
+605
+1895
+615
+1895
+23
+615
+1895
+615
+1905
+23
+615
+1905
+605
+1905
+23
+605
+1905
+605
+1895
+
+#object1 in sector 15 apple tart
+66
+930
+1900
+0
+16
+1
+4
+22
+925
+1895
+935
+1895
+22
+935
+1895
+935
+1905
+22
+935
+1905
+925
+1905
+22
+925
+1905
+925
+1895
+
+#object2 in sector 15 tony1
+67
+610
+2000
+0
+32
+1
+4
+49
+605
+1995
+615
+1995
+49
+615
+1995
+615
+2005
+49
+615
+2005
+605
+2005
+49
+605
+2005
+605
+1995
+
+#object3 in sector 15 orange tart
+68
+930
+2000
+0
+16
+1
+4
+51
+925
+1995
+935
+1995
+51
+935
+1995
+935
+2005
+51
+935
+2005
+925
+2005
+51
+925
+2005
+925
+1995
+
 #sector[16]## SECTOR 16##########################################################
 10
 10
@@ -3831,8 +4363,8 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-7
-0
+8
+4
 16
 0
 
@@ -3886,40 +4418,169 @@ assets/sprites/groceries/jam3.bmp
 
 ##wall into sector 17##
 #sidedef
-17
-704
+-1
+736
 1920
-856
+824
 1920
-5
+0
 14
-16
+30
 78
-137
+140
 
 #sidedef
-17
-704
+-1
+736
 1920
-704
-2048
-5
+736
+1952
+0
 14
 16
 78
-138
+141
 
 #sidedef
-17
-856
+-1
+736
+1952
+824
+1952
+0
+14
+57
+78
+142
+
+#sidedef
+-1
+824
 1920
-856
-2048
-5
+824
+1952
+0
 14
 16
 78
-139
+143
+
+#OBJECTS IN SECTOR 16
+#object0 in sector 16 orange tart
+69
+690
+1900
+0
+16
+1
+4
+51
+685
+1895
+695
+1895
+51
+695
+1895
+695
+1905
+51
+695
+1905
+685
+1905
+51
+685
+1905
+685
+1895
+
+#object1 in sector 16 apple tart #22
+70
+860
+1900
+0
+16
+1
+4
+22
+855
+1895
+865
+1895
+22
+865
+1895
+865
+1905
+22
+865
+1905
+855
+1905
+22
+855
+1905
+855
+1895
+
+#object2 in sector 16 plant_1
+71
+690
+2000
+0
+16
+1
+4
+34
+685
+1995
+695
+1995
+34
+695
+1995
+695
+2005
+34
+695
+2005
+685
+2005
+34
+685
+2005
+685
+1995
+
+#object3 in sector 16 plant_2
+72
+860
+2000
+0
+16
+1
+4
+35
+855
+1995
+865
+1995
+35
+865
+1995
+865
+2005
+35
+865
+2005
+855
+2005
+35
+855
+2005
+855
+1995
 
 #sector[17]## SECTOR 17##########################################################
 12
@@ -3937,24 +4598,24 @@ assets/sprites/groceries/jam3.bmp
 0
 
 #sidedef
-16
-704
+-1
+736
 1920
-856
+824
 1920
-5
+0
 14
 16
 78
 140
 
 #sidedef
-16
-704
+-1
+736
 1920
-704
-2048
-5
+736
+1952
+0
 14
 16
 78
@@ -3962,23 +4623,23 @@ assets/sprites/groceries/jam3.bmp
 
 #sidedef
 -1
-704
-2048
-856
-2048
-5
+736
+1952
+824
+1952
+0
 14
 57
 78
 142
 
 #sidedef
-16
-856
+-1
+824
 1920
-856
-2048
-5
+824
+1952
+0
 14
 16
 78
@@ -4123,7 +4784,7 @@ assets/sprites/groceries/jam3.bmp
 152
 
 #sector[20]## SECTOR 20##########################################################
-3
+15
 0
 17
 0
@@ -4132,7 +4793,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-9
+7
 0
 20
 0
@@ -4221,32 +4882,6 @@ assets/sprites/groceries/jam3.bmp
 15
 159
 
-##LIGHT SWITCH##
-#poster
--1
-480
-1920
-454
-1920
-4
-85
-85
-85
-367
-
-##LIGHT SWITCH##
-#poster
--1
-288
-2096
-288
-2112
-4
-85
-85
-85
-368
-
 #sector[21]## SECTOR 21##########################################################
 7
 0
@@ -4320,7 +4955,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-15
+16
 0
 22
 0
@@ -4409,9 +5044,9 @@ assets/sprites/groceries/jam3.bmp
 16
 170
 
-##sector 23 walls ##
+##sector 24 walls ##
 #sidedef
-24
+-1
 288
 2592
 288
@@ -4435,7 +5070,7 @@ assets/sprites/groceries/jam3.bmp
 172
 
 #sidedef
-24
+-1
 480
 2592
 480
@@ -4447,7 +5082,7 @@ assets/sprites/groceries/jam3.bmp
 173
 
 #sidedef
-24
+-1
 480
 2592
 288
@@ -4458,8 +5093,9 @@ assets/sprites/groceries/jam3.bmp
 16
 174
 
+##sector 23 walls ##
 #sidedef
-23
+-1
 288
 2400
 288
@@ -4471,7 +5107,7 @@ assets/sprites/groceries/jam3.bmp
 175
 
 #sidedef
-23
+-1
 288
 2496
 480
@@ -4483,7 +5119,7 @@ assets/sprites/groceries/jam3.bmp
 176
 
 #sidedef
-23
+-1
 480
 2496
 480
@@ -4506,11 +5142,24 @@ assets/sprites/groceries/jam3.bmp
 16
 178
 
+##LIGHT SWITCH##
+#poster
+-1
+416
+2304
+432
+2304
+4
+85
+85
+85
+370
+
 
 #sector[23]## SECTOR 23##########################################################
 12
 30
-17
+78
 0
 -1
 -10
@@ -4523,36 +5172,36 @@ assets/sprites/groceries/jam3.bmp
 0
 
 #sidedef
-22
+-1
 288
 2400
 288
 2496
-5
+0
 16
 16
 16
 179
 
 #sidedef
-22
+-1
 288
 2496
 480
 2496
-5
+0
 16
 16
 16
 180
 
 #sidedef
-22
+-1
 480
 2496
 480
 2400
-5
+0
 16
 16
 16
@@ -4564,7 +5213,7 @@ assets/sprites/groceries/jam3.bmp
 2400
 288
 2400
-5
+0
 16
 16
 16
@@ -4573,7 +5222,7 @@ assets/sprites/groceries/jam3.bmp
 #sector[24]## SECTOR 24##########################################################
 12
 30
-17
+78
 0
 -1
 -10
@@ -4586,7 +5235,7 @@ assets/sprites/groceries/jam3.bmp
 0
 
 #sidedef
-22
+-1
 288
 2592
 288
@@ -4610,7 +5259,7 @@ assets/sprites/groceries/jam3.bmp
 184
 
 #sidedef
-22
+-1
 480
 2592
 480
@@ -4622,7 +5271,7 @@ assets/sprites/groceries/jam3.bmp
 185
 
 #sidedef
-22
+-1
 480
 2592
 288
@@ -4669,7 +5318,7 @@ assets/sprites/groceries/jam3.bmp
 0
 16
 16
-16
+15
 188
 
 #sidedef##PORTAL TO SECTOR 26####
@@ -4679,9 +5328,9 @@ assets/sprites/groceries/jam3.bmp
 1344
 2016
 0
-16
-16
-16
+78
+78
+78
 189
 
 #sidedef
@@ -4705,7 +5354,7 @@ assets/sprites/groceries/jam3.bmp
 0
 16
 16
-16
+15
 191
 
 #sector[26]## SECTOR 26##########################################################
@@ -5104,7 +5753,7 @@ assets/sprites/groceries/jam3.bmp
 14
 10
 -1
-31
+32
 0
 29
 0
@@ -5116,9 +5765,9 @@ assets/sprites/groceries/jam3.bmp
 576
 672
 0
-16
-16
-16
+88
+88
+88
 220
 
 #sidedefs
@@ -5202,7 +5851,7 @@ assets/sprites/groceries/jam3.bmp
 0
 16
 16
-16
+78
 227
 
 #sidedefs
@@ -5487,10 +6136,23 @@ assets/sprites/groceries/jam3.bmp
 48
 254
 
+##SANITIZER REFILL##
+#poster
+-1
+576
+656
+576
+672
+8
+87
+87
+87
+369
+
 #sector[30]## SECTOR 30##########################################################
 12
 30
-17
+78
 0
 -1
 -10
@@ -5521,9 +6183,9 @@ assets/sprites/groceries/jam3.bmp
 1248
 352
 0
-17
-17
-17
+78
+78
+78
 256
 
 #sidedefs
@@ -5777,7 +6439,7 @@ assets/sprites/groceries/jam3.bmp
 
 #sidedef
 -1
-1248
+1247
 1152
 1248
 1248
@@ -5798,7 +6460,7 @@ assets/sprites/groceries/jam3.bmp
 85
 85
 85
-363
+374
 
 #sector[34]## SECTOR 34##########################################################
 4
@@ -5810,7 +6472,7 @@ assets/sprites/groceries/jam3.bmp
 14
 10
 -1
-7
+8
 0
 34
 0
@@ -5890,6 +6552,19 @@ assets/sprites/groceries/jam3.bmp
 ##LIGHT SWITCH##
 #poster
 -1
+1376
+1184
+1392
+1184
+4
+85
+85
+85
+373
+
+##LIGHT SWITCH##
+#poster
+-1
 1600
 1312
 1584
@@ -5898,7 +6573,7 @@ assets/sprites/groceries/jam3.bmp
 85
 85
 85
-364
+374
 
 #sector[35]## SECTOR 35##########################################################
 10
@@ -5910,7 +6585,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-14
+15
 0
 35
 0
@@ -5963,6 +6638,17 @@ assets/sprites/groceries/jam3.bmp
 16
 284
 
+#sidedef#
+-1
+1376
+1446
+1376
+1446
+0
+16
+16
+16
+285
 
 #sidedef#
 -1
@@ -6048,7 +6734,6 @@ assets/sprites/groceries/jam3.bmp
 15
 292
 
-
 ##portal walls to 36##
 #sidedef
 36
@@ -6063,7 +6748,7 @@ assets/sprites/groceries/jam3.bmp
 293
 
 #sidedef
-36
+-1
 1408
 1382
 1376
@@ -6113,25 +6798,25 @@ assets/sprites/groceries/jam3.bmp
 15
 296
 
-#sidedef
+#sidedef##PORTAL TO SECTOR 35##
 35
 1408
 1312
 1408
 1382
-5
+0
 15
 15
 15
 297
 
 #sidedef
-35
+-1
 1408
 1382
 1376
 1382
-5
+0
 15
 15
 15
@@ -6159,7 +6844,7 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-5
+6
 0
 37
 0
@@ -6180,7 +6865,7 @@ assets/sprites/groceries/jam3.bmp
 -1
 1376
 1446
-1216
+1152
 1446
 0
 15
@@ -6188,35 +6873,47 @@ assets/sprites/groceries/jam3.bmp
 15
 301
 
-#sidedef##PORTAL TO SECTOR 38##
-38
-1280
-1382
-1216
+#sidedef## PORTAL TO SECTOR 39 ##
+39
+1152
+1446
+1152
 1382
 0
 15
 15
 15
+373
+
+#sidedef
+-1
+1152
+1382
+1304
+1382
+0
+15
+15
+15
+374
+
+#sidedef##PORTAL TO SECTOR 38##
+38
+1304
+1382
+1344
+1382
+0
+15
+15
+75
 302
 
 #sidedef
 -1
-1216
+1344
 1382
-1216
-1446
-0
-15
-15
-15
-303
-
-#sidedef
--1
 1376
-1382
-1280
 1382
 0
 15
@@ -6235,15 +6932,15 @@ assets/sprites/groceries/jam3.bmp
 0
 -1
 6
-0
+1
 37
 0
 
 #sidedef##PORTAL TO SECTOR 37##
 37
-1280
+1304
 1382
-1216
+1344
 1382
 0
 15
@@ -6253,7 +6950,7 @@ assets/sprites/groceries/jam3.bmp
 
 #sidedef
 -1
-1280
+1344
 1382
 1280
 1318
@@ -6275,8 +6972,8 @@ assets/sprites/groceries/jam3.bmp
 15
 307
 
-#sidedef##PORTAL TO SECTOR 39
-39
+#sidedef#
+-1
 1152
 1318
 1152
@@ -6291,7 +6988,7 @@ assets/sprites/groceries/jam3.bmp
 -1
 1152
 1382
-1216
+1304
 1382
 0
 15
@@ -6303,15 +7000,44 @@ assets/sprites/groceries/jam3.bmp
 #poster
 -1
 1280
-1366
-1280
-1382
+1318
+1264
+1318
 4
 85
 85
 85
-365
+370
 
+#OBJECTS IN SECTOR 38
+#object0 in sector 38 plant
+73
+1170
+1350
+0
+32
+1
+4
+36
+1165
+1345
+1175
+1345
+36
+1175
+1345
+1175
+1355
+36
+1175
+1355
+1165
+1355
+36
+1165
+1355
+1165
+1345
 
 #sector[39]## SECTOR 39##########################################################
 4
@@ -6323,13 +7049,13 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-7
+8
 0
 39
 0
 
-#sidedef##PORTAL TO SECTOR 38##
-38
+#sidedef#
+-1
 1152
 1318
 1152
@@ -6339,6 +7065,18 @@ assets/sprites/groceries/jam3.bmp
 15
 78
 309
+
+#sidedef## PORTAL TO SECTOR 37 ##
+37
+1152
+1382
+1152
+1446
+0
+15
+15
+15
+374
 
 #sidedef###EASTER EGG PORTAL###
 41
@@ -6393,25 +7131,26 @@ assets/sprites/groceries/jam3.bmp
 1152
 1670
 1152
-1382
+1446
 0
 16
 16
 78
 314
 
-##LIGHT SWITCH##
+
+##SANITIZER##
 #poster
 -1
-1056
-1382
-1056
-1398
-4
-85
-85
-85
-366
+1095
+1670
+1111
+1670
+8
+87
+87
+87
+370
 
 #sector[40]## SECTOR 40##########################################################
 7
@@ -6479,15 +7218,15 @@ assets/sprites/groceries/jam3.bmp
 ##LIGHT SWITCH##
 #poster
 -1
-1318
 864
 1318
 880
+1318
 4
 85
 85
 85
-366
+376
 
 #sector[41]## SECTOR 41 EASTER EGG##########################################################
 12
@@ -6673,9 +7412,9 @@ assets/sprites/groceries/jam3.bmp
 1408
 1702
 0
-61
-61
-61
+16
+16
+78
 330
 
 #sidedef
@@ -6772,9 +7511,9 @@ assets/sprites/groceries/jam3.bmp
 1440
 2016
 0
-80
-80
-80
+78
+78
+78
 337
 
 #sidedef
@@ -6792,7 +7531,7 @@ assets/sprites/groceries/jam3.bmp
 #sector[45]## SECTOR 45##########################################################
 12
 35
-17
+78
 0
 -1
 0
@@ -6915,7 +7654,7 @@ assets/sprites/groceries/jam3.bmp
 15
 346
 
-##LIGHT SWITCH##
+##LIGHT SWITCH#
 #poster
 -1
 1664
@@ -6926,7 +7665,7 @@ assets/sprites/groceries/jam3.bmp
 85
 85
 85
-365
+377
 
 ##LIGHT SWITCH##
 #poster
@@ -6939,7 +7678,7 @@ assets/sprites/groceries/jam3.bmp
 85
 85
 85
-366
+378
 
 #sector[47]## SECTOR 47 WAREHOUSE##########################################################
 8
@@ -6951,8 +7690,8 @@ assets/sprites/groceries/jam3.bmp
 14
 0
 -1
-6
-0
+9
+14
 47
 0
 
@@ -7028,6 +7767,461 @@ assets/sprites/groceries/jam3.bmp
 73
 352
 
+##LIGHT SWITCH##
+#poster
+-1
+2816
+1393
+2816
+1409
+4
+85
+85
+85
+370
+
+##SANITIZER##
+#poster
+-1
+2816
+1410
+2816
+1426
+4
+87
+87
+87
+375
+
+##LIGHT SWITCH##
+#poster
+-1
+1952
+1382
+1952
+1366
+4
+85
+85
+85
+376
+
+#OBJECT IN SECTOR 47
+#object0 in sector 47 scissor lift
+74
+2780
+1300
+7
+64
+1
+4
+7
+2765
+1285
+2795
+1285
+8
+2795
+1285
+2795
+1315
+7
+2795
+1315
+2765
+1315
+8
+2765
+1315
+2765
+1285
+
+#object1 in sector 47 virus
+75
+2000
+1510
+4
+16
+0
+4
+#line
+18
+1995
+1505
+2005
+1505
+#line
+18
+2005
+1505
+2005
+1515
+#line
+18
+2005
+1515
+1995
+1515
+#line
+18
+1995
+1515
+1995
+1505
+
+#object2 in sector 47 virus
+76
+2750
+1510
+4
+16
+0
+4
+#line
+18
+2745
+1505
+2755
+1505
+#line
+18
+2755
+1505
+2755
+1515
+#line
+18
+2755
+1515
+2745
+1515
+#line
+18
+2745
+1515
+2745
+1505
+
+
+#object3 in sector 47 virus #18
+77
+2100
+1425
+4
+24
+0
+4
+18
+2095
+1420
+2105
+1420
+18
+2105
+1420
+2105
+1430
+18
+2105
+1430
+2095
+1430
+18
+2095
+1430
+2095
+1420
+
+#object4 in sector 47 virus #18
+78
+2200
+1450
+4
+16
+0
+4
+18
+2195
+1445
+2205
+1445
+18
+2205
+1445
+2205
+1455
+18
+2205
+1455
+2195
+1455
+18
+2195
+1455
+2195
+1445
+
+#object5 in sector 47 virus #18
+79
+2000
+1475
+4
+24
+0
+4
+18
+1995
+1470
+2005
+1470
+18
+2005
+1470
+2005
+1480
+18
+2005
+1480
+1995
+1480
+18
+1995
+1480
+1995
+1470
+
+#object6 in sector 47 virus #18
+80
+2600
+1510
+4
+16
+0
+4
+18
+2595
+1505
+2605
+1505
+18
+2605
+1505
+2605
+1515
+18
+2605
+1515
+2595
+1515
+18
+2595
+1515
+2595
+1505
+
+#object7 in sector 47 virus #18
+81
+2575
+1510
+4
+24
+0
+4
+18
+2570
+1505
+2580
+1505
+18
+2580
+1505
+2580
+1515
+18
+2580
+1515
+2570
+1515
+18
+2570
+1515
+2570
+1505
+
+#object8 in sector 47 box #20
+82
+2230
+1400
+10
+16
+0
+4
+20
+2225
+1395
+2235
+1395
+20
+2235
+1395
+2235
+1405
+20
+2235
+1405
+2225
+1405
+20
+2225
+1405
+2225
+1395
+
+#object9 in sector 47 box #20
+83
+2300
+1355
+10
+16
+0
+4
+20
+2225
+1345
+2235
+1345
+20
+2235
+1345
+2235
+1360
+20
+2235
+1360
+2225
+1360
+20
+2225
+1360
+2225
+1345
+
+#object10 in sector 47 box #20
+84
+2400
+1475
+10
+16
+0
+4
+20
+2395
+1470
+2405
+1470
+20
+2405
+1470
+2405
+1480
+20
+2405
+1480
+2395
+1480
+20
+2395
+1480
+2395
+1470
+
+#object11 in sector 47 box #20
+85
+2550
+1350
+10
+16
+0
+4
+20
+2545
+1345
+2555
+1345
+20
+2555
+1345
+2555
+1355
+20
+2555
+1355
+2545
+1355
+20
+2545
+1355
+2545
+1345
+
+#object12 in sector 47 box #20
+86
+2500
+1450
+10
+16
+0
+4
+20
+2495
+1445
+2505
+1445
+20
+2505
+1445
+2505
+1455
+20
+2505
+1455
+2495
+1455
+20
+2495
+1455
+2495
+1445
+
+#object13 in sector 47 box #20
+87
+2550
+1400
+10
+24
+0
+4
+20
+2545
+1395
+2555
+1395
+20
+2555
+1395
+2555
+1405
+20
+2555
+1405
+2545
+1405
+20
+2545
+1405
+2545
+1395
+
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10
 70
@@ -7039,7 +8233,7 @@ assets/sprites/groceries/jam3.bmp
 0
 -1
 4
-0
+8
 48
 0
 
@@ -7090,6 +8284,239 @@ assets/sprites/groceries/jam3.bmp
 73
 73
 356
+
+#OBJECTS IN SECTOR 48
+#object0 in sector 48 TOILET PAPER 1 #27
+88
+2150
+2011
+13
+16
+1
+4
+27
+2145
+2006
+2155
+2006
+27
+2155
+2006
+2155
+2016
+27
+2155
+2016
+2145
+2016
+27
+2145
+2016
+2145
+2006
+
+#object1 in sector 48 TOILET PAPER 1 #52
+89
+2250
+1223
+13
+16
+1
+4
+27
+2245
+1218
+2255
+1218
+27
+2255
+1218
+2255
+1228
+27
+2255
+1228
+2245
+1228
+27
+2245
+1228
+2245
+1218
+
+#object2 in sector 48 TOILET PAPER 1 #52
+90
+2450
+1223
+13
+16
+1
+4
+27
+2445
+1218
+2455
+1218
+27
+2455
+1218
+2455
+1228
+27
+2455
+1228
+2445
+1228
+27
+2445
+1228
+2445
+1218
+
+#object3 in sector 48 virus #18
+91
+2050
+1231
+4
+24
+0
+4
+18
+2045
+1226
+2055
+1226
+18
+2055
+1226
+2055
+1236
+18
+2055
+1236
+2045
+1236
+18
+2045
+1236
+2045
+1226
+
+#object4 in sector 48 virus #18
+92
+2100
+1223
+4
+24
+0
+4
+18
+2095
+1218
+2105
+1218
+18
+2105
+1218
+2105
+1228
+18
+2105
+1228
+2095
+1228
+18
+2095
+1228
+2095
+1218
+
+#object5 in sector 48 virus #18
+93
+2200
+1231
+4
+24
+0
+4
+18
+2195
+1226
+2205
+1226
+18
+2205
+1226
+2205
+1236
+18
+2205
+1236
+2195
+1236
+18
+2195
+1236
+2195
+1226
+
+#object6 in sector 48 virus #18
+94
+2400
+1231
+4
+24
+0
+4
+18
+2395
+1226
+2405
+1226
+18
+2405
+1226
+2405
+1236
+18
+2405
+1236
+2395
+1236
+18
+2395
+1236
+2395
+1226
+
+#object7 in sector 48 virus #18
+95
+2500
+1231
+4
+24
+0
+4
+18
+2495
+1226
+2505
+1226
+18
+2505
+1226
+2505
+1236
+18
+2505
+1236
+2495
+1236
+18
+2495
+1236
+2495
+1226
 
 #sector[49]## SECTOR 49 WAREHOUSE##########################################################
 10
