@@ -62,10 +62,10 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 	}
 }
 
-static void			font_timer_2(t_doom *doom)
+static void			font_timer_2(t_doom *doom, t_event *event)
 {
 	set_background_coords_middle_narrow(doom);
-	if (doom->own_event.spray_shopper == TRUE)
+	if (event->spray_shopper == TRUE)
 		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE)
@@ -74,7 +74,7 @@ static void			font_timer_2(t_doom *doom)
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.start_sector, 10, 16);
 	}
-	// else if (doom->lib.sector[doom->i_sector].action == TROLLY && doom->own_event.trolly == FALSE)
+	// else if (doom->lib.sector[doom->i_sector].action == TROLLY && event->trolly == FALSE)
 	// {
 	// 	set_background_coords_middle_small(doom);
 	// 	font_timer_box_long(doom, \
@@ -84,21 +84,22 @@ static void			font_timer_2(t_doom *doom)
 
 void				font_timer(t_doom *doom)
 {
-	printf("%d\n", doom->own_event.scissor_lift );
+	t_event 	*event;
+
+	event = &doom->own_event;
 	set_background_coords_middle_small(doom);
-	if (doom->own_event.parked_too_close == TRUE)
+	if (event->parked_too_close == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 7, 8);
-	else if (doom->own_event.scissor_lift== TRUE && doom->lib.font_lib.bools.scissor_lift == FALSE)
-	{
-		printf("here\n");
+	else if (event->scissor_lift== TRUE && \
+	doom->lib.font_lib.bools.scissor_lift == FALSE)
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.text, 3, 7);
-	}
-	else if (doom->own_event.fall == TRUE && \
-	doom->own_event.fall_count != -1)
+	else if (event->fall == TRUE && event->fall_count == -1)
+	{
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
+	}
 	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.checkout, 17, 18);
@@ -108,5 +109,5 @@ void				font_timer(t_doom *doom)
 		font_timer_box_start(doom, \
 			&doom->lib.font_lib.bools.text);
 	else
-		font_timer_2(doom);
+		font_timer_2(doom, event);
 }

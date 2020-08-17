@@ -73,8 +73,11 @@ void	cam_move_rl(t_doom *doom, double dt, int direction)
 	movement.end.y = doom->pos.y + (MOVE_SPEED * dt) *\
 		sin(doom->dir_angle + direction);
 	if (sprite_collision(doom, movement) == 1)
-		movement.end = doom->pos;
-	// if (sector.action == TROLLY && doom->own_event.trolly == FALSE)
+	{
+		movement.start = doom->pos;
+		;
+	}
+	// if (sector.action == START_TIMER && doom->own_event.trolly == FALSE)
 		// movement.end = doom->pos;
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
@@ -97,7 +100,10 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 	movement.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle); //check movement end x and end y, am I hitting something?
 	movement.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
 	if (sprite_collision(doom, movement) == 1)
-		movement.end = doom->pos;
+	{
+		movement.start = doom->pos;
+		;
+	}
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
 	if (collision != -1)
 	{

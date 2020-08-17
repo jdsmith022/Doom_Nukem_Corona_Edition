@@ -59,7 +59,6 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 	else if ((event->select == FALSE && event->shoot == FALSE) || \
 		(event->select == TRUE && event->shoot == TRUE))
 	{
-		SDL_ShowCursor(0);
 		if (event->select == TRUE && event->shoot == TRUE)
 		{
 			event->select = FALSE;

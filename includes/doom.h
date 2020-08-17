@@ -58,7 +58,6 @@
 # define START_SECTOR 3
 # define START_TIMER 4
 # define CHECKOUT 5
-# define TROLLY 6
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;

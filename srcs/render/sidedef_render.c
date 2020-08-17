@@ -90,6 +90,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			doom->lib.sidedef[x].action == 8)
 			{
 				doom->i_sidedef = x;
+				printf("sidedef: %d\n", x);
 				save_poster = init_poster(x, distance, intersect,\
 					&doom->lib.sidedef[x]);
 			}
