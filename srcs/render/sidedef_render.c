@@ -88,8 +88,11 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		{
 			if (doom->lib.sidedef[x].action == 4 || \
 			doom->lib.sidedef[x].action == 8)
+			{
+				doom->i_sidedef = x;
 				save_poster = init_poster(x, distance, intersect,\
 					&doom->lib.sidedef[x]);
+			}
 			else
 			{
 				min_distance = distance;
@@ -103,9 +106,9 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	printf("before sprite_check\n");
+	// printf("before sprite_check\n");
 	sprite_check(doom, ray, sector, prev_sector);
-	printf("after sprite_check\n");
+	// printf("after sprite_check\n");
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 &&\

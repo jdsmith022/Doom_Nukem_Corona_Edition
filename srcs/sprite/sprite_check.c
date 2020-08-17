@@ -96,7 +96,7 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 			// printf("begin sprite_check\n");
 			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
 			// printf("eind sprite check\n");
-		}	
+		}
 		i++;
 		sprite_i++;
 	}

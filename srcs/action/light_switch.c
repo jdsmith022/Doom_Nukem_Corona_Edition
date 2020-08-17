@@ -53,10 +53,13 @@ static void		check_poster_location(t_doom *doom)
 
 }
 
+// static void		find_sidedef(t_doom *doom)
+
 void			light_switch(t_doom *doom)
 {
 	t_sidedef poster;
 
+	// doom->i_sidedef = find_sidedef(doom, doom->plane_x);
 	poster = doom->lib.sidedef[doom->i_sidedef];
 	if (doom->lib.sidedef[doom->i_sidedef].distance < 100.00 \
 	&& doom->own_event.select == TRUE && poster.action == 4)

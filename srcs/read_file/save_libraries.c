@@ -28,7 +28,7 @@ static void		modified(void)
 {
 	struct stat filestat;
 
-	stat("srcs/read_file/start_skybox_no_tp", &filestat);
+	stat("srcs/read_file/start_skybox_test", &filestat);
 	// stat("srcs/read_file/the_cross-2", &filestat);
 	printf("%s", ctime(&filestat.st_mtime));
 	/* turn on and add the last modified date before handing in*/
