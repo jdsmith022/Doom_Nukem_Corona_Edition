@@ -11,7 +11,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 
 	if (opp_sector->slope_floor_id != -1)
 		slope_plane_settings(doom, sidedef, opp_sector);
-	new_height = (HEIGHT / 2) + doom->player_height + (doom->up * 10);
+	new_height = (HEIGHT / 2) + doom->player_height + (doom->up * 20);
 	// if (doom->own_event.scissor_lift_up == TRUE)
 	// 	new_height += doom->up * 10;
 	height_ceiling = opp_sector->height_ceiling / \
@@ -38,12 +38,10 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	// 	mid_bottom -= 30;
 	// 	wall_offset(plane, mid_top);
 	// }
-	// if (mid_bottom < 0)
-	// 	mid_bottom = 0;
-	// if ( mid_top > HEIGHT)
-	// 	mid_top = HEIGHT;
-	// else if (mid_top < 0)
-	// 	mid_top = 0;
+	if ( mid_top > HEIGHT)
+		mid_top = HEIGHT;
+	else if (mid_top < 0)
+		mid_top = 0;
 	plane->mid_texture_top = mid_top;
 	plane->mid_texture_bottom = ((mid_bottom < HEIGHT) ? mid_bottom : (HEIGHT));
 }
@@ -60,7 +58,7 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 
 	if (sector->slope_floor_id != -1)
 		slope_plane_settings(doom, sidedef, sector);
-	new_height = (HEIGHT / 2) + doom->player_height + (doom->up * 10);
+	new_height = (HEIGHT / 2) + doom->player_height + (doom->up * 20);
 	// if (doom->own_event.scissor_lift_up == TRUE)
 	// 	new_height += doom->up * 10;
 	plane->height_standard = doom->texture_height / \
