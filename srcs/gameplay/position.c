@@ -25,7 +25,7 @@ void			set_positions(t_list **basket)
 	while (temp)
 	{
 		item = (t_item *)temp->content;
-		item->position = get_position(i, 55, 60);
+		item->position = get_position(i, 35, 60);
 		temp = temp->next;
 		i++;
 	}

@@ -62,7 +62,8 @@ void		exit_scissor_lift(t_doom *doom)
 void		activate_scissor_lift(t_doom *doom, int index)
 {
 	// if (doom->own_event.scissor_lift == FALSE)
-	doom->own_event.y_pitch = 300;
+	// if (doom->own_event.scissor_lift == FALSE)
+	// 	doom->own_event.y_pitch = 150;
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->pos.x = doom->lib.sprites[index].pos.x;
@@ -133,12 +134,11 @@ static void	check_sprite_distance(t_doom *doom, int index)
 			doom->hud->facemask = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
-		else if (doom->lib.sprites[index].action == 10)
+		else if (doom->lib.sprites[index].action == 10  && doom->own_event.scissor_lift == FALSE)
 		{
 			doom->lib.sprites[index].action = 8;
 			doom->own_event.fall = TRUE;
 		}
-			// player_fall(doom, &doom->lib.sprites[index]);
 	}
 }
 

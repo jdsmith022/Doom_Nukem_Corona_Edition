@@ -125,6 +125,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		if (near_sidedef.poster != -1)
 			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
+		// printf("afer plane\n");
 		// if (sector > 2)
 		// 	find_infection(doom, ray, min_distance);
 	}

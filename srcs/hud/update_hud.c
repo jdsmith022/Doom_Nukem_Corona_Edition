@@ -107,6 +107,7 @@ void		update_hud(t_doom *doom)
 			remove_red_virus(doom);
 		if (doom->menu->start_timer == FALSE)
 			update_timer(doom, doom->lib.font_lib.hud_font);
+		update_list_and_basket(doom);
 	}
 	font_to_screen(doom);
 }

@@ -28,5 +28,6 @@ void			update_hud(t_doom *doom);
 void			update_hud_levels(t_doom *doom, t_font *lib);
 int				calculate_hud_levels(t_doom *doom);
 void			update_timer(t_doom *doom, t_font *lib);
+void			update_list_and_basket(t_doom *doom);
 
 #endif

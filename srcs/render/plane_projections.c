@@ -47,6 +47,7 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	// printf("top projection\n");
 	sector.plane_x = x;
 	set_properties_plane(doom, sidedef, &plane, &sector);
+	// printf("siddef\n");
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == 6)
@@ -55,6 +56,7 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (sector.action != 1)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
+	// printf("floor\n");
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
 	doom->lib.sector[sidedef.sector].sidedef_bottom[x] = plane.sidedef_bottom;
 	doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
@@ -62,6 +64,7 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = plane.mid_texture_bottom;
 	else
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
+	// printf("poster\n");
 	if (sidedef.poster != -1)
 		draw_poster(doom, plane, sidedef, x);
 	// printf("bottom projection\n");

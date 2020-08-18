@@ -65,6 +65,7 @@ static void		init_settings(t_doom *doom)
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
+	doom->up = 0;
 }
 
 void			doom_init(t_doom *doom)
@@ -83,6 +84,5 @@ void			doom_init(t_doom *doom)
 	doom->dir_angle = 90;
 	doom->i_sector = 0;
 	doom->visible_sprites = 0;
-	doom->player_std_height = 48;
 	doom->save_scissor_lift = -1;
 }

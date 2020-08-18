@@ -7678,7 +7678,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 17
 0
 -1
-70
+40
 14
 0
 -1
@@ -8216,11 +8216,11 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10
-70
+50
 10
 0
 -1
-96
+20
 14
 0
 -1
@@ -8279,11 +8279,11 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 #sector[49]## SECTOR 49 WAREHOUSE##########################################################
 10
-70
+50
 10
 0
 -1
-96
+20
 14
 0
 -1

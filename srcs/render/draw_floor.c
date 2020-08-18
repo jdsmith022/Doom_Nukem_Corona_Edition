@@ -15,7 +15,7 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 
 	dist = ((doom->player_std_height - sector->height_floor)\
 		/ ((y + doom->own_event.y_pitch) -\
-		((HEIGHT / 2) + doom->player_height)));
+		((HEIGHT / 2) + doom->player_height + (doom->up * 10))));
 	sector->height_floor = fabs(sector->height_floor);
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
@@ -42,6 +42,7 @@ void			draw_floor(t_doom *doom, int x,
 	tex_dex = sector.txt_floor;
 	bpp = doom->surface->format->BytesPerPixel;
 	find_floor_limit(doom, sector, &limit);
+	// printf("limit\n");
 	while (y < limit)
 	{
 		calculate_floor_dist(doom, x, y, &sector);
