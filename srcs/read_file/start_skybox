@@ -326,7 +326,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 #number of walls
 372
 #number of objects
-96
+102
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -8307,7 +8307,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 2145
 2006
 
-#object1 in sector 48 TOILET PAPER 1 #52
+#object1 in sector 48 TOILET PAPER 2 #52
 89
 2250
 1223
@@ -8336,7 +8336,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 2245
 1218
 
-#object2 in sector 48 TOILET PAPER 1 #52
+#object2 in sector 48 TOILET PAPER 2 #52
 90
 2450
 1223
@@ -8521,7 +8521,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 0
 -1
 4
-0
+6
 49
 0
 
@@ -8572,6 +8572,181 @@ assets/sprites/groceries/toiletpaper2.bmp
 73
 73
 372
+
+#object0 in sector 49 TOILET PAPER 1 #27
+96
+2500
+1592
+13
+16
+1
+4
+27
+2495
+1587
+2505
+1587
+27
+2505
+1587
+2505
+1597
+27
+2505
+1597
+2495
+1597
+27
+2495
+1597
+2495
+1587
+
+#object1 in sector 49 TOILET PAPER 2 #52
+97
+2560
+1580
+13
+16
+1
+4
+27
+2555
+1575
+2565
+1575
+27
+2565
+1575
+2565
+1585
+27
+2565
+1585
+2555
+1585
+27
+2555
+1585
+2555
+1575
+
+#object2 in sector 49 TOILET PAPER 2 #52
+98
+2650
+1580
+13
+16
+1
+4
+27
+2645
+1575
+2655
+1575
+27
+2655
+1575
+2655
+1585
+27
+2655
+1585
+2645
+1585
+27
+2645
+1585
+2645
+1575
+
+#object3 in sector 49 virus #18
+99
+2450
+1577
+4
+16
+0
+4
+18
+2445
+1572
+2455
+1572
+18
+2455
+1572
+2455
+1562
+18
+2455
+1562
+2445
+1562
+18
+2445
+1562
+2445
+1572
+
+#object4 in sector 49 virus #18
+100
+2400
+1607
+4
+8
+0
+4
+18
+2395
+1602
+2405
+1602
+18
+2405
+1602
+2405
+1612
+18
+2405
+1612
+2395
+1612
+18
+2395
+1612
+2395
+1602
+
+#coords aanpassen
+#object5 in sector 49 virus #18
+101
+2400
+1607
+4
+8
+0
+4
+18
+2395
+1602
+2405
+1602
+18
+2405
+1602
+2405
+1612
+18
+2405
+1612
+2395
+1612
+18
+2395
+1612
+2395
+1602
 
 #moving objects
 0
