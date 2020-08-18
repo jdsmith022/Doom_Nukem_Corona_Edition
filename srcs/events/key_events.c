@@ -21,12 +21,12 @@ static void			set_position(t_doom *doom, t_event *event, double dt)
 	else if (event->move_pos_r == TRUE || event->move_pos_l == TRUE)
 	{
 		direction = 90 * PI / 180;
-		if (event->move_pos_r == TRUE)
+		if (event->move_pos_l == TRUE)
 			direction = -90 * PI / 180;
 		move.end.x = doom->pos.x + (MOVE_SPEED * dt) * \
 			cos(doom->dir_angle + direction);
-		move.end.x = doom->pos.y + (MOVE_SPEED * dt) * \
-			cos(doom->dir_angle + direction);
+		move.end.y = doom->pos.y + (MOVE_SPEED * dt) * \
+			sin(doom->dir_angle + direction);
 		angle = doom->dir_angle + direction;
 	}
 	move_position(doom, move, angle);
@@ -34,7 +34,9 @@ static void			set_position(t_doom *doom, t_event *event, double dt)
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
-	if (event->fall == FALSE)
+	if (event->fall == FALSE && (event->move_pos_f == TRUE || \
+		event->move_pos_b == TRUE || \
+		event->move_pos_r == TRUE || event->move_pos_l == TRUE))
 		set_position(doom, event, dt);
 	if (event->jump == TRUE && event->scissor_lift == FALSE)
 		jump_player(doom, dt);

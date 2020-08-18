@@ -51,6 +51,7 @@ void	move_position(t_doom *doom, t_line move, double angle)
 	t_point		prev_intersect;
 	int			collision;
 
+	move.start = doom->pos;
 	if (sprite_collision(doom, move) == 1)
 		return ;
 	prev_intersect.x = -1;

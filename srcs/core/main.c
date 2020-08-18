@@ -22,6 +22,7 @@ int	main(void)
 	}
 	save_font_libraries(&doom);
 	doom_init(&doom);
+	printf("%f, %f\n", doom.pos.x, doom.pos.y);
 	doom_start(&doom);
 	game_loop(&doom);
 	return (0);
