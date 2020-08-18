@@ -454,30 +454,20 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane, t_sector *sector);
 void				set_properties_plane_sidedef(t_doom *doom,\
-						t_sidedef sidedef, t_sector *sector, t_plane *plane);
+						t_sidedef sidedef, t_sector sector, t_plane *plane);
 void				set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
-						t_sector *opp_sector, t_plane *plane);
+						t_sector opp_sector, t_plane *plane);
 t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom);
+double				set_slope_height(t_doom *doom, t_sidedef sidedef,\
+						t_sector sector);
 void				wall_offset(t_plane *plane, int sidedef_top);
-
-void				slope_plane_settings(t_doom *doom, t_sidedef sidedef,
-						t_sector *sector);
-void				set_slope_bottom_values(t_doom *doom,\
-						t_sidedef sidedef, t_sector *sector);
-double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
-t_sidedef			get_other_side_of_line(t_doom *doom,\
-						t_sidedef sidedef, t_sector sector);
-int					get_opp_side_of_slope(t_sector sector, int slope_id);
-t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
-
 void				set_texture_properties(t_doom *doom);
 void				set_floor_limit(t_doom *doom, t_plane *plane,\
 						t_sidedef sidedef, t_sector *sector);
 void				set_ceiling_limit(t_doom *doom, t_plane *plane,\
 						t_sidedef sidedef, t_sector *sector);
 Uint8				find_slope_line_offset(t_point start, t_point end);
-
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\

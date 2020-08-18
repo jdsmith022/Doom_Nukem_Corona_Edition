@@ -50,7 +50,7 @@ void				wall_offset(t_plane *plane, int sidedef_top);
 
 void				slope_plane_settings(t_doom *doom, t_sidedef sidedef,
 						t_sector *sector, int flag);
-void				set_slope_bottom_values(t_doom *doom,\
+//void				set_slope_bottom_values(t_doom *doom,\
 						t_sidedef sidedef, t_sector *sector);
 double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
 t_sidedef			get_other_side_of_line(t_doom *doom,\
