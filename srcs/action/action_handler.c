@@ -24,13 +24,6 @@ static void	action_posters(t_doom *doom)
 
 void	action_handler(t_doom *doom)
 {
-	t_point start;
-	t_point end;
-
-	start.x = WIDTH / 2;
-	start.y = HEIGHT / 2;
-	end.x = WIDTH / 2 + 16;
-	end.y = HEIGHT / 2 + 16;
 	sliding_door(doom, -1);
 	action_posters(doom);
 	if (doom->own_event.shoot == TRUE && doom->hud->sanitizer_level > 0)

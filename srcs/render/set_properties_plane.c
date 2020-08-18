@@ -12,7 +12,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	if (opp_sector.slope_floor_id != -1)
 		set_slope_height(doom, sidedef, opp_sector);
 	new_height = (HEIGHT / 2) + doom->player_height;// + (doom->up * 20);
-	printf("portal new_height: %d\n", new_height);
+	// printf("portal new_height: %d\n", new_height);
 	// if (doom->own_event.scissor_lift_up == TRUE)
 	// 	new_height = (HEIGHT / 2) + (doom->up * 20);
 	// 	new_height += doom->up * 10;
