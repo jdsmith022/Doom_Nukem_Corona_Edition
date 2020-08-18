@@ -110,5 +110,4 @@ void				font_timer(t_doom *doom)
 			&doom->lib.font_lib.bools.text);
 	else
 		font_timer_2(doom, event);
-	printf("font\n");
 }

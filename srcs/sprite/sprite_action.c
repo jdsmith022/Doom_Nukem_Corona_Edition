@@ -134,7 +134,11 @@ static void	check_sprite_distance(t_doom *doom, int index)
 			doom->lib.sprites[index].action = 8;
 		}
 		else if (doom->lib.sprites[index].action == 10)
-			player_fall(doom, &doom->lib.sprites[index]);
+		{
+			doom->lib.sprites[index].action = 8;
+			doom->own_event.fall = TRUE;
+		}
+			// player_fall(doom, &doom->lib.sprites[index]);
 	}
 }
 

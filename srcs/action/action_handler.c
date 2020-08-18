@@ -35,4 +35,6 @@ void	action_handler(t_doom *doom)
 			shooting(doom);
 		}
 	}
+	if (doom->own_event.fall == TRUE)
+		player_fall(doom);
 }
