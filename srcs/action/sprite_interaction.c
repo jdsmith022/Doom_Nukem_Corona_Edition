@@ -14,8 +14,8 @@ void	player_fall(t_doom *doom, t_sprite *sprite)
 		doom->own_event.fall = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
 		doom->player_height = min_height;
-		if (doom->own_event.cam_move_b == TRUE ||
-		doom->own_event.cam_move_l == TRUE)
+		if (doom->own_event.move_pos_b == TRUE ||
+		doom->own_event.move_pos_l == TRUE)
 		{
 			doom->own_event.y_pitch = -240;
 			if (doom->own_event.fall_count > 1)

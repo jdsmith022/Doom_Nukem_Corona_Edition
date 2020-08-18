@@ -136,10 +136,10 @@ typedef struct		s_event {
 	int				hold_angle;
 	int				hold_x;
 	int				hold_y;
-	int				cam_move_f;
-	int				cam_move_b;
-	int				cam_move_l;
-	int				cam_move_r;
+	int				move_pos_f;
+	int				move_pos_b;
+	int				move_pos_l;
+	int				move_pos_r;
 	int				floor_diff;
 	int				ceiling_diff;
 	int				next_sector_height;
@@ -383,6 +383,12 @@ void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
 double				points_distance(t_point p1, t_point p2);
+t_point				check_line_intersection(t_line line1, t_line line2);
+t_point				line_intersection(t_point start1, t_point delta1,
+							t_point start2, t_point delta2);
+t_point				line_delta(t_point start, t_point end);
+double				point_distance(t_point p1, t_point p2, double angle);
+double				point_line_distance(t_point point, t_line line);
 void				timer(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
 void				update_hud_ui(t_doom *doom);
@@ -430,8 +436,7 @@ void				camera_movement(t_doom *doom,\
 void				move_cam_direction(t_doom *doom,\
 						SDL_MouseMotionEvent *motion,\
 						double dt, t_event *event);
-void				cam_move_fb(t_doom *doom, double dt, int direction);
-void				cam_move_rl(t_doom *doom, double dt, int direction);
+void				set_new_position(t_doom *doom, t_event *event, double dt);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 int					check_sector_height_diff(t_doom *doom,\
 						int sector, int next_sector);
@@ -440,11 +445,6 @@ bool				handle_mouse_state(t_doom *doom);
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
-t_point				line_intersection(t_point start1, t_point delta1,
-							t_point start2, t_point delta2);
-t_point				line_delta(t_point start, t_point end);
-double				point_distance(t_point p1, t_point p2, double angle);
-double				point_line_distance(t_point point, t_line line);
 double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,

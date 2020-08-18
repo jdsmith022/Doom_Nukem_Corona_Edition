@@ -7,11 +7,11 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 {
 	if (event->jump == FALSE)
 		audio->event->jump_toggled = FALSE;
-	if ((event->cam_move_f || event->cam_move_b) && !event->jump)
+	if ((event->move_pos_f || event->move_pos_b) && !event->jump)
 		loop_sound(audio->sounds[FOOTSTEPS], 1);
 	else
 		pause_sound(audio->sounds[FOOTSTEPS], 1);
-	if ((event->cam_move_l || event->cam_move_r) && !event->jump)
+	if ((event->move_pos_l || event->move_pos_r) && !event->jump)
 		loop_sound(audio->sounds[FOOTSTEPS], 1);
 	if (event->jump && !audio->event->jump_toggled){
 		pause_sound(audio->sounds[FOOTSTEPS], 1);

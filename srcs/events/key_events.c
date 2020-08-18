@@ -5,17 +5,10 @@
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
-	if (event->fall == FALSE)
-	{
-		if (event->cam_move_f == TRUE)
-			cam_move_fb(doom, dt, MOVE_SPEED);
-		else if (event->cam_move_b == TRUE)
-			cam_move_fb(doom, dt, -MOVE_SPEED);
-		else if (event->cam_move_l == TRUE)
-			cam_move_rl(doom, dt, -90 * PI / 180);
-		else if (event->cam_move_r == TRUE)
-			cam_move_rl(doom, dt, 90 * PI / 180);
-	}
+	if (event->fall == FALSE && (event->move_pos_f == TRUE || \
+		event->move_pos_b == TRUE || event->move_pos_r == TRUE ||\
+		event->move_pos_l == TRUE))
+		set_position(doom, event, dt);
 	if (event->jump == TRUE && event->scissor_lift == FALSE)
 		jump_player(doom, dt);
 	if (event->step_down == TRUE && event->fall == FALSE)
@@ -31,19 +24,18 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		scissor_lift_up(doom);
 	if (event->scissor_lift_down == TRUE)
 		scissor_lift_down(doom);
-	// printf("key end\n");
 }
 
 void			key_release(t_event *event, SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_w)
-		event->cam_move_f = FALSE;
+		event->move_pos_f = FALSE;
 	else if (key->keysym.sym == SDLK_s)
-		event->cam_move_b = FALSE;
+		event->move_pos_b = FALSE;
 	else if (key->keysym.sym == SDLK_a)
-		event->cam_move_l = FALSE;
+		event->move_pos_l = FALSE;
 	else if (key->keysym.sym == SDLK_d)
-		event->cam_move_r = FALSE;
+		event->move_pos_r = FALSE;
 	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
 		event->scissor_lift_up = FALSE;
 	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
@@ -95,13 +87,13 @@ void			key_press(t_doom *doom, t_event *event,
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->is_running = FALSE;
 	else if (key->keysym.sym == SDLK_w)
-		event->cam_move_f = TRUE;
+		event->move_pos_f = TRUE;
 	else if (key->keysym.sym == SDLK_s)
-		event->cam_move_b = TRUE;
+		event->move_pos_b = TRUE;
 	else if (key->keysym.sym == SDLK_a)
-		event->cam_move_l = TRUE;
+		event->move_pos_l = TRUE;
 	else if (key->keysym.sym == SDLK_d)
-		event->cam_move_r = TRUE;
+		event->move_pos_r = TRUE;
 	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
 		event->scissor_lift_up = TRUE;
 	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
