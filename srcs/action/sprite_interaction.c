@@ -52,16 +52,15 @@ void				scissor_lift_up(t_doom *doom)
 
 	event = &doom->own_event;
 	printf("up\n");
-	max_height = doom->texture_height + doom->lib.sector[doom->i_sector].height_ceiling + PLAYER_HEIGHT;
+	max_height = doom->texture_height + doom->lib.sector[doom->i_sector].height_ceiling + PLAYER_HEIGHT + 400;
 	if (doom->player_height <= max_height)
 	{
 		printf("lift up, max_height: %f\n", max_height);
 		doom->player_height += 20;
-		if (doom->up < 10)
+		if (doom->up < 8)
 			doom->up += 1;
-		doom->own_event.y_pitch = 100;
-		// if (doom->own_event.y_pitch < 1000)
-		// 	doom->own_event.y_pitch += 20;
+		// doom->own_event.y_pitch = 300;
+			doom->own_event.y_pitch += 20;
 		if (doom->player_height > max_height)
 		{
 			doom->player_height = max_height;
@@ -81,10 +80,10 @@ void				scissor_lift_down(t_doom *doom)
 	{
 		doom->player_height -= 20;
 		doom->up -= 1;
-		event->y_pitch = 0;
+		// event->y_pitch = 0;
 		// event->y_pitch -= 20;
 		// if (event->y_pitch > 140)
-		event->y_pitch = 400;
+		event->y_pitch = 0;
 	}
 	if (doom->player_height < 50)
 	{

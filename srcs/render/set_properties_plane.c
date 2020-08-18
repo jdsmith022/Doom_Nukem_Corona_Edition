@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
+void		 set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 					t_sector *opp_sector, t_plane *plane)
 {
 	double		height_floor;
@@ -12,7 +12,9 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	if (opp_sector->slope_floor_id != -1)
 		slope_plane_settings(doom, sidedef, opp_sector);
 	new_height = (HEIGHT / 2) + doom->player_height;// + (doom->up * 20);
+	printf("portal new_height: %d\n", new_height);
 	// if (doom->own_event.scissor_lift_up == TRUE)
+	// 	new_height = (HEIGHT / 2) + (doom->up * 20);
 	// 	new_height += doom->up * 10;
 	height_ceiling = opp_sector->height_ceiling / \
 		sidedef.distance * doom->dist_to_plane;
@@ -38,6 +40,8 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	// 	mid_bottom -= 30;
 	// 	wall_offset(plane, mid_top);
 	// }
+	if (mid_bottom < 0)
+		mid_bottom = 0;
 	if ( mid_top > HEIGHT)
 		mid_top = HEIGHT;
 	else if (mid_top < 0)
@@ -60,7 +64,8 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 		slope_plane_settings(doom, sidedef, sector);
 	new_height = (HEIGHT / 2) + doom->player_height;// + (doom->up * 20);
 	// if (doom->own_event.scissor_lift_up == TRUE)
-	// 	new_height += doom->up * 10;
+	// 	new_height = (HEIGHT / 2);
+	printf("new_ehgith: %d\n", new_height);
 	plane->height_standard = doom->texture_height / \
 		sidedef.distance * doom->dist_to_plane;
 	height_ceiling = sector->height_ceiling / \
@@ -85,12 +90,12 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	// 	plane->sidedef_top -= 20;
 	// 	plane->sidedef_bottom -= 20;
 	// }
-	// if (plane->sidedef_bottom < 0)
-	// 	plane->sidedef_bottom = 0;
-	// if (plane->sidedef_top > HEIGHT)
-	// 	plane->sidedef_top = HEIGHT;
-	// else if (plane->sidedef_top < 0)
-	// 	plane->sidedef_top = 0;
+	if (plane->sidedef_bottom < 0)
+		plane->sidedef_bottom = 0;
+	if (plane->sidedef_top > HEIGHT)
+		plane->sidedef_top = HEIGHT;
+	else if (plane->sidedef_top < 0)
+		plane->sidedef_top = 0;
 	wall_offset(plane, sidedef_top);
 	plane->sidedef_bottom = \
 		((sidedef_bottom < HEIGHT ? sidedef_bottom : (HEIGHT)));

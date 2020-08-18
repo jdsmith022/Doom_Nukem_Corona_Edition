@@ -6,7 +6,7 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 	double dist;
 
 	dist = (doom->player_std_height + sector.height_ceiling)\
-		/ ((HEIGHT / 2 + doom->player_height + (doom->up * 20))\
+		/ ((HEIGHT / 2 + doom->player_height)\
 		- (y + doom->own_event.y_pitch));
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);

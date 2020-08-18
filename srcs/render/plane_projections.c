@@ -48,10 +48,10 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	sector.plane_x = x;
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	// printf("siddef\n");
-	if (sidedef.opp_sector == -1)
-		draw_onesided_sidedef(doom, plane, sidedef, x);
-	else if (sidedef.action == 6)
+	if (sidedef.action == 6)
 		draw_window(doom, plane, sidedef, x);
+	else if (sidedef.opp_sector == -1)
+		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (sector.action != 1)

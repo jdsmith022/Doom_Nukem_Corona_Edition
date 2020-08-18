@@ -51,7 +51,6 @@ t_m_object	mov_object_inf(t_doom *doom, int fd, int sector)
 		free(line);
 		i++;
 	}
-	free(line);
 	return (m_sprite);
 }
 

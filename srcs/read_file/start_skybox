@@ -324,7 +324,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 #number of sectors
 50
 #number of walls
-372
+373
 #number of objects
 96
 
@@ -5822,16 +5822,16 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 226
 
-#sidedefs
--1
+#sidedefs//make window to 31 if possible
+31
 1248
 672
 1248
 576
-0
-28
-28
-28
+6
+88
+88
+88
 227
 
 #sidedefs##PORTAL WALL TO SECTOR 31##
@@ -5906,6 +5906,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 32
 233
 
+##First column###
 #sidedefs
 -1
 672
@@ -5918,8 +5919,6 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 234
 
-
-##First column###
 #sidedefs
 -1
 672
@@ -5993,7 +5992,6 @@ assets/sprites/groceries/toiletpaper2.bmp
 240
 
 ##Second Column##
-
 #sidedefs
 -1
 1088
@@ -6210,11 +6208,11 @@ assets/sprites/groceries/toiletpaper2.bmp
 17
 -10
 -1
--10
+0
 14
 10
 -1
-7
+8
 0
 31
 0
@@ -6279,7 +6277,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 261
 
-#sidedefs##PORTAL TO SECTOR ##
+#sidedefs##PORTAL TO SECTOR 32##
 32
 1312
 768
@@ -6296,12 +6294,24 @@ assets/sprites/groceries/toiletpaper2.bmp
 1248
 768
 1248
-576
+672
 0
 15
 15
-165
+15
 263
+
+#sidedef// window in sector 29
+29
+1248
+672
+1248
+576
+6
+88
+88
+88
+400
 
 #sector[32]## SECTOR 32##########################################################
 15
@@ -7678,7 +7688,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 17
 0
 -1
-40
+0
 14
 0
 -1
@@ -8220,7 +8230,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 10
 0
 -1
-20
+0
 14
 0
 -1
@@ -8283,7 +8293,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 10
 0
 -1
-20
+0
 14
 0
 -1

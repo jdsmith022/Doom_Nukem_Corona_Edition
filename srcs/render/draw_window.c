@@ -14,7 +14,7 @@
 // 	return (1);
 // }
 
-static void		put_portal_pixel(t_doom *doom, t_point pixel)
+static void		put_window(t_doom *doom, t_point pixel)
 {
 	Uint32	*pixels;
 	Uint32	color;
@@ -22,6 +22,7 @@ static void		put_portal_pixel(t_doom *doom, t_point pixel)
 	pixels = doom->surface->pixels;
 	color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
 	pixels = doom->surface->pixels;
+	printf("hello\n");
 	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
 		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
 }
@@ -53,20 +54,29 @@ static void		find_texture(t_doom *doom, t_point pixel, t_plane plane,
 
 	tex_dex = find_sidedef_texture(doom, sidedef, pixel, plane);
 	textures = doom->lib.tex_lib[tex_dex]->pixels;
-	bpp = doom->surface->format->BytesPerPixel;
-	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
-	wall_y = (double)(doom->texture_height / plane.height_standard) *\
-		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
-	if (wall_y > doom->texture_height)
-		wall_y -= doom->texture_height;
-	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
-	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
-		(sidedef.offset * bpp));
 	if (textures[pixel_dex] == (char)255 && textures[pixel_dex  + 1] == (char)255 &&\
 	textures[pixel_dex + 2] == (char)255)
-		put_portal_pixel(doom, pixel);
+	{
+		;
+		// printf("pixelL %f, %f\n", pixel.x, pixel.y);
+		// put_window(doom, pixel);
+	}
 	else
+	{
+		bpp = doom->surface->format->BytesPerPixel;
+		index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
+		wall_y = (double)(doom->texture_height / plane.height_standard) *\
+			((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
+		if (wall_y > doom->texture_height)
+			wall_y -= doom->texture_height;
+		bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
+		pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
+			(sidedef.offset * bpp));
+		// printf("put text %f, %f --- texdex: %d --- index: %d ---- pixeldex: %d\n", pixel.x, pixel.y, tex_dex, index, pixel_dex);
 		put_texture(doom, tex_dex, index, pixel_dex);
+
+	}
+		// printf("end of put\n");
 	// put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
 
@@ -93,7 +103,7 @@ void			draw_window(t_doom *doom, t_plane plane,
 {
 	Uint32	*pixels;
 	t_point	pixel;
-
+	printf("window\n");
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;

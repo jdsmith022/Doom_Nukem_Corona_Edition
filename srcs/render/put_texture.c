@@ -62,7 +62,7 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	}
 	else
 	{
-		add_saturation(&r, &g, &b, doom->distance);
+		// add_saturation(&r, &g, &b, doom->distance);
 		pixels[index] = r;
 		index++;
 		pixels[index] = g;

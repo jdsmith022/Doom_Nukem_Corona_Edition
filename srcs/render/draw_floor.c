@@ -15,7 +15,7 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 
 	dist = ((doom->player_std_height - sector->height_floor)\
 		/ ((y + doom->own_event.y_pitch) -\
-		((HEIGHT / 2) + doom->player_height + (doom->up * 20))));
+		((HEIGHT / 2) + doom->player_height)));
 	sector->height_floor = fabs(sector->height_floor);
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
