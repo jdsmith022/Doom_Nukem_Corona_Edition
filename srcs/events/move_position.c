@@ -105,5 +105,5 @@ void				set_new_position(t_doom *doom, t_event *event, double dt)
 			sin(doom->dir_angle + direction);
 		angle = doom->dir_angle + direction;
 	}
-	move_new_position(doom, move, angle);
+	move_position(doom, move, angle);
 }
