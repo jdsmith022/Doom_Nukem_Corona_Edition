@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-static int	check_collision(t_doom *doom, t_sidedef sidedef,
+static int			check_collision(t_doom *doom, t_sidedef sidedef,
 				t_line move)
 {
 	if (sidedef.opp_sector == -1 || sidedef.action == 2)
@@ -27,7 +27,6 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 	{
 		sidedef = doom->lib.sidedef[x];
 		sidedef.intersect = check_line_intersection(move, sidedef.line);
-		printf("id = %d, intersect = %f, %f\n", sidedef.id, sidedef.intersect.x, sidedef.intersect.y);
 		if (((isnan(sidedef.intersect.x) == 0 && \
 			isnan(sidedef.intersect.y) == 0)) && \
 			((sidedef.intersect.x != prev_intersect.x && \
@@ -45,13 +44,14 @@ static t_sidedef	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	int			collision;
 
 	sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
-	printf("sector = %d, %f, %f\n", sidedef.sector, sidedef.intersect.x, sidedef.intersect.y);
 	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
+	{
+		doom->i_sector = sector;
 		doom->pos = move.end;
+	}
 	else
 	{
 		collision = check_collision(doom, sidedef, move);
-		printf("sidedef_id = %d, collision = %d\n", sidedef.id, collision);
 		if (collision != -1)
 		{
 			prev_intersect = sidedef.intersect;
@@ -59,12 +59,10 @@ static t_sidedef	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 			check_move_sidedef_intersection(doom, move, sector, prev_intersect);
 		}
 	}
-	doom->i_sector = sector;
-	printf("return sector = %d\n", sector);
 	return (sidedef);
 }
 
-void	move_position(t_doom *doom, t_line move, double angle)
+static void			move_position(t_doom *doom, t_line move, double angle)
 {
 	t_sidedef	sidedef;
 	t_point		prev_intersect;
@@ -79,23 +77,33 @@ void	move_position(t_doom *doom, t_line move, double angle)
 	if (sidedef.action == 2 && point_distance(sidedef.intersect, \
 		doom->pos, angle) < 20.0)
 		sliding_door(NULL, sidedef.id);
-	// sidedef = sidedef_intersection(doom, move, doom->i_sector, prev_intersect)
-	// if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
-	// 	doom->pos = move.end;
-	// else
-	// 	collision = check_collision(doom, sidedef, move);
-	// if (collision != -1)
-	// {
-	// 	prev_intersect = sidedef.intersect;
-	// 	sidedef = sidedef_intersection(doom, move, doom->i_sector, prev_intersect);
-	// 	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
-	// 		doom->pos = move.end;
-	// 	else
-	// 		collision = check_collision(doom, sidedef, move);
-	// 	if (collision == -1)
-	// 		doom->i_sector = doom->prev_sector;
-	// 	if (collision == 0)
-	// 		doom->pos = move.end;
-	// }
 }
 
+void				set_new_position(t_doom *doom, t_event *event, double dt)
+{
+	t_line		move;
+	double		angle;
+	double		direction;
+
+	if (event->move_pos_f == TRUE || event->move_pos_b == TRUE)
+	{
+		direction = MOVE_SPEED;
+		if (event->move_pos_b == TRUE)
+			direction = -MOVE_SPEED;
+		move.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
+		move.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
+		angle = doom->dir_angle;
+	}
+	else if (event->move_pos_r == TRUE || event->move_pos_l == TRUE)
+	{
+		direction = 90 * PI / 180;
+		if (event->move_pos_l == TRUE)
+			direction = -90 * PI / 180;
+		move.end.x = doom->pos.x + (MOVE_SPEED * dt) * \
+			cos(doom->dir_angle + direction);
+		move.end.y = doom->pos.y + (MOVE_SPEED * dt) * \
+			sin(doom->dir_angle + direction);
+		angle = doom->dir_angle + direction;
+	}
+	move_new_position(doom, move, angle);
+}

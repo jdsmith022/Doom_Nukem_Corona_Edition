@@ -3,35 +3,6 @@
 #include "../../includes/menu.h"
 #include "../../includes/action.h"
 
-static void			set_position(t_doom *doom, t_event *event, double dt)
-{
-	t_line		move;
-	double		angle;
-	double		direction;
-
-	if (event->move_pos_f == TRUE || event->move_pos_b == TRUE)
-	{
-		direction = MOVE_SPEED;
-		if (event->move_pos_b == TRUE)
-			direction = -MOVE_SPEED;
-		move.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
-		move.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
-		angle = doom->dir_angle;
-	}
-	else if (event->move_pos_r == TRUE || event->move_pos_l == TRUE)
-	{
-		direction = 90 * PI / 180;
-		if (event->move_pos_l == TRUE)
-			direction = -90 * PI / 180;
-		move.end.x = doom->pos.x + (MOVE_SPEED * dt) * \
-			cos(doom->dir_angle + direction);
-		move.end.y = doom->pos.y + (MOVE_SPEED * dt) * \
-			sin(doom->dir_angle + direction);
-		angle = doom->dir_angle + direction;
-	}
-	move_position(doom, move, angle);
-}
-
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
 	if (event->fall == FALSE && (event->move_pos_f == TRUE || \

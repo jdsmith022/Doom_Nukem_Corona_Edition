@@ -427,7 +427,7 @@ void				camera_movement(t_doom *doom,\
 void				move_cam_direction(t_doom *doom,\
 						SDL_MouseMotionEvent *motion,\
 						double dt, t_event *event);
-void				move_position(t_doom *doom, t_line move, double angle);
+void				set_new_position(t_doom *doom, t_event *event, double dt);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 int					check_sector_height_diff(t_doom *doom,\
 						int sector, int next_sector);
