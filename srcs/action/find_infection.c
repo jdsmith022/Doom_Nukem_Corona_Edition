@@ -1,7 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-
 static void		put_infection(t_doom *doom, t_sidedef infection, int x)
 {
 	t_plane		plane;

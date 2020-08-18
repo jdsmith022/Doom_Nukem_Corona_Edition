@@ -8,8 +8,7 @@ static void	fall_direction(t_doom *doom)
 
 	event = &doom->own_event;
 
-	if (event->cam_move_b == TRUE ||
-	event->cam_move_l == TRUE) //work on fall backwards
+	if (event->move_pos_f == TRUE) //work on fall backwards
 		fall_direction = 10;
 	else
 		fall_direction = -10;

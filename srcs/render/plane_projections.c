@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 
 static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
-					t_sector *sector, t_plane *plane)
+					t_sector sector, t_plane *plane)
 {
 	t_sector opp_sector;
 
@@ -9,9 +9,9 @@ static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 	{
 		opp_sector = doom->lib.sector[sidedef.opp_sector];
 		set_properties_plane_portal(doom, sidedef,\
-			&opp_sector, plane);
+			opp_sector, plane);
 	}
-	if (sector->action == 1)
+	if (sector.action == 1)
 		doom->lib.portal_ceiling = plane->sidedef_top;
 }
 
@@ -22,7 +22,6 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 
 	x = sector->plane_x;
 	ft_bzero(plane, sizeof(plane));
-	ft_bzero(&sector->slope, sizeof(sector->slope));
 	sidedef.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	sidedef.prev_sidedef.distance *= \
 		cos(doom->ray_adjacent * x - FOV / 2);
@@ -33,10 +32,10 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 		sector->height_ceiling = 0;
 	}
 	plane->intersect = sidedef.intersect;
-	set_properties_plane_sidedef(doom, sidedef, sector, plane);
+	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
 	set_floor_limit(doom, plane, sidedef, sector);
 	set_ceiling_limit(doom, plane, sidedef, sector);
-	set_sector_properties(doom, sidedef, sector, plane);
+	set_sector_properties(doom, sidedef, *sector, plane);
 }
 
 void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
