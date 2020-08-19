@@ -4,9 +4,11 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 					t_sector sector)
 {
 	double dist;
+	double diff;
 
-	dist = (doom->player_std_height + sector.height_ceiling)\
-		/ ((HEIGHT / 2 + doom->player_height)\
+	diff = doom->texture_height - doom->player_height;
+	dist = ((doom->texture_height - doom->player_height) - (doom->player_height - PLAYER_HEIGHT ))\
+			/ (((HEIGHT / 2)) \
 		- (y + doom->own_event.y_pitch));
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
@@ -19,7 +21,7 @@ static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 	&& doom->lib.sector[doom->i_sector].action == 1)
 		*limit = doom->lib.portal_ceiling;
 	else
-		*limit = sector.ceiling_end;
+		*limit = 0;//sector.ceiling_end;
 }
 
 void			draw_ceiling(t_doom *doom, int x,
