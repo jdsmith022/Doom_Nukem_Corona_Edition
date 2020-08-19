@@ -5822,17 +5822,6 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 226
 
-#sidedefs//make window to 31 if possible
-31
-1248
-672
-1248
-576
-6
-88
-88
-88
-227
 
 #sidedefs##PORTAL WALL TO SECTOR 31##
 31
@@ -5845,6 +5834,18 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 78
 228
+
+#sidedefs//make window to 31 if possible
+31
+1248
+672
+1248
+576
+6
+88
+88
+88
+227
 
 #sidedefs
 -1
@@ -6102,7 +6103,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 16
 249
 
-#sidedefs
+#sidedefs portal wall in middle square
 29
 800
 762
@@ -6137,7 +6138,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 87
 87
 87
-352
+252
 
 #sector[30]## SECTOR 30##########################################################
 12
@@ -6224,9 +6225,9 @@ assets/sprites/groceries/toiletpaper2.bmp
 1248
 480
 0
-28
-28
-28
+16
+16
+78
 257
 
 #sidedefs
