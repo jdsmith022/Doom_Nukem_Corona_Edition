@@ -42,6 +42,7 @@ typedef struct			s_groceries {
 	uint8_t				basket_len;
 	TTF_Font			*font;
 	t_game_over_info	info;
+	bool				tp;
 }						t_groceries;
 
 void					init_groceries(t_doom *doom);

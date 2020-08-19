@@ -204,11 +204,12 @@ void    shoot(t_doom *doom)
 			doom->lib.font_lib.bools.text = TRUE;
 			printf("HIT SHOPPER!!!!\n");
 		}
-	// else if (SPRITES[doom->own_event.virus_hit_index].action == 9)
-	// {
-	// 	printf("HIT A SHOPPER\n");
-	// 	shopper_hit_font(doom);
-	// }
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 11 && SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
+		{
+			// printf("index: %d\n", sprite_i);
+			doom->own_event.toilet_paper = TRUE;
+			printf("YOU GOT TOILET PAPER!!!!\n");
+		}
 	else
 	{
 		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
@@ -228,20 +229,6 @@ void    shoot(t_doom *doom)
 	}
 }
 
-void	handle_shooting(t_doom *doom)
-{
-	printf("start handle shooting\n");
-	// if (!handle_mouse_state(doom))
-	// {
-		// printf("handle mouse state is negative\n");
-		// return ;
-	// }
-	// if (doom->hud->sanitizer_level > 0)
-	// {
-		shoot(doom);
-	// }
-}
-
 void	shooting(t_doom *doom)
 {
 	printf("check shooting\n");
@@ -250,9 +237,7 @@ void	shooting(t_doom *doom)
 		if (MOUSE_PRESSED)
 		{
 			printf("handle shooting\n");
-			handle_shooting(doom);
+			shoot(doom);
 		}
-		// else
-			// doom->own_event.mouse_state_switched = false;
 	}
 }

@@ -7,8 +7,8 @@ void	check_virus_select(t_doom *doom)
 {
 	t_ray   ray;
 
-    ray = init_ray(doom, MOUSE_X);
-    check_hit(doom, ray, doom->i_sector, doom->i_sector);
+	ray = init_ray(doom, MOUSE_X);
+	check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index != -1)
 		doom->hud->corona = TRUE;
 }

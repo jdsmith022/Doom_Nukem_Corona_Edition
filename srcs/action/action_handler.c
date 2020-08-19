@@ -3,7 +3,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 
-static void	action_posters(t_doom *doom)
+static void	select_action(t_doom *doom)
 {
 	t_sidedef poster;
 
@@ -25,7 +25,7 @@ static void	action_posters(t_doom *doom)
 void	action_handler(t_doom *doom)
 {
 	sliding_door(doom, -1);
-	action_posters(doom);
+	select_action(doom);
 	if (doom->own_event.shoot == TRUE && doom->hud->sanitizer_level > 0)
 	{
 		if (MOUSE_PRESSED)

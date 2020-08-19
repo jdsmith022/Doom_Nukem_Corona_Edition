@@ -374,7 +374,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 -1
 96
 192
-136
+116
 192
 0
 12
@@ -384,7 +384,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 #sidedefs3 sliding sidedef
 1
-136
+116
 192
 176
 192
@@ -902,7 +902,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 -1
 96
 192
-126
+116
 192
 0
 15
@@ -912,7 +912,7 @@ assets/sprites/groceries/toiletpaper2.bmp
 
 #sidedefs20
 0
-126
+116
 192
 176
 192

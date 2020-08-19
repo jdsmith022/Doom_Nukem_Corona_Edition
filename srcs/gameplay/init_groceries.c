@@ -39,5 +39,6 @@ void			init_groceries(t_doom *doom)
 		i++;
 	}
 	doom->groceries->basket = NULL;
+	doom->groceries->tp = FALSE;
 	set_grocery_font(&doom->groceries->font);
 }
