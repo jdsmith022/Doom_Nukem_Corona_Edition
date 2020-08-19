@@ -27,8 +27,7 @@ static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 	if (sector.slope_floor_id != -1)
 		*limit = HEIGHT;
 	else
-		//*limit = sector.floor_end;
-		*limit = HEIGHT;
+		*limit = sector.floor_end;
 }
 
 void			draw_floor(t_doom *doom, int x,
@@ -43,7 +42,6 @@ void			draw_floor(t_doom *doom, int x,
 	tex_dex = sector.txt_floor;
 	bpp = doom->surface->format->BytesPerPixel;
 	find_floor_limit(doom, sector, &limit);
-	// printf("limit\n");
 	while (y < limit)
 	{
 		calculate_floor_dist(doom, x, y, &sector);

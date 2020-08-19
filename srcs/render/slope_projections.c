@@ -14,6 +14,5 @@ double		set_slope_height(t_doom *doom, t_sidedef sidedef,\
 			doom->lib.sidedef[sector.slope_floor_id].line));
 		height = tan(sector.slope_floor) * distance;
 	}
-	//printf("height %f\n");
 	return (height);
 }

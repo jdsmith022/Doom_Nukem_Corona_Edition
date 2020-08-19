@@ -45,6 +45,10 @@ static t_sidedef	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	int			collision;
 
 	sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
+	if (sidedef.action == 6)
+	{
+		return (sidedef);
+	}
 	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
 	{
 		doom->i_sector = sector;
@@ -68,7 +72,6 @@ static void			move_position(t_doom *doom, t_line move, double angle)
 	t_sidedef	sidedef;
 	t_point		prev_intersect;
 
-	move.start = doom->pos;
 	prev_intersect.x = -1;
 	prev_intersect.y = -1;
 	if (sprite_collision(doom, move) == 1)
@@ -86,6 +89,7 @@ void				set_new_position(t_doom *doom, t_event *event, double dt)
 	double		angle;
 	double		direction;
 
+	move.start = doom->pos;
 	if (event->move_pos_f == TRUE || event->move_pos_b == TRUE)
 	{
 		direction = MOVE_SPEED;

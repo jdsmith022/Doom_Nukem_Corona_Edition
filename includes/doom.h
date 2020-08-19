@@ -413,7 +413,8 @@ void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_doom *doom, t_lib *col_lib,\
 						int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
-void				set_texture_type(const char *name, SDL_Surface *surface);
+void				set_texture_type(t_doom *doom, const char *name,\
+						SDL_Surface *surface);
 t_bmp				*malloc_images_lib(t_doom *doom, int len);
 SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
 int					open_file(char *filename);
@@ -500,6 +501,7 @@ void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 
 void				add_saturation(char *r, char *g, char *b, double light);
+void				light_sidedef(t_doom *doom, t_sidedef sidedef, int x);
 void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
 

@@ -58,9 +58,16 @@ void	jump_player_2(t_doom *doom, double dt, \
 
 void	jump_player(t_doom *doom, double dt)
 {
+	t_sidedef		sidedef;
 	static double	duration = 0.1;
 	int				jumpheight;
 
+	sidedef = doom->lib.sidedef[doom->i_sidedef];
+	if (sidedef.action == 6)
+	{
+		printf("here2\n");
+		return ;
+	}
 	if (doom->own_event.fall == TRUE)
 	{
 		jumpheight = (int)(doom->own_event.velocity * duration) + 48;
