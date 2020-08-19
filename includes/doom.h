@@ -38,11 +38,11 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define PLAYER_HEIGHT 48
+# define PLAYER_HEIGHT 60
 # define MOVE_SPEED 200
 # define SENSITIVITY 0.4
-# define GRAVITY -10
-# define VELOCITY 30
+# define GRAVITY -2
+# define VELOCITY  5
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
