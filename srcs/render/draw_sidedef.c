@@ -7,7 +7,7 @@
 // 	*color = ((*color & 0x0000ff) >> 8) * (int)dist << 8;
 // }
 
-static void		put_portal_pixel(t_doom *doom, t_point pixel)
+void		put_portal_pixel(t_doom *doom, t_point pixel)
 {
 	Uint32	*pixels;
 	Uint32	color;

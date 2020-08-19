@@ -474,6 +474,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
+void				put_portal_pixel(t_doom *doom, t_point pixel);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\

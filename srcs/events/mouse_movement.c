@@ -24,7 +24,6 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 		limit_pos = 200;
 		limit_neg = -200;
 	}
-
 	event->y_pitch = event->y_pitch > limit_pos ? limit_pos : event->y_pitch;
 	event->y_pitch = event->y_pitch < limit_neg ? limit_neg : event->y_pitch;
 	next_pitch = event->y_pitch + (motion->yrel * SENSITIVITY);

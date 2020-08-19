@@ -7,7 +7,6 @@ static void	fall_direction(t_doom *doom)
 	t_event	*event;
 
 	event = &doom->own_event;
-
 	if (event->move_pos_f == TRUE)
 		fall_direction = 10;
 	else
@@ -18,7 +17,6 @@ static void	fall_direction(t_doom *doom)
 		event->y_pitch = -250;
 	if (event->y_pitch > 200)
 		event->y_pitch = 200;
-
 }
 
 void	player_fall(t_doom *doom)

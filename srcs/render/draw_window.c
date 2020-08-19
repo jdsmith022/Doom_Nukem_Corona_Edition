@@ -1,48 +1,6 @@
 #include "../../includes/doom.h"
 
-// static int		portal_wall(t_doom *doom, t_point pixel, Uint32 pixel_dex, Uint32 tex_dex)
-// {
-// 	Uint32 *texture;
-
-// 	texture = doom->lib.tex_lib[tex_dex]->pixels;
-// 	if (texture[pixel_dex] == (char)255 && texture[pixel_dex  + 1] == (char)255 &&\
-// 	texture[pixel_dex + 2]== (char)255 && doom->lib.sidedef[doom->i_sidedef].action == 6)
-// 	{
-// 		put_portal_pixel(doom, pixel);
-// 		return (-1);
-// 	}
-// 	return (1);
-// }
-
-static void		put_window(t_doom *doom, t_point pixel)
-{
-	Uint32	*pixels;
-	Uint32	color;
-
-	pixels = doom->surface->pixels;
-	color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
-	pixels = doom->surface->pixels;
-	// printf("hello\n");
-	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
-		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
-}
-
-static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
-					t_point pixel, t_plane plane)
-{
-	Uint32 tex_dex;
-
-	if (sidedef.opp_sector == -1)
-		tex_dex = sidedef.txt_2;
-	else if (pixel.y <= plane.mid_texture_top)
-		tex_dex = sidedef.txt_1;
-	else if (pixel.y >= plane.mid_texture_bottom)
-		tex_dex = sidedef.txt_3;
-	return (tex_dex);
-}
-
-
-static void		find_texture(t_doom *doom, t_point pixel, t_plane plane,
+static void		put_window_texture(t_doom *doom, t_point pixel, t_plane plane,
 					t_sidedef sidedef)
 {
 	Uint32	pixel_dex;
@@ -50,16 +8,17 @@ static void		find_texture(t_doom *doom, t_point pixel, t_plane plane,
 	Uint32	tex_dex;
 	double	wall_y;
 	int		bpp;
-	char  	*textures;
+	char	*textures;
 
-	tex_dex = 88;//find_sidedef_texture(doom, sidedef, pixel, plane);
+	tex_dex = sidedef.txt_2;
 	textures = doom->lib.tex_lib[tex_dex]->pixels;
-	if (textures[pixel_dex] == (char)255 && textures[pixel_dex  + 1] == (char)255 &&\
+	if (textures[pixel_dex] == (char)255 && \
+	textures[pixel_dex + 1] == (char)255 &&\
 	textures[pixel_dex + 2] == (char)255)
-		put_window(doom, pixel);
+		put_portal_pixel(doom, pixel);
 	else
 	{
-		printf("")
+		// printf("")
 		bpp = doom->surface->format->BytesPerPixel;
 		index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 		wall_y = (double)(doom->texture_height / plane.height_standard) *\
@@ -71,10 +30,7 @@ static void		find_texture(t_doom *doom, t_point pixel, t_plane plane,
 			(sidedef.offset * bpp));
 		// printf("put text %f, %f --- texdex: %d --- index: %d ---- pixeldex: %d\n", pixel.x, pixel.y, tex_dex, index, pixel_dex);
 		put_texture(doom, tex_dex, index, pixel_dex);
-
 	}
-	// printf("end of put\n");
-	// put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
 
 void			doom_lights(t_doom *doom, t_sidedef sidedef, int x)
@@ -100,6 +56,7 @@ void			draw_window(t_doom *doom, t_plane plane,
 {
 	Uint32	*pixels;
 	t_point	pixel;
+
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
@@ -109,7 +66,7 @@ void			draw_window(t_doom *doom, t_plane plane,
 		if (doom->light == FALSE)
 			doom->distance = pixel.y > HEIGHT / 2 ?\
 			doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
-		find_texture(doom, pixel, plane, sidedef);
+		put_window_texture(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}
 }

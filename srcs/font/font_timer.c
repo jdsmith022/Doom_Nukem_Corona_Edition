@@ -84,10 +84,15 @@ static void			font_timer_2(t_doom *doom, t_event *event)
 
 void				font_timer(t_doom *doom)
 {
-	t_event 	*event;
+	t_event	*event;
 
 	event = &doom->own_event;
 	set_background_coords_middle_small(doom);
+	if (doom->lib.font_lib.bools.walking_text == TRUE \
+	&& doom->game_editor == FALSE && \
+	doom->lib.sector[doom->i_sector].action == OUTSIDE)
+		font_timer_box_start(doom, \
+			&doom->lib.font_lib.bools.text);
 	if (event->parked_too_close == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 7, 8);
@@ -96,18 +101,11 @@ void				font_timer(t_doom *doom)
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.text, 3, 7);
 	else if (event->fall == TRUE && event->fall_count == -1)
-	{
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
-	}
 	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.checkout, 17, 18);
-	else if (doom->lib.font_lib.bools.walking_text == TRUE \
-	&& doom->game_editor == FALSE && \
-	doom->lib.sector[doom->i_sector].action == OUTSIDE)
-		font_timer_box_start(doom, \
-			&doom->lib.font_lib.bools.text);
 	else
 		font_timer_2(doom, event);
 }

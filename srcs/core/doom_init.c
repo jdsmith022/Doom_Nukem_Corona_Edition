@@ -62,6 +62,8 @@ static void		init_settings(t_doom *doom)
 	doom->light = TRUE;
 	doom->hud_display = TRUE;
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
+	if (doom->audio == NULL)
+		doom_exit_failure(doom, "error: audio malloc error");
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;

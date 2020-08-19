@@ -22,7 +22,8 @@ void			draw_basket_ui(t_doom *doom, t_groceries *groceries)
 		draw_item(doom, *item);
 		if (temp->next)
 			temp = temp->next;
-		else break ;
+		else
+			break ;
 	}
 	return ;
 }
@@ -55,8 +56,8 @@ void			draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text)
 		return ;
 	font_color = (SDL_Color){.r = 255, .g = 255, .b = 255};
 	font_surface = TTF_RenderText_Solid(font, text, font_color);
-	// if (!font_surface)
-	// 	printf("Font error\n");
+	if (!font_surface)
+		printf("Font error\n");
 	rect.y += 20;
 	rect.x += 5;
 	SDL_BlitSurface(font_surface, NULL, doom->surface, &rect);
