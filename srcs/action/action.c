@@ -3,9 +3,9 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 
-void	check_virus_select(t_doom *doom)
+void	check_select(t_doom *doom)
 {
-	t_ray   ray;
+	t_ray	ray;
 
 	ray = init_ray(doom, MOUSE_X);
 	check_hit(doom, ray, doom->i_sector, doom->i_sector);

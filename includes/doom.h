@@ -547,5 +547,6 @@ void				remove_red_virus(t_doom *doom);
 void				add_mist_to_sanitizer(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
 void				draw_add_on(t_doom *doom, int sprite_i);
+// void    			shoot(t_doom *doom);
 
 #endif

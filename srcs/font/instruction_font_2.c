@@ -9,7 +9,7 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[15].font_color = doom->lib.font_lib.font_color.black;
 	lib[16].str = "Please collect a shopping cart.";
 	lib[16].font_rect.x = WIDTH / 2 - 125;
-	lib[16].font_rect.y = HEIGHT / 2 - 15;
+	lib[16].font_rect.y = HEIGHT / 2 + 15;
 	lib[16].font_color = doom->lib.font_lib.font_color.red;
 	lib[17].str = "Make sure you're read to checkout!";
 	lib[17].font_rect.x = WIDTH / 2 - 115;

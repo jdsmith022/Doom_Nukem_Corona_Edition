@@ -26,6 +26,6 @@ void				jump_player(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 void				sanitizer_refill(t_doom *doom);
-void				check_virus_select(t_doom *doom);
+void				check_select(t_doom *doom);
 
 #endif
