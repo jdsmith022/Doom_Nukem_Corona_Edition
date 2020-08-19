@@ -35,6 +35,8 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 			return (sidedef);
 		x++;
 	}
+	sidedef.intersect.x = NAN;
+	sidedef.intersect.y = NAN;
 	return (sidedef);
 }
 
