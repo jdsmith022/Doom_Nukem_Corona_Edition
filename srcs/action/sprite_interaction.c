@@ -8,9 +8,9 @@ static void	fall_direction(t_doom *doom)
 
 	event = &doom->own_event;
 	if (event->move_pos_f == TRUE)
-		fall_direction = 10;
-	else
 		fall_direction = -10;
+	else
+		fall_direction = 10;
 	if (event->y_pitch < 200 && event->y_pitch > -250)
 		event->y_pitch += (fall_direction * GRAVITY);
 	if (event->y_pitch < -250)

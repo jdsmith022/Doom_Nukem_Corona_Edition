@@ -109,35 +109,43 @@ static void	check_walking(t_doom *doom, t_sprite shopper)
 
 static void	check_sprite_distance(t_doom *doom, int index)
 {
-	if (doom->lib.sprites[index].distance > 0.1 &&\
-	doom->lib.sprites[index].distance < 50)
+	t_sprite sprite;
+
+	sprite = doom->lib.sprites[index];
+	if (sprite.distance > 0.1 && sprite.distance < 50)
 	{
-		if (doom->lib.sprites[index].action == 9)
-			check_walking(doom, doom->lib.sprites[index]);
-		else if (doom->lib.sprites[index].action == 4)
+		if (sprite.action == 9)
+			check_walking(doom, sprite);
+		else if (sprite.action == 4)
 		{
 			doom->hud->corona = TRUE;
-			doom->lib.sprites[index].action = 6;
+			sprite.action = 6;
 		}
-		else if (doom->lib.sprites[index].action == 1)
+		else if (sprite.action == 1)
 		{
 			doom->hud->health_pack_plus = TRUE;
-			doom->lib.sprites[index].action = 8;
+			sprite.action = 8;
 		}
 		else if (doom->lib.sprites[index].action == 2)
 		{
 			doom->hud->health_pack = TRUE;
-			doom->lib.sprites[index].action = 8;
+			sprite.action = 8;
 		}
-		else if (doom->lib.sprites[index].action == 3)
+		else if (sprite.action == 3)
 		{
 			doom->hud->facemask = TRUE;
-			doom->lib.sprites[index].action = 8;
+			sprite.action = 8;
 		}
-		else if (doom->lib.sprites[index].action == 10  && doom->own_event.scissor_lift == FALSE)
+		else if (sprite.action == 10  && doom->own_event.scissor_lift == FALSE)
 		{
-			doom->lib.sprites[index].action = 8;
 			doom->own_event.fall = TRUE;
+			sprite.action = 8;
+		}
+		else if (sprite.action == 11)
+		{
+			doom->game_start_time += 50000;
+			sprite.action = 8;
+			printf("here\n");
 		}
 	}
 }

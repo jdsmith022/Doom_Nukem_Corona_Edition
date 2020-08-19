@@ -161,6 +161,7 @@ typedef struct		s_event {
 	bool			action;
 	bool			spray_shopper;
 	bool			sprite_collision;
+	bool			toilet_paper;
 	int				sprite_collision_dist;
 	int				sprite_index;
 	struct timespec	light_time;
