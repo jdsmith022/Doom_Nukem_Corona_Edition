@@ -13,7 +13,7 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;
 	doom->own_event.select = FALSE;
-	doom->menu->start_timer = TRUE;
+	doom->menu->start_timer = FALSE;
 	doom->hud->hold_time /= doom->difficulty;
 	doom->hud->curr_time /= doom->difficulty;
 }
