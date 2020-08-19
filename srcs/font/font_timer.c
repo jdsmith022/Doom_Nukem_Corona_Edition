@@ -67,19 +67,17 @@ static void			font_timer_2(t_doom *doom, t_event *event)
 	set_background_coords_middle_narrow(doom);
 	if (event->spray_shopper == TRUE)
 		shopper_hit_random_font(doom);
+	else if (doom->lib.font_lib.bools.trolly == TRUE && \
+	doom->lib.sector[doom->i_sector].action == START_SECTOR)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 16, 17);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
-	doom->start_timer == FALSE)
+	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
 	{
 		set_background_coords_middle_large(doom);
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.start_sector, 10, 16);
 	}
-	// else if (doom->lib.sector[doom->i_sector].action == TROLLY && event->trolly == FALSE)
-	// {
-	// 	set_background_coords_middle_small(doom);
-	// 	font_timer_box_long(doom, \
-	// 		&doom->lib.font_lib.bools.start_sector, 16, 17);
-	// }
 }
 
 void				font_timer(t_doom *doom)
@@ -93,7 +91,7 @@ void				font_timer(t_doom *doom)
 	doom->lib.sector[doom->i_sector].action == OUTSIDE)
 		font_timer_box_start(doom, \
 			&doom->lib.font_lib.bools.text);
-	if (event->parked_too_close == TRUE)
+	else if (event->parked_too_close == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 7, 8);
 	else if (event->scissor_lift == TRUE && \

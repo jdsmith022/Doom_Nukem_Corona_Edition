@@ -9,6 +9,7 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->lib.font_lib.bools.walking_info = TRUE;
 	doom->lib.font_lib.bools.walking_text = TRUE;
 	doom->lib.font_lib.bools.start_sector = TRUE;
+	doom->lib.font_lib.bools.trolly = FALSE;
 	doom->lib.font_lib.bools.checkout = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;

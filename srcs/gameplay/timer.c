@@ -20,7 +20,7 @@ void		timer(t_doom *doom)
 	int diff;
 	int	curr_time;
 
-	if (doom->lib.sector[doom->i_sector].action == START_TIMER && \ 
+	if (doom->lib.sector[doom->i_sector].action == START_TIMER && \
 	doom->menu->start_timer == FALSE)
 	{
 			doom->start_timer = TRUE;
