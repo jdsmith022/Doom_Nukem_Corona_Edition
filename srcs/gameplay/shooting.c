@@ -210,13 +210,13 @@ void    shoot(t_doom *doom)
 		doom->own_event.toilet_paper = TRUE;
 		printf("YOU GOT TOILET PAPER!!!!\n");
 	}
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 12 && SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
-		{
-			// printf("index: %d\n", sprite_i);
-			doom->own_event.trolly = TRUE;
-			doom->lib.sidedef[17].action = 0;
-			printf("YOU GOT TOILET PAPER!!!!\n");
-		}
+	// else if (SPRITES[doom->own_event.virus_hit_index].action == 12 && SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
+	// 	{
+	// 		// printf("index: %d\n", sprite_i);
+	// 		doom->own_event.trolly = TRUE;
+	// 		doom->lib.sidedef[17].action = 0;
+	// 		printf("YOU GOT TOILET PAPER!!!!\n");
+	// 	}
 	else
 	{
 		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);

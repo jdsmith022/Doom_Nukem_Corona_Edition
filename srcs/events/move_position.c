@@ -54,12 +54,12 @@ static void	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	{
 		return ;
 	}
-	if (sidedef->action == 7 && doom->own_event.trolly == FALSE)
-	{
-		doom->lib.font_lib.bools.trolly = TRUE;
-		doom->lib.font_lib.bools.text = TRUE;
-		return ;
-	}
+	// if (sidedef->action == 7 && doom->own_event.trolly == FALSE) // THIS IS FOR TROLLY
+	// {
+	// 	doom->lib.font_lib.bools.trolly = TRUE;
+	// 	doom->lib.font_lib.bools.text = TRUE;
+	// 	return ;
+	// }
 	if (isnan(sidedef->intersect.x) != 0 && isnan(sidedef->intersect.y) != 0 && sidedef->action != 6)
 	{
 		doom->i_sector = sector;
