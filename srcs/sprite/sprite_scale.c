@@ -26,6 +26,7 @@ double		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite)
 	double		height_std;
 	// int			div_height_std;
 	double		height_floor;
+	double		height_ceiling;
 	int			sidedef_bottom;
 	int			sidedef_top;
 	int			wall_diff_height_std;
@@ -48,6 +49,29 @@ double		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite)
 		sidedef_bottom = find_virus_bottom(doom, sprite, sidedef_bottom,\
 		sidedef_top);
 	return (sidedef_bottom);
+
+
+	// int			diff;
+
+
+	// diff = doom->texture_height - doom->player_height;
+
+	// new_height = (HEIGHT / 2);
+	// plane_height_standard = doom->texture_height / sprite->distance * doom->dist_to_plane;
+	// double scale =  plane_height_standard / doom->texture_height;
+
+	// sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
+
+	// height_ceiling = doom->lib.sector[sprite->sector].height_ceiling / sprite->distance * doom->dist_to_plane;
+
+	// sidedef_top = ((new_height) - (diff * scale)) - (doom->own_event.y_pitch - height_ceiling);
+
+	// height_floor = doom->lib.sector[sprite->sector].height_floor / sprite->distance * doom->horizontal_plane_dist;
+	// wall_diff_height_std = (doom->texture_height / sprite->distance\
+	// 	* doom->dist_to_plane) / 2;
+
+	// sidedef_bottom = ((new_height + wall_diff_height_std) + (doom->player_height * scale)) - (doom->own_event.y_pitch - height_floor);
+	// return (sidedef_bottom);
 }
 
 void		scale_sprite(t_doom *doom, t_point *sprite_begin,\
