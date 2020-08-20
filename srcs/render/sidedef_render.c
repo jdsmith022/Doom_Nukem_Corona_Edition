@@ -75,10 +75,10 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	min_distance = INFINITY;
 	if (doom->lib.sector[sector].action == OUTSIDE)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
+	save_poster = -1;
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
-		save_poster = -1;
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
 		if (distance <= min_distance + 0.01 &&\
@@ -89,8 +89,9 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			if (doom->lib.sidedef[x].action == 4 || \
 			doom->lib.sidedef[x].action == 8)
 			{
-				doom->i_sidedef = doom->lib.sidedef[x].id;
-				save_poster = doom->lib.sidedef[x].id;
+				printf("in if: %d\n", doom->lib.sidedef[x].id);
+				doom->i_sidedef = x;// doom->lib.sidedef[x].id;
+				save_poster = init_poster(x, distance, intersect, &doom->lib.sidedef[x]);
 			}
 			else
 			{
@@ -122,7 +123,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		}
 		doom->distance = min_distance;
 		if (near_sidedef.poster != -1)
-			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
+			printf("before project; %d\n", near_sidedef.id);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 		// printf("afer plane\n");
 		// if (sector > 2)

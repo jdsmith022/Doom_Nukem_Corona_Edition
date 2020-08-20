@@ -44,6 +44,8 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_sector	sector;
 
 	plane.x = x;
+	if (sidedef.id == 24)
+		printf("draw_poster\n");
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
@@ -60,6 +62,6 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = plane.mid_texture_bottom;
 	else
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
-	if (sidedef.action == 4 || sidedef.action == 8)
-		draw_poster(doom, plane, sidedef, x);
+	if (sidedef.poster != -1)
+		draw_poster(doom, plane, sidedef.poster, x);
 }

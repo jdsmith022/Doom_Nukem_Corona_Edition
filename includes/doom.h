@@ -496,7 +496,7 @@ void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
 void				draw_poster(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x);
+					int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
