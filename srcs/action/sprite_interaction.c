@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/action.h"
+
 static void	fall_direction(t_doom *doom)
 {
 	int		fall_direction;
@@ -21,21 +22,21 @@ static void	fall_direction(t_doom *doom)
 
 void	player_fall(t_doom *doom)
 {
-	double	min_height;
-	static double duration = -0.2;
-	t_event	*event;
+	double			min_height;
+	static double	duration = -0.2;
+	t_event			*event;
 
 	event = &doom->own_event;
 	if (event->scissor_lift == FALSE)
 	{
-		min_height = 0.0;
-		if (doom->player_height > min_height)
+		min_height = 20.0;
+		if (doom->player_height >= min_height)
 		{
 			if (event->fall_count == -1)
 				doom->lib.font_lib.bools.text = TRUE;
 			doom->hud->boxes = TRUE;
 			event->died = FALSE;
-			doom->player_height -= 20; //- (GRAVITY * (duration + 0.05));
+			doom->player_height -= 20 - (GRAVITY * (duration + 0.05));
 			fall_direction(doom);
 		}
 	}
