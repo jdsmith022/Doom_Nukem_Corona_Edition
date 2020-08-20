@@ -12,10 +12,12 @@ static void			put_pixels(t_doom *doom, Uint32 index, int x, int y)
 static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 {
 	double dist;
+	double diff;
 
-	dist = ((doom->player_height - sector->height_floor)\
+	diff = doom->player_height - PLAYER_HEIGHT;
+	dist = ((PLAYER_HEIGHT + diff) - sector->height_floor)\
 		/ ((y + doom->own_event.y_pitch) -\
-		((HEIGHT / 2))));
+		((HEIGHT / 2)));
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
 	doom->horizontal_plane_dist = dist;
