@@ -61,7 +61,7 @@ static void		init_settings(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud_display = TRUE;
-	doom->audio->engine = ON;
+	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
 }

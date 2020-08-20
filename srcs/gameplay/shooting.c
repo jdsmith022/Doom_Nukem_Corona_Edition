@@ -212,7 +212,10 @@ void    shoot(t_doom *doom)
 	else
 	{
 		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
+		printf("sector: %d\n", SPRITES[doom->own_event.virus_hit_index].sector);
 		printf("distance is: %f\n", SPRITES[doom->own_event.virus_hit_index].distance);
+		printf("x is: %f\n", SPRITES[doom->own_event.virus_hit_index].pos.x);
+		printf("y is: %f\n", SPRITES[doom->own_event.virus_hit_index].pos.y);
 		//change color to red for 5 seconds
 		SPRITES[doom->own_event.virus_hit_index].visible = 17;
 		SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;

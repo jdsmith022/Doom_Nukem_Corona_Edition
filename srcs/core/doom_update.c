@@ -25,5 +25,4 @@ void	doom_update(t_doom *doom, double dt)
 	key_handler(doom, &doom->own_event, dt);
 	if (doom->game_editor == FALSE)
 		action_handler(doom);
-	printf("end doom update\n");
 }
