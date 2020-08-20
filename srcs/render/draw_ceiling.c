@@ -7,9 +7,9 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 	double diff;
 
 	diff = doom->texture_height - doom->player_height;
-	dist = ((diff - sector.height_ceiling)\
-			/ ((HEIGHT / 2) \
-		- (y + doom->own_event.y_pitch)));
+	dist = ((diff) - sector.height_ceiling)\
+			/ (((HEIGHT / 2)) \
+		- (y + doom->own_event.y_pitch));
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
 	doom->horizontal_plane_dist = dist;
