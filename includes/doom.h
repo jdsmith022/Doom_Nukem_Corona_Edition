@@ -200,6 +200,7 @@ typedef struct		s_plane
 {
 	t_point			intersect;
 	t_line			line;
+	int				x;
 	int				sidedef_top;
 	int				sidedef_bottom;
 	int				sidedef_height;
@@ -274,7 +275,6 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				plane_x;
 	t_slope			slope;
 	int				sidedef_bottom[WIDTH]; //for cutting sprites
 	int				sidedef_top[WIDTH]; //for clipping sprites

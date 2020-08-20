@@ -1,5 +1,7 @@
 #include "../../includes/doom.h"
 
+// static void	set_plane_limits(int *top, )
+
 void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 					t_sector opp_sector, t_plane *plane)
 {
@@ -24,40 +26,12 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 
 	mid_top = ((new_height) - (diff * scale)) - (doom->own_event.y_pitch + height_ceiling);
 
-	height_floor = opp_sector.height_floor / sidedef.distance * doom->horizontal_plane_dist;
+	height_floor = opp_sector.height_floor / sidedef.distance * doom->dist_to_plane;
 	diff = doom->player_height - PLAYER_HEIGHT;
-	
-	mid_bottom = ((new_height) + ((PLAYER_HEIGHT + diff) * scale)) - (doom->own_event.y_pitch - height_floor);
 
-	// new_height = (HEIGHT / 2) + doom->player_height;// + (doom->up * 20);
-	// // printf("portal new_height: %d\n", new_height);
-	// // if (doom->own_event.scissor_lift_up == TRUE)
-	// // 	new_height = (HEIGHT / 2) + (doom->up * 20);
-	// // 	new_height += doom->up * 10;
-	// height_ceiling = opp_sector.height_ceiling / \
-	// 	sidedef.distance * doom->dist_to_plane;
-	// mid_top = ((new_height - (plane->height_standard / 2)) - \
-	// 	doom->own_event.y_pitch - height_ceiling);
-	// plane->mid_texture_top = ((mid_top >= 0) ? mid_top : 0);
-	// height_floor = opp_sector.height_floor / \
-	// 	sidedef.distance * doom->dist_to_plane;
-	// mid_bottom = ((new_height + (plane->height_standard / 2)) - \
-	// 	doom->own_event.y_pitch - height_floor);
-	// if (doom->own_event.scissor_lift_up == TRUE)
-	// {
-	// 	// printf("2\n");
-	// 	mid_top += 30;
-	// 	mid_bottom += 30;
-	// 	// if (doom->own_event.y_pitch < 450)
-	// 		// doom->own_event.y_pitch += 10;
-	// 	// printf("1\n");./
-	// }
-	// if (doom->own_event.scissor_lift_down == TRUE)
-	// {
-	// 	mid_top -= 30;
-	// 	mid_bottom -= 30;
-	// 	wall_offset(plane, mid_top);
-	// }
+	// printf("height of floor: %f\n", height_floor);
+	mid_bottom = (new_height + ((doom->player_height) * scale)) - (doom->own_event.y_pitch + height_floor);
+
 	if (mid_bottom < 0)
 		mid_bottom = 0;
 	if ( mid_top > HEIGHT)
@@ -65,6 +39,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	else if (mid_top < 0)
 		mid_top = 0;
 	plane->mid_texture_top = mid_top;
+	// printf("mid_bottom: %d\n", mid_bottom);
 	plane->mid_texture_bottom = ((mid_bottom < HEIGHT) ? mid_bottom : (HEIGHT));
 }
 
@@ -92,11 +67,11 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 
 	sidedef_top = ((new_height) - (diff * scale)) - (doom->own_event.y_pitch + height_ceiling);
 
-	height_floor = sector.height_floor / sidedef.distance * doom->horizontal_plane_dist;
+	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
 
 	diff = doom->player_height - PLAYER_HEIGHT;
-	
-	sidedef_bottom = ((new_height) + ((PLAYER_HEIGHT + diff) * scale)) - (doom->own_event.y_pitch - height_floor);
+
+	sidedef_bottom = (new_height + ((doom->player_height) * scale)) - (doom->own_event.y_pitch + height_floor);
 
 	if (plane->sidedef_bottom < 0)
 		plane->sidedef_bottom = 0;
