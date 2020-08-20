@@ -53,6 +53,8 @@
 # define SPRITES		doom->lib.sprites
 # define OBJ_LIB		doom->lib.obj_lib
 
+# define STD_TEXT 96
+
 # define OUTSIDE 1
 # define EXIT_LEVEL 2
 # define START_SECTOR 3

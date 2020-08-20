@@ -20,8 +20,7 @@ void			draw_poster(t_doom *doom, t_plane plane,
 
 	poster = doom->lib.sidedef[poster_index];
 	sector = doom->lib.sector[poster.sector];
-	plane.x = x;
-	// doom->distance = poster.distance;
+	relocate_poster(doom, &poster);
 	poster.distance *= cos(doom->ray_adjacent * x - FOV / 2);
 	sector.height_floor = PLAYER_HEIGHT - 10;
 	sector.height_ceiling = -PLAYER_HEIGHT + 10;
@@ -29,10 +28,6 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	doom->texture_width = 16;
 	set_properties_plane_sidedef(doom, \
 		poster, sector, &plane);
-	// plane.intersect = poster.intersect;
-
-	relocate_poster(doom, &poster);
-
 	draw_onesided_sidedef(doom, plane, poster, x);
 	doom->texture_height = 96;
 	doom->texture_width = 96;

@@ -26,11 +26,6 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 	sidedef.prev_sidedef.distance *= \
 		cos(doom->ray_adjacent * x - FOV / 2);
 	*sector = doom->lib.sector[sidedef.sector];
-	// if (sidedef.action == 4 || sidedef.action == 8)
-	// {
-	// 	sector->height_floor = 0;
-	// 	sector->height_ceiling = 0;
-	// }
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
 	set_sector_properties(doom, sidedef, *sector, plane);
@@ -44,8 +39,6 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	t_sector	sector;
 
 	plane.x = x;
-	if (sidedef.id == 24)
-		printf("draw_poster\n");
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
