@@ -6,7 +6,7 @@
 void		add_mist_to_sanitizer(t_doom *doom)
 {
 	int				diff;
-	
+
 	diff = 0;
 	if (doom->own_event.mist == TRUE)
 	{
@@ -106,7 +106,8 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	sprite_i = SECTORS[sector].i_objects;
 	while (i < SECTORS[sector].n_objects)
 	{
-		if (SPRITES[sprite_i].action == 4 || SPRITES[sprite_i].action == 9)
+		if (SPRITES[sprite_i].action == 4 || SPRITES[sprite_i].action == 9 \
+		|| SPRITES[sprite_i].action == 13 || SPRITES[sprite_i].action == 11)
 			temp_virus = virus_in_range(doom, ray, sprite_i, prev_sector);
 		if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
 		{
@@ -116,11 +117,10 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		i++;
 		sprite_i++;
 	}
-	printf("hit sprite: %d\n", sprite_hit);
 	return (sprite_hit);
 }
 
-void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave non-static
+static void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	t_point		isect;
 	int			temp_x;
@@ -132,23 +132,14 @@ void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave no
 	int			temp_virus;
 
 	temp_x = -1; //I need to set it to something otherwise it segfaults
-	printf("start check hit of %d\n", doom->own_event.virus_hit_index);
 	temp_virus = -1;
 	hit_virus = doom->own_event.virus_hit_index;
 	if (hit_virus != -1)
-	{
-		printf("hit virus != -1\n");
 		current_dist_sprite = SPRITES[hit_virus].distance;
-		printf("current_dist_sprite = %f\n", current_dist_sprite);
-	}
 	else
-	{
-		printf("current_dist_sprite = INFINITY\n");
 		current_dist_sprite = INFINITY;
-	}
 	x = SECTORS[sector].i_sidedefs;
 	min_dist = INFINITY;
-	printf("before while\n");
 	while (x < SECTORS[sector].n_sidedefs + SECTORS[sector].i_sidedefs)
 	{
 		dist = sidedef_intersection_distance(ray, SIDEDEFS[x].line, &isect);
@@ -159,69 +150,25 @@ void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector) //leave no
 		}
 		x++;
 	}
-	printf("after while\n");
 	temp_virus = find_virus(doom, ray, sector, prev_sector);
-	printf("after find virus: %d\n", temp_virus);
-	printf("sector: %d, prev_sector: %d\n", sector, prev_sector);
 	if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
 	{
-		printf("temp_virus != -1\n");
 		current_dist_sprite = SPRITES[temp_virus].distance;
-		printf("temp virus is closer than current, so new dust: %f\n", current_dist_sprite);
 		doom->own_event.virus_hit_index = temp_virus;
 	}
-	printf("end of if statement\n");
-	printf("save_x = %d\n", temp_x);
-	//check distance of hit sprite
 	if (temp_x != -1 && SIDEDEFS[temp_x].opp_sector != -1 &&
-		SIDEDEFS[temp_x].opp_sector != prev_sector)
-	{
-		printf("check hit again\n, safe_x: %d\n", temp_x);
+	SIDEDEFS[temp_x].opp_sector != prev_sector)
 		check_hit(doom, ray, SIDEDEFS[temp_x].opp_sector, sector);
-	}
-	printf("the end\n");
 }
 
-void    shoot(t_doom *doom)
+void    check_sprite_hit(t_doom *doom)
 {
     t_ray   ray;
 
-	printf("start shoot\n");
     ray = init_ray(doom, MOUSE_X);
-	printf("after init_ray, %d", MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
-	check_shoot_spray_sprite(doom); //select and shooting of other sprites
-	printf("how far: %d\n", doom->own_event.virus_hit_index);
-	if (doom->own_event.virus_hit_index == -1)
+	if (doom->own_event.virus_hit_index != -1)
+		check_select_spray_sprite(doom); //select and shooting of all sprites
+	else
 		printf("NOT VIRUS HIT!! Try again.\n");
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 4)
-	{
-		if (SPRITES[doom->own_event.virus_hit_index].distance > 100.00)
-			;
-		printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
-		printf("distance is: %f\n", SPRITES[doom->own_event.virus_hit_index].distance);
-		//change color to red for 5 seconds
-		SPRITES[doom->own_event.virus_hit_index].visible = 17;
-		SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;
-		SPRITES[doom->own_event.virus_hit_index].textures[1] = 17;
-		SPRITES[doom->own_event.virus_hit_index].textures[2] = 17;
-		SPRITES[doom->own_event.virus_hit_index].textures[3] = 17;
-		SPRITES[doom->own_event.virus_hit_index].action = 5;
-		doom->own_event.virus_red_i = doom->own_event.virus_hit_index;
-		doom->own_event.virus_red = TRUE;
-		doom->own_event.virus_hit_index = -1;
-	}
-}
-
-void	shooting(t_doom *doom)
-{
-	printf("check shooting\n");
-	if (doom->own_event.shoot == TRUE)
-	{
-		if (MOUSE_PRESSED)
-		{
-			printf("handle shooting\n");
-			shoot(doom);
-		}
-	}
 }

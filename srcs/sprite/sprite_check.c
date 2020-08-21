@@ -63,7 +63,6 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 	if (sprite->visible >= 0)
 	{
 		find_face_sprite(doom, sprite, ray, 0);
-		// printf("sprite_i: %d ", sprite_i);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
 		sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
@@ -90,13 +89,8 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	{
 		if (doom->lib.sprites[sprite_i].visible == -1 &&\
 		doom->lib.sprites[sprite_i].action != 6 &&\
-		doom->lib.sprites[sprite_i].action != 8 &&\
-		scissor_lift_check(doom, doom->lib.sprites[sprite_i]) == -1)
-		{
-			// printf("begin sprite_check\n");
+		doom->lib.sprites[sprite_i].action != 8)// &&\	scissor_lift_check(doom, doom->lib.sprites[sprite_i]) == -1)
 			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
-			// printf("eind sprite check\n");
-		}
 		i++;
 		sprite_i++;
 	}

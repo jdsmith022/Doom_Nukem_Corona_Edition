@@ -63,7 +63,6 @@ void				scissor_lift_up(t_doom *doom)
 			event->scissor_lift_up = FALSE;
 		}
 	}
-	printf("end of lift\n");
 }
 
 void				scissor_lift_down(t_doom *doom)
