@@ -63,7 +63,11 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 			doom->distance = pixel.y > HEIGHT / 2 ?\
 			doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		if (pixel.y < plane.mid_texture_bottom)
+		{
+			if (sidedef.id == 0)
+				printf("here\n");
 			put_portal_pixel(doom, pixel);
+		}
 		if (pixel.y < plane.mid_texture_top ||\
 		pixel.y > plane.mid_texture_bottom)
 			find_texture_index(doom, pixel, plane, sidedef);

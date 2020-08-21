@@ -175,6 +175,7 @@ typedef struct		s_event {
 	bool			died;
 	int				sanitizer_refills;
 	struct timespec	refill_pause;
+	struct timespec	sprite_timer;
 }					t_event;
 
 typedef struct		s_m_object{

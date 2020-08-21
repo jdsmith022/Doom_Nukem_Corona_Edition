@@ -10,12 +10,12 @@ void		add_mist_to_sanitizer(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.mist == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);//make own timer
+		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
 		doom->own_event.mist = FALSE;
 	}
 	else
 	{
-		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);//send here
+		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
 		if (diff == 0)
 		{
 			draw_add_on(doom, SPRAYING_HAND);
@@ -35,12 +35,12 @@ void		remove_red_virus(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.virus_red == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer); //make own timer
+		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
 		doom->own_event.virus_red = FALSE;
 	}
 	else
 	{
-		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);//send here
+		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
 		if (diff <= 3)
 		{
 			SPRITES[doom->own_event.virus_red_i].action = 6;
@@ -74,7 +74,8 @@ int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 	while (i < 4)
 	{
 		ray_delta = line_delta(ray.line.start, ray.line.end);
-		sprite_delta = line_delta(SPRITES[sprite_i].lines[i].start, SPRITES[sprite_i].lines[i].end);
+		sprite_delta = line_delta(SPRITES[sprite_i].lines[i].start, \
+			SPRITES[sprite_i].lines[i].end);
 		intersect = line_intersection(ray.line.start, ray_delta,\
 		SPRITES[sprite_i].lines[i].start, sprite_delta);
 		if (isnan(intersect.x) && isnan(intersect.y))
@@ -157,7 +158,7 @@ static void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		current_dist_sprite = SPRITES[temp_virus].distance;
 		doom->own_event.virus_hit_index = temp_virus;
 	}
-	if (temp_x != -1 && SIDEDEFS[temp_x].opp_sector != -1 &&
+	if (temp_x != -1 && SIDEDEFS[temp_x].opp_sector != -1 && \
 	SIDEDEFS[temp_x].opp_sector != prev_sector)
 		check_hit(doom, ray, SIDEDEFS[temp_x].opp_sector, sector);
 }
@@ -167,13 +168,9 @@ void    check_sprite_hit(t_doom *doom)
     t_ray   ray;
 
     ray = init_ray(doom, MOUSE_X);
-	printf("hit checkt: %d -- %d\n", MOUSE_X, MOUSE_Y);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index != -1)
-	{
-		check_select_spray_sprite(doom); //select and shooting of all sprites
-		doom->own_event.virus_hit_index = -1;
-	}
+		check_select_spray_sprite(doom);
 	else
 		printf("NOT VIRUS HIT!! Try again.\n");
 }

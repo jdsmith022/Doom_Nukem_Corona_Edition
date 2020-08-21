@@ -6,7 +6,7 @@ void		create_mv_sidedef(t_doom *doom, t_sidedef **sidedef, int k, int len)
 	t_sidedef	*new_sidedef;
 	int			i;
 
-	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1)); //PROTECT
+	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1));
 	if (new_sidedef == NULL)
 		doom_exit_failure(doom, "error: creating mv sidedef");
 	i = 0;
@@ -21,13 +21,15 @@ void		create_mv_sidedef(t_doom *doom, t_sidedef **sidedef, int k, int len)
 	new_sidedef[i].line.end.x = sidedef[0][i - 1].line.start.x;
 	new_sidedef[i].line.end.y = sidedef[0][i - 1].line.start.y;
 	new_sidedef[i].opp_sector = sidedef[0][i - 1].opp_sector;
-	new_sidedef[i].opp_sidedef = sidedef[0][i - 1].opp_sidedef;
+	// new_sidedef[i].opp_sidedef = sidedef[0][i - 1].opp_sidedef;
 	new_sidedef[i].action = 0;
 	new_sidedef[i - 1].opp_sector = -1;
-	new_sidedef[i - 1].opp_sidedef = -1;
+	// new_sidedef[i - 1].opp_sidedef = -1;
 	// new_sidedef[i - 1].action = 0;
+	// new_sidedef->opp_sector = sidedef[k]->opp_sector;
 	free(*sidedef);
 	*sidedef = new_sidedef;
+	printf("sidedef move id: %d ----\n", sidedef[0][i].opp_sector);
 }
 
 static void		init_door(t_doom *doom, int *len, int **mv_sd,

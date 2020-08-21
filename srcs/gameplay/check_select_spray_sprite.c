@@ -3,14 +3,13 @@
 
 static void	check_select_sprite(t_doom *doom)
 {
-	printf("begin check select sprite #%d, action: %d\n", doom->own_event.virus_hit_index, doom->lib.sprites[doom->own_event.virus_hit_index].action);
 	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
 		doom->hud->corona = TRUE;
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 13)
 	{
 		doom->own_event.toilet_paper = TRUE;
 		SPRITES[doom->own_event.virus_hit_index].action = 8;
-		printf("YOU GOT TOILET PAPER!!!! action: %d\n", SPRITES[doom->own_event.virus_hit_index].action);
+		printf("YOU GOT TOILET PAPER!!!!");
 	}
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 12)
 	{
@@ -33,20 +32,16 @@ static void	virus_hit(t_doom *doom)
 	SPRITES[doom->own_event.virus_hit_index].action = 5;
 	doom->own_event.virus_red_i = doom->own_event.virus_hit_index;
 	doom->own_event.virus_red = TRUE;
-	doom->own_event.virus_hit_index = -1;
-
 }
 
 static void check_spray_sprite(t_doom *doom)
 {
-	if (SPRITES[doom->own_event.virus_hit_index].action == 4 && doom->own_event.shoot == TRUE)
+	if (SPRITES[doom->own_event.virus_hit_index].action == 4)
 		virus_hit(doom);
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && \
-	SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 9)
 	{
 		doom->own_event.spray_shopper = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
-		doom->own_event.virus_hit_index = -1;
 		printf("HIT SHOPPER!!!!\n");
 	}
 
@@ -60,5 +55,6 @@ void	check_select_spray_sprite(t_doom *doom)
 			check_spray_sprite(doom);
 		else if (doom->own_event.select == TRUE)
 			check_select_sprite(doom);
+		doom->own_event.virus_hit_index = -1;
 	}
 }

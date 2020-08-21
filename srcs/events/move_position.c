@@ -93,7 +93,7 @@ static void			move_position(t_doom *doom, t_line move, double angle)
 		doom->pos, angle) < 20.0)
 		{
 			printf("sliding door\n");
-			sliding_door(NULL, sidedef.id);
+			sliding_door(doom, sidedef.id);
 
 		}
 }
