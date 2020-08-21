@@ -13,7 +13,6 @@ static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 	else if (check_sector_height_diff(doom, doom->i_sector, \
 	sidedef->opp_sector) == FALSE)
 		return (-1);
-
 	return (0);
 }
 
@@ -50,7 +49,7 @@ static void	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	int			collision;
 
 	*sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
-	printf("sidedef id: %d action: %d\n", sidedef->id, sidedef->action);
+	//printf("sidedef id: %d action: %d\n", sidedef->id, sidedef->action);
 	if (sidedef->action == 6) //want to stop collision on window
 	{
 		return ;

@@ -34,6 +34,7 @@ double		set_slope_height(t_doom *doom, t_sidedef sidedef,\
 {
 	double	height;
 	double	distance;
+	t_line	slope_start;
 
 	if (sidedef.sector != sector.id)
 		sidedef.id = get_other_side_of_line(doom, sidedef, sector);
@@ -41,11 +42,10 @@ double		set_slope_height(t_doom *doom, t_sidedef sidedef,\
 		height = 0;
 	else
 	{
+		slope_start = doom->lib.sidedef[sector.slope_floor_id].line;
 		distance = fabs(point_line_distance(sidedef.intersect,\
-			doom->lib.sidedef[sector.slope_floor_id].line));
+			slope_start));
 		height = tan(sector.slope_floor) * distance;
 	}
-	if (sidedef.id != sector.slope_floor_id)
-		printf("id = %d, height = %f\n", sidedef.id, height);
 	return (height);
 }
