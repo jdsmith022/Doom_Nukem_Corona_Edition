@@ -16,8 +16,10 @@ void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
 			* doom->dist_to_plane;
 		scale = plane->height_standard / doom->texture_height;
 
-		height_floor = sector->height_floor / sidedef.prev_sidedef.distance * doom->dist_to_plane;
-		plane_bottom = ((HEIGHT / 2) + (doom->player_height * scale)) - (doom->own_event.y_pitch + height_floor);
+		height_floor = sector->height_floor / \
+			sidedef.prev_sidedef.distance * doom->dist_to_plane;
+		plane_bottom = ((HEIGHT / 2) + (doom->player_height * scale)) - \
+			(doom->own_event.y_pitch + height_floor);
 		if (plane_bottom <= plane->sidedef_bottom)
 			plane_bottom = HEIGHT;
 		else if (plane_bottom > HEIGHT)

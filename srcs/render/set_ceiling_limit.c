@@ -19,7 +19,8 @@ void		set_ceiling_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
 		diff = STD_TEXT- doom->player_height;
 		height_ceiling = sector->height_ceiling / \
 			sidedef.prev_sidedef.distance * doom->dist_to_plane;
-		plane_top = ((HEIGHT / 2) - (diff * scale)) - (doom->own_event.y_pitch + height_ceiling);
+		plane_top = ((HEIGHT / 2) - (diff * scale)) - \
+			(doom->own_event.y_pitch + height_ceiling);
 		if (plane_top < 0)
 			plane_top = 0;
 		else if (plane_top > HEIGHT)
