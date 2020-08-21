@@ -153,7 +153,10 @@ int			sprite_collision(t_doom *doom, t_line movement)
 				printf("after enter scissor lift if statement\n");
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
+			{
+				printf("sprite_is_hit\n");
 				return (1);
+			}
 		}
 		check_sprite_distance(doom, index);
 		index++;
