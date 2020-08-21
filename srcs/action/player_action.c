@@ -4,11 +4,18 @@
 void	bend_down(t_doom *doom)
 {
 	int		og_height;
+	int		height_floor;
 
-	og_height = PLAYER_HEIGHT + doom->lib.sector[doom->i_sector].height_floor;
+	height_floor = doom->lib.sector[doom->i_sector].height_floor;
+	og_height = PLAYER_HEIGHT + height_floor;
 	if (doom->player_height >= 20 && doom->own_event.bend == TRUE)
+	{
 		doom->player_height -= 20;
-	else if (doom->player_height < og_height && doom->own_event.bend == FALSE)
+		if (doom->player_height < height_floor)
+			doom->player_height = height_floor + 10;
+	}
+	else if (doom->player_height < \
+	og_height && doom->own_event.bend == FALSE)
 		doom->player_height += 20;
 }
 

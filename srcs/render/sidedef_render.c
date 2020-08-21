@@ -106,7 +106,9 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
+	// printf("before sprite\n");
 	sprite_check(doom, ray, sector, prev_sector);
+	// printf("after sprite\n");
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 &&\
@@ -121,5 +123,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		}
 		doom->distance = min_distance;
 		project_on_plane(doom, near_sidedef, ray.plane_x);
+		// printf("end of projections\n");
 	}
 }
