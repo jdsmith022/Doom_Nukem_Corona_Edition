@@ -1,12 +1,5 @@
 #include "../../includes/doom.h"
 
-// static void		put_dimishing_light(Uint32 *color, double dist)
-// {
-// 	*color = ((*color & 0xff) >> 24) * (int)dist << 24;
-// 	*color = ((*color & 0x00ff) >> 16) * (int)dist << 16;
-// 	*color = ((*color & 0x0000ff) >> 8) * (int)dist << 8;
-// }
-
 void		put_portal_pixel(t_doom *doom, t_point pixel)
 {
 	Uint32	*pixels;
@@ -52,7 +45,6 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
 	put_texture(doom, tex_dex, index, pixel_dex);
-	// put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
 
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
