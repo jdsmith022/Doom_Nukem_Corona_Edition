@@ -138,4 +138,9 @@ void		draw_player_adds(t_doom *doom)
 		sprite_i = SPRAY_HAND;
 		draw_add_on(doom, sprite_i);
 	}
+	// if (doom->own_event.shoot == TRUE)
+	// {
+	// 	check_coordinate
+	// 	sprite_i = ;
+	// }
 }

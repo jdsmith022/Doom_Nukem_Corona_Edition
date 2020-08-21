@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-74
+76
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -361,6 +361,10 @@ assets/sprites/groceries/ketchup.bmp
 assets/sprites/groceries/mayo.bmp
 #73
 assets/sprites/groceries/glass_jar1.bmp
+#74
+assets/sprites/shoppers/shopper_side_left.bmp
+#75
+assets/sprites/shoppers/shopper_side_right.bmp
 
 
 
