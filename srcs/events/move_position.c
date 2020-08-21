@@ -91,7 +91,11 @@ static void			move_position(t_doom *doom, t_line move, double angle)
 		doom->i_sector, prev_intersect, &sidedef);
 	if (sidedef.action == 2 && point_distance(sidedef.intersect, \
 		doom->pos, angle) < 20.0)
-		sliding_door(NULL, sidedef.id);
+		{
+			printf("sliding door\n");
+			sliding_door(NULL, sidedef.id);
+
+		}
 }
 
 void				set_new_position(t_doom *doom, t_event *event, double dt)

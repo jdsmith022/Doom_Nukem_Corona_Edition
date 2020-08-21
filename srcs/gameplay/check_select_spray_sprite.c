@@ -6,15 +6,13 @@ static void	check_select_sprite(t_doom *doom)
 	printf("begin check select sprite #%d, action: %d\n", doom->own_event.virus_hit_index, doom->lib.sprites[doom->own_event.virus_hit_index].action);
 	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
 		doom->hud->corona = TRUE;
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 13 && \
-	SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 13)
 	{
 		doom->own_event.toilet_paper = TRUE;
 		SPRITES[doom->own_event.virus_hit_index].action = 8;
 		printf("YOU GOT TOILET PAPER!!!! action: %d\n", SPRITES[doom->own_event.virus_hit_index].action);
 	}
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 12 \
-	&& SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 12)
 	{
 			printf("grab trolley");
 			doom->own_event.trolly = TRUE;
@@ -26,7 +24,6 @@ static void	check_select_sprite(t_doom *doom)
 
 static void	virus_hit(t_doom *doom)
 {
-	printf("distance is: %f\n", SPRITES[doom->own_event.virus_hit_index].distance);
 	//change color to red for 5 seconds
 	SPRITES[doom->own_event.virus_hit_index].visible = 17;
 	SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;
@@ -43,11 +40,7 @@ static void	virus_hit(t_doom *doom)
 static void check_spray_sprite(t_doom *doom)
 {
 	if (SPRITES[doom->own_event.virus_hit_index].action == 4 && doom->own_event.shoot == TRUE)
-	{
-		if (SPRITES[doom->own_event.virus_hit_index].distance > 100.00)
-			;
 		virus_hit(doom);
-	}
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && \
 	SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
 	{
@@ -61,10 +54,11 @@ static void check_spray_sprite(t_doom *doom)
 
 void	check_select_spray_sprite(t_doom *doom)
 {
-	if (doom->own_event.shoot == TRUE)
-		check_spray_sprite(doom);
-	else if (doom->own_event.select == TRUE)
-		check_select_sprite(doom);
-	printf("Object #%d has been hit, action: %d\n", doom->own_event.virus_hit_index,\
-	doom->lib.sprites[doom->own_event.virus_hit_index].action);
+	if (SPRITES[doom->own_event.virus_hit_index].distance < 100)
+	{
+		if (doom->own_event.shoot == TRUE)
+			check_spray_sprite(doom);
+		else if (doom->own_event.select == TRUE)
+			check_select_sprite(doom);
+	}
 }

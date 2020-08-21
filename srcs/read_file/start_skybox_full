@@ -211,8 +211,8 @@ assets/textures/poster/fill_up_clean.bmp
 assets/textures/window/glass_doors.bmp
 
 
-#object library
-76
+#object library #trolley and trolle handle bar needs to be added
+77
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -365,7 +365,8 @@ assets/sprites/groceries/glass_jar1.bmp
 assets/sprites/player/left_hand_reaching.bmp
 #75
 assets/sprites/player/right_hand_reaching.bmp
-
+#76
+assets/sprites/player/cross_hairs.bmp
 
 
 
@@ -984,7 +985,7 @@ assets/sprites/player/right_hand_reaching.bmp
 15
 21
 
-#sidedef31#### PORTAL to sector
+#sidedef
 -1
 192
 192
@@ -13339,9 +13340,9 @@ assets/sprites/player/right_hand_reaching.bmp
 
 #sidedef###EASTER EGG PORTAL###
 41
-1152
-1318
 1056
+1318
+1152
 1318
 2
 15
@@ -13504,14 +13505,14 @@ assets/sprites/player/right_hand_reaching.bmp
 
 #sidedef###EASTER EGG PORTAL###
 39
-1152
-1318
 1056
 1318
+1152
+1318
 0
-84
-84
-84
+88
+88
+88
 326
 
 #sidedef-1

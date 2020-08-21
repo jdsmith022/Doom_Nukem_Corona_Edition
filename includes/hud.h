@@ -5,6 +5,9 @@
 # define SPRAY_HAND 29
 # define SPRAYING_HAND 30
 # define TROLLEY 33
+# define LEFT_SELECT 74
+# define RIGHT_SELECT 75
+# define CROSS_HAIR 76
 
 typedef	struct s_doom	t_doom;
 

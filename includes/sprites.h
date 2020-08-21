@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-# define SCISSOR_LIFT 7 
+# define SCISSOR_LIFT 7
 # define SHOPPER 9
 # define FACE_MASK 13
 # define HEALTH_PACK_PLUS 14

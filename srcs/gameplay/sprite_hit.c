@@ -167,6 +167,7 @@ void    check_sprite_hit(t_doom *doom)
     t_ray   ray;
 
     ray = init_ray(doom, MOUSE_X);
+	printf("hit checkt: %d -- %d\n", MOUSE_X, MOUSE_Y);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index != -1)
 	{
