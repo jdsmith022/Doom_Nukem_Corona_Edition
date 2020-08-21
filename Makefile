@@ -46,7 +46,8 @@ SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_draw2
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui add_infection \
-				 position gameplay game_over timer shooting
+				 position gameplay game_over timer shooting \
+				 check_select_shoot_sprite
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font set_vanishing_box_coordinates \
 				start_menu_font setting_window_font game_over_font \

@@ -38,6 +38,8 @@ void	player_fall(t_doom *doom)
 			if (doom->player_height < min_height)
 				doom->player_height = min_height;
 			doom->hud->boxes = TRUE;
+			doom->own_event.select = FALSE;
+			doom->own_event.shoot = FALSE;
 			event->died = FALSE;
 			fall_direction(doom);
 		}

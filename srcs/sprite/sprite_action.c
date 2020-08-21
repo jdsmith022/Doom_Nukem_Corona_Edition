@@ -50,7 +50,6 @@ void		exit_scissor_lift(t_doom *doom)
 	}
 	else
 	{
-		//ADD FLAG
 		doom->own_event.parked_too_close = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
 		printf("Please move further away from scissor lift parking spot\ndistance: %f\n", distance);
@@ -59,9 +58,6 @@ void		exit_scissor_lift(t_doom *doom)
 
 void		activate_scissor_lift(t_doom *doom, int index)
 {
-	// if (doom->own_event.scissor_lift == FALSE)
-	// if (doom->own_event.scissor_lift == FALSE)
-	// 	doom->own_event.y_pitch = 150;
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = TRUE;
@@ -70,18 +66,6 @@ void		activate_scissor_lift(t_doom *doom, int index)
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
 	doom->player_height += 10;
-	//deactivate jumping
-	//doom->pos = sprite pos
-	//add a bit of height
-	//dont detect sprite scissor lift
-	//add scissor_lift_bar to hud from HEIGHT - 55 draw start
-	//you can't leave sector
-	//moving up and down
-
-	//if completely down you walk out
-		//activate jumping
-		//remove scissor_lift_bar from hud
-		//deactivatie moving up an down
 }
 
 static void	check_walking(t_doom *doom, t_sprite shopper)

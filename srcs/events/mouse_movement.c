@@ -35,7 +35,6 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 		event->y_pitch = limit_neg;
 	doom->own_event.hold_x = motion->x;
 	doom->own_event.hold_y = motion->y;
-	printf("end of pitch\n");
 }
 
 static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
@@ -79,5 +78,4 @@ void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 		SDL_SetRelativeMouseMode(SDL_TRUE);
 	}
 	cam_movement(doom, motion, dt, event);
-	printf("end of mouse\n");
 }
