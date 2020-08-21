@@ -27,15 +27,14 @@ ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
 				exit free_library libs_init update_hud_ui
-EVENTS_FILES = key_events move_position mouse_movement mouse_press\
+EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
-				draw_row slope_projections put_texture\
-				draw_skybox_top_bottom draw_skybox set_texture_properties\
+				draw_row slope_projections put_texture \
+				draw_skybox_top_bottom draw_skybox set_texture_properties \
 				render_sky_box set_offsets draw_poster light_floor_ceiling \
-				draw_floor draw_ceiling set_floor_limit get_slope \
-				 set_ceiling_limit set_properties_plane draw_window\
-				set_slope_bottom_plane img
+				draw_floor draw_ceiling set_floor_limit \
+				set_ceiling_limit set_properties_plane draw_window img light_sidedef
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type
@@ -54,7 +53,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				font_timer pause_font vanishing_text_box set_font_style \
 				instruction_font instruction_font_2 time_difference \
 				shopper_hit_font
-HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer
+HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer \
+			update_list_and_basket
 MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu
 ACTION_FILES = action light_switch find_infection moving_sidedef sprite_interaction \

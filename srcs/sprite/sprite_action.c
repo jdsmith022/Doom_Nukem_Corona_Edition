@@ -43,7 +43,7 @@ void		exit_scissor_lift(t_doom *doom)
 	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.y = doom->pos.y - 10;
 	//park yourself next to it
 	distance = points_distance(doom->pos, doom->lib.sprites[doom->save_scissor_lift].pos);
-	if (distance > 75/* && distance < 100*/)
+	if (distance > 60/* && distance < 100*/)
 	{
 		doom->save_scissor_lift = -1;
 		doom->lib.font_lib.bools.text = FALSE;
@@ -61,11 +61,13 @@ void		exit_scissor_lift(t_doom *doom)
 
 void		activate_scissor_lift(t_doom *doom, int index)
 {
+	// if (doom->own_event.scissor_lift == FALSE)
+	// if (doom->own_event.scissor_lift == FALSE)
+	// 	doom->own_event.y_pitch = 150;
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
-	doom->own_event.y_pitch = 0;
 	doom->save_scissor_lift = index;
 	doom->player_height += 10;
 	//deactivate jumping
@@ -132,8 +134,16 @@ static void	check_sprite_distance(t_doom *doom, int index)
 			doom->hud->facemask = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
-		else if (doom->lib.sprites[index].action == 10)
-			player_fall(doom, &doom->lib.sprites[index]);
+		else if (doom->lib.sprites[index].action == 10  && doom->own_event.scissor_lift == FALSE)
+		{
+			doom->lib.sprites[index].action = 8;
+			doom->own_event.fall = TRUE;
+		}
+		else if (doom->lib.sprites[index].action == 11)
+		{
+			doom->game_start_time += 60000;
+			doom->lib.sprites[index].action = 8;
+		}
 	}
 }
 

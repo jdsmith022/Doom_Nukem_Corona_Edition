@@ -35,7 +35,7 @@ void				game_loop(t_doom *doom)
 	double			dt;
 
 	last_frame_time = 0;
-	dt = 0.05; //leave for marin but remove before handing in
+	// dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
 		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
@@ -48,24 +48,25 @@ void				game_loop(t_doom *doom)
 			// printf("after get time frame\n");
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
-			// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-				// printf("before sprite reset\n");
+			// printf("sprite\n");
 			sprite_reset(doom);
-			// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-				// printf("after sprite reset\n");
+			// printf("render\n");
 			doom_render(doom);
-			// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-				// printf("after doom render\n");
+			// printf("audio\n");
 			audio(doom, &doom->own_event);
+			// printf("gui\n");
 			doom_gui(doom);
+			// printf("groceries\n");
 			groceries(doom);
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
+		// printf("updated\n");
 		doom_update(doom, dt);
-		// printf("einde update\n");
+		// printf("hud\n");
 		update_hud_ui(doom);
-		// printf("after update hud ui\n");
+		// printf("set\n");
+
 		set_to_window(doom);
 		// printf("after set to window\n");
 	}

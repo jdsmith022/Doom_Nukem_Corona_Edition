@@ -2,60 +2,94 @@
 #include "../../includes/hud.h"
 #include "../../includes/action.h"
 
-void	player_fall(t_doom *doom, t_sprite *sprite)
+static void	fall_direction(t_doom *doom)
 {
-	double	min_height;
+	int		fall_direction;
+	t_event	*event;
 
-	min_height = 0.0;
-	sprite->action = 8;
-	if (doom->player_height > min_height)
+	event = &doom->own_event;
+	if (event->move_pos_f == TRUE)
+		fall_direction = -10;
+	else
+		fall_direction = 10;
+	if (event->y_pitch < 200 && event->y_pitch > -250)
+		event->y_pitch += (fall_direction * GRAVITY);
+	if (event->y_pitch < -250)
+		event->y_pitch = -250;
+	if (event->y_pitch > 200)
+		event->y_pitch = 200;
+}
+
+void	player_fall(t_doom *doom)
+{
+	double			min_height;
+	static double	duration = -0.2;
+	t_event			*event;
+
+	event = &doom->own_event;
+	if (event->scissor_lift == FALSE)
 	{
-		doom->hud->boxes = TRUE;
-		doom->own_event.fall = TRUE;
-		doom->lib.font_lib.bools.text = TRUE;
-		doom->player_height = min_height;
-		if (doom->own_event.cam_move_b == TRUE ||
-		doom->own_event.cam_move_l == TRUE)
+		min_height = 20.0;
+		if (doom->player_height >= min_height)
 		{
-			doom->own_event.y_pitch = -240;
-			if (doom->own_event.fall_count > 1)
-				doom->own_event.fall_count = 1;
-		}
-		else
-		{
-			doom->own_event.y_pitch = 240;
-			if (doom->own_event.fall_count == 1)
-				doom->own_event.fall_count = -1;
+			if (event->fall_count == -1)
+				doom->lib.font_lib.bools.text = TRUE;
+			doom->hud->boxes = TRUE;
+			event->died = FALSE;
+			doom->player_height -= 20 - (GRAVITY * (duration + 0.05));
+			fall_direction(doom);
 		}
 	}
 }
 
 void				scissor_lift_up(t_doom *doom)
 {
-	double		max_height;
+	double	max_height;
+	t_event	*event;
 
-
-	printf("pitch: %d\n", doom->own_event.y_pitch);
-	max_height = doom->texture_height +\
-	doom->lib.sector[doom->i_sector].height_ceiling + 200;
-	if (doom->own_event.scissor_lift_up == TRUE &&\
-	doom->player_height <= max_height)
+	event = &doom->own_event;
+	// printf("up\n");
+	max_height = doom->texture_height + doom->lib.sector[doom->i_sector].height_ceiling + PLAYER_HEIGHT + 400;
+	if (doom->player_height <= max_height)
 	{
-		doom->player_height += 10;
-		doom->own_event.y_pitch += 10;
+		// printf("lift up, max_height: %f\n", max_height);
+		doom->player_height += 20;
+		// if (doom->up < 8)
+		// 	doom->up += 1;
+		// doom->own_event.y_pitch = 300;
+			// doom->own_event.y_pitch += 20;
+		if (doom->player_height > max_height)
+		{
+			doom->player_height = max_height;
+			event->scissor_lift_up = FALSE;
+		}
+		// printf("up pitch: %d --- height: %f\n", event->y_pitch, doom->player_height);
 	}
 }
 
 void				scissor_lift_down(t_doom *doom)
 {
-	printf("pitch: %d\n", doom->own_event.y_pitch);
-	if (doom->own_event.scissor_lift_down == TRUE)
+	t_event	*event;
+
+	event = &doom->own_event;
+	// printf("down pitch: %d\n", event->y_pitch);
+	if (doom->player_height >= 50)
 	{
-		if (doom->player_height > doom->player_std_height)
-			doom->player_height -= 10;
-		// printf("GOING DOWN %f\n", doom->player_height);
-		if (doom->player_height == doom->player_std_height)
-			exit_scissor_lift(doom);
-		// doom->own_event.scissor_lift_down = FALSE; //don't need it, it's press up and down
+		doom->player_height -= 20;
+		// doom->up -= 1;
+		// event->y_pitch = 0;
+		// event->y_pitch -= 20;
+		// if (event->y_pitch > 140)
+		event->y_pitch = 0;
 	}
+	if (doom->player_height < 50)
+	{
+		doom->player_height = 50;
+		event->scissor_lift_down = FALSE;
+		// doom->up = 0;
+	}
+	// printf("GOING DOWN %f\n", doom->player_height);
+	// if (doom->player_height == 58)
+	// 	exit_scissor_lift(doom);
+	// event->scissor_lift_down = FALSE; //don't need it, it's press up and down
 }

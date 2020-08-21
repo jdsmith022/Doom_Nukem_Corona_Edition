@@ -1,7 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-
 void		create_mv_sidedef(t_sidedef **sidedef, int k, int len)
 {
 	t_sidedef	*new_sidedef;

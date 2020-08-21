@@ -19,7 +19,7 @@ static void		doom_init_events(t_event *event)
 	event->virus_hit_index = -1;
 	event->parked_too_close = FALSE;
 	event->fall = FALSE;
-	event->fall_count = 2;
+	event->fall_count = -1;
 	event->mouse_state_switched = TRUE;
 	event->groc_pickup = FALSE;
 	event->died = FALSE;
@@ -34,6 +34,7 @@ static void		doom_init_events(t_event *event)
 	event->refill = FALSE;
 	event->spray_shopper = FALSE;
 	event->sprite_index = -1;
+	event->toilet_paper = FALSE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -51,9 +52,9 @@ static void		init_player(t_doom *doom)
 	// doom->pos.y = 220;
 	// 	doom->pos.x =360; //start in cross
 	// doom->pos.y = 10;
-	doom->player_height = 48;
+	doom->player_height = PLAYER_HEIGHT;
 	doom->player_width = 48;
-	doom->player_std_height = 48;
+	doom->player_std_height = PLAYER_HEIGHT;
 }
 
 static void		init_settings(t_doom *doom)
@@ -61,18 +62,22 @@ static void		init_settings(t_doom *doom)
 	doom->is_running = TRUE;
 	doom->light = TRUE;
 	doom->hud_display = TRUE;
+	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
+	if (doom->audio == NULL)
+		doom_exit_failure(doom, "error: audio malloc error");
 	doom->audio->engine = OFF;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
+	doom->up = 0;
 }
 
 void			doom_init(t_doom *doom)
 {
 	srand(time(0));
 	init_groceries(doom);
-	init_audio(doom);
 	init_player(doom);
 	init_settings(doom);
+	init_audio(doom);
 	init_menu(doom);
 	init_infection(doom);
 	doom_init_events(&doom->own_event);
@@ -82,6 +87,5 @@ void			doom_init(t_doom *doom)
 	doom->dir_angle = 90;
 	doom->i_sector = 0;
 	doom->visible_sprites = 0;
-	doom->player_std_height = 48;
 	doom->save_scissor_lift = -1;
 }

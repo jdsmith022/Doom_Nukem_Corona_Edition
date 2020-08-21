@@ -14,7 +14,7 @@ bool			mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 	if (mouse_x >= pos.x && mouse_x <= (pos.x + pos.w) &&
 		mouse_y >= pos.y && mouse_y <= (pos.y + pos.h))
 		return true;
-	else 
+	else
 		return false;
 }
 

@@ -56,7 +56,7 @@ int		get_line(char **line, int fd, char *er, int is_int)
 			error(er, line_num(0));
 		if (*line[0] == '\0' || *line[0] == '#')
 		{
-			free(*line);
+			// free(*line);
 			line_num(1);
 			ret = get_next_line2(fd, line);
 		}

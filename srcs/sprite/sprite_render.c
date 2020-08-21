@@ -60,7 +60,7 @@ void		find_sidedef_intersect_per_sector(t_doom *doom,\
 		if (opp_sector != -1 && opp_sector != prev_sector && opp_sector != sprite->sector)
 		{
 			find_sidedef_intersect_per_sector(doom, sprite, line, opp_sector, curr_sector);
-		}	
+		}
 	}
 }
 

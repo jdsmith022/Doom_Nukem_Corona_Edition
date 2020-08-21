@@ -5,17 +5,10 @@
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {
-	if (event->fall == FALSE)
-	{
-		if (event->cam_move_f == TRUE)
-			cam_move_fb(doom, dt, MOVE_SPEED);
-		else if (event->cam_move_b == TRUE)
-			cam_move_fb(doom, dt, -MOVE_SPEED);
-		else if (event->cam_move_l == TRUE)
-			cam_move_rl(doom, dt, -90 * PI / 180);
-		else if (event->cam_move_r == TRUE)
-			cam_move_rl(doom, dt, 90 * PI / 180);
-	}
+	if (event->fall == FALSE && (event->move_pos_f == TRUE || \
+		event->move_pos_b == TRUE || event->move_pos_r == TRUE ||\
+		event->move_pos_l == TRUE))
+		set_new_position(doom, event, dt);
 	if (event->jump == TRUE && event->scissor_lift == FALSE)
 		jump_player(doom, dt);
 	if (event->step_down == TRUE && event->fall == FALSE)
@@ -25,7 +18,7 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 	doom->lib.sector[doom->i_sector].height_floor \
 	&& event->fall == FALSE))
 		bend_down(doom);
-	if (event->bend == TRUE && event->scissor_lift == TRUE)
+	if (event->bend == TRUE && event->scissor_lift == TRUE && doom->player_height == 50)
 		exit_scissor_lift(doom);
 	if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);
@@ -36,13 +29,13 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 void			key_release(t_event *event, SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_w)
-		event->cam_move_f = FALSE;
+		event->move_pos_f = FALSE;
 	else if (key->keysym.sym == SDLK_s)
-		event->cam_move_b = FALSE;
+		event->move_pos_b = FALSE;
 	else if (key->keysym.sym == SDLK_a)
-		event->cam_move_l = FALSE;
+		event->move_pos_l = FALSE;
 	else if (key->keysym.sym == SDLK_d)
-		event->cam_move_r = FALSE;
+		event->move_pos_r = FALSE;
 	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
 		event->scissor_lift_up = FALSE;
 	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
@@ -77,11 +70,11 @@ static void		key_press2(t_doom *doom, t_event *event,
 		doom->menu->pause = TRUE;
 	if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e)
 		key_select_and_shoot(doom, event, key);
-	if (key->keysym.sym == SDLK_p) //needs to become an click on button event
+	if (key->keysym.sym == SDLK_f)
 		doom->light = doom->light == TRUE ? FALSE : TRUE;
-	if (key->keysym.sym == SDLK_o) //needs to become a click on button event
-		doom->lib.sector[doom->i_sector].light =\
-			doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
+	// if (key->keysym.sym == SDLK_o) //needs to become a click on button event
+	// 	doom->lib.sector[doom->i_sector].light =\
+	// 		doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
 	if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
 		printing_map(&(EDIT));
 	// if (key->keysym.sym == SDLK_y && !doom->game_editor)
@@ -94,13 +87,13 @@ void			key_press(t_doom *doom, t_event *event,
 	if (key->keysym.sym == SDLK_ESCAPE)
 		doom->is_running = FALSE;
 	else if (key->keysym.sym == SDLK_w)
-		event->cam_move_f = TRUE;
+		event->move_pos_f = TRUE;
 	else if (key->keysym.sym == SDLK_s)
-		event->cam_move_b = TRUE;
+		event->move_pos_b = TRUE;
 	else if (key->keysym.sym == SDLK_a)
-		event->cam_move_l = TRUE;
+		event->move_pos_l = TRUE;
 	else if (key->keysym.sym == SDLK_d)
-		event->cam_move_r = TRUE;
+		event->move_pos_r = TRUE;
 	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
 		event->scissor_lift_up = TRUE;
 	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)

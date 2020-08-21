@@ -11,6 +11,7 @@ typedef struct s_ray	t_ray;
 typedef struct s_coord	t_coord;
 
 #define MAX_SHOPPING_LIST_LENGTH 4
+#define MAX_BASKET_LEN 			 5
 
 #define SHOPPING_LIST 	doom->groceries->shopping_list
 #define BASKET			doom->groceries->basket
@@ -41,6 +42,7 @@ typedef struct			s_groceries {
 	uint8_t				basket_len;
 	TTF_Font			*font;
 	t_game_over_info	info;
+	bool				tp;
 }						t_groceries;
 
 void					init_groceries(t_doom *doom);

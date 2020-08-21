@@ -14,7 +14,7 @@ static void	add_coordinates(t_sidedef *wall, int i, int safe)
 		wall->line.end.y = safe;
 }
 
-static void add_texture_sd(t_sidedef *wall, int i, int safe, int tex_len)
+static void	add_texture_sd(t_sidedef *wall, int i, int safe, int tex_len)
 {
 	if (safe <= -1 && safe >= tex_len && i > 5 && i < 9)
 		error("Texture is not available", line_num(0));

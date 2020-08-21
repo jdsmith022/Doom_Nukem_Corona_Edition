@@ -107,7 +107,7 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 			// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
 				// printf("after check visibility\n");
 			// printf("eind sprite check\n");
-		}	
+		}
 		i++;
 		sprite_i++;
 	}

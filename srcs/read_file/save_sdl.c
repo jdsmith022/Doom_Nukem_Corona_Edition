@@ -24,7 +24,7 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 		}
 		images[index] = read_bmp(fd);
 		save_bpm_to_sdl(doom, images, lib, index);
-		set_texture_type(line, lib[index]);
+		set_texture_type(doom, line, lib[index]);
 		free(line);
 		index++;
 	}

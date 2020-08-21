@@ -7,7 +7,7 @@
 // 	*color = ((*color & 0x0000ff) >> 8) * (int)dist << 8;
 // }
 
-static void		put_portal_pixel(t_doom *doom, t_point pixel)
+void		put_portal_pixel(t_doom *doom, t_point pixel)
 {
 	Uint32	*pixels;
 	Uint32	color;
@@ -56,24 +56,6 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	// put_dimishing_lighting(&texure[pixel_dex], sidedef.distance)
 }
 
-void			doom_light(t_doom *doom, t_sidedef sidedef, int x)
-{
-	if (doom->light == TRUE)
-	{
-		if (doom->lib.sector[sidedef.sector].light == TRUE)
-			doom->distance = doom->lib.sector[sidedef.sector].light_level;
-		else
-			doom->distance = 0.15;
-	}
-	else
-	{
-		doom->distance = 1 / (doom->distance / 70);
-		doom->distance = x > WIDTH / 2 ? \
-			doom->distance - (x - (float)WIDTH / 2.0) * X_CHANGE :\
-			+doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
-	}
-}
-
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x)
 {
@@ -83,7 +65,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	doom_light(doom, sidedef, x);
+	light_sidedef(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		if (doom->light == FALSE)
@@ -106,7 +88,7 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
-	doom_light(doom, sidedef, x);
+	light_sidedef(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		if (doom->light == FALSE)

@@ -56,7 +56,7 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	b = texture[pixel_dex + 2];
 	if (texture[pixel_dex] == (char)255 && \
 	texture[pixel_dex + 1] == (char)255 && \
-	texture[pixel_dex + 2 ]== (char)255)
+	texture[pixel_dex + 2] == (char)255)
 	{
 		;
 	}

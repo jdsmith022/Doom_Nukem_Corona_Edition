@@ -43,12 +43,3 @@ void		row_calculations(t_doom *doom, double dist, Uint32 index,
 		+ ((int)texture.x * bpp));
 	put_row(doom, lib, index, pixel_dex);
 }
-
-// void			add_filter(t_doom *doom, int y, int filter, int index)
-// {
-// 	char *pixels;
-
-// 	pixels = doom->surface->pixels;
-// 	if (filter != 0)
-// 		pixels[index] += filter;
-// }

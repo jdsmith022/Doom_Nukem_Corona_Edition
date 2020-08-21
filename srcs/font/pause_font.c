@@ -22,7 +22,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 
 void	save_pause_font(t_doom *doom, int *len)
 {
-	TTF_Font *font;
+	TTF_Font	*font;
 	int			font_size;
 
 	*len = 3;

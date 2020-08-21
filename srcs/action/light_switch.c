@@ -34,6 +34,7 @@ static void		change_sector_light(t_doom *doom)
 	int			id;
 
 	id = doom->lib.sidedef[doom->i_sidedef].sector;
+	printf("id: %d, sidedef: %d\n", id, doom->i_sidedef);
 	sector = &doom->lib.sector[id];
 	doom->own_event.hold_light = sector->light_level;
 	doom->own_event.hold_light_sector = sector->id;
@@ -46,23 +47,25 @@ static void		change_sector_light(t_doom *doom)
 
 static void		check_poster_location(t_doom *doom)
 {
-	t_sidedef poster;
+	doom->own_event.light_switch = TRUE;
+	doom->own_event.action = TRUE;
+	doom->own_event.mouse_press = FALSE;
 
-	poster = doom->lib.sidedef[doom->i_sidedef];
-	if (poster.action == 4)
-	{
-		doom->own_event.light_switch = TRUE;
-		doom->own_event.action = TRUE;
-	}
 }
+
+// static void		find_sidedef(t_doom *doom)
 
 void			light_switch(t_doom *doom)
 {
+	t_sidedef poster;
+
+	// doom->i_sidedef = find_sidedef(doom, doom->plane_x);
+	poster = doom->lib.sidedef[doom->i_sidedef];
 	if (doom->lib.sidedef[doom->i_sidedef].distance < 100.00 \
-	&& doom->own_event.select == TRUE)
+	&& doom->own_event.select == TRUE && poster.action == 4)
 		if (MOUSE_PRESSED && doom->own_event.light_switch == FALSE)
 			check_poster_location(doom);
-	if (doom->own_event.light_switch == TRUE)
+	if (doom->own_event.light_switch == TRUE && poster.action != 8)
 	{
 		if (doom->own_event.click_light == -1)
 			change_sector_light(doom);

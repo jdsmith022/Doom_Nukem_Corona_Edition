@@ -11,7 +11,7 @@ static void		print_missing_groceries(t_doom *doom)
 	index = 0;
 	info = doom->groceries->info.groceries_to_display;
 	info->position.y = HEIGHT - 200;
-	info->position.x = WIDTH / SHOPPING_LIST_L - 150;
+	info->position.x = WIDTH / SHOPPING_LIST_L - 25;
 	while (index < SHOPPING_LIST_L)
 	{
 		info->position.x += 100;

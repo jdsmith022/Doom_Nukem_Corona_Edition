@@ -66,12 +66,21 @@ int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 
 	i_sprite = doom->lib.sprites[index_sp].visible; //multiple faces
 	tex_y = 0;
-	if (sprite_begin->y > 0 && sprite_begin->y < HEIGHT)
+	if (sprite_begin->y > 0/* && sprite_begin->y < HEIGHT*/)
 		tex_y = (int)(screen_y - sprite_begin->y) /\
 		doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	else
-		tex_y = (int)(sprite_end->y - screen_y) /\
+	{
+		tex_y = (int)(screen_y + (sprite_begin->y * -1)) /\
 		doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
+	}
+	// else
+	// {
+	// 	/* code */
+	// }
+	
+	// 	tex_y = (int)(sprite_end->y - screen_y) /\
+	// 	doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	return (tex_y);
 }
 
@@ -143,20 +152,23 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 			sprite_light(doom, sprite, &light_distance);
 			screen_y = (int)sprite_begin->y;
 			tex_x = find_x(doom, sprite_begin, sprite_end, index_sp, stripe);
-			while (screen_y < (int)sprite_end->y &&\
+			while (screen_y < (int)sprite_end->y && screen_y < HEIGHT &&\
 				no_clipping_region(screen_y, sprite, doom, stripe) == 1)
 			{
-				if (doom->light == FALSE)
-					light_distance = screen_y > HEIGHT / 2 ?\
-					light_distance - Y_CHANGE : light_distance + Y_CHANGE;
-				index = (Uint32)(screen_y * doom->surface->pitch) +\
-				(int)(stripe * doom->surface->format->BytesPerPixel);
-				tex_y = find_y(doom, sprite_begin, sprite_end,\
-				index_sp, screen_y);
-				pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
-				+ ((int)tex_x *\
-				doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-				put_pixel_tex(doom, pix_dex, index, i_sprite, light_distance);
+				if (screen_y >= 0)
+				{
+					if (doom->light == FALSE)
+						light_distance = screen_y > HEIGHT / 2 ?\
+						light_distance - Y_CHANGE : light_distance + Y_CHANGE;
+					index = (Uint32)(screen_y * doom->surface->pitch) +\
+					(int)(stripe * doom->surface->format->BytesPerPixel);
+					tex_y = find_y(doom, sprite_begin, sprite_end,\
+					index_sp, screen_y);
+					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
+					+ ((int)tex_x *\
+					doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+					put_pixel_tex(doom, pix_dex, index, i_sprite, light_distance);
+				}
 				screen_y++;
 			}
 		}

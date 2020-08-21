@@ -26,7 +26,7 @@ slope id of ceiling
 lines in sector
 objects in sector
 sector id
-outside
+action
 
 opp_sector
 vector start(x,y)
