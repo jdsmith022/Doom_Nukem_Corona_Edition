@@ -38,6 +38,9 @@ void		detect_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 	if (!isnan(intersect.x) && !isnan(intersect.y))
 	{
 		sprite->visible = sprite->textures[i];
+		sprite->offset_x = sprite_offset(intersect.x, sprite->pos.x);
+		printf("before\n");
+		printf("offset_x: %d\n", sprite->offset_x);
 	}
 }
 

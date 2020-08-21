@@ -1,5 +1,13 @@
 #include "../../includes/doom.h"
 
+int			sprite_offset(int x, int sprite_x)
+{
+	int		diff;
+
+	diff = x - sprite_x;
+	return (diff);
+}	
+
 void		wall_offset(t_plane *plane, int sidedef_top)
 {
 	plane->wall_offset = 0;

@@ -118,6 +118,7 @@ typedef struct			s_sprite {
 	double				distance;
 	// int					face;
 	int					prev_sectors[50];	//where to empty them again? don't forget to protect
+	int					offset_x;
 }						t_sprite;
 
 typedef struct		s_ray {
@@ -554,5 +555,6 @@ void				add_mist_to_sanitizer(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
 void				draw_add_on(t_doom *doom, int sprite_i);
 // void    			shoot(t_doom *doom);
+int					sprite_offset(int x, int sprite_x);
 
 #endif
