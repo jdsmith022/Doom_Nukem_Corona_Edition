@@ -1,5 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/gameplay.h"
+
 
 /*
 **	include hud.h for the defines and the timer???
@@ -79,17 +81,13 @@ static int		find_y_bar(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,
 
 static void		draw_stripes_bar(t_doom *doom, t_point bar_begin, t_point bar_end, int i_sprite)
 {
-	// int			i_sprite;
 	Uint32		index;
 	Uint32		pix_dex;
 	int			stripe;
 	int			tex_y;
 	int			tex_x;
 	int			screen_y;
-	// t_sprite	sprite;
 
-	// sprite = doom->lib.sprites[doom->save_scissor_lift];
-	// i_sprite = 28;
 	stripe = (int)bar_begin.x;
 	screen_y = (int)bar_begin.y;
 	index = 0;
@@ -112,20 +110,23 @@ static void		draw_stripes_bar(t_doom *doom, t_point bar_begin, t_point bar_end, 
 		stripe++;
 	}
 }
-
-// void		draw_scissor_lift_bar(t_doom *doom, int sprite_i)
 void		draw_add_on(t_doom *doom, int sprite_i)
 {
 	t_point bar_begin;
 	t_point	bar_end;
 
 	scale_bar(doom, &bar_begin, &bar_end, sprite_i);
+	if (sprite_i == 75)
+	{
+		bar_begin.x += 450;
+		bar_end.x += 450;
+	}
 	draw_stripes_bar(doom, bar_begin, bar_end, sprite_i);
 }
 
 void		draw_player_adds(t_doom *doom)
 {
-	int		sprite_i;
+	size_t	sprite_i;
 
 	if (doom->own_event.scissor_lift == TRUE)
 	{
@@ -138,9 +139,12 @@ void		draw_player_adds(t_doom *doom)
 		sprite_i = SPRAY_HAND;
 		draw_add_on(doom, sprite_i);
 	}
-	// if (doom->own_event.shoot == TRUE)
-	// {
-	// 	check_coordinate
-	// 	sprite_i = ;
-	// }
+	else if (doom->own_event.select == TRUE)
+	{
+		if (doom->own_event.hold_x <= WIDTH / 2)
+			sprite_i = 74;
+		else
+			sprite_i = 75;
+		draw_add_on(doom, sprite_i);
+	}
 }

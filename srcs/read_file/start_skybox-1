@@ -362,9 +362,9 @@ assets/sprites/groceries/mayo.bmp
 #73
 assets/sprites/groceries/glass_jar1.bmp
 #74
-assets/sprites/player/left_hand_reaching.bmp
+assets/sprites/shoppers/shopper_side_left.bmp
 #75
-assets/sprites/player/right_hand_reaching.bmp
+assets/sprites/shoppers/shopper_side_right.bmp
 
 
 
@@ -376,7 +376,7 @@ assets/sprites/player/right_hand_reaching.bmp
 #number of walls
 374
 #number of objects
-320
+319
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -920,7 +920,7 @@ assets/sprites/player/right_hand_reaching.bmp
 0
 -1
 8
-2
+1
 1
 3
 
@@ -1055,35 +1055,6 @@ assets/sprites/player/right_hand_reaching.bmp
 369
 165
 359
-
-#object1 in sector1 TROLLEY 31 front 32 side
-319
-130
-300
-12
-48
-1
-4
-31
-120
-290
-140
-290
-32
-140
-290
-140
-310
-31
-140
-310
-120
-310
-32
-120
-310
-120
-290
 
 #START OF GAME#################################################################
 
