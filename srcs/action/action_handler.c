@@ -11,7 +11,7 @@ static void	shoot_action(t_doom *doom)
 		{
 			doom->hud->sanitizer_shooting = TRUE;
 			doom->own_event.mist = TRUE;
-			shooting(doom);
+			check_sprite_hit(doom);
 		}
 	}
 }
@@ -26,7 +26,7 @@ static void	select_action(t_doom *doom)
 	{
 		if (MOUSE_PRESSED)
 		{
-			check_select(doom);
+			check_sprite_hit(doom);
 			if (poster.action == 8)
 				sanitizer_refill(doom);
 		}

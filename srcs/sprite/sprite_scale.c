@@ -4,28 +4,19 @@ int			find_virus_bottom(t_doom *doom, t_sprite *sprite, int virus_bottom, int vi
 {
 	int		height_space_part;
 
-	printf("virus_top: %d\n", virus_top);
-	printf("virus_bottom: %d\n", virus_bottom);
-	printf("difference: %d\n", virus_bottom - virus_top);
-	printf("sprite->height: %f\n", sprite->height);
 	height_space_part = (virus_bottom - virus_top) / 5;
-	printf("heiught_space_part = %d\n", height_space_part);
 	if (sprite->index % 3 == 0)
 	{
-		printf("1 (%d)", height_space_part);
 		virus_bottom -= height_space_part;
 	}
 	else if (sprite->index % 3 == 1)
 	{
-		printf("2 (%d)", height_space_part);
 		virus_bottom -= (height_space_part * 2);
 	}
 	else
 	{
-		printf("3 (%d)", height_space_part);
 		virus_bottom -= (height_space_part * 3);
 	}
-	printf(" virus_bottom: %d for sprite #%d\n", virus_bottom, sprite->index);
 	return (virus_bottom);
 }
 

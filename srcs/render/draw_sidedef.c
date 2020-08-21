@@ -14,7 +14,6 @@ void		put_portal_pixel(t_doom *doom, t_point pixel)
 
 	pixels = doom->surface->pixels;
 	color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
-	pixels = doom->surface->pixels;
 	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
 		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
 }

@@ -95,7 +95,7 @@ void				font_timer(t_doom *doom)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 7, 8);
 	else if (event->scissor_lift == TRUE && \
-	doom->lib.font_lib.bools.scissor_lift == FALSE)
+	doom->lib.font_lib.bools.scissor_lift == TRUE)
 		font_timer_box_long(doom, \
 			&doom->lib.font_lib.bools.text, 3, 7);
 	else if (event->fall == TRUE && event->fall_count == -1)

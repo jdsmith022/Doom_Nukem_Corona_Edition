@@ -34,7 +34,6 @@ static void		change_sector_light(t_doom *doom)
 	int			id;
 
 	id = doom->lib.sidedef[doom->i_sidedef].sector;
-	printf("id: %d, sidedef: %d\n", id, doom->i_sidedef);
 	sector = &doom->lib.sector[id];
 	doom->own_event.hold_light = sector->light_level;
 	doom->own_event.hold_light_sector = sector->id;
@@ -59,7 +58,6 @@ void			light_switch(t_doom *doom)
 {
 	t_sidedef poster;
 
-	// doom->i_sidedef = find_sidedef(doom, doom->plane_x);
 	poster = doom->lib.sidedef[doom->i_sidedef];
 	if (doom->lib.sidedef[doom->i_sidedef].distance < 100.00 \
 	&& doom->own_event.select == TRUE && poster.action == 4)

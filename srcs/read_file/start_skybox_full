@@ -165,7 +165,7 @@ assets/textures/shelves/veggies.bmp
 assets/textures/shelves/veggies2.bmp
 #72
 assets/textures/shelves/veggies3.bmp
-#73 need to put tp on top
+#73
 assets/textures/shelves/warehouse_shelf.bmp
 #74
 assets/textures/shelves/water.bmp
@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-74
+76
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -361,6 +361,10 @@ assets/sprites/groceries/ketchup.bmp
 assets/sprites/groceries/mayo.bmp
 #73
 assets/sprites/groceries/glass_jar1.bmp
+#74
+assets/sprites/shoppers/shopper_side_left.bmp
+#75
+assets/sprites/shoppers/shopper_side_right.bmp
 
 
 
@@ -370,7 +374,7 @@ assets/sprites/groceries/glass_jar1.bmp
 #number of sectors
 50
 #number of walls
-372
+374
 #number of objects
 319
 
@@ -1065,7 +1069,7 @@ assets/sprites/groceries/glass_jar1.bmp
 14
 0
 -1
-7
+8
 3
 2
 4
@@ -1122,13 +1126,25 @@ assets/sprites/groceries/glass_jar1.bmp
 -1
 0
 576
-192
+96
 576
 0
 16
 16
 16
 29
+
+#sidedef30 ## WINDOW TO SECTOR 3 ##
+3
+96
+576
+192
+576
+6
+88
+88
+88
+373
 
 #sidedef31#### PORTAL to sector 2
 3
@@ -1272,16 +1288,16 @@ assets/sprites/groceries/glass_jar1.bmp
 16
 32
 
-#sidedefs
--1
+#sidedefs ##WINDOW TO SECTOR 2##
+2
 96
 576
 192
 576
-0
-21
-21
-21
+6
+88
+88
+88
 33
 
 #sidedefs##PORTAL TO 2###
@@ -8995,17 +9011,17 @@ assets/sprites/groceries/glass_jar1.bmp
 16
 226
 
-#sidedefs
--1
-1248
-672
+#sidedefs##WINDOW TO SECTOR 31##
+31
 1248
 576
-0
-28
-28
-28
-227
+1248
+672
+6
+88
+88
+88
+277
 
 #sidedefs##PORTAL WALL TO SECTOR 31##
 31
@@ -10812,14 +10828,26 @@ assets/sprites/groceries/glass_jar1.bmp
 17
 -10
 -1
--10
+0
 14
 10
 -1
-7
+8
 11
 31
 0
+
+#sidedefs ##WINDOW TO SECTOR 29 ##
+29
+1248
+576
+1248
+672
+6
+88
+88
+88
+374
 
 #sidedefs##PORTAL WALL TO SECTOR29##
 29
@@ -10898,7 +10926,7 @@ assets/sprites/groceries/glass_jar1.bmp
 1248
 768
 1248
-576
+672
 0
 15
 15
