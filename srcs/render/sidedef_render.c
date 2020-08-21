@@ -120,8 +120,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		}
 		doom->distance = min_distance;
-		if (near_sidedef.poster != -1)
-			printf("before project; %d\n", near_sidedef.id);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
 	}
 }

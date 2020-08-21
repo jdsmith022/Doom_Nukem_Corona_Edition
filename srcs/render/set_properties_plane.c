@@ -7,7 +7,7 @@ static int	set_plane_bottom(t_doom *doom, double scale,
 	int		sidedef_bottom;
 
 	height_floor = sector_floor / distance * doom->dist_to_plane;
-	sidedef_bottom = ((HEIGHT / 2) + ((doom->player_height) * scale)) \
+	sidedef_bottom = ((HEIGHT / 2) + (doom->player_height * scale)) \
 		- (doom->own_event.y_pitch + height_floor);
 	if (sidedef_bottom < 0)
 		sidedef_bottom = 0;

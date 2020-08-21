@@ -15,8 +15,6 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 	double diff;
 
 	diff = doom->player_height - PLAYER_HEIGHT;
-	// diff = doom->texture_height - doom->player_height;
-// 
 	dist = (doom->player_height - sector->height_floor) / \
 		((y + doom->own_event.y_pitch) - (HEIGHT / 2));
 	dist *= doom->dist_to_plane;
@@ -29,7 +27,7 @@ static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 	if (sector.slope_floor_id != -1)
 		*limit = HEIGHT;
 	else
-		*limit = HEIGHT;//sector.floor_end;
+		*limit = sector.floor_end;
 }
 
 void			draw_floor(t_doom *doom, int x,
