@@ -143,7 +143,7 @@ void		add_inf_to_lib(t_doom *doom, int len, int fd)
 	get_line(&line, fd, "the moving object number can not be read", 1);
 	col_lib->n_mov_sprites = ft_atoi(line);
 	col_lib->mov_sprites = \
-	(t_m_object*)malloc(sizeof(t_m_object) * col_lib->n_mov_sprites);
+		(t_m_object*)malloc(sizeof(t_m_object) * col_lib->n_mov_sprites);
 	if (col_lib->mov_sprites == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	while (j < col_lib->n_mov_sprites)

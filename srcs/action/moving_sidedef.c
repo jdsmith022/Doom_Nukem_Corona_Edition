@@ -6,7 +6,7 @@ void		create_mv_sidedef(t_doom *doom, t_sidedef **sidedef, int k, int len)
 	t_sidedef	*new_sidedef;
 	int			i;
 
-	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1));
+	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len));
 	if (new_sidedef == NULL)
 		doom_exit_failure(doom, "error: creating mv sidedef");
 	i = 0;
