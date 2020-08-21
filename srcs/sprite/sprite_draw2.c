@@ -1,5 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
+#include "../../includes/gameplay.h"
+
 
 /*
 **	include hud.h for the defines and the timer???
@@ -123,10 +125,22 @@ void		draw_add_on(t_doom *doom, int sprite_i)
 	draw_stripes_bar(doom, bar_begin, bar_end, sprite_i);
 }
 
+static size_t	check_coordinate(int x)
+{
+	size_t index;
+
+	if (x >= WIDTH / 2)
+		index = 74;
+	else
+		index = 75;
+	return (index);
+}
+
 void		draw_player_adds(t_doom *doom)
 {
-	int		sprite_i;
+	size_t	sprite_i;
 
+	printf("in draw adds\n");
 	if (doom->own_event.scissor_lift == TRUE)
 	{
 		sprite_i = SCISSOR;
@@ -138,9 +152,15 @@ void		draw_player_adds(t_doom *doom)
 		sprite_i = SPRAY_HAND;
 		draw_add_on(doom, sprite_i);
 	}
-	// if (doom->own_event.shoot == TRUE)
-	// {
-	// 	check_coordinate
-	// 	sprite_i = ;
-	// }
+	if (doom->own_event.select == TRUE)
+	{
+		sprite_i = 74;
+		if (MOUSE_PRESSED)
+		{
+			sprite_i = check_coordinate(doom->own_event.hold_x);
+			printf("hello there\bn");
+
+		}
+		draw_add_on(doom, sprite_i);
+	}
 }
