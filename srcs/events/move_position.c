@@ -111,9 +111,7 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 		return ;
 	}
 		// movement.end = doom->pos;
-	printf("after sprite collision fb\n");
 	collision = movement_collision(doom, movement, doom->dir_angle + direction);
-	printf("after normal collision fb\n");
 	if (collision != -1)
 	{
 		doom->pos = movement.end;
@@ -123,5 +121,4 @@ void	cam_move_fb(t_doom *doom, double dt, int direction)
 			doom->pos.y += direction / 10 * sin(doom->dir_angle);
 		}
 	}
-	printf("end cam mov fb collision = %d\n", collision);
 }
