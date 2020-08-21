@@ -1,5 +1,17 @@
 #include "../../includes/doom.h"
 
+static void		reset_sidedef_ids(t_lib *lib)
+{
+	int		index;
+
+	index = 0;
+	while (index < lib->len_sidedef)
+	{
+		lib->sidedef[index].id = index;
+		index++;
+	}
+}
+
 int			open_file(char *filename)
 {
 	int		fd;
@@ -40,5 +52,6 @@ void		save_libraries(t_doom *doom)
 	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
 	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
 	add_inf_to_lib(doom, &doom->lib, doom->lib.n_sectors, fd);
+	reset_sidedef_ids(&doom->lib);
 	close(fd);
 }
