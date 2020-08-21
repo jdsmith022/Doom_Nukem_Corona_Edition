@@ -29,7 +29,28 @@ static int		get_other_side_of_line(t_doom *doom,\
 	return (doom->lib.sidedef[i].id);
 }
 
-double		set_slope_height(t_doom *doom, t_sidedef sidedef,\
+double		set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
+	t_sector sector)
+{
+	double	height;
+	double	distance;
+	t_line	slope_start;
+
+	if (sidedef.sector != sector.id)
+		sidedef.id = get_other_side_of_line(doom, sidedef, sector);
+	if (sidedef.id == sector.slope_ceiling_id)
+		height = 0;
+	else
+	{
+		slope_start = doom->lib.sidedef[sector.slope_ceiling_id].line;
+		distance = fabs(point_line_distance(sidedef.intersect,\
+			slope_start));
+		height = tan(sector.slope_ceiling) * distance;
+	}
+	return (height);
+}
+
+double		set_slope_height_floor(t_doom *doom, t_sidedef sidedef,\
 	t_sector sector)
 {
 	double	height;

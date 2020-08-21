@@ -1,5 +1,14 @@
 #include "../../includes/doom.h"
 
+static void			put_pixels(t_doom *doom, Uint32 index, int x, int y)
+{
+	Uint32 *pixels;
+
+	pixels = doom->surface->pixels;
+	if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
+		pixels[(y * WIDTH + x)] = 0X505052;
+}
+
 static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 					t_sector sector)
 {
@@ -40,6 +49,9 @@ void			draw_ceiling(t_doom *doom, int x,
 		index = (y * doom->surface->pitch) + (x * bpp);
 		calculate_ceiling_dist(doom, x, y, sector);
 		light_floor_ceiling(doom, sector, x, y);
+		if (sector.slope_floor_id != -1)
+			put_pixels(doom, index, x, y);
+		else
 		row_calculations(doom, doom->horizontal_plane_dist, index,\
 			doom->lib.tex_lib[tex_dex]);
 		y--;
