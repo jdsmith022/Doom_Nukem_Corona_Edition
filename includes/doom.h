@@ -465,8 +465,9 @@ t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom);
 double				set_slope_height_floor(t_doom *doom, t_sidedef sidedef,\
 						t_sector sector);
-double		set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
+double				set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
 						t_sector sector);
+
 void				wall_offset(t_plane *plane, int sidedef_top);
 void				set_texture_properties(t_doom *doom);
 void				set_floor_limit(t_doom *doom, t_plane *plane,\
@@ -489,6 +490,7 @@ void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+void				put_pixels(t_doom *doom, Uint32 index, int x, int y);
 
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
