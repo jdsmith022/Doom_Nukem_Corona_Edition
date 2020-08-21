@@ -46,8 +46,6 @@ void		exit_scissor_lift(t_doom *doom)
 	if (distance > 60/* && distance < 100*/)
 	{
 		doom->save_scissor_lift = -1;
-		doom->lib.font_lib.bools.text = FALSE;
-		doom->own_event.scissor_lift_down = FALSE;
 		doom->own_event.scissor_lift = FALSE;
 	}
 	else
@@ -66,6 +64,8 @@ void		activate_scissor_lift(t_doom *doom, int index)
 	// 	doom->own_event.y_pitch = 150;
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
+	doom->lib.font_lib.bools.scissor_lift = TRUE;
+
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
