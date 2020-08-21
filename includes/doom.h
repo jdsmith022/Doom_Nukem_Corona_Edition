@@ -44,6 +44,10 @@
 # define GRAVITY -2
 # define VELOCITY  5
 
+# define RED 1
+# define GREEN 2
+# define BLUE 3
+
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
 
@@ -480,7 +484,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				put_portal_pixel(t_doom *doom, t_point pixel);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
@@ -510,6 +514,7 @@ void				add_saturation(char *r, char *g, char *b, double light);
 void				light_sidedef(t_doom *doom, t_sidedef sidedef, int x);
 void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
+void				add_tint_to_color(Uint32 *color, int tint);
 
 double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);

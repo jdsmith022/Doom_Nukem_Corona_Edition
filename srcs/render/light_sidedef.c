@@ -1,5 +1,23 @@
 #include "../../includes/doom.h"
 
+void		add_tint_to_color(Uint32 *color, int tint)
+{
+	Uint8	r;
+	Uint8	g;
+	Uint8	b;
+
+	r = ((*color >> 16) & 0xFF);
+	g = ((*color >> 8) & 0xFF);
+	b = (*color & 0xFF);
+	if (tint == BLUE)
+		b += 20;
+	else if (tint == RED)
+		r += 20;
+	else
+		g += 20;
+	*color = (r << 16 | g << 8 | b);
+}
+
 void			light_sidedef(t_doom *doom, t_sidedef sidedef, int x)
 {
 	if (doom->light == TRUE)
