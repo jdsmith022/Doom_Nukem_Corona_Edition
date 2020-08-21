@@ -211,7 +211,7 @@ assets/textures/poster/fill_up_clean.bmp
 assets/textures/window/glass_doors.bmp
 
 
-#object library #trolley and trolle handle bar needs to be added
+#object library
 76
 #0
 assets/sprites/groceries/bacon.bmp
@@ -930,7 +930,7 @@ assets/sprites/player/right_hand_reaching.bmp
 384
 192
 384
-0
+7
 15
 15
 15
@@ -1057,7 +1057,7 @@ assets/sprites/player/right_hand_reaching.bmp
 359
 
 #object1 in sector1 TROLLEY 31 front 32 side
-319
+10
 130
 300
 12

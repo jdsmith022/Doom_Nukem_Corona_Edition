@@ -16,7 +16,7 @@ static void		scale_bar(t_doom *doom, t_point *bar_begin, t_point *bar_end, int i
 	double	w;
 
 	bar_end->y = HEIGHT - 55;
-	if (i == SCISSOR)
+	if (i == SCISSOR || i == TROLLEY)
 		bar_height = HEIGHT / 3 * 2;
 	else
 		bar_height = HEIGHT / 2;
@@ -24,7 +24,7 @@ static void		scale_bar(t_doom *doom, t_point *bar_begin, t_point *bar_end, int i
 	h = doom->lib.obj_lib[i]->h;
 	w = doom->lib.obj_lib[i]->w;
 	bar_width = (bar_height / h) * w;
-	if (i == SCISSOR)
+	if (i == SCISSOR || i == TROLLEY)
 		bar_begin->x = (WIDTH / 2) - (bar_width / 2);
 	else
 		bar_begin->x = 10;
@@ -140,10 +140,14 @@ void		draw_player_adds(t_doom *doom)
 {
 	size_t	sprite_i;
 
-	printf("in draw adds\n");
 	if (doom->own_event.scissor_lift == TRUE)
 	{
 		sprite_i = SCISSOR;
+		draw_add_on(doom, sprite_i);
+	}
+	if (doom->own_event.trolly == TRUE && doom->own_event.scissor_lift != TRUE)
+	{
+		sprite_i = TROLLEY;
 		draw_add_on(doom, sprite_i);
 	}
 	if (doom->own_event.shoot == TRUE)
@@ -158,8 +162,6 @@ void		draw_player_adds(t_doom *doom)
 		if (MOUSE_PRESSED)
 		{
 			sprite_i = check_coordinate(doom->own_event.hold_x);
-			printf("hello there\bn");
-
 		}
 		draw_add_on(doom, sprite_i);
 	}

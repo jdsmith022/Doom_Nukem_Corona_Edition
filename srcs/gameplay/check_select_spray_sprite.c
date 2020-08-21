@@ -3,6 +3,7 @@
 
 static void	check_select_sprite(t_doom *doom)
 {
+	printf("begin check select sprite #%d, action: %d\n", doom->own_event.virus_hit_index, doom->lib.sprites[doom->own_event.virus_hit_index].action);
 	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
 		doom->hud->corona = TRUE;
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 13 && \
@@ -15,6 +16,7 @@ static void	check_select_sprite(t_doom *doom)
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 12 \
 	&& SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
 	{
+			printf("grab trolley");
 			doom->own_event.trolly = TRUE;
 			doom->lib.sidedef[17].action = 0;
 			SPRITES[doom->own_event.virus_hit_index].action = 8;
@@ -63,5 +65,6 @@ void	check_select_spray_sprite(t_doom *doom)
 		check_spray_sprite(doom);
 	else if (doom->own_event.select == TRUE)
 		check_select_sprite(doom);
-	printf("Object #%d has been hit\n", doom->own_event.virus_hit_index);
+	printf("Object #%d has been hit, action: %d\n", doom->own_event.virus_hit_index,\
+	doom->lib.sprites[doom->own_event.virus_hit_index].action);
 }

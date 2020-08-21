@@ -8,7 +8,8 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 	int		value;
 
 	value = 0;
-	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE) || sprite.action == 9)
+	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE)\
+	|| sprite.action == 9 || sprite.action == 12)
 		value = 15;
 	if (movement.end.x >= sprite.lines[0].start.x - value &&\
 	movement.end.x <= sprite.lines[0].end.x + value &&\
@@ -154,7 +155,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 			{
-				printf("sprite_is_hit\n");
+				printf("sprite_is_touched\n");
 				return (1);
 			}
 		}

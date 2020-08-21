@@ -4,6 +4,7 @@
 # define SCISSOR 28
 # define SPRAY_HAND 29
 # define SPRAYING_HAND 30
+# define TROLLEY 33
 
 typedef	struct s_doom	t_doom;
 

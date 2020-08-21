@@ -8,12 +8,12 @@ static int			check_collision(t_doom *doom, t_sidedef sidedef,
 	if (sidedef.opp_sector == -1 || sidedef.action == 2 || \
 	sidedef.action == 6)
 		return (-1);
-	// if (sidedef.action == 7 && doom->own_event.trolly == FALSE)
-	// {
-	// 	doom->lib.font_lib.bools.trolly = TRUE;
-	// 	doom->lib.font_lib.bools.text = TRUE;
-	// 	return (-1);
-	// }
+	if (sidedef.action == 7 && doom->own_event.trolly == FALSE)
+	{
+		doom->lib.font_lib.bools.trolly = TRUE;
+		doom->lib.font_lib.bools.text = TRUE;
+		return (-1);
+	}
 	if (check_floor_diff(doom, doom->i_sector, sidedef.opp_sector) == TRUE ||
 	doom->own_event.scissor_lift == TRUE)
 		return (-1);

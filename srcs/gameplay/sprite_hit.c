@@ -107,7 +107,8 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	while (i < SECTORS[sector].n_objects)
 	{
 		if (SPRITES[sprite_i].action == 4 || SPRITES[sprite_i].action == 9 \
-		|| SPRITES[sprite_i].action == 13 || SPRITES[sprite_i].action == 11)
+		|| SPRITES[sprite_i].action == 13 || SPRITES[sprite_i].action == 11\
+		|| SPRITES[sprite_i].action == 12)
 			temp_virus = virus_in_range(doom, ray, sprite_i, prev_sector);
 		if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
 		{
@@ -168,7 +169,10 @@ void    check_sprite_hit(t_doom *doom)
     ray = init_ray(doom, MOUSE_X);
     check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index != -1)
+	{
 		check_select_spray_sprite(doom); //select and shooting of all sprites
+		doom->own_event.virus_hit_index = -1;
+	}
 	else
 		printf("NOT VIRUS HIT!! Try again.\n");
 }

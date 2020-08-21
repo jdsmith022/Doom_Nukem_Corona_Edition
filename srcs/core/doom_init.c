@@ -35,6 +35,7 @@ static void		doom_init_events(t_event *event)
 	event->spray_shopper = FALSE;
 	event->sprite_index = -1;
 	event->toilet_paper = FALSE;
+	event->trolly = FALSE;
 }
 
 static void		init_infection(t_doom *doom)
