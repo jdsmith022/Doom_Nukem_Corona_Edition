@@ -39,6 +39,6 @@ void		save_libraries(t_doom *doom)
 	doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
 	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
 	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
-	add_inf_to_lib(doom, &doom->lib, doom->lib.n_sectors, fd);
+	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
 	close(fd);
 }

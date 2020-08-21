@@ -3,7 +3,8 @@
 
 #include <stdio.h> //remove before handing in
 
-void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite, char *line, int i, int safe)
+static void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite,
+					char *line, int i, int safe)
 {
 	if (i == 0)
 		sprite->name = line;
@@ -30,7 +31,7 @@ void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite, char *line, int i, int 
 	}
 }
 
-t_m_object	mov_object_inf(t_doom *doom, int fd, int sector)
+static t_m_object	mov_object_inf(t_doom *doom, int fd, int sector)
 {
 	int			i;
 	char		*line;
@@ -54,12 +55,15 @@ t_m_object	mov_object_inf(t_doom *doom, int fd, int sector)
 	return (m_sprite);
 }
 
-void	create_sidedef(t_lib *col_lib, int fd, int len, int i)
+static void		create_sidedef(t_doom *doom, int fd, int len,
+					int i)
 {
+	t_lib		*col_lib;
 	static int	k;
 	static int	wall_int;
 	int			j;
 
+	col_lib = &doom->lib;
 	if (!k)
 	{
 		k = 0;
@@ -76,7 +80,7 @@ void	create_sidedef(t_lib *col_lib, int fd, int len, int i)
 		if (col_lib->sidedef[k].action == 2 && \
 		col_lib->sidedef[k].opp_sector != -1)
 		{
-			create_mv_sidedef(&col_lib->sidedef, k, col_lib->len_sidedef);
+			create_mv_sidedef(doom, &col_lib->sidedef, k, col_lib->len_sidedef);
 			col_lib->len_sidedef++;
 			col_lib->sector[i].n_sidedefs++;
 			k++;
@@ -88,7 +92,8 @@ void	create_sidedef(t_lib *col_lib, int fd, int len, int i)
 	wall_int = wall_int + col_lib->sector[i].n_sidedefs;
 }
 
-void	create_object(t_lib *col_lib, int fd, int i, int total_sprites)
+static void		create_object(t_lib *col_lib, int fd, int i,
+					int total_sprites)
 {
 	static int	l;
 	static int	obj_int;
@@ -118,17 +123,19 @@ void	create_object(t_lib *col_lib, int fd, int i, int total_sprites)
 	}
 }
 
-void	add_inf_to_lib(t_doom *doom, t_lib *col_lib, int len, int fd)
+void		add_inf_to_lib(t_doom *doom, int len, int fd)
 {
 	int		i;
 	int		j;
 	char	*line;
+	t_lib	*col_lib;
 
+	col_lib = &doom->lib;
 	i = 0;
 	while (i < len)
 	{
-		create_sidedef(col_lib, fd, len, i);//check this is correct
-		create_object(col_lib, fd, i, doom->total_sprites);
+		create_sidedef(doom, fd, len, i);
+		create_object(&doom->lib, fd, i, doom->total_sprites);
 		//check this is correct when objs is available
 		i++;
 	}

@@ -1,3 +1,0 @@
-
-if (plane->sidedef_bottom < 0)
-		plane->sidedef_bottom = 0;

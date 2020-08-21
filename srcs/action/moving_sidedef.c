@@ -1,12 +1,14 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-void		create_mv_sidedef(t_sidedef **sidedef, int k, int len)
+void		create_mv_sidedef(t_doom *doom, t_sidedef **sidedef, int k, int len)
 {
 	t_sidedef	*new_sidedef;
 	int			i;
 
-	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1));
+	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1)); //PROTECT
+	if (new_sidedef == NULL)
+		doom_exit_failure(doom, "error: creating mv sidedef");
 	i = 0;
 	while (i <= k)
 	{
@@ -104,21 +106,28 @@ void		sliding_door(t_doom *doom, int sd_index_add)
 	int			i;
 
 	if (sd_index_add != -1)
+	{
+		// printf("init\n");
 		init_door(doom, &len, &mv_sd, sd_index_add);
+	}
 	else
 	{
 		i = 0;
 		while (i < len)
 		{
+			// printf("in while\n");
 			if (mv_sd[i] != -1)
 			{
 				calc_mv(&doom->lib.sidedef[mv_sd[i]],\
 					&doom->lib.sidedef[mv_sd[i] + 1], 1);
 				if ((int)doom->lib.sidedef[mv_sd[i]].line.end.x ==\
-					(int)doom->lib.sidedef[mv_sd[i]].line.start.x && \
-					(int)doom->lib.sidedef[mv_sd[i]].line.end.y == \
-					(int)doom->lib.sidedef[mv_sd[i]].line.start.y)
+				(int)doom->lib.sidedef[mv_sd[i]].line.start.x && \
+				(int)doom->lib.sidedef[mv_sd[i]].line.end.y == \
+				(int)doom->lib.sidedef[mv_sd[i]].line.start.y)
+				{
 					mv_sd[i] = -1;
+					// printf("iff is true\n");
+				}
 			}
 			i++;
 		}
