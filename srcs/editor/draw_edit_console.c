@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
+#include "sprites.h"
 
 void put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 				Uint32 pixel_dex)
@@ -22,19 +23,22 @@ void    put_textures(int x, int y, int index, t_doom *doom)
 	double sy;
 	double change_x;
 	double change_y;
+	SDL_Surface		*texture;
+
 
     save_x = x;
     sx = 0;
 	sy = 0;
-	shift = doom->lib.tex_lib[index]->format->BitsPerPixel == 24 ? 3 : 4;
-	change_x = (double)doom->lib.tex_lib[index]->w / 48.0;
-	change_y = (double)doom->lib.tex_lib[index]->h / 48.0;
-    while ((int)sy < (doom->lib.tex_lib[index]->h))
+	texture = EDIT.sidedef_bar == 1 ? doom->lib.tex_lib[index] : doom->lib.obj_lib[index];
+	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
+	change_x = (double)texture->w / 48.0;
+	change_y = (double)texture->h / 48.0;
+    while ((int)sy < texture->h)
     {
-		put_texture(doom, (Uint32)index, (Uint32)((y * WIDTH + x) * 4), (Uint32)(((int)sy * doom->lib.tex_lib[index]->w + (int)sx) * shift));
+		put_texture(doom, (Uint32)index, (Uint32)((y * WIDTH + x) * 4), (Uint32)(((int)sy * texture->w + (int)sx) * shift));
 		x++;
 		sx += change_x;
-        if ((int)sx >= doom->lib.tex_lib[index]->w)
+        if ((int)sx >= texture->w)
         {
             x = save_x;
             y++;
@@ -86,14 +90,7 @@ void    draw_screen_colors(Uint32 *pixels, t_doom *doom)
 		while (x < WIDTH)
 		{
 			if (x < WIDTH - (WIDTH / 5) && x > WIDTH / 5)
-			{
-				if (SECTOR[EDIT.cur_sec].slope_floor == 0)
 					pixels[((y * WIDTH) + x)] = 0;
-				if (SECTOR[EDIT.cur_sec].slope_floor == -45)
-					pixels[((y * WIDTH) + x)] = 0xff6e2020;
-				if (SECTOR[EDIT.cur_sec].slope_floor == 45)
-					pixels[((y * WIDTH) + x)] = 0xff065535;
-			}
 			else
 				pixels[((y * WIDTH) + x)] = 0x8c3cde6;
             x++;
@@ -102,23 +99,17 @@ void    draw_screen_colors(Uint32 *pixels, t_doom *doom)
 	}
 }
 
-void    draw_images(Uint32 *pixels, t_doom *doom)
+void	draw_sector_images(Uint32 *pixels, t_doom *doom)
 {
+	int state;
+
+	state = EDIT.sidedef_bar;
+	EDIT.sidedef_bar = 1;
 	put_images(DEL_SECTOR_X, DEL_SECTOR_Y, garbage, doom);
 	put_images(ADD_SECTOR_X, ADD_SECTOR_Y, plus, doom);
 
 	put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 	put_images(AR_RIGHT_X, AR_RIGHT_Y, arrow_right, doom);
-
-	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
-	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-
-	put_images(AR_LEFT_M_X, AR_LEFT_M_Y, arrow_left, doom);
-	put_images(AR_RIGHT_M_X, AR_RIGHT_M_Y, arrow_right, doom);
-	put_images(AR_UP_M_X, AR_UP_M_Y, arrow_down, doom);
-	put_images(AR_DOWN_M_X, AR_DOWN_M_Y, arrow_up, doom);
-
-	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 
 	put_textures(TEX_FL_X, TEX_FL_Y, SECTOR[EDIT.cur_sec].txt_floor, doom);
 	put_images(AR_LEFT_TF_X, AR_LEFT_TF_Y, arrow_left, doom);
@@ -127,6 +118,15 @@ void    draw_images(Uint32 *pixels, t_doom *doom)
 	put_textures(TEX_CE_X, TEX_CE_Y, SECTOR[EDIT.cur_sec].txt_ceiling, doom);
 	put_images(AR_LEFT_TC_X, AR_LEFT_TC_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TC_X, AR_RIGHT_TC_Y, arrow_right, doom);
+	EDIT.sidedef_bar = state;
+}
+
+void	draw_sidedef_images(Uint32 *pixels, t_doom *doom)
+{
+	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
+
+	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
+	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
 
 	if (EDIT.cur_sd >= SECTOR[EDIT.cur_sec].i_sidedefs && EDIT.sidedef_bar == 1)
 	{
@@ -156,7 +156,39 @@ void    draw_images(Uint32 *pixels, t_doom *doom)
 		put_images(AR_LEFT_SC_X, AR_LEFT_SC_Y, arrow_left, doom);
 		put_images(AR_RIGHT_SC_X, AR_RIGHT_SC_Y, arrow_right, doom);
 	}
+}
 
+void	draw_object_images(Uint32 *pixels, t_doom *doom)
+{
+	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
+
+	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
+	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
+
+	put_textures(TEX_S2_X, TEX_S2_Y, LEVEL_SPRITES[EDIT.cur_tex].tex1, doom);
+	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
+	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
+
+	if (EDIT.cur_obj >= SECTOR[EDIT.cur_sec].i_objects && EDIT.object_bar == 1)
+		put_images(DEL_OBJ_X, DEL_OBJ_Y, garbage, doom);
+}
+
+void	draw_map_images(Uint32 *pixels, t_doom *doom)
+{
+	put_images(AR_LEFT_M_X, AR_LEFT_M_Y, arrow_left, doom);
+	put_images(AR_RIGHT_M_X, AR_RIGHT_M_Y, arrow_right, doom);
+	put_images(AR_UP_M_X, AR_UP_M_Y, arrow_down, doom);
+	put_images(AR_DOWN_M_X, AR_DOWN_M_Y, arrow_up, doom);
+}
+
+void    draw_images(Uint32 *pixels, t_doom *doom)
+{
+	draw_sector_images(pixels, doom);
+	draw_map_images(pixels, doom);
+	if (EDIT.sidedef_bar == 1)
+		draw_sidedef_images(pixels, doom);
+	if (EDIT.object_bar == 1)
+		draw_object_images(pixels, doom);
 	put_images(SIDEDEF_BUTTON_X, SIDEDEF_BUTTON_Y, plus, doom);
 	put_images(SECTOR_BUTTON_X, SECTOR_BUTTON_Y, plus, doom);
 }

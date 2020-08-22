@@ -5,9 +5,12 @@ void	change_pos(double x, double y, t_doom *doom)
 {
 	int i;
 	int j;
+	int k;
+	int side;
 
 	i = 0;
 	j = 0;
+	k = 0;
 	while (i <= EDIT.s_len)
 	{
 		SECTOR[i].diff_x += fabs(x);
@@ -21,6 +24,20 @@ void	change_pos(double x, double y, t_doom *doom)
 			SIDEDEF[j].line.end.y += fabs(y);
 			j++;
 		}
+		while (k < SECTOR[i].i_objects \
+		+ SECTOR[i].n_objects)
+		{
+			side = 0;
+			while (side < 4)
+			{
+				OBJECT[k].lines[side].start.x += fabs(x);
+				OBJECT[k].lines[side].end.x += fabs(x);
+				OBJECT[k].lines[side].start.y += fabs(y);
+				OBJECT[k].lines[side].end.y += fabs(y);
+				side++;
+			}
+			k++;
+		}
 		i++;
 	}
 }
@@ -31,6 +48,7 @@ void	coor_pos(t_doom *doom)
 	int		j;
 	double	x;
 	double	y;
+	int		side;
 
 	i = 0;
 	x = 0.0;
@@ -45,6 +63,24 @@ void	coor_pos(t_doom *doom)
 			y = SIDEDEF[i].line.start.y;
 		if (SIDEDEF[i].line.end.y < y)
 			y = SIDEDEF[i].line.end.y;
+		i++;
+	}
+	i = 0;
+	while (i < EDIT.o_len)
+	{
+		side = 0;
+		while (side < 4)
+		{
+			if (OBJECT[i].lines[side].start.x < x)
+				x = OBJECT[i].lines[side].start.x;
+			if (OBJECT[i].lines[side].end.x < x)
+				x = OBJECT[i].lines[side].end.x;
+			if (OBJECT[i].lines[side].start.y < y)
+				y = OBJECT[i].lines[side].start.y;
+			if (OBJECT[i].lines[side].end.y < y)
+				y = OBJECT[i].lines[side].end.y;
+			side++;
+		}
 		i++;
 	}
 	if (x < 0.0 || y < 0.0)
@@ -66,6 +102,27 @@ t_sidedef	*new_level_sidedef(t_doom *doom, t_sidedef *sidedef, int w_len)
 		i++;
 	}
 	return (new);
+}
+
+t_sprite	*new_level_object(t_doom *doom, t_sprite *object, int o_len)
+{
+	t_sprite	*new;
+	int			i;
+
+	if (o_len > 1)
+	{
+		new = (t_sprite*)malloc(sizeof(t_sprite) * o_len);
+		if (new == NULL)
+			doom_exit_failure(doom, MALLOC_ERR);
+		i = 0;
+		while (i < o_len)
+		{
+			new[i] = object[i];
+			i++;
+		}
+		return (new);
+	}
+	return (NULL);
 }
 
 t_sector	*new_level_sector(t_doom *doom, t_sector *sector, int s_len)
@@ -107,15 +164,19 @@ void		add_to_game(t_doom *doom)
 		if (EDIT.pl_x > 0 && EDIT.pl_y > 0)
 		{
 			coor_pos(doom);
-			box_in_sectors(doom); // give these walls a flag so that they are not drawn if the sector is outside
+			box_in_sectors(doom);  // give these walls a flag so that they are not drawn if the sector is outside
 			free(doom->lib.sector); //rm when there are multiple levels		
-			free(doom->lib.sidedef); //rm when there are multiple levels		
+			free(doom->lib.sidedef); //rm when there are multiple levels
+			free(doom->lib.sprites); //rm when there are multiple levels		
 			doom->lib.sector = new_level_sector(doom,\
 				SECTOR, EDIT.s_len + 1);
 			doom->lib.sidedef = new_level_sidedef(doom,\
-				SIDEDEF, EDIT.w_len + 1);				
+				SIDEDEF, EDIT.w_len + 1);
+			doom->lib.sprites = new_level_object(doom,\
+				OBJECT, EDIT.o_len + 1); //wat moet hier in als er geen sprites zijn
+			doom->total_sprites = EDIT.o_len;
 			doom->lib.sector = light_correction(\
-				doom->lib.sector, EDIT.s_len);	
+				doom->lib.sector, EDIT.s_len);
 			doom->pos.x = EDIT.pl_x;
 			doom->pos.y = EDIT.pl_y;
 			doom->i_sector = EDIT.pl_sec;
