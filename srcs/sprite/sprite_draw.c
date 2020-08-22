@@ -127,6 +127,27 @@ void	sprite_light(t_doom *doom, t_sprite sprite, double *light_distance)
 	}
 }
 
+int		extra_stripe_check(t_doom *doom, int stripe, int index_sp, int temp_stripe)
+{
+	double	former_distance;
+	double	curr_distance;
+	int		diff;
+
+	if (stripe < 1 || temp_stripe == -1)
+		return (-1);
+	former_distance = doom->stripe_distance[stripe - 1];
+	curr_distance = doom->stripe_distance[stripe];
+	diff = former_distance - curr_distance;
+	if (diff < 0)
+		diff *= -1;
+	if (doom->stripe_distance[temp_stripe] >\
+	doom->lib.sprites[index_sp].distance && diff < 5)
+	{
+		return (1);
+	}
+	return (-1);
+}
+
 void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		int index_sp)
 {
@@ -139,7 +160,9 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	int			screen_y;
 	t_sprite	sprite; //remove
 	double		light_distance;
+	int			temp_stripe;
 
+	temp_stripe = -1;
 	sprite = doom->lib.sprites[index_sp]; //remove
 	i_sprite = doom->lib.sprites[index_sp].visible;
 	stripe = (int)sprite_begin->x;
@@ -148,8 +171,12 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	while (stripe < (int)sprite_end->x && stripe >= 0 && stripe < WIDTH)
 	{
 		if (doom->stripe_distance[stripe] >\
-		doom->lib.sprites[index_sp].distance)
+		doom->lib.sprites[index_sp].distance ||\
+		extra_stripe_check(doom, stripe, index_sp, temp_stripe) == 1)
 		{
+			if (doom->stripe_distance[stripe] >\
+			doom->lib.sprites[index_sp].distance)
+				temp_stripe = stripe;
 			sprite_light(doom, sprite, &light_distance);
 			screen_y = (int)sprite_begin->y;
 			tex_x = find_x(doom, sprite_begin, sprite_end, index_sp, stripe);
@@ -173,14 +200,14 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 				screen_y++;
 			}
 		}
-		else
-		{
-			if (sprite.action == 9 || sprite.textures[0] == 53)
-			{
-				printf("distance stripe: %f\n", doom->stripe_distance[stripe]);
-				printf("distance sprite: %f\n", doom->lib.sprites[index_sp].distance);
-			}
-		}
+		// else
+		// {
+			// if (sprite.action == 9 || sprite.textures[0] == 53)
+			// {
+			// 	printf("distance stripe: %f\n", doom->stripe_distance[stripe]);
+			// 	printf("distance sprite: %f\n", doom->lib.sprites[index_sp].distance);
+			// }
+		// }
 		stripe++;
 	}
 }
