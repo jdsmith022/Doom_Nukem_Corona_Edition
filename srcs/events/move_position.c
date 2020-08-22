@@ -53,6 +53,8 @@ static void	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	int			collision;
 
 	*sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
+	if (sidedef->action == 2 && point_line_distance(doom->pos, sidedef->line) < 100.0 && doom->own_event.sliding_door == -1)
+		init_sliding_door(doom, sidedef);
 	if (sidedef->action == 6)
 		return ;
 	if (isnan(sidedef->intersect.x) != 0 && isnan(sidedef->intersect.y) != 0 && sidedef->action != 6)
@@ -83,9 +85,6 @@ static void			move_position(t_doom *doom, t_line move, double angle)
 		return ;
 	check_move_sidedef_intersection(doom, move, \
 		doom->i_sector, prev_intersect, &sidedef);
-	if (sidedef.action == 2 && point_distance(sidedef.intersect, \
-	doom->pos, angle) < 20.0)
-		sliding_door(doom, sidedef.id);
 }
 
 void				set_new_position(t_doom *doom, t_event *event, double dt)

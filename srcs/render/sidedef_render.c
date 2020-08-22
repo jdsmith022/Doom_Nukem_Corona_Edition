@@ -23,6 +23,8 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.line = curr_sidedef.line;
 	sidedef.action = curr_sidedef.action;
 	sidedef.prev_sidedef = doom->prev_sidedef;
+	if (sidedef.id == 4)
+		printf("sidedef -- opp: %d -- %f, %f, --- %f, %f\n", sidedef.opp_sector, sidedef.line.start.x, sidedef.line.start.y, sidedef.line.end.x, sidedef.line.end.y);
 	return (sidedef);
 }
 
@@ -83,9 +85,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		distance = sidedef_intersection_distance(ray,\
 			doom->lib.sidedef[x].line, &intersect);
 		if (distance <= min_distance + 0.01 &&\
-			((doom->lib.sidedef[x].opp_sector != prev_sector) ||\
-			(doom->lib.sidedef[x].action == 5 && is_opp_sidedef(doom,\
-			doom->prev_sidedef.id, doom->lib.sidedef[x]) != 0)))
+			doom->lib.sidedef[x].opp_sector != prev_sector)
 		{
 			if (doom->lib.sidedef[x].action == 4 || \
 			doom->lib.sidedef[x].action == 8)
@@ -99,8 +99,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 				min_distance = distance;
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
-				if (doom->lib.sidedef[x].action == 2 && doom->lib.sidedef[x].distance < 100)
-					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
 			near_sidedef.poster = save_poster;
 		}
@@ -110,8 +108,8 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	sprite_check(doom, ray, sector, prev_sector);
 	if (min_distance != INFINITY)
 	{
-		if (near_sidedef.opp_sector != -1 &&\
-		(near_sidedef.opp_sector != prev_sector || near_sidedef.action == 5))
+		if (near_sidedef.opp_sector != -1 && \
+			near_sidedef.opp_sector != prev_sector)
 		{
 			doom->prev_sidedef.id = near_sidedef.id;
 			doom->prev_sidedef.distance = near_sidedef.distance;

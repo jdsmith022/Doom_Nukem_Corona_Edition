@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 
+
 t_point		line_intersection(t_point start1, t_point delta1,
 						t_point start2, t_point delta2)
 {
@@ -34,6 +35,14 @@ t_point		line_delta(t_point start, t_point end)
 	delta.x = end.x - start.x;
 	delta.y = end.y - start.y;
 	return (delta);
+}
+
+double		get_line_angle(t_line line)
+{
+	t_point	delta;
+
+	delta = line_delta(line.start, line.end);
+	return (atan2(delta.y, delta.x));
 }
 
 t_point		check_line_intersection(t_line line1, t_line line2)

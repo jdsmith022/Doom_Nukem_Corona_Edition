@@ -61,6 +61,7 @@ static void		create_sidedef(t_doom *doom, int fd, int len,
 	t_lib		*col_lib;
 	static int	k;
 	static int	wall_int;
+	static int	total_sd_index = 0;
 	int			j;
 
 	col_lib = &doom->lib;
@@ -77,19 +78,22 @@ static void		create_sidedef(t_doom *doom, int fd, int len,
 	while (j < col_lib->sector[i].n_sidedefs)
 	{
 		col_lib->sidedef[k] = wall_inf(fd, i, col_lib->len_tex_lib, len);
-		col_lib->sidedef[k].id = j;
+		col_lib->sidedef[k].id = total_sd_index;
 		if (col_lib->sidedef[k].action == 2 && \
 		col_lib->sidedef[k].opp_sector != -1)
 		{
-			create_mv_sidedef(doom, &col_lib->sidedef, k, col_lib->len_sidedef);
+			create_mv_sidedef(doom, col_lib->sidedef, k, col_lib->len_sidedef);
 			col_lib->len_sidedef++;
 			col_lib->sector[i].n_sidedefs++;
 			k++;
 			j++;
-			col_lib->sidedef[k].id = j;
+			total_sd_index++;
+			col_lib->sidedef[k].id = total_sd_index;
+			printf("move_sidedef action: %d, static action = %d\n", col_lib->sidedef[k].action, col_lib->sidedef[k - 1].action);
 		}
 		k++;
 		j++;
+		total_sd_index++;
 	}
 	wall_int = wall_int + col_lib->sector[i].n_sidedefs;
 }

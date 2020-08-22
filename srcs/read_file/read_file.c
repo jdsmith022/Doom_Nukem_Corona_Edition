@@ -25,6 +25,9 @@ t_sidedef			*save_walls(t_doom *doom, int fd, int *len)
 	get_line(&line, fd,\
 		"the amount of walls is not specified or can not be read", 1);
 	*len = ft_atoi(line);
+	get_line(&line, fd,\
+		"the amount of moving walls is not specified", 1);
+	*len += ft_atoi(line);
 	walls = (t_sidedef*)ft_memalloc(sizeof(t_sidedef) * *len);
 	if (walls == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);

@@ -39,7 +39,6 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 {
 	double		scale;
 	double		diff;
-
 	diff = doom->texture_height - doom->player_height;
 	plane->height_standard = doom->texture_height / \
 		sidedef.distance * doom->dist_to_plane;
@@ -55,6 +54,8 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 {
 	double		scale;
 
+	// if (sidedef.id == 4)
+	// 	printf("in set portal\n");
 	plane->height_standard = \
 		doom->texture_height / sidedef.distance * doom->dist_to_plane;
 	scale = plane->height_standard / doom->texture_height;
