@@ -38,7 +38,8 @@ static void check_spray_sprite(t_doom *doom)
 {
 	if (SPRITES[doom->own_event.virus_hit_index].action == 4)
 		virus_hit(doom);
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 9)
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && \
+    doom->own_event.spray_shopper == FALSE)
 	{
 		doom->own_event.spray_shopper = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
