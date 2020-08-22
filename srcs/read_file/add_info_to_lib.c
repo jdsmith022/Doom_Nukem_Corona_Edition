@@ -76,6 +76,8 @@ static void		create_sidedef(t_doom *doom, int fd, int len,
 	col_lib->sector[i].i_sidedefs = wall_int;
 	while (j < col_lib->sector[i].n_sidedefs)
 	{
+		if (k == col_lib->len_sidedef)
+			error("Incorrect sidedef amount in lvl file", line_num(0));
 		col_lib->sidedef[k] = wall_inf(fd, i, col_lib->len_tex_lib, len);
 		col_lib->sidedef[k].id = j;
 		if (col_lib->sidedef[k].action == 2 && \

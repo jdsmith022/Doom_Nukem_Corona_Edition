@@ -8,7 +8,7 @@ static uint8_t	is_existing_grocery(t_doom *doom, SDL_Surface *curr)
 		return false;
 	if (*(uint8_t *)curr->userdata)
 		return true;
-	else return false;
+	return false;
 }
 
 static uint8_t	get_next_grocery(t_doom *doom, uint8_t *curr_texture)
@@ -32,6 +32,13 @@ void			generate_shopping_list(t_doom *doom)
 	curr_texture = 0;
 	shopping_list_len = doom->groceries->shopping_list_len;
 	SHOPPING_LIST = ft_memalloc(sizeof(t_item) * shopping_list_len);
+	int j = 0;
+	while (j < doom->lib.len_tex_lib)
+	{
+		printf("Type of texture: %d\n", *(int *)TEXTURES[j]->userdata);
+		j++;
+	}
+
 	while (i < shopping_list_len)
 	{
 		SHOPPING_LIST[i].type = get_next_grocery(doom, &curr_texture);
