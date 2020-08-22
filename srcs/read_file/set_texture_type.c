@@ -8,7 +8,7 @@ static bool	is_of_type(const char *path_loaded, t_grocery_paths path)
 	else if (!ft_strcmp(path_loaded, path.path_sprite))
 		return (TRUE);
 	else
-		return (TRUE);
+		return (FALSE);
 }
 
 void		set_texture_type(t_doom *doom, const char *name, SDL_Surface *surface)
