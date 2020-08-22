@@ -72,7 +72,7 @@ static void			font_timer_2(t_doom *doom, t_event *event)
 	doom->lib.sector[doom->i_sector].action == START_SECTOR)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 16, 17);
-	if (doom->lib.font_lib.bools.health_pack == TRUE)
+	else if (doom->lib.font_lib.bools.health_pack == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 21, 22);
 	else if (doom->lib.font_lib.bools.facemask == TRUE)

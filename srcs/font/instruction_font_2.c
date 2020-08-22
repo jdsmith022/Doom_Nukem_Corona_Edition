@@ -3,12 +3,12 @@
 
 static void	set_instruction_text_6(t_doom *doom, t_font *lib)
 {
-	lib[21].str = "Health pack collected. Corona decreased.";
-	lib[21].font_rect.x = WIDTH / 2 - 150;
+	lib[21].str = "Health pack: Corona decreased.";
+	lib[21].font_rect.x = WIDTH / 2 - 130;
 	lib[21].font_rect.y = HEIGHT / 2 + 165;
 	lib[21].font_color = doom->lib.font_lib.font_color.white;
-	lib[22].str = "Face mask collected. Corona decreased.";
-	lib[22].font_rect.x = WIDTH / 2 - 150;
+	lib[22].str = "Face mask: Corona decreased.";
+	lib[22].font_rect.x = WIDTH / 2 - 130;
 	lib[22].font_rect.y = HEIGHT / 2 + 165;
 	lib[22].font_color = doom->lib.font_lib.font_color.white;
 }
