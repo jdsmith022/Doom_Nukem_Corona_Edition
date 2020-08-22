@@ -35,6 +35,7 @@ static void		doom_init_events(t_event *event)
 	event->spray_shopper = FALSE;
 	event->sprite_index = -1;
 	event->toilet_paper = FALSE;
+	event->trolly = FALSE;
 }
 
 static void		init_infection(t_doom *doom)
@@ -52,9 +53,9 @@ static void		init_player(t_doom *doom)
 	// doom->pos.y = 220;
 	// 	doom->pos.x =360; //start in cross
 	// doom->pos.y = 10;
-	doom->player_height = 48;
+	doom->player_height = PLAYER_HEIGHT;
 	doom->player_width = 48;
-	doom->player_std_height = 48;
+	doom->player_std_height = PLAYER_HEIGHT;
 }
 
 static void		init_settings(t_doom *doom)

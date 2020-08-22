@@ -4,10 +4,11 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 					t_sector sector)
 {
 	double dist;
+	double diff;
 
-	dist = (doom->player_std_height + sector.height_ceiling)\
-		/ ((HEIGHT / 2 + doom->player_height)\
-		- (y + doom->own_event.y_pitch));
+	diff = doom->texture_height - doom->player_height;
+	dist = (diff + sector.height_ceiling) / ((HEIGHT / 2) -\
+		(y + doom->own_event.y_pitch));
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - FOV / 2);
 	doom->horizontal_plane_dist = dist;
@@ -39,6 +40,9 @@ void			draw_ceiling(t_doom *doom, int x,
 		index = (y * doom->surface->pitch) + (x * bpp);
 		calculate_ceiling_dist(doom, x, y, sector);
 		light_floor_ceiling(doom, sector, x, y);
+		if (sector.slope_floor_id != -1)
+			put_pixels(doom, index, x, y);
+		else
 		row_calculations(doom, doom->horizontal_plane_dist, index,\
 			doom->lib.tex_lib[tex_dex]);
 		y--;

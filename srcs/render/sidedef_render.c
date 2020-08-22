@@ -90,15 +90,15 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			doom->lib.sidedef[x].action == 8)
 			{
 				doom->i_sidedef = x;
-				save_poster = init_poster(x, distance, intersect,\
-					&doom->lib.sidedef[x]);
+				save_poster = \
+					init_poster(x, distance, intersect, &doom->lib.sidedef[x]);
 			}
 			else
 			{
 				min_distance = distance;
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
-				if (doom->lib.sidedef[x].action == 2)
+				if (doom->lib.sidedef[x].action == 2 && doom->lib.sidedef[x].distance < 100)
 					relocate_moving_wall(&intersect, &near_sidedef, doom, x);
 			}
 			near_sidedef.poster = save_poster;
@@ -106,9 +106,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	// printf("before sprite_check\n");
 	sprite_check(doom, ray, sector, prev_sector);
-	// printf("after sprite_check\n");
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 &&\
@@ -122,11 +120,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
 		}
 		doom->distance = min_distance;
-		if (near_sidedef.poster != -1)
-			relocate_poster(doom, &doom->lib.sidedef[near_sidedef.poster]);
 		project_on_plane(doom, near_sidedef, ray.plane_x);
-		// printf("afer plane\n");
-		// if (sector > 2)
-		// 	find_infection(doom, ray, min_distance);
 	}
 }

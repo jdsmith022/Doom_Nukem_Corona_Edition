@@ -38,11 +38,15 @@
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
-# define PLAYER_HEIGHT 48
+# define PLAYER_HEIGHT 50
 # define MOVE_SPEED 200
 # define SENSITIVITY 0.4
-# define GRAVITY -10
-# define VELOCITY 30
+# define GRAVITY -2
+# define VELOCITY  5
+
+# define RED 1
+# define GREEN 2
+# define BLUE 3
 
 # define Y_CHANGE 1.0 / (float)HEIGHT
 # define X_CHANGE 1.0 / (float)WIDTH
@@ -52,6 +56,8 @@
 # define TEXTURES		doom->lib.tex_lib
 # define SPRITES		doom->lib.sprites
 # define OBJ_LIB		doom->lib.obj_lib
+
+# define STD_TEXT 96
 
 # define OUTSIDE 1
 # define EXIT_LEVEL 2
@@ -173,6 +179,7 @@ typedef struct		s_event {
 	bool			died;
 	int				sanitizer_refills;
 	struct timespec	refill_pause;
+	struct timespec	sprite_timer;
 }					t_event;
 
 typedef struct		s_m_object{
@@ -200,6 +207,7 @@ typedef struct		s_plane
 {
 	t_point			intersect;
 	t_line			line;
+	int				x;
 	int				sidedef_top;
 	int				sidedef_bottom;
 	int				sidedef_height;
@@ -264,17 +272,16 @@ typedef struct		s_sector {
 	int				light;
 	int				slope_floor_id;
 	int				slope_ceiling_id;
-	int				slope_ceiling;
+	double			slope_ceiling;
 	double			slope_floor;
 	int				floor_end;
 	int				ceiling_end;
-	int				height_ceiling;
+	double			height_ceiling;
 	double			height_floor;
 	int				txt_ceiling;
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				plane_x;
 	t_slope			slope;
 	int				sidedef_bottom[WIDTH]; //for cutting sprites
 	int				sidedef_top[WIDTH]; //for clipping sprites
@@ -411,8 +418,7 @@ t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
 void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
-void				add_inf_to_lib(t_doom *doom, t_lib *col_lib,\
-						int len, int fd);
+void				add_inf_to_lib(t_doom *doom, int len, int fd);
 int					get_line(char **line, int fd, char *error, int is_num);
 void				set_texture_type(t_doom *doom, const char *name,\
 						SDL_Surface *surface);
@@ -461,8 +467,11 @@ void				set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 						t_sector opp_sector, t_plane *plane);
 t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom);
-double				set_slope_height(t_doom *doom, t_sidedef sidedef,\
+double				set_slope_height_floor(t_doom *doom, t_sidedef sidedef,\
 						t_sector sector);
+double				set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
+						t_sector sector);
+
 void				wall_offset(t_plane *plane, int sidedef_top);
 void				set_texture_properties(t_doom *doom);
 void				set_floor_limit(t_doom *doom, t_plane *plane,\
@@ -476,7 +485,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				put_portal_pixel(t_doom *doom, t_point pixel);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
@@ -485,6 +494,7 @@ void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+void				put_pixels(t_doom *doom, Uint32 index, int x, int y);
 
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
@@ -496,7 +506,7 @@ void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
 void				draw_poster(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x);
+					int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
@@ -505,6 +515,7 @@ void				add_saturation(char *r, char *g, char *b, double light);
 void				light_sidedef(t_doom *doom, t_sidedef sidedef, int x);
 void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
+void				add_tint_to_color(Uint32 *color, int tint);
 
 double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);

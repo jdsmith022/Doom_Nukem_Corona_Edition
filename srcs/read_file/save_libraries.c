@@ -1,5 +1,17 @@
 #include "../../includes/doom.h"
 
+static void		reset_sidedef_ids(t_lib *lib)
+{
+	int		index;
+
+	index = 0;
+	while (index < lib->len_sidedef)
+	{
+		lib->sidedef[index].id = index;
+		index++;
+	}
+}
+
 int			open_file(char *filename)
 {
 	int		fd;
@@ -16,7 +28,7 @@ static void		modified(void)
 {
 	struct stat filestat;
 
-	stat("srcs/read_file/start_skybox_test", &filestat);
+	stat("srcs/read_file/start_skybox_full", &filestat);
 	// stat("srcs/read_file/the_cross-2", &filestat);
 	printf("%s", ctime(&filestat.st_mtime));
 	/* turn on and add the last modified date before handing in*/
@@ -31,7 +43,7 @@ void		save_libraries(t_doom *doom)
 	// if (argc != 1)
 	//     error("Please compile program in this fashion: ./duke_nukem", 0);
 	modified();
-	fd = open_file("srcs/read_file/start_skybox");
+	fd = open_file("srcs/read_file/start_skybox_full");
 	EDIT.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
@@ -39,6 +51,7 @@ void		save_libraries(t_doom *doom)
 	doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
 	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
 	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
-	add_inf_to_lib(doom, &doom->lib, doom->lib.n_sectors, fd);
+	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
+	reset_sidedef_ids(&doom->lib);
 	close(fd);
 }

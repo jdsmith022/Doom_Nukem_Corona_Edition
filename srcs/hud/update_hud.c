@@ -96,8 +96,8 @@ void		update_hud(t_doom *doom)
 	if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 	{
 		draw_hud_top_bar(doom);
-		if (doom->own_event.scissor_lift == TRUE || doom->own_event.shoot == TRUE)
-			draw_player_adds(doom);
+		// if (doom->own_event.scissor_lift == TRUE || doom->own_event.shoot == TRUE)
+		draw_player_adds(doom);
 		draw_hud_bottom_bar(doom);
 		draw_hud_side_bar(doom);
 		if (calculate_hud_levels(doom) == 1)

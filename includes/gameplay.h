@@ -75,7 +75,6 @@ void					get_game_over_info(t_doom *doom);
 **						Shooting
 */
 
-void					shooting(t_doom *doom);
-void					check_hit(t_doom *doom, t_ray ray, int sector, \
-						int prev_sector);
+void					check_sprite_hit(t_doom *doom);
+void					check_select_spray_sprite(t_doom *doom);
 #endif

@@ -35,11 +35,17 @@ void				game_loop(t_doom *doom)
 	double			dt;
 
 	last_frame_time = 0;
-	dt = 0.05; //leave for marin but remove before handing in
+	// dt = 0.05; //leave for marin but remove before handing in
 	while (doom->is_running == TRUE) // eventually only message bus will be in this loop. with SDL_UpdateWindowSurface and ft_bzero
 	{
+		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			// printf("before timer\n");
 		timer(doom);
+		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			// printf("after timer\n");
 		dt = get_timeframe(&last_frame_time);
+		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
+			// printf("after get time frame\n");
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
 			// printf("sprite\n");
@@ -62,6 +68,7 @@ void				game_loop(t_doom *doom)
 		// printf("set\n");
 
 		set_to_window(doom);
+		// printf("after set to window\n");
 	}
 	doom_exit_success(doom);
 }

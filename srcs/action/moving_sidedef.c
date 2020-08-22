@@ -1,12 +1,14 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-void		create_mv_sidedef(t_sidedef **sidedef, int k, int len)
+void		create_mv_sidedef(t_doom *doom, t_sidedef **sidedef, int k, int len)
 {
 	t_sidedef	*new_sidedef;
 	int			i;
 
-	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len + 1));
+	new_sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * (len));
+	if (new_sidedef == NULL)
+		doom_exit_failure(doom, "error: creating mv sidedef");
 	i = 0;
 	while (i <= k)
 	{
@@ -19,13 +21,15 @@ void		create_mv_sidedef(t_sidedef **sidedef, int k, int len)
 	new_sidedef[i].line.end.x = sidedef[0][i - 1].line.start.x;
 	new_sidedef[i].line.end.y = sidedef[0][i - 1].line.start.y;
 	new_sidedef[i].opp_sector = sidedef[0][i - 1].opp_sector;
-	new_sidedef[i].opp_sidedef = sidedef[0][i - 1].opp_sidedef;
+	// new_sidedef[i].opp_sidedef = sidedef[0][i - 1].opp_sidedef;
 	new_sidedef[i].action = 0;
 	new_sidedef[i - 1].opp_sector = -1;
-	new_sidedef[i - 1].opp_sidedef = -1;
+	// new_sidedef[i - 1].opp_sidedef = -1;
 	// new_sidedef[i - 1].action = 0;
+	// new_sidedef->opp_sector = sidedef[k]->opp_sector;
 	free(*sidedef);
 	*sidedef = new_sidedef;
+	printf("sidedef move id: %d ----\n", sidedef[0][i].opp_sector);
 }
 
 static void		init_door(t_doom *doom, int *len, int **mv_sd,
@@ -104,21 +108,28 @@ void		sliding_door(t_doom *doom, int sd_index_add)
 	int			i;
 
 	if (sd_index_add != -1)
+	{
+		// printf("init\n");
 		init_door(doom, &len, &mv_sd, sd_index_add);
+	}
 	else
 	{
 		i = 0;
 		while (i < len)
 		{
+			// printf("in while\n");
 			if (mv_sd[i] != -1)
 			{
 				calc_mv(&doom->lib.sidedef[mv_sd[i]],\
 					&doom->lib.sidedef[mv_sd[i] + 1], 1);
 				if ((int)doom->lib.sidedef[mv_sd[i]].line.end.x ==\
-					(int)doom->lib.sidedef[mv_sd[i]].line.start.x && \
-					(int)doom->lib.sidedef[mv_sd[i]].line.end.y == \
-					(int)doom->lib.sidedef[mv_sd[i]].line.start.y)
+				(int)doom->lib.sidedef[mv_sd[i]].line.start.x && \
+				(int)doom->lib.sidedef[mv_sd[i]].line.end.y == \
+				(int)doom->lib.sidedef[mv_sd[i]].line.start.y)
+				{
 					mv_sd[i] = -1;
+					// printf("iff is true\n");
+				}
 			}
 			i++;
 		}
