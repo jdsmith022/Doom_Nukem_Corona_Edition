@@ -3,6 +3,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 #include "../../includes/action.h"
+#include "../../includes/sprites.h"
 
 static void		set_to_window(t_doom *doom)
 {

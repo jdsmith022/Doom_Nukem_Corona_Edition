@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 void		find_face_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 {

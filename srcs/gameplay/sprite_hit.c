@@ -1,27 +1,8 @@
-# include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
-# include "../../includes/hud.h"
-# include "../../includes/font.h"
-
-void		add_mist_to_sanitizer(t_doom *doom)
-{
-	int				diff;
-
-	diff = 0;
-	if (doom->own_event.mist == TRUE)
-	{
-		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
-		doom->own_event.mist = FALSE;
-	}
-	else
-	{
-		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
-		if (diff == 0)
-		{
-			draw_add_on(doom, SPRAYING_HAND);
-		}
-	}
-}
+#include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
+#include "../../includes/hud.h"
+#include "../../includes/font.h"
+#include "../../includes/sprites.h"
 
 /*
 **		timer for letting red virus disappear after 5 seconds
@@ -49,8 +30,7 @@ void		remove_red_virus(t_doom *doom)
 	}
 }
 
-
-int		virus_in_shooting_area(t_doom *doom, int sprite_i)
+static int		virus_in_shooting_area(t_doom *doom, int sprite_i)
 {
 	if (MOUSE_X >= (int)SPRITES[sprite_i].sprite_begin.x &&\
 	MOUSE_X <= (int)SPRITES[sprite_i].sprite_begin.x + \
@@ -62,8 +42,8 @@ int		virus_in_shooting_area(t_doom *doom, int sprite_i)
 	return (-1);
 }
 
-int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
-			int prev_sector)
+static int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
+					int prev_sector)
 {
 	int			i;
 	t_point		ray_delta;
@@ -89,7 +69,8 @@ int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 	return (-1);
 }
 
-int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
+int				find_virus(t_doom *doom, t_ray ray, int sector,
+					int prev_sector)
 {
 	int		sprite_hit;
 	int		i;
@@ -122,7 +103,8 @@ int		find_virus(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	return (sprite_hit);
 }
 
-static void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
+static void		check_hit(t_doom *doom, t_ray ray, int sector,
+					int prev_sector)
 {
 	t_point		isect;
 	int			temp_x;
@@ -163,7 +145,7 @@ static void		check_hit(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		check_hit(doom, ray, SIDEDEFS[temp_x].opp_sector, sector);
 }
 
-void    check_sprite_hit(t_doom *doom)
+void			check_sprite_hit(t_doom *doom)
 {
     t_ray   ray;
 

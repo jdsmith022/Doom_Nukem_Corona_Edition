@@ -1,8 +1,9 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
-#include "../../includes/gameplay.h"
+#include "../../includes/sprites.h"
 
- void		scale_bar(t_doom *doom, t_point *bar_begin, t_point *bar_end, int i)
+void		scale_bar(t_doom *doom, t_point *bar_begin,
+					t_point *bar_end, int i)
 {
 	double	bar_height;
 	double	bar_width;
@@ -28,7 +29,7 @@
 }
 
 static int		find_x_bar(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
-		int stripe, int i_sprite)
+					int stripe, int i_sprite)
 {
 	int		tex_x;
 	double	width;
@@ -54,8 +55,8 @@ static int		find_x_bar(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,
 	return (tex_x);
 }
 
-static int		find_y_bar(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
-		int screen_y, int i_sprite)
+static int		find_y_bar(t_doom *doom, t_point *sprite_begin, \
+                    t_point *sprite_end, int screen_y, int i_sprite)
 {
 	int		tex_y;
 	double	height;
@@ -71,7 +72,7 @@ static int		find_y_bar(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,
 	return (tex_y);
 }
 
-static void		draw_stripes_bar(t_doom *doom, t_point bar_begin,
+void		    draw_stripes_bar(t_doom *doom, t_point bar_begin,
 					t_point bar_end, int i_sprite)
 {
 	Uint32		index;
@@ -101,52 +102,5 @@ static void		draw_stripes_bar(t_doom *doom, t_point bar_begin,
 			screen_y++;
 		}
 		stripe++;
-	}
-}
-
-void		draw_add_on(t_doom *doom, int sprite_i)
-{
-	t_point bar_begin;
-	t_point	bar_end;
-
-	scale_bar(doom, &bar_begin, &bar_end, sprite_i);
-	if (sprite_i == RIGHT_SELECT)
-	{
-		bar_begin.x += 450;
-		bar_end.x += 450;
-	}
-	if (sprite_i == CROSS_HAIR)
-	{
-		bar_begin.y = HEIGHT / 2 - 20;
-		bar_end.y = HEIGHT / 2 + 20;
-	}
-	draw_stripes_bar(doom, bar_begin, bar_end, sprite_i);
-}
-
-void		draw_player_adds(t_doom *doom)
-{
-	size_t	sprite_i;
-
-	if (doom->own_event.scissor_lift == TRUE)
-	{
-		sprite_i = SCISSOR;
-		draw_add_on(doom, sprite_i);
-	}
-	if (doom->own_event.shoot == TRUE)
-	{
-		add_mist_to_sanitizer(doom);
-		sprite_i = SPRAY_HAND;
-		draw_add_on(doom, sprite_i);
-		draw_add_on(doom, 76);
-	}
-	else if (doom->own_event.select == TRUE)
-	{
-		//there was an if mouse pressed before
-		if (doom->own_event.hold_x <= WIDTH / 2)
-			sprite_i = LEFT_SELECT;
-		else
-			sprite_i = RIGHT_SELECT;
-		draw_add_on(doom, sprite_i);
-		draw_add_on(doom, CROSS_HAIR);
 	}
 }

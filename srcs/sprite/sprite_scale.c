@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 int			find_virus_bottom(t_doom *doom, t_sprite *sprite, int virus_bottom, int virus_top)
 {

@@ -43,7 +43,8 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				printing_map init_game
 AUDIO_FILES = audio audio_init playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
-				sprite_sort sprite_reset sprite_action sprite_draw2
+				sprite_sort sprite_reset sprite_action sprite_hud_draw \
+				sprite_hud_scale
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui add_infection \
 				 position gameplay game_over timer sprite_hit \
@@ -97,7 +98,7 @@ O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
 
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h \
 		includes/font.h  includes/textures.h includes/menu.h includes/hud.h \
-		includes/action.h
+		includes/action.h includes/sprites.h
 ADD_FILES = Makefile textures
 
 all: $(NAME)

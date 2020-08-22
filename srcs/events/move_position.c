@@ -1,6 +1,7 @@
   
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
+#include "../../includes/sprites.h"
 
 static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 				t_line move)

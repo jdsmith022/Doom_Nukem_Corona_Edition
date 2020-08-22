@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 void		sprite_reset(t_doom *doom)
 {

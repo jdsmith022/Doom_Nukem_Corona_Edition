@@ -2,6 +2,7 @@
 # define SPRITES_H
 
 #include <stdlib.h>
+#include "doom.h"
 
 # define SCISSOR_LIFT 7
 # define SHOPPER 9
@@ -61,5 +62,28 @@ static const	t_level_sprite level_sprites[] = {
 	{HEALTH_PACK, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM, 15, 15, 15, 15, NO_BLOCK, SMALL, 2},
 	{CORONA, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM, 19, 19, 19, 19, NO_BLOCK, SMALL, 4},
 };
+
+/*sprite functions*/
+void				sprite_init(t_doom *doom);
+void				sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector);
+void				sprite_render(t_doom *doom);
+int					*sort_sprite_array(t_sprite *sprite, int visible_sprites, int total_sprites);
+void				find_position(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index);
+void				draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, int index_sp);
+void				sprite_reset(t_doom *doom);
+void				scale_sprite(t_doom *doom, t_point *sprite_begin, t_point *sprite_end, t_sprite *sprite);
+t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
+int					sprite_collision(t_doom *doom, t_line movement);
+void				exit_scissor_lift(t_doom *doom);
+// void				draw_scissor_lift_bar(t_doom *doom);
+// void				draw_spraying_hand(t_doom *doom);
+void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i, double distance);
+void				remove_red_virus(t_doom *doom);
+void				draw_player_adds(t_doom *doom);
+// void    			shoot(t_doom *doom);
+void		  		draw_stripes_bar(t_doom *doom, t_point bar_begin,
+						t_point bar_end, int i_sprite);
+void				scale_bar(t_doom *doom, t_point *bar_begin,
+						t_point *bar_end, int i);
 
 #endif

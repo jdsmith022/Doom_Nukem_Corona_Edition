@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 /*
 **	Some sectors get ignored when there is a corner and the sprite is

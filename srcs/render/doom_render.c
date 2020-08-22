@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 double			clamp_angle(double angle)
 {

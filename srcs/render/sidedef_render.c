@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
+#include "../../includes/sprites.h"
 
 t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)

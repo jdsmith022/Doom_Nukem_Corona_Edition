@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/menu.h"
+# include "../../includes/sprites.h"
 
 static void	draw_hud_top_bar(t_doom *doom)
 {
@@ -103,8 +104,6 @@ void		update_hud(t_doom *doom)
 		if (calculate_hud_levels(doom) == 1)
 			update_hud_levels(doom, doom->lib.font_lib.hud_font);
 		update_hud_levels(doom, doom->lib.font_lib.hud_font);
-		if (doom->own_event.virus_red_i != -1)
-			remove_red_virus(doom);
 		if (doom->menu->start_timer == TRUE)
 			update_timer(doom, doom->lib.font_lib.hud_font);
 		update_list_and_basket(doom);

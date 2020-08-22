@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 void		init_sprite_order_array(t_sprite *sprite, int *order,\
 			int visible_sprites, int total_sprites)

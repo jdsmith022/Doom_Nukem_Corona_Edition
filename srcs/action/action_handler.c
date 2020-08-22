@@ -2,6 +2,7 @@
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
+# include "../../includes/sprites.h"
 
 static void	shoot_action(t_doom *doom)
 {
@@ -43,4 +44,6 @@ void	action_handler(t_doom *doom)
 	shoot_action(doom);
 	if (doom->own_event.fall == TRUE)
 		player_fall(doom);
+	if (doom->own_event.virus_red_i != -1)
+		remove_red_virus(doom);
 }
