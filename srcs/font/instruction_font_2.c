@@ -6,9 +6,9 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[15].str = "Press E again to exit collection mode.";
 	lib[15].font_rect.x = WIDTH / 2 - 150;
 	lib[15].font_rect.y = HEIGHT / 2 + 60;
-	lib[15].font_color = doom->lib.font_lib.font_color.black;
-	lib[16].str = "Please collect a shopping cart.";
-	lib[16].font_rect.x = WIDTH / 2 - 125;
+	lib[15].font_color = doom->lib.font_lib.font_color.white;
+	lib[16].str = "Keep Safe! Please collect a basket.";
+	lib[16].font_rect.x = WIDTH / 2 - 150;
 	lib[16].font_rect.y = HEIGHT / 2 + 15;
 	lib[16].font_color = doom->lib.font_lib.font_color.red;
 	lib[17].str = "Make sure you're read to checkout!";
@@ -40,11 +40,11 @@ void	set_instruction_text_4(t_doom *doom, t_font *lib)
 	to spray sanitizer.";
 	lib[11].font_rect.x = WIDTH / 7.5;
 	lib[11].font_rect.y = HEIGHT / 2 - 50;
-	lib[11].font_color = doom->lib.font_lib.font_color.black;
+	lib[11].font_color = doom->lib.font_lib.font_color.white;
 	lib[12].str = "Press R again to exit spray mode.";
 	lib[12].font_rect.x = WIDTH / 2 - 145;
 	lib[12].font_rect.y = HEIGHT / 2 - 25;
-	lib[12].font_color = doom->lib.font_lib.font_color.black;
+	lib[12].font_color = doom->lib.font_lib.font_color.white;
 	lib[13].str = "Don't worry! You can fill santizer at refill stations,\
 	but don't be greedy!";
 	lib[13].font_rect.x = WIDTH / 2 - 300;
@@ -54,6 +54,6 @@ void	set_instruction_text_4(t_doom *doom, t_font *lib)
 	click to collect item.";
 	lib[14].font_rect.x = WIDTH / 7.5;
 	lib[14].font_rect.y = HEIGHT / 2 + 35;
-	lib[14].font_color = doom->lib.font_lib.font_color.black;
+	lib[14].font_color = doom->lib.font_lib.font_color.white;
 	set_instruction_text_5(doom, lib);
 }

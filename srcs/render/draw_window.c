@@ -13,7 +13,7 @@ static void		put_window_pixel(t_doom *doom, t_point pixel, Uint32 tex_dex,
 	if (textures[pixel_dex] == (char)255 && \
 	textures[pixel_dex + 1] == (char)255 &&\
 	textures[pixel_dex + 2] == (char)255)
-		put_portal_pixel(doom, pixel, BLUE);
+		put_portal_pixel(doom, pixel, BLUE, 0xFF);
 	else
 		put_texture(doom, tex_dex, index, pixel_dex);
 }

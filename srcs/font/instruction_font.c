@@ -24,11 +24,11 @@ static void	set_instruction_text_2(t_doom *doom, t_font *lib)
 	Left = A				Right = D";
 	lib[4].font_rect.x = WIDTH / 2 - 220;
 	lib[4].font_rect.y = HEIGHT / 2 - 20;
-	lib[4].font_color = doom->lib.font_lib.font_color.black;
+	lib[4].font_color = doom->lib.font_lib.font_color.white;
 	lib[5].str = "UP = up arrow key				DOWN = down arrow key";
 	lib[5].font_rect.x = WIDTH / 2 - 180;
 	lib[5].font_rect.y = HEIGHT / 2 + 5;
-	lib[5].font_color = doom->lib.font_lib.font_color.black;
+	lib[5].font_color = doom->lib.font_lib.font_color.white;
 	lib[6].str = "Exit = Return scissor lift to lowest level and press X.";
 	lib[6].font_rect.x = WIDTH / 2 - 200;
 	lib[6].font_rect.y = HEIGHT / 2 + 27;
@@ -53,11 +53,11 @@ static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
 	Left = A				Right = D";
 	lib[1].font_rect.x = WIDTH / 2 - 210;
 	lib[1].font_rect.y = HEIGHT / 2 - 8;
-	lib[1].font_color = doom->lib.font_lib.font_color.black;
+	lib[1].font_color = doom->lib.font_lib.font_color.white;
 	lib[2].str = "Jump = Spacebar					Bend = X";
 	lib[2].font_rect.x = WIDTH / 2 - 120;
 	lib[2].font_rect.y = HEIGHT / 2 + 20;
-	lib[2].font_color = doom->lib.font_lib.font_color.black;
+	lib[2].font_color = doom->lib.font_lib.font_color.white;
 	set_instruction_text_2(doom, lib);
 	set_instruction_text_4(doom, lib);
 }

@@ -20,6 +20,7 @@ void		print_instruction_background(t_doom *doom,
 				t_limit limit_x, t_limit limit_y)
 {
 	Uint32	*pixels;
+	Uint32	color;
 	int		x;
 	int		y;
 
@@ -30,9 +31,11 @@ void		print_instruction_background(t_doom *doom,
 		y = limit_y.x;
 		while (y < limit_y.y)
 		{
+			color = pixels[(y * WIDTH) + x];
+			add_tint_to_color(&color, BLUE, 0X6B);
 			if (x >= limit_x.x && x <= limit_x.y && \
 			y >= limit_y.x && y <= limit_y.y)
-				pixels[(y * WIDTH + x)] = 0xEFEFEF;
+				pixels[(y * WIDTH + x)] = color;
 			y++;
 		}
 		x++;

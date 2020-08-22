@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-void			put_portal_pixel(t_doom *doom, t_point pixel, int tint)
+void			put_portal_pixel(t_doom *doom, t_point pixel, int tint, int mask)
 {
 	Uint32	*pixels;
 	Uint32	color;
@@ -8,7 +8,7 @@ void			put_portal_pixel(t_doom *doom, t_point pixel, int tint)
 	pixels = doom->surface->pixels;
 	color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
 	if (tint != 0)
-		add_tint_to_color(&color, tint);
+		add_tint_to_color(&color, tint, mask);
 	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
 		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
 }
@@ -65,7 +65,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 			doom->distance = pixel.y > HEIGHT / 2 ?\
 			doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		if (pixel.y < plane.mid_texture_bottom)
-			put_portal_pixel(doom, pixel, 0);
+			put_portal_pixel(doom, pixel, 0, 0XFF);
 		if (pixel.y < plane.mid_texture_top ||\
 		pixel.y > plane.mid_texture_bottom)
 			find_texture_index(doom, pixel, plane, sidedef);

@@ -485,7 +485,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				put_portal_pixel(t_doom *doom, t_point pixel, int tint);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, int mask);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
@@ -515,7 +515,7 @@ void				add_saturation(char *r, char *g, char *b, double light);
 void				light_sidedef(t_doom *doom, t_sidedef sidedef, int x);
 void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
-void				add_tint_to_color(Uint32 *color, int tint);
+void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
 double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);
