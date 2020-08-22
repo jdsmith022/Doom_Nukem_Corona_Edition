@@ -74,6 +74,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
+	doom->stripe_distance[(int)ray.plane_x] = INFINITY;
 	if (doom->lib.sector[sector].action == OUTSIDE)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
 	save_poster = -1;
@@ -97,6 +98,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			else
 			{
 				min_distance = distance;
+				doom->stripe_distance[(int)ray.plane_x] = min_distance; //changed
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
 				if (doom->lib.sidedef[x].action == 2 && doom->lib.sidedef[x].distance < 100)
@@ -106,7 +108,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		}
 		x++;
 	}
-	doom->stripe_distance[(int)ray.plane_x] = min_distance;
+	// doom->stripe_distance[(int)ray.plane_x] = min_distance;
 	sprite_check(doom, ray, sector, prev_sector);
 	if (min_distance != INFINITY)
 	{

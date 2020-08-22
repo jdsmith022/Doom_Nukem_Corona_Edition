@@ -173,6 +173,14 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 				screen_y++;
 			}
 		}
+		else
+		{
+			if (sprite.action == 9 || sprite.textures[0] == 53)
+			{
+				printf("distance stripe: %f\n", doom->stripe_distance[stripe]);
+				printf("distance sprite: %f\n", doom->lib.sprites[index_sp].distance);
+			}
+		}
 		stripe++;
 	}
 }
