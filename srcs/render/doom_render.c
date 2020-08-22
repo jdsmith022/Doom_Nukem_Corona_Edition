@@ -34,6 +34,7 @@ void	doom_render(t_doom *doom)
 	ray.line.start = doom->pos;
 	ray.filter = 0;
 	doom->visible_sprites = 0;
+	SDL_FillRect(doom->surface, NULL,  0x000000);
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);

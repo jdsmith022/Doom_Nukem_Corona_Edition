@@ -401,7 +401,7 @@ assets/sprites/player/cross_hairs.bmp
 
 #box around sector1
 #sidedefs0 //back of box
-1
+-1
 96
 384
 96
@@ -437,7 +437,7 @@ assets/sprites/player/cross_hairs.bmp
 2
 
 #sidedefs3 sliding sidedef
--1
+1
 116
 192
 176
@@ -923,7 +923,7 @@ assets/sprites/player/cross_hairs.bmp
 14
 0
 -1
-8
+7
 2
 1
 3
@@ -1000,18 +1000,6 @@ assets/sprites/player/cross_hairs.bmp
 15
 22
 
-#sidedefs23
--1
-0
-96
-192
-0
-0
-15
-15
-15
-23
-
 ##Sanitizer Refill##
 #poster
 -1
@@ -1024,7 +1012,6 @@ assets/sprites/player/cross_hairs.bmp
 11
 11
 24
-
 
 #OBJECTS IN SECTOR 1
 #object0 in sector1 virus

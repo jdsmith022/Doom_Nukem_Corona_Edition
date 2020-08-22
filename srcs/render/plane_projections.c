@@ -71,6 +71,8 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 
 	plane.x = x;
 	set_properties_plane(doom, sidedef, &plane, &sector);
+	//if (plane.sidedef_bottom == HEIGHT && plane.sidedef_top == 0)
+	//	printf("%d\n", sidedef.id);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	if (sidedef.action == 6)

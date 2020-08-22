@@ -404,7 +404,7 @@ void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int index);
 void				save_libraries(t_doom *doom);
 void				add_inf_to_lib(t_doom *doom, int len, int fd);
-void				create_mv_sidedef(t_doom *doom, t_sidedef *sidedef, int i, int len);
+void				create_mv_sidedef(t_doom *doom, t_sidedef *sidedef, int i);
 int					get_line(char **line, int fd, char *error, int is_num);
 void				set_texture_type(t_doom *doom, const char *name,\
 						SDL_Surface *surface);

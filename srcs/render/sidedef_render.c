@@ -23,8 +23,6 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	sidedef.line = curr_sidedef.line;
 	sidedef.action = curr_sidedef.action;
 	sidedef.prev_sidedef = doom->prev_sidedef;
-	if (sidedef.id == 4)
-		printf("sidedef -- opp: %d -- %f, %f, --- %f, %f\n", sidedef.opp_sector, sidedef.line.start.x, sidedef.line.start.y, sidedef.line.end.x, sidedef.line.end.y);
 	return (sidedef);
 }
 

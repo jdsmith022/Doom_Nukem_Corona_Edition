@@ -1,17 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-void		create_mv_sidedef(t_doom *doom, t_sidedef *sidedef, int i, int len)
-{
-	printf("in create mv_sidedef: id = %d\n", i);
-	sidedef[i + 1].line.start.x = -1;
-	sidedef[i + 1].line.start.y = -1;
-	sidedef[i + 1].line.end.x = -1;
-	sidedef[i + 1].line.end.y = -1;
-	sidedef[i + 1].opp_sector = sidedef[i].opp_sector;
-	sidedef[i].opp_sector = -1;
-	sidedef[i + 1].action = 0;
-}
 
 void	render_sliding_door(t_doom *doom, t_sidedef *sidedef)
 {
@@ -24,7 +13,6 @@ void	render_sliding_door(t_doom *doom, t_sidedef *sidedef)
 	doom->lib.sidedef[sidedef->id + 1].line.end.y = sidedef->line.start.y + 1 * sin(line_angle);
 	ft_memmove(&sidedef->line.start.x, &doom->lib.sidedef[sidedef->id + 1].line.end.x, sizeof(double));
 	ft_memmove(&sidedef->line.start.y, &doom->lib.sidedef[sidedef->id + 1].line.end.y, sizeof(double));
-	printf("sidedef: %f -- %f --%d   portal: %f -- %f --- %d\n", sidedef->line.start.x, sidedef->line.start.y, sidedef->id, doom->lib.sidedef[sidedef->id + 1].line.end.x, doom->lib.sidedef[sidedef->id + 1].line.end.y, doom->lib.sidedef[sidedef->id + 1].id);
 	if (sidedef->line.end.x == doom->lib.sidedef[sidedef->id + 1].line.end.x && sidedef->line.end.y == doom->lib.sidedef[sidedef->id + 1].line.end.y)
 	{
 		doom->own_event.sliding_door = -1;
@@ -32,22 +20,30 @@ void	render_sliding_door(t_doom *doom, t_sidedef *sidedef)
 		sidedef->line.start.y = -1;
 		sidedef->line.end.x = -1;
 		sidedef->line.end.y = -1;
+		sidedef->action = 0;
 	}
-	// printf("portal line: %f -- %f, %f -- %f\n",portal->line.start.x, portal->line.start.y, portal->line.end.x, portal->line.end.y);
-	// printf("door line: %f -- %f, %f -- %f\n", sidedef->line.start.x, sidedef->line.start.y, sidedef->line.end.x, sidedef->line.end.y);
 }
 
 void	init_sliding_door(t_doom *doom, t_sidedef *sidedef)
 {
-	doom->lib.sidedef[sidedef->id + 1].opp_sector = sidedef->opp_sector;
-	sidedef->opp_sector = -1;
-	doom->lib.sidedef[sidedef->id + 1].action = 0;
 	doom->lib.sidedef[sidedef->id + 1].line.start = sidedef->line.start;
 	doom->lib.sidedef[sidedef->id + 1].line.end = sidedef->line.start;
 	sidedef->angle = get_line_angle(sidedef->line);
 	doom->own_event.sliding_door = sidedef->id;
 }
 
+void		create_mv_sidedef(t_doom *doom, t_sidedef *sidedef, int i)
+{
+	sidedef[i].id = i;
+	sidedef[i].line.start.x = -1;
+	sidedef[i].line.start.y = -1;
+	sidedef[i].line.end.x = -1;
+	sidedef[i].line.end.y = -1;
+	sidedef[i].opp_sector = sidedef[i - 1].opp_sector;
+	sidedef[i - 1].opp_sector = -1;
+	sidedef[i].action = 0;
+	sidedef[i].sector = sidedef[i - 1].sector;
+}
 
 
 
