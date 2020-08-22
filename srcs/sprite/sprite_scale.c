@@ -131,6 +131,58 @@ double		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite, t_sector sector)
 	// return (sidedef_bottom);
 // }
 
+void		offset_sprite(t_doom *doom, t_point *sprite_begin,\
+			t_point *sprite_end, t_sprite *sprite)
+{
+	int		size;
+	int		size_left;
+	int		size_right;
+	int		width_left;
+	int		width_right;
+
+	if (sprite->action == 9 || sprite->action == 7)
+		size = 20;
+	else
+		size = 10;
+	printf("size: %d\n", size);
+	printf("sprite_x: %f\n", sprite->sprite_x);
+	if (sprite->offset_x < 0)
+	{
+		//middle is left
+		printf("middle is left\n");
+		size_left = (size / 2) + (sprite->offset_x * -1);
+		size_right = size - size_left;
+	}
+	else if (sprite->offset_x > 0)
+	{
+		//middle is right
+		printf("middle is right\n");
+		size_right = (size / 2) + (sprite->offset_x);
+		size_left = size - size_right;
+	}
+	else
+	{
+		//sprite_x is middle, width_right and width_left are equal
+		printf("middle is middle\n");
+		size_right = size / 2;
+		size_left = size / 2;
+	}
+	printf("size_left: %d, size_right: %d\n", size_left, size_right);
+	width_left = ((double)size_left / size) * sprite->width;
+	width_right = ((double)size_right / size) * sprite->width;
+	printf("width: %f, width_left: %d, width_right: %d\n", sprite->width, width_left, width_right);
+	sprite_end->x = sprite->sprite_x + width_right;
+	sprite_begin->x = sprite->sprite_x - width_left;
+	printf("begin_x: %f, end_x: %f\n", sprite_begin->x, sprite_end->x);
+	if (sprite_begin->x < 0)
+		sprite_begin->x = 0;
+	if (sprite_end->x > WIDTH)
+		sprite_end->x = WIDTH - 1;
+	sprite->sprite_begin.x = sprite_begin->x;
+	sprite->sprite_begin.y = sprite_begin->y;
+	printf("begin_x: %f, end_x: %f\n", sprite->sprite_begin.x, sprite_end->x);
+}
+
 void		scale_sprite(t_doom *doom, t_point *sprite_begin,\
 			t_point *sprite_end, t_sprite *sprite)
 {
@@ -145,14 +197,18 @@ void		scale_sprite(t_doom *doom, t_point *sprite_begin,\
 	h = doom->lib.obj_lib[sprite->visible]->h;
 	w = doom->lib.obj_lib[sprite->visible]->w;
 	sprite->width = (sprite->height / h) * w;
-	width_right = sprite->sprite_x / WIDTH * sprite->width;
-	width_left = sprite->width - width_right;
-	sprite_end->x = sprite->sprite_x + width_right;
-	sprite_begin->x = sprite->sprite_x - width_left;
-	if (sprite_begin->x < 0)
-		sprite_begin->x = 0;
-	if (sprite_end->x > WIDTH)
-		sprite_end->x = WIDTH - 1;
-	sprite->sprite_begin.x = sprite_begin->x;
-	sprite->sprite_begin.y = sprite_begin->y;
+	printf("begin offset sprite\n");
+	offset_sprite(doom, sprite_begin, sprite_end, sprite);
+	printf("end offset sprite\n");
+
+	// width_right = sprite->sprite_x / WIDTH * sprite->width;
+	// width_left = sprite->width - width_right;
+	// sprite_end->x = sprite->sprite_x + width_right;
+	// sprite_begin->x = sprite->sprite_x - width_left;
+	// if (sprite_begin->x < 0)
+	// 	sprite_begin->x = 0;
+	// if (sprite_end->x > WIDTH)
+	// 	sprite_end->x = WIDTH - 1;
+	// sprite->sprite_begin.x = sprite_begin->x;
+	// sprite->sprite_begin.y = sprite_begin->y;
 }

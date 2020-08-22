@@ -102,6 +102,7 @@ typedef struct			s_sprite {
 	int					amount;			//which side is viewed how many textures does the sprite have?
 	t_point				pos;
 	t_point				sprite_begin;
+	// int					sprite_end_x;
 	double				size;			//products: 16, shopper: 48
 	t_line				*lines;
 	// double				angle;			//GEBRUIK IK NIET what is the angle on the map
