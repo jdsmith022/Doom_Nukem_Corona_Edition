@@ -42,7 +42,7 @@
 # define MOVE_SPEED 200
 # define SENSITIVITY 0.4
 # define GRAVITY -2
-# define VELOCITY  5
+# define VELOCITY  10
 
 # define RED 1
 # define GREEN 2

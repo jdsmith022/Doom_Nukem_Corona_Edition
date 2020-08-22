@@ -10,8 +10,10 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		event->move_pos_b == TRUE || event->move_pos_r == TRUE ||\
 		event->move_pos_l == TRUE))
 		set_new_position(doom, event, dt);
-	if (event->jump == TRUE && event->scissor_lift == FALSE)
+	if (event->jump == TRUE && event->scissor_lift == FALSE && event->fall == FALSE)
 		jump_player(doom, dt);
+	if (event->fall == TRUE && event->jump == TRUE)
+		get_up(doom, dt);
 	if (event->step_down == TRUE && event->fall == FALSE)
 		step_down(doom, dt);
 	if ((event->bend == TRUE && event->scissor_lift == FALSE) || \

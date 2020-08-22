@@ -37,25 +37,26 @@ void	step_down(t_doom *doom, double dt)
 	}
 }
 
-void	jump_player_2(t_doom *doom, double dt, \
-			int jumpheight)
+void	jump_player(t_doom *doom, double dt)
 {
 	static double	duration = 0.5;
 	double			og_height;
 	int				height_floor;
 	int				height_ceiling;
+	int				jump_height;
 
 	doom->own_event.jump = TRUE;
 	height_floor = doom->lib.sector[doom->i_sector].height_floor;
 	height_ceiling = doom->lib.sector[doom->i_sector].height_ceiling;
 	duration += dt;
 	og_height = PLAYER_HEIGHT + height_floor;
-	jumpheight = (int)(doom->own_event.velocity * duration);
-	doom->player_height += jumpheight;
+	jump_height = (int)(doom->own_event.velocity * duration);
+	if (((doom->player_height + jump_height) < (doom->texture_height - \
+	(height_ceiling + height_floor)) && \
+	((doom->player_height + jump_height) > height_floor)))
+		doom->player_height += jump_height;
 	doom->own_event.velocity += GRAVITY * duration;
-	if ((doom->player_height <= og_height  && \
-	jumpheight <= 0) || (doom->player_height > \
-	(doom->texture_height - (height_ceiling + height_floor))))
+	if (doom->player_height <= og_height)
 	{
 		doom->own_event.velocity = VELOCITY;
 		doom->player_height = og_height;
@@ -64,24 +65,22 @@ void	jump_player_2(t_doom *doom, double dt, \
 	}
 }
 
-void	jump_player(t_doom *doom, double dt)
+void	get_up(t_doom *doom, double dt)
 {
-	t_sidedef		sidedef;
+	int				height_floor;
+	int				height_ceiling;
 	static double	duration = 0.1;
-	int				jumpheight;
+	int				jump_height;
 
-	sidedef = doom->lib.sidedef[doom->i_sidedef];
-	if (sidedef.action == 6)
-		return ;
-	if (doom->own_event.fall == TRUE)
-	{
-		jumpheight = \
-			(int)(doom->own_event.velocity * duration) + (PLAYER_HEIGHT - 20);
-		doom->player_height += jumpheight;
-		doom->own_event.fall = FALSE;
-		doom->own_event.y_pitch = 0;
-		doom->own_event.fall_count = 0;
-		return ;
-	}
-	jump_player_2(doom, dt, jumpheight);
+	jump_height = \
+		(int)(doom->own_event.velocity * duration) + (PLAYER_HEIGHT - 20);
+	height_floor = doom->lib.sector[doom->i_sector].height_floor;
+	height_ceiling = doom->lib.sector[doom->i_sector].height_ceiling;
+	if (((doom->player_height + jump_height) < (doom->texture_height - \
+	(height_ceiling + height_floor)) && \
+	((doom->player_height + jump_height) > height_floor)))
+		doom->player_height += jump_height;
+	doom->own_event.fall = FALSE;
+	doom->own_event.y_pitch = 0;
+	doom->own_event.fall_count = 0;
 }

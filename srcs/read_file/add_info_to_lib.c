@@ -77,6 +77,7 @@ static void		create_sidedef(t_doom *doom, int fd, int len,
 	while (j < col_lib->sector[i].n_sidedefs)
 	{
 		col_lib->sidedef[k] = wall_inf(fd, i, col_lib->len_tex_lib, len);
+		col_lib->sidedef[k].id = j;
 		if (col_lib->sidedef[k].action == 2 && \
 		col_lib->sidedef[k].opp_sector != -1)
 		{
@@ -85,6 +86,7 @@ static void		create_sidedef(t_doom *doom, int fd, int len,
 			col_lib->sector[i].n_sidedefs++;
 			k++;
 			j++;
+			col_lib->sidedef[k].id = j;
 		}
 		k++;
 		j++;

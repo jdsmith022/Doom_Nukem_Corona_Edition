@@ -22,6 +22,7 @@ void				scissor_lift_up(t_doom *doom);
 void				scissor_lift_down(t_doom *doom);
 void				player_fall(t_doom *doom);
 void				jump_player(t_doom *doom, double dt);
+void				get_up(t_doom *doom, double dt);
 void				step_down(t_doom *doom, double dt);
 void				bend_down(t_doom *doom);
 void				sanitizer_refill(t_doom *doom);
