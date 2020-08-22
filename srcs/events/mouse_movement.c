@@ -16,13 +16,13 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 
 	if (doom->own_event.scissor_lift == TRUE)
 	{
-		limit_pos = 300;
+		limit_pos = 400;
 		limit_neg = 50;
 	}
 	else
 	{
-		limit_pos = 300;
-		limit_neg = -300;
+		limit_pos = 350;
+		limit_neg = -350;
 	}
 	event->y_pitch = event->y_pitch > limit_pos ? limit_pos : event->y_pitch;
 	event->y_pitch = event->y_pitch < limit_neg ? limit_neg : event->y_pitch;

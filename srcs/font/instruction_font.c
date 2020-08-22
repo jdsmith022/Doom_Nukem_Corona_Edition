@@ -32,7 +32,7 @@ static void	set_instruction_text_2(t_doom *doom, t_font *lib)
 	lib[6].str = "Exit = Return scissor lift to lowest level and press X.";
 	lib[6].font_rect.x = WIDTH / 2 - 200;
 	lib[6].font_rect.y = HEIGHT / 2 + 27;
-	lib[6].font_color = doom->lib.font_lib.font_color.black;
+	lib[6].font_color = doom->lib.font_lib.font_color.white;
 	lib[7].str = "You're too close to the wall! Move and try again.";
 	lib[7].font_rect.x = WIDTH / 2 - 200;
 	lib[7].font_rect.y = HEIGHT / 2;
