@@ -37,6 +37,8 @@ typedef struct		s_bools
 	bool			scissor_lift;
 	bool			trolly;
 	bool			troll_text;
+	bool			facemask;
+	bool			health_pack;
 }					t_bools;
 
 typedef struct		s_font_lib

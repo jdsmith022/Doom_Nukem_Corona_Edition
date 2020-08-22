@@ -36,12 +36,10 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 		sidedef = doom->lib.sidedef[x];
 		sidedef.intersect = check_line_intersection(move, sidedef.line);
 		if (((isnan(sidedef.intersect.x) == 0 && \
-			isnan(sidedef.intersect.y) == 0)) && \
-			((sidedef.intersect.x != prev_intersect.x && \
-			sidedef.intersect.y != prev_intersect.y)))
-			{
-				return (sidedef);
-			}
+		isnan(sidedef.intersect.y) == 0)) && \
+		((sidedef.intersect.x != prev_intersect.x && \
+		sidedef.intersect.y != prev_intersect.y)))
+			return (sidedef);
 		x++;
 	}
 	sidedef.intersect.x = NAN;
@@ -52,15 +50,11 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 static void	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	int sector, t_point prev_intersect, t_sidedef *sidedef)
 {
-	// t_sidedef	sidedef;
 	int			collision;
 
 	*sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
-	//printf("sidedef id: %d action: %d\n", sidedef->id, sidedef->action);
-	if (sidedef->action == 6) //want to stop collision on window
-	{
+	if (sidedef->action == 6)
 		return ;
-	}
 	if (isnan(sidedef->intersect.x) != 0 && isnan(sidedef->intersect.y) != 0 && sidedef->action != 6)
 	{
 		doom->i_sector = sector;
@@ -76,7 +70,6 @@ static void	check_move_sidedef_intersection(t_doom *doom, t_line move, \
 			check_move_sidedef_intersection(doom, move, sector, prev_intersect, sidedef);
 		}
 	}
-	// return (sidedef);
 }
 
 static void			move_position(t_doom *doom, t_line move, double angle)
@@ -91,12 +84,8 @@ static void			move_position(t_doom *doom, t_line move, double angle)
 	check_move_sidedef_intersection(doom, move, \
 		doom->i_sector, prev_intersect, &sidedef);
 	if (sidedef.action == 2 && point_distance(sidedef.intersect, \
-		doom->pos, angle) < 20.0)
-		{
-			printf("sliding door\n");
-			sliding_door(doom, sidedef.id);
-
-		}
+	doom->pos, angle) < 20.0)
+		sliding_door(doom, sidedef.id);
 }
 
 void				set_new_position(t_doom *doom, t_event *event, double dt)

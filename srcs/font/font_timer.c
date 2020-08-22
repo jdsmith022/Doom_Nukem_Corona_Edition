@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
+#include "../../includes/hud.h"
 
 static void		font_timer_box_short(t_doom *doom, bool *flag,
 					int start_dex, int end_dex)
@@ -71,6 +72,12 @@ static void			font_timer_2(t_doom *doom, t_event *event)
 	doom->lib.sector[doom->i_sector].action == START_SECTOR)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 16, 17);
+	if (doom->lib.font_lib.bools.health_pack == TRUE)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 21, 22);
+	else if (doom->lib.font_lib.bools.facemask == TRUE)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 22, 23);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
 	{

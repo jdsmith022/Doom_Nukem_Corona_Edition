@@ -1,15 +1,27 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
+static void	set_instruction_text_6(t_doom *doom, t_font *lib)
+{
+	lib[21].str = "Health pack collected. Corona decreased.";
+	lib[21].font_rect.x = WIDTH / 2 - 150;
+	lib[21].font_rect.y = HEIGHT / 2 + 165;
+	lib[21].font_color = doom->lib.font_lib.font_color.white;
+	lib[22].str = "Face mask collected. Corona decreased.";
+	lib[22].font_rect.x = WIDTH / 2 - 150;
+	lib[22].font_rect.y = HEIGHT / 2 + 165;
+	lib[22].font_color = doom->lib.font_lib.font_color.white;
+}
+
 static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 {
 	lib[15].str = "Press E again to exit collection mode.";
-	lib[15].font_rect.x = WIDTH / 2 - 150;
+	lib[15].font_rect.x = WIDTH / 2 - 175;
 	lib[15].font_rect.y = HEIGHT / 2 + 60;
 	lib[15].font_color = doom->lib.font_lib.font_color.white;
 	lib[16].str = "Keep Safe! Please collect a basket.";
 	lib[16].font_rect.x = WIDTH / 2 - 150;
-	lib[16].font_rect.y = HEIGHT / 2 + 15;
+	lib[16].font_rect.y = HEIGHT / 2 + 165;
 	lib[16].font_color = doom->lib.font_lib.font_color.red;
 	lib[17].str = "Make sure you're read to checkout!";
 	lib[17].font_rect.x = WIDTH / 2 - 115;
@@ -17,16 +29,17 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[17].font_color = doom->lib.font_lib.font_color.red;
 	lib[18].str = "HEY! Don't shoot at me brat!";
 	lib[18].font_rect.x = WIDTH / 2 - 125;
-	lib[18].font_rect.y = HEIGHT / 2 + 15;
+	lib[18].font_rect.y = HEIGHT / 2 + 165;
 	lib[18].font_color = doom->lib.font_lib.font_color.red;
 	lib[19].str = "Oh thank you! Now I'm clean!";
 	lib[19].font_rect.x = WIDTH / 2 - 130;
-	lib[19].font_rect.y = HEIGHT / 2 + 15;
+	lib[19].font_rect.y = HEIGHT / 2 + 165;
 	lib[19].font_color = doom->lib.font_lib.font_color.blue;
 	lib[20].str = "Rude! I'm getting the manager!";
 	lib[20].font_rect.x = WIDTH / 2 - 135;
-	lib[20].font_rect.y = HEIGHT / 2 + 15;
+	lib[20].font_rect.y = HEIGHT / 2 + 165;
 	lib[20].font_color = doom->lib.font_lib.font_color.red;
+	set_instruction_text_6(doom, lib);
 }
 
 void	set_instruction_text_4(t_doom *doom, t_font *lib)

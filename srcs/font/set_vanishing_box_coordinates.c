@@ -12,8 +12,8 @@ void			set_background_coords_middle_narrow(t_doom *doom)
 {
 	doom->lib.font_lib.limit_x.x = WIDTH / 2 - 160;
 	doom->lib.font_lib.limit_x.y = WIDTH / 2 + 160;
-	doom->lib.font_lib.limit_y.x = HEIGHT / 2;
-	doom->lib.font_lib.limit_y.y = HEIGHT / 2 + 50;
+	doom->lib.font_lib.limit_y.x = HEIGHT / 2 + 150;
+	doom->lib.font_lib.limit_y.y = HEIGHT / 2 + 200;
 }
 
 void			set_background_coords_middle_small(t_doom *doom)

@@ -108,22 +108,31 @@ static void	check_sprite_distance(t_doom *doom, int index)
 		else if (doom->lib.sprites[index].action == 1)
 		{
 			doom->hud->health_pack_plus = TRUE;
+			doom->lib.font_lib.bools.text = TRUE;
+			doom->lib.font_lib.bools.health_pack = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
 		else if (doom->lib.sprites[index].action == 2)
 		{
 			doom->hud->health_pack = TRUE;
+			doom->lib.font_lib.bools.text = TRUE;
+			doom->lib.font_lib.bools.health_pack = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
 		else if (doom->lib.sprites[index].action == 3)
 		{
 			doom->hud->facemask = TRUE;
+			doom->lib.font_lib.bools.text = TRUE;
+			doom->lib.font_lib.bools.facemask = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
-		else if (doom->lib.sprites[index].action == 10  && doom->own_event.scissor_lift == FALSE)
+		else if (doom->lib.sprites[index].action == 10)
 		{
-			doom->lib.sprites[index].action = 8;
-			doom->own_event.fall = TRUE;
+			if (doom->own_event.scissor_lift == FALSE)
+			{
+				doom->lib.sprites[index].action = 8;
+				doom->own_event.fall = TRUE;
+			}
 		}
 		else if (doom->lib.sprites[index].action == 11)
 		{

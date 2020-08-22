@@ -9,7 +9,7 @@
 **		eventually you could send a function as parameter
 **		if you put this function in a different file take font.h with you
 */
-void		remove_red_virus(t_doom *doom)
+void			remove_red_virus(t_doom *doom)
 {
 	int				diff;
 
@@ -30,7 +30,7 @@ void		remove_red_virus(t_doom *doom)
 	}
 }
 
-static int		virus_in_shooting_area(t_doom *doom, int sprite_i)
+static int		sprite_in_shooting_area(t_doom *doom, int sprite_i)
 {
 	if (MOUSE_X >= (int)SPRITES[sprite_i].sprite_begin.x &&\
 	MOUSE_X <= (int)SPRITES[sprite_i].sprite_begin.x + \
@@ -42,7 +42,7 @@ static int		virus_in_shooting_area(t_doom *doom, int sprite_i)
 	return (-1);
 }
 
-static int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
+static int		sprite_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 					int prev_sector)
 {
 	int			i;
@@ -60,7 +60,7 @@ static int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 		SPRITES[sprite_i].lines[i].start, sprite_delta);
 		if (isnan(intersect.x) && isnan(intersect.y))
 		{
-			if (virus_in_shooting_area(doom, sprite_i) == -1)
+			if (sprite_in_shooting_area(doom, sprite_i) == -1)
 				return (-1);
 			return (sprite_i);
 		}
@@ -69,13 +69,13 @@ static int		virus_in_range(t_doom *doom, t_ray ray, int sprite_i,\
 	return (-1);
 }
 
-int				find_virus(t_doom *doom, t_ray ray, int sector,
+static int		find_sprite(t_doom *doom, t_ray ray, int sector,
 					int prev_sector)
 {
 	int		sprite_hit;
 	int		i;
 	int		sprite_i;
-	int		temp_virus;
+	int		temp_sprite;
 	double	current_dist_sprite;
 
 	sprite_hit = doom->own_event.virus_hit_index;
@@ -83,7 +83,7 @@ int				find_virus(t_doom *doom, t_ray ray, int sector,
 		current_dist_sprite = INFINITY;
 	else
 		current_dist_sprite = SPRITES[sprite_hit].distance;
-	temp_virus = -1;
+	temp_sprite = -1;
 	i = 0;
 	sprite_i = SECTORS[sector].i_objects;
 	while (i < SECTORS[sector].n_objects)
@@ -91,11 +91,11 @@ int				find_virus(t_doom *doom, t_ray ray, int sector,
 		if (SPRITES[sprite_i].action == 4 || SPRITES[sprite_i].action == 9 \
 		|| SPRITES[sprite_i].action == 13 || SPRITES[sprite_i].action == 11\
 		|| SPRITES[sprite_i].action == 12)
-			temp_virus = virus_in_range(doom, ray, sprite_i, prev_sector);
-		if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
+			temp_sprite = sprite_in_range(doom, ray, sprite_i, prev_sector);
+		if (temp_sprite != -1 && SPRITES[temp_sprite].distance < current_dist_sprite)
 		{
-			current_dist_sprite = SPRITES[temp_virus].distance;
-			sprite_hit = temp_virus;
+			current_dist_sprite = SPRITES[temp_sprite].distance;
+			sprite_hit = temp_sprite;
 		}
 		i++;
 		sprite_i++;
@@ -111,15 +111,15 @@ static void		check_hit(t_doom *doom, t_ray ray, int sector,
 	int			x;
 	double		dist;
 	double		min_dist;
-	int			hit_virus;
+	int			hit_sprite;
 	double		current_dist_sprite;
-	int			temp_virus;
+	int			temp_sprite;
 
 	temp_x = -1; //I need to set it to something otherwise it segfaults
-	temp_virus = -1;
-	hit_virus = doom->own_event.virus_hit_index;
-	if (hit_virus != -1)
-		current_dist_sprite = SPRITES[hit_virus].distance;
+	temp_sprite = -1;
+	hit_sprite = doom->own_event.virus_hit_index;
+	if (hit_sprite != -1)
+		current_dist_sprite = SPRITES[hit_sprite].distance;
 	else
 		current_dist_sprite = INFINITY;
 	x = SECTORS[sector].i_sidedefs;
@@ -134,11 +134,11 @@ static void		check_hit(t_doom *doom, t_ray ray, int sector,
 		}
 		x++;
 	}
-	temp_virus = find_virus(doom, ray, sector, prev_sector);
-	if (temp_virus != -1 && SPRITES[temp_virus].distance < current_dist_sprite)
+	temp_sprite = find_sprite(doom, ray, sector, prev_sector);
+	if (temp_sprite != -1 && SPRITES[temp_sprite].distance < current_dist_sprite)
 	{
-		current_dist_sprite = SPRITES[temp_virus].distance;
-		doom->own_event.virus_hit_index = temp_virus;
+		current_dist_sprite = SPRITES[temp_sprite].distance;
+		doom->own_event.virus_hit_index = temp_sprite;
 	}
 	if (temp_x != -1 && SIDEDEFS[temp_x].opp_sector != -1 && \
 	SIDEDEFS[temp_x].opp_sector != prev_sector)
