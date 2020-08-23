@@ -2,7 +2,7 @@
 #include "../../includes/textures.h"
 #include "../../includes/read.h"
 
-void			bmp_safe_exit(t_doom *doom, t_bmp *images)
+void				bmp_safe_exit(t_doom *doom, t_bmp *images)
 {
 	doom_exit_lib_failure(images, MALLOC_ERR);
 	doom_exit_failure(doom, "error: bmp reader");
