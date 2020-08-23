@@ -2,6 +2,12 @@
 #include "../../includes/textures.h"
 #include "../../includes/read.h"
 
+static void			bmp_safe_exit(t_doom *doom, t_bmp *images)
+{
+	doom_exit_lib_failure(images, MALLOC_ERR);
+	doom_exit_failure(doom, "error: bmp reader");
+}
+
 static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 						int map_fd, int len)
 {
@@ -18,13 +24,10 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 		get_line(&line, map_fd, "not enough texture names", 0);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
-		{
-			printf("%s ", line); //make ft_printf or remove
-			doom_exit_failure(doom, "Error: image path not found\n");
-		}
+			bmp_safe_exit(doom, images);
 		images[index] = read_bmp(fd);
 		if (images == NULL)
-			doom_exit_failure(doom, "error: bmp reader");
+			bmp_safe_exit(doom, images);
 		save_bpm_to_sdl(doom, images, lib, index);
 		set_texture_type(doom, line, lib[index]);
 		free(line);
@@ -51,6 +54,5 @@ SDL_Surface			**save_textures(t_doom *doom, int map_fd, int *len)
 	get_line(&line, map_fd,\
 		"the amount of textures is not specified or can not be read", 1);
 	*len = ft_atoi(line);
-	// free(line);
 	return (read_from_line(doom, line, map_fd, *len));
 }
