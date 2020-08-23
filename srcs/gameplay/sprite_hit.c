@@ -147,10 +147,11 @@ static void		check_hit(t_doom *doom, t_ray ray, int sector,
 
 void			check_sprite_hit(t_doom *doom)
 {
-    t_ray   ray;
+	t_ray   ray;
 
-    ray = init_ray(doom, MOUSE_X);
-    check_hit(doom, ray, doom->i_sector, doom->i_sector);
+	ray = init_ray(doom, MOUSE_X);
+	doom->own_event.virus_hit_index = -1;
+	check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index != -1)
 		check_select_spray_sprite(doom);
 	else

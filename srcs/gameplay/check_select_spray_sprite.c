@@ -35,10 +35,7 @@ static void	virus_hit(t_doom *doom)
 static void check_spray_sprite(t_doom *doom)
 {
 	if (SPRITES[doom->own_event.virus_hit_index].action == 4)
-	{
 		virus_hit(doom);
-		doom->own_event.spray_shopper = FALSE;
-	}
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && \
 	SPRITES[doom->own_event.virus_hit_index].distance < 50.0)
 	{

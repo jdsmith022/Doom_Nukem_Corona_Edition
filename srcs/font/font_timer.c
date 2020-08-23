@@ -68,6 +68,9 @@ static void			font_timer_2(t_doom *doom, t_event *event)
 	set_background_coords_middle_narrow(doom);
 	if (event->spray_shopper == TRUE)
 		shopper_hit_random_font(doom);
+	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.checkout, 17, 18);
 	else if (doom->lib.font_lib.bools.trolly == TRUE && \
 	doom->lib.sector[doom->i_sector].action == START_SECTOR)
 		font_timer_box_short(doom, \
@@ -108,9 +111,6 @@ void				font_timer(t_doom *doom)
 	else if (event->fall == TRUE && event->fall_count == -1)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
-	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
-		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.checkout, 17, 18);
 	else
 		font_timer_2(doom, event);
 }
