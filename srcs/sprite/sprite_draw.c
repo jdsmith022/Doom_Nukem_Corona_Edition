@@ -152,15 +152,15 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		if (doom->stripe_distance[stripe] >\
 		doom->lib.sprites[index_sp].distance)
 		{
-			if (sprite.action == 9)
-			{
-				printf("doom->pos: (%f ; %f) Op stripe: %d ", doom->pos.x, doom->pos.y, stripe);
-				printf("smallest distance: %f ", doom->stripe_distance[stripe]);
-				printf("to sidedef: %d ", doom->sidedef_info[stripe]);
-				printf("(%f ; %f) - (%f ; %f) ", doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.y, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.y);
-				printf("sprite distance: %f en %f (%f ; %f)\n", sprite.distance, sprite.distance_side, sprite.pos.x, sprite.pos.y);
-				sprite_light(doom, sprite, &light_distance);
-			}
+			// if (sprite.action == 9)
+			// {
+			// 	printf("doom->pos: (%f ; %f) Op stripe: %d ", doom->pos.x, doom->pos.y, stripe);
+			// 	printf("smallest distance: %f ", doom->stripe_distance[stripe]);
+			// 	printf("to sidedef: %d ", doom->sidedef_info[stripe]);
+			// 	printf("(%f ; %f) - (%f ; %f) ", doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.y, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.y);
+			// 	printf("sprite distance: %f en %f (%f ; %f)\n", sprite.distance, sprite.distance_side, sprite.pos.x, sprite.pos.y);
+			// }
+			sprite_light(doom, sprite, &light_distance);
 			screen_y = (int)sprite_begin->y;
 			tex_x = find_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 			while (screen_y < (int)sprite_end->y && screen_y < HEIGHT &&\
@@ -183,17 +183,17 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 				screen_y++;
 			}
 		}
-		else
-		{
-			if (sprite.action == 9)
-			{
-				printf("Edoom->pos: (%f ; %f) Op stripe: %d ", doom->pos.x, doom->pos.y, stripe);
-				printf("E smallest distance: %f ", doom->stripe_distance[stripe]);
-				printf("E to sidedef: %d ", doom->sidedef_info[stripe]);
-				printf("(%f ; %f) - (%f ; %f) ", doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.y, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.y);
-				printf("sprite distance: %f en %f (%f, %f)\n", sprite.distance, sprite.distance_side, sprite.pos.x, sprite.pos.y);
-			}
-		}
+		// else
+		// {
+			// if (sprite.action == 9)
+			// {
+			// 	printf("Edoom->pos: (%f ; %f) Op stripe: %d ", doom->pos.x, doom->pos.y, stripe);
+			// 	printf("E smallest distance: %f ", doom->stripe_distance[stripe]);
+			// 	printf("E to sidedef: %d ", doom->sidedef_info[stripe]);
+			// 	printf("(%f ; %f) - (%f ; %f) ", doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.start.y, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.x, doom->lib.sidedef[doom->sidedef_info[stripe]].line.end.y);
+			// 	printf("sprite distance: %f en %f (%f, %f)\n", sprite.distance, sprite.distance_side, sprite.pos.x, sprite.pos.y);
+			// }
+		// }
 		stripe++;
 	}
 }

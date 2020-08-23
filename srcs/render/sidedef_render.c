@@ -10,7 +10,7 @@ t_sidedef	set_properties_sidedef(t_point intersect, double distance,
 	set_texture_properties(doom);
 	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.distance = distance;
-	sidedef.distance = point_distance(intersect, doom->pos, doom->ray_angle);
+	// sidedef.distance = point_distance(intersect, doom->pos, doom->ray_angle);
 	sidedef.line.start = curr_sidedef.line.start;
 	sidedef.line.end = curr_sidedef.line.end;
 	sidedef.sector = curr_sidedef.sector;
@@ -62,6 +62,22 @@ double				sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
+double				sidedef_intersection_distance2(t_doom *doom, t_ray ray,
+						t_line line, t_point *intersect)
+{
+	double		distance;
+	t_point		ray_delta;
+	t_point		sidedef_delta;
+
+	ray_delta = line_delta(doom->pos, ray.line.end);
+	sidedef_delta = line_delta(line.start, line.end);
+	*intersect = line_intersection(doom->pos, ray_delta,\
+		line.start, sidedef_delta);
+	distance = point_distance(*intersect, doom->pos, ray.angle);
+	// distance = points_distance(*intersect, doom->pos);
+	return (distance);
+}
+
 void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
@@ -81,7 +97,9 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
-		distance = sidedef_intersection_distance(ray,\
+		// distance = sidedef_intersection_distance(ray,\
+			doom->lib.sidedef[x].line, &intersect);
+		distance = sidedef_intersection_distance2(doom, ray,\
 			doom->lib.sidedef[x].line, &intersect);
 		if (distance <= min_distance + 0.01 &&\
 			((doom->lib.sidedef[x].opp_sector != prev_sector) ||\
@@ -98,14 +116,17 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			else
 			{
 				min_distance = distance;
-				if (doom->lib.sidedef[x].id == 113)
-					printf("pos - %f, %f | intersect == %f, %f, -- dis: %f\n", doom->pos.x, doom->pos.y, intersect.x, intersect.y, distance);
 				// if (doom->lib.sidedef[x].opp_sector == -1)
 				// {
 
-					// doom->stripe_distance[(int)ray.plane_x] = points_distance(ray.line.start, intersect); //changed
 					doom->stripe_distance[(int)ray.plane_x] = min_distance; //changed
-					doom->sidedef_info[(int)ray.plane_x] = x;
+					doom->sidedef_info[(int)ray.plane_x] = x; //remove
+				// }
+				// if (doom->lib.sidedef[x].id == 113)
+				// {
+					// printf("pos - %f, %f | intersect == %f, %f, -- dis: %f\n", doom->pos.x, doom->pos.y, intersect.x, intersect.y, distance);
+					// printf("distance: %f\n", points_distance(intersect, doom->pos));
+					// doom->stripe_distance[(int)ray.plane_x] = points_distance(doom->pos, intersect); //changed
 				// }
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
