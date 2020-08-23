@@ -55,6 +55,8 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	Uint32	*pixels;
 	t_point	pixel;
 
+	// if (sidedef.id == 4)
+	// 	printf("draw protal\n");
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
@@ -68,7 +70,11 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 			put_portal_pixel(doom, pixel, 0, 0XFF);
 		if (pixel.y < plane.mid_texture_top ||\
 		pixel.y > plane.mid_texture_bottom)
+		{
+			// if (sidedef.id == 3)
+			// 	printf("whhy here\n");
 			find_texture_index(doom, pixel, plane, sidedef);
+		}
 		pixel.y++;
 	}
 }
@@ -79,6 +85,8 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	t_point	pixel;
 	char	*pixels;
 
+	// if (sidedef.id == 4)
+	// 	printf("draw oneside\n");
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	light_sidedef(doom, sidedef, x);

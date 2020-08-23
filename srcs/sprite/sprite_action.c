@@ -165,7 +165,7 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 			{
-				printf("sprite_is_touched\n");
+				//printf("sprite_is_touched\n");
 				return (1);
 			}
 		}

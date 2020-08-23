@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
 
 static void	add_texture_sect(t_sector *sector, int safe, int i, int tex_len)
 {

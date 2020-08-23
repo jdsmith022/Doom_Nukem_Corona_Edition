@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
 
 static t_line		*init_sky_sd(t_doom *doom)
 {

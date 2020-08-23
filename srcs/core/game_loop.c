@@ -49,6 +49,7 @@ void				game_loop(t_doom *doom)
 			// printf("after get time frame\n");
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
+			// printf("updated\n");
 			// printf("sprite\n");
 			sprite_reset(doom);
 			// printf("render\n");
@@ -62,7 +63,6 @@ void				game_loop(t_doom *doom)
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
-		// printf("updated\n");
 		doom_update(doom, dt);
 		// printf("hud\n");
 		update_hud_ui(doom);

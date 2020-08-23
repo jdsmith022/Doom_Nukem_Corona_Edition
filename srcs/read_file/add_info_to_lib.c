@@ -1,7 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
-
-#include <stdio.h> //remove before handing in
+#include "../../includes/read.h"
 
 static void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite,
 					char *line, int i, int safe)
@@ -18,7 +17,6 @@ static void		add_inf_to_m_obj(t_doom *doom, t_m_object *sprite,
 	{
 		sprite->amount = safe;
 		sprite->textures = (int*)malloc(sizeof(int) * safe);
-		// sprite->face_ang = (int*)malloc(sizeof(int) * safe);
 		if (sprite->textures == NULL)
 			doom_exit_failure(doom, MALLOC_ERR);
 	}
@@ -55,54 +53,15 @@ static t_m_object	mov_object_inf(t_doom *doom, int fd, int sector)
 	return (m_sprite);
 }
 
-static void		create_sidedef(t_doom *doom, int fd, int len,
-					int i)
-{
-	t_lib		*col_lib;
-	static int	k;
-	static int	wall_int;
-	int			j;
-
-	col_lib = &doom->lib;
-	if (!k)
-	{
-		k = 0;
-		wall_int = 0;
-	}
-	else
-		wall_int = wall_int + col_lib->sector[i].i_sidedefs;
-	j = 0;
-	col_lib->sector[i] = sector_inf(fd, col_lib->len_tex_lib);
-	col_lib->sector[i].i_sidedefs = wall_int;
-	while (j < col_lib->sector[i].n_sidedefs)
-	{
-		if (k == col_lib->len_sidedef)
-			error("Incorrect sidedef amount in lvl file", line_num(0));
-		col_lib->sidedef[k] = wall_inf(fd, i, col_lib->len_tex_lib, len);
-		col_lib->sidedef[k].id = j;
-		if (col_lib->sidedef[k].action == 2 && \
-		col_lib->sidedef[k].opp_sector != -1)
-		{
-			create_mv_sidedef(doom, &col_lib->sidedef, k, col_lib->len_sidedef);
-			col_lib->len_sidedef++;
-			col_lib->sector[i].n_sidedefs++;
-			k++;
-			j++;
-			col_lib->sidedef[k].id = j;
-		}
-		k++;
-		j++;
-	}
-	wall_int = wall_int + col_lib->sector[i].n_sidedefs;
-}
-
-static void		create_object(t_lib *col_lib, int fd, int i,
+static void		create_object(t_doom *doom, int fd, int i,
 					int total_sprites)
 {
+	t_lib		*col_lib;
 	static int	l;
 	static int	obj_int;
 	int			j;
 
+	col_lib = &doom->lib;
 	if (!l)
 	{
 		l = 0;
@@ -110,21 +69,16 @@ static void		create_object(t_lib *col_lib, int fd, int i,
 	}
 	col_lib->sector[i].i_objects = obj_int;
 	j = 0;
-
-	// printf("n_objects: %d\n", col_lib->sector[i].n_objects);
 	while (j < col_lib->sector[i].n_objects)
 	{
 		col_lib->sprites[l] = object_inf(fd, i, col_lib->len_obj_lib);
-		// col_lib->sprites[l] = object_inf(fd, i, col_lib->sector[i].n_objects);
 		l++;
 		j++;
 	}
 	obj_int = obj_int + j;
 	if (obj_int > total_sprites)
-	{
-		printf("obj_int: %d, total_sprite: %d\n", obj_int, total_sprites);
-		exit_with_error("Error: number of objects in file is incorrect\n");
-	}
+		doom_exit_failure(doom, \
+			"error: number of objects in file is incorrect\n");
 }
 
 void		add_inf_to_lib(t_doom *doom, int len, int fd)
@@ -139,13 +93,13 @@ void		add_inf_to_lib(t_doom *doom, int len, int fd)
 	while (i < len)
 	{
 		create_sidedef(doom, fd, len, i);
-		create_object(&doom->lib, fd, i, doom->total_sprites);
-		//check this is correct when objs is available
+		create_object(doom, fd, i, doom->total_sprites);
 		i++;
 	}
 	j = 0;
 	get_line(&line, fd, "the moving object number can not be read", 1);
 	col_lib->n_mov_sprites = ft_atoi(line);
+	free(line);
 	col_lib->mov_sprites = \
 		(t_m_object*)malloc(sizeof(t_m_object) * col_lib->n_mov_sprites);
 	if (col_lib->mov_sprites == NULL)

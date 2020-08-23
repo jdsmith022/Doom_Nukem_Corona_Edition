@@ -138,6 +138,7 @@ typedef struct		s_event {
 	bool			bend;
 	bool			select;
 	bool			shoot;
+	int				sliding_door;
 	int				hold_angle;
 	int				hold_x;
 	int				hold_y;
@@ -239,26 +240,10 @@ typedef struct		s_sidedef {
 	int				txt_2;
 	int				txt_3;
 	double			distance;
-	int				infection;
+	double			angle;
 	int				poster;
 	t_prev_sidedef	prev_sidedef;
 }					t_sidedef;
-
-typedef	struct		s_slope {
-	double			distance;
-	double			height;
-	double			bottom_height;
-	int				bottom_plane;
-	double			dist_to_bottom;
-	int				opp_side;
-	int				sidedef_id;
-	int				prev_floor_id;
-	int				prev_ceiling_id;
-	double			delta_height;
-	t_point			intersect;
-	t_point			prev_intersect;
-	t_point			conn_point;
-}					t_slope;
 
 typedef struct		s_sector {
 	int				id;
@@ -282,7 +267,6 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	t_slope			slope;
 	int				sidedef_bottom[WIDTH]; //for cutting sprites
 	int				sidedef_top[WIDTH]; //for clipping sprites
 	int				sidedef_mid_bottom[WIDTH]; //for clipping sprites
@@ -394,6 +378,7 @@ double				points_distance(t_point p1, t_point p2);
 t_point				check_line_intersection(t_line line1, t_line line2);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
+double				get_line_angle(t_line line);
 t_point				line_delta(t_point start, t_point end);
 double				point_distance(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
@@ -405,30 +390,7 @@ void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
-
-/*read functions*/
-SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
-SDL_Surface			**save_objects(t_doom *doom, int fd, int *len);
-SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
-void				error(char *error, int line_num);
-int					open_file(char *filename);
-t_sector			*save_sectors(t_doom *doom, int fd, int *len);
-t_sidedef			*save_walls(t_doom *doom, int fd, int *len);
-t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites);
-void				save_bpm_to_sdl(t_doom *doom, t_bmp *images,\
-						SDL_Surface **lib, int index);
-void				save_libraries(t_doom *doom);
-void				add_inf_to_lib(t_doom *doom, int len, int fd);
-int					get_line(char **line, int fd, char *error, int is_num);
-void				set_texture_type(t_doom *doom, const char *name,\
-						SDL_Surface *surface);
-t_bmp				*malloc_images_lib(t_doom *doom, int len);
-SDL_Surface			**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len);
-int					open_file(char *filename);
 int					line_num(int i);
-t_sprite			object_inf(int fd, int sector, int obj_len);
-t_sidedef			wall_inf(int fd, int sector, int tex_len, int sec_len);
-t_sector			sector_inf(int fd, int tex_len);
 
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
@@ -453,6 +415,8 @@ bool				handle_mouse_state(t_doom *doom);
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
+void				init_sliding_door(t_doom *doom, t_sidedef *sidedef);
+void				render_sliding_door(t_doom *doom, t_sidedef *sidedef);
 double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
