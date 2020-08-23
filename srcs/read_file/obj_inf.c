@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
 
 void		add_coordinates_obj(t_sprite *sprite, int i, int safe)
 {

@@ -37,7 +37,7 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				set_ceiling_limit set_properties_plane draw_window img light_sidedef
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
-			 set_texture_type
+			 set_texture_type create_sidedef
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
 				printing_map init_game
@@ -98,7 +98,7 @@ O_FILES = $(O_FILES_CORE) $(O_FILES_EVENTS) $(O_FILES_EDITOR) \
 
 HEADERS = includes/doom.h includes/audio.h includes/gameplay.h \
 		includes/font.h  includes/textures.h includes/menu.h includes/hud.h \
-		includes/action.h includes/sprites.h
+		includes/action.h includes/sprites.h includes/read.h
 ADD_FILES = Makefile textures
 
 all: $(NAME)

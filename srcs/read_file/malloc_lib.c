@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
 
 t_bmp			*malloc_images_lib(t_doom *doom, int len)
 {

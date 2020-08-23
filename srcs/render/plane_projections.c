@@ -7,8 +7,6 @@ static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 
 	if (sidedef.opp_sector != -1)
 	{
-		// if (sidedef.id == 4)
-		// 	printf("are we here?\n");
 		opp_sector = doom->lib.sector[sidedef.opp_sector];
 		set_properties_plane_portal(doom, sidedef,\
 			opp_sector, plane);
@@ -71,8 +69,6 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 
 	plane.x = x;
 	set_properties_plane(doom, sidedef, &plane, &sector);
-	//if (plane.sidedef_bottom == HEIGHT && plane.sidedef_top == 0)
-	//	printf("%d\n", sidedef.id);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	if (sidedef.action == 6)

@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
+#include "../../includes/read.h"
 
 int	main(void)
 {

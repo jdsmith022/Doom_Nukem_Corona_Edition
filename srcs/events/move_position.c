@@ -5,8 +5,7 @@
 static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 				t_line move)
 {
-	if (sidedef->opp_sector == -1 || sidedef->action == 2 ||\
-	sidedef->action == 6)
+	if (sidedef->opp_sector == -1 || sidedef->action == 6)
 		return (-1);
 	if (sidedef->action == 7 && doom->own_event.trolly == FALSE)
 	{
@@ -17,9 +16,6 @@ static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 	if (check_floor_diff(doom, doom->i_sector, sidedef->opp_sector) == TRUE ||
 	doom->own_event.scissor_lift == TRUE)
 		return (-1);
-	if (sidedef->action == 2 && point_line_distance(doom->pos, sidedef->line) \
-	< 100.0 && doom->own_event.sliding_door == -1)
-		init_sliding_door(doom, sidedef);
 	else if (check_sector_height_diff(doom, doom->i_sector, \
 	sidedef->opp_sector) == FALSE)
 		return (-1);
@@ -57,6 +53,12 @@ static int			check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	t_sidedef	sidedef;
 
 	sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
+	if (sidedef.action == 2 && point_line_distance(doom->pos, sidedef.line) \
+	< 100.0 && doom->own_event.sliding_door == -1)
+	{
+		printf("init\n");
+		init_sliding_door(doom, &sidedef);
+	}
 	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
 		return (sidedef.sector);
 	else

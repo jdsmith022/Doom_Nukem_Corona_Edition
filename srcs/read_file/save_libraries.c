@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
 
 int			open_file(char *filename)
 {
