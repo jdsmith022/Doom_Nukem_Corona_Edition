@@ -1,4 +1,3 @@
-  
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/sprites.h"
@@ -6,7 +5,7 @@
 static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 				t_line move)
 {
-	if (sidedef->opp_sector == -1 || sidedef->action == 2)
+	if (sidedef->opp_sector == -1 || sidedef->action == 6)
 		return (-1);
 	if (sidedef->action == 7 && doom->own_event.trolly == FALSE)
 	{
@@ -47,45 +46,45 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 	return (sidedef);
 }
 
-static void	check_move_sidedef_intersection(t_doom *doom, t_line move, \
-	int sector, t_point prev_intersect, t_sidedef *sidedef)
+static void		check_move_sidedef_intersection(t_doom *doom, t_line move, \
+	int sector, t_point prev_intersect)
 {
 	int			collision;
+	t_sidedef	sidedef;
 
-	*sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
-	if (sidedef->action == 6)
-		return ;
-	if (isnan(sidedef->intersect.x) != 0 && isnan(sidedef->intersect.y) != 0 && sidedef->action != 6)
+	sidedef = sidedef_intersection(doom, move, sector, prev_intersect);
+	if (isnan(sidedef.intersect.x) != 0 && isnan(sidedef.intersect.y) != 0)
 	{
 		doom->i_sector = sector;
 		doom->pos = move.end;
 	}
 	else
 	{
-		collision = check_collision(doom, sidedef, move);
+		if (sidedef.action == 2 && \
+		point_line_distance(doom->pos, sidedef.line) < \
+		100.0 && doom->own_event.sliding_door == -1)
+			init_sliding_door(doom, &sidedef);
+		collision = check_collision(doom, &sidedef, move);
 		if (collision != -1)
 		{
-			prev_intersect = sidedef->intersect;
-			sector = sidedef->opp_sector;
-			check_move_sidedef_intersection(doom, move, sector, prev_intersect, sidedef);
+			prev_intersect = sidedef.intersect;
+			sector = sidedef.opp_sector;
+			check_move_sidedef_intersection(doom, move, sector, prev_intersect);
 		}
 	}
 }
 
 static void			move_position(t_doom *doom, t_line move, double angle)
 {
-	t_sidedef	sidedef;
 	t_point		prev_intersect;
 
+	move.start = doom->pos;
 	prev_intersect.x = -1;
 	prev_intersect.y = -1;
 	if (sprite_collision(doom, move) == 1)
 		return ;
 	check_move_sidedef_intersection(doom, move, \
-		doom->i_sector, prev_intersect, &sidedef);
-	if (sidedef.action == 2 && point_distance(sidedef.intersect, \
-	doom->pos, angle) < 20.0)
-		sliding_door(doom, sidedef.id);
+		doom->i_sector, prev_intersect);
 }
 
 void				set_new_position(t_doom *doom, t_event *event, double dt)
@@ -94,7 +93,6 @@ void				set_new_position(t_doom *doom, t_event *event, double dt)
 	double		angle;
 	double		direction;
 
-	move.start = doom->pos;
 	if (event->move_pos_f == TRUE || event->move_pos_b == TRUE)
 	{
 		direction = MOVE_SPEED;

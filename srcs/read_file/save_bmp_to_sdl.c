@@ -6,11 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/23 11:41:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/01 13:22:13 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/23 10:11:53 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
 
 void			save_bpm_to_sdl(t_doom *doom, t_bmp *images,
 						SDL_Surface **lib, int index)

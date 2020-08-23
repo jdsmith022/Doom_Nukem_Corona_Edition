@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/textures.h"
+#include "../../includes/read.h"
 
 static bool	is_of_type(const char *path_loaded, t_grocery_paths path)
 {

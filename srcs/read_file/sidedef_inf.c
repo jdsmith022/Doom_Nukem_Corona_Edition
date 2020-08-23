@@ -1,4 +1,6 @@
 #include "../../includes/doom.h"
+#include "../../includes/read.h"
+
 
 static void	add_coordinates(t_sidedef *wall, int i, int safe)
 {

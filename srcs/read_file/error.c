@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include <stdio.h> //replace for ft_printf before handing in
+#include "../../includes/read.h"
 
 void	int_check(char *line, char *er, int line_num)
 {
@@ -42,14 +42,14 @@ int		line_num(int i)
 	return (line_num);
 }
 
-int		get_line(char **line, int fd, char *er, int is_int)
+int		get_line(char **line, int fd, char *er, int is_int)//remove *er add doom and make message error reading map
 {
 	int ret;
 
 	ret = get_next_line2(fd, line);
 	line_num(1);
 	if (ret != 1)
-		error(er, line_num(0));
+		error(er, line_num(0));//doom error exit
 	while (*line[0] == '\0' || *line[0] == '#')
 	{
 		if (ret != 1)
@@ -71,6 +71,6 @@ int		get_line(char **line, int fd, char *er, int is_int)
 
 void	error(char *error, int line_num)
 {
-	printf("line %i: %s\n", line_num, error);
+	printf("line %i: %s\n", line_num, error); //remove
 	exit(0);
 }

@@ -27,8 +27,10 @@ static int	set_plane_top(t_doom *doom, double scale,
 
 	diff = STD_TEXT - doom->player_height;
 	if (sector.slope_ceiling_id != -1)
-		sector.height_ceiling -= set_slope_height_ceiling(doom, sidedef, sector);
-	height_ceiling = sector.height_ceiling / sidedef.distance * doom->dist_to_plane;
+		sector.height_ceiling -= \
+			set_slope_height_ceiling(doom, sidedef, sector);
+	height_ceiling = sector.height_ceiling / \
+		sidedef.distance * doom->dist_to_plane;
 	sidedef_top = ((HEIGHT / 2) - (diff * scale)) \
 		- (doom->own_event.y_pitch + height_ceiling);
 	return (sidedef_top);
@@ -47,7 +49,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	plane->mid_texture_top = \
 		set_plane_top(doom, scale, sidedef, opp_sector);
 	plane->mid_texture_bottom = \
-	set_plane_bottom(doom, scale, sidedef, opp_sector);
+		set_plane_bottom(doom, scale, sidedef, opp_sector);
 }
 
 void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
