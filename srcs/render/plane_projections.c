@@ -53,9 +53,6 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	
 	if (sidedef.opp_sector != -1) //for clipping sprites (above two as well)
 	{
-		// if (doom->pos.x > 1952 && doom->pos.x < 2816 && doom->pos.y > 1255 && doom->pos.y < 1547)
-			// printf("%d ", plane.mid_texture_bottom);
-		
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = plane.mid_texture_bottom;
 	}	
 	else

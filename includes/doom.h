@@ -120,6 +120,7 @@ typedef struct			s_sprite {
 	double				sprite_y;		//y cord translated to viewer space
 	int					visible;		//this is only turned on for the drawing... can't use it for other options
 	double				distance;
+	double				distance_side;
 	// int					face;
 	int					prev_sectors[50];	//where to empty them again? don't forget to protect
 }						t_sprite;
@@ -372,6 +373,7 @@ typedef struct		s_doom {
 	int				difficulty;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
+	int				sidedef_info[WIDTH];
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
 	int				game_time;

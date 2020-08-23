@@ -98,8 +98,15 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			else
 			{
 				min_distance = distance;
-				if (doom->lib.sidedef[x].opp_sector == -1)
+				if (doom->lib.sidedef[x].id == 113)
+					printf("pos - %f, %f | intersect == %f, %f, -- dis: %f\n", doom->pos.x, doom->pos.y, intersect.x, intersect.y, distance);
+				// if (doom->lib.sidedef[x].opp_sector == -1)
+				// {
+
+					// doom->stripe_distance[(int)ray.plane_x] = points_distance(ray.line.start, intersect); //changed
 					doom->stripe_distance[(int)ray.plane_x] = min_distance; //changed
+					doom->sidedef_info[(int)ray.plane_x] = x;
+				// }
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
 				if (doom->lib.sidedef[x].action == 2 && doom->lib.sidedef[x].distance < 100)
