@@ -24,6 +24,7 @@ t_sidedef			*save_walls(t_doom *doom, int fd, int *len)
 	get_line(&line, fd,\
 		"the amount of walls is not specified or can not be read", 1);
 	*len = ft_atoi(line);
+	free(line);
 	get_line(&line, fd,\
 		"the amount of moving walls is not specified", 1);
 	*len += ft_atoi(line);

@@ -32,12 +32,12 @@ static void		save_sky_2(t_doom *doom, t_bmp *images,\
 {
 	sky_fd = open_file("assets/textures/sky_box/meadow_dn.bmp");
 	if (sky_fd < 0)
-		bmp_safe_exit(doom, images);		
+		bmp_safe_exit(doom, images);
 	images[1] = read_bmp(sky_fd);
 	save_bpm_to_sdl(doom, images, lib, 1);
 	sky_fd = open_file("assets/textures/sky_box/meadow_rt.bmp");
 	if (sky_fd < 0)
-		bmp_safe_exit(doom, images);		
+		bmp_safe_exit(doom, images);
 	images[2] = read_bmp(sky_fd);
 	save_bpm_to_sdl(doom, images, lib, 2);
 	sky_fd = open_file("assets/textures/sky_box/meadow_ft.bmp");
