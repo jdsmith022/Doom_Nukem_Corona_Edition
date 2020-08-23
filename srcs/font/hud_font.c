@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   hud_font.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/07/22 23:02:29 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 19:44:35 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/23 15:39:34 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/23 15:39:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

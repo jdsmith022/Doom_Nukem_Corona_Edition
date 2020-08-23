@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   start_menu_font.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/23 15:38:38 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/23 15:38:55 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
@@ -42,9 +54,9 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	set_text2(doom, lib);
 }
 
-void	save_start_menu_font(t_doom *doom, int *len)
+void		save_start_menu_font(t_doom *doom, int *len)
 {
-	TTF_Font *font;
+	TTF_Font	*font;
 	int			font_size;
 
 	*len = 7;

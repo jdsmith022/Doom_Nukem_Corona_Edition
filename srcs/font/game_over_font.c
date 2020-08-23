@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   game_over_font.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/23 15:40:46 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/23 15:40:55 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
@@ -42,7 +54,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[3].font_color = doom->lib.font_lib.font_color.green;
 }
 
-void	save_game_over_font(t_doom *doom, int *len)
+void		save_game_over_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
 	int			font_size;

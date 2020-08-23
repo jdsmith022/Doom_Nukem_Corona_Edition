@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   setting_window_font.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/23 15:40:14 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/23 15:40:21 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
@@ -59,9 +71,9 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	set_text2(doom, lib, start);
 }
 
-void	save_setting_window_font(t_doom *doom, int *len)
+void		save_setting_window_font(t_doom *doom, int *len)
 {
-	TTF_Font *font;
+	TTF_Font	*font;
 	int			font_size;
 
 	*len = 10;

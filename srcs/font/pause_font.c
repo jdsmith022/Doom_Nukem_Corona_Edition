@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   pause_font.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/23 15:41:24 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/23 15:41:29 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
@@ -20,7 +32,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[2].font_color = doom->lib.font_lib.font_color.red;
 }
 
-void	save_pause_font(t_doom *doom, int *len)
+void		save_pause_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
 	int			font_size;
