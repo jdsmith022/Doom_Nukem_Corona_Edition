@@ -13,7 +13,8 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 		pause_sound(audio->sounds[FOOTSTEPS], 1);
 	if ((event->move_pos_l || event->move_pos_r) && !event->jump)
 		loop_sound(audio->sounds[FOOTSTEPS], 1);
-	if (event->jump && !audio->event->jump_toggled){
+	if (event->jump && !audio->event->jump_toggled)
+	{
 		pause_sound(audio->sounds[FOOTSTEPS], 1);
 		play_sound(audio->sounds[JUMP], 2);
 		audio->event->jump_toggled = TRUE;
@@ -24,11 +25,13 @@ void	play_action_sounds(t_audio *audio, t_event *event)
 {
 	if (event->shoot && event->mouse_press)
 		play_sound(audio->sounds[GUNSHOT], 2);
-	if (event->fall && !event->died){
+	if (event->fall && !event->died)
+	{
 		play_sound(audio->sounds[SCREAM], 2);
 		event->died = TRUE;
 	}
-	if (event->groc_pickup){
+	if (event->groc_pickup)
+	{
 		play_sound(audio->sounds[HIT], 2);
 		event->groc_pickup = FALSE;
 	}
