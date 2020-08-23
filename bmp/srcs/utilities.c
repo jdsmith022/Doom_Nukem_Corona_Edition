@@ -1,8 +1,9 @@
 #include "bmp.h"
 
-void				exit_with_error(const char *message){
+void				exit_with_error(t_bmp *bmp, const char *message)
+{
+	bmp = NULL;
 	ft_putstr_fd(message, 2);
-	exit(1);
 }
 
 void				print_meta_data(t_bmp_info info)

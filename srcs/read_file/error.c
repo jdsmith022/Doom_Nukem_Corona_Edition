@@ -53,10 +53,9 @@ int		get_line(char **line, int fd, char *er, int is_int)//remove *er add doom an
 	while (*line[0] == '\0' || *line[0] == '#')
 	{
 		if (ret != 1)
-			error(er, line_num(0));
+			error(er, line_num(0));//doom error exit
 		if (*line[0] == '\0' || *line[0] == '#')
 		{
-			// free(*line);
 			line_num(1);
 			ret = get_next_line2(fd, line);
 		}
@@ -69,7 +68,7 @@ int		get_line(char **line, int fd, char *er, int is_int)//remove *er add doom an
 	return (0);
 }
 
-void	error(char *error, int line_num)
+void	error(char *error, int line_num)//not needed then
 {
 	printf("line %i: %s\n", line_num, error); //remove
 	exit(0);

@@ -52,7 +52,7 @@ typedef struct		s_bmp
 
 void				print_byte(void *byte, uint32_t len);
 void				print_meta_data(t_bmp_info info);
-void				exit_with_error(const char *message);
-t_bmp				read_bmp(int fd);	
+void				exit_with_error(t_bmp *bmp, const char *message);
+t_bmp				read_bmp(int fd);
 
 #endif
