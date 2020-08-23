@@ -42,7 +42,7 @@
 # define MOVE_SPEED 200
 # define SENSITIVITY 0.4
 # define GRAVITY -2
-# define VELOCITY  10
+# define VELOCITY  5
 
 # define RED 1
 # define GREEN 2
@@ -371,6 +371,8 @@ void				doom_init(t_doom *doom);
 int					sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
+void				init_events(t_event *event);
+void				init_audio(t_doom *doom);
 void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);

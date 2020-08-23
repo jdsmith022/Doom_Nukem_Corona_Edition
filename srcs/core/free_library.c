@@ -14,10 +14,12 @@ void		free_struct_lib(t_doom *doom)
 		void_free_lib(doom->lib.sidedef);
 	if (doom->lib.sprites)
 		void_free_lib(doom->lib.sprites);
-	if (SECTOR)
-		void_free_lib(SECTOR);
-	if (doom->lib.mov_sprites)
-		void_free_lib(doom->lib.mov_sprites);
+	if (doom->groceries)
+		void_free_lib(doom->groceries);
+	if (doom->game_design.sector)
+		void_free_lib(doom->game_design.sector);
+	if (doom->game_design.sidedef)
+		void_free_lib(doom->game_design.sidedef);
 	if (doom->lib.font_lib.game_editor_font)
 		void_free_lib(doom->lib.font_lib.game_editor_font);
 	if (doom->lib.font_lib.hud_font)

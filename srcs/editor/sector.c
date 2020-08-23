@@ -40,12 +40,14 @@ void		del_sector(t_doom *doom)
 	EDIT.cur_sd = SECTOR[EDIT.cur_sec].i_sidedefs - 1;
 }
 
-t_sector *cpy_sector(t_sector *sector, int *s_size)
+t_sector *cpy_sector(t_doom *doom, t_sector *sector, int *s_size)
 {
 	t_sector	*new;
 	int			i;
 
 	new = (t_sector*)malloc(sizeof(t_sector) * *s_size * 2);
+	if (new == NULL)
+		doom_exit_failure(doom, "error: game design copy sector");
 	i = 0;
 	while (i < *s_size)
 	{
@@ -62,7 +64,7 @@ void	add_sector(t_doom *doom)
 {
 
 		if (EDIT.s_len + 1 == EDIT.s_size)
-				SECTOR = cpy_sector(SECTOR, &EDIT.s_size);
+				SECTOR = cpy_sector(doom, SECTOR, &EDIT.s_size);
 		EDIT.s_len++;
 		SECTOR[EDIT.s_len].slope_floor = 0;
 		SECTOR[EDIT.s_len].slope_floor_id = -1;

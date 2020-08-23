@@ -38,6 +38,10 @@ void	init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
 
+	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio)); // NOTE: FREE
+	if (doom->audio == NULL)
+		doom_exit_failure(doom, "error: audio malloc error");
+	doom->audio->engine = OFF;
 	if (!doom->audio || doom->audio->engine == OFF)
 		return ;
 	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event)); // NOTE: FREE

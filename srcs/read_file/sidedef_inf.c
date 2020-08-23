@@ -1,7 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
-
 static void	add_coordinates(t_sidedef *wall, int i, int safe)
 {
 	if (safe < 0 && i > 0 && i < 5)
@@ -28,7 +27,7 @@ static void	add_texture_sd(t_sidedef *wall, int i, int safe, int tex_len)
 		wall->txt_3 = safe;
 }
 
-static void	add_inf_to_line(t_sidedef *wall, int i, int safe, int tex_len, int sec_len)
+static void	add_inf_to_line(t_sidedef *wall, int i, int safe, int sec_len)
 {
 	if (i == 0)
 	{
@@ -37,10 +36,8 @@ static void	add_inf_to_line(t_sidedef *wall, int i, int safe, int tex_len, int s
 		else
 			error("sector is not available", line_num(0));
 	}
-	add_coordinates(wall, i, safe);
 	if (i == 5)
 		wall->action = safe;
-	add_texture_sd(wall, i, safe, tex_len);
 	if (i == 9)
 		wall->id = safe;
 }
@@ -57,7 +54,9 @@ t_sidedef	wall_inf(int fd, int sector, int tex_len, int sec_len)
 	while (i < 10)
 	{
 		safe = get_line(&line, fd, "wall informations does not exist", 1);
-		add_inf_to_line(&wall, i, safe, tex_len, sec_len);
+		add_inf_to_line(&wall, i, safe, sec_len);
+		add_coordinates(&wall, i, safe);
+		add_texture_sd(&wall, i, safe, tex_len);
 		free(line);
 		i++;
 	}

@@ -87,6 +87,8 @@
 void	init_game_design(t_doom *doom)
 {
 	doom->game_design.sector = (t_sector*)malloc(sizeof(t_sector) * 2);
+	if (doom->game_design.sector == NULL)
+		doom_exit_failure(doom, "error: game design sector malloc");
 	doom->game_design.s_size = 2;
 	doom->game_design.s_len = 0;
 	doom->game_design.cur_sec = 0;

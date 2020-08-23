@@ -26,7 +26,7 @@ MENU = srcs/menu/
 ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop line_calculations doom_update \
-				exit free_library libs_init update_hud_ui
+				exit free_library update_hud_ui doom_init_events doom_init_ui
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \

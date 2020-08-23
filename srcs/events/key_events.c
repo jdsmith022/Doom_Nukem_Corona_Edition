@@ -73,8 +73,6 @@ static void		key_press2(t_doom *doom, t_event *event,
 		doom->menu->pause = TRUE;
 	if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e)
 		key_select_and_shoot(doom, event, key);
-	if (key->keysym.sym == SDLK_f)
-		doom->light = doom->light == TRUE ? FALSE : TRUE;
 	// if (key->keysym.sym == SDLK_o) //needs to become a click on button event
 	// 	doom->lib.sector[doom->i_sector].light =\
 	// 		doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;

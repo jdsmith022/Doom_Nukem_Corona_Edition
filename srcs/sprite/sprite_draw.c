@@ -158,9 +158,9 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 			{
 				if (screen_y >= 0)
 				{
-					if (doom->light == FALSE)
-						light_distance = screen_y > HEIGHT / 2 ?\
-						light_distance - Y_CHANGE : light_distance + Y_CHANGE;
+					// if (doom->light == FALSE)
+					// 	light_distance = screen_y > HEIGHT / 2 ?\
+					// 	light_distance - Y_CHANGE : light_distance + Y_CHANGE;
 					index = (Uint32)(screen_y * doom->surface->pitch) +\
 					(int)(stripe * doom->surface->format->BytesPerPixel);
 					tex_y = find_y(doom, sprite_begin, sprite_end,\

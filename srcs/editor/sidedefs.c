@@ -111,6 +111,8 @@ void		add_sidedef(t_doom *doom, int x, int y)
 	if (SIDEDEF == NULL)
 	{
 		SIDEDEF = (t_sidedef*)malloc(sizeof(t_sidedef) * 2);
+		if (doom->lib.sidedef == NULL)
+			doom_exit_failure(doom, "error: game design add sidedef\n");
 		EDIT.w_size = 2;
 		EDIT.w_len = 0;
 		start = 0;
