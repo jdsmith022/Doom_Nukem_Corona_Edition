@@ -26,7 +26,7 @@ static void		print_random_font(t_doom *doom, bool *flag, Uint32 index)
 	else
 	{
 		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
-		if (diff <= 2)
+		if (diff <= 1)
 			draw_random_font(doom, doom->lib.font_lib.instruction_font, index);
 		else
 			doom->own_event.spray_shopper = FALSE;

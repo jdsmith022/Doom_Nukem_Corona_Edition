@@ -13,17 +13,15 @@ static void	check_select_sprite(t_doom *doom)
 	}
 	else if (SPRITES[doom->own_event.virus_hit_index].action == 12)
 	{
-			printf("grab trolley");
-			doom->own_event.trolly = TRUE;
-			doom->lib.sidedef[17].action = 0;
-			SPRITES[doom->own_event.virus_hit_index].action = 8;
-			printf("YOU GOT THE TROLLY!\n");
+		doom->own_event.trolly = TRUE;
+		doom->lib.sidedef[17].action = 0;
+		SPRITES[doom->own_event.virus_hit_index].action = 8;
+		printf("YOU GOT THE TROLLY!\n");
 	}
 }
 
 static void	virus_hit(t_doom *doom)
 {
-	//change color to red for 5 seconds
 	SPRITES[doom->own_event.virus_hit_index].visible = 17;
 	SPRITES[doom->own_event.virus_hit_index].textures[0] = 17;
 	SPRITES[doom->own_event.virus_hit_index].textures[1] = 17;
@@ -37,19 +35,23 @@ static void	virus_hit(t_doom *doom)
 static void check_spray_sprite(t_doom *doom)
 {
 	if (SPRITES[doom->own_event.virus_hit_index].action == 4)
+	{
 		virus_hit(doom);
-	else if (SPRITES[doom->own_event.virus_hit_index].action == 9)
+		doom->own_event.spray_shopper = FALSE;
+	}
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 9 && \
+	SPRITES[doom->own_event.virus_hit_index].distance < 50.0)
 	{
 		doom->own_event.spray_shopper = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
 		printf("HIT SHOPPER!!!!\n");
 	}
-
+	doom->own_event.virus_hit_index = -1;
 }
 
 void	check_select_spray_sprite(t_doom *doom)
 {
-	if (SPRITES[doom->own_event.virus_hit_index].distance < 100)
+	if (SPRITES[doom->own_event.virus_hit_index].distance < 100.0)
 	{
 		if (doom->own_event.shoot == TRUE)
 			check_spray_sprite(doom);

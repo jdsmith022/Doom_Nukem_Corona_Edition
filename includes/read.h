@@ -28,5 +28,6 @@ int					open_file(char *filename);
 t_sprite			object_inf(int fd, int sector, int obj_len);
 t_sidedef			wall_inf(int fd, int sector, int tex_len, int sec_len);
 t_sector			sector_inf(int fd, int tex_len);
+void				bmp_safe_exit(t_doom *doom, t_bmp *images);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/23 11:41:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/23 14:26:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/23 14:32:57 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void			save_bpm_to_sdl(t_doom *doom, t_bmp *images,
 		images[index].info.width, images[index].info.height,\
 		24, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 	if (lib[index] == NULL)
-	{
-		doom_exit_lib_failure(images, MALLOC_ERR);
-		doom_exit_failure(doom, MALLOC_ERR);
-	}
+		bmp_safe_exit(doom, images);
 	ft_memcpy(lib[index]->pixels, images[index].pixels,\
 		(images[index].info.img_size));
 }
