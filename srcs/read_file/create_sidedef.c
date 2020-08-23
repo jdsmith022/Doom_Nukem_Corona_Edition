@@ -20,6 +20,14 @@ static void		set_col_lib(t_doom *doom, int *k, int *wall_int, int i)
 	doom->lib.sector[i].i_sidedefs = *wall_int;
 }
 
+static void	set_sidedef_slope(t_doom *doom, int k, int i)
+{
+	if (doom->lib.sidedef[k].action == 3 || doom->lib.sidedef[k].action == 5)
+		doom->lib.sector[i].slope_floor_id = doom->lib.sidedef[k].id;
+	if (doom->lib.sidedef[k].action == 4 || doom->lib.sidedef[k].action == 5)
+		doom->lib.sector[i].slope_ceiling_id = doom->lib.sidedef[k].id;
+}
+
 void		create_sidedef(t_doom *doom, int fd, int len,
 					int i)
 {
@@ -35,6 +43,7 @@ void		create_sidedef(t_doom *doom, int fd, int len,
 	{
 		doom->lib.sidedef[k] = wall_inf(fd, i, doom->lib.len_tex_lib, len);
 		doom->lib.sidedef[k].id = total_sd_index;
+		set_sidedef_slope(doom, k, i);
 		if (doom->lib.sidedef[k].action == 2 && \
 		doom->lib.sidedef[k].opp_sector != -1)
 		{
