@@ -13,7 +13,7 @@ static void	light_correct(double *r, double *g, double *b, double light)
 	*b *= light;
 }
 
-void		add_saturation(char *r, char *g, char *b, double light)
+void		add_saturation(Uint8 *r, Uint8 *g, Uint8 *b, double light)
 {
 	double r1;
 	double g1;
@@ -45,9 +45,9 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 {
 	char	*pixels;
 	char	*texture;
-	char	r;
-	char	g;
-	char	b;
+	Uint8	r;
+	Uint8	g;
+	Uint8	b;
 
 	pixels = doom->surface->pixels;
 	texture = doom->lib.tex_lib[tex_dex]->pixels;
@@ -57,9 +57,7 @@ void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,
 	if (texture[pixel_dex] == (char)255 && \
 	texture[pixel_dex + 1] == (char)255 && \
 	texture[pixel_dex + 2] == (char)255)
-	{
-		;
-	}
+		return ;
 	else
 	{
 		add_saturation(&r, &g, &b, doom->distance);

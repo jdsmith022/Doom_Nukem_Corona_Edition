@@ -6,9 +6,9 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i,\
 {
 	char	*pixels;
 	char	*text;
-	char	r;
-	char	g;
-	char	b;
+	Uint8	r;
+	Uint8	g;
+	Uint8	b;
 
 	pixels = doom->surface->pixels;
 	text = doom->lib.obj_lib[i]->pixels;

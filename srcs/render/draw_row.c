@@ -14,9 +14,9 @@ static void		put_row(t_doom *doom, SDL_Surface *lib,
 {
 	char	*pixels;
 	char	*texture;
-	char	r;
-	char	g;
-	char	b;
+	Uint8	r;
+	Uint8	g;
+	Uint8	b;
 
 	pixels = doom->surface->pixels;
 	texture = lib->pixels;

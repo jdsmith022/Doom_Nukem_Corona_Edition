@@ -46,12 +46,11 @@ void			draw_window(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	light_sidedef(doom, sidedef, x);
+	light_sidedef_x_change(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		if (doom->light == FALSE)
-			doom->distance = pixel.y > HEIGHT / 2 ?\
-			doom->distance -  1.0 / (float)HEIGHT : doom->distance + 1.0 / (float)HEIGHT;
+			light_sidedef_y_change(doom, pixel.y);
 		put_window_texture(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}

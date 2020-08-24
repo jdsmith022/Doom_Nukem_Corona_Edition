@@ -32,7 +32,7 @@ void		print_instruction_background(t_doom *doom,
 		while (y < limit_y.y)
 		{
 			color = pixels[(y * WIDTH) + x];
-			add_tint_to_color(&color, BLUE, 0X36);
+			add_tint_to_color(&color, BLUE, FONT_MASK);
 			if (x >= limit_x.x && x <= limit_x.y && \
 			y >= limit_y.x && y <= limit_y.y)
 				pixels[(y * WIDTH + x)] = color;

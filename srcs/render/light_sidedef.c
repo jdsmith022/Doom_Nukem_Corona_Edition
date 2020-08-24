@@ -18,7 +18,15 @@ void		add_tint_to_color(Uint32 *color, int tint, int mask)
 	*color = (r << 16 | g << 8 | b);
 }
 
-void		light_sidedef(t_doom *doom, t_sidedef sidedef, int x)
+void		light_sidedef_y_change(t_doom *doom, int y)
+{
+	if (y > HEIGHT)
+		doom->distance -= 1.0 / (float)HEIGHT;
+	else
+		doom->distance += 1.0 / (float)HEIGHT;
+}
+
+void		light_sidedef_x_change(t_doom *doom, t_sidedef sidedef, int x)
 {
 	if (doom->light == TRUE)
 	{

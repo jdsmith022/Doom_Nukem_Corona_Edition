@@ -49,6 +49,8 @@
 # define RED 1
 # define GREEN 2
 # define BLUE 3
+# define FONT_MASK 0X36
+# define WINDOW_MASK 0XFF
 
 # define SECTORS		doom->lib.sector
 # define SIDEDEFS		doom->lib.sidedef
@@ -478,8 +480,9 @@ void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 
-void				add_saturation(char *r, char *g, char *b, double light);
-void				light_sidedef(t_doom *doom, t_sidedef sidedef, int x);
+void				add_saturation(Uint8 *r, Uint8 *g, Uint8 *b, double light);
+void				light_sidedef_x_change(t_doom *doom, t_sidedef sidedef, int x);
+void				light_sidedef_y_change(t_doom *doom, int y);
 void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
 void				add_tint_to_color(Uint32 *color, int tint, int mask);
