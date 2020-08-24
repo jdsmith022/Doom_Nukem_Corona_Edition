@@ -49,7 +49,7 @@ void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 			draw_portal(doom, pixels, SIDEDEF[b].opp_sector);
 	if (SIDEDEF[b].opp_sidedef != -1 && EDIT.cur_sd != b)
 		color = 0xffFFA07A;
-	else if (EDIT.cur_sd != b)
+	else if (EDIT.cur_sd != b || EDIT.sidedef_bar == 0)
 		color = 0x8c3cde6;
 	else
 		color = 0xff4287f5;
@@ -76,7 +76,7 @@ void	draw_object_side(t_doom *doom, Uint32 **pixels, int b, int side)
 
 	angle = calc_angle(OBJECT[b].lines[side], doom);
 	i = 0.0;
-	if (EDIT.cur_obj != b)
+	if (EDIT.cur_obj != b || EDIT.object_bar == 0)
 		color = 0x8c3cde6;
 	else
 		color = 0xff4287f5;
