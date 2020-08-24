@@ -110,12 +110,14 @@ void	add_specifications(t_doom *doom, int index)
     OBJECT[index].textures[3] = LEVEL_SPRITES[EDIT.cur_tex].tex4;
     OBJECT[index].block = LEVEL_SPRITES[EDIT.cur_tex].block;
     OBJECT[index].sector = EDIT.cur_sec;
+    OBJECT[index].visible = -1;
+	OBJECT[index].action = LEVEL_SPRITES[EDIT.cur_tex].action;
 }
 
 void    add_object_to_array(int x, int y, t_doom *doom)
 {
-    OBJECT[EDIT.o_len].pos.x = x;
-    OBJECT[EDIT.o_len].pos.y = y;
+    OBJECT[EDIT.o_len].pos.x = x + SECTOR[EDIT.cur_sec].diff_x;
+    OBJECT[EDIT.o_len].pos.y = y + SECTOR[EDIT.cur_sec].diff_y;
 	add_specifications(doom, EDIT.o_len);
 	add_obj_lines(x, y, doom, EDIT.o_len);
 }

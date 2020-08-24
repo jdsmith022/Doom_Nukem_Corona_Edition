@@ -41,7 +41,8 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 			 set_texture_type
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
-				printing_map init_game draw_sidedef_object objects
+				printing_map init_game draw_sidedef_object objects \
+				correct_position
 AUDIO_FILES = audio audio_init playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_draw2
