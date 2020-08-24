@@ -1,9 +1,10 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/sprites.h"
 
 static int			check_collision(t_doom *doom, t_sidedef *sidedef,
-				t_line move)
+						t_line move)
 {
 	if (sidedef->opp_sector == -1 || sidedef->action == 6)
 		return (-1);
@@ -23,7 +24,7 @@ static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 }
 
 static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
-	int sector, t_point prev_intersect)
+						int sector, t_point prev_intersect)
 {
 	int				x;
 	t_sidedef		sidedef;
@@ -46,8 +47,8 @@ static t_sidedef	sidedef_intersection(t_doom *doom, t_line move, \
 	return (sidedef);
 }
 
-static void		check_move_sidedef_intersection(t_doom *doom, t_line move, \
-	int sector, t_point prev_intersect)
+static void			check_move_sidedef_intersection(t_doom *doom, t_line move, \
+						int sector, t_point prev_intersect)
 {
 	int			collision;
 	t_sidedef	sidedef;

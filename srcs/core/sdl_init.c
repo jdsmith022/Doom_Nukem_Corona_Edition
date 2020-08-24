@@ -1,8 +1,9 @@
+
 #include "../../includes/doom.h"
 
 int		sdl_init(t_doom *doom)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) // check what to init
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return (1);
 	doom->window = SDL_CreateWindow(NAME, SDL_WINDOWPOS_CENTERED,\
 		SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);

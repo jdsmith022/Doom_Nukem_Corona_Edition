@@ -4,7 +4,7 @@
 #include "../../includes/hud.h"
 #include "../../includes/sprites.h"
 
-static void	shoot_action(t_doom *doom)
+static void		shoot_action(t_doom *doom)
 {
 	if (doom->own_event.shoot == TRUE && doom->hud->sanitizer_level > 0)
 	{
@@ -19,7 +19,7 @@ static void	shoot_action(t_doom *doom)
 	}
 }
 
-static void	select_action(t_doom *doom)
+static void		select_action(t_doom *doom)
 {
 	t_sidedef poster;
 
@@ -37,7 +37,7 @@ static void	select_action(t_doom *doom)
 	}
 }
 
-void	action_handler(t_doom *doom)
+void			action_handler(t_doom *doom)
 {
 	select_action(doom);
 	shoot_action(doom);

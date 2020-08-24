@@ -51,7 +51,7 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 	set_pitch(doom, motion, event);
 }
 
-void	move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
+void			move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 	double dt, t_event *event)
 {
 	SDL_GetMouseState(&doom->own_event.hold_x, &doom->own_event.hold_y);

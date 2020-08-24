@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 #include "../../includes/gameplay.h"
@@ -18,13 +19,14 @@ static void		print_missing_groceries(t_doom *doom)
 		if (info[index].amount != 0)
 		{
 			draw_img(info[index].sprite, doom, info->position);
-			draw_grocery_amount(doom, info->position, ft_itoa(info[index].amount));
+			draw_grocery_amount(doom, \
+				info->position, ft_itoa(info[index].amount));
 		}
 		index++;
 	}
 }
 
-void		menu_print_loop(t_doom *doom)
+void			menu_print_loop(t_doom *doom)
 {
 	doom->hud_display = FALSE;
 	SDL_SetRelativeMouseMode(SDL_FALSE);

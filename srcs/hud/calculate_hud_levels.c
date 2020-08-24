@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/menu.h"
@@ -62,7 +63,7 @@ static int		update_hud_levels_2(t_doom *doom)
 	return (change);
 }
 
-int			calculate_hud_levels(t_doom *doom)
+int				calculate_hud_levels(t_doom *doom)
 {
 	int change;
 

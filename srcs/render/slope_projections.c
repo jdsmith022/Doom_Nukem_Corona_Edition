@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static int	get_other_side_of_line(t_doom *doom, t_sidedef sidedef,

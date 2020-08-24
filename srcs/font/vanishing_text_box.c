@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
@@ -16,7 +17,7 @@ static void		draw_font_instructions(t_doom *doom, t_font *font_lib,
 	}
 }
 
-void		print_instruction_background(t_doom *doom,
+void			print_instruction_background(t_doom *doom,
 				t_limit limit_x, t_limit limit_y)
 {
 	Uint32	*pixels;
@@ -42,7 +43,7 @@ void		print_instruction_background(t_doom *doom,
 	}
 }
 
-void		print_vanishing_text_box(t_doom *doom,
+void			print_vanishing_text_box(t_doom *doom,
 				int start, int stop)
 {
 	print_instruction_background(doom, doom->lib.font_lib.limit_x, \

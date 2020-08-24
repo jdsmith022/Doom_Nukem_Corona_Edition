@@ -1,7 +1,8 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/menu.h"
-# include "../../includes/sprites.h"
+#include "../../includes/sprites.h"
 
 static void	draw_hud_top_bar(t_doom *doom)
 {
@@ -97,7 +98,6 @@ void		update_hud(t_doom *doom)
 	if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 	{
 		draw_hud_top_bar(doom);
-		// if (doom->own_event.scissor_lift == TRUE || doom->own_event.shoot == TRUE)
 		draw_player_adds(doom);
 		draw_hud_bottom_bar(doom);
 		draw_hud_side_bar(doom);

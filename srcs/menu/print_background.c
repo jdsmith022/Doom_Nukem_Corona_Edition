@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void		print_background(t_doom *doom, Uint32 color)

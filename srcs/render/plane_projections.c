@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,

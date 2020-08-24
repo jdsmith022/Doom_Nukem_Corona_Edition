@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void		put_sky(t_doom *doom, Uint32 tex_dex, Uint32 index,
