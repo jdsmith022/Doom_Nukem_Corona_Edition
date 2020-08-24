@@ -537,6 +537,7 @@ void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
 void				del_obj(t_doom *doom);
 void				add_specifications(t_doom *doom, int index);
 void				add_obj_lines(int x, int y, t_doom *doom, int index);
+void				coor_pos(t_doom *doom);
 
 
 /*sprite functions*/
