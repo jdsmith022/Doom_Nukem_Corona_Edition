@@ -38,6 +38,8 @@ void	change_pos(double x, double y, t_doom *doom)
 				add_to_line(&OBJECT[k].lines[side], x, y);
 				side++;
 			}
+            OBJECT[k].pos.x += fabs(x);
+            OBJECT[k].pos.y += fabs(y);
 			k++;
 		}
 		i++;
