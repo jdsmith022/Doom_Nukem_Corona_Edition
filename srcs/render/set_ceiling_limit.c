@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-void		set_ceiling_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
+void		set_ceiling_limit(t_doom *doom, t_sidedef sidedef,
 			t_sector *sector)
 {
 	double		height_ceiling;
@@ -16,7 +16,7 @@ void		set_ceiling_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
 		plane_height_std = doom->texture_height / sidedef.prev_sidedef.distance\
 			* doom->dist_to_plane;
 		scale = plane_height_std / doom->texture_height;
-		diff = STD_TEXT- doom->player_height;
+		diff = doom->texture_height - doom->player_height;
 		height_ceiling = sector->height_ceiling / \
 			sidedef.prev_sidedef.distance * doom->dist_to_plane;
 		plane_top = ((HEIGHT / 2) - (diff * scale)) - \

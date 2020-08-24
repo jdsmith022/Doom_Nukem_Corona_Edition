@@ -14,7 +14,7 @@ void		find_face_sprite(t_doom *doom, t_sprite *sprite, t_ray ray, int i)
 		if (!isnan(intersect.x) && !isnan(intersect.y))
 		{
 			sprite->visible = sprite->textures[i];
-			sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
+			sprite->distance = fabs(point_distance(doom->pos, sprite->pos));
 		}
 		i++;
 	}
@@ -66,7 +66,7 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 		find_face_sprite(doom, sprite, ray, 0);
 		doom->visible_sprites++;
 		sprite->sprite_x = ray.plane_x;
-		sprite->distance = fabs(points_distance(doom->pos, sprite->pos));
+		sprite->distance = fabs(point_distance(doom->pos, sprite->pos));
 	}
 }
 

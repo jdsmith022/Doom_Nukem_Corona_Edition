@@ -61,7 +61,8 @@ double		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite, t_sector sector)
 	// return (sidedef_bottom);
 	
 	//START SIDEDEF _TOP
-	diff = STD_TEXT - doom->player_height;
+	
+	diff = STD_TEXT_HEIGHT - doom->player_height;
 	height_ceiling = doom->lib.sector[sprite->sector].height_ceiling\
 		/ sprite->distance * doom->dist_to_plane;
 	sidedef_top = ((HEIGHT / 2) - ((double)diff * scale)) -\

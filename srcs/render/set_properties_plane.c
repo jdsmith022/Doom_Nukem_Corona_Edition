@@ -25,7 +25,7 @@ static int	set_plane_top(t_doom *doom, double scale,
 	int		sidedef_top;
 	int		diff;
 
-	diff = STD_TEXT - doom->player_height;
+	diff = doom->texture_height - doom->player_height;
 	if (sector.slope_ceiling_id != -1)
 		sector.height_ceiling -= \
 			set_slope_height_ceiling(doom, sidedef, sector);

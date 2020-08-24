@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include "doom.h"
 
+# define STD_TEXT_HEIGHT 96
+
 # define SCISSOR_LIFT 7
 # define SHOPPER 9
 # define FACE_MASK 13

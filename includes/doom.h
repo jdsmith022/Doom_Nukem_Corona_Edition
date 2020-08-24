@@ -40,7 +40,7 @@
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 200
-# define SENSITIVITY 0.4
+# define SENSITIVITY 0.7
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -56,8 +56,6 @@
 # define TEXTURES		doom->lib.tex_lib
 # define SPRITES		doom->lib.sprites
 # define OBJ_LIB		doom->lib.obj_lib
-
-# define STD_TEXT 96
 
 # define OUTSIDE 1
 # define EXIT_LEVEL 2
@@ -376,14 +374,16 @@ void				init_audio(t_doom *doom);
 void				game_loop(t_doom *doom);
 void				doom_update(t_doom *doom, double dt_time);
 void				doom_render(t_doom *doom);
-double				points_distance(t_point p1, t_point p2);
+
+double				point_distance(t_point p1, t_point p2);
+double				point_distance_angle(t_point p1, t_point p2, double angle);
 t_point				check_line_intersection(t_line line1, t_line line2);
+double				get_line_angle(t_line line);
+double				point_line_distance(t_point point, t_line line);
+t_point				line_delta(t_point start, t_point end);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
-double				get_line_angle(t_line line);
-t_point				line_delta(t_point start, t_point end);
-double				point_distance(t_point p1, t_point p2, double angle);
-double				point_line_distance(t_point point, t_line line);
+
 void				timer(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
 void				update_hud_ui(t_doom *doom);
@@ -442,8 +442,8 @@ void				wall_offset(t_plane *plane, int sidedef_top);
 void				set_texture_properties(t_doom *doom);
 void				set_floor_limit(t_doom *doom, t_plane *plane,\
 						t_sidedef sidedef, t_sector *sector);
-void				set_ceiling_limit(t_doom *doom, t_plane *plane,\
-						t_sidedef sidedef, t_sector *sector);
+void				set_ceiling_limit(t_doom *doom, t_sidedef sidedef, \
+						t_sector *sector);
 Uint8				find_slope_line_offset(t_point start, t_point end);
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
@@ -451,7 +451,8 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, int mask);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
+						int mask);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
@@ -483,7 +484,6 @@ void				light_floor_ceiling(t_doom *doom, t_sector sector,\
 						int x, int y);
 void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
-double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);
 
 /*game editor*/

@@ -30,7 +30,7 @@ void				sidedef_render(t_doom *doom, t_ray ray,\
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 t_point				line_delta(t_point start, t_point end);
-double				point_distance(t_point p1, t_point p2, double angle);
+double				point_distance_angle(t_point p1, t_point p2, double angle);
 double				point_line_distance(t_point point, t_line line);
 double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);

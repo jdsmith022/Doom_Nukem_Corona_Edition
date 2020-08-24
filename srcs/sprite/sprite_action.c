@@ -44,7 +44,7 @@ void		exit_scissor_lift(t_doom *doom)
 	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.x = doom->pos.x - 70;
 	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.y = doom->pos.y - 10;
 	//park yourself next to it
-	distance = points_distance(doom->pos, doom->lib.sprites[doom->save_scissor_lift].pos);
+	distance = point_distance(doom->pos, doom->lib.sprites[doom->save_scissor_lift].pos);
 	if (distance > 60/* && distance < 100*/)
 	{
 		doom->save_scissor_lift = -1;

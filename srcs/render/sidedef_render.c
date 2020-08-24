@@ -2,31 +2,22 @@
 #include "../../includes/action.h"
 #include "../../includes/sprites.h"
 
-t_sidedef	set_properties_sidedef(t_point intersect, double distance,
+t_sidedef		set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom)
 {
 	t_sidedef	sidedef;
 
-	set_texture_properties(doom);
-	set_offset(&sidedef, curr_sidedef, intersect, doom);
+	sidedef = curr_sidedef;
 	sidedef.distance = distance;
-	sidedef.distance = point_distance(intersect, doom->pos, doom->ray_angle);
-	sidedef.line.start = curr_sidedef.line.start;
-	sidedef.line.end = curr_sidedef.line.end;
-	sidedef.sector = curr_sidedef.sector;
-	sidedef.opp_sector = curr_sidedef.opp_sector;
-	sidedef.id = curr_sidedef.id;
-	sidedef.txt_1 = curr_sidedef.txt_1;
-	sidedef.txt_2 = curr_sidedef.txt_2;
-	sidedef.txt_3 = curr_sidedef.txt_3;
+	set_offset(&sidedef, curr_sidedef, intersect, doom);
+	doom->texture_width = doom->lib.tex_lib[sidedef.txt_2]->w;
+	doom->texture_height = doom->lib.tex_lib[sidedef.txt_2]->h;
 	sidedef.intersect = intersect;
-	sidedef.line = curr_sidedef.line;
-	sidedef.action = curr_sidedef.action;
 	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
 }
 
-static int			is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
+static int		is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
 {
 	t_point start;
 	t_point end;
@@ -47,8 +38,8 @@ static int			is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
 	return (-1);
 }
 
-double				sidedef_intersection_distance(t_ray ray,
-						t_line line, t_point *intersect)
+double			sidedef_intersection_distance(t_ray ray,
+					t_line line, t_point *intersect)
 {
 	double		distance;
 	t_point		ray_delta;
@@ -58,7 +49,7 @@ double				sidedef_intersection_distance(t_ray ray,
 	sidedef_delta = line_delta(line.start, line.end);
 	*intersect = line_intersection(ray.line.start, ray_delta,\
 		line.start, sidedef_delta);
-	distance = point_distance(*intersect, ray.line.start, ray.angle);
+	distance = point_distance_angle(*intersect, ray.line.start, ray.angle);
 	return (distance);
 }
 

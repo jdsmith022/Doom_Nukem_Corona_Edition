@@ -41,7 +41,7 @@ static void			set_properties(t_doom *doom, int set)
 	}
 }
 
-static double	find_min_distance(t_doom *doom, t_ray ray,
+static double		find_min_distance(t_doom *doom, t_ray ray,
 					t_line *sky_sd, t_plane *plane)
 {
 	t_point	save_intersect;
@@ -67,7 +67,7 @@ static double	find_min_distance(t_doom *doom, t_ray ray,
 	return (min_distance);
 }
 
-static void		set_ray(t_ray *ray, t_doom *doom)
+static void			set_ray(t_ray *ray, t_doom *doom)
 {
 	ray->line.start.x = 64;
 	ray->line.start.y = 64;
@@ -77,7 +77,7 @@ static void		set_ray(t_ray *ray, t_doom *doom)
 		* sin(ray->angle);
 }
 
-void			sidedef_render_skybox(t_doom *doom, t_ray ray,
+void				sidedef_render_skybox(t_doom *doom, t_ray ray,
 					t_line *sky_sd)
 {
 	t_plane plane;
