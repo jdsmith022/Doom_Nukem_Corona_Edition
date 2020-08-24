@@ -30,8 +30,17 @@ static t_item	init_item(t_doom *doom, uint8_t type)
 	item.amount = 1;
 	set_sprite(doom, type, &item);
 	if (!item.sprite)
-		printf("Sprite not found\n");
+		write(1, "Sprite not found\n");
 	return (item);
+}
+
+static bool		valid_input(uint8_t type, t_list **head)
+{
+	if (!type || type > NUM_OF_GROCERIES)
+		return (false);
+	if (get_basket_len(head) >= MAX_BASKET_LEN)
+		return (false);
+	return (true);
 }
 
 void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
@@ -40,9 +49,7 @@ void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	t_item	item;
 
 	temp = *head;
-	if (!type || type > NUM_OF_GROCERIES)
-		return ;
-	if (get_basket_len(head) >= MAX_BASKET_LEN)
+	if (!valid_input(type, head))
 		return ;
 	item = init_item(doom, type);
 	doom->own_event.groc_pickup = TRUE;
@@ -72,7 +79,7 @@ bool		remove_item_from_basket(t_list **head, uint8_t type)
 
 	temp = *head;
 	if (!temp)
-		return false;
+		return (false);
 	item = (t_item *)temp->content;
 	while (item->type != type)
 	{
