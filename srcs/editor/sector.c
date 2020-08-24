@@ -75,6 +75,8 @@ void	add_sector(t_doom *doom)
 		SECTOR[EDIT.s_len].txt_ceiling = 0;
 		SECTOR[EDIT.s_len].i_sidedefs = EDIT.w_len;
 		SECTOR[EDIT.s_len].n_sidedefs = 0;
+		SECTOR[EDIT.s_len].i_objects = EDIT.o_len;
+		SECTOR[EDIT.s_len].n_objects = 0;
 		SECTOR[EDIT.s_len].diff_x = 0;
 		SECTOR[EDIT.s_len].diff_y = 0;
 		SECTOR[EDIT.s_len].action = 0;

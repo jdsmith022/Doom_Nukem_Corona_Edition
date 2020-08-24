@@ -9,29 +9,48 @@ void	init_diff(t_line *diff)
 	diff->end.y = INFINITY;
 }
 
-t_line	corners(t_doom *doom, int i)
+void	check_corners(t_line line, t_line *diff)
 {
+	if (line.start.x > diff->start.x)
+		diff->start.x = line.start.x;
+	if (line.end.x > diff->start.x)
+		diff->start.x = line.end.x;
+	if (line.start.x < diff->end.x)
+		diff->end.x = line.start.x;
+	if (line.end.x < diff->end.x)
+		diff->end.x = line.end.x;
+	if (line.start.y > diff->start.y)
+		diff->start.y = line.start.y;
+	if (line.end.y > diff->start.y)
+		diff->start.y = line.end.y;
+	if (line.start.y < diff->end.y)
+		diff->end.y = line.start.y;
+	if (line.end.y < diff->end.y)
+		diff->end.y = line.end.y;
+}
+
+t_line	corners(t_doom *doom)
+{
+	int i;
+	int side;
 	t_line	diff;
 
 	init_diff(&diff);
+	i = 0;
 	while (i < EDIT.w_len)
 	{
-		if (SIDEDEF[i].line.start.x > diff.start.x)
-			diff.start.x = SIDEDEF[i].line.start.x;
-		if (SIDEDEF[i].line.end.x > diff.start.x)
-			diff.start.x = SIDEDEF[i].line.end.x;
-		if (SIDEDEF[i].line.start.x < diff.end.x)
-			diff.end.x = SIDEDEF[i].line.start.x;
-		if (SIDEDEF[i].line.end.x < diff.end.x)
-			diff.end.x = SIDEDEF[i].line.end.x;
-		if (SIDEDEF[i].line.start.y > diff.start.y)
-			diff.start.y = SIDEDEF[i].line.start.y;
-		if (SIDEDEF[i].line.end.y > diff.start.y)
-			diff.start.y = SIDEDEF[i].line.end.y;
-		if (SIDEDEF[i].line.start.y < diff.end.y)
-			diff.end.y = SIDEDEF[i].line.start.y;
-		if (SIDEDEF[i].line.end.y < diff.end.y)
-			diff.end.y = SIDEDEF[i].line.end.y;
+		check_corners(SIDEDEF[i].line, &diff);
+		i++;
+	}
+	i = 0;
+	while (i < EDIT.o_len)
+	{
+		side = 0;
+		while (side < 4)
+		{
+			check_corners(OBJECT[i].lines[side], &diff);
+			side++;
+		}
 		i++;
 	}
 	return (diff);
@@ -65,7 +84,7 @@ void	box_in_sectors(t_doom *doom)
 	int		save_cur_sec;
 	t_line	diff;
 
-	diff = corners(doom, 0);
+	diff = corners(doom);
 	save_cur_sec = EDIT.cur_sec;
 	i = 0;
 	while (i <= EDIT.s_len)

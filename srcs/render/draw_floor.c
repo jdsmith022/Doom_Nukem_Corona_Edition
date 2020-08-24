@@ -17,10 +17,10 @@ static void		calculate_floor_dist(t_doom *doom, int x, int y,
 
 static void		find_floor_limit(t_doom *doom, t_sector sector, int *limit)
 {
-	if (sector.slope_floor_id != -1)
+	// if (sector.slope_floor_id != -1)
 		*limit = HEIGHT;
-	else
-		*limit = sector.floor_end;
+	// else
+		// *limit = sector.floor_end;
 }
 
 void			draw_floor(t_doom *doom, int x,

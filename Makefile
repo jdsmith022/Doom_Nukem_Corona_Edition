@@ -3,7 +3,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O2 -Wpedantic
 
 LIBFT = libft
 SDL = sdl
@@ -41,7 +41,8 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 			 set_texture_type create_sidedef
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
-				printing_map init_game
+				printing_map init_game draw_sidedef_object objects \
+				correct_position
 AUDIO_FILES = audio audio_init playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
@@ -60,8 +61,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer \
 			update_list_and_basket
 MENU_FILES = start_menu event_settings game_over print_background menu_selection \
-			menu_click_events finished_text print_menu key_settings
-ACTION_FILES = action light_switch moving_sidedef sprite_interaction \
+			menu_click_events finished_text print_menu
+ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)

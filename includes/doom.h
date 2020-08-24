@@ -18,7 +18,7 @@
 // # include "render.h"
 
 # include "../sdl/includes/SDL.h"
-# include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
+// # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -305,10 +305,13 @@ typedef struct		s_gamedesign {
 	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
+	t_sprite		*object;
 	int				o_len;
 	int				o_size;
+	int				cur_tex;
 	int				cur_sec;
 	int				cur_sd;
+	int				cur_obj;
 	int				portal_sd;
 	int				portal_sec;
 	int				pl_pos;
@@ -509,5 +512,14 @@ void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
 void				init_game_design(t_doom *doom);
 void				init_game_design(t_doom *doom);
+void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
+void				add_object(t_doom *doom, int x, int y);
+void				draw_object(t_doom *doom, Uint32 **pixels);
+void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
+void				del_obj(t_doom *doom);
+void				add_specifications(t_doom *doom, int index);
+void				add_obj_lines(int x, int y, t_doom *doom, int index);
+void				coor_pos(t_doom *doom);
+
 
 #endif

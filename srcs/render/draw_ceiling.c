@@ -21,7 +21,7 @@ static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 	&& doom->lib.sector[doom->i_sector].action == 1)
 		*limit = doom->lib.portal_ceiling;
 	else
-		*limit = sector.ceiling_end;
+		*limit = 0;
 }
 
 void			draw_ceiling(t_doom *doom, int x,
