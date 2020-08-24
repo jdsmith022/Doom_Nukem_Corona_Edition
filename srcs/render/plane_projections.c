@@ -41,8 +41,13 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	else
 		doom->lib.sector[sidedef.sector].sidedef_bottom[x] = 0;
 	if (sidedef.opp_sector != -1)
-		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
-			plane.mid_texture_bottom;
+		{
+			if (plane.mid_texture_bottom == 0)
+				doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = -1; //added
+			else
+				doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
+					plane.mid_texture_bottom;
+		}
 	else
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
 }

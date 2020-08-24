@@ -96,7 +96,7 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	i = 0;
 	while (i < sprite.n_sector)
 	{
-		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x] > 0 &&\
+		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x] >= 0 &&\
 		doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x] <= HEIGHT)
 			mid_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
@@ -104,6 +104,8 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 			return (-1);
 		if (mid_bottom > 0 && mid_bottom < HEIGHT && mid_bottom < screen_y)
 			return (-1);
+		if (mid_bottom == -1)//added
+			return (-1);//added
 		i++;
 	}
 	return (1);
