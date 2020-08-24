@@ -5,6 +5,7 @@
 
 static void		draw_add_on(t_doom *doom, int sprite_i)
 {
+	t_line bar;
 	t_point bar_begin;
 	t_point	bar_end;
 

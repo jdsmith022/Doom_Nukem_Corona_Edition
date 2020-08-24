@@ -17,9 +17,7 @@ void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i,\
 	b = text[pix_dex + 2];
 	if (text[pix_dex] == (char)255 && text[pix_dex + 1] == (char)255 &&\
 	text[pix_dex + 2] == (char)255)
-	{
 		;
-	}
 	else
 	{
 		if (distance > 0)
@@ -65,9 +63,9 @@ int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	int		i_sprite;
 	int		tex_y;
 
-	i_sprite = doom->lib.sprites[index_sp].visible; //multiple faces
+	i_sprite = doom->lib.sprites[index_sp].visible;
 	tex_y = 0;
-	if (sprite_begin->y > 0/* && sprite_begin->y < HEIGHT*/)
+	if (sprite_begin->y > 0)
 		tex_y = (int)(screen_y - sprite_begin->y) /\
 		doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	else
@@ -75,13 +73,6 @@ int		find_y(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		tex_y = (int)(screen_y + (sprite_begin->y * -1)) /\
 		doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	}
-	// else
-	// {
-	// 	/* code */
-	// }
-	
-	// 	tex_y = (int)(sprite_end->y - screen_y) /\
-	// 	doom->lib.sprites[index_sp].height * doom->lib.obj_lib[i_sprite]->h;
 	return (tex_y);
 }
 
@@ -96,16 +87,16 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	i = 0;
 	while (i < sprite.n_sector)
 	{
-		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x] >= 0 &&\
-		doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x] <= HEIGHT)
-			mid_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
+		mid_bottom =\
+		doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
+		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x]\
+			== -1)
+			return (-1);
 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
 		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
 			return (-1);
 		if (mid_bottom > 0 && mid_bottom < HEIGHT && mid_bottom < screen_y)
 			return (-1);
-		if (mid_bottom == -1)//added
-			return (-1);//added
 		i++;
 	}
 	return (1);
@@ -124,8 +115,9 @@ void	sprite_light(t_doom *doom, t_sprite sprite, double *light_distance)
 	{
 		*light_distance = 1 / (sprite.distance / 70);
 		*light_distance = sprite.sprite_x > WIDTH / 2 ? \
-			*light_distance - (sprite.sprite_x - (float)WIDTH / 2.0) * 1.0 / (float)WIDTH :\
-			+*light_distance - ((float)WIDTH / 2.0 - sprite.sprite_x) * 1.0 / (float)WIDTH;
+			*light_distance - (sprite.sprite_x - (float)WIDTH / 2.0) * 1.0 /\
+			(float)WIDTH : +*light_distance - ((float)WIDTH / 2.0 -\
+			sprite.sprite_x) * 1.0 / (float)WIDTH;
 	}
 }
 
@@ -139,10 +131,8 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	int			tex_y;
 	int			tex_x;
 	int			screen_y;
-	t_sprite	sprite; //remove
-	double		light_distance;
+	double		light_dist;
 
-	sprite = doom->lib.sprites[index_sp]; //remove
 	i_sprite = doom->lib.sprites[index_sp].visible;
 	stripe = (int)sprite_begin->x;
 	screen_y = (int)sprite_begin->y;
@@ -152,11 +142,12 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		if (doom->stripe_distance[stripe] >\
 		doom->lib.sprites[index_sp].distance)
 		{
-			sprite_light(doom, sprite, &light_distance);
+			sprite_light(doom, doom->lib.sprites[index_sp], &light_dist);
 			screen_y = (int)sprite_begin->y;
 			tex_x = find_x(doom, sprite_begin, sprite_end, index_sp, stripe);
 			while (screen_y < (int)sprite_end->y && screen_y < HEIGHT &&\
-				no_clipping_region(screen_y, sprite, doom, stripe) == 1)
+				no_clipping_region(screen_y, doom->lib.sprites[index_sp],\
+				doom, stripe) == 1)
 			{
 				if (screen_y >= 0)
 				{
@@ -167,7 +158,7 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
 					+ ((int)tex_x *\
 					doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-					put_pixel_tex(doom, pix_dex, index, i_sprite, light_distance);
+					put_pixel_tex(doom, pix_dex, index, i_sprite, light_dist);
 				}
 				screen_y++;
 			}
