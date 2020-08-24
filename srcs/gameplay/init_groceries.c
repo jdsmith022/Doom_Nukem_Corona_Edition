@@ -1,5 +1,5 @@
-# include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
+#include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 
 void			set_grocery_font(TTF_Font **font)
 {
@@ -37,8 +37,6 @@ void			init_groceries(t_doom *doom)
 	else
 		doom->groceries->shopping_list_len = MAX_SHOPPING_LIST_LENGTH;
 	generate_shopping_list(doom);
-	while (i < doom->groceries->shopping_list_len)
-		i++;
 	doom->groceries->basket = NULL;
 	doom->groceries->tp = FALSE;
 	set_grocery_font(&doom->groceries->font);

@@ -45,10 +45,17 @@
 # define MARMELADE	38
 # define STEAK		39
 # define BROWNIE	40
+# define BOX		41
+# define MILK		42
+# define SPRAY		43
+# define JARS1		44
+# define JARS2		45
+# define JARS3		46
+# define JARS4		47
 
 #define TEX_APPLE	"assets/textures/shelves/apple.bmp"
 #define TEX_BACON	"assets/textures/shelves/sausage_bacon.bmp"
-#define TEX_CHERRY	"assets/textures/shelves/cherry-strawberry.bmp"
+#define TEX_CHERRY	"assets/textures/shelves/cherry_strawberry.bmp"
 #define TEX_JAM		"assets/textures/shelves/jar6.bmp"
 #define TEX_COLA	"assets/textures/shelves/soda2.bmp"
 #define TEX_WATER	"assets/textures/shelves/water.bmp"
@@ -241,6 +248,51 @@ static const t_grocery_paths GROCERIE_PATHS[] = {
 		"assets/textures/shelves/sweets.bmp",
 		"assets/sprites/groceries/brownie.bmp",
 		BROWNIE
+	},
+	{
+		"assets/textures/shelves/boxes.bmp",
+		"assets/sprites/groceries/box.bmp",
+		BOX
+	},
+	{
+		"assets/textures/shelves/milk.bmp",
+		"assets/sprites/groceries/milk1.bmp",
+		MILK
+	},
+	{
+		"assets/textures/shelves/milk2.bmp",
+		"assets/sprites/groceries/milk1.bmp",
+		MILK
+	},
+	{
+		"assets/textures/shelves/milk3.bmp",
+		"assets/sprites/groceries/milk1.bmp",
+		MILK
+	},
+	{
+		"assets/textures/shelves/spray_bottles.bmp",
+		"assets/sprites/groceries/spray_bottle.bmp",
+		SPRAY
+	},
+	{
+		"assets/textures/shelves/jar1.bmp",
+		"assets/sprites/groceries/glass_jar2.bmp",
+		JARS1
+	},
+	{
+		"assets/textures/shelves/jar2.bmp",
+		"assets/sprites/groceries/glass_jar4.bmp",
+		JARS2
+	},
+	{
+		"assets/textures/shelves/jar3.bmp",
+		"assets/sprites/groceries/glass_jar8.bmp",
+		JARS3
+	},
+	{
+		"assets/textures/shelves/jar4.bmp",
+		"assets/sprites/groceries/glass_jar6.bmp",
+		JARS4
 	}
 };
 

@@ -1,6 +1,6 @@
-# include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
-# include "../../includes/textures.h"
+#include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
+#include "../../includes/textures.h"
 
 static uint8_t	is_existing_grocery(t_doom *doom, SDL_Surface *curr)
 {

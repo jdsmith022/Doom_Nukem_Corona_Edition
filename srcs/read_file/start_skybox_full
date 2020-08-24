@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-77
+91
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -367,6 +367,34 @@ assets/sprites/player/left_hand_reaching.bmp
 assets/sprites/player/right_hand_reaching.bmp
 #76
 assets/sprites/player/cross_hairs.bmp
+#77
+assets/sprites/groceries/lemon.bmp
+#78
+assets/sprites/groceries/brinta.bmp
+#79
+assets/sprites/groceries/Cookie.bmp
+#80
+assets/sprites/groceries/tomato.bmp
+#81
+assets/sprites/groceries/cereal.bmp
+#82
+assets/sprites/groceries/cereal2.bmp
+#83
+assets/sprites/groceries/cereal3.bmp
+#84
+assets/sprites/groceries/steak.bmp
+#85
+assets/sprites/groceries/cereal2.bmp
+#86
+assets/sprites/groceries/Cheese.bmp
+#87
+assets/sprites/groceries/jerky.bmp
+#88
+assets/sprites/groceries/soap.bmp
+#89
+assets/sprites/groceries/coffee.bmp
+#90
+assets/sprites/groceries/tea.bmp
 
 
 

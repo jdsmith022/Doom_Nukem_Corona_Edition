@@ -37,7 +37,7 @@ static void	select_action(t_doom *doom)
 	}
 }
 
-void	action_handler(t_doom *doom)
+void		action_handler(t_doom *doom)
 {
 	select_action(doom);
 	shoot_action(doom);
