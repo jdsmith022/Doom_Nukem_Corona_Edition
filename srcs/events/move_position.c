@@ -63,7 +63,7 @@ static void		check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	{
 		if (sidedef.action == 2 && \
 		point_line_distance(doom->pos, sidedef.line) < \
-		100.0 && doom->own_event.sliding_door == -1)
+		200.0 && doom->own_event.sliding_door == -1)
 			init_sliding_door(doom, &sidedef);
 		collision = check_collision(doom, &sidedef, move);
 		if (collision != -1)

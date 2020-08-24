@@ -36,10 +36,10 @@ void			draw_floor(t_doom *doom, int x,
 	while (y < limit)
 	{
 		calculate_floor_dist(doom, x, y, &sector);
-		light_floor_ceiling(doom, sector, x, y);
+		add_light_to_pixel(doom, sector, x, y);
 		index = (y * doom->surface->pitch) + (x * bpp);
 		if (sector.slope_floor_id != -1)
-			put_pixels(doom, index, x, y);
+			put_pixel_slope(doom, index, x, y);
 		else
 			row_calculations(doom, doom->horizontal_plane_dist,\
 				index, doom->lib.tex_lib[tex_dex]);

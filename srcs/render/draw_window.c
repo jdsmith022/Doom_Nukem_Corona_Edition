@@ -13,7 +13,7 @@ static void		put_window_pixel(t_doom *doom, t_point pixel, Uint32 tex_dex,
 	if (textures[pixel_dex] == (char)255 && \
 	textures[pixel_dex + 1] == (char)255 &&\
 	textures[pixel_dex + 2] == (char)255)
-		put_portal_pixel(doom, pixel, BLUE, 0xFF);
+		put_portal_pixel(doom, pixel, BLUE, WINDOW_MASK);
 	else
 		put_texture(doom, tex_dex, index, pixel_dex);
 }
@@ -46,11 +46,9 @@ void			draw_window(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	light_sidedef_x_change(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
-		if (doom->light == FALSE)
-			light_sidedef_y_change(doom, pixel.y);
+		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
 		put_window_texture(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}
