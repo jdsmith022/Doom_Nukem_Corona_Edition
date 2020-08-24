@@ -18,9 +18,9 @@ void	light_floor_ceiling(t_doom *doom, t_sector sector, int x, int y)
 		doom->distance = 1 / ((float)doom->distance / 70.0);
 		doom->distance =\
 			x > WIDTH / 2 ? doom->distance - (x - (float)WIDTH / 2.0) *\
-			X_CHANGE : +doom->distance - ((float)WIDTH / 2.0 - x) * X_CHANGE;
+			1.0 / (float)WIDTH : +doom->distance - ((float)WIDTH / 2.0 - x) * 1.0 / (float)WIDTH;
 		doom->distance =\
 			y > HEIGHT / 2 ? doom->distance - (y - (float)HEIGHT / 2.0) *\
-			Y_CHANGE : +doom->distance - ((float)HEIGHT / 2.0 - y) * Y_CHANGE;
+			1.0 / (float)HEIGHT : +doom->distance - ((float)HEIGHT / 2.0 - y) * 1.0 / (float)HEIGHT;
 	}
 }

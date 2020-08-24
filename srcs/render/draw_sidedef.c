@@ -55,26 +55,17 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	Uint32	*pixels;
 	t_point	pixel;
 
-	// if (sidedef.id == 4)
-	// 	printf("draw protal\n");
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
 	light_sidedef(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
-		// if (doom->light == FALSE)
-		// 	doom->distance = pixel.y > HEIGHT / 2 ?\
-		// 	doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
 		if (pixel.y < plane.mid_texture_bottom)
 			put_portal_pixel(doom, pixel, 0, 0XFF);
 		if (pixel.y < plane.mid_texture_top ||\
 		pixel.y > plane.mid_texture_bottom)
-		{
-			// if (sidedef.id == 3)
-			// 	printf("whhy here\n");
 			find_texture_index(doom, pixel, plane, sidedef);
-		}
 		pixel.y++;
 	}
 }
@@ -85,8 +76,6 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	t_point	pixel;
 	char	*pixels;
 
-	// if (sidedef.id == 4)
-	// 	printf("draw oneside\n");
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	light_sidedef(doom, sidedef, x);
@@ -94,7 +83,7 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	{
 		if (doom->light == FALSE)
 			doom->distance = pixel.y > HEIGHT / 2 ?\
-			doom->distance - Y_CHANGE : doom->distance + Y_CHANGE;
+			doom->distance - 1.0 / (float)HEIGHT : doom->distance + 1.0 / (float)HEIGHT;
 		find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}

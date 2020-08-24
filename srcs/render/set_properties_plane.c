@@ -25,7 +25,10 @@ static int	set_plane_top(t_doom *doom, double scale,
 	int		sidedef_top;
 	int		diff;
 
-	diff = doom->texture_height - doom->player_height;
+	if (sidedef.poster == -1)
+		diff = doom->texture_height - doom->player_height;
+	else
+		diff = STD_TEXT_HEIGHT - doom->player_height;
 	if (sector.slope_ceiling_id != -1)
 		sector.height_ceiling -= \
 			set_slope_height_ceiling(doom, sidedef, sector);
@@ -40,9 +43,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 				t_sector opp_sector, t_plane *plane)
 {
 	double		scale;
-	double		diff;
 
-	diff = doom->texture_height - doom->player_height;
 	plane->height_standard = doom->texture_height / \
 		sidedef.distance * doom->dist_to_plane;
 	scale = plane->height_standard / doom->texture_height;

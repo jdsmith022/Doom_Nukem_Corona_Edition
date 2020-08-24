@@ -122,8 +122,8 @@ void	sprite_light(t_doom *doom, t_sprite sprite, double *light_distance)
 	{
 		*light_distance = 1 / (sprite.distance / 70);
 		*light_distance = sprite.sprite_x > WIDTH / 2 ? \
-			*light_distance - (sprite.sprite_x - (float)WIDTH / 2.0) * X_CHANGE :\
-			+*light_distance - ((float)WIDTH / 2.0 - sprite.sprite_x) * X_CHANGE;
+			*light_distance - (sprite.sprite_x - (float)WIDTH / 2.0) * 1.0 / (float)WIDTH :\
+			+*light_distance - ((float)WIDTH / 2.0 - sprite.sprite_x) * 1.0 / (float)WIDTH;
 	}
 }
 
@@ -158,9 +158,6 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 			{
 				if (screen_y >= 0)
 				{
-					// if (doom->light == FALSE)
-					// 	light_distance = screen_y > HEIGHT / 2 ?\
-					// 	light_distance - Y_CHANGE : light_distance + Y_CHANGE;
 					index = (Uint32)(screen_y * doom->surface->pitch) +\
 					(int)(stripe * doom->surface->format->BytesPerPixel);
 					tex_y = find_y(doom, sprite_begin, sprite_end,\

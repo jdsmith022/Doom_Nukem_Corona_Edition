@@ -35,6 +35,8 @@
 # define WIDTH 800
 # define HEIGHT 600
 
+# define STD_TEXT_HEIGHT 96
+
 # define PI 3.14159265359
 # define FOV 60 * (PI / 180)
 
@@ -47,9 +49,6 @@
 # define RED 1
 # define GREEN 2
 # define BLUE 3
-
-# define Y_CHANGE 1.0 / (float)HEIGHT
-# define X_CHANGE 1.0 / (float)WIDTH
 
 # define SECTORS		doom->lib.sector
 # define SIDEDEFS		doom->lib.sidedef
