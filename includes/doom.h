@@ -476,8 +476,10 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
-void				draw_poster(t_doom *doom, t_plane plane,
-					int poster_index, int x);
+int					set_poster(int x, double distance, t_point intersect,\
+						t_sidedef *poster);
+void				draw_poster(t_doom *doom, t_plane plane,\
+						int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);

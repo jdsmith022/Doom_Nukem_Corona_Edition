@@ -30,31 +30,31 @@ static t_line		*init_sky_sd(t_doom *doom)
 static void		save_sky_2(t_doom *doom, t_bmp *images,\
 						SDL_Surface **lib, int sky_fd)
 {
-	sky_fd = open_file("assets/textures/sky_box/meadow_dn.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_up.bmp");
+	if (sky_fd < 0)
+		bmp_safe_exit(doom, images);
+	images[0] = read_bmp(sky_fd);
+	save_bpm_to_sdl(doom, images, lib, 0);
+	sky_fd = open_file("assets/textures/sky_box/meadow_rt.bmp");
 	if (sky_fd < 0)
 		bmp_safe_exit(doom, images);
 	images[1] = read_bmp(sky_fd);
 	save_bpm_to_sdl(doom, images, lib, 1);
-	sky_fd = open_file("assets/textures/sky_box/meadow_rt.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_ft.bmp");
 	if (sky_fd < 0)
 		bmp_safe_exit(doom, images);
 	images[2] = read_bmp(sky_fd);
 	save_bpm_to_sdl(doom, images, lib, 2);
-	sky_fd = open_file("assets/textures/sky_box/meadow_ft.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_lf.bmp");
 	if (sky_fd < 0)
 		bmp_safe_exit(doom, images);
 	images[3] = read_bmp(sky_fd);
 	save_bpm_to_sdl(doom, images, lib, 3);
-	sky_fd = open_file("assets/textures/sky_box/meadow_lf.bmp");
+	sky_fd = open_file("assets/textures/sky_box/meadow_bk.bmp");
 	if (sky_fd < 0)
 		bmp_safe_exit(doom, images);
 	images[4] = read_bmp(sky_fd);
 	save_bpm_to_sdl(doom, images, lib, 4);
-	sky_fd = open_file("assets/textures/sky_box/meadow_bk.bmp");
-	if (sky_fd < 0)
-		bmp_safe_exit(doom, images);
-	images[5] = read_bmp(sky_fd);
-	save_bpm_to_sdl(doom, images, lib, 5);
 }
 
 SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd)
@@ -63,18 +63,13 @@ SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd)
 	t_bmp		*images;
 	int			sky_fd;
 
-	images = malloc_images_lib(doom, 6);
-	lib = malloc_sdl_lib(doom, images, 6);
-	doom->lib.len_sky_lib = 6;
-	save_bpm_to_sdl(doom, images, lib, 1);
-	sky_fd = open_file("assets/textures/sky_box/meadow_up.bmp");
-	if (sky_fd < 0)
-		bmp_safe_exit(doom, images);
-	images[0] = read_bmp(sky_fd);
-	save_bpm_to_sdl(doom, images, lib, 0);
+	images = malloc_images_lib(doom, 5);
+	lib = malloc_sdl_lib(doom, images, 5);
+	doom->lib.len_sky_lib = 5;
 	save_sky_2(doom, images, lib, sky_fd);
 	free(images);
 	close(sky_fd);
 	*sky_sd = init_sky_sd(doom);
 	return (lib);
 }
+

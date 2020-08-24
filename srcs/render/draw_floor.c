@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 
-static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
+static void		calculate_floor_dist(t_doom *doom, int x, int y,
+					t_sector *sector)
 {
 	double dist;
 	double diff;

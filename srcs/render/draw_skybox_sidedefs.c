@@ -78,14 +78,14 @@ void			find_skybox_sidedef_texture(t_doom *doom, int x,
 		dir_angle = doom->dir_angle;
 		if ((dir_angle > PI / 2 && dir_angle < (3 * PI) / 2)\
 		&& dir == 0)
-			tex_dex = 2;
+			tex_dex = 1;
 		else if ((dir_angle > (3 * PI) / 2 || dir_angle < PI / 2)\
 		&& dir == 0)
-			tex_dex = 4;
-		else if (dir_angle > PI && dir_angle <= 2 * PI && dir == 1)
 			tex_dex = 3;
+		else if (dir_angle > PI && dir_angle <= 2 * PI && dir == 1)
+			tex_dex = 2;
 		else
-			tex_dex = 5;
+			tex_dex = 4;
 		draw_side_textures(doom, plane, offset, tex_dex);
 		plane.intersect.y++;
 	}

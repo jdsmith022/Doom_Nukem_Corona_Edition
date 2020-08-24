@@ -33,7 +33,7 @@ static void		put_row(t_doom *doom, SDL_Surface *lib,
 	pixels[index] = b;
 }
 
-void		row_calculations(t_doom *doom, double dist, Uint32 index,
+void			row_calculations(t_doom *doom, double dist, Uint32 index,
 					SDL_Surface *lib)
 {
 	t_point	texture;
