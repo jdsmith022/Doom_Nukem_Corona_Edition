@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 int				set_poster(int x, double distance, t_point intersect,

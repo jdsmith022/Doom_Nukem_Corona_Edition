@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void		set_ceiling_limit(t_doom *doom, t_sidedef sidedef,

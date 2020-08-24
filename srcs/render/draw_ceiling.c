@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void		calculate_ceiling_dist(t_doom *doom, int x, int y,

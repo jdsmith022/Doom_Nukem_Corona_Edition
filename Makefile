@@ -26,7 +26,8 @@ MENU = srcs/menu/
 ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_point \
-			doom_update exit free_library update_hud_ui doom_init_events doom_init_ui
+			doom_update exit free_library_struct free_library_sdl update_hud_ui \
+			doom_init_events doom_init_ui
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
@@ -58,8 +59,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				shopper_hit_font
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer \
 			update_list_and_basket
-MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
-			menu_click_events finished_text print_menu
+MENU_FILES = start_menu event_settings game_over print_background menu_selection \
+			menu_click_events finished_text print_menu key_settings
 ACTION_FILES = action light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 

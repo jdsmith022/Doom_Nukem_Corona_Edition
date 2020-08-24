@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void	add_light_to_pixel(t_doom *doom, t_sector sector, int x, int y)

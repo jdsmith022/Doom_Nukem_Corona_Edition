@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
@@ -33,7 +34,7 @@ static void		print_random_font(t_doom *doom, bool *flag, Uint32 index)
 	}
 }
 
-static void	select_index(t_doom *doom)
+static void		select_index(t_doom *doom)
 {
 	Uint32		random_dex;
 	static int	shopper_array[3] = { 18, 19, 20 };
@@ -43,7 +44,7 @@ static void	select_index(t_doom *doom)
 	doom->lib.font_lib.random_index = random_dex;
 }
 
-void		shopper_hit_random_font(t_doom *doom)
+void			shopper_hit_random_font(t_doom *doom)
 {
 	if (doom->lib.font_lib.bools.text == TRUE)
 		select_index(doom);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:47:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/07/23 10:42:36 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/24 22:00:19 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	set_font_colors_2(t_doom *doom)
 	doom->lib.font_lib.font_color.blue = color;
 }
 
-void	set_font_colors(t_doom *doom)
+void		set_font_colors(t_doom *doom)
 {
 	SDL_Color color;
 

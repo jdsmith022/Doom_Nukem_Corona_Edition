@@ -16,6 +16,7 @@ typedef struct			s_menu {
 
 void					doom_start(t_doom *doom);
 void					mouse_settings(t_doom *doom);
+void					key_settings_menu(t_doom *doom);
 void					pause_click_event(t_doom *doom, SDL_Rect rect);
 void					game_over_click_event(t_doom *doom, SDL_Rect rect);
 void					setting_menu_click_event(t_doom *doom, SDL_Rect rect);

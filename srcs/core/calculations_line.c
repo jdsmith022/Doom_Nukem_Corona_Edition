@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 t_point		line_intersection(t_point start1, t_point delta1,

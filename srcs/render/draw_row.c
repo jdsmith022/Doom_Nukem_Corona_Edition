@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void			put_pixel_slope(t_doom *doom, Uint32 index, int x, int y)

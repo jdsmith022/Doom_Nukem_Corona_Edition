@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void		put_window_pixel(t_doom *doom, t_point pixel, Uint32 tex_dex,

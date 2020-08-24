@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
@@ -25,7 +26,7 @@ double			get_timeframe(long *last_frame_time)
 	return (dt);
 }
 
-void				game_loop(t_doom *doom)
+void			game_loop(t_doom *doom)
 {
 	long			last_frame_time;
 	double			dt;

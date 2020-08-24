@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void			set_properties_plane_sky(t_doom *doom,

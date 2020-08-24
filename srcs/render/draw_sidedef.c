@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void			put_portal_pixel(t_doom *doom, t_point pixel,

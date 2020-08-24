@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
@@ -42,7 +43,7 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	set_instruction_text_6(doom, lib);
 }
 
-void	set_instruction_text_4(t_doom *doom, t_font *lib)
+void		set_instruction_text_4(t_doom *doom, t_font *lib)
 {
 	lib[10].str = "Keep a look out for the Covid-19 virus! Look around with \
 	your mouse!";

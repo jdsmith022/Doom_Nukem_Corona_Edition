@@ -1,9 +1,10 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
 void		set_font_style(t_doom *doom)
 {
-	if(TTF_Init() == -1)
+	if (TTF_Init() == -1)
 		doom_exit_failure(doom, "SDL_TFF lib init error\n");
 	doom->lib.font_lib.font_30 = \
 		TTF_OpenFont("srcs/font/font_style/JosefinSans-Bold.ttf", 30);

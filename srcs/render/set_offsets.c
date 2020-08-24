@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void	wall_offset(t_plane *plane, int sidedef_top)

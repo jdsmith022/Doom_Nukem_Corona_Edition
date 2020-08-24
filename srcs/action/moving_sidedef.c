@@ -1,7 +1,8 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 
-void	render_sliding_door(t_doom *doom, t_sidedef *sidedef)
+void		render_sliding_door(t_doom *doom, t_sidedef *sidedef)
 {
 	t_point		door_start;
 	double		line_angle;
@@ -28,7 +29,7 @@ void	render_sliding_door(t_doom *doom, t_sidedef *sidedef)
 	}
 }
 
-void	init_sliding_door(t_doom *doom, t_sidedef *sidedef)
+void		init_sliding_door(t_doom *doom, t_sidedef *sidedef)
 {
 	doom->lib.sidedef[sidedef->id + 1].line.start = sidedef->line.start;
 	doom->lib.sidedef[sidedef->id + 1].line.end = sidedef->line.start;

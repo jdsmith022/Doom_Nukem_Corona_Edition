@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 double			point_distance_angle(t_point point1,

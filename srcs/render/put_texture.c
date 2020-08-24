@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void		add_tint_to_color(Uint32 *color, int tint, int mask)
