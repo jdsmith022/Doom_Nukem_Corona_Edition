@@ -60,8 +60,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer \
 			update_list_and_basket
 MENU_FILES = start_menu event_settings game_over print_background menu_selection \
-			menu_click_events finished_text print_menu key_settings
-ACTION_FILES = action light_switch moving_sidedef sprite_interaction \
+			menu_click_events finished_text print_menu
+ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)
