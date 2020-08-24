@@ -46,7 +46,6 @@ void	jump_player(t_doom *doom, double dt)
 	int				jump_height;
 
 	doom->own_event.jump = TRUE;
-	printf("1: height = %f\n", doom->player_height);
 	height_floor = doom->lib.sector[doom->i_sector].height_floor;
 	height_ceiling = doom->lib.sector[doom->i_sector].height_ceiling;
 	duration += dt;
@@ -84,5 +83,4 @@ void	get_up(t_doom *doom, double dt)
 	doom->own_event.fall = FALSE;
 	doom->own_event.y_pitch = 0;
 	doom->own_event.fall_count = 0;
-	printf("2: height = %f\n", doom->player_height);
 }

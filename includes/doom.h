@@ -135,6 +135,7 @@ typedef struct		s_event {
 	bool			bend;
 	bool			select;
 	bool			shoot;
+	bool			set_step;
 	int				sliding_door;
 	int				hold_angle;
 	int				hold_x;

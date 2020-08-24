@@ -57,6 +57,7 @@ static void		check_move_sidedef_intersection(t_doom *doom, t_line move, \
 	{
 		doom->i_sector = sector;
 		doom->pos = move.end;
+		doom->own_event.set_step = TRUE;
 	}
 	else
 	{
