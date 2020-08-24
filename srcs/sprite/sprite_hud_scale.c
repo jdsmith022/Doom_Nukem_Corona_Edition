@@ -71,13 +71,14 @@ static int		find_y_bar(t_doom *doom, t_line *bar,\
 	return (tex_y);
 }
 
-void		    draw_stripes_bar(t_doom *doom, t_line bar, int i_sprite)
+void			draw_stripes_bar(t_doom *doom, t_line bar, int i_sprite)
 {
 	Uint32		index;
 	Uint32		pix_dex;
 	int			stripe;
 	int			tex_y;
 	int			tex_x;
+	//use t_coord instead of two integers?
 	int			screen_y;
 
 	stripe = (int)bar.start.x;
