@@ -1,4 +1,4 @@
-#include "../../includes/doom.h" 
+#include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 #include "../../includes/audio.h"
@@ -7,14 +7,16 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 {
 	if (event->jump == FALSE)
 		audio->event->jump_toggled = FALSE;
-	if ((event->move_pos_f || event->move_pos_b) && !event->jump && event->set_step)
+	if ((event->move_pos_f || event->move_pos_b) && \
+		!event->jump && event->set_step)
 	{
 		loop_sound(audio->sounds[FOOTSTEPS], 1);
 		event->set_step = FALSE;
 	}
 	else
 		pause_sound(audio->sounds[FOOTSTEPS], 1);
-	if ((event->move_pos_l || event->move_pos_r) && !event->jump && event->set_step)
+	if ((event->move_pos_l || event->move_pos_r) && \
+		!event->jump && event->set_step)
 	{
 		loop_sound(audio->sounds[FOOTSTEPS], 1);
 		event->set_step = FALSE;
@@ -49,7 +51,8 @@ void	audio(t_doom *doom, t_event *event)
 		return ;
 	if (AUDIO->music_vol && doom->is_running)
 		play_music(AUDIO->music[1]);
-	if (doom->audio->sound_vol){
+	if (doom->audio->sound_vol)
+	{
 		play_movement_sounds(AUDIO, event);
 		play_action_sounds(AUDIO, event);
 	}
