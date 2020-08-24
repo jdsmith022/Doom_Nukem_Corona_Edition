@@ -19,7 +19,7 @@ uint8_t			get_num_of_groceries(t_doom *doom)
 			num_of_groceries++;
 		i++;
 	}
-	return num_of_groceries;
+	return (num_of_groceries);
 }
 
 void			init_groceries(t_doom *doom)
