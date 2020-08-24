@@ -9,7 +9,7 @@ SDL_Rect		get_position(uint16_t index, int start_x, int start_y)
 	position.y = start_y + (index * 55);
 	position.w = 30;
 	position.h = 30;
-	return position;
+	return (position);
 }
 
 void			set_positions(t_list **basket)
@@ -21,7 +21,7 @@ void			set_positions(t_list **basket)
 	i = 0;
 	temp = *basket;
 	if (!temp)
-		return;
+		return ;
 	while (temp)
 	{
 		item = (t_item *)temp->content;

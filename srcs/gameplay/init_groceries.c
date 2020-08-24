@@ -1,5 +1,5 @@
-# include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
+#include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 
 void			set_grocery_font(TTF_Font **font)
 {
