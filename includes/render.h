@@ -94,7 +94,7 @@ void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 
 void				add_saturation(char *r, char *g, char *b, double light);
-void				light_floor_ceiling(t_doom *doom, t_sector sector,\
+void				add_light_to_pixel(t_doom *doom, t_sector sector,\
 						int x, int y);
 
 double				clamp_angle(double angle);

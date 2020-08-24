@@ -88,6 +88,5 @@ void				sidedef_render_skybox(t_doom *doom, t_ray ray,
 	set_properties_plane_sky(doom, &plane, ray.plane_x, min_distance);
 	draw_sky(doom, ray.plane_x, plane.sidedef_top);
 	find_skybox_sidedef_texture(doom, ray.plane_x, plane);
-	draw_ground(doom, ray.plane_x, plane.sidedef_bottom);
 	set_properties(doom, 1);
 }

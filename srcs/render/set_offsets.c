@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
 
-void		wall_offset(t_plane *plane, int sidedef_top)
+void	wall_offset(t_plane *plane, int sidedef_top)
 {
 	plane->wall_offset = 0;
 	if (sidedef_top < 0)
@@ -14,7 +14,7 @@ void		wall_offset(t_plane *plane, int sidedef_top)
 		plane->sidedef_top = sidedef_top;
 }
 
-Uint8			find_slope_line_offset(t_point start, t_point end)
+Uint8	find_slope_line_offset(t_point start, t_point end)
 {
 	Uint8 max_x;
 	Uint8 max_y;
@@ -35,8 +35,8 @@ Uint8			find_slope_line_offset(t_point start, t_point end)
 	return (diff);
 }
 
-void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
-						t_point intersect, t_doom *doom)
+void	set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
+			t_point intersect, t_doom *doom)
 {
 	t_point start;
 	t_point end;

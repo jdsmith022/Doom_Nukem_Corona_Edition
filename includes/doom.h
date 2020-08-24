@@ -42,7 +42,7 @@
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 200
-# define SENSITIVITY 0.7
+# define SENSITIVITY 0.5
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -51,6 +51,8 @@
 # define BLUE 3
 # define FONT_MASK 0X36
 # define WINDOW_MASK 0XFF
+
+# define SLOPE_COLOR 0X505052
 
 # define SECTORS		doom->lib.sector
 # define SIDEDEFS		doom->lib.sidedef
@@ -63,6 +65,8 @@
 # define START_SECTOR 3
 # define START_TIMER 4
 # define CHECKOUT 5
+
+# define WINDOW 6
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
@@ -451,19 +455,17 @@ void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				draw_sidedef(t_doom *doom, t_plane plane,\
-						t_sidedef sidedef, int x);
-void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
-						int mask);
+void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
-void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-void				put_pixels(t_doom *doom, Uint32 index, int x, int y);
+void				put_pixel_slope(t_doom *doom, Uint32 index, int x, int y);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
+						int mask);
 
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
@@ -474,16 +476,16 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
-void				draw_poster(t_doom *doom, t_plane plane,
-					int poster_index, int x);
+int					set_poster(int x, double distance, t_point intersect,\
+						t_sidedef *poster);
+void				draw_poster(t_doom *doom, t_plane plane,\
+						int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 
 void				add_saturation(Uint8 *r, Uint8 *g, Uint8 *b, double light);
-void				light_sidedef_x_change(t_doom *doom, t_sidedef sidedef, int x);
-void				light_sidedef_y_change(t_doom *doom, int y);
-void				light_floor_ceiling(t_doom *doom, t_sector sector,\
+void				add_light_to_pixel(t_doom *doom, t_sector sector,\
 						int x, int y);
 void				add_tint_to_color(Uint32 *color, int tint, int mask);
 

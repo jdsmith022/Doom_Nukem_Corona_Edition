@@ -57,11 +57,11 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
-	if (sidedef.action == 6)
+	if (sidedef.action == WINDOW)
 		draw_window(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
-	if (sector.action != 1)
+	if (sector.action != OUTSIDE)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
 	set_values_clipping_sprites(doom, plane, sidedef, x);

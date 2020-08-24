@@ -1,12 +1,12 @@
 #include "../../includes/doom.h"
 
-void			put_pixels(t_doom *doom, Uint32 index, int x, int y)
+void			put_pixel_slope(t_doom *doom, Uint32 index, int x, int y)
 {
 	Uint32 *pixels;
 
 	pixels = doom->surface->pixels;
 	if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
-		pixels[(y * WIDTH + x)] = 0X505052;
+		pixels[(y * WIDTH + x)] = SLOPE_COLOR;
 }
 
 static void		put_row(t_doom *doom, SDL_Surface *lib,
@@ -33,7 +33,7 @@ static void		put_row(t_doom *doom, SDL_Surface *lib,
 	pixels[index] = b;
 }
 
-void		row_calculations(t_doom *doom, double dist, Uint32 index,
+void			row_calculations(t_doom *doom, double dist, Uint32 index,
 					SDL_Surface *lib)
 {
 	t_point	texture;

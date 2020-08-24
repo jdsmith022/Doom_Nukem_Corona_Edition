@@ -59,9 +59,9 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	light_sidedef_x_change(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
+		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
 		if (pixel.y < plane.mid_texture_bottom)
 			put_portal_pixel(doom, pixel, 0, WINDOW_MASK);
 		if (pixel.y < plane.mid_texture_top ||\
@@ -79,11 +79,9 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
-	light_sidedef_x_change(doom, sidedef, x);
 	while (pixel.y < plane.sidedef_bottom)
 	{
-		if (doom->light == FALSE)
-			light_sidedef_y_change(doom, pixel.y);
+		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
 		find_texture_index(doom, pixel, plane, sidedef);
 		pixel.y++;
 	}

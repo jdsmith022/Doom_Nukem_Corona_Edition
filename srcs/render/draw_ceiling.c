@@ -20,8 +20,7 @@ static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 	&& doom->lib.sector[doom->i_sector].action == 1)
 		*limit = doom->lib.portal_ceiling;
 	else
-		// *limit = sector.ceiling_end;
-		*limit = 0;
+		*limit = sector.ceiling_end;
 }
 
 void			draw_ceiling(t_doom *doom, int x,
@@ -40,12 +39,12 @@ void			draw_ceiling(t_doom *doom, int x,
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
 		calculate_ceiling_dist(doom, x, y, sector);
-		light_floor_ceiling(doom, sector, x, y);
+		add_light_to_pixel(doom, sector, x, y);
 		if (sector.slope_floor_id != -1)
-			put_pixels(doom, index, x, y);
+			put_pixel_slope(doom, index, x, y);
 		else
-		row_calculations(doom, doom->horizontal_plane_dist, index,\
-			doom->lib.tex_lib[tex_dex]);
+			row_calculations(doom, doom->horizontal_plane_dist, index,\
+				doom->lib.tex_lib[tex_dex]);
 		y--;
 	}
 }
