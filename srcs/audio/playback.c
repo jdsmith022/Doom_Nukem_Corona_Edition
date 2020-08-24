@@ -7,7 +7,7 @@ void	play_music(Mix_Music *music)
 		Mix_PlayMusic(music, -1);
 }
 
-void	resume_music()
+void	resume_music(void)
 {
 	if (Mix_PausedMusic())
 		Mix_ResumeMusic();
@@ -33,7 +33,6 @@ void	pause_sound(Mix_Chunk *sample, int channel)
 {
 	if (!Mix_Playing(channel))
 		return ;
-	else if (!Mix_Paused(channel)){
+	else if (!Mix_Paused(channel))
 		Mix_Pause(channel);
-	}
 }
