@@ -81,6 +81,7 @@ void			draw_window_as_sprite(t_doom *doom)
 		plane.wall_offset = doom->lib.window.wall_offset[x];
 		plane.sidedef_top = doom->lib.window.y_pixel_top[x];
 		pixel.y = doom->lib.window.y_pixel_top[x];
+		pixel.x = x;
 		pixels = doom->surface->pixels;
 		light_sidedef_x_change(doom,\
 		doom->lib.sidedef[doom->lib.window.index], x);
