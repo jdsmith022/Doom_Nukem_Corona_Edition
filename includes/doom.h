@@ -399,6 +399,8 @@ void				update_hud_ui(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+void				doom_exit_read_failure(t_doom *doom, \
+						const char *exit_message, int line);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 int					line_num(int i);
@@ -520,6 +522,5 @@ void				del_obj(t_doom *doom);
 void				add_specifications(t_doom *doom, int index);
 void				add_obj_lines(int x, int y, t_doom *doom, int index);
 void				coor_pos(t_doom *doom);
-
 
 #endif

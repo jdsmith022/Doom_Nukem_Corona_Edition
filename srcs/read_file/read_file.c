@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   read_file.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/25 10:44:12 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/25 10:44:13 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
@@ -6,8 +18,7 @@ t_sector			*save_sectors(t_doom *doom, int fd, int *len)
 	t_sector	*sect;
 	char		*line;
 
-	get_line(&line, fd,\
-		"the amount of sectors is not specified or can not be read", 1);
+	get_line(doom, &line, fd, 1);
 	*len = ft_atoi(line);
 	free(line);
 	sect = (t_sector*)ft_memalloc(sizeof(t_sector) * *len);
@@ -21,12 +32,10 @@ t_sidedef			*save_walls(t_doom *doom, int fd, int *len)
 	t_sidedef	*walls;
 	char		*line;
 
-	get_line(&line, fd,\
-		"the amount of walls is not specified or can not be read", 1);
+	get_line(doom, &line, fd, 1);
 	*len = ft_atoi(line);
 	free(line);
-	get_line(&line, fd,\
-		"the amount of moving walls is not specified", 1);
+	get_line(doom, &line, fd, 1);
 	*len += ft_atoi(line);
 	free(line);
 	walls = (t_sidedef*)ft_memalloc(sizeof(t_sidedef) * *len);
@@ -40,9 +49,7 @@ t_sprite			*save_sprites(t_doom *doom, int fd, int *total_sprites)
 	t_sprite	*sprites;
 	char		*line;
 
-	get_line(&line, fd,\
-		"the amount of stationary sprites is not specified or can not be read",\
-		1);
+	get_line(doom, &line, fd, 1);
 	*total_sprites = ft_atoi(line);
 	free(line);
 	sprites = (t_sprite*)ft_memalloc(sizeof(t_sprite) * *total_sprites);

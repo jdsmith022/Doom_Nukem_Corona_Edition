@@ -46,4 +46,5 @@ void			free_struct_lib(t_doom *doom)
 	if (doom->menu)
 		void_free_lib(doom->menu);
 	free_font_lib(doom);
+	free_game_design_lib(doom);
 }

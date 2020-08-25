@@ -24,6 +24,19 @@ static void		sdl_window_screen_free(t_doom *doom)
 	}
 }
 
+void			doom_exit_read_failure(t_doom *doom, const char *exit_message,
+					int line)
+{
+	ft_putnbr(line);
+	ft_putendl(exit_message);
+	free_sdl_lib(doom);
+	free_struct_lib(doom);
+	sdl_window_screen_free(doom);
+	ft_bzero(doom, sizeof(doom));
+	SDL_DestroyWindow(doom->window);
+	exit(EXIT_FAILURE);
+}
+
 void			doom_exit_failure(t_doom *doom,
 					const char *exit_message)
 {
@@ -32,6 +45,7 @@ void			doom_exit_failure(t_doom *doom,
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
 	ft_bzero(doom, sizeof(doom));
+	SDL_DestroyWindow(doom->window);
 	exit(EXIT_FAILURE);
 }
 
@@ -39,8 +53,8 @@ void			doom_exit_success(t_doom *doom)
 {
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
-	ft_bzero(doom, sizeof(doom));
 	sdl_window_screen_free(doom);
+	ft_bzero(doom, sizeof(doom));
 	SDL_DestroyWindow(doom->window);
 	exit(EXIT_SUCCESS);
 }
