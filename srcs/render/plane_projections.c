@@ -40,14 +40,14 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 		doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
 	else
 		doom->lib.sector[sidedef.sector].sidedef_bottom[x] = 0;
-	if (sidedef.opp_sector != -1)
-		{
-			if (plane.mid_texture_bottom == 0)
-				doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = -1; //added
-			else
-				doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
-					plane.mid_texture_bottom;
-		}
+	if (sidedef.opp_sector != -1 || sidedef.action == 6)
+	{
+		if (plane.mid_texture_bottom == 0)
+			doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = -1;
+		else
+			doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
+				plane.mid_texture_bottom;
+	}
 	else
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
 }
@@ -62,8 +62,10 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
+	// if (sidedef.action == 6)
+	// 	draw_window(doom, plane, sidedef, x);
 	if (sidedef.action == 6)
-		draw_window(doom, plane, sidedef, x);
+		save_window(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (sector.action != 1)

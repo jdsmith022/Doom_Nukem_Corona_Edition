@@ -9,6 +9,7 @@ static void		put_window_pixel(t_doom *doom, t_point pixel, Uint32 tex_dex,
 
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
+	printf("index: %d\npix_dex: %d\ntex_dex: %d\n", index, pixel_dex, tex_dex);
 	textures = doom->lib.tex_lib[tex_dex]->pixels;
 	if (textures[pixel_dex] == (char)255 && \
 	textures[pixel_dex + 1] == (char)255 &&\
@@ -35,6 +36,65 @@ static void		put_window_texture(t_doom *doom, t_point pixel, t_plane plane,
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
 	put_window_pixel(doom, pixel, tex_dex, pixel_dex);
+}
+
+void			save_window(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x)
+{
+	doom->own_event.window = TRUE;
+	if (doom->lib.window.x_start == -1)
+	{
+		doom->lib.window.index = sidedef.id;
+		doom->lib.window.x_start = x;
+		doom->lib.window.dist_begin = sidedef.distance;
+		doom->lib.window.opp_sector = sidedef.opp_sector;
+		doom->lib.window.curr_sector = sidedef.sector;
+	}
+	else if (doom->lib.window.x_end == WIDTH + 1 ||\
+		x > doom->lib.window.x_start)
+	{
+		doom->lib.window.x_end = x;
+		doom->lib.window.dist_end = sidedef.distance;
+	}
+	doom->lib.window.y_pixel_top[x] = plane.sidedef_top;
+	doom->lib.window.y_pixel_bottom[x] = plane.sidedef_bottom;
+	doom->lib.window.height_standard[x] = plane.height_standard;
+	doom->lib.window.wall_offset[x] = plane.wall_offset;
+}
+
+void			draw_window_as_sprite(t_doom *doom)
+{
+	Uint32	*pixels;
+	t_point	pixel;
+	int		x;
+	t_plane	plane;
+
+	printf("index sidedef: %d\n", doom->lib.window.index);
+	printf("action: %d\n", doom->lib.sidedef[doom->lib.window.index].action);
+	// printf("draw window as sprite\n");
+	// printf("x_start: %d, x_end: %d\n", doom->lib.window.x_start, doom->lib.window.x_end);
+	x = doom->lib.window.x_start;
+	while (x < doom->lib.window.x_end)
+	{
+		// printf("X");
+		plane.height_standard = doom->lib.window.height_standard[x];
+		plane.wall_offset = doom->lib.window.wall_offset[x];
+		plane.sidedef_top = doom->lib.window.y_pixel_top[x];
+		pixel.y = doom->lib.window.y_pixel_top[x];
+		pixels = doom->surface->pixels;
+		light_sidedef_x_change(doom,\
+		doom->lib.sidedef[doom->lib.window.index], x);
+		while (pixel.y < doom->lib.window.y_pixel_bottom[x])
+		{
+			if (doom->light == FALSE)
+				light_sidedef_y_change(doom, pixel.y);
+			put_window_texture(doom, pixel, plane,\
+			doom->lib.sidedef[doom->lib.window.index]);
+			pixel.y++;
+		}
+		x++;
+	}
+	init_window(doom);
 }
 
 void			draw_window(t_doom *doom, t_plane plane,

@@ -169,6 +169,7 @@ typedef struct		s_event {
 	bool			spray_shopper;
 	bool			sprite_collision;
 	bool			toilet_paper;
+	bool			window;
 	int				sprite_collision_dist;
 	int				sprite_index;
 	struct timespec	light_time;
@@ -225,6 +226,20 @@ typedef struct		s_prev_sidedef {
 	double			distance;
 	t_point			intersect;
 }					t_prev_sidedef;
+
+typedef struct		s_window {
+	int				index;
+	int				x_start;
+	int				x_end;
+	int				y_pixel_top[WIDTH];
+	int				y_pixel_bottom[WIDTH];
+	double			height_standard[WIDTH];
+	int				wall_offset[WIDTH];
+	int				opp_sector;
+	int				curr_sector;
+	double			dist_begin; //i don't use it, i use sector info instead
+	double			dist_end; //i don't use it
+}					t_window;
 
 typedef struct		s_sidedef {
 	t_point			intersect;
@@ -292,6 +307,7 @@ typedef struct		s_lib {
 	t_sprite		*sprites;
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
+	t_window		window;
 }					t_lib;
 
 typedef struct		s_gamedesign {
@@ -457,6 +473,10 @@ void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
 						int mask);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
+void				draw_window_as_sprite(t_doom *doom);
+void				save_window(t_doom *doom, t_plane plane,
+						t_sidedef sidedef, int x);
+void				init_window(t_doom *doom);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\

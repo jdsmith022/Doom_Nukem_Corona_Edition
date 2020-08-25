@@ -89,8 +89,7 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	{
 		mid_bottom =\
 		doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
-		if (doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x]\
-			== -1)
+		if (mid_bottom == -1)
 			return (-1);
 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
 		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
@@ -124,12 +123,12 @@ void	sprite_light(t_doom *doom, t_sprite sprite, double *light_distance)
 void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 		int index_sp)
 {
-	int			i_sprite;
 	Uint32		index;
 	Uint32		pix_dex;
-	int			stripe;
+	int			i_sprite;
 	int			tex_y;
 	int			tex_x;
+	int			stripe;
 	int			screen_y;
 	double		light_dist;
 
