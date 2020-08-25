@@ -12,8 +12,10 @@ int		check_sector_height_diff(t_doom *doom, int sector, int next_sector)
 	if (doom->own_event.bend == FALSE && \
 	doom->own_event.next_sector_height < PLAYER_HEIGHT)
 		enough_height = FALSE;
-	if (doom->own_event.bend == TRUE && \
+	else if (doom->own_event.bend == TRUE && \
 		doom->own_event.next_sector_height < doom->player_height)
+		enough_height = FALSE;
+	if (doom->player_height > doom->own_event.next_sector_height)
 		enough_height = FALSE;
 	return (enough_height);
 }
@@ -35,7 +37,7 @@ int		check_floor_diff(t_doom *doom, int sector, int next_sector)
 	doom->own_event.ceiling_diff = next_ceiling_height - ceiling_height;
 	if (doom->own_event.floor_diff < 0)
 		doom->own_event.step_down = TRUE;
-	if (doom->own_event.floor_diff > 0 && doom->own_event.jump == FALSE)
+	else if (doom->own_event.floor_diff > 0 && doom->own_event.jump == FALSE)
 		too_high = TRUE;
 	return (too_high);
 }

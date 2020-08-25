@@ -11,19 +11,19 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		event->move_pos_b == TRUE || event->move_pos_r == TRUE ||\
 		event->move_pos_l == TRUE))
 		set_new_position(doom, event, dt);
-	else if (event->jump == TRUE && event->scissor_lift == FALSE \
+	if (event->jump == TRUE && event->scissor_lift == FALSE \
 		&& event->fall == FALSE)
 		jump_player(doom, dt);
-	else if (event->fall == TRUE && event->jump == TRUE)
+	if (event->fall == TRUE && event->jump == TRUE)
 		get_up(doom, dt);
-	else if (event->step_down == TRUE && event->fall == FALSE)
+	if (event->step_down == TRUE && event->fall == FALSE)
 		step_down(doom, dt);
-	else if ((event->bend == TRUE && event->scissor_lift == FALSE) || \
+	if ((event->bend == TRUE && event->scissor_lift == FALSE) || \
 	(doom->player_height < doom->player_std_height +\
 	doom->lib.sector[doom->i_sector].height_floor \
 	&& event->fall == FALSE))
 		bend_down(doom);
-	else if (event->bend == TRUE && event->scissor_lift == TRUE && \
+	if (event->bend == TRUE && event->scissor_lift == TRUE && \
 		doom->player_height == 50)
 		exit_scissor_lift(doom);
 	else if (event->scissor_lift_up == TRUE)
