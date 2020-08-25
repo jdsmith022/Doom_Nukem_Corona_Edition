@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
@@ -32,7 +33,7 @@ static void	check_poster(t_doom *doom)
 	}
 }
 
-void	sanitizer_refill(t_doom *doom)
+void		sanitizer_refill(t_doom *doom)
 {
 	if (doom->own_event.refill == FALSE)
 		check_poster(doom);

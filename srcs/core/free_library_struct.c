@@ -1,5 +1,5 @@
+
 #include "../../includes/doom.h"
-#include "../../includes/audio.h"
 
 static void		void_free_lib(void *lib)
 {
@@ -7,7 +7,7 @@ static void		void_free_lib(void *lib)
 	free(lib);
 }
 
-static void	free_font_lib(t_doom *doom)
+static void		free_font_lib(t_doom *doom)
 {
 	if (doom->lib.font_lib.game_editor_font)
 		void_free_lib(doom->lib.font_lib.game_editor_font);
@@ -23,7 +23,7 @@ static void	free_font_lib(t_doom *doom)
 		void_free_lib(doom->lib.font_lib.instruction_font);
 }
 
-static void	free_game_design_lib(t_doom *doom)
+static void		free_game_design_lib(t_doom *doom)
 {
 	if (doom->game_design.sector)
 		void_free_lib(doom->game_design.sector);
@@ -31,7 +31,7 @@ static void	free_game_design_lib(t_doom *doom)
 		void_free_lib(doom->game_design.sidedef);
 }
 
-void		free_struct_lib(t_doom *doom)
+void			free_struct_lib(t_doom *doom)
 {
 	if (doom->lib.sector != NULL)
 		void_free_lib(doom->lib.sector);
@@ -46,43 +46,5 @@ void		free_struct_lib(t_doom *doom)
 	if (doom->menu)
 		void_free_lib(doom->menu);
 	free_font_lib(doom);
-}
-
-static void		free_sld_libs(SDL_Surface **lib, int len)
-{
-	size_t index;
-
-	index = 0;
-	while (index < len)
-	{
-		ft_bzero(lib[index], sizeof(lib[index]));
-		free(lib[index]);
-		index++;
-	}
-	free(lib);
-}
-
-void		free_sdl_lib(t_doom *doom)
-{
-	SDL_Surface	**lib;
-	int			len;
-
-	if (doom->lib.tex_lib)
-	{
-		lib = doom->lib.tex_lib;
-		len = doom->lib.len_tex_lib;
-		free_sld_libs(lib, len);
-	}
-	if (doom->lib.obj_lib)
-	{
-		lib = doom->lib.obj_lib;
-		len = doom->lib.len_obj_lib;
-		free_sld_libs(lib, len);
-	}
-	if (doom->lib.sky_lib)
-	{
-		lib = doom->lib.sky_lib;
-		len = doom->lib.len_sky_lib;
-		free_sld_libs(lib, len);
-	}
+	free_game_design_lib(doom);
 }

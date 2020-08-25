@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   error.c                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/25 10:43:57 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/25 10:43:59 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
-void	int_check(char *line, char *er, int line_num)
+void	int_check(t_doom *doom, char *line, int line_num)
 {
 	int i;
 	int check;
@@ -13,7 +25,7 @@ void	int_check(char *line, char *er, int line_num)
 		if (check == 0)
 		{
 			if (line[i] != '-')
-				error(er, line_num);
+				doom_exit_failure(doom, "error: file reading");
 		}
 		i++;
 	}
@@ -42,18 +54,18 @@ int		line_num(int i)
 	return (line_num);
 }
 
-int		get_line(char **line, int fd, char *er, int is_int)//remove *er add doom and make message error reading map
+int		get_line(t_doom *doom, char **line, int fd, int is_int)
 {
 	int ret;
 
 	ret = get_next_line2(fd, line);
 	line_num(1);
 	if (ret != 1)
-		error(er, line_num(0));//doom error exit
+		doom_exit_failure(doom, "error: get line from file");
 	while (*line[0] == '\0' || *line[0] == '#')
 	{
 		if (ret != 1)
-			error(er, line_num(0));//doom error exit
+			doom_exit_failure(doom, "error: get line from file");
 		if (*line[0] == '\0' || *line[0] == '#')
 		{
 			line_num(1);
@@ -62,14 +74,8 @@ int		get_line(char **line, int fd, char *er, int is_int)//remove *er add doom an
 	}
 	if (is_int == 1)
 	{
-		int_check(*line, er, line_num(0));
+		int_check(doom, *line, line_num(0));
 		return (ft_atoi(*line));
 	}
 	return (0);
-}
-
-void	error(char *error, int line_num)//not needed then
-{
-	printf("line %i: %s\n", line_num, error); //remove
-	exit(0);
 }

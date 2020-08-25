@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/action.h"
@@ -20,7 +21,7 @@ static void	fall_direction(t_doom *doom)
 		event->y_pitch = 200;
 }
 
-void	player_fall(t_doom *doom)
+void		player_fall(t_doom *doom)
 {
 	int				min_height;
 	static double	duration = -0.2;
@@ -46,12 +47,12 @@ void	player_fall(t_doom *doom)
 	}
 }
 
-void				scissor_lift_up(t_doom *doom)
+void		scissor_lift_up(t_doom *doom)
 {
 	int		max_height;
 	t_event	*event;
 
-	event = &doom->own_event;;
+	event = &doom->own_event;
 	max_height = doom->texture_height + \
 		doom->lib.sector[doom->i_sector].height_ceiling - (PLAYER_HEIGHT / 2);
 	if (doom->player_height <= max_height)
@@ -65,7 +66,7 @@ void				scissor_lift_up(t_doom *doom)
 	}
 }
 
-void				scissor_lift_down(t_doom *doom)
+void		scissor_lift_down(t_doom *doom)
 {
 	t_event	*event;
 

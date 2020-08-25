@@ -1,5 +1,5 @@
+
 #include "../../includes/doom.h"
-#include "../../includes/action.h"
 #include "../../includes/sprites.h"
 
 t_sidedef		set_properties_sidedef(t_point intersect, double distance,
@@ -9,15 +9,30 @@ t_sidedef		set_properties_sidedef(t_point intersect, double distance,
 
 	sidedef = curr_sidedef;
 	sidedef.distance = distance;
-	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	doom->texture_width = doom->lib.tex_lib[sidedef.txt_2]->w;
 	doom->texture_height = doom->lib.tex_lib[sidedef.txt_2]->h;
+	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.intersect = intersect;
 	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
 }
 
-static int		is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
+static int			find_index(t_doom *doom, int id) // what is
+{
+	int i;
+
+	i = 0;
+	while (i < doom->lib.len_sidedef)
+	{
+		if (id == doom->lib.sidedef[i].id)
+			return (i);
+		i++;
+	}
+	printf("can not find id\n");
+	exit(0); //make a safety check
+}
+
+static int			is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
 {
 	t_point start;
 	t_point end;
@@ -25,6 +40,7 @@ static int		is_opp_sidedef(t_doom *doom, int id, t_sidedef opp_line)
 	t_point opp_end;
 	t_line	line;
 
+	id = find_index(doom, id);
 	line = doom->lib.sidedef[id].line;
 	start = line.start;
 	end = line.end;
@@ -81,7 +97,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			{
 				doom->i_sidedef = x;
 				save_poster = \
-					init_poster(x, distance, intersect, &doom->lib.sidedef[x]);
+					set_poster(x, distance, intersect, &doom->lib.sidedef[x]);
 			}
 			else
 			{

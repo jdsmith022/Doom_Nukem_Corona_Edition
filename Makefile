@@ -3,7 +3,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O2 -Wpedantic
 
 LIBFT = libft
 SDL = sdl
@@ -26,21 +26,23 @@ MENU = srcs/menu/
 ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_point \
-			doom_update exit free_library update_hud_ui doom_init_events doom_init_ui
+			doom_update exit free_library_struct free_library_sdl update_hud_ui \
+			doom_init_events doom_init_ui
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_row slope_projections put_texture \
-				draw_skybox_top_bottom draw_skybox \
-				render_sky_box set_offsets draw_poster light_floor_ceiling \
+				draw_skybox_sky draw_skybox_sidedefs \
+				render_sky_box set_offsets draw_poster add_light_to_pixel \
 				draw_floor draw_ceiling set_floor_limit \
-				set_ceiling_limit set_properties_plane draw_window img light_sidedef
+				set_ceiling_limit set_properties_plane draw_window img
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type create_sidedef
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
-				printing_map init_game
+				printing_map init_game draw_sidedef_object objects \
+				correct_position
 AUDIO_FILES = audio audio_init playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
@@ -48,7 +50,8 @@ SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui add_infection \
 				 position gameplay game_over timer sprite_hit \
-				 check_select_spray_sprite
+				 check_select_spray_sprite sprite_helpers \
+				 remove_red_virus
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font set_vanishing_box_coordinates \
 				start_menu_font setting_window_font game_over_font \
@@ -57,9 +60,9 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				shopper_hit_font
 HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer \
 			update_list_and_basket
-MENU_FILES = start_menu mouse_settings game_over print_background menu_selection \
+MENU_FILES = start_menu event_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu
-ACTION_FILES = action light_switch moving_sidedef sprite_interaction \
+ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 
 C_FILES_CORE = $(CORE_FILES:%=%.c)

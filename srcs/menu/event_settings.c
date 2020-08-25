@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
@@ -26,6 +27,22 @@ static void		mouse_handler(t_doom *doom)
 	}
 }
 
+static void		key_settings(t_doom *doom, SDL_Event event)
+{
+	if (event.type == SDL_QUIT)
+		doom_exit_success(doom);
+	if (event.type == SDL_KEYDOWN)
+	{
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+			doom_exit_success(doom);
+		if (event.key.keysym.sym == SDLK_y)
+		{
+			if (doom->menu->pause == TRUE)
+				doom->menu->pause = FALSE;
+		}
+	}
+}
+
 void			mouse_settings(t_doom *doom)
 {
 	SDL_Event event;
@@ -33,11 +50,8 @@ void			mouse_settings(t_doom *doom)
 	event = doom->event;
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT)
-			doom_exit_success(doom);
 		if (event.type == SDL_KEYDOWN)
-			if (event.key.keysym.sym == SDLK_ESCAPE)
-				doom_exit_success(doom);
+			key_settings(doom, event);
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 		{
 			if (event.button.button == SDL_BUTTON_LEFT)

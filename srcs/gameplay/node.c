@@ -1,5 +1,5 @@
-# include "../../includes/doom.h"
-# include "../../includes/gameplay.h"
+#include "../../includes/doom.h"
+#include "../../includes/gameplay.h"
 
 void		del_node(t_list **head, t_list *node)
 {

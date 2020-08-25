@@ -1,5 +1,7 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
+#include "sprites.h"
+
 
 void    mouse_press_map(t_doom *doom, int x, int y)
 {
@@ -11,8 +13,10 @@ void    mouse_press_map(t_doom *doom, int x, int y)
 		SECTOR[EDIT.cur_sec].diff_y += 10;
 	else if (x > AR_UP_M_X && x < AR_UP_M_X + FRAME_WIDTH && y > AR_UP_M_Y && y < AR_UP_M_Y + FRAME_HEIGHT)
 		SECTOR[EDIT.cur_sec].diff_y -= 10;
-    else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && EDIT.pl_pos == 0)
+    else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && EDIT.pl_pos == 0 && EDIT.sidedef_bar == 1)
 		add_sidedef(doom, x, y);
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && EDIT.pl_pos == 0 && EDIT.object_bar == 1)
+		add_object(doom, x, y);
     else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && EDIT.pl_pos == 1)
 	{
 		EDIT.pl_x = x;
@@ -85,11 +89,9 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 {
     if (x > AR_RIGHT_S_X && x < AR_RIGHT_S_X + FRAME_WIDTH && y > AR_RIGHT_S_Y && y < AR_RIGHT_S_Y + FRAME_HEIGHT)
 	{
-		if (EDIT.cur_sd + 1< SECTOR[EDIT.cur_sec].i_sidedefs + SECTOR[EDIT.cur_sec].n_sidedefs)
+		if (EDIT.cur_sd + 1 < SECTOR[EDIT.cur_sec].i_sidedefs + SECTOR[EDIT.cur_sec].n_sidedefs)
 					EDIT.cur_sd++;
 	}
-	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
-		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
 	else if (x > AR_LEFT_S_X && x < AR_LEFT_S_X + FRAME_WIDTH && y > AR_LEFT_S_Y && y < AR_LEFT_S_Y + FRAME_HEIGHT)
 	{
 		if (EDIT.cur_sd > SECTOR[EDIT.cur_sec].i_sidedefs - 1)
@@ -144,6 +146,45 @@ void    mouse_press_sidedef(t_doom *doom, int x, int y)
 
 void	mouse_press_object(t_doom *doom, int x, int y)
 {
+	if (x > AR_RIGHT_S_X && x < AR_RIGHT_S_X + FRAME_WIDTH && y > AR_RIGHT_S_Y && y < AR_RIGHT_S_Y + FRAME_HEIGHT)
+	{
+		if (EDIT.cur_obj + 1 < SECTOR[EDIT.cur_sec].i_objects + SECTOR[EDIT.cur_sec].n_objects)
+				EDIT.cur_obj++;
+	}
+	else if (x > AR_LEFT_S_X && x < AR_LEFT_S_X + FRAME_WIDTH && y > AR_LEFT_S_Y && y < AR_LEFT_S_Y + FRAME_HEIGHT)
+	{
+		if (EDIT.cur_obj > SECTOR[EDIT.cur_sec].i_objects - 1)
+			EDIT.cur_obj--;
+	}
+	if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && y > AR_LEFT_TS2_Y && y < AR_LEFT_TS2_Y + FRAME_HEIGHT)
+	{
+		if (EDIT.cur_tex - 1 >= 0)
+		{
+			EDIT.cur_tex--;
+			if (EDIT.cur_obj >= SECTOR[EDIT.cur_sec].i_objects && EDIT.cur_obj < SECTOR[EDIT.cur_sec].i_objects + SECTOR[EDIT.cur_sec].n_objects)
+			{
+				add_specifications(doom, EDIT.cur_obj);
+				add_obj_lines(OBJECT[EDIT.cur_obj].pos.x, OBJECT[EDIT.cur_obj].pos.y, doom, EDIT.cur_obj);
+			}
+		}
+	}
+	else if (x > AR_RIGHT_TS2_X && x < AR_RIGHT_TS2_X + FRAME_WIDTH && y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT)
+	{
+		if (EDIT.cur_tex + 1 <= LEVEL_SPRITE_LEN)
+		{
+			EDIT.cur_tex++;
+			if (EDIT.cur_obj >= SECTOR[EDIT.cur_sec].i_objects && EDIT.cur_obj < SECTOR[EDIT.cur_sec].i_objects + SECTOR[EDIT.cur_sec].n_objects)
+			{
+				add_specifications(doom, EDIT.cur_obj);
+				add_obj_lines(OBJECT[EDIT.cur_obj].pos.x, OBJECT[EDIT.cur_obj].pos.y, doom, EDIT.cur_obj);
+			}
+		}
+	}
+	else if (x > DEL_OBJ_X && x < DEL_OBJ_X + FRAME_WIDTH && y > DEL_OBJ_Y && y < DEL_OBJ_Y + FRAME_HEIGHT)
+	{
+		if (EDIT.cur_obj >= SECTOR[EDIT.cur_sec].i_objects)
+			del_obj(doom);
+	}
 }
 
 void	mouse_press_game_editor(t_doom *doom, int x, int y)
@@ -156,6 +197,8 @@ void	mouse_press_game_editor(t_doom *doom, int x, int y)
 		EDIT.portal_sd = -1;
 
 	}
+	if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
+		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
     mouse_press_map(doom, x, y);
     mouse_press_sector(doom, x, y);
 	if (x > SIDEDEF_BUTTON_X && x < SIDEDEF_BUTTON_X + FRAME_WIDTH && y > SIDEDEF_BUTTON_Y && y < SIDEDEF_BUTTON_Y + FRAME_WIDTH)

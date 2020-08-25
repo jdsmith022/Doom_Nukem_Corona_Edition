@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void	init_events_2(t_event *event)

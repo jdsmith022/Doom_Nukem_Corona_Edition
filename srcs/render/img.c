@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void		put_pixel_from_img(char *img_pixels, t_doom *doom,

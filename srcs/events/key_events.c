@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
@@ -10,22 +11,24 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		event->move_pos_b == TRUE || event->move_pos_r == TRUE ||\
 		event->move_pos_l == TRUE))
 		set_new_position(doom, event, dt);
-	if (event->jump == TRUE && event->scissor_lift == FALSE && event->fall == FALSE)
+	else if (event->jump == TRUE && event->scissor_lift == FALSE \
+		&& event->fall == FALSE)
 		jump_player(doom, dt);
-	if (event->fall == TRUE && event->jump == TRUE)
+	else if (event->fall == TRUE && event->jump == TRUE)
 		get_up(doom, dt);
-	if (event->step_down == TRUE && event->fall == FALSE)
+	else if (event->step_down == TRUE && event->fall == FALSE)
 		step_down(doom, dt);
-	if ((event->bend == TRUE && event->scissor_lift == FALSE) || \
+	else if ((event->bend == TRUE && event->scissor_lift == FALSE) || \
 	(doom->player_height < doom->player_std_height +\
 	doom->lib.sector[doom->i_sector].height_floor \
 	&& event->fall == FALSE))
 		bend_down(doom);
-	if (event->bend == TRUE && event->scissor_lift == TRUE && doom->player_height == 50)
+	else if (event->bend == TRUE && event->scissor_lift == TRUE && \
+		doom->player_height == 50)
 		exit_scissor_lift(doom);
-	if (event->scissor_lift_up == TRUE)
+	else if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);
-	if (event->scissor_lift_down == TRUE)
+	else if (event->scissor_lift_down == TRUE)
 		scissor_lift_down(doom);
 }
 
@@ -43,7 +46,7 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 		event->scissor_lift_up = FALSE;
 	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
 		event->scissor_lift_down = FALSE;
-	if (key->keysym.sym == SDLK_x)
+	else if (key->keysym.sym == SDLK_x)
 		event->bend = FALSE;
 }
 
@@ -56,7 +59,7 @@ static void		key_select_and_shoot(t_doom *doom, t_event *event,
 		if (event->select == TRUE)
 			event->shoot = FALSE;
 	}
-	if (key->keysym.sym == SDLK_r)
+	else if (key->keysym.sym == SDLK_r)
 	{
 		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
 		if (event->shoot == TRUE)
@@ -69,17 +72,24 @@ static void		key_press2(t_doom *doom, t_event *event,
 {
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
-	if (key->keysym.sym == SDLK_y)
+	else if (key->keysym.sym == SDLK_y)
 		doom->menu->pause = TRUE;
-	if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e)
+	else if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e)
 		key_select_and_shoot(doom, event, key);
-	// if (key->keysym.sym == SDLK_o) //needs to become a click on button event
-	// 	doom->lib.sector[doom->i_sector].light =\
-	// 		doom->lib.sector[doom->i_sector].light == TRUE ? FALSE : TRUE;
-	if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
+	else if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
 		printing_map(&(EDIT));
-	// if (key->keysym.sym == SDLK_y && !doom->game_editor)
-	// 	doom->menu->pause = TRUE;
+	else if (key->keysym.sym == SDLK_SPACE)
+		event->jump = TRUE;
+	else if (key->keysym.sym == SDLK_x)
+		event->bend = TRUE;
+	else if (key->keysym.sym == SDLK_n)
+	{
+		doom->game_editor = FALSE;
+		doom->hud_display = TRUE;
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+		if (doom->lib.font_lib.bools.walking_info == TRUE)
+			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+	}
 }
 
 void			key_press(t_doom *doom, t_event *event,
@@ -99,21 +109,5 @@ void			key_press(t_doom *doom, t_event *event,
 		event->scissor_lift_up = TRUE;
 	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
 		event->scissor_lift_down = TRUE;
-	if (key->keysym.sym == SDLK_SPACE)
-		event->jump = TRUE;
-	if (key->keysym.sym == SDLK_x)
-		event->bend = TRUE;
-	if (key->keysym.sym == SDLK_m)
-	{
-		doom->game_editor = TRUE;
-		doom->hud_display = FALSE;
-	}
-	if (key->keysym.sym == SDLK_n)
-	{
-		doom->game_editor = FALSE;
-		doom->hud_display = TRUE;
-		if (doom->lib.font_lib.bools.walking_info == TRUE)
-			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
-	}
 	key_press2(doom, event, key);
 }

@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
@@ -13,10 +14,12 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 					t_plane *plane, t_sector *sector)
 {
 	t_sector	opp_sector;
+	double		fov;
 
-	sidedef.distance *= cos(doom->ray_adjacent * plane->x - FOV / 2);
+	fov = 60 * (PI / 180);
+	sidedef.distance *= cos(doom->ray_adjacent * plane->x - fov / 2);
 	sidedef.prev_sidedef.distance *= \
-		cos(doom->ray_adjacent * plane->x - FOV / 2);
+		cos(doom->ray_adjacent * plane->x - fov / 2);
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
 	set_sector_properties(doom, sidedef, sector, plane);
@@ -62,13 +65,13 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
-	// if (sidedef.action == 6)
+	// if (sidedef.action == 6) //windos gets drawn as sprite
 	// 	draw_window(doom, plane, sidedef, x);
 	if (sidedef.action == 6)
 		save_window(doom, plane, sidedef, x);
 	else
 		draw_portal_sidedef(doom, plane, sidedef, x);
-	if (sector.action != 1)
+	if (sector.action != OUTSIDE)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
 	set_values_clipping_sprites(doom, plane, sidedef, x);

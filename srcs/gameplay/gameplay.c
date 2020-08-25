@@ -4,7 +4,8 @@
 
 void				groceries(t_doom *doom)
 {
-	if (!doom->own_event.shoot && !doom->own_event.select){
+	if (!doom->own_event.shoot && !doom->own_event.select)
+	{
 		if (MOUSE_PRESSED)
 			handle_groceries(doom);
 		else

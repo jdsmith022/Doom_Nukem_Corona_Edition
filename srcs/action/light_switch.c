@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
@@ -49,10 +50,7 @@ static void		check_poster_location(t_doom *doom)
 	doom->own_event.light_switch = TRUE;
 	doom->own_event.action = TRUE;
 	doom->own_event.mouse_press = FALSE;
-
 }
-
-// static void		find_sidedef(t_doom *doom)
 
 void			light_switch(t_doom *doom)
 {

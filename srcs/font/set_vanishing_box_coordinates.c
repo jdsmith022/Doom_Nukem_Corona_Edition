@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 void			set_background_coords_middle_large(t_doom *doom)

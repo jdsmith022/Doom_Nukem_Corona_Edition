@@ -1,7 +1,8 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
-void		pause_click_event(t_doom *doom, SDL_Rect rect)
+void			pause_click_event(t_doom *doom, SDL_Rect rect)
 {
 	int			x;
 	int			y;
@@ -13,7 +14,7 @@ void		pause_click_event(t_doom *doom, SDL_Rect rect)
 		doom->menu->pause = FALSE;
 }
 
-void		setting_menu_click_event(t_doom *doom, SDL_Rect rect)
+void			setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 {
 	int			x;
 	int			y;
@@ -36,7 +37,7 @@ static void		difficulty_setting(t_doom *doom, int x, int y)
 	doom->menu->menu = FALSE;
 }
 
-void		start_menu_click_event(t_doom *doom, SDL_Rect rect1,
+void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
 					SDL_Rect rect2, SDL_Rect rect3)
 {
 	int			x;

@@ -1,7 +1,8 @@
+
 #include "../../includes/doom.h"
 
-static int		get_other_side_of_line(t_doom *doom,\
-					t_sidedef sidedef, t_sector sector)
+static int	get_other_side_of_line(t_doom *doom, t_sidedef sidedef,
+				t_sector sector)
 {
 	t_point		start;
 	t_point		end;
@@ -29,7 +30,7 @@ static int		get_other_side_of_line(t_doom *doom,\
 	return (doom->lib.sidedef[i].id);
 }
 
-double		set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
+double		set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,
 	t_sector sector)
 {
 	double	height;
@@ -50,7 +51,7 @@ double		set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
 	return (height);
 }
 
-double		set_slope_height_floor(t_doom *doom, t_sidedef sidedef,\
+double		set_slope_height_floor(t_doom *doom, t_sidedef sidedef,
 	t_sector sector)
 {
 	double	height;

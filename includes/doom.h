@@ -18,7 +18,7 @@
 // # include "render.h"
 
 # include "../sdl/includes/SDL.h"
-# include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
+// # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -38,11 +38,10 @@
 # define STD_TEXT_HEIGHT 96
 
 # define PI 3.14159265359
-# define FOV 60 * (PI / 180)
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 200
-# define SENSITIVITY 0.7
+# define SENSITIVITY 0.5
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -51,6 +50,8 @@
 # define BLUE 3
 # define FONT_MASK 0X36
 # define WINDOW_MASK 0XFF
+
+# define SLOPE_COLOR 0X505052
 
 # define SECTORS		doom->lib.sector
 # define SIDEDEFS		doom->lib.sidedef
@@ -63,6 +64,8 @@
 # define START_SECTOR 3
 # define START_TIMER 4
 # define CHECKOUT 5
+
+# define WINDOW 6
 
 typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
@@ -318,10 +321,13 @@ typedef struct		s_gamedesign {
 	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
+	t_sprite		*object;
 	int				o_len;
 	int				o_size;
+	int				cur_tex;
 	int				cur_sec;
 	int				cur_sd;
+	int				cur_obj;
 	int				portal_sd;
 	int				portal_sec;
 	int				pl_pos;
@@ -409,6 +415,8 @@ void				update_hud_ui(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
+void				doom_exit_read_failure(t_doom *doom, \
+						const char *exit_message, int line);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 int					line_num(int i);
@@ -468,10 +476,8 @@ void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				draw_sidedef(t_doom *doom, t_plane plane,\
-						t_sidedef sidedef, int x);
-void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
-						int mask);
+void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
 void				draw_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
 void				draw_window_as_sprite(t_doom *doom);
@@ -482,9 +488,9 @@ void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
-void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-void				put_pixels(t_doom *doom, Uint32 index, int x, int y);
+void				put_pixel_slope(t_doom *doom, Uint32 index, int x, int y);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
+						int mask);
 
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
@@ -495,16 +501,16 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
-void				draw_poster(t_doom *doom, t_plane plane,
-					int poster_index, int x);
+int					set_poster(int x, double distance, t_point intersect,\
+						t_sidedef *poster);
+void				draw_poster(t_doom *doom, t_plane plane,\
+						int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 
 void				add_saturation(Uint8 *r, Uint8 *g, Uint8 *b, double light);
-void				light_sidedef_x_change(t_doom *doom, t_sidedef sidedef, int x);
-void				light_sidedef_y_change(t_doom *doom, int y);
-void				light_floor_ceiling(t_doom *doom, t_sector sector,\
+void				add_light_to_pixel(t_doom *doom, t_sector sector,\
 						int x, int y);
 void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
@@ -528,5 +534,13 @@ void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
 void				init_game_design(t_doom *doom);
 void				init_game_design(t_doom *doom);
+void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
+void				add_object(t_doom *doom, int x, int y);
+void				draw_object(t_doom *doom, Uint32 **pixels);
+void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
+void				del_obj(t_doom *doom);
+void				add_specifications(t_doom *doom, int index);
+void				add_obj_lines(int x, int y, t_doom *doom, int index);
+void				coor_pos(t_doom *doom);
 
 #endif

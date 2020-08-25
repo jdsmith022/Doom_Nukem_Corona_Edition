@@ -8,14 +8,14 @@ uint8_t	get_basket_len(t_list **head)
 
 	temp = *head;
 	if (!temp)
-		return 0;
+		return (0);
 	len = 1;
 	while (temp->next)
 	{
 		len++;
 		temp = temp->next;
 	}
-	return len;
+	return (len);
 }
 
 bool			checkout(t_groceries *groceries)
@@ -24,12 +24,12 @@ bool			checkout(t_groceries *groceries)
 
 	i = 0;
 	if (groceries->shopping_list_len != get_basket_len(&groceries->basket))
-		return false;
+		return (false);
 	while (i < groceries->shopping_list_len)
 	{
 		if (!search_basket(&groceries->shopping_list[i], &groceries->basket))
-			return false;
+			return (false);
 		i++;
 	}
-	return true;
+	return (true);
 }

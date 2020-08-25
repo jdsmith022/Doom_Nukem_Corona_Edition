@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
@@ -9,11 +10,6 @@ static void		set_to_window(t_doom *doom)
 {
 	SDL_UpdateWindowSurface(doom->window);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
-}
-
-void			doom_gui(t_doom *doom)
-{
-	(void)doom;
 }
 
 double			get_timeframe(long *last_frame_time)
@@ -30,13 +26,12 @@ double			get_timeframe(long *last_frame_time)
 	return (dt);
 }
 
-void				game_loop(t_doom *doom)
+void			game_loop(t_doom *doom)
 {
 	long			last_frame_time;
 	double			dt;
 
 	last_frame_time = 0;
-	// dt = 0.05; //leave for marin but remove before handing in
 	dt = get_timeframe(&last_frame_time);
 	while (doom->is_running == TRUE)
 	{
@@ -47,14 +42,12 @@ void				game_loop(t_doom *doom)
 			sprite_reset(doom);
 			doom_render(doom);
 			audio(doom, &doom->own_event);
-			doom_gui(doom);
 			groceries(doom);
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		doom_update(doom, dt);
 		update_hud_ui(doom);
-
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

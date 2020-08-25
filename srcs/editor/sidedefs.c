@@ -95,8 +95,7 @@ void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
 		i++;
 	}
 	SECTOR[EDIT.cur_sec].n_sidedefs++;
-	EDIT.cur_sd = EDIT.cur_sec != \
-	EDIT.s_len ? \
+	EDIT.cur_sd = EDIT.cur_sec != EDIT.s_len ? \
 	SECTOR[EDIT.cur_sec].i_sidedefs \
 	: EDIT.w_len;
 	EDIT.w_len++;

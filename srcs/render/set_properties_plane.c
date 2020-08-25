@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 
 static int	set_plane_bottom(t_doom *doom, double scale,

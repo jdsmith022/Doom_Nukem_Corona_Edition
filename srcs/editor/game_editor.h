@@ -2,11 +2,14 @@
 # define GAME_EDITOR_H
 
 
-#include <stdint.h>
+# include <stdint.h>
+// # include "../../includes/doom.h"
+
 
 #define EDIT doom->game_design
 #define SIDEDEF EDIT.sidedef
 #define SECTOR EDIT.sector
+#define OBJECT EDIT.object
 
 #define FRAME_COUNT 8
 #define FRAME_WIDTH 32
@@ -48,6 +51,9 @@
 #define PORTAL_Y HEIGHT / 8 * 3
 #define RM_SD_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH) / 2 + SIDEBAR_SIDEDEF
 #define RM_SD_Y HEIGHT / 8 * 3
+
+#define DEL_OBJ_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH / 2) + SIDEBAR_SIDEDEF
+#define DEL_OBJ_Y HEIGHT / 8 * 3
 
 #define AR_LEFT_SC_X (SIDEBAR_SECTOR / 2 - FRAME_WIDTH) / 2 + SIDEBAR_SIDEDEF
 #define AR_LEFT_SC_Y HEIGHT / 8 * 4
@@ -133,4 +139,22 @@ typedef struct s_bar
     int cur_height;
 }               t_bar;
 
+//remove cause in a different file but couldn't find yet
+
+typedef struct			s_poin {
+	double				x;
+	double				y;
+}						t_poin;
+
+typedef struct			s_point_int {
+	int				    x;
+	int				    y;
+}						t_point_int;
+
+typedef struct  s_angle_line
+{
+    t_point_int diff;
+    t_poin steps;
+    t_poin start;
+}               t_angle_line;
 #endif

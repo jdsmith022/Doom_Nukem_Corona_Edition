@@ -1,15 +1,15 @@
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
-int			open_file(char *filename)
+int				open_file(t_doom *doom, char *filename)
 {
 	int		fd;
 	char	*message;
 
 	message = ft_strjoin(filename, "can't open");
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		error(message, 0);
+	if (fd < 0)
+		doom_exit_failure(doom, message);
 	return (fd);
 }
 
@@ -18,7 +18,6 @@ static void		modified(void)
 	struct stat filestat;
 
 	stat("srcs/read_file/start_skybox_full", &filestat);
-	// stat("srcs/read_file/the_cross-2", &filestat);
 	printf("%s", ctime(&filestat.st_mtime));
 	/* turn on and add the last modified date before handing in*/
 	// if (ft_strcmp(ctime(&filestat.st_mtime), "Tue Jul 21 11:47:15 2020\n") != 0)
@@ -32,7 +31,7 @@ void		save_libraries(t_doom *doom)
 	// if (argc != 1)
 	//     error("Please run program in this fashion: ./duke_nukem", 0);
 	modified();
-	fd = open_file("srcs/read_file/start_skybox_full");
+	fd = open_file(doom, "srcs/read_file/start_skybox_full");
 	EDIT.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);

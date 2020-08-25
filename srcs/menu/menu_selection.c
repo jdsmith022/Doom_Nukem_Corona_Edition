@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 #include "../../includes/audio.h"
@@ -26,7 +27,6 @@ static void		pause_menu(t_doom *doom)
 		Mix_PauseMusic();
 		menu_print_loop(doom);
 	}
-	doom->menu->pause = FALSE;
 	resume_music();
 	curr_time = SDL_GetTicks();
 	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
@@ -34,7 +34,7 @@ static void		pause_menu(t_doom *doom)
 	SDL_SetRelativeMouseMode(TRUE);
 }
 
-void	menus(t_doom *doom)
+void			menus(t_doom *doom)
 {
 	if (doom->menu->game_over == TRUE)
 		game_over_menu(doom);

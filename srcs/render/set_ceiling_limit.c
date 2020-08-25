@@ -1,7 +1,8 @@
+
 #include "../../includes/doom.h"
 
 void		set_ceiling_limit(t_doom *doom, t_sidedef sidedef,
-			t_sector *sector)
+				t_sector *sector)
 {
 	double		height_ceiling;
 	double		plane_height_std;

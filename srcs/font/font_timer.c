@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
@@ -63,7 +64,7 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 	}
 }
 
-static void			font_timer_2(t_doom *doom, t_event *event)
+static void		font_timer_2(t_doom *doom, t_event *event)
 {
 	set_background_coords_middle_narrow(doom);
 	if (event->spray_shopper == TRUE)
@@ -90,7 +91,7 @@ static void			font_timer_2(t_doom *doom, t_event *event)
 	}
 }
 
-void				font_timer(t_doom *doom)
+void			font_timer(t_doom *doom)
 {
 	t_event	*event;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   save_sdl.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/25 10:44:24 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/25 10:44:24 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/textures.h"
 #include "../../includes/read.h"
@@ -21,7 +33,7 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	index = 0;
 	while (index < len)
 	{
-		get_line(&line, map_fd, "not enough texture names", 0);
+		get_line(doom, &line, map_fd, 0);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
 			bmp_safe_exit(doom, images);
@@ -41,8 +53,7 @@ SDL_Surface			**save_objects(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
 
-	get_line(&line, map_fd,\
-		"the amount of objects is not specified or can not be read", 1);
+	get_line(doom, &line, map_fd, 1);
 	*len = ft_atoi(line);
 	return (read_from_line(doom, line, map_fd, *len));
 }
@@ -51,8 +62,7 @@ SDL_Surface			**save_textures(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
 
-	get_line(&line, map_fd,\
-		"the amount of textures is not specified or can not be read", 1);
+	get_line(doom, &line, map_fd, 1);
 	*len = ft_atoi(line);
 	return (read_from_line(doom, line, map_fd, *len));
 }

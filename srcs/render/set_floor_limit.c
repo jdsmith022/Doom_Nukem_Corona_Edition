@@ -1,7 +1,8 @@
+
 #include "../../includes/doom.h"
 
-void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,\
-			t_sector *sector)
+void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
+				t_sector *sector)
 {
 	double	height_floor;
 	double	plane_height_std;

@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
@@ -10,8 +11,8 @@ static void		init_sprites(t_doom *doom)
 
 static void		init_render(t_doom *doom)
 {
-	doom->ray_adjacent = FOV / WIDTH;
-	doom->dist_to_plane = (WIDTH / 2) / tan(FOV / 2);
+	doom->ray_adjacent = (60 * (PI / 180)) / WIDTH;
+	doom->dist_to_plane = (WIDTH / 2) / tan((60 * (PI / 180)) / 2);
 	doom->max_ray = 10000;
 	doom->dir_angle = 90;
 }

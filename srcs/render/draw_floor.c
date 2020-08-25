@@ -1,6 +1,8 @@
+
 #include "../../includes/doom.h"
 
-static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
+static void		calculate_floor_dist(t_doom *doom, int x, int y,
+					t_sector *sector)
 {
 	double dist;
 	double diff;
@@ -9,7 +11,7 @@ static void	calculate_floor_dist(t_doom *doom, int x, int y, t_sector *sector)
 	dist = (doom->player_height - sector->height_floor) / \
 		((y + doom->own_event.y_pitch) - (HEIGHT / 2));
 	dist *= doom->dist_to_plane;
-	dist /= cos(doom->ray_adjacent * x - FOV / 2);
+	dist /= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
 	doom->horizontal_plane_dist = dist;
 }
 
@@ -36,10 +38,10 @@ void			draw_floor(t_doom *doom, int x,
 	while (y < limit)
 	{
 		calculate_floor_dist(doom, x, y, &sector);
-		light_floor_ceiling(doom, sector, x, y);
+		add_light_to_pixel(doom, sector, x, y);
 		index = (y * doom->surface->pitch) + (x * bpp);
 		if (sector.slope_floor_id != -1)
-			put_pixels(doom, index, x, y);
+			put_pixel_slope(doom, index, x, y);
 		else
 			row_calculations(doom, doom->horizontal_plane_dist,\
 				index, doom->lib.tex_lib[tex_dex]);

@@ -1,3 +1,4 @@
+
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
@@ -15,7 +16,8 @@ t_ray			init_ray(t_doom *doom, int x)
 	t_ray	ray;
 
 	ray.angle = \
-		clamp_angle(doom->dir_angle - (FOV / 2) + doom->ray_adjacent * x);
+		clamp_angle(doom->dir_angle - \
+		((60 * (PI / 180)) / 2) + doom->ray_adjacent * x);
 	ray.line.start = doom->pos;
 	ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
 	ray.line.end.y = ray.line.start.y + doom->max_ray * sin(ray.angle);
@@ -30,7 +32,7 @@ void			doom_render(t_doom *doom)
 	int		sky;
 
 	x = 0;
-	ray.angle = doom->dir_angle - (FOV / 2);
+	ray.angle = doom->dir_angle - ((60 * (PI / 180)) / 2);
 	ray.line.start = doom->pos;
 	ray.filter = 0;
 	doom->visible_sprites = 0;

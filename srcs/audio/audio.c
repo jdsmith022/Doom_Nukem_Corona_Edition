@@ -1,6 +1,5 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
-#include "../../includes/menu.h"
 #include "../../includes/audio.h"
 
 void	play_movement_sounds(t_audio *audio, t_event *event)

@@ -1,4 +1,23 @@
+
 #include "../../includes/doom.h"
+
+void		add_tint_to_color(Uint32 *color, int tint, int mask)
+{
+	Uint8	r;
+	Uint8	g;
+	Uint8	b;
+
+	r = ((*color >> 16) & mask);
+	g = ((*color >> 8) & mask);
+	b = (*color & mask);
+	if (tint == BLUE)
+		b += 30;
+	else if (tint == RED)
+		r += 30;
+	else
+		g += 30;
+	*color = (r << 16 | g << 8 | b);
+}
 
 static void	light_correct(double *r, double *g, double *b, double light)
 {
