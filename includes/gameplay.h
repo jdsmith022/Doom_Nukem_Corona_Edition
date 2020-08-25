@@ -12,16 +12,12 @@ typedef struct s_coord	t_coord;
 typedef struct s_lib	t_lib;
 typedef struct s_sprite	t_sprite;
 
-# define MAX_SHOPPING_LIST_LENGTH 4
-# define MAX_BASKET_LEN 			 5
+# define MAX_SL_LEN		4
+# define MAX_BASKET_LEN 5
 
 # define SHOPPING_LIST 	doom->groceries->shopping_list
 # define BASKET			doom->groceries->basket
 # define SHOPPING_LIST_L doom->groceries->shopping_list_len
-
-# define MOUSE_Y		doom->own_event.hold_y
-# define MOUSE_X		doom->own_event.hold_x
-# define MOUSE_PRESSED 	doom->own_event.mouse_press
 
 typedef struct			s_item {
 	uint8_t				type;
@@ -38,7 +34,7 @@ typedef struct			s_game_over {
 
 typedef struct			s_groceries {
 	uint8_t				num_of_groceries;
-	t_item 				*shopping_list;
+	t_item				*shopping_list;
 	uint8_t				shopping_list_len;
 	t_list				*basket;
 	uint8_t				basket_len;

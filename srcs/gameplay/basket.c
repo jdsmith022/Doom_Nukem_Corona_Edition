@@ -2,7 +2,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/textures.h"
 
-void		set_sprite(t_doom *doom, uint8_t type, t_item *item)
+void			set_sprite(t_doom *doom, uint8_t type, t_item *item)
 {
 	uint16_t	i;
 
@@ -36,7 +36,7 @@ static t_item	init_item(t_doom *doom, uint8_t type)
 
 static bool		valid_input(uint8_t type, t_list **head)
 {
-	if (!type || type > NUM_OF_GROCERIES)
+	if (!type || type > GROC_COUNT)
 		return (false);
 	if (get_basket_len(head) >= MAX_BASKET_LEN)
 		return (false);
@@ -45,8 +45,8 @@ static bool		valid_input(uint8_t type, t_list **head)
 
 void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 {
-	t_list	*temp;
-	t_item	item;
+	t_list		*temp;
+	t_item		item;
 
 	temp = *head;
 	if (!valid_input(type, head))
@@ -72,10 +72,10 @@ void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 		temp->next = ft_lstnew(&item, sizeof(t_item));
 }
 
-bool		remove_item_from_basket(t_list **head, uint8_t type)
+bool			remove_item_from_basket(t_list **head, uint8_t type)
 {
-	t_list	*temp;
-	t_item	*item;
+	t_list		*temp;
+	t_item		*item;
 
 	temp = *head;
 	if (!temp)

@@ -31,7 +31,7 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 void	play_action_sounds(t_audio *audio, t_event *event)
 {
 	if (event->shoot && event->mouse_press)
-		play_sound(audio->sounds[GUNSHOT], 2);
+		play_sound(audio->sounds[GUNSHOT], -1);
 	if (event->fall && !event->died)
 	{
 		play_sound(audio->sounds[SCREAM], 2);
@@ -39,8 +39,17 @@ void	play_action_sounds(t_audio *audio, t_event *event)
 	}
 	if (event->groc_pickup)
 	{
-		play_sound(audio->sounds[HIT], 2);
+		play_sound(audio->sounds[PICKUP], 2);
 		event->groc_pickup = FALSE;
+	}
+	if (event->light_switch_changed)
+	{
+		play_sound(audio->sounds[CLICK], 2);
+		event->light_switch_changed = FALSE;
+	}
+	if (event->corona_hit)
+	{
+		play_sound(audio->sounds[HIT], 2);
 	}
 }
 

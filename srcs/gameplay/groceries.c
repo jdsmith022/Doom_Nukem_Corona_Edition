@@ -5,7 +5,7 @@ static void		set_shelf_type(t_doom *doom, uint8_t *type)
 {
 	t_ray		ray;
 
-	ray = init_ray(doom, MOUSE_X);
+	ray = init_ray(doom, doom->own_event.hold_x);
 	*type = find_shelf(doom->lib, ray, doom->i_sector, doom->i_sector);
 }
 
@@ -43,7 +43,8 @@ void			handle_groceries(t_doom *doom)
 
 	if (!handle_mouse_state(doom))
 		return ;
-	if (click_on_basket(&doom->groceries->basket, &type, MOUSE_X, MOUSE_Y))
+	if (click_on_basket(&doom->groceries->basket, &type,
+	doom->own_event.hold_x, doom->own_event.hold_y))
 	{
 		remove_item_from_basket(&doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);

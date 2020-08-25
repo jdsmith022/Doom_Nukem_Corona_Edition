@@ -20,10 +20,10 @@ static int		update_hud_levels_3(t_doom *doom)
 	int change;
 
 	change = -1;
-	if (doom->hud->corona == TRUE)
+	if (doom->own_event.corona_hit == TRUE)
 	{
 		doom->hud->corona_level += 8;
-		doom->hud->corona = FALSE;
+		doom->own_event.corona_hit = FALSE;
 		change = 1;
 	}
 	else if (doom->hud->boxes == TRUE)

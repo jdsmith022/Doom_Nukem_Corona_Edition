@@ -102,7 +102,7 @@ static void	check_sprite_distance(t_doom *doom, int index)
 			check_walking(doom, doom->lib.sprites[index]);
 		else if (doom->lib.sprites[index].action == 4)
 		{
-			doom->hud->corona = TRUE;
+			doom->own_event.corona_hit = TRUE;
 			doom->lib.sprites[index].action = 6;
 		}
 		else if (doom->lib.sprites[index].action == 1)

@@ -32,10 +32,10 @@ void			init_groceries(t_doom *doom)
 	if (doom->groceries == NULL)
 		doom_exit_failure(doom, "error: groceries malloc");
 	doom->groceries->num_of_groceries = get_num_of_groceries(doom);
-	if (doom->groceries->num_of_groceries < MAX_SHOPPING_LIST_LENGTH)
+	if (doom->groceries->num_of_groceries < MAX_SL_LEN)
 		doom->groceries->shopping_list_len = num_of_groceries;
 	else
-		doom->groceries->shopping_list_len = MAX_SHOPPING_LIST_LENGTH;
+		doom->groceries->shopping_list_len = MAX_SL_LEN;
 	generate_shopping_list(doom);
 	doom->groceries->basket = NULL;
 	doom->groceries->tp = FALSE;

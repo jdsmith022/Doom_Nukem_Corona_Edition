@@ -158,6 +158,7 @@ typedef struct		s_event {
 	int				virus_hit_index;
 	bool			virus_red;
 	int				virus_red_i;
+	bool			corona_hit;
 	bool			scissor_lift;
 	bool			scissor_lift_up;
 	bool			scissor_lift_down;
@@ -167,6 +168,7 @@ typedef struct		s_event {
 	bool			spray_mist;
 	bool			trolly;
 	bool			light_switch;
+	bool			light_switch_changed;
 	bool			refill;
 	bool			action;
 	bool			spray_shopper;
