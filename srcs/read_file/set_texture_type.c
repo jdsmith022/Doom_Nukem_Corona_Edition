@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:44:39 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/25 20:02:58 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@ void		set_texture_type(t_doom *doom, const char *name,
 	if (surface->userdata == NULL)
 		doom_exit_failure(doom, "error: userdata malloc");
 	ft_bzero(surface->userdata, sizeof(uint8_t));
-	while (i < NUM_OF_GROCERIES)
+	while (i < GROC_COUNT)
 	{
-		if (is_of_type(name, GROCERIE_PATHS[i]))
+		if (is_of_type(name, g_groc_paths[i]))
 		{
-			memcpy(surface->userdata, &GROCERIE_PATHS[i].type, sizeof(uint8_t));
+			memcpy(surface->userdata, &g_groc_paths[i].type, sizeof(uint8_t));
 			break ;
 		}
 		i++;
 	}
-	free(surface->userdata);
 	return ;
 }

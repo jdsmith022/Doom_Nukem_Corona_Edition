@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 
-static void		init_paths(t_doom *doom)
+static void			init_paths(t_doom *doom)
 {
 	char			path_buff[PATH_MAX];
 
@@ -13,15 +13,15 @@ static void		init_paths(t_doom *doom)
 		doom_exit_failure(doom, "error: audio path malloc");
 }
 
-static void		load_audio(t_doom *doom, t_audio *audio)
+static void			load_audio(t_doom *doom, t_audio *audio)
 {
-	uint8_t i;
+	uint8_t			i;
 
 	i = 0;
 	while (i < NUM_OF_SOUNDS)
 	{
 		audio->sounds[i] = \
-			Mix_LoadWAV(ft_strjoin(AUDIO_PATH, AUDIO_PATHS[i]));
+			Mix_LoadWAV(ft_strjoin(AUDIO_PATH, g_audio_paths[i]));
 		i++;
 	}
 	audio->music[0] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
@@ -37,7 +37,7 @@ static void		load_audio(t_doom *doom, t_audio *audio)
 	}
 }
 
-void			init_audio(t_doom *doom)
+void				init_audio(t_doom *doom)
 {
 	t_audio_event	*event;
 

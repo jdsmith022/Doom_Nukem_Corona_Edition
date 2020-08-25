@@ -6,7 +6,7 @@ void				groceries(t_doom *doom)
 {
 	if (!doom->own_event.shoot && !doom->own_event.select)
 	{
-		if (MOUSE_PRESSED)
+		if (doom->own_event.mouse_press)
 			handle_groceries(doom);
 		else
 			doom->own_event.mouse_state_switched = false;
