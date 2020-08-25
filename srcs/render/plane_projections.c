@@ -14,10 +14,12 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 					t_plane *plane, t_sector *sector)
 {
 	t_sector	opp_sector;
+	double		fov;
 
-	sidedef.distance *= cos(doom->ray_adjacent * plane->x - FOV / 2);
+	fov = 60 * (PI / 180);
+	sidedef.distance *= cos(doom->ray_adjacent * plane->x - fov / 2);
 	sidedef.prev_sidedef.distance *= \
-		cos(doom->ray_adjacent * plane->x - FOV / 2);
+		cos(doom->ray_adjacent * plane->x - fov / 2);
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
 	set_sector_properties(doom, sidedef, sector, plane);

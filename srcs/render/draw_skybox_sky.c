@@ -54,7 +54,7 @@ void			draw_sky(t_doom *doom, int x, int y)
 		index = (y * doom->surface->pitch) + (x * bpp);
 		dist = doom->player_std_height /\
 			(height - (y + doom->own_event.y_pitch)) * doom->dist_to_plane;
-		dist /= cos(doom->ray_adjacent * x - FOV / 2);
+		dist /= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
 		row_cal(doom, dist, index, doom->lib.sky_lib[tex_dex]);
 		y--;
 	}

@@ -38,7 +38,6 @@
 # define STD_TEXT_HEIGHT 96
 
 # define PI 3.14159265359
-# define FOV 60 * (PI / 180)
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 200

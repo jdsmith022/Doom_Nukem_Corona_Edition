@@ -28,7 +28,7 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	poster = doom->lib.sidedef[poster_index];
 	sector = doom->lib.sector[poster.sector];
 	relocate_poster(doom, &poster);
-	poster.distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	poster.distance *= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
 	sector.height_floor = PLAYER_HEIGHT - 10;
 	sector.height_ceiling = -PLAYER_HEIGHT + 10;
 	doom->texture_height = 16;

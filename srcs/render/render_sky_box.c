@@ -10,7 +10,7 @@ static void			set_properties_plane_sky(t_doom *doom,
 	int		div_height_std;
 	int		new_height;
 
-	distance *= cos(doom->ray_adjacent * x - FOV / 2);
+	distance *= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
 	new_height = (HEIGHT + doom->player_height) / 2;
 	plane->height_standard = doom->texture_height /\
 		distance * doom->dist_to_plane;
