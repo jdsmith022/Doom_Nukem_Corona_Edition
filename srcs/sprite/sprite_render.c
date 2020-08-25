@@ -105,6 +105,9 @@ void		sprite_render(t_doom *doom)
 
 	sprite_order = sort_sprite_array(doom->lib.sprites,\
 	doom->visible_sprites, doom->total_sprites);
+	if (doom->own_event.window == TRUE)
+		sort_sprites_window(sprite_order, doom->i_sector,\
+		doom->visible_sprites, doom->lib.sprites);
 	draw_sprite(doom, sprite_order);
 	free(sprite_order);
 }
