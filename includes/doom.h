@@ -40,7 +40,7 @@
 # define PI 3.14159265359
 
 # define PLAYER_HEIGHT 50
-# define MOVE_SPEED 200
+# define MOVE_SPEED 100
 # define SENSITIVITY 0.5
 # define GRAVITY -2
 # define VELOCITY  5
