@@ -235,6 +235,7 @@ typedef struct		s_window {
 	int				y_pixel_bottom[WIDTH];
 	double			height_standard[WIDTH];
 	int				wall_offset[WIDTH];
+	double			sidedef_offset[WIDTH];
 	int				opp_sector;
 	int				curr_sector;
 	double			dist_begin; //i don't use it, i use sector info instead
