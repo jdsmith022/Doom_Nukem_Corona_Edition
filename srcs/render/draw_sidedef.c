@@ -7,26 +7,14 @@ void			put_portal_pixel(t_doom *doom, t_point pixel,
 	Uint32	*pixels;
 	Uint32	color;
 
-	pixels = doom->surface->pixels;
-	color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
-	if (tint != 0)
-		add_tint_to_color(&color, tint, mask);
 	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
+	{
+		pixels = doom->surface->pixels;
+		color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
+		if (tint != 0)
+			add_tint_to_color(&color, tint, mask);
 		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
-}
-
-static Uint32	find_sidedef_texture(t_doom *doom, t_sidedef sidedef,
-					t_point pixel, t_plane plane)
-{
-	Uint32 tex_dex;
-
-	if (sidedef.opp_sector == -1)
-		tex_dex = sidedef.txt_2;
-	else if (pixel.y <= plane.mid_texture_top)
-		tex_dex = sidedef.txt_1;
-	else if (pixel.y >= plane.mid_texture_bottom)
-		tex_dex = sidedef.txt_3;
-	return (tex_dex);
+	}
 }
 
 static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
@@ -38,7 +26,7 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	double	wall_y;
 	int		bpp;
 
-	tex_dex = find_sidedef_texture(doom, sidedef, pixel, plane);
+	tex_dex = sidedef.txt_2;
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
 	wall_y = (double)(doom->texture_height / plane.height_standard) *\
@@ -51,23 +39,40 @@ static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 	put_texture(doom, tex_dex, index, pixel_dex);
 }
 
+static void		put_texture_sidedef(t_doom *doom, t_sidedef sidedef,
+					t_plane plane, t_point pixel)
+{
+	t_sector	sector;
+
+	sector = doom->lib.sector[sidedef.sector];
+	add_light_to_pixel(doom, sector, pixel.x, pixel.y);
+	find_texture_index(doom, pixel, plane, sidedef);
+}
+
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x)
 {
-	Uint32	*pixels;
-	t_point	pixel;
+	Uint32		*pixels;
+	t_point		pixel;
 
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
-	while (pixel.y < plane.sidedef_bottom)
+	while (pixel.y < plane.mid_texture_top)
 	{
-		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
-		if (pixel.y < plane.mid_texture_bottom)
-			put_portal_pixel(doom, pixel, 0, WINDOW_MASK);
-		if (pixel.y < plane.mid_texture_top ||\
-		pixel.y > plane.mid_texture_bottom)
-			find_texture_index(doom, pixel, plane, sidedef);
+		sidedef.txt_2 = sidedef.txt_1;
+		put_texture_sidedef(doom, sidedef, plane, pixel);
+		pixel.y++;
+	}
+	while (pixel.y < plane.mid_texture_bottom && pixel.y < HEIGHT)
+	{
+		put_portal_pixel(doom, pixel, 0, WINDOW_MASK);
+		pixel.y++;
+	}
+	while (pixel.y < plane.sidedef_bottom && pixel.y < HEIGHT)
+	{
+		sidedef.txt_2 = sidedef.txt_3;
+		put_texture_sidedef(doom, sidedef, plane, pixel);
 		pixel.y++;
 	}
 }
@@ -82,8 +87,7 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	pixel.x = x;
 	while (pixel.y < plane.sidedef_bottom)
 	{
-		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
-		find_texture_index(doom, pixel, plane, sidedef);
+		put_texture_sidedef(doom, sidedef, plane, pixel);
 		pixel.y++;
 	}
 }
