@@ -36,6 +36,17 @@ static void		init_settings(t_doom *doom)
 	doom->start_timer = FALSE;
 }
 
+void			init_window(t_doom *doom)
+{
+	doom->lib.window.x_start = -1;
+	doom->lib.window.x_end = WIDTH + 1;
+	ft_bzero(doom->lib.window.y_pixel_bottom, WIDTH);
+	ft_bzero(doom->lib.window.y_pixel_top, WIDTH);
+	ft_bzero(doom->lib.window.height_standard, WIDTH);
+	ft_bzero(doom->lib.window.wall_offset, WIDTH);
+	doom->own_event.window = FALSE;
+}
+
 void			doom_init(t_doom *doom)
 {
 	srand(time(0));
@@ -47,4 +58,5 @@ void			doom_init(t_doom *doom)
 	init_render(doom);
 	init_sprites(doom);
 	init_events(&doom->own_event);
+	init_window(doom);
 }

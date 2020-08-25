@@ -23,29 +23,10 @@ int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 void		exit_scissor_lift(t_doom *doom)
 {
 	double		distance;
-	//check cords and surroundings (no close walls)
-	printf("EXIT SCISSOR LIFT\n");
-	printf("put scissor lift back at original sport\n");
-	//park scissor lift next to you
-	// doom->lib.sprites[doom->save_scissor_lift].lines[0].start.x = doom->pos.x - 70;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[0].start.y = doom->pos.y - 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[0].end.x = doom->pos.x - 50;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[0].end.y = doom->pos.y - 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[1].start.x = doom->pos.x - 50;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[1].start.y = doom->pos.y - 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[1].end.x = doom->pos.x - 50;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[1].end.y = doom->pos.y + 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[2].start.x = doom->pos.x - 50;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[2].start.y = doom->pos.y + 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[2].end.x = doom->pos.x - 70;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[2].end.y = doom->pos.y + 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[3].start.x = doom->pos.x - 70;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[3].start.y = doom->pos.y + 10;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.x = doom->pos.x - 70;
-	// doom->lib.sprites[doom->save_scissor_lift].lines[3].end.y = doom->pos.y - 10;
-	//park yourself next to it
-	distance = point_distance(doom->pos, doom->lib.sprites[doom->save_scissor_lift].pos);
-	if (distance > 60/* && distance < 100*/)
+
+	distance = point_distance(doom->pos,\
+	doom->lib.sprites[doom->save_scissor_lift].pos);
+	if (distance > 60)
 	{
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
@@ -54,7 +35,6 @@ void		exit_scissor_lift(t_doom *doom)
 	{
 		doom->own_event.parked_too_close = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
-		printf("Please move further away from scissor lift parking spot\ndistance: %f\n", distance);
 	}
 }
 
@@ -63,7 +43,6 @@ void		activate_scissor_lift(t_doom *doom, int index)
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = TRUE;
-
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
@@ -74,22 +53,46 @@ static void	check_walking(t_doom *doom, t_sprite shopper)
 {
 	double new_dist;
 
-	// printf("top: %d, %f, %d\n", doom->own_event.sprite_collision, shopper.distance, doom->own_event.sprite_collision_dist);
 	if (doom->own_event.sprite_collision == FALSE)
 	{
-		// printf("dist: %d\n", doom->own_event.sprite_collision_dist);
 		doom->own_event.sprite_collision_dist = shopper.distance;
 		doom->own_event.sprite_collision = TRUE;
 		doom->hud->shopper = TRUE;
 		doom->own_event.sprite_index = shopper.index;
 	}
-	else if (shopper.distance > doom->own_event.sprite_collision_dist && doom->own_event.sprite_collision == TRUE && doom->own_event.sprite_index == shopper.index)
+	else if (shopper.distance > doom->own_event.sprite_collision_dist\
+	&& doom->own_event.sprite_collision == TRUE &&\
+	doom->own_event.sprite_index == shopper.index)
 	{
-		// printf("compare: %d, %f\n", doom->own_event.sprite_collision_dist, shopper.distance);
-		// printf("true\n");
 		doom->own_event.sprite_collision = FALSE;
 		doom->own_event.sprite_collision_dist = -1;
 		doom->own_event.sprite_index = -1;
+	}
+}
+
+static void	check_sprite_distance2(t_doom *doom, int index)
+{
+	if (doom->lib.sprites[index].action == 2)
+	{
+		doom->hud->health_pack = TRUE;
+		doom->lib.font_lib.bools.text = TRUE;
+		doom->lib.font_lib.bools.health_pack = TRUE;
+		doom->lib.sprites[index].action = 8;
+	}
+	else if (doom->lib.sprites[index].action == 3)
+	{
+		doom->hud->facemask = TRUE;
+		doom->lib.font_lib.bools.text = TRUE;
+		doom->lib.font_lib.bools.facemask = TRUE;
+		doom->lib.sprites[index].action = 8;
+	}
+	else if (doom->lib.sprites[index].action == 10)
+	{
+		if (doom->own_event.scissor_lift == FALSE)
+		{
+			doom->lib.sprites[index].action = 8;
+			doom->own_event.fall = TRUE;
+		}
 	}
 }
 
@@ -112,33 +115,13 @@ static void	check_sprite_distance(t_doom *doom, int index)
 			doom->lib.font_lib.bools.health_pack = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
-		else if (doom->lib.sprites[index].action == 2)
-		{
-			doom->hud->health_pack = TRUE;
-			doom->lib.font_lib.bools.text = TRUE;
-			doom->lib.font_lib.bools.health_pack = TRUE;
-			doom->lib.sprites[index].action = 8;
-		}
-		else if (doom->lib.sprites[index].action == 3)
-		{
-			doom->hud->facemask = TRUE;
-			doom->lib.font_lib.bools.text = TRUE;
-			doom->lib.font_lib.bools.facemask = TRUE;
-			doom->lib.sprites[index].action = 8;
-		}
-		else if (doom->lib.sprites[index].action == 10)
-		{
-			if (doom->own_event.scissor_lift == FALSE)
-			{
-				doom->lib.sprites[index].action = 8;
-				doom->own_event.fall = TRUE;
-			}
-		}
 		else if (doom->lib.sprites[index].action == 11)
 		{
 			doom->game_start_time += 60000;
 			doom->lib.sprites[index].action = 8;
 		}
+		else
+			check_sprite_distance2(doom, index);
 	}
 }
 
@@ -158,16 +141,9 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			if (doom->lib.sprites[index].distance < 70\
 			&& doom->own_event.scissor_lift == FALSE &&\
 			doom->lib.sprites[index].action == 7)
-			{
-				printf("YOU ENTER THE SCISSOR LIFT\n");
 				activate_scissor_lift(doom, index);
-				printf("after enter scissor lift if statement\n");
-			}
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
-			{
-				//printf("sprite_is_touched\n");
 				return (1);
-			}
 		}
 		check_sprite_distance(doom, index);
 		index++;

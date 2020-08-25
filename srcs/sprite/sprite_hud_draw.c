@@ -5,21 +5,20 @@
 
 static void		draw_add_on(t_doom *doom, int sprite_i)
 {
-	t_point bar_begin;
-	t_point	bar_end;
+	t_line bar;
 
-	scale_bar(doom, &bar_begin, &bar_end, sprite_i);
+	scale_bar(doom, &bar, sprite_i);
 	if (sprite_i == RIGHT_SELECT)
 	{
-		bar_begin.x += 450;
-		bar_end.x += 450;
+		bar.start.x += 450;
+		bar.end.x += 450;
 	}
 	if (sprite_i == CROSS_HAIR)
 	{
-		bar_begin.y = HEIGHT / 2 - 20;
-		bar_end.y = HEIGHT / 2 + 20;
+		bar.start.y = HEIGHT / 2 - 20;
+		bar.end.y = HEIGHT / 2 + 20;
 	}
-	draw_stripes_bar(doom, bar_begin, bar_end, sprite_i);
+	draw_stripes_bar(doom, bar, sprite_i);
 }
 
 static void			add_mist_to_sanitizer(t_doom *doom)
@@ -36,9 +35,7 @@ static void			add_mist_to_sanitizer(t_doom *doom)
 	{
 		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
 		if (diff == 0)
-		{
 			draw_add_on(doom, SPRAYING_HAND);
-		}
 	}
 }
 
@@ -60,7 +57,6 @@ void		draw_player_adds(t_doom *doom)
 	}
 	else if (doom->own_event.select == TRUE)
 	{
-		//there was an if mouse pressed before
 		if (doom->own_event.hold_x <= WIDTH / 2)
 			sprite_i = LEFT_SELECT;
 		else

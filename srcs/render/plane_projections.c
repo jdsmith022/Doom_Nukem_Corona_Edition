@@ -22,13 +22,13 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 		cos(doom->ray_adjacent * plane->x - fov / 2);
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
-	set_sector_properties(doom, sidedef, sector, plane);
 	if (sidedef.opp_sector != -1)
 	{
 		opp_sector = doom->lib.sector[sidedef.opp_sector];
 		set_properties_plane_portal(doom, sidedef,\
 			opp_sector, plane);
 	}
+	set_sector_properties(doom, sidedef, sector, plane);
 }
 
 void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
@@ -43,9 +43,14 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 		doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
 	else
 		doom->lib.sector[sidedef.sector].sidedef_bottom[x] = 0;
-	if (sidedef.opp_sector != -1)
-		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
-			plane.mid_texture_bottom;
+	if (sidedef.opp_sector != -1 || sidedef.action == 6)
+	{
+		if (plane.mid_texture_bottom == 0)
+			doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = -1;
+		else
+			doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
+				plane.mid_texture_bottom;
+	}
 	else
 		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
 }
@@ -60,9 +65,9 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
-	if (sidedef.action == WINDOW)
+	else if (sidedef.action == WINDOW)
 		draw_window(doom, plane, sidedef, x);
-	else
+	else if (sidedef.opp_sector != -1)
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (sector.action != OUTSIDE)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);

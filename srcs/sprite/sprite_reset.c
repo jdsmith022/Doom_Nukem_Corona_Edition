@@ -9,9 +9,8 @@ void		sprite_reset(t_doom *doom)
 	while (i < doom->total_sprites)
 	{
 		doom->lib.sprites[i].visible = -1;
-		// ft_bzero(doom->lib.sprites[i].prev_sectors, doom->lib.sprites[i].n_sector);
 		doom->lib.sprites[i].n_sector = 0;
-		//free prev_sectors???
+		//free sprite_order_array???
 		i++;
 	}
 }
