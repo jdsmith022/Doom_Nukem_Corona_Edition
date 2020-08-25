@@ -86,6 +86,7 @@ static void		key_press2(t_doom *doom, t_event *event,
 	{
 		doom->game_editor = FALSE;
 		doom->hud_display = TRUE;
+		SDL_SetRelativeMouseMode(SDL_TRUE);
 		if (doom->lib.font_lib.bools.walking_info == TRUE)
 			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
 	}

@@ -9,15 +9,15 @@ t_sidedef		set_properties_sidedef(t_point intersect, double distance,
 
 	sidedef = curr_sidedef;
 	sidedef.distance = distance;
-	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	doom->texture_width = doom->lib.tex_lib[sidedef.txt_2]->w;
 	doom->texture_height = doom->lib.tex_lib[sidedef.txt_2]->h;
+	set_offset(&sidedef, curr_sidedef, intersect, doom);
 	sidedef.intersect = intersect;
 	sidedef.prev_sidedef = doom->prev_sidedef;
 	return (sidedef);
 }
 
-static int			find_index(t_doom *doom, int id)
+static int			find_index(t_doom *doom, int id) // what is
 {
 	int i;
 
