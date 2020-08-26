@@ -104,26 +104,24 @@ typedef struct			s_line {
 }						t_line;
 
 typedef struct			s_sprite {
-	int					index;			//start index
-	int					amount;			//which side is viewed how many textures does the sprite have?
+	int					index;
+	int					amount;
 	t_point				pos;
 	t_point				sprite_begin;
-	double				size;			//products: 16, shopper: 48
+	double				size;
 	t_line				*lines;
-	// double				angle;			//GEBRUIK IK NIET what is the angle on the map
-	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 inactive virus 7 scissor lift, 8 inactive health sprite 9 shopper
-	int					*textures;		//index to texture, +0, +1, +2 or +3
-	int					block;			//can the player walk through it or not
+	int					action;
+	int					*textures;
+	int					block;
 	int					sector;
-	int					n_sector; //amount of checked sector stored in prev_sectors
+	int					n_sector;
 	double				width;
 	double				height;
-	double				sprite_x;		//x cord translated to viewer space
-	double				sprite_y;		//y cord translated to viewer space
-	int					visible;		//this is only turned on for the drawing... can't use it for other options
+	double				sprite_x;
+	double				sprite_y;
+	int					visible;
 	double				distance;
-	// int					face;
-	int					prev_sectors[50];	//where to empty them again? don't forget to protect
+	int					prev_sectors[50];
 }						t_sprite;
 
 typedef struct		s_ray {
@@ -243,8 +241,6 @@ typedef struct		s_window {
 	double			sidedef_offset[WIDTH];
 	int				opp_sector;
 	int				curr_sector;
-	double			dist_begin; //i don't use it, i use sector info instead
-	double			dist_end; //i don't use it
 }					t_window;
 
 typedef struct		s_sidedef {

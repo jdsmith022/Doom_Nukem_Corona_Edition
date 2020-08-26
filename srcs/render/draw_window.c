@@ -46,16 +46,12 @@ void			save_window(t_doom *doom, t_plane plane,
 	{
 		doom->lib.window.index = sidedef.id;
 		doom->lib.window.x_start = x;
-		doom->lib.window.dist_begin = sidedef.distance;
 		doom->lib.window.opp_sector = sidedef.opp_sector;
 		doom->lib.window.curr_sector = sidedef.sector;
 	}
 	else if (doom->lib.window.x_end == WIDTH + 1 ||\
 		x > doom->lib.window.x_start)
-	{
 		doom->lib.window.x_end = x;
-		doom->lib.window.dist_end = sidedef.distance;
-	}
 	doom->lib.window.y_pixel_top[x] = plane.sidedef_top;
 	doom->lib.window.y_pixel_bottom[x] = plane.sidedef_bottom;
 	doom->lib.window.height_standard[x] = plane.height_standard;

@@ -35,9 +35,8 @@
 
 typedef struct s_line	t_line;
 typedef struct s_sprite	t_sprite;
-typedef struct s_line	t_line;
 
-typedef struct s_level_sprite
+typedef struct	s_level_sprite
 {
 	int			index;
 	double		start_x;
@@ -53,20 +52,19 @@ typedef struct s_level_sprite
 	int			action;
 }				t_level_sprite;
 
-
 static const	t_level_sprite level_sprites[] = {
 	{SCISSOR_LIFT, START_X_L, START_Y_L, END_X_L, END_Y_L,\
-	7, 8, 7, 8, BLOCK, X_LARGE, 7},
+		7, 8, 7, 8, BLOCK, X_LARGE, 7},
 	{SHOPPER, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM,\
-	9, 10, 11, 12, BLOCK, LARGE, 9},
+		9, 10, 11, 12, BLOCK, LARGE, 9},
 	{FACE_MASK, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM,\
-	13, 13, 13, 13, NO_BLOCK, SMALL, 3},
+		13, 13, 13, 13, NO_BLOCK, SMALL, 3},
 	{HEALTH_PACK_PLUS, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM,\
-	14, 14, 14, 14, NO_BLOCK, SMALL, 1},
+		14, 14, 14, 14, NO_BLOCK, SMALL, 1},
 	{HEALTH_PACK, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM,\
-	15, 15, 15, 15, NO_BLOCK, SMALL, 2},
+		15, 15, 15, 15, NO_BLOCK, SMALL, 2},
 	{CORONA, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM,\
-	19, 19, 19, 19, NO_BLOCK, SMALL, 4},
+		19, 19, 19, 19, NO_BLOCK, SMALL, 4},
 };
 
 /*
@@ -95,7 +93,7 @@ void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index,\
 					int i, double distance);
 void				remove_red_virus(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
-void		  		draw_stripes_bar(t_doom *doom, t_line bar, int sprite_i);
+void				draw_stripes_bar(t_doom *doom, t_line bar, int sprite_i);
 void				scale_bar(t_doom *doom, t_line *bar, int sprite_i);
 
 #endif
