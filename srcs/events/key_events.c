@@ -57,13 +57,29 @@ static void		key_select_and_shoot(t_doom *doom, t_event *event,
 	{
 		event->select = event->select == TRUE ? FALSE : TRUE;
 		if (event->select == TRUE)
+		{
 			event->shoot = FALSE;
+			event->mouse_pointer = FALSE;
+		}
 	}
 	else if (key->keysym.sym == SDLK_r)
 	{
 		event->shoot = event->shoot == TRUE ? FALSE : TRUE;
 		if (event->shoot == TRUE)
+		{
 			event->select = FALSE;
+			event->mouse_pointer = FALSE;
+		}
+	}
+	else if (key->keysym.sym == SDLK_t)
+	{
+		
+		event->mouse_pointer = event->mouse_pointer == TRUE ? FALSE : TRUE;
+		if (event->mouse_pointer == TRUE)
+		{
+			event->select = FALSE;
+			event->shoot = FALSE;
+		}
 	}
 }
 
@@ -74,7 +90,7 @@ static void		key_press2(t_doom *doom, t_event *event,
 		add_to_game(doom);
 	else if (key->keysym.sym == SDLK_y)
 		doom->menu->pause = TRUE;
-	else if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e)
+	else if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e || key->keysym.sym == SDLK_t)
 		key_select_and_shoot(doom, event, key);
 	else if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
 		printing_map(&(EDIT));

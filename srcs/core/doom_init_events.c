@@ -30,6 +30,7 @@ void		init_events(t_event *event)
 	event->y_pitch = 0;
 	event->select = TRUE;
 	event->shoot = FALSE;
+	event->mouse_pointer = FALSE;
 	event->scissor_lift = FALSE;
 	event->scissor_lift_down = FALSE;
 	event->scissor_lift_up = FALSE;

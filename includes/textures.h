@@ -3,7 +3,7 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				47
+# define GROC_COUNT				51
 
 # define APPLE					1
 # define BACON					2
@@ -45,7 +45,6 @@
 # define MARMELADE				38
 # define STEAK					39
 # define BROWNIE				40
-# define BOX					41
 # define MILK					42
 # define SPRAY					43
 # define JARS1					44
@@ -76,7 +75,7 @@
 # define SPR_COOKIE				"assets/sprites/groceries/Cookie.bmp"
 # define SPR_CHEESE				"assets/sprites/groceries/Cheese.bmp"
 # define SPR_POTATO 			"assets/sprites/groceries/potato.bmp"
-# define SPR_MELON				"assets/textures/shelves/melon.bmp"
+# define SPR_MELON				"assets/textures/groceries/watermelon.bmp"
 # define SPR_SOAP				"assets/sprites/groceries/soap.bmp"
 
 typedef struct s_doom			t_doom;
@@ -250,11 +249,6 @@ static const t_grocery_paths	g_groc_paths[] = {
 		BROWNIE
 	},
 	{
-		"assets/textures/shelves/boxes.bmp",
-		"assets/sprites/misc/box.bmp",
-		BOX
-	},
-	{
 		"assets/textures/shelves/milk.bmp",
 		"assets/sprites/groceries/milk1.bmp",
 		MILK
@@ -293,6 +287,21 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/jar4.bmp",
 		"assets/sprites/groceries/glass_jar6.bmp",
 		JARS4
+	},
+	{
+		"assets/textures/shelves/potatoes.bmp",
+		"assets/sprites/groceries/swee_potatoe.bmp",
+		POTATO
+	},
+	{
+		"assets/textures/shelves/onions.bmp",
+		"assets/sprites/groceries/white_onion.bmp",
+		ONION
+	},
+	{
+		"assets/textures/shelves/paprika.bmp",
+		"assets/sprites/groceries/yellow_paprika.bmp",
+		PAPRIKA
 	}
 };
 

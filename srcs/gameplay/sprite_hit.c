@@ -87,4 +87,5 @@ void			check_sprite_hit(t_doom *doom)
 		printf("sprite #%d got hit\n", doom->own_event.virus_hit_index);
 		check_select_spray_sprite(doom);
 	}
+	doom->own_event.virus_hit_index = -1;
 }
