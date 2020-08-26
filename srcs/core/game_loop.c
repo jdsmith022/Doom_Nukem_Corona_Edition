@@ -18,8 +18,8 @@ double			get_timeframe(long *last_frame_time)
 	double			dt;
 
 	clock_gettime(CLOCK_MONOTONIC_RAW, &t);
-	dt = t.tv_nsec - *last_frame_time;
-	dt /= round(1.0e9);
+	dt = t.tv_sec - *last_frame_time;
+	dt /= round(1000);
 	if (dt < 0)
 		dt = 0;
 	*last_frame_time = t.tv_nsec;
@@ -35,6 +35,7 @@ void			game_loop(t_doom *doom)
 	dt = get_timeframe(&last_frame_time);
 	while (doom->is_running == TRUE)
 	{
+		printf("%f\n", dt);
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
