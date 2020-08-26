@@ -320,7 +320,7 @@ assets/sprites/groceries/orange_tart.bmp
 #52
 assets/sprites/groceries/toiletpaper2.bmp
 #53
-assets/sprites/groceries/sausages.bmp
+assets/sprites/groceries/steak.bmp
 #54
 assets/sprites/groceries/whiskey.bmp
 #55
@@ -2664,7 +2664,7 @@ assets/sprites/groceries/tea.bmp
 35
 700
 1075
-0
+14
 16
 1
 4
@@ -2693,7 +2693,7 @@ assets/sprites/groceries/tea.bmp
 36
 690
 1100
-0
+14
 16
 1
 4
@@ -2722,7 +2722,7 @@ assets/sprites/groceries/tea.bmp
 37
 710
 1110
-0
+14
 16
 1
 4
@@ -2751,7 +2751,7 @@ assets/sprites/groceries/tea.bmp
 38
 690
 1175
-0
+14
 16
 1
 4
@@ -2780,7 +2780,7 @@ assets/sprites/groceries/tea.bmp
 39
 705
 1190
-0
+14
 16
 1
 4
@@ -2809,7 +2809,7 @@ assets/sprites/groceries/tea.bmp
 40
 690
 1220
-0
+14
 16
 1
 4
@@ -2838,7 +2838,7 @@ assets/sprites/groceries/tea.bmp
 41
 710
 1160
-0
+14
 16
 1
 4
@@ -2896,7 +2896,7 @@ assets/sprites/groceries/tea.bmp
 43
 710
 1160
-0
+14
 16
 1
 4
@@ -4018,7 +4018,7 @@ assets/sprites/groceries/tea.bmp
 105
 480
 1375
-0
+14
 16
 1
 4
@@ -4047,7 +4047,7 @@ assets/sprites/groceries/tea.bmp
 106
 460
 1400
-0
+14
 16
 1
 4
@@ -4076,7 +4076,7 @@ assets/sprites/groceries/tea.bmp
 107
 470
 1470
-0
+14
 16
 1
 4
@@ -4105,7 +4105,7 @@ assets/sprites/groceries/tea.bmp
 108
 460
 1500
-0
+14
 16
 1
 4
@@ -4227,7 +4227,7 @@ assets/sprites/groceries/tea.bmp
 110
 608
 1370
-0
+14
 16
 1
 4
@@ -4256,7 +4256,7 @@ assets/sprites/groceries/tea.bmp
 111
 615
 1395
-0
+14
 16
 1
 4
@@ -4285,7 +4285,7 @@ assets/sprites/groceries/tea.bmp
 112
 608
 1420
-0
+14
 16
 1
 4
@@ -4314,7 +4314,7 @@ assets/sprites/groceries/tea.bmp
 113
 608
 1470
-0
+14
 16
 1
 4
@@ -4343,7 +4343,7 @@ assets/sprites/groceries/tea.bmp
 114
 600
 1495
-0
+14
 16
 1
 4
@@ -4465,7 +4465,7 @@ assets/sprites/groceries/tea.bmp
 116
 725
 1400
-0
+14
 16
 1
 4
@@ -4494,7 +4494,7 @@ assets/sprites/groceries/tea.bmp
 117
 750
 1400
-0
+14
 16
 1
 4
@@ -4523,7 +4523,7 @@ assets/sprites/groceries/tea.bmp
 118
 738
 1420
-0
+14
 16
 1
 4
@@ -4552,7 +4552,7 @@ assets/sprites/groceries/tea.bmp
 119
 775
 1410
-0
+14
 16
 1
 4
@@ -7090,7 +7090,7 @@ assets/sprites/groceries/tea.bmp
 159
 310
 2450
-0
+14
 16
 1
 4
@@ -7119,7 +7119,7 @@ assets/sprites/groceries/tea.bmp
 160
 335
 2455
-0
+14
 16
 1
 4
@@ -7148,7 +7148,7 @@ assets/sprites/groceries/tea.bmp
 161
 350
 2445
-0
+14
 16
 1
 4
@@ -7177,7 +7177,7 @@ assets/sprites/groceries/tea.bmp
 162
 375
 2455
-0
+14
 16
 1
 4
@@ -7206,7 +7206,7 @@ assets/sprites/groceries/tea.bmp
 163
 400
 2450
-0
+14
 16
 1
 4
@@ -7235,7 +7235,7 @@ assets/sprites/groceries/tea.bmp
 164
 420
 2450
-0
+14
 16
 1
 4
@@ -7328,7 +7328,7 @@ assets/sprites/groceries/tea.bmp
 165
 310
 2640
-0
+14
 16
 1
 4
@@ -7357,7 +7357,7 @@ assets/sprites/groceries/tea.bmp
 166
 335
 2640
-0
+14
 16
 1
 4
@@ -7386,7 +7386,7 @@ assets/sprites/groceries/tea.bmp
 167
 350
 2645
-0
+14
 16
 1
 4
@@ -7415,7 +7415,7 @@ assets/sprites/groceries/tea.bmp
 168
 375
 2635
-0
+14
 16
 1
 4
@@ -7444,7 +7444,7 @@ assets/sprites/groceries/tea.bmp
 169
 400
 2630
-0
+14
 16
 1
 4
@@ -7473,7 +7473,7 @@ assets/sprites/groceries/tea.bmp
 169
 420
 2640
-0
+14
 16
 1
 4
@@ -10555,7 +10555,7 @@ assets/sprites/groceries/tea.bmp
 236
 640
 368
-0
+14
 16
 1
 4
@@ -10584,7 +10584,7 @@ assets/sprites/groceries/tea.bmp
 237
 700
 368
-0
+14
 16
 1
 4
@@ -10613,7 +10613,7 @@ assets/sprites/groceries/tea.bmp
 238
 760
 368
-0
+14
 16
 1
 4
@@ -10642,7 +10642,7 @@ assets/sprites/groceries/tea.bmp
 239
 820
 368
-0
+14
 16
 1
 4
@@ -10671,7 +10671,7 @@ assets/sprites/groceries/tea.bmp
 240
 880
 368
-0
+14
 16
 1
 4
@@ -10700,7 +10700,7 @@ assets/sprites/groceries/tea.bmp
 241
 940
 368
-0
+14
 16
 1
 4
@@ -10725,30 +10725,30 @@ assets/sprites/groceries/tea.bmp
 935
 363
 
-#object6 in sector 30 peach 65
+#object6 in sector 30 grapes 64
 242
 1000
 368
-0
+14
 16
 1
 4
-65
+64
 995
 363
 1005
 363
-65
+64
 1005
 363
 1005
 373
-65
+64
 1005
 373
 995
 373
-65
+64
 995
 373
 995
@@ -10758,7 +10758,7 @@ assets/sprites/groceries/tea.bmp
 243
 1060
 368
-0
+14
 16
 1
 4
@@ -10787,7 +10787,7 @@ assets/sprites/groceries/tea.bmp
 244
 1120
 368
-0
+14
 16
 1
 4
@@ -10816,7 +10816,7 @@ assets/sprites/groceries/tea.bmp
 245
 1140
 368
-0
+14
 16
 1
 4
@@ -10845,7 +10845,7 @@ assets/sprites/groceries/tea.bmp
 246
 1200
 368
-0
+14
 16
 1
 4
@@ -14393,7 +14393,7 @@ assets/sprites/groceries/tea.bmp
 316
 1105
 1606
-0
+14
 16
 1
 4
@@ -14447,30 +14447,30 @@ assets/sprites/groceries/tea.bmp
 1100
 1633
 
-#object4 in sector 45 #73
+#object4 in sector 45 #71
 318
 1105
 1670
-0
+14
 16
 1
 4
-73
+71
 1100
 1665
 1110
 1665
-73
+71
 1110
 1665
 1110
 1675
-73
+71
 1110
 1675
 1100
 1675
-73
+71
 1100
 1675
 1100

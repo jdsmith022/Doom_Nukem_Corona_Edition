@@ -16,6 +16,12 @@ static void	check_select_sprite(t_doom *doom)
 		doom->lib.sidedef[17].action = 0;
 		SPRITES[doom->own_event.virus_hit_index].action = 8;
 	}
+	else if (SPRITES[doom->own_event.virus_hit_index].action == 14)
+	{
+		printf("Grocery fetched\n");
+		printf("With texture index: %d\n", SPRITES[doom->own_event.virus_hit_index].textures[0]);
+		SPRITES[doom->own_event.virus_hit_index].action = 15;
+	}
 }
 
 static void	virus_hit(t_doom *doom)
@@ -50,6 +56,6 @@ void		check_select_spray_sprite(t_doom *doom)
 			check_spray_sprite(doom);
 		else if (doom->own_event.select == TRUE)
 			check_select_sprite(doom);
-		doom->own_event.virus_hit_index = -1;
 	}
+	doom->own_event.virus_hit_index = -1;
 }

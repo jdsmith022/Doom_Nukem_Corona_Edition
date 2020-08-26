@@ -49,7 +49,7 @@ bool	sprite_has_action(t_sprite sprite)
 
 	action = sprite.action;
 	if (action == 4 || action == 9 || action == 13 ||
-	action == 11 || action == 12)
+	action == 11 || action == 12 || action == 14)
 		return (true);
 	return (false);
 }

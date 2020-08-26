@@ -83,5 +83,8 @@ void			check_sprite_hit(t_doom *doom)
 	ray = init_ray(doom, doom->own_event.hold_x);
 	check_hit(doom, ray, doom->i_sector, doom->i_sector);
 	if (doom->own_event.virus_hit_index != -1)
+	{
+		printf("sprite #%d got hit\n", doom->own_event.virus_hit_index);
 		check_select_spray_sprite(doom);
+	}
 }
