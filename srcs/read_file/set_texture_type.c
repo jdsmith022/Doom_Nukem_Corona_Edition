@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/25 10:44:38 by jesmith        #+#    #+#                */
-/*   Updated: 2020/08/26 18:50:36 by efrank        ########   odam.nl         */
+/*   Created: 2020/08/25 10:44:38 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/26 21:56:39 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void		set_texture_type(t_doom *doom, const char *name,
 		if (is_of_type(name, g_groc_paths[i]))
 		{
 			memcpy(surface->userdata, &g_groc_paths[i].type, sizeof(uint8_t));
-			printf("found type for %s  %d\n", name, g_groc_paths[i].type);	
 			break ;
 		}
 		i++;

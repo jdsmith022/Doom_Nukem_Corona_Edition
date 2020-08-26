@@ -24,7 +24,7 @@ void			set_sprite(t_doom *doom, uint8_t type, t_item *item)
 
 static t_item	init_item(t_doom *doom, uint8_t type)
 {
-	t_item item;
+	t_item		item;
 
 	item.type = type;
 	item.amount = 1;
