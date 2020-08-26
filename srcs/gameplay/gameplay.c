@@ -11,6 +11,6 @@ void				groceries(t_doom *doom)
 		else
 			doom->own_event.mouse_state_switched = FALSE;
 	}
-	else if (doom->own_event.mouse_pointer)
+	// else if (doom->own_event.mouse_pointer)
 		
 }

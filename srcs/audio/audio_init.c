@@ -20,7 +20,7 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 	i = 0;
 	while (i < NUM_OF_SOUNDS)
 	{
-		audio->sounds[i] = \
+		audio->sounds[i] =
 			Mix_LoadWAV(ft_strjoin(AUDIO_PATH, g_audio_paths[i]));
 		i++;
 	}
@@ -32,7 +32,7 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 	while (i < NUM_OF_SOUNDS)
 	{
 		if (!audio->sounds[i])
-			printf("Mix_LoadWAV: %s\n", Mix_GetError());
+			doom_exit_failure(doom, "Audio file not found\n");
 		i++;
 	}
 }
@@ -54,12 +54,12 @@ void				init_audio(t_doom *doom)
 	doom->audio->music_vol = TRUE;
 	doom->audio->sound_vol = TRUE;
 	doom->audio->event->groc_pickup = FALSE;
-	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, \
+	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,
 	MIX_DEFAULT_CHANNELS, AUDIO_BUFF) == -1)
 		exit_error(doom, Mix_GetError());
-	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format, \
+	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format,
 		&doom->audio->channels);
-	Mix_AllocateChannels(3);
+	Mix_AllocateChannels(4);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);

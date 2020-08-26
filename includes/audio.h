@@ -10,10 +10,10 @@
 # define AUDIO			doom->audio
 # define AUDIO_PATH		audio->path
 
-# define NUM_OF_SOUNDS	9
 # define OFF			0
 # define ON				1
 
+# define NUM_OF_SOUNDS	9
 # define BUTTON 		0
 # define FOOTSTEPS 		1
 # define JUMP			2
@@ -23,9 +23,6 @@
 # define CLICK			6
 # define PICKUP			7
 # define HIT			8
-
-# define THEME			8
-# define BOSSA			9
 
 # define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 # define S_FOOTSTEPS 	"/Movement/Footsteps/footstep_loop.wav"
