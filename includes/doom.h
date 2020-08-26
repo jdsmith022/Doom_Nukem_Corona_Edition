@@ -480,8 +480,8 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-void				draw_window(t_doom *doom, t_plane plane,
-						t_sidedef sidedef, int x);
+// void				draw_window(t_doom *doom, t_plane plane,
+						// t_sidedef sidedef, int x);
 void				draw_window_as_sprite(t_doom *doom);
 void				save_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);

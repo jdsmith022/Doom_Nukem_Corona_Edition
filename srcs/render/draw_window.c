@@ -99,19 +99,19 @@ void			draw_window_as_sprite(t_doom *doom)
 }
 
 //NOT USING ANY MORE
-void			draw_window(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x)
-{
-	Uint32	*pixels;
-	t_point	pixel;
+// void			draw_window(t_doom *doom, t_plane plane,
+// 					t_sidedef sidedef, int x)
+// {
+// 	Uint32	*pixels;
+// 	t_point	pixel;
 
-	pixel.y = plane.sidedef_top;
-	pixel.x = x;
-	pixels = doom->surface->pixels;
-	while (pixel.y < plane.sidedef_bottom)
-	{
-		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
-		put_window_texture(doom, pixel, plane, sidedef);
-		pixel.y++;
-	}
-}
+// 	pixel.y = plane.sidedef_top;
+// 	pixel.x = x;
+// 	pixels = doom->surface->pixels;
+// 	while (pixel.y < plane.sidedef_bottom)
+// 	{
+// 		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
+// 		put_window_texture(doom, pixel, plane, sidedef);
+// 		pixel.y++;
+// 	}
+// }

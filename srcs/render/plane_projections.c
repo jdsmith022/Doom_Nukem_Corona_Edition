@@ -66,7 +66,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)
-		draw_window(doom, plane, sidedef, x);
+		save_window(doom, plane, sidedef, x);
 	else if (sidedef.opp_sector != -1)
 		draw_portal_sidedef(doom, plane, sidedef, x);
 	if (sector.action != OUTSIDE)
