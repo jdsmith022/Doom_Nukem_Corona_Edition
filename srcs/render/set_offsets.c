@@ -10,7 +10,7 @@ void	wall_offset(t_plane *plane, int sidedef_top)
 		plane->sidedef_top = 0;
 	}
 	else if (sidedef_top > HEIGHT)
-		sidedef_top = HEIGHT;
+		plane->sidedef_top = HEIGHT;
 	else
 		plane->sidedef_top = sidedef_top;
 }
