@@ -11,7 +11,7 @@ static void	check_select_sprite(t_doom *doom)
 	{
 		doom->own_event.trolly = TRUE;
 		doom->lib.sidedef[17].action = 0;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 8;
+		doom->lib.sprites[doom->own_event.virus_hit_index].action = 15;
 	}
 	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 14)
 	{

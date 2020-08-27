@@ -41,6 +41,7 @@ static void		check_hit_new(t_doom *doom)
 	i = doom->visible_sprites -1;
 	while (i >= 0)
 	{
+		// printf("i: %d\n", i);
 		if (doom->lib.sprites[doom->lib.sprite_order[i]].distance < 150 &&\
 		sprite_has_action(doom->lib.sprites[doom->lib.sprite_order[i]]) &&\
 		sprite_in_shooting_area(doom, doom->lib.sprite_order[i]) != -1)
@@ -100,10 +101,12 @@ void			check_sprite_hit(t_doom *doom)
 	t_ray	ray;
 
 	ray = init_ray(doom, doom->own_event.hold_x);
+	// printf("before check hit\n");
 	check_hit_new(doom);
+	// printf("after check hit\n");
 	if (doom->own_event.virus_hit_index != -1)
 	{
-		printf("sprite #%d got hit\n", doom->own_event.virus_hit_index);
+		// printf("sprite #%d got hit\n", doom->own_event.virus_hit_index);
 		check_select_spray_sprite(doom);
 	}
 	doom->own_event.virus_hit_index = -1;

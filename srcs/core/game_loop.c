@@ -39,16 +39,24 @@ void			game_loop(t_doom *doom)
 		dt = get_timeframe(&last_frame_time);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
 		{
+			printf("1");
 			sprite_reset(doom);
+			printf("2");
 			doom_render(doom);
+			printf("3");
 			audio(doom, &doom->own_event);
+			printf("4");
 			groceries(doom);
+			printf("5");
 		}
 		else if (doom->game_editor == TRUE && doom->menu->game_over == FALSE)
 			open_game_editor(doom);
 		doom_update(doom, dt);
+		// printf("game_loop, after doom_update\n");
 		update_hud_ui(doom);
+		// printf("before set to window\n");
 		set_to_window(doom);
+		// printf("after set to window\n");
 	}
 	doom_exit_success(doom);
 }

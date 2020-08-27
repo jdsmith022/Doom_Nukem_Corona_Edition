@@ -23,7 +23,10 @@ void	doom_update(t_doom *doom, double dt)
 		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
+	// printf("after Poll event");
 	key_handler(doom, &doom->own_event, dt);
+	// printf("after key handler");
 	if (doom->game_editor == FALSE)
 		action_handler(doom);
+	// printf ("end doom_update\n");
 }

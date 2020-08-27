@@ -14,6 +14,7 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 	int limit_pos;
 	int limit_neg;
 
+	// printf("begin set pitch\n");
 	if (doom->own_event.scissor_lift == TRUE)
 	{
 		limit_pos = 400;
@@ -30,11 +31,18 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion,
 	if (next_pitch <= limit_pos && next_pitch >= limit_neg)
 		event->y_pitch += motion->yrel;
 	if (event->y_pitch > limit_pos)
+	{
+		// printf("pos\n");
 		event->y_pitch = limit_pos;
+	}
 	if (event->y_pitch < limit_neg)
+	{
+		// printf("neg\n");
 		event->y_pitch = limit_neg;
+	}
 	doom->own_event.hold_x = motion->x;
 	doom->own_event.hold_y = motion->y;
+	// printf("end set pitch\n");
 }
 
 static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
@@ -48,7 +56,9 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 	dir_x = 1;
 	dir_y = 1;
 	doom->dir_angle += to_radians(motion->xrel) * SENSITIVITY;
+	// printf("cam movement1\n");
 	set_pitch(doom, motion, event);
+	// printf("cam movement2\n");
 }
 
 void			move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
@@ -70,4 +80,5 @@ void			move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 		SDL_SetRelativeMouseMode(TRUE);
 		cam_movement(doom, motion, dt, event);
 	}
+	// printf("end move_cam_direction\n");
 }
