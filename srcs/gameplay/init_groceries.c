@@ -37,6 +37,10 @@ void			init_groceries(t_doom *doom)
 	else
 		doom->groceries->shopping_list_len = MAX_SL_LEN;
 	generate_shopping_list(doom);
+	// int i = 0;
+	// while (i < doom->groceries->basket_len){
+	// 	printf(doom->groceries->basket[]
+	// }
 	doom->groceries->basket = NULL;
 	doom->groceries->tp = FALSE;
 	set_grocery_font(&doom->groceries->font);

@@ -10,10 +10,6 @@ static void		shoot_action(t_doom *doom)
 	{
 		if (doom->own_event.mouse_press)
 		{
-			if (doom->own_event.mouse_press == TRUE)
-				// printf("mouse press TRUE\n");
-			if (doom->own_event.mouse_press == FALSE)
-				// printf("mouse press FALSE\n");
 			doom->hud->sanitizer_shooting = TRUE;
 			doom->own_event.mist = TRUE;
 			check_sprite_hit(doom);
@@ -31,10 +27,6 @@ static void		select_action(t_doom *doom)
 	{
 		if (doom->own_event.mouse_press)
 		{
-			if (doom->own_event.mouse_press == TRUE)
-				// printf("mouse press TRUE\n");
-			if (doom->own_event.mouse_press == FALSE)
-				// printf("mouse press FALSE\n");
 			check_sprite_hit(doom);
 			if (poster.action == 8)
 				sanitizer_refill(doom);

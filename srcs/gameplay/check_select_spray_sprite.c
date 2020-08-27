@@ -4,6 +4,8 @@
 
 static void	check_select_sprite(t_doom *doom)
 {
+	uint8_t type;
+
 	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
 		doom->own_event.corona_hit = TRUE;
 	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 13)
@@ -19,11 +21,8 @@ static void	check_select_sprite(t_doom *doom)
 	}
 	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 14)
 	{
-		printf("Grocery fetched\n");
-		printf("With texture index: %d\n", doom->lib.sprites[doom->own_event.virus_hit_index].textures[0]);
-		uint8_t type = *(int *)doom->lib.obj_lib[doom->lib.sprites[doom->own_event.virus_hit_index].textures[0]]->userdata;
+		type = *(int *)doom->lib.obj_lib[doom->lib.sprites[doom->own_event.virus_hit_index].textures[0]]->userdata;
 		doom->lib.sprites[doom->own_event.virus_hit_index].action = 15;
-		printf("%d\n", type);
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}
