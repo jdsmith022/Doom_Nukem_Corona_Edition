@@ -657,7 +657,7 @@ assets/sprites/groceries/fish.bmp
 #OBJECTS IN SECTOR 0
 #object0 in sector0 plant
 0
-30
+32
 30
 0
 32
@@ -665,27 +665,27 @@ assets/sprites/groceries/fish.bmp
 4
 #line
 34
+27
 25
-25
-35
+37
 25
 #line
 34
-35
+37
 25
-35
+37
 35
 #line
 34
+37
 35
-35
-25
+27
 35
 #line
 34
-25
+27
 35
-25
+27
 25
 
 #object1 in sector0 plant
@@ -13587,7 +13587,7 @@ assets/sprites/groceries/fish.bmp
 247
 1076
 1045
-13
+14
 16
 1
 4
@@ -13616,7 +13616,7 @@ assets/sprites/groceries/fish.bmp
 248
 1125
 1045
-13
+14
 16
 1
 4
@@ -13709,7 +13709,7 @@ assets/sprites/groceries/fish.bmp
 249
 1076
 1015
-13
+14
 16
 1
 4
@@ -13738,7 +13738,7 @@ assets/sprites/groceries/fish.bmp
 250
 1096
 1015
-13
+14
 16
 1
 4
@@ -13767,7 +13767,7 @@ assets/sprites/groceries/fish.bmp
 251
 1116
 1015
-13
+14
 16
 1
 4
@@ -13796,7 +13796,7 @@ assets/sprites/groceries/fish.bmp
 252
 1125
 1015
-13
+14
 16
 1
 4
@@ -15188,7 +15188,7 @@ assets/sprites/groceries/fish.bmp
 88
 2150
 2011
-13
+14
 16
 1
 4
@@ -15217,7 +15217,7 @@ assets/sprites/groceries/fish.bmp
 89
 2250
 1223
-13
+14
 16
 1
 4
@@ -15246,7 +15246,7 @@ assets/sprites/groceries/fish.bmp
 90
 2450
 1223
-13
+14
 16
 1
 4
@@ -15483,7 +15483,7 @@ assets/sprites/groceries/fish.bmp
 96
 2500
 1592
-13
+14
 16
 1
 4
@@ -15512,7 +15512,7 @@ assets/sprites/groceries/fish.bmp
 97
 2560
 1580
-13
+14
 16
 1
 4
@@ -15541,7 +15541,7 @@ assets/sprites/groceries/fish.bmp
 98
 2650
 1580
-13
+14
 16
 1
 4

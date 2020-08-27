@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 21:24:39 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/08/27 21:56:18 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ void		set_texture_type(t_doom *doom, const char *name,
 	ft_bzero(surface->userdata, sizeof(uint8_t));
 	while (i < GROC_COUNT)
 	{
-
 		if (is_of_type(name, g_groc_paths[i]))
 		{
 			ft_memcpy(surface->userdata,
 			&g_groc_paths[i].type, sizeof(uint8_t));
-			printf("%d type for %s  %d\n", i, name, g_groc_paths[i].type);
+			// printf("%d type for %s  %d\n", i, name, g_groc_paths[i].type);
 			break ;
 		}
 		i++;
