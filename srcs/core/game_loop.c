@@ -18,8 +18,8 @@ double			get_timeframe(long *last_frame_time)
 	double			dt;
 
 	clock_gettime(CLOCK_MONOTONIC_RAW, &t);
-	dt = t.tv_sec - *last_frame_time;
-	dt /= round(1000);
+	dt = t.tv_nsec - *last_frame_time;
+	dt /= round(1.0e9);
 	if (dt < 0)
 		dt = 0;
 	*last_frame_time = t.tv_nsec;
