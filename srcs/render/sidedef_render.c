@@ -35,18 +35,16 @@ double			sidedef_intersection_distance(t_ray ray,
 void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 						int prev_sector)
 {
-	t_point		intersect;
-	t_sidedef	near_sidedef;
-	double		distance;
-	double		min_distance;
-	int			x;
-	int			save_poster;
+	t_point				intersect;
+	t_sidedef			near_sidedef;
+	double				distance;
+	double				min_distance;
+	int					x;
 
 	x = doom->lib.sector[sector].i_sidedefs;
 	min_distance = INFINITY;
 	if (doom->lib.sector[sector].action == OUTSIDE)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
-	save_poster = -1;
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
@@ -59,7 +57,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 			doom->lib.sidedef[x].action == 8)
 			{
 				doom->i_sidedef = x;
-				save_poster = \
+				near_sidedef.poster = \
 					set_poster(x, distance, intersect, &doom->lib.sidedef[x]);
 			}
 			else
@@ -68,7 +66,6 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 				near_sidedef = set_properties_sidedef(intersect,\
 					distance, doom->lib.sidedef[x], doom);
 			}
-			near_sidedef.poster = save_poster;
 		}
 		x++;
 	}
