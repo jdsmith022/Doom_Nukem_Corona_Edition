@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:38:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/23 15:38:55 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 15:24:15 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	set_text2(t_doom *doom, t_font *lib)
 	lib[5].font_rect.y = 375;
 	lib[5].font_color = doom->lib.font_lib.font_color.blue;
 	lib[6].str = "Press ESC to exit		\
-			Press Y to pause game";
+			Press Y togame_paused game";
 	lib[6].font_rect.x = WIDTH / 7;
 	lib[6].font_rect.y = 550;
 	lib[6].font_color = doom->lib.font_lib.font_color.red;

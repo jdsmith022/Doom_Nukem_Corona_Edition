@@ -12,6 +12,6 @@ void	update_list_and_basket(t_doom *doom)
 	if (SECTORS[doom->i_sector].action == EXIT_LEVEL)
 	{
 		get_game_over_info(doom);
-		doom->menu->finished = TRUE;
+		doom->menu->state = finished;
 	}
 }

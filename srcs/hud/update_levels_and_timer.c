@@ -58,13 +58,28 @@ void		update_timer(t_doom *doom, t_font *lib)
 		lib[7].font_color = doom->lib.font_lib.font_color.white;
 	font = doom->lib.font_lib.font_22;
 	font_to_sdl(doom, doom->lib.font_lib.hud_font, font);
+	free(timer);
 }
 
-static void	update_corona_sanitizer_levels(t_doom *doom, t_font *lib)
+static void	update_sanitizer_levels(t_doom *doom, t_font *lib,
+				int level, char *sanitizer_level)
 {
-	int		level;
-	char	*corona_level;
-	char	*percent;
+	lib[5].str = sanitizer_level;
+	lib[5].font_rect.x = WIDTH - 250;
+	lib[5].font_rect.y = HEIGHT - 35;
+	if (level < 15)
+		lib[5].font_color = doom->lib.font_lib.font_color.red;
+	else
+		lib[5].font_color = doom->lib.font_lib.font_color.white;
+}
+
+void	update_hud_levels(t_doom *doom, t_font *lib)
+{
+	TTF_Font	*font;
+	int			level;
+	char		*corona_level;
+	char		*sanitizer_level;
+	char		*percent;
 
 	level = doom->hud->corona_level;
 	corona_level = ft_itoa(level);
@@ -77,23 +92,11 @@ static void	update_corona_sanitizer_levels(t_doom *doom, t_font *lib)
 	else
 		lib[4].font_color = doom->lib.font_lib.font_color.white;
 	level = doom->hud->sanitizer_level;
-	corona_level = ft_itoa(level);
-	percent = ft_strcat(corona_level, "%");
-	lib[5].str = corona_level;
-	lib[5].font_rect.x = WIDTH - 250;
-	lib[5].font_rect.y = HEIGHT - 35;
-	if (level < 15)
-		lib[5].font_color = doom->lib.font_lib.font_color.red;
-	else
-		lib[5].font_color = doom->lib.font_lib.font_color.white;
-}
-
-void		update_hud_levels(t_doom *doom, t_font *lib)
-{
-	TTF_Font	*font;
-	int			font_size;
-
-	update_corona_sanitizer_levels(doom, lib);
+	sanitizer_level = ft_itoa(level);
+	percent = ft_strcat(sanitizer_level, "%");
+	update_sanitizer_levels(doom, lib, level, sanitizer_level);
 	font = doom->lib.font_lib.font_22;
 	font_to_sdl(doom, doom->lib.font_lib.hud_font, font);
+	free(corona_level);
+	free(sanitizer_level);
 }

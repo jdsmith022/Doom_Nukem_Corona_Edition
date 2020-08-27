@@ -88,8 +88,9 @@ static void		key_press2(t_doom *doom, t_event *event,
 	if (key->keysym.sym == SDLK_b)
 		add_to_game(doom);
 	else if (key->keysym.sym == SDLK_y)
-		doom->menu->pause = TRUE;
-	else if (key->keysym.sym == SDLK_r || key->keysym.sym == SDLK_e || key->keysym.sym == SDLK_t)
+		doom->menu->state = game_paused;
+	else if (key->keysym.sym == SDLK_r || \
+	key->keysym.sym == SDLK_e || key->keysym.sym == SDLK_t)
 		key_select_and_shoot(doom, event, key);
 	else if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
 		printing_map(&(EDIT));

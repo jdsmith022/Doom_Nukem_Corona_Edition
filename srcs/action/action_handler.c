@@ -14,7 +14,7 @@ static void		shoot_action(t_doom *doom)
 				printf("mouse press TRUE\n");
 			if (doom->own_event.mouse_press == FALSE)
 				printf("mouse press FALSE\n");
-			doom->hud->sanitizer_shooting = TRUE;
+			doom->hud->update = sanitizer_shooting;
 			doom->own_event.mist = TRUE;
 			check_sprite_hit(doom);
 		}

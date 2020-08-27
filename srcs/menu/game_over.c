@@ -5,7 +5,7 @@
 
 void	check_levels_and_time(t_doom *doom)
 {
-	while (doom->menu->game_over == TRUE)
+	while (doom->menu->state == game_over)
 	{
 		doom->hud_display = FALSE;
 		SDL_SetRelativeMouseMode(SDL_FALSE);

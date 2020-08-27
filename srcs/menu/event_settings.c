@@ -13,14 +13,14 @@ static void		mouse_handler(t_doom *doom)
 		rect1 = doom->lib.font_lib.setting_menu_font[9].font_rect;
 		setting_menu_click_event(doom, rect1);
 	}
-	else if (doom->menu->menu == TRUE)
+	else if (doom->menu->state == menu)
 	{
 		rect1 = doom->lib.font_lib.start_menu_font[2].font_rect;
 		rect2 = doom->lib.font_lib.start_menu_font[4].font_rect;
 		rect3 = doom->lib.font_lib.start_menu_font[5].font_rect;
 		start_menu_click_event(doom, rect1, rect2, rect3);
 	}
-	else if (doom->menu->pause == TRUE)
+	else if (doom->menu->state == game_paused)
 	{
 		rect1 = doom->lib.font_lib.pause_font[1].font_rect;
 		pause_click_event(doom, rect1);
@@ -37,8 +37,8 @@ static void		key_settings(t_doom *doom, SDL_Event event)
 			doom_exit_success(doom);
 		if (event.key.keysym.sym == SDLK_y)
 		{
-			if (doom->menu->pause == TRUE)
-				doom->menu->pause = FALSE;
+			if (doom->menu->state == game_paused)
+				doom->menu->state = start_game;
 		}
 	}
 }

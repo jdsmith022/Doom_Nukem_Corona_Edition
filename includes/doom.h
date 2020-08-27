@@ -381,7 +381,7 @@ typedef struct		s_doom {
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
 	int				game_time;
-	int				game_start_time;
+	struct timespec	game_start_time;
 	int				save_scissor_lift;
 	int				up;
 }					t_doom;
