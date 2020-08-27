@@ -113,7 +113,10 @@ void		update_hud(t_doom *doom)
 		draw_hud_side_bar(doom);
 		update_levels(doom);
 		if (doom->menu->start_timer == TRUE)
+		{
+			printf("update\n");
 			update_timer(doom, doom->lib.font_lib.hud_font);
+		}
 		update_list_and_basket(doom);
 	}
 	font_to_screen(doom);

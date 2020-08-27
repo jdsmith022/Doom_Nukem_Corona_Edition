@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:43:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 16:00:46 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 16:31:06 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,17 @@ int		get_line(t_doom *doom, char **line, int fd, int is_int)
 	ret = get_next_line2(fd, line);
 	line_num(1);
 	if (ret != 1)
+	{
+		free(line);
 		doom_exit_failure(doom, "error: get line from file");
+	}
 	while (*line[0] == '\0' || *line[0] == '#')
 	{
 		if (ret != 1)
+		{
+			free(line);
 			doom_exit_failure(doom, "error: get line from file");
+		}
 		if (*line[0] == '\0' || *line[0] == '#')
 		{
 			line_num(1);

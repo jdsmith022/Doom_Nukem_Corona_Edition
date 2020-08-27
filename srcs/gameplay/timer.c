@@ -35,7 +35,6 @@ void		timer(t_doom *doom)
 		clock_gettime(doom->game_time, &curr_time);
 		diff = curr_time.tv_sec - doom->game_start_time.tv_sec;
 		doom->hud->curr_time = doom->hud->hold_time - diff;
-		doom->hud->curr_time /= 1000;
 		if (doom->hud->curr_time == 0)
 			doom->menu->state = game_over;
 	}

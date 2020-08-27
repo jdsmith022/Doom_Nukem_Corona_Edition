@@ -43,6 +43,7 @@ void		update_timer(t_doom *doom, t_font *lib)
 	char		*timer;
 	int			time;
 
+	printf("updateing\n");
 	time = doom->hud->curr_time;
 	timer = time_to_string(doom, time);
 	lib[6].str = "Time:";
@@ -57,6 +58,7 @@ void		update_timer(t_doom *doom, t_font *lib)
 	else
 		lib[7].font_color = doom->lib.font_lib.font_color.white;
 	font = doom->lib.font_lib.font_22;
+	printf(" time: %s\n", lib[7].str);
 	font_to_sdl(doom, doom->lib.font_lib.hud_font, font);
 	free(timer);
 }

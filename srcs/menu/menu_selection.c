@@ -21,7 +21,6 @@ static void		pause_menu(t_doom *doom)
 	struct timespec hold_time;
 	struct timespec curr_time;
 
-	// hold_time = SDL_GetTicks();
 	clock_gettime(doom->game_time, &hold_time);
 	while (doom->menu->state == game_paused)
 	{
@@ -29,9 +28,9 @@ static void		pause_menu(t_doom *doom)
 		menu_print_loop(doom);
 	}
 	resume_music();
-	// curr_time = SDL_GetTicks();
 	clock_gettime(doom->game_time, &curr_time);
-	doom->game_start_time.tv_sec = doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
+	doom->game_start_time.tv_sec = \
+		doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
 	doom->hud_display = TRUE;
 	SDL_SetRelativeMouseMode(TRUE);
 }

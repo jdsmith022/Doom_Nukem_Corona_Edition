@@ -28,7 +28,7 @@ typedef struct	s_hud
 	bool		start;
 	int			update;
 	int			hold_time;
-	int			curr_time;
+	int 		curr_time;
 	Uint32		corona_level;
 	Uint32		sanitizer_level;
 }				t_hud;
