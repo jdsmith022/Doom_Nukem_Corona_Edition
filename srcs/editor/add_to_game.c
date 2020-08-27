@@ -101,7 +101,7 @@ void		add_to_game(t_doom *doom)
 			doom->pos.x = EDIT.pl_x;
 			doom->pos.y = EDIT.pl_y;
 			doom->i_sector = EDIT.pl_sec;
-			doom->player_height = doom->player_height \
+			doom->player_height = PLAYER_HEIGHT \
 			+ doom->lib.sector[EDIT.pl_sec].height_floor;
 			doom->light = TRUE;
 		}

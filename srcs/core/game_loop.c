@@ -35,7 +35,6 @@ void			game_loop(t_doom *doom)
 	dt = get_timeframe(&last_frame_time);
 	while (doom->is_running == TRUE)
 	{
-		printf("%f\n", dt);
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
