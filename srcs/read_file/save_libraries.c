@@ -4,7 +4,7 @@
 int				open_file(t_doom *doom, char *filename)
 {
 	int		fd;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		doom_exit_failure(doom, "error: can't open level file");
@@ -16,7 +16,6 @@ static void		modified(void)
 	struct stat filestat;
 
 	stat("srcs/read_file/start_skybox_full", &filestat);
-	printf("%s", ctime(&filestat.st_mtime));
 	/* turn on and add the last modified date before handing in*/
 	// if (ft_strcmp(ctime(&filestat.st_mtime), "Tue Jul 21 11:47:15 2020\n") != 0)
 	//     error("file has been modified", 0);

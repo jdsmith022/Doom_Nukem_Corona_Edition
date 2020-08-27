@@ -13,29 +13,42 @@ static void			init_paths(t_doom *doom)
 		doom_exit_failure(doom, "error: audio path malloc");
 }
 
+static void			load_rogue_audio(t_doom *doom, t_audio *audio)
+{
+	char			*path;
+
+	path = ft_strjoin(audio->path, MU_1);
+	audio->music[0] = Mix_LoadMUS(path);
+	free(path);
+	path = ft_strjoin(audio->path, MU_2);
+	audio->music[1] = Mix_LoadMUS(path);
+	free(path);
+	if (audio->music[0] == NULL || audio->music[1] == NULL)
+		doom_exit_failure(doom, "error: audio music malloc");
+	Mix_PlayMusic(audio->music[0], -1);
+}
+
 static void			load_audio(t_doom *doom, t_audio *audio)
 {
 	uint8_t			i;
+	char			*path;
 
 	i = 0;
 	while (i < NUM_OF_SOUNDS)
 	{
+		path = ft_strjoin(audio->path, g_audio_paths[i]);
 		audio->sounds[i] = \
-			Mix_LoadWAV(ft_strjoin(AUDIO_PATH, g_audio_paths[i]));
+			Mix_LoadWAV(path);
+		free(path);
 		i++;
 	}
-	audio->music[0] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_1));
-	audio->music[1] = Mix_LoadMUS(ft_strjoin(AUDIO_PATH, MU_2));
-	if (audio->music[0] == NULL || audio->music[1] == NULL)
-		doom_exit_failure(doom, "error: audio music malloc");
-	Mix_PlayMusic(audio->music[0], -1);
+	load_rogue_audio(doom, audio);
 	while (i < NUM_OF_SOUNDS)
 	{
 		if (!audio->sounds[i])
-			printf("Mix_LoadWAV: %s\n", Mix_GetError());
+			printf("Mix_LoadWAV: %s\n", Mix_GetError());//add ft_printf
 		i++;
 	}
-	free(doom->audio->path);
 }
 
 void				init_audio(t_doom *doom)

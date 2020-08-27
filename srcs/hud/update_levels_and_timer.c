@@ -17,6 +17,7 @@ static char	*set_seconds(char *timer, char *sec_str)
 	}
 	else
 		timer = ft_strjoin(timer, sec_str);
+	free(sec_str);
 	return (timer);
 }
 
@@ -33,6 +34,7 @@ static char	*time_to_string(t_doom *doom, int time)
 	min_str = ft_itoa(min);
 	sec_str = ft_itoa(sec);
 	timer = ft_strjoin(min_str, ":");
+	free(min_str);
 	return (set_seconds(timer, sec_str));
 }
 
@@ -43,7 +45,6 @@ void		update_timer(t_doom *doom, t_font *lib)
 	char		*timer;
 	int			time;
 
-	printf("updateing\n");
 	time = doom->hud->curr_time;
 	timer = time_to_string(doom, time);
 	lib[6].str = "Time:";
