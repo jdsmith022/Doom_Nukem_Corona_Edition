@@ -76,7 +76,6 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	t_point sprite_end;
 
 	i = 0;
-	// printf("draw sprite 1\tvisible sprites: %d\n", doom->visible_sprites);
 	while (i < doom->visible_sprites)
 	{
 		index = sprite_order[i];
@@ -96,33 +95,19 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 	}
 	if (doom->own_event.window == TRUE)
 		draw_window_as_sprite(doom);
-	// printf("end draw_sprite\n");
-	// ft_bzero(sprite_order, doom->visible_sprites);
-	// doom->visible_sprites = 0;
 }
 
 void		sprite_render(t_doom *doom)
 {
-	// int		*sprite_order;
-
 	if (doom->lib.sprite_order != NULL)
 	{
-		// printf("doom->visible_sprites: %d\n", doom->visible_sprites);
-		// printf("sprite_render 1\n");
 		ft_bzero(doom->lib.sprite_order, doom->visible_sprites);
-		// printf("sprite_render 2\n");
 		free(doom->lib.sprite_order);
-		// printf("sprite_render 3\n");
 	}
 	doom->lib.sprite_order = sort_sprite_array(doom->lib.sprites,\
-	doom->visible_sprites, doom->total_sprites);
-	// printf("after sprite_order\n");
-	// sprite_order = sort_sprite_array(doom->lib.sprites,\
 	doom->visible_sprites, doom->total_sprites);
 	if (doom->own_event.window == TRUE)
 		sort_sprites_window(doom->lib.sprite_order, doom->i_sector,\
 		doom->visible_sprites, doom->lib.sprites);
-	// printf("before draw_sprite\n");
 	draw_sprite(doom, doom->lib.sprite_order);
-	// printf("after draw_sprite\n");
 }

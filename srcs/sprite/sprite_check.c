@@ -71,7 +71,6 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 	int		i;
 	int		sprite_i;
 
-	// printf("begin sprite_check\n");
 	i = 0;
 	sprite_i = doom->lib.sector[sector].i_objects;
 	while (i < doom->lib.sector[sector].n_objects)
@@ -85,5 +84,4 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		i++;
 		sprite_i++;
 	}
-	// printf("end sprite_check\n");
 }
