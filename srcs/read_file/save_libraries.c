@@ -4,12 +4,10 @@
 int				open_file(t_doom *doom, char *filename)
 {
 	int		fd;
-	char	*message;
-
-	message = ft_strjoin(filename, "can't open");
+	
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		doom_exit_failure(doom, message);
+		doom_exit_failure(doom, "error: can't open level file");
 	return (fd);
 }
 

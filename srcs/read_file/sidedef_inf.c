@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:44:48 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 17:13:31 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_sidedef	wall_inf(t_doom *doom, int fd, int sector, int sec_len)
 	while (i < 10)
 	{
 		safe = get_line(doom, &line, fd, 1);
+		free(line);
 		if (safe <= -1 && safe >= tex_len && i > 5 && i < 9)
 			doom_exit_read_failure(doom, \
 				"error: texture is not available", line_num(0));
@@ -78,7 +79,6 @@ t_sidedef	wall_inf(t_doom *doom, int fd, int sector, int sec_len)
 		add_inf_to_line(doom, &wall, i, safe);
 		add_coordinates(doom, &wall, i, safe);
 		add_texture_sd(&wall, i, safe);
-		free(line);
 		i++;
 	}
 	return (wall);

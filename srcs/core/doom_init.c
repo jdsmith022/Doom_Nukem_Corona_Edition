@@ -49,7 +49,6 @@ void			init_window(t_doom *doom)
 
 void			doom_init(t_doom *doom)
 {
-	srand(time(0));
 	init_groceries(doom);
 	init_player(doom);
 	init_settings(doom);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:44:24 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 17:14:08 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	{
 		get_line(doom, &line, map_fd, 0);
 		fd = open(line, O_RDONLY);
+		free(line);
 		if (fd < 0)
 			bmp_safe_exit(doom, images);
 		images[index] = read_bmp(fd);
@@ -42,7 +43,6 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 			bmp_safe_exit(doom, images);
 		save_bpm_to_sdl(doom, images, lib, index);
 		set_texture_type(doom, line, lib[index]);
-		free(line);
 		index++;
 	}
 	free(images);
@@ -52,17 +52,23 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 SDL_Surface			**save_objects(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
+	SDL_Surface **lib;
 
 	get_line(doom, &line, map_fd, 1);
 	*len = ft_atoi(line);
-	return (read_from_line(doom, line, map_fd, *len));
+	lib = read_from_line(doom, line, map_fd, *len);
+	free(line);
+	return (lib);
 }
 
 SDL_Surface			**save_textures(t_doom *doom, int map_fd, int *len)
 {
 	char		*line;
+	SDL_Surface **lib;
 
 	get_line(doom, &line, map_fd, 1);
 	*len = ft_atoi(line);
-	return (read_from_line(doom, line, map_fd, *len));
+	lib = read_from_line(doom, line, map_fd, *len);
+	free(line);
+	return (lib);
 }

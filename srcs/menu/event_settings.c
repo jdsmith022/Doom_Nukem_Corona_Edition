@@ -29,8 +29,6 @@ static void		mouse_handler(t_doom *doom)
 
 static void		key_settings(t_doom *doom, SDL_Event event)
 {
-	if (event.type == SDL_QUIT)
-		doom_exit_success(doom);
 	if (event.type == SDL_KEYDOWN)
 	{
 		if (event.key.keysym.sym == SDLK_ESCAPE)
@@ -50,6 +48,8 @@ void			mouse_settings(t_doom *doom)
 	event = doom->event;
 	while (SDL_PollEvent(&event))
 	{
+		if (event.type == SDL_QUIT)
+			doom_exit_success(doom);
 		if (event.type == SDL_KEYDOWN)
 			key_settings(doom, event);
 		if (event.type == SDL_MOUSEBUTTONDOWN)

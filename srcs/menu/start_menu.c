@@ -19,7 +19,6 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->hud->hold_time /= doom->difficulty;
 	doom->hud->curr_time /= doom->difficulty;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
-	SDL_SetCursor(doom->cursor);
 }
 
 void		doom_start(t_doom *doom)

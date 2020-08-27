@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:34 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:44:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 17:13:20 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ t_sector	sector_inf(t_doom *doom, int fd, int tex_len)
 	while (i < 13)
 	{
 		safe = get_line(doom, &line, fd, 1);
+		free(line);
 		if ((i == 2 || i == 6) && safe < 0 && safe >= tex_len)
 			doom_exit_read_failure(doom, \
 				"error: texture is not available", line_num(0));
 		add_light(doom, &sector, safe, i);
 		add_inf_to_sect(&sector, safe, i);
 		add_amounts(doom, &sector, safe, i);
-		free(line);
 		i++;
 	}
 	return (sector);

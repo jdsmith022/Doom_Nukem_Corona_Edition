@@ -390,7 +390,7 @@ typedef struct		s_doom {
 int					main(void);
 void				game_init(t_doom *doom);
 void				doom_init(t_doom *doom);
-int					sdl_init(t_doom *doom);
+void				sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
 void				init_events(t_event *event);

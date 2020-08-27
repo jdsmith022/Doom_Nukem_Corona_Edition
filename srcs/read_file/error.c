@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:43:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 16:31:06 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 17:20:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ int		line_num(int i)
 	return (line_num);
 }
 
+static void	get_line_loop(t_doom *doom, char **line, int fd, int ret)
+{
+	while (*line[0] == '\0' || *line[0] == '#')
+	{
+		if (ret != 1)
+		{
+			free(*line);
+			doom_exit_failure(doom, "error: get line from file");
+		}
+		if (*line[0] == '\0' || *line[0] == '#')
+		{
+			line_num(1);
+			free(*line);
+			ret = get_next_line2(fd, line);
+		}
+	}
+}
+
 int		get_line(t_doom *doom, char **line, int fd, int is_int)
 {
 	int ret;
@@ -62,22 +80,10 @@ int		get_line(t_doom *doom, char **line, int fd, int is_int)
 	line_num(1);
 	if (ret != 1)
 	{
-		free(line);
+		free(*line);
 		doom_exit_failure(doom, "error: get line from file");
 	}
-	while (*line[0] == '\0' || *line[0] == '#')
-	{
-		if (ret != 1)
-		{
-			free(line);
-			doom_exit_failure(doom, "error: get line from file");
-		}
-		if (*line[0] == '\0' || *line[0] == '#')
-		{
-			line_num(1);
-			ret = get_next_line2(fd, line);
-		}
-	}
+	get_line_loop(doom, line, fd, ret);
 	if (is_int == 1)
 	{
 		int_check(doom, *line, line_num(0));

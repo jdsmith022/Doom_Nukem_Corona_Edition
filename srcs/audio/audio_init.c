@@ -35,6 +35,7 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 			printf("Mix_LoadWAV: %s\n", Mix_GetError());
 		i++;
 	}
+	free(doom->audio->path);
 }
 
 void				init_audio(t_doom *doom)
