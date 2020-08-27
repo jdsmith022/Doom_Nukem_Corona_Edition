@@ -73,7 +73,6 @@ static void		key_select_and_shoot(t_doom *doom, t_event *event,
 	}
 	else if (key->keysym.sym == SDLK_t)
 	{
-		
 		event->mouse_pointer = event->mouse_pointer == TRUE ? FALSE : TRUE;
 		if (event->mouse_pointer == TRUE)
 		{
