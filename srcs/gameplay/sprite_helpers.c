@@ -3,7 +3,7 @@
 
 int		sprite_in_shooting_area(t_doom *doom, int sprite_i)
 {
-	printf("begin sprite in shooting area\n");
+	// printf("begin sprite in shooting area\n");
 	if (doom->own_event.hold_x >=
 	(int)doom->lib.sprites[sprite_i].sprite_begin.x &&
 	doom->own_event.hold_x <= (int)doom->lib.sprites[sprite_i].sprite_begin.x +
@@ -21,7 +21,7 @@ bool	sprite_has_action(t_sprite sprite)
 {
 	int action;
 
-	printf("begin sprite_has_action\n");
+	// printf("begin sprite_has_action\n");
 	action = sprite.action;
 	if (action == 4 || action == 9 || action == 13 ||
 	action == 11 || action == 12 || action == 14)
