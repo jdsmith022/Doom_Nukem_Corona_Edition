@@ -1,6 +1,7 @@
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
+#include "../../includes/hud.h"
 #include "../../includes/gameplay.h"
 
 void	update_list_and_basket(t_doom *doom)

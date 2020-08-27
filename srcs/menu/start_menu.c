@@ -18,6 +18,7 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->start_timer = FALSE;
 	doom->hud->hold_time /= doom->difficulty;
 	doom->hud->curr_time /= doom->difficulty;
+	doom->hud->update = list;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 

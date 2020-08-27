@@ -67,6 +67,10 @@ typedef struct		s_font_lib
 	int				pause_font_len;
 	t_font			*finished_font;
 	int				finished_font_len;
+	t_font			*grocery_font;
+	int				grocery_font_len;
+	t_font			*basket_font;
+	int				basket_font_len;
 	struct timespec	timer;
 	struct timespec	mist;
 	int				random_index;

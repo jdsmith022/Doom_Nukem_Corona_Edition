@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 21:23:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 22:33:23 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 00:16:02 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	font_to_sdl(t_doom *doom, t_font *lib, TTF_Font *font)
 		lib[index].font_surface = font_surface;
 		index++;
 	}
-	free(font_surface);
 }
