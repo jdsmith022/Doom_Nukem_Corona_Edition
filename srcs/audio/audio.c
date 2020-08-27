@@ -30,10 +30,8 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 
 void	play_action_sounds(t_audio *audio, t_event *event)
 {
-	if (event->shoot && event->mouse_press){
-		printf("shoot: %d  mousepress: %d\n", event->shoot, event->mouse_press);
+	if (event->shoot && event->mouse_press)
 		play_sound(audio->sounds[GUNSHOT], -1);
-	}
 	if (event->fall && !event->died)
 	{
 		play_sound(audio->sounds[SCREAM], -1);
