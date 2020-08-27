@@ -3,6 +3,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 #include "../../includes/action.h"
+#include "../../includes/events.h"
 
 void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 {

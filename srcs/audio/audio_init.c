@@ -32,6 +32,7 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 {
 	uint8_t			i;
 	char			*path;
+	const char		*str;
 
 	i = 0;
 	while (i < NUM_OF_SOUNDS)
@@ -46,7 +47,10 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 	while (i < NUM_OF_SOUNDS)
 	{
 		if (!audio->sounds[i])
-			printf("Mix_LoadWAV: %s\n", Mix_GetError());//add ft_printf
+		{
+			str = Mix_GetError();
+			ft_putendl(str);
+		}
 		i++;
 	}
 }

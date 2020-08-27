@@ -7,6 +7,8 @@
 /*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
 						SDL_KeyboardEvent *key);
+void				key_select_and_shoot(t_doom *doom, t_event *event,
+						SDL_KeyboardEvent *key);
 void				key_release(t_event *event, SDL_KeyboardEvent *key);
 void				key_handler(t_doom *doom, t_event *event, double dt);
 void				mouse_press(t_doom *doom,\

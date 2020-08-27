@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:30 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:44:31 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 22:07:21 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ SDL_Surface		**save_sky(t_doom *doom, t_line **sky_sd)
 	lib = malloc_sdl_lib(doom, images, 5);
 	doom->lib.len_sky_lib = 5;
 	save_sky_2(doom, images, lib, sky_fd);
+	int i = 0;
+	while (i < 5)
+	{
+		free(images[i].pixels);
+		i++;
+	}
 	free(images);
 	close(sky_fd);
 	*sky_sd = init_sky_sd(doom);

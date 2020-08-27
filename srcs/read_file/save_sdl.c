@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 18:24:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 22:08:09 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	int			fd;
 	int			index;
 
-	images = malloc_images_lib(doom, len);
 	lib = malloc_sdl_lib(doom, images, len);
 	index = 0;
 	while (index < len)
@@ -36,16 +35,24 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 		get_line(doom, &line, map_fd, 0);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
+		{
+			free(line);
 			bmp_safe_exit(doom, images);
-		images[index] = read_bmp(fd);
+		}
+		images = (t_bmp*)ft_memalloc(sizeof(t_bmp));
+		*images = read_bmp(fd);
 		if (images == NULL)
+		{
+			free(line);
 			bmp_safe_exit(doom, images);
+		}
 		save_bpm_to_sdl(doom, images, lib, index);
+		free(images->pixels);
+		free(images);
 		set_texture_type(doom, line, lib[index]);
 		free(line);
 		index++;
 	}
-	free(images);
 	return (lib);
 }
 
