@@ -27,7 +27,7 @@
 # define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 # define S_FOOTSTEPS 	"/Movement/Footsteps/footstep_loop.wav"
 # define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump4.wav"
-# define S_GUNSHOT		"/Weapons/Single Shot Sounds/sfx_weapon_singleshot14.wav"
+# define S_GUNSHOT		"/Weapons/Single Shot Sounds/spray.wav"
 # define S_DEATH		"/Death Screams/Human/sfx_deathscream_human4.wav"
 # define S_FALL			"/Movement/Falling Sounds/sfx_sounds_falling1.wav"
 # define S_CLICK		"/General Sounds/Buttons/lightswitch.wav"

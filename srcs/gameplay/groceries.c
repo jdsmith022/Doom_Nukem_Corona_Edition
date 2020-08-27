@@ -11,8 +11,8 @@ static void		set_shelf_type(t_doom *doom, uint8_t *type)
 
 bool			mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 {
-	if (mouse_x >= pos.x && mouse_x <= (pos.x + pos.w) &&
-		mouse_y >= pos.y && mouse_y <= (pos.y + pos.h))
+	if (mouse_x >= pos.x && mouse_x <= (pos.x + pos.w + 5) &&
+		mouse_y >= pos.y && mouse_y <= (pos.y + pos.h + 5))
 		return (true);
 	else
 		return (false);
@@ -49,7 +49,7 @@ void			handle_groceries(t_doom *doom)
 		remove_item_from_basket(&doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}
-	else
+	if (doom->own_event.select)
 	{
 		set_shelf_type(doom, &type);
 		add_item_to_basket(doom, &doom->groceries->basket, type);

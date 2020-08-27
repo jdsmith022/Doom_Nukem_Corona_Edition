@@ -22,6 +22,17 @@ uint8_t			get_num_of_groceries(t_doom *doom)
 	return (num_of_groceries);
 }
 
+static void		print_shoppinglist(t_doom *doom)
+{
+	int		i;
+
+	i = 0;
+	while (i < doom->groceries->shopping_list_len){
+		printf("type: %d amount: %d\n", doom->groceries->shopping_list[i].type, doom->groceries->shopping_list[i].amount);
+		i++;
+	}
+}
+
 void			init_groceries(t_doom *doom)
 {
 	uint8_t		num_of_groceries;
@@ -37,10 +48,7 @@ void			init_groceries(t_doom *doom)
 	else
 		doom->groceries->shopping_list_len = MAX_SL_LEN;
 	generate_shopping_list(doom);
-	// int i = 0;
-	// while (i < doom->groceries->basket_len){
-	// 	printf(doom->groceries->basket[]
-	// }
+	print_shoppinglist(doom);
 	doom->groceries->basket = NULL;
 	doom->groceries->tp = FALSE;
 	set_grocery_font(&doom->groceries->font);
