@@ -90,24 +90,30 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 		scale_sprite(doom, &sprite_begin, &sprite_end,\
 		&doom->lib.sprites[index]);
 		draw_stripes(doom, &sprite_begin, &sprite_end, index);
-		doom->lib.sprites[index].visible = -1;
+		// doom->lib.sprites[index].visible = -1;
 		i++;
 	}
 	if (doom->own_event.window == TRUE)
 		draw_window_as_sprite(doom);
-	ft_bzero(sprite_order, doom->visible_sprites);
-	doom->visible_sprites = 0;
+	// ft_bzero(sprite_order, doom->visible_sprites);
+	// doom->visible_sprites = 0;
 }
 
 void		sprite_render(t_doom *doom)
 {
-	int		*sprite_order;
+	// int		*sprite_order;
 
-	sprite_order = sort_sprite_array(doom->lib.sprites,\
+	if (doom->lib.sprite_order != NULL)
+	{
+		ft_bzero(doom->lib.sprite_order, doom->visible_sprites);
+		free(doom->lib.sprite_order);
+	}
+	doom->lib.sprite_order = sort_sprite_array(doom->lib.sprites,\
+	doom->visible_sprites, doom->total_sprites);
+	// sprite_order = sort_sprite_array(doom->lib.sprites,\
 	doom->visible_sprites, doom->total_sprites);
 	if (doom->own_event.window == TRUE)
-		sort_sprites_window(sprite_order, doom->i_sector,\
+		sort_sprites_window(doom->lib.sprite_order, doom->i_sector,\
 		doom->visible_sprites, doom->lib.sprites);
-	draw_sprite(doom, sprite_order);
-	free(sprite_order);
+	draw_sprite(doom, doom->lib.sprite_order);
 }

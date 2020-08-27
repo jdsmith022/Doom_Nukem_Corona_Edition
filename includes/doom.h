@@ -311,6 +311,7 @@ typedef struct		s_lib {
 	int				n_mov_sprites;
 	t_m_object		*mov_sprites;
 	t_window		window;
+	int				*sprite_order;
 }					t_lib;
 
 typedef struct		s_gamedesign {

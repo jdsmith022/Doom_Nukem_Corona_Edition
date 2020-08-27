@@ -1,16 +1,12 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/sprites.h"
 
 static void	check_select_sprite(t_doom *doom)
 {
 	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
 		doom->own_event.corona_hit = TRUE;
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 13)
-	{
-		doom->own_event.toilet_paper = TRUE;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 8;
-	}
 	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 12)
 	{
 		doom->own_event.trolly = TRUE;
@@ -43,10 +39,13 @@ static void	virus_hit(t_doom *doom)
 
 static void	check_spray_sprite(t_doom *doom)
 {
-	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
+	int		index;
+
+	index = doom->own_event.virus_hit_index;
+	if (doom->lib.sprites[index].action == 4)
 		virus_hit(doom);
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 9 && \
-	doom->lib.sprites[doom->own_event.virus_hit_index].distance < 50.0)
+	else if (doom->lib.sprites[index].action == 9 && \
+	doom->lib.sprites[index].distance < 100.0)
 	{
 		doom->own_event.spray_shopper = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
