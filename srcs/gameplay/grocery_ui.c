@@ -61,6 +61,6 @@ void			draw_grocery_amount(t_doom *doom, SDL_Rect rect, char *text)
 	rect.y += 20;
 	rect.x += 5;
 	SDL_BlitSurface(font_surface, NULL, doom->surface, &rect);
-	free(text);
 	free(font_surface);
+	free(text);
 }

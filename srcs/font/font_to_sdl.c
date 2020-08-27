@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 21:23:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 22:29:25 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 22:33:23 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	font_to_sdl(t_doom *doom, t_font *lib, TTF_Font *font)
 		font_surface =
 			TTF_RenderText_Solid(font, lib[index].str, lib[index].font_color);
 		lib[index].font_surface = font_surface;
-		free(font_surface);
 		index++;
 	}
+	free(font_surface);
 }

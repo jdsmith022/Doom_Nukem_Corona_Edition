@@ -9,7 +9,7 @@ int	main(void)
 	t_doom	doom;
  	ft_bzero(&doom, sizeof(t_doom));
 	sdl_init(&doom);
-	sleep(15);
+	sleep(10);
 	save_libraries(&doom);
 
 	// while (1);
