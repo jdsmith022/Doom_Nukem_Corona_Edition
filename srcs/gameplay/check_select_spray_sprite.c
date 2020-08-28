@@ -5,7 +5,7 @@
 
 static void	check_select_sprite(t_doom *doom)
 {
-	uint8_t 	type;
+	uint8_t		type;
 	t_sprite	*sprite;
 
 	sprite = &doom->lib.sprites[doom->own_event.virus_hit_index];

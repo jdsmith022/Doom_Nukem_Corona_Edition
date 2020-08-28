@@ -73,8 +73,7 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 {
 	int		i;
 	int		index;
-	t_point sprite_begin;
-	t_point sprite_end;
+	t_line	sprite;
 
 	i = 0;
 	while (i < doom->visible_sprites)
@@ -88,10 +87,9 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 			doom->lib.window.curr_sector)
 				draw_window_as_sprite(doom);
 		}
-		scale_sprite(doom, &sprite_begin, &sprite_end,\
+		scale_sprite(doom, &sprite.start, &sprite.end,\
 		&doom->lib.sprites[index]);
-		draw_stripes(doom, &sprite_begin, &sprite_end, index);
-		// doom->lib.sprites[index].visible = -1;
+		draw_stripes(doom, &sprite, index);
 		i++;
 	}
 	if (doom->own_event.window == TRUE)

@@ -81,8 +81,7 @@ void				sort_sprites_window(int *sprite_order, int curr_sector,\
 					int visible_sprites, t_sprite *sprite);
 void				find_position(t_doom *doom, t_point *sprite_begin,\
 					t_point *sprite_end, int index);
-void				draw_stripes(t_doom *doom, t_point *sprite_begin,\
-					t_point *sprite_end, int index_sp);
+void				draw_stripes(t_doom *doom, t_line *sprite, int index_sp);
 void				sprite_reset(t_doom *doom);
 void				scale_sprite(t_doom *doom, t_point *sprite_begin,\
 					t_point *sprite_end, t_sprite *sprite);
