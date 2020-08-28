@@ -132,6 +132,7 @@ void	draw_stripes(t_doom *doom, t_point *sprite_begin, t_point *sprite_end,\
 	int			screen_y;
 	double		light_dist;
 
+	// printf("draw stripes 1\tvisible: %d\n", doom->lib.sprites[index_sp].visible);
 	i_sprite = doom->lib.sprites[index_sp].visible;
 	stripe = (int)sprite_begin->x;
 	screen_y = (int)sprite_begin->y;

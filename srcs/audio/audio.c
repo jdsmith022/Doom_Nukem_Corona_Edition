@@ -34,23 +34,21 @@ void	play_action_sounds(t_audio *audio, t_event *event)
 		play_sound(audio->sounds[GUNSHOT], -1);
 	if (event->fall && !event->died)
 	{
-		play_sound(audio->sounds[SCREAM], 2);
+		play_sound(audio->sounds[SCREAM], -1);
 		event->died = TRUE;
 	}
 	if (event->groc_pickup)
 	{
-		play_sound(audio->sounds[PICKUP], 2);
+		play_sound(audio->sounds[PICKUP], -1);
 		event->groc_pickup = FALSE;
 	}
 	if (event->light_switch_changed)
 	{
-		play_sound(audio->sounds[CLICK], 2);
+		play_sound(audio->sounds[CLICK], -1);
 		event->light_switch_changed = FALSE;
 	}
 	if (event->corona_hit)
-	{
-		play_sound(audio->sounds[HIT], 2);
-	}
+		play_sound(audio->sounds[HIT], -1);
 }
 
 void	audio(t_doom *doom, t_event *event)

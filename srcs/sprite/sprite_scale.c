@@ -16,17 +16,18 @@ int			find_virus_bottom(t_doom *doom, t_sprite *sprite,\
 	return (virus_bottom);
 }
 
+//divide into calculate_sprite_bottom and calculate_sprite_top
 double		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite,\
 			t_sector sector)
 {
-	double		height_floor;
-	double		height_ceiling;
 	int			sidedef_bottom;
+	double		height_floor;		//sprite_bottom
+
 	int			sidedef_top;
-	int			sector_floor;
-	int			plane_height_standard;
-	double		scale;
-	int			diff;
+	double		height_ceiling;			//sprite_top
+	int			plane_height_standard;	//sprite_top
+	double		scale;					//sprite_top
+	int			diff;					//sprite_top
 
 	sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
 	plane_height_standard = doom->texture_height / sprite->distance\

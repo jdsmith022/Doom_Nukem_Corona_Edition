@@ -3,7 +3,7 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				51
+# define GROC_COUNT				50
 
 # define APPLE					1
 # define BACON					2
@@ -75,7 +75,7 @@
 # define SPR_COOKIE				"assets/sprites/groceries/Cookie.bmp"
 # define SPR_CHEESE				"assets/sprites/groceries/Cheese.bmp"
 # define SPR_POTATO 			"assets/sprites/groceries/potato.bmp"
-# define SPR_MELON				"assets/textures/groceries/watermelon.bmp"
+# define SPR_MELON				"assets/sprites/groceries/watermelon.bmp"
 # define SPR_SOAP				"assets/sprites/groceries/soap.bmp"
 
 typedef struct s_doom			t_doom;
@@ -235,7 +235,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 	},
 	{
 		"assets/textures/shelves/jar5.bmp",
-		"assets/sprites/groceries/marmelade.bmp",
+		"assets/sprites/groceries/pickled_eggs.bmp",
 		MARMELADE
 	},
 	{
@@ -270,7 +270,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 	},
 	{
 		"assets/textures/shelves/jar1.bmp",
-		"assets/sprites/groceries/glass_jar2.bmp",
+		"assets/sprites/groceries/glass_jar3.bmp",
 		JARS1
 	},
 	{

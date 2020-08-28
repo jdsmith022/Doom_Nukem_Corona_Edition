@@ -82,6 +82,5 @@ int						sprite_in_shooting_area(t_doom *doom, int sprite_i);
 int						sprite_in_range(t_doom *doom, t_ray ray, int sprite_i,
 						int prev_sector);
 bool					sprite_has_action(t_sprite sprite);
-double					get_sprite_dist(t_doom *doom, int sprite_hit);
 
 #endif

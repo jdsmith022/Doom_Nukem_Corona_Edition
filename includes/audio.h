@@ -10,10 +10,10 @@
 # define AUDIO			doom->audio
 # define AUDIO_PATH		audio->path
 
-# define NUM_OF_SOUNDS	9
 # define OFF			0
 # define ON				1
 
+# define NUM_OF_SOUNDS	9
 # define BUTTON 		0
 # define FOOTSTEPS 		1
 # define JUMP			2
@@ -24,13 +24,10 @@
 # define PICKUP			7
 # define HIT			8
 
-# define THEME			8
-# define BOSSA			9
-
 # define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 # define S_FOOTSTEPS 	"/Movement/Footsteps/footstep_loop.wav"
 # define S_JUMP			"/Movement/Jumping and Landing/sfx_movement_jump4.wav"
-# define S_GUNSHOT		"/Weapons/Single Shot Sounds/sfx_weapon_singleshot14.wav"
+# define S_GUNSHOT		"/Weapons/Single Shot Sounds/spray.wav"
 # define S_DEATH		"/Death Screams/Human/sfx_deathscream_human4.wav"
 # define S_FALL			"/Movement/Falling Sounds/sfx_sounds_falling1.wav"
 # define S_CLICK		"/General Sounds/Buttons/lightswitch.wav"

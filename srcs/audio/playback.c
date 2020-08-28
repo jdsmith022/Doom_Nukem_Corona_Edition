@@ -15,10 +15,8 @@ void	resume_music(void)
 
 void	play_sound(Mix_Chunk *sample, int channel)
 {
-	if (!Mix_Playing(channel))
-		Mix_PlayChannel(channel, sample, 0);
-	else
-		SDL_Log("Channel %d is busy", channel);
+	Mix_PlayChannel(channel, sample, 0);
+	SDL_Log("Playing sound on channel %d", channel);
 }
 
 void	loop_sound(Mix_Chunk *sample, int channel)

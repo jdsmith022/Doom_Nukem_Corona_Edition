@@ -86,6 +86,9 @@ void			draw_stripes_bar(t_doom *doom, t_line bar, int i_sprite)
 	index = 0;
 	while (stripe < (int)bar.end.x && stripe >= 0 && stripe < WIDTH)
 	{
+		//of kan ik deze hele while loop in een aparte functie zetten?
+		//(nodig als parameter: doom, &bar, stripe, i_sprite)
+		//(extra variables: screen_y, Uint32 index, Uint32 pix_dex, tex_x, tex_y)
 		screen_y = (int)bar.start.y;
 		tex_x = find_x_bar(doom, &bar, stripe, i_sprite);
 		while (screen_y < (int)bar.end.y)

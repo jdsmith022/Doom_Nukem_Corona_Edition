@@ -1,12 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 
-/*
-**		timer for letting red virus disappear after 5 seconds
-**		eventually you could send a function as parameter
-**		if you put this function in a different file take font.h with you
-*/
-
 void			remove_red_virus(t_doom *doom)
 {
 	int			diff;

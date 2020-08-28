@@ -95,5 +95,6 @@ void				remove_red_virus(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
 void				draw_stripes_bar(t_doom *doom, t_line bar, int sprite_i);
 void				scale_bar(t_doom *doom, t_line *bar, int sprite_i);
+int					pixel_is_white(t_doom *doom, int index);
 
 #endif

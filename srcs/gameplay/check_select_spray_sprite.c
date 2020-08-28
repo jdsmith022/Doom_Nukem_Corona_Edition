@@ -1,29 +1,26 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/sprites.h"
 
 static void	check_select_sprite(t_doom *doom)
 {
-	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
+	uint8_t 	type;
+	t_sprite	*sprite;
+
+	sprite = &doom->lib.sprites[doom->own_event.virus_hit_index];
+	if (sprite->action == 4)
 		doom->own_event.corona_hit = TRUE;
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 13)
-	{
-		doom->own_event.toilet_paper = TRUE;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 8;
-	}
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 12)
+	else if (sprite->action == 12)
 	{
 		doom->own_event.trolly = TRUE;
 		doom->lib.sidedef[17].action = 0;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 8;
+		sprite->action = 15;
 	}
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 14)
+	else if (sprite->action == 14)
 	{
-		printf("Grocery fetched\n");
-		printf("With texture index: %d\n", doom->lib.sprites[doom->own_event.virus_hit_index].textures[0]);
-		uint8_t type = *(int *)doom->lib.obj_lib[doom->lib.sprites[doom->own_event.virus_hit_index].textures[0]]->userdata;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 15;
-		printf("%d\n", type);
+		type = *(int *)doom->lib.obj_lib[sprite->textures[0]]->userdata;
+		sprite->action = 15;
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}
@@ -43,10 +40,13 @@ static void	virus_hit(t_doom *doom)
 
 static void	check_spray_sprite(t_doom *doom)
 {
-	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
+	int		index;
+
+	index = doom->own_event.virus_hit_index;
+	if (doom->lib.sprites[index].action == 4)
 		virus_hit(doom);
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 9 && \
-	doom->lib.sprites[doom->own_event.virus_hit_index].distance < 50.0)
+	else if (doom->lib.sprites[index].action == 9 && \
+	doom->lib.sprites[index].distance < 100.0)
 	{
 		doom->own_event.spray_shopper = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;

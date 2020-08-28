@@ -50,11 +50,11 @@ t_item		*get_item_from_basket(uint8_t type, t_list **head)
 	return (NULL);
 }
 
-bool	change_amount(t_item *item, int8_t amount)
+bool		change_amount(t_item *item, int8_t amount)
 {
-	if (amount + item->amount == INT8_MAX)
+	if (amount + item->amount > 10)
 		return (false);
-	else if (amount + item->amount == INT8_MIN)
+	else if (amount + item->amount < 0)
 		return (false);
 	item->amount += amount;
 	return (true);

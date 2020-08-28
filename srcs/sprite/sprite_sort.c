@@ -81,7 +81,6 @@ int			*sort_sprite_array(t_sprite *sprite, int visible_sprites,\
 			int total_sprites)
 {
 	int		*sprite_order;
-	int		i;
 
 	sprite_order = (int*)malloc(sizeof(int) * visible_sprites);
 	init_sprite_order_array(sprite, sprite_order, visible_sprites,\

@@ -4,6 +4,16 @@
 
 static uint8_t	is_existing_grocery(t_doom *doom, SDL_Surface *curr)
 {
+	int		i;
+	t_item	*shoppinglist = doom->groceries->shopping_list;
+
+	i = 0;
+	while (i < doom->groceries->shopping_list_len)
+	{
+		if (shoppinglist[i].type == *(uint8_t *)curr->userdata)
+			return (FALSE);
+		i++;
+	}
 	if (!curr->userdata)
 		return (FALSE);
 	if (*(uint8_t *)curr->userdata)
@@ -11,7 +21,7 @@ static uint8_t	is_existing_grocery(t_doom *doom, SDL_Surface *curr)
 	return (FALSE);
 }
 
-static uint8_t	get_next_grocery(t_doom *doom, uint8_t *curr_texture)
+static uint8_t	get_next_grocery(t_doom *doom, uint32_t *curr_texture)
 {
 	uint8_t		type;
 
@@ -24,20 +34,23 @@ static uint8_t	get_next_grocery(t_doom *doom, uint8_t *curr_texture)
 
 void			generate_shopping_list(t_doom *doom)
 {
-	uint8_t		curr_texture;
+	uint32_t	curr_texture;
 	uint8_t		shopping_list_len;
 	uint8_t		i;
+	t_item		*s_list;
 
 	i = 0;
-	curr_texture = 0;
 	shopping_list_len = doom->groceries->shopping_list_len;
-	SHOPPING_LIST = ft_memalloc(sizeof(t_item) * shopping_list_len);
+	s_list = ft_memalloc(sizeof(t_item) * shopping_list_len);
+	doom->groceries->shopping_list = s_list;
+	srand(time(0));
 	while (i < shopping_list_len)
 	{
-		SHOPPING_LIST[i].type = get_next_grocery(doom, &curr_texture);
-		SHOPPING_LIST[i].amount = (rand() % 5) + 1;
-		set_sprite(doom, SHOPPING_LIST[i].type, &SHOPPING_LIST[i]);
-		SHOPPING_LIST[i].position = get_position(i, WIDTH - 35, 60);
+		curr_texture = rand() % doom->groceries->num_of_groceries;
+		s_list[i].type = get_next_grocery(doom, &curr_texture);
+		s_list[i].amount = (rand() % 5) + 1;
+		set_sprite(doom, s_list[i].type, &s_list[i]);
+		s_list[i].position = get_position(i, WIDTH - 35, 60);
 		i++;
 	}
 }
