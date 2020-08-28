@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:11:46 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:11:46 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 20:07:54 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		print_random_font(t_doom *doom, bool *flag, Uint32 index)
 static void		select_index(t_doom *doom)
 {
 	Uint32		random_dex;
-	static int	shopper_array[3] = { 18, 19, 20 };
+	static int	shopper_array[3] = { 21, 22, 23 };
 
 	random_dex = rand() % 3;
 	random_dex = shopper_array[random_dex];
