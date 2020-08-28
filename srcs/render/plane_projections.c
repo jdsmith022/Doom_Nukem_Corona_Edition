@@ -64,6 +64,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, &sector);
 	set_values_clipping_sprites(doom, plane, sidedef, x);
+
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)

@@ -18,7 +18,6 @@
 // # include "render.h"
 
 # include "../sdl/includes/SDL.h"
-// # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -40,8 +39,8 @@
 # define PI 3.14159265359
 
 # define PLAYER_HEIGHT 50
-# define MOVE_SPEED 200
-# define SENSITIVITY 0.5
+# define MOVE_SPEED 250
+# define SENSITIVITY 0.9
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -194,18 +193,6 @@ typedef struct		s_event {
 	struct timespec	sprite_timer;
 }					t_event;
 
-typedef struct		s_m_object{
-	int				amount;
-	int*			textures;
-	int*			face_ang;
-	char*			name;
-	int				action;
-	t_line*			movement;
-	// t_line			height;
-	int				speed;
-	int				spawn_time;
-}					t_m_object;
-
 typedef struct		s_object{
 	int				n_textures;
 	int*			textures;
@@ -291,9 +278,9 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				sidedef_bottom[WIDTH]; //for cutting sprites
-	int				sidedef_top[WIDTH]; //for clipping sprites
-	int				sidedef_mid_bottom[WIDTH]; //for clipping sprites
+	int				sidedef_bottom[WIDTH];
+	int				sidedef_top[WIDTH];
+	int				sidedef_mid_bottom[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {
@@ -315,7 +302,6 @@ typedef struct		s_lib {
 	int				tot_len_infection;
 	t_sprite		*sprites;
 	int				n_mov_sprites;
-	t_m_object		*mov_sprites;
 	t_window		window;
 	int				*sprite_order;
 }					t_lib;
