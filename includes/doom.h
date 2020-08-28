@@ -40,7 +40,7 @@
 # define PI 3.14159265359
 
 # define PLAYER_HEIGHT 50
-# define MOVE_SPEED 100
+# define MOVE_SPEED 200
 # define SENSITIVITY 0.5
 # define GRAVITY -2
 # define VELOCITY  5
@@ -71,6 +71,12 @@ typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
+
+typedef enum			e_gamestate
+{
+	updated,
+	changed
+}						t_gamestate;
 
 # pragma pack(push, 1)
 
@@ -353,6 +359,7 @@ typedef struct		s_doom {
 	t_groceries		*groceries;
 	t_menu			*menu;
 	t_hud			*hud;
+	int				game_state;
 	bool			is_running;
 	bool			game_editor;
 	bool			hud_display;

@@ -47,6 +47,6 @@ void			doom_render(t_doom *doom)
 		ray.angle += doom->ray_adjacent;
 		x++;
 	}
-	// if (doom->visible_sprites > 0)
-	// 	sprite_render(doom);
+	if (doom->visible_sprites > 0)
+		sprite_render(doom);
 }

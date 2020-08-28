@@ -7,6 +7,20 @@
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
 
+static void	core_gameplay_loop(t_doom *doom, double dt)
+{
+	key_handler(doom, &doom->own_event, dt);
+	if (doom->game_editor == FALSE && doom->menu->state == start_game)
+	{
+		action_handler(doom);
+		sprite_reset(doom);
+		audio(doom, &doom->own_event);
+		groceries(doom);
+	}
+	if (doom->game_editor == TRUE && doom->menu->state == start_game)
+		open_game_editor(doom);
+}
+
 static void	sdl_poll_events(t_doom *doom, double dt)
 {
 	SDL_Event event;
@@ -27,20 +41,12 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 			mouse_release(doom, &event.button);
 		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
+		// doom->game_state = changed;
 	}
-	key_handler(doom, &doom->own_event, dt);
 }
 
 void	doom_update(t_doom *doom, double dt)
 {
 	sdl_poll_events(doom, dt);
-	if (doom->game_editor == FALSE && doom->menu->state == start_game)
-	{
-		action_handler(doom);
-		sprite_reset(doom);
-		audio(doom, &doom->own_event);
-		groceries(doom);
-	}
-	if (doom->game_editor == TRUE && doom->menu->state == start_game)
-		open_game_editor(doom);
+	core_gameplay_loop(doom, dt);
 }
