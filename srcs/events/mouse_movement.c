@@ -27,7 +27,7 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion, double dt,
 	}
 	event->y_pitch = event->y_pitch > limit_pos ? limit_pos : event->y_pitch;
 	event->y_pitch = event->y_pitch < limit_neg ? limit_neg : event->y_pitch;
-	next_pitch = event->y_pitch + (motion->yrel * (SENSITIVITY * dt));
+	next_pitch = event->y_pitch + (motion->yrel * (SENSITIVITY * (dt * 2)));
 	if (next_pitch <= limit_pos && next_pitch >= limit_neg)
 		event->y_pitch += motion->yrel;
 	if (event->y_pitch > limit_pos)
@@ -48,7 +48,7 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 	radian = PI / 180;
 	dir_x = 1;
 	dir_y = 1;
-	doom->dir_angle += to_radians(motion->xrel) * (SENSITIVITY * dt);
+	doom->dir_angle += to_radians(motion->xrel) * (SENSITIVITY * (dt * 2));
 	set_pitch(doom, motion, dt, event);
 }
 
