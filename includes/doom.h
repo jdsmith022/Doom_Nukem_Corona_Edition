@@ -39,7 +39,7 @@
 # define PI 3.14159265359
 
 # define PLAYER_HEIGHT 50
-# define MOVE_SPEED 250
+# define MOVE_SPEED 100
 # define SENSITIVITY 0.9
 # define GRAVITY -2
 # define VELOCITY  5
@@ -193,7 +193,8 @@ typedef struct		s_event {
 	struct timespec	sprite_timer;
 }					t_event;
 
-typedef struct		s_object{
+typedef struct		s_object
+{
 	int				n_textures;
 	int*			textures;
 	int*			face_ang;
@@ -331,6 +332,14 @@ typedef struct		s_gamedesign {
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
+typedef struct		s_render
+{
+	t_sidedef		near_sidedef;
+	t_point			intersect;
+	double			distance;
+	double			min_distance;
+}					t_render;
+
 typedef struct		s_doom {
 	t_line			tests;
 	SDL_Window		*window;
@@ -451,8 +460,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-// void				draw_window(t_doom *doom, t_plane plane,
-						// t_sidedef sidedef, int x);
+
 void				draw_window_as_sprite(t_doom *doom);
 void				save_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
@@ -474,8 +482,8 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
-int					set_poster(int x, double distance, t_point intersect,\
-						t_sidedef *poster);
+int					set_poster(t_doom *doom, int x, double distance, \
+						t_point intersect);
 void				draw_poster(t_doom *doom, t_plane plane,\
 						int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
