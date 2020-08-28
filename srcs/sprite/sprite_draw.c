@@ -1,6 +1,37 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
+void		put_pixel_tex2(t_doom *doom, Uint32 pix_dex,\
+			Uint32 index, int index_sp)
+{
+	char	*pixels;
+	char	*text;
+	t_rgb	rgb;
+	int		i;
+
+	// i = get_lib_index(doom, index_sp); if index_sp == -1 then light == -1??
+	i = doom->lib.sprites[index_sp].visible;
+	pixels = doom->surface->pixels;
+	text = doom->lib.obj_lib[i]->pixels;
+	rgb.r = text[pix_dex];
+	rgb.g = text[pix_dex + 1];
+	rgb.b = text[pix_dex + 2];
+	if (text[pix_dex] == (char)255 && text[pix_dex + 1] == (char)255 &&\
+	text[pix_dex + 2] == (char)255)
+		;
+	else
+	{
+		if (doom->lib.sprites[index_sp].light > 0)
+			add_saturation(&rgb.r, &rgb.g, &rgb.b,\
+			doom->lib.sprites[index_sp].light);
+		pixels[index] = rgb.r;
+		index++;
+		pixels[index] = rgb.g;
+		index++;
+		pixels[index] = rgb.b;
+	}
+}
+
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i,\
 			double distance)
 {
@@ -100,22 +131,22 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	return (1);
 }
 
-void	sprite_light(t_doom *doom, t_sprite sprite, double *light_distance)
+void	sprite_light(t_doom *doom, t_sprite *sprite)
 {
 	if (doom->light == TRUE)
 	{
-		if (doom->lib.sector[sprite.sector].light == TRUE)
-			*light_distance = doom->lib.sector[sprite.sector].light_level;
+		if (doom->lib.sector[sprite->sector].light == TRUE)
+			sprite->light = doom->lib.sector[sprite->sector].light_level;
 		else
-			*light_distance = 0.15;
+			sprite->light = 0.15;
 	}
 	else
 	{
-		*light_distance = 1 / (sprite.distance / 70);
-		*light_distance = sprite.sprite_x > WIDTH / 2 ? \
-			*light_distance - (sprite.sprite_x - (float)WIDTH / 2.0) * 1.0 /\
-			(float)WIDTH : +*light_distance - ((float)WIDTH / 2.0 -\
-			sprite.sprite_x) * 1.0 / (float)WIDTH;
+		sprite->light = 1 / (sprite->distance / 70);
+		sprite->light = sprite->sprite_x > WIDTH / 2 ? \
+			sprite->light - (sprite->sprite_x - (float)WIDTH / 2.0) * 1.0 /\
+			(float)WIDTH : + sprite->light - ((float)WIDTH / 2.0 -\
+			sprite->sprite_x) * 1.0 / (float)WIDTH;
 	}
 }
 
@@ -140,7 +171,8 @@ void	draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
 		doom->lib.sprites[index_sp].distance)
 		{
 			//volgens mij kan ik onderstaande functie ook later callen
-			sprite_light(doom, doom->lib.sprites[index_sp], &light_dist);
+			// sprite_light(doom, doom->lib.sprites[index_sp], &light_dist);
+			sprite_light(doom, &doom->lib.sprites[index_sp]);
 			screen_y = (int)sprite->start.y;
 			tex_x = find_x(doom, sprite, index_sp, stripe);
 			while (screen_y < (int)sprite->end.y && screen_y < HEIGHT &&\
@@ -155,7 +187,7 @@ void	draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
 					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
 					+ ((int)tex_x *\
 					doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-					put_pixel_tex(doom, pix_dex, index, i_sprite, light_dist);
+					put_pixel_tex2(doom, pix_dex, index, index_sp);
 				}
 				screen_y++;
 			}

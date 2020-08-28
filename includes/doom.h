@@ -122,6 +122,7 @@ typedef struct			s_sprite {
 	int					visible;
 	double				distance;
 	int					prev_sectors[50];
+	double				light;
 }						t_sprite;
 
 typedef struct		s_ray {

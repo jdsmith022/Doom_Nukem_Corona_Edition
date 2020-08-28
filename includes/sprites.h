@@ -83,9 +83,11 @@ void				find_position(t_doom *doom, t_point *sprite_begin,\
 					t_point *sprite_end, int index);
 void				draw_stripes(t_doom *doom, t_line *sprite, int index_sp);
 void				sprite_reset(t_doom *doom);
-void				scale_sprite(t_doom *doom, t_point *sprite_begin,\
-					t_point *sprite_end, t_sprite *sprite);
+void				scale_sprite(t_doom *doom, t_line *coords,\
+					t_sprite *sprite);
 t_point				sidedef_sprite_intersect(t_line sidedef, t_line sprite);
+void				find_sidedef_intersect_per_sector(t_doom *doom,\
+					t_sprite *sprite, int curr_sector, int prev_sector);
 int					sprite_collision(t_doom *doom, t_line movement);
 void				exit_scissor_lift(t_doom *doom);
 void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index,\

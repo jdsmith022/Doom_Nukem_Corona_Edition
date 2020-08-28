@@ -20,7 +20,7 @@ int				sprite_in_shooting_area(t_doom *doom, int sprite_i)
 	if (doom->own_event.hold_x >=
 	(int)doom->lib.sprites[sprite_i].sprite_begin.x &&
 	doom->own_event.hold_x <= (int)doom->lib.sprites[sprite_i].sprite_begin.x +
-	(int)SPRITES[sprite_i].width &&
+	(int)doom->lib.sprites[sprite_i].width &&
 	doom->own_event.hold_y >=
 	(int)doom->lib.sprites[sprite_i].sprite_begin.y &&
 	doom->own_event.hold_y <=

@@ -16,7 +16,7 @@ void			remove_red_virus(t_doom *doom)
 		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
 		if (diff <= 3)
 		{
-			SPRITES[doom->own_event.virus_red_i].action = 6;
+			doom->lib.sprites[doom->own_event.virus_red_i].action = 6;
 			doom->own_event.virus_red_i = -1;
 		}
 	}
