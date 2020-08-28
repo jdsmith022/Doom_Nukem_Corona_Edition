@@ -70,7 +70,7 @@ void			sidedef_render(t_doom *doom, t_ray ray, int sector,
 		x++;
 	}
 	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	sprite_check(doom, ray, sector, prev_sector);
+	// sprite_check(doom, ray, sector, prev_sector);
 	if (min_distance != INFINITY)
 	{
 		if (near_sidedef.opp_sector != -1 && \

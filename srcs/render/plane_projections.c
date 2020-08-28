@@ -63,6 +63,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	plane.x = x;
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, &sector);
+	set_values_clipping_sprites(doom, plane, sidedef, x);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)
@@ -72,7 +73,6 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	if (sector.action != OUTSIDE)
 		draw_ceiling(doom, x, sector, plane.sidedef_top);
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
-	set_values_clipping_sprites(doom, plane, sidedef, x);
 	if (sidedef.poster != -1)
 		draw_poster(doom, plane, sidedef.poster, x);
 }

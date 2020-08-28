@@ -37,16 +37,16 @@ void			game_loop(t_doom *doom)
 	{
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
+		doom_update(doom, dt);
 		if (doom->game_editor == FALSE && doom->menu->state ==start_game)
 		{
 			sprite_reset(doom);
-			doom_render(doom);
 			audio(doom, &doom->own_event);
 			groceries(doom);
 		}
 		else if (doom->game_editor == TRUE && doom->menu->state ==start_game)
 			open_game_editor(doom);
-		doom_update(doom, dt);
+		doom_render(doom);
 		update_hud_ui(doom);
 		set_to_window(doom);
 	}
