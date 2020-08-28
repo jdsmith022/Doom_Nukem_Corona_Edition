@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   calculate_hud_levels.c                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:17:46 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:17:47 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:15:54 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:15:56 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   finished_text.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:18:04 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:18:05 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:14:43 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:14:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

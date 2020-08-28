@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   font_timer.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:16:20 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:16:21 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:10:20 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

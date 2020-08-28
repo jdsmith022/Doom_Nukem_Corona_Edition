@@ -21,7 +21,7 @@ static void		modified(void)
 	//     error("file has been modified", 0);
 }
 
-void		save_libraries(t_doom *doom)
+void			save_libraries(t_doom *doom)
 {
 	int fd;
 

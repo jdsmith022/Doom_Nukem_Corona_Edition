@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   update_timer.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:17:42 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:17:43 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:16:05 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:16:06 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

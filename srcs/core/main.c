@@ -8,7 +8,7 @@ int	main(void)
 {
 	t_doom	doom;
 
- 	ft_bzero(&doom, sizeof(t_doom));
+	ft_bzero(&doom, sizeof(t_doom));
 	sdl_init(&doom);
 	save_libraries(&doom);
 	save_font_libraries(&doom);

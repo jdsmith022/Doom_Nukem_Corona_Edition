@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   draw_font.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 10:29:00 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:10:03 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:10:05 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

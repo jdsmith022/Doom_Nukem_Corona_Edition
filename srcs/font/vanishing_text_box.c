@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   vanishing_text_box.c                               :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:17:13 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:17:15 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:12:11 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:12:13 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

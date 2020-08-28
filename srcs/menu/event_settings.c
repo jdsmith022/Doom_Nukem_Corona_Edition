@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   event_settings.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:17:57 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:17:58 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:14:37 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
