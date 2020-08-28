@@ -254,6 +254,16 @@ static const t_grocery_paths	g_groc_paths[] = {
 		MILK
 	},
 	{
+		"assets/textures/shelves/milk2.bmp",
+		"assets/sprites/groceries/milk1.bmp",
+		MILK
+	},
+	{
+		"assets/textures/shelves/milk3.bmp",
+		"assets/sprites/groceries/milk1.bmp",
+		MILK
+	},
+	{
 		"assets/textures/shelves/spray_bottles.bmp",
 		"assets/sprites/groceries/spray_bottle.bmp",
 		SPRAY
@@ -277,6 +287,21 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/jar4.bmp",
 		"assets/sprites/groceries/glass_jar6.bmp",
 		JARS4
+	},
+	{
+		"assets/textures/shelves/potatoes.bmp",
+		"assets/sprites/groceries/swee_potatoe.bmp",
+		POTATO
+	},
+	{
+		"assets/textures/shelves/onions.bmp",
+		"assets/sprites/groceries/white_onion.bmp",
+		ONION
+	},
+	{
+		"assets/textures/shelves/paprika.bmp",
+		"assets/sprites/groceries/yellow_paprika.bmp",
+		PAPRIKA
 	}
 };
 
