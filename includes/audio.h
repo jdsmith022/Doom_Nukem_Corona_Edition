@@ -7,8 +7,6 @@
 # include <unistd.h>
 
 # define AUDIO_BUFF		1042
-# define AUDIO			doom->audio
-# define AUDIO_PATH		audio->path
 
 # define OFF			0
 # define ON				1

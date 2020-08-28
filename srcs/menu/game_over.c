@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   game_over.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:18:09 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:18:10 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
@@ -5,7 +16,7 @@
 
 void	check_levels_and_time(t_doom *doom)
 {
-	while (doom->menu->game_over == TRUE)
+	while (doom->menu->state == game_over)
 	{
 		doom->hud_display = FALSE;
 		SDL_SetRelativeMouseMode(SDL_FALSE);

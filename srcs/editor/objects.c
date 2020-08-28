@@ -41,7 +41,7 @@ t_sprite *cpy_object(t_doom *doom, t_sprite *object, int *o_size)
 
 	new = (t_sprite*)malloc(sizeof(t_sprite) * *o_size * 2);
 	if (new == NULL)
-		doom_exit_failure(doom, MALLOC_ERR);
+		doom_exit_failure(doom, "error: cpy object");
 	i = 0;
 	while (i < *o_size)
 	{
@@ -54,6 +54,8 @@ t_sprite *cpy_object(t_doom *doom, t_sprite *object, int *o_size)
 	{
 		new[i].lines = (t_line*)malloc(sizeof(t_line) * 4);
 		new[i].textures = (int*)malloc(sizeof(int) * 4);
+		if (new[i].lines == NULL || new[i].textures == NULL)
+			doom_exit_failure(doom, "error: cpy object");
 		i++;
 	}
 	return (new);

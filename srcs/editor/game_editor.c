@@ -5,12 +5,12 @@
 
 void	open_game_editor(t_doom *doom)
 {
-	Uint32	*pixels;
-	int		i;
-	int		hold_time;
-	int		curr_time;
+	Uint32				*pixels;
+	int					i;
+	struct timespec		hold_time;
+	struct timespec		curr_time;
 
-	hold_time = SDL_GetTicks();
+	clock_gettime(doom->game_time, &hold_time);
 	SDL_SetRelativeMouseMode(SDL_FALSE);
 	doom->distance = 1;
 	pixels = doom->surface->pixels;
@@ -27,6 +27,6 @@ void	open_game_editor(t_doom *doom)
 		i++;
 	}
 	draw_object(doom, &pixels);
-	curr_time = SDL_GetTicks();
-	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
+	clock_gettime(doom->game_time, &curr_time);
+	doom->game_start_time.tv_sec = doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
 }

@@ -1,5 +1,6 @@
 
 #include "../../includes/doom.h"
+#include "../../includes/events.h"
 
 int		check_sector_height_diff(t_doom *doom, int sector, int next_sector)
 {

@@ -11,17 +11,22 @@
 
 typedef	struct s_doom	t_doom;
 
+typedef enum		e_event_state
+{
+	sanitizer_shooting,
+	sanitizer,
+	facemask,
+	health_pack,
+	shopper_collision,
+	health_pack_plus,
+	boxes,
+	corona_hit
+}					t_event_state;
+
 typedef struct	s_hud
 {
-	bool		sanitizer;
-	bool		sanitizer_shooting;
-	bool		facemask;
-	bool		health_pack;
-	bool		health_pack_plus;
-	bool		shopper;
-	bool		corona;
-	bool		boxes;
 	bool		start;
+	int			update;
 	int			hold_time;
 	int			curr_time;
 	Uint32		corona_level;
@@ -29,8 +34,9 @@ typedef struct	s_hud
 }				t_hud;
 
 void			update_hud(t_doom *doom);
-void			update_hud_levels(t_doom *doom, t_font *lib);
-int				calculate_hud_levels(t_doom *doom);
+void			update_levels(t_doom *doom, t_font *lib);
+void			update_timer(t_doom *doom, t_font *lib);
+void			calculate_hud_levels(t_doom *doom);
 void			update_timer(t_doom *doom, t_font *lib);
 void			update_list_and_basket(t_doom *doom);
 

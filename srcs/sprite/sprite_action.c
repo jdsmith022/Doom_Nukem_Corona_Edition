@@ -57,7 +57,7 @@ static void	check_walking(t_doom *doom, t_sprite shopper)
 	{
 		doom->own_event.sprite_collision_dist = shopper.distance;
 		doom->own_event.sprite_collision = TRUE;
-		doom->hud->shopper = TRUE;
+		doom->hud->update = shopper_collision;
 		doom->own_event.sprite_index = shopper.index;
 	}
 	else if (shopper.distance > doom->own_event.sprite_collision_dist\
@@ -74,14 +74,14 @@ static void	check_sprite_distance2(t_doom *doom, int index)
 {
 	if (doom->lib.sprites[index].action == 2)
 	{
-		doom->hud->health_pack = TRUE;
+		doom->hud->update = health_pack;
 		doom->lib.font_lib.bools.text = TRUE;
 		doom->lib.font_lib.bools.health_pack = TRUE;
 		doom->lib.sprites[index].action = 8;
 	}
 	else if (doom->lib.sprites[index].action == 3)
 	{
-		doom->hud->facemask = TRUE;
+		doom->hud->update = facemask;
 		doom->lib.font_lib.bools.text = TRUE;
 		doom->lib.font_lib.bools.facemask = TRUE;
 		doom->lib.sprites[index].action = 8;
@@ -105,19 +105,19 @@ static void	check_sprite_distance(t_doom *doom, int index)
 			check_walking(doom, doom->lib.sprites[index]);
 		else if (doom->lib.sprites[index].action == 4)
 		{
-			doom->own_event.corona_hit = TRUE;
+			doom->hud->update = corona_hit;
 			doom->lib.sprites[index].action = 6;
 		}
 		else if (doom->lib.sprites[index].action == 1)
 		{
-			doom->hud->health_pack_plus = TRUE;
+			doom->hud->update = health_pack_plus;
 			doom->lib.font_lib.bools.text = TRUE;
 			doom->lib.font_lib.bools.health_pack = TRUE;
 			doom->lib.sprites[index].action = 8;
 		}
 		else if (doom->lib.sprites[index].action == 11)
 		{
-			doom->game_start_time += 60000;
+			doom->game_start_time.tv_sec += 60000;
 			doom->lib.sprites[index].action = 8;
 		}
 		else

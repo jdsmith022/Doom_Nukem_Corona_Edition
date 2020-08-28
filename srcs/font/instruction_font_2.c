@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   instruction_font_2.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:16:31 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:16:32 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
@@ -26,7 +37,7 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[16].font_color = doom->lib.font_lib.font_color.red;
 	lib[17].str = "Make sure you're read to checkout!";
 	lib[17].font_rect.x = WIDTH / 2 - 115;
-	lib[17].font_rect.y = HEIGHT / 2 + 15;
+	lib[17].font_rect.y = HEIGHT / 2 + 165;
 	lib[17].font_color = doom->lib.font_lib.font_color.red;
 	lib[18].str = "HEY! Don't shoot at me brat!";
 	lib[18].font_rect.x = WIDTH / 2 - 125;

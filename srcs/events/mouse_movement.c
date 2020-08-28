@@ -1,6 +1,7 @@
 
 #include "../../includes/doom.h"
 #include "../editor/game_editor.h"
+#include "../../includes/events.h"
 
 static double	to_radians(int degrees)
 {

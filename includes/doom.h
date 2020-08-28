@@ -382,7 +382,7 @@ typedef struct		s_doom {
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
 	int				game_time;
-	int				game_start_time;
+	struct timespec	game_start_time;
 	int				save_scissor_lift;
 	int				up;
 }					t_doom;
@@ -391,7 +391,7 @@ typedef struct		s_doom {
 int					main(void);
 void				game_init(t_doom *doom);
 void				doom_init(t_doom *doom);
-int					sdl_init(t_doom *doom);
+void				sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
 void				init_events(t_event *event);
@@ -420,26 +420,6 @@ void				doom_exit_read_failure(t_doom *doom, \
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 int					line_num(int i);
-
-/*events functions*/
-void				key_press(t_doom *doom, t_event *event,\
-						SDL_KeyboardEvent *key);
-void				key_release(t_event *event, SDL_KeyboardEvent *key);
-void				key_handler(t_doom *doom, t_event *event, double dt);
-void				mouse_press(t_doom *doom,\
-						SDL_MouseButtonEvent *button, t_event event);
-void				mouse_release(t_doom *doom,\
-						SDL_MouseButtonEvent *button);
-void				camera_movement(t_doom *doom,\
-						SDL_MouseMotionEvent *motion, double dt);
-void				move_cam_direction(t_doom *doom,\
-						SDL_MouseMotionEvent *motion,\
-						double dt, t_event *event);
-void				set_new_position(t_doom *doom, t_event *event, double dt);
-int					check_floor_diff(t_doom *doom, int sector, int next_sector);
-int					check_sector_height_diff(t_doom *doom,\
-						int sector, int next_sector);
-bool				handle_mouse_state(t_doom *doom);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\

@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/events.h"
 
 static void		set_shelf_type(t_doom *doom, uint8_t *type)
 {

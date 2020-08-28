@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   start_menu.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:18:37 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:18:37 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
@@ -15,21 +26,21 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;
 	doom->own_event.select = FALSE;
-	doom->menu->start_timer = FALSE;
+	doom->start_timer = FALSE;
 	doom->hud->hold_time /= doom->difficulty;
 	doom->hud->curr_time /= doom->difficulty;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
-	SDL_SetCursor(doom->cursor);
 }
 
 void		doom_start(t_doom *doom)
 {
 	doom->difficulty = 1;
-	while (doom->menu->menu == TRUE)
+	while (doom->menu->state != start_game)
 	{
 		mouse_settings(doom);
-		print_background(doom, 0x00002E);
-		if (doom->menu->settings == TRUE)
+		if (doom->menu->settings == FALSE)
+			print_background(doom, 0x00002E);
+		else
 			print_background(doom, 0xF2F2F2);
 		font_to_screen(doom);
 		SDL_UpdateWindowSurface(doom->window);

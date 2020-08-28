@@ -55,11 +55,11 @@ void	audio(t_doom *doom, t_event *event)
 {
 	if (doom->audio->engine == OFF)
 		return ;
-	if (AUDIO->music_vol && doom->is_running)
-		play_music(AUDIO->music[1]);
+	if (doom->audio->music_vol && doom->is_running)
+		play_music(doom->audio->music[1]);
 	if (doom->audio->sound_vol)
 	{
-		play_movement_sounds(AUDIO, event);
-		play_action_sounds(AUDIO, event);
+		play_movement_sounds(doom->audio, event);
+		play_action_sounds(doom->audio, event);
 	}
 }

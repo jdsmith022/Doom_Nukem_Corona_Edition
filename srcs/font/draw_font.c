@@ -6,7 +6,7 @@
 /*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:16:05 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/12 03:04:13 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/28 10:29:00 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,12 @@
 static void		draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 {
 	Uint32	index;
-	int		ret;
 
 	index = 0;
 	while (index < len)
 	{
-		ret = SDL_BlitSurface(font_lib[index].font_surface, NULL,\
+		SDL_BlitSurface(font_lib[index].font_surface, NULL,\
 			doom->surface, &font_lib[index].font_rect);
-		if (ret < 0)
-			doom_exit_failure(doom, "error: Font to screen");
 		index++;
 	}
 }
@@ -32,7 +29,7 @@ static void		draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 static t_font	*font_to_screen_2(t_doom *doom,
 					t_font *font_lib, uint8_t *len)
 {
-	if (doom->menu->pause == TRUE)
+	if (doom->menu->state == game_paused)
 	{
 		font_lib = doom->lib.font_lib.pause_font;
 		*len = doom->lib.font_lib.pause_font_len;
@@ -42,12 +39,12 @@ static t_font	*font_to_screen_2(t_doom *doom,
 		font_lib = doom->lib.font_lib.hud_font;
 		*len = doom->lib.font_lib.hud_font_len;
 	}
-	else if (doom->menu->game_over == TRUE)
+	else if (doom->menu->state == game_over)
 	{
 		font_lib = doom->lib.font_lib.game_over_font;
 		*len = doom->lib.font_lib.game_font_len;
 	}
-	else if (doom->menu->finished == TRUE)
+	else if (doom->menu->state == finished)
 	{
 		font_lib = doom->lib.font_lib.finished_font;
 		*len = doom->lib.font_lib.finished_font_len;
@@ -61,12 +58,12 @@ void			font_to_screen(t_doom *doom)
 	uint8_t	len;
 
 	len = 0;
-	if (doom->menu->menu == TRUE && doom->menu->settings == FALSE)
+	if (doom->menu->state == menu && doom->menu->settings == FALSE)
 	{
 		font_lib = doom->lib.font_lib.start_menu_font;
 		len = doom->lib.font_lib.start_font_len;
 	}
-	else if (doom->menu->menu == TRUE && doom->menu->settings == TRUE)
+	else if (doom->menu->settings == TRUE)
 	{
 		font_lib = doom->lib.font_lib.setting_menu_font;
 		len = doom->lib.font_lib.setting_font_len;

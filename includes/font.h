@@ -67,6 +67,10 @@ typedef struct		s_font_lib
 	int				pause_font_len;
 	t_font			*finished_font;
 	int				finished_font_len;
+	t_font			*grocery_font;
+	int				grocery_font_len;
+	t_font			*basket_font;
+	int				basket_font_len;
 	struct timespec	timer;
 	struct timespec	mist;
 	int				random_index;
@@ -79,6 +83,8 @@ void				save_font_libraries(t_doom *doom);
 void				set_font_colors(t_doom *doom);
 void				set_font_style(t_doom *doom);
 void				font_to_sdl(t_doom *doom, t_font *lib, \
+						TTF_Font *font);
+void				single_font_to_sdl(t_doom *doom, t_font lib, \
 						TTF_Font *font);
 
 void				save_game_editor_font(t_doom *doom, int *len);

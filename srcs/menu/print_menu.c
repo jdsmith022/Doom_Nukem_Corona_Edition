@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   print_menu.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:18:30 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:18:31 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
@@ -35,7 +46,7 @@ void			menu_print_loop(t_doom *doom)
 	mouse_settings(doom);
 	print_background(doom, 0x00002E);
 	if (doom->groceries->info.won == FALSE && \
-	doom->menu->finished == TRUE)
+	doom->menu->state == finished)
 		print_missing_groceries(doom);
 	font_to_screen(doom);
 	SDL_UpdateWindowSurface(doom->window);

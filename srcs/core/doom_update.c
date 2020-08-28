@@ -1,6 +1,7 @@
 
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
+#include "../../includes/events.h"
 
 void	doom_update(t_doom *doom, double dt)
 {

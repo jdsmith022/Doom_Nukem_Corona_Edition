@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   menu_click_events.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:18:13 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:18:14 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
@@ -11,7 +22,7 @@ void			pause_click_event(t_doom *doom, SDL_Rect rect)
 	y = doom->own_event.hold_y;
 	if (x >= (rect.x) && x <= (rect.x + 200) && \
 	y >= (rect.y) && y <= (rect.y + 25))
-		doom->menu->pause = FALSE;
+		doom->menu->state = start_game;
 }
 
 void			setting_menu_click_event(t_doom *doom, SDL_Rect rect)
@@ -34,7 +45,7 @@ static void		difficulty_setting(t_doom *doom, int x, int y)
 		doom->difficulty = 2;
 	else if (x >= 530 && x <= 550 && y >= 300 && y <= 330)
 		doom->difficulty = 3;
-	doom->menu->menu = FALSE;
+	doom->menu->state = start_game;
 }
 
 void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
@@ -49,7 +60,7 @@ void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
 	y >= (rect1.y) && y <= (rect1.y + 25))
 	{
 		doom->is_running = TRUE;
-		doom->menu->menu = FALSE;
+		doom->menu->state = start_game;
 	}
 	else if (x >= (rect2.x) && x <= (rect2.x + 200) && \
 	y >= (rect2.y) && y <= (rect2.y + 25))
@@ -58,7 +69,7 @@ void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
 	y >= (rect3.y) && y <= (rect3.y + 25))
 	{
 		doom->game_editor = TRUE;
-		doom->menu->menu = FALSE;
+		doom->menu->state = start_game;
 	}
 	else if (x >= 425 && x <= 560 && y >= 300 && y <= 330)
 		difficulty_setting(doom, x, y);
