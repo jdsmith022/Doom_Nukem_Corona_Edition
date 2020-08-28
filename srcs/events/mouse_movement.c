@@ -58,7 +58,8 @@ void			move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
 	SDL_GetMouseState(&doom->own_event.hold_x, &doom->own_event.hold_y);
 	if (event->mouse_pointer == TRUE)
 		SDL_SetRelativeMouseMode(FALSE);
-	else {
+	else
+	{
 		SDL_SetRelativeMouseMode(TRUE);
 		cam_movement(doom, motion, dt, event);
 	}

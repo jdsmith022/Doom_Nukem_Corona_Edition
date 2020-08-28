@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   set_font_style.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:16:47 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:16:48 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:10:57 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:10:58 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

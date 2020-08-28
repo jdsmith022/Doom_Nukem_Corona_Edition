@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/07 18:08:46 by efrank         #+#    #+#                */
-/*   Updated: 2019/11/14 12:28:28 by efrank        ########   odam.nl         */
+/*   Created: 2019/01/07 18:08:46 by efrank        #+#    #+#                 */
+/*   Updated: 2020/08/28 15:19:22 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,5 @@ int					ft_printf(const char *string, ...);
 void				ft_put_unsigned(unsigned long long n);
 int					ft_intlen(long long n);
 double				ft_map(double n, double a, double b, double y, double z);
-
 
 #endif

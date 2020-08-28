@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   print_background.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:18:26 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:18:27 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:15:13 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:15:14 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

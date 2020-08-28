@@ -6,14 +6,14 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:43:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 21:13:47 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 15:14:18 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
-void	int_check(t_doom *doom, char *line, int line_num)
+void			int_check(t_doom *doom, char *line, int line_num)
 {
 	int i;
 	int check;
@@ -31,7 +31,7 @@ void	int_check(t_doom *doom, char *line, int line_num)
 	}
 }
 
-int		line_num(int i)
+int				line_num(int i)
 {
 	static int line_num;
 
@@ -54,7 +54,7 @@ int		line_num(int i)
 	return (line_num);
 }
 
-static void	get_line_loop(t_doom *doom, char **line, int fd, int ret)
+static void		get_line_loop(t_doom *doom, char **line, int fd, int ret)
 {
 	while (*line[0] == '\0' || *line[0] == '#')
 	{
@@ -72,7 +72,7 @@ static void	get_line_loop(t_doom *doom, char **line, int fd, int ret)
 	}
 }
 
-int		get_line(t_doom *doom, char **line, int fd, int is_int)
+int				get_line(t_doom *doom, char **line, int fd, int is_int)
 {
 	int ret;
 

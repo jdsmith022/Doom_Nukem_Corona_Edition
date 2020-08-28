@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   update_levels.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 12:17:32 by jessicasmit   #+#    #+#                 */
-/*   Updated: 2020/08/28 12:17:33 by jessicasmit   ########   odam.nl         */
+/*   Created: 2020/08/28 15:16:17 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:16:17 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
