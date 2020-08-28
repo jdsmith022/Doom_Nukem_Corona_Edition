@@ -93,16 +93,6 @@ static void	draw_hud_bottom_bar(t_doom *doom)
 	}
 }
 
-static void	update_levels(t_doom *doom)
-{
-	if (doom->hud->update != -1)
-	{
-		calculate_hud_levels(doom);
-		update_hud_levels(doom, doom->lib.font_lib.hud_font);
-		doom->hud->update = -1;
-	}
-}
-
 void		update_hud(t_doom *doom)
 {
 	if (doom->game_editor == FALSE && doom->menu->state != game_over)
@@ -111,10 +101,10 @@ void		update_hud(t_doom *doom)
 		draw_player_adds(doom);
 		draw_hud_bottom_bar(doom);
 		draw_hud_side_bar(doom);
-		update_levels(doom);
+		calculate_hud_levels(doom);
+		update_levels(doom, doom->lib.font_lib.hud_font);
 		if (doom->menu->start_timer == TRUE)
 			update_timer(doom, doom->lib.font_lib.hud_font);
 		update_list_and_basket(doom);
 	}
-	font_to_screen(doom);
 }

@@ -84,6 +84,8 @@ void				set_font_colors(t_doom *doom);
 void				set_font_style(t_doom *doom);
 void				font_to_sdl(t_doom *doom, t_font *lib, \
 						TTF_Font *font);
+void				single_font_to_sdl(t_doom *doom, t_font lib, \
+						TTF_Font *font);
 
 void				save_game_editor_font(t_doom *doom, int *len);
 void				save_hud_font(t_doom *doom, int *len);

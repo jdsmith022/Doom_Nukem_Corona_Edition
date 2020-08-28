@@ -34,7 +34,8 @@ typedef struct	s_hud
 }				t_hud;
 
 void			update_hud(t_doom *doom);
-void			update_hud_levels(t_doom *doom, t_font *lib);
+void			update_levels(t_doom *doom, t_font *lib);
+void			update_timer(t_doom *doom, t_font *lib);
 void			calculate_hud_levels(t_doom *doom);
 void			update_timer(t_doom *doom, t_font *lib);
 void			update_list_and_basket(t_doom *doom);

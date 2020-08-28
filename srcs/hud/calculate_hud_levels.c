@@ -34,4 +34,5 @@ void			calculate_hud_levels(t_doom *doom)
 	else if (doom->hud->update == boxes)
 		doom->hud->corona_level += 2;
 	check_level_limits(doom);
+	doom->hud->update = -1;
 }

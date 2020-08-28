@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:39:34 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/23 15:39:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 10:21:01 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ static void	set_timer(t_doom *doom, t_font *lib)
 	lib[6].font_rect.x = WIDTH / 2.4;
 	lib[6].font_rect.y = 15;
 	lib[6].font_color = doom->lib.font_lib.font_color.white;
-	lib[7].str = "0:00";
-	lib[7].font_rect.x = WIDTH / 1.9;
-	lib[7].font_rect.y = 15;
-	lib[7].font_color = doom->lib.font_lib.font_color.white;
 }
 
 static void	set_levels(t_doom *doom, t_font *lib)
@@ -67,7 +63,7 @@ void		save_hud_font(t_doom *doom, int *len)
 	TTF_Font	*font;
 	int			font_size;
 
-	*len = 8;
+	*len = 7;
 	doom->lib.font_lib.hud_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.hud_font == NULL)
