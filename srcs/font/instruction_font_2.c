@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:10:37 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 17:43:09 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[16].font_rect.y = HEIGHT / 2 + 165;
 	lib[16].font_color = doom->lib.font_lib.font_color.red;
 	lib[17].str = "Make sure you're read to checkout!";
-	lib[17].font_rect.x = WIDTH / 2 - 115;
+	lib[17].font_rect.x = WIDTH / 2 - 150;
 	lib[17].font_rect.y = HEIGHT / 2 + 165;
 	lib[17].font_color = doom->lib.font_lib.font_color.red;
 	lib[18].str = "HEY! Don't shoot at me brat!";
