@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   instruction_font_2.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:16:31 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:16:32 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/font.h"

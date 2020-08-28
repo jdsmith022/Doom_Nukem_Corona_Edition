@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   update_timer.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:17:42 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:17:43 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/font.h"

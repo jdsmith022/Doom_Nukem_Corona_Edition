@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   menu_click_events.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:18:13 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:18:14 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"

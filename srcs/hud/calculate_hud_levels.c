@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   calculate_hud_levels.c                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:17:46 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:17:47 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"

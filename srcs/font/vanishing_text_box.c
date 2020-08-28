@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   vanishing_text_box.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 12:17:13 by jessicasmit   #+#    #+#                 */
+/*   Updated: 2020/08/28 12:17:15 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
