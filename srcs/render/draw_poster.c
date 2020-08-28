@@ -1,11 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_poster.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 22:02:59 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-int				set_poster(int x, double distance, t_point intersect,
-			t_sidedef *poster)
+int				set_poster(t_doom *doom, int x, double distance,
+					t_point intersect)
 {
+	t_sidedef *poster;
+
+	poster = &doom->lib.sidedef[x];
 	poster->distance = distance;
 	poster->intersect = intersect;
+	doom->i_sidedef = x;
 	return (x);
 }
 

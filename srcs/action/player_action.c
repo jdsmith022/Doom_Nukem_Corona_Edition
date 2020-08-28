@@ -9,7 +9,7 @@ void	bend_down(t_doom *doom)
 
 	height_floor = doom->lib.sector[doom->i_sector].height_floor;
 	og_height = PLAYER_HEIGHT + height_floor;
-	if (doom->player_height >= 20 && doom->own_event.bend == TRUE)
+	if (doom->player_height >= 40 && doom->own_event.bend == TRUE)
 	{
 		doom->player_height -= 20;
 		if (doom->player_height < height_floor)

@@ -48,7 +48,7 @@ SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
 				sprite_hud_scale
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
-				 find_shelf init_groceries grocery_ui add_infection \
+				 find_shelf init_groceries grocery_ui \
 				 position gameplay game_over timer sprite_hit \
 				 check_select_spray_sprite sprite_helpers \
 				 remove_red_virus

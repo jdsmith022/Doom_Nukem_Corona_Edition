@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sidedef_render.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 22:02:46 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 22:02:47 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
@@ -32,58 +43,59 @@ double			sidedef_intersection_distance(t_ray ray,
 	return (distance);
 }
 
-void			sidedef_render(t_doom *doom, t_ray ray, int sector,
-						int prev_sector)
+static void		next_sector_render(t_doom *doom, t_ray ray,
+					t_render render, int sector)
 {
-	t_point				intersect;
-	t_sidedef			near_sidedef;
-	double				distance;
-	double				min_distance;
+	if (render.near_sidedef.opp_sector != -1 && \
+	render.near_sidedef.opp_sector != doom->prev_sector)
+	{
+		doom->prev_sidedef.id = render.near_sidedef.id;
+		doom->prev_sidedef.distance = render.near_sidedef.distance;
+		doom->prev_sidedef.intersect = render.near_sidedef.intersect;
+		sidedef_render(doom, ray, render.near_sidedef.opp_sector, sector);
+	}
+	doom->distance = render.min_distance;
+	project_on_plane(doom, render.near_sidedef, ray.plane_x);
+}
+
+static void		set_near_sidedef_distance(t_doom *doom,
+						t_render *render, int x)
+{
+	if (doom->lib.sidedef[x].action == 4 || \
+	doom->lib.sidedef[x].action == 8)
+		render->near_sidedef.poster = \
+			set_poster(doom, x, render->distance, render->intersect);
+	else
+	{
+		render->min_distance = render->distance;
+		render->near_sidedef = set_properties_sidedef(render->intersect,\
+			render->distance, doom->lib.sidedef[x], doom);
+	}
+}
+
+void			sidedef_render(t_doom *doom, t_ray ray, int sector,
+					int prev_sector)
+{
+	t_render			render;
 	int					x;
 
+	doom->prev_sector = prev_sector;
 	x = doom->lib.sector[sector].i_sidedefs;
-	min_distance = INFINITY;
+	render.min_distance = INFINITY;
 	if (doom->lib.sector[sector].action == OUTSIDE)
 		sidedef_render_skybox(doom, ray, doom->lib.sky_sd);
 	while (x < doom->lib.sector[sector].n_sidedefs +\
 		doom->lib.sector[sector].i_sidedefs)
 	{
-		distance = sidedef_intersection_distance(ray,\
-			doom->lib.sidedef[x].line, &intersect);
-		if (distance <= min_distance + 0.01 &&\
-			doom->lib.sidedef[x].opp_sector != prev_sector)
-		{
-			if (doom->lib.sidedef[x].action == 4 || \
-			doom->lib.sidedef[x].action == 8)
-			{
-				doom->i_sidedef = x;
-				near_sidedef.poster = \
-					set_poster(x, distance, intersect, &doom->lib.sidedef[x]);
-			}
-			else
-			{
-				min_distance = distance;
-				near_sidedef = set_properties_sidedef(intersect,\
-					distance, doom->lib.sidedef[x], doom);
-			}
-		}
+		render.distance = sidedef_intersection_distance(ray,\
+			doom->lib.sidedef[x].line, &render.intersect);
+		if (render.distance <= render.min_distance &&\
+		doom->lib.sidedef[x].opp_sector != doom->prev_sector)
+			set_near_sidedef_distance(doom, &render, x);
 		x++;
 	}
-	doom->stripe_distance[(int)ray.plane_x] = min_distance;
-	sprite_check(doom, ray, sector, prev_sector);
-	if (min_distance != INFINITY)
-	{
-		if (near_sidedef.opp_sector != -1 && \
-			near_sidedef.opp_sector != prev_sector)
-		{
-			doom->prev_sidedef.id = near_sidedef.id;
-			doom->prev_sidedef.distance = near_sidedef.distance;
-			doom->prev_sidedef.intersect = near_sidedef.intersect;
-			if (near_sidedef.action == 5)
-				ray.line.start = near_sidedef.intersect;
-			sidedef_render(doom, ray, near_sidedef.opp_sector, sector);
-		}
-		doom->distance = min_distance;
-		project_on_plane(doom, near_sidedef, ray.plane_x);
-	}
+	doom->stripe_distance[(int)ray.plane_x] = render.min_distance;
+	sprite_check(doom, ray, sector, doom->prev_sector);
+	if (render.min_distance != INFINITY)
+		next_sector_render(doom, ray, render, sector);
 }

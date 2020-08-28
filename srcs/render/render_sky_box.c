@@ -26,12 +26,14 @@ static void			set_properties_plane_sky(t_doom *doom,
 
 static void			set_properties(t_doom *doom, int set)
 {
-	if (set == 0 && doom->dir_angle >= 6.3)
+	if (set == 0 && doom->dir_angle >= 2 * PI)
 		doom->dir_angle *= PI / 180;
+	else if (set == 0 && doom->dir_angle <= 0.0)
+		doom->dir_angle = (2 * PI) - doom->dir_angle;
 	if (set == 0)
 	{
-		doom->texture_width = 128;
-		doom->texture_height = 64;
+		doom->texture_width = doom->lib.sky_lib[0]->w;
+		doom->texture_height = doom->lib.sky_lib[0]->h;
 		doom->player_std_height = 32;
 	}
 	else
