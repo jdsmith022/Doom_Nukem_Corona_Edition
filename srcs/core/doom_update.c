@@ -2,8 +2,12 @@
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/events.h"
+#include "../../includes/menu.h"
+#include "../../includes/sprites.h"
+#include "../../includes/audio.h"
+#include "../../includes/gameplay.h"
 
-void	doom_update(t_doom *doom, double dt)
+static void	sdl_poll_events(t_doom *doom, double dt)
 {
 	SDL_Event event;
 
@@ -25,6 +29,18 @@ void	doom_update(t_doom *doom, double dt)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
 	key_handler(doom, &doom->own_event, dt);
-	if (doom->game_editor == FALSE)
+}
+
+void	doom_update(t_doom *doom, double dt)
+{
+	sdl_poll_events(doom, dt);
+	if (doom->game_editor == FALSE && doom->menu->state == start_game)
+	{
 		action_handler(doom);
+		sprite_reset(doom);
+		audio(doom, &doom->own_event);
+		groceries(doom);
+	}
+	if (doom->game_editor == TRUE && doom->menu->state == start_game)
+		open_game_editor(doom);
 }

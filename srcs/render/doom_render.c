@@ -38,7 +38,6 @@ void			doom_render(t_doom *doom)
 	doom->visible_sprites = 0;
 	while (x < WIDTH)
 	{
-		printf("here\n");
 		ray.angle = clamp_angle(ray.angle);
 		doom->ray_angle = ray.angle;
 		ray.line.end.x = ray.line.start.x + doom->max_ray * cos(ray.angle);
