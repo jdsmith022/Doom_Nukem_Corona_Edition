@@ -10,7 +10,6 @@ int	main(void)
 
  	ft_bzero(&doom, sizeof(t_doom));
 	sdl_init(&doom);
-	// sleep(10);
 	save_libraries(&doom);
 	save_font_libraries(&doom);
 	doom_init(&doom);
