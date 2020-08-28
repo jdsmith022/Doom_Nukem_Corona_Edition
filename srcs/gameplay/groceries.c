@@ -44,6 +44,8 @@ void			handle_groceries(t_doom *doom)
 
 	if (!handle_mouse_state(doom))
 		return ;
+	if (!doom->groceries->shopping_list || !doom->groceries->shopping_list_len)
+		return ;
 	if (click_on_basket(&doom->groceries->basket, &type,
 	doom->own_event.hold_x, doom->own_event.hold_y))
 	{

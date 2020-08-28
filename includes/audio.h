@@ -11,7 +11,8 @@
 # define OFF			0
 # define ON				1
 
-# define NUM_OF_SOUNDS	9
+# define NUM_OF_SOUNDS	12
+
 # define BUTTON 		0
 # define FOOTSTEPS 		1
 # define JUMP			2
@@ -21,6 +22,9 @@
 # define CLICK			6
 # define PICKUP			7
 # define HIT			8
+# define ENGINE			9
+# define LIFT_UP		10
+# define LIFT_DOWN		11
 
 # define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 # define S_FOOTSTEPS 	"/Movement/Footsteps/footstep_loop.wav"
@@ -31,13 +35,17 @@
 # define S_CLICK		"/General Sounds/Buttons/lightswitch.wav"
 # define S_PICKUP		"/Weapons/Single Shot Sounds/sfx_weapon_singleshot11.wav"
 # define S_HIT			"/Weapons/Single Shot Sounds/sfx_weapon_singleshot11.wav"
+# define S_ENGINE		"/General Sounds/Buttons/scissorlift_engine.wav"
+# define S_LIFT_U		"/General Sounds/Buttons/scissorlift_updown.wav"
+# define S_LIFT_D		"/General Sounds/Buttons/scissorlift_updown.wav"
 # define MU_1			"/music/main_theme.wav"
 # define MU_2			"/music/supermarket_badspeakers.wav"
 
 static const char *g_audio_paths[] = {
 	S_UI_1, S_FOOTSTEPS, S_JUMP,
 	S_GUNSHOT, S_DEATH, S_FALL,
-	S_CLICK, S_PICKUP, S_HIT, MU_1, MU_2
+	S_CLICK, S_PICKUP, S_HIT, S_ENGINE,
+	S_LIFT_U, S_LIFT_D, MU_1, MU_2
 };
 
 typedef struct s_event	t_event;
@@ -46,6 +54,7 @@ typedef struct s_doom	t_doom;
 typedef struct			s_audio_event {
 	bool				jump_toggled;
 	bool				groc_pickup;
+	bool				prev_scissor_state;
 }						t_audio_event;
 
 typedef struct			s_audio {

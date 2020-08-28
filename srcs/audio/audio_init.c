@@ -52,16 +52,10 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 	}
 }
 
-void				init_audio(t_doom *doom)
+static void			set_audio_event(t_doom *doom)
 {
 	t_audio_event	*event;
 
-	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio));
-	if (doom->audio == NULL)
-		doom_exit_failure(doom, "error: audio malloc");
-	doom->audio->engine = ON;
-	if (!doom->audio || doom->audio->engine == OFF)
-		return ;
 	event = (t_audio_event *)ft_memalloc(sizeof(t_audio_event));
 	if (event == NULL)
 		doom_exit_failure(doom, "error: audio event malloc");
@@ -69,13 +63,27 @@ void				init_audio(t_doom *doom)
 	doom->audio->music_vol = TRUE;
 	doom->audio->sound_vol = TRUE;
 	doom->audio->event->groc_pickup = FALSE;
+	doom->audio->event->prev_scissor_state = FALSE;
+}
+
+void				init_audio(t_doom *doom)
+{
+	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio));
+	if (doom->audio == NULL)
+		doom_exit_failure(doom, "error: audio malloc");
+	doom->audio->engine = ON;
+	if (!doom->audio || doom->audio->engine == OFF)
+		return ;
+	set_audio_event(doom);
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,
 	MIX_DEFAULT_CHANNELS, AUDIO_BUFF) == -1)
 		exit_error(doom, Mix_GetError());
 	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format,
 		&doom->audio->channels);
-	Mix_AllocateChannels(4);
+	Mix_AllocateChannels(8);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
+	Mix_Volume(4, MIX_MAX_VOLUME / 9);
+	Mix_Volume(6, MIX_MAX_VOLUME / 4);
 	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);
 	load_audio(doom, doom->audio);
