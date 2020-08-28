@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 19:28:33 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 19:29:33 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[16].font_color = doom->lib.font_lib.font_color.red;
 	lib[17].str = "Press T and use the cursor to remove items from\
 	your basket.";
-	lib[17].font_rect.x = WIDTH / 5;
-	lib[17].font_rect.y = HEIGHT / 2 + 115;
+	lib[17].font_rect.x = WIDTH / 6;
+	lib[17].font_rect.y = HEIGHT / 2 + 100;
 	lib[17].font_color = doom->lib.font_lib.font_color.white;
 	lib[18].str = "Press T again to exit removal mode.";
 	lib[18].font_rect.x = WIDTH / 2 - 145;
