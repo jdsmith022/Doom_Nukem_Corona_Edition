@@ -16,7 +16,6 @@ void	resume_music(void)
 void	play_sound(Mix_Chunk *sample, int channel)
 {
 	Mix_PlayChannel(channel, sample, 0);
-	SDL_Log("Playing sound on channel %d", channel);
 }
 
 void	loop_sound(Mix_Chunk *sample, int channel)
