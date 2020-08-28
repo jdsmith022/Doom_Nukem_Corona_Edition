@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/30 15:48:00 by efrank        #+#    #+#                 */
-/*   Updated: 2020/08/23 10:13:44 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/28 22:11:22 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int				get_next_line(const int fd, char **line)
 
 	if (fd < 0)
 		return (-1);
-
 	buff2 = get_buff(fd, &head);
 	if (buff2->content == NULL)
 	{
