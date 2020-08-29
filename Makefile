@@ -29,7 +29,7 @@ CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_p
 			doom_update exit free_library_struct free_library_sdl update_hud_ui \
 			doom_init_events doom_init_ui
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
-				check_diff
+				check_diff key_select_and_shoot
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_row slope_projections put_texture \
 				draw_skybox_sky draw_skybox_sidedefs \
@@ -48,7 +48,7 @@ SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
 				sprite_hud_scale find_prev_sectors
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
-				 find_shelf init_groceries grocery_ui add_infection \
+				 find_shelf init_groceries grocery_ui \
 				 position gameplay game_over timer sprite_hit \
 				 check_select_spray_sprite \
 				 remove_red_virus
@@ -58,8 +58,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				font_timer pause_font vanishing_text_box set_font_style \
 				instruction_font instruction_font_2 time_difference \
 				shopper_hit_font
-HUD_FILES = update_hud calculate_hud_levels update_levels_and_timer \
-			update_list_and_basket
+HUD_FILES = update_hud calculate_hud_levels update_levels \
+			update_list_and_basket update_timer
 MENU_FILES = start_menu event_settings game_over print_background menu_selection \
 			menu_click_events finished_text print_menu
 ACTION_FILES = light_switch moving_sidedef sprite_interaction \

@@ -1,16 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   menu.h                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/27 16:02:26 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MENU_H
 # define MENU_H
 
 typedef	struct s_doom	t_doom;
 
+typedef enum			e_menu_state
+{
+	menu,
+	start_game,
+	game_over,
+	game_editor,
+	settings,
+	game_paused,
+	finished,
+	begin,
+	start_timer
+}						t_menu_state;
+
 typedef struct			s_menu {
-	bool				menu;
-	bool				start;
-	bool				game_over;
-	bool				game_editor;
+	int					state;
 	bool				settings;
-	bool				pause;
-	bool				finished;
+	bool				menu;
 	bool				start_timer;
 }						t_menu;
 

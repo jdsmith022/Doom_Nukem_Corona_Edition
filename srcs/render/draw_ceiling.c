@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_ceiling.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 22:03:03 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 22:03:04 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
@@ -21,7 +32,7 @@ static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 	&& doom->lib.sector[doom->i_sector].action == 1)
 		*limit = doom->lib.portal_ceiling;
 	else
-		*limit = 0;
+		*limit = sector.ceiling_end;
 }
 
 void			draw_ceiling(t_doom *doom, int x,

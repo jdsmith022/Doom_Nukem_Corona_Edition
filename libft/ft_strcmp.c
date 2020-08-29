@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jesmith <marvin@codam.nl>                    +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/18 14:47:17 by jesmith        #+#    #+#                */
-/*   Updated: 2020/01/11 13:47:02 by jesmith       ########   odam.nl         */
+/*   Created: 2020/08/28 15:24:36 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:24:37 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

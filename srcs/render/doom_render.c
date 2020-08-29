@@ -2,7 +2,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
-static double	clamp_angle(double angle)
+double	clamp_angle(double angle)
 {
 	if (angle > 360 * (PI / 180))
 		angle -= 360 * (PI / 180);

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   menu_selection.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:15:03 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
@@ -6,40 +17,41 @@
 static void		finished_menu(t_doom *doom)
 {
 	add_score_to_sdl_text(doom);
-	while (doom->menu->finished == TRUE)
+	while (doom->menu->state == finished)
 		menu_print_loop(doom);
 }
 
 static void		game_over_menu(t_doom *doom)
 {
-	while (doom->menu->game_over == TRUE)
+	while (doom->menu->state == game_over)
 		menu_print_loop(doom);
 }
 
 static void		pause_menu(t_doom *doom)
 {
-	int hold_time;
-	int curr_time;
+	struct timespec hold_time;
+	struct timespec curr_time;
 
-	hold_time = SDL_GetTicks();
-	while (doom->menu->pause == TRUE)
+	clock_gettime(doom->game_time, &hold_time);
+	while (doom->menu->state == game_paused)
 	{
 		Mix_PauseMusic();
 		menu_print_loop(doom);
 	}
 	resume_music();
-	curr_time = SDL_GetTicks();
-	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
+	clock_gettime(doom->game_time, &curr_time);
+	doom->game_start_time.tv_sec = \
+		doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
 	doom->hud_display = TRUE;
 	SDL_SetRelativeMouseMode(TRUE);
 }
 
 void			menus(t_doom *doom)
 {
-	if (doom->menu->game_over == TRUE)
+	if (doom->menu->state == game_over)
 		game_over_menu(doom);
-	if (doom->menu->pause == TRUE)
+	if (doom->menu->state == game_paused)
 		pause_menu(doom);
-	if (doom->menu->finished == TRUE)
+	if (doom->menu->state == finished)
 		finished_menu(doom);
 }

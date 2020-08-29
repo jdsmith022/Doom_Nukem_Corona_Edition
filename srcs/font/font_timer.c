@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   font_timer.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 19:12:16 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
@@ -71,23 +82,23 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.checkout, 17, 18);
+			&doom->lib.font_lib.bools.checkout, 20, 21);
 	else if (doom->lib.font_lib.bools.trolly == TRUE && \
 	doom->lib.sector[doom->i_sector].action == START_SECTOR)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 16, 17);
+			&doom->lib.font_lib.bools.text, 19, 20);
 	else if (doom->lib.font_lib.bools.health_pack == TRUE)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 21, 22);
+			&doom->lib.font_lib.bools.text, 24, 25);
 	else if (doom->lib.font_lib.bools.facemask == TRUE)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 22, 23);
+			&doom->lib.font_lib.bools.text, 25, 26);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
 	{
 		set_background_coords_middle_large(doom);
 		font_timer_box_long(doom, \
-			&doom->lib.font_lib.bools.start_sector, 10, 16);
+			&doom->lib.font_lib.bools.start_sector, 10, 19);
 	}
 }
 

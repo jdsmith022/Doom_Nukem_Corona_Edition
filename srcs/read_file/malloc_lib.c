@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:05 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:44:06 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 22:06:10 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ SDL_Surface		**malloc_sdl_lib(t_doom *doom, t_bmp *images, int len)
 
 	temp_lib = (SDL_Surface**)ft_memalloc(sizeof(SDL_Surface*) * len);
 	if (temp_lib == NULL)
-	{
-		doom_exit_lib_failure(images, MALLOC_ERR);
-		doom_exit_failure(doom, MALLOC_ERR);
-	}
+		bmp_safe_exit(doom, images);
 	return (temp_lib);
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/23 11:41:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/23 14:32:57 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 22:00:28 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void			save_bpm_to_sdl(t_doom *doom, t_bmp *images,
 						SDL_Surface **lib, int index)
 {
 	lib[index] = SDL_CreateRGBSurface(0, \
-		images[index].info.width, images[index].info.height,\
+		images->info.width, images->info.height,\
 		24, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 	if (lib[index] == NULL)
 		bmp_safe_exit(doom, images);
-	ft_memcpy(lib[index]->pixels, images[index].pixels,\
-		(images[index].info.img_size));
+	ft_memcpy(lib[index]->pixels, images->pixels,\
+		(images->info.img_size));
 }

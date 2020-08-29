@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   update_hud.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/28 15:16:23 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:16:24 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
@@ -95,18 +106,16 @@ static void	draw_hud_bottom_bar(t_doom *doom)
 
 void		update_hud(t_doom *doom)
 {
-	if (doom->game_editor == FALSE && doom->menu->game_over == FALSE)
+	if (doom->game_editor == FALSE && doom->menu->state != game_over)
 	{
 		draw_hud_top_bar(doom);
 		draw_player_adds(doom);
 		draw_hud_bottom_bar(doom);
 		draw_hud_side_bar(doom);
-		if (calculate_hud_levels(doom) == 1)
-			update_hud_levels(doom, doom->lib.font_lib.hud_font);
-		update_hud_levels(doom, doom->lib.font_lib.hud_font);
+		calculate_hud_levels(doom);
+		update_levels(doom, doom->lib.font_lib.hud_font);
 		if (doom->menu->start_timer == TRUE)
 			update_timer(doom, doom->lib.font_lib.hud_font);
 		update_list_and_basket(doom);
 	}
-	font_to_screen(doom);
 }

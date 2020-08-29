@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/07 18:08:46 by efrank         #+#    #+#                */
-/*   Updated: 2019/11/14 12:28:28 by efrank        ########   odam.nl         */
+/*   Created: 2019/01/07 18:08:46 by efrank        #+#    #+#                 */
+/*   Updated: 2020/08/28 22:17:40 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "../ft_printf/ft_printf.h"
 
-# define ABS(x) (x) < 0 ? -(x) : (x)
 # define BUFF_SIZE 16
 
 typedef struct		s_list
@@ -96,10 +94,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_free_arrays(void **str);
-int					ft_printf(const char *string, ...);
 void				ft_put_unsigned(unsigned long long n);
 int					ft_intlen(long long n);
 double				ft_map(double n, double a, double b, double y, double z);
-
 
 #endif

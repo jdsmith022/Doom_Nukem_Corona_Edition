@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   read.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/27 21:03:03 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/27 21:51:21 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "bmp.h"
 
 static void			swap_rows(t_bmp *bmp, uint8_t padding)
@@ -35,7 +47,7 @@ static void			read_pixels(t_bmp *bmp, int fd)
 	bmp->info.img_size = bmp->info.height * bmp->info.width;
 	bmp->info.img_size *= (bmp->info.bits_per_pixel / 8);
 	bmp->info.img_size += (padding * bmp->info.height);
-	bmp->pixels = (void *)ft_memalloc(bmp->info.img_size);
+	bmp->pixels = ft_memalloc(bmp->info.img_size);
 	if (bmp->pixels == NULL)
 		return ;
 	read(fd, bmp->pixels, bmp->info.img_size);
@@ -45,7 +57,7 @@ static void			read_pixels(t_bmp *bmp, int fd)
 
 t_bmp				read_bmp(int fd)
 {
-	t_bmp_header 	header;
+	t_bmp_header	header;
 	t_bmp			bmp;
 	uint32_t		i;
 

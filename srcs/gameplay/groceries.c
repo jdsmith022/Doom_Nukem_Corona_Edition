@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/events.h"
 
 static void		set_shelf_type(t_doom *doom, uint8_t *type)
 {
@@ -42,6 +43,8 @@ void			handle_groceries(t_doom *doom)
 	uint8_t		type;
 
 	if (!handle_mouse_state(doom))
+		return ;
+	if (!doom->groceries->shopping_list || !doom->groceries->shopping_list_len)
 		return ;
 	if (click_on_basket(&doom->groceries->basket, &type,
 	doom->own_event.hold_x, doom->own_event.hold_y))

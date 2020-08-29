@@ -5,9 +5,10 @@
 static uint8_t	is_existing_grocery(t_doom *doom, SDL_Surface *curr)
 {
 	int		i;
-	t_item	*shoppinglist = doom->groceries->shopping_list;
+	t_item	*shoppinglist;
 
 	i = 0;
+	shoppinglist = doom->groceries->shopping_list;
 	while (i < doom->groceries->shopping_list_len)
 	{
 		if (shoppinglist[i].type == *(uint8_t *)curr->userdata)

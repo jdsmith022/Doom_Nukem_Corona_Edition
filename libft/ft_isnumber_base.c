@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_isnumber_base.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jessicasmith <jessicasmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/13 21:02:41 by jessicasmit    #+#    #+#                */
-/*   Updated: 2020/02/05 17:10:32 by jesmith       ########   odam.nl         */
+/*   Created: 2020/08/28 15:31:24 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/28 15:31:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

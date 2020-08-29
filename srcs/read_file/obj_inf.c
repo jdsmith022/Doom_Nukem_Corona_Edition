@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:46:15 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 11:06:01 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/27 17:14:36 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ t_sprite	object_inf(t_doom *doom, int fd, int sector, int obj_len)
 	while (i < 7 + 4 * 5)
 	{
 		safe = get_line(doom, &line, fd, 1);
+		free(line);
 		add_inf_to_obj(doom, &sprite, i, safe);
 		if (i == 6)
 			malloc_lines(doom, &sprite, safe);
@@ -110,7 +111,6 @@ t_sprite	object_inf(t_doom *doom, int fd, int sector, int obj_len)
 		if (ret == 1)
 			add_coordinates_obj(doom, &sprite, i, safe);
 		sprite.sector = sector;
-		free(line);
 		i++;
 	}
 	return (sprite);

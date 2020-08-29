@@ -42,7 +42,7 @@ void		sanitizer_refill(t_doom *doom)
 		doom->own_event.sanitizer_refills += 1;
 		if (doom->own_event.sanitizer_refills < 3 \
 		&& doom->own_event.sanitizer_refills > 0)
-			doom->hud->sanitizer = TRUE;
+			doom->hud->update = sanitizer;
 		doom->own_event.mouse_press = FALSE;
 	}
 	if (doom->own_event.refill == TRUE && doom->own_event.mouse_press == FALSE)

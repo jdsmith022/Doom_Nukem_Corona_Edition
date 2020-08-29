@@ -8,10 +8,8 @@ int	main(void)
 {
 	t_doom	doom;
 
-	srand(time(NULL));
 	ft_bzero(&doom, sizeof(t_doom));
-	if (sdl_init(&doom) != 0)
-		doom_exit_failure(&doom, "unable to initialize SDL\n");
+	sdl_init(&doom);
 	save_libraries(&doom);
 	save_font_libraries(&doom);
 	doom_init(&doom);

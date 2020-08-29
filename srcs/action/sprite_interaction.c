@@ -38,7 +38,7 @@ void		player_fall(t_doom *doom)
 			doom->player_height -= 20 - (GRAVITY * (duration + 0.05));
 			if (doom->player_height < min_height)
 				doom->player_height = min_height;
-			doom->hud->boxes = TRUE;
+			doom->hud->update = boxes;
 			doom->own_event.select = FALSE;
 			doom->own_event.shoot = FALSE;
 			event->died = FALSE;

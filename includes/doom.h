@@ -18,7 +18,6 @@
 // # include "render.h"
 
 # include "../sdl/includes/SDL.h"
-// # include "../SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # define NAME "Doom Nukem Corona Edition"
 
@@ -41,7 +40,7 @@
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 100
-# define SENSITIVITY 0.5
+# define SENSITIVITY 0.9
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -71,6 +70,12 @@ typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
+
+typedef enum			e_gamestate
+{
+	updated,
+	changed
+}						t_gamestate;
 
 # pragma pack(push, 1)
 
@@ -189,19 +194,8 @@ typedef struct		s_event {
 	struct timespec	sprite_timer;
 }					t_event;
 
-typedef struct		s_m_object{
-	int				amount;
-	int*			textures;
-	int*			face_ang;
-	char*			name;
-	int				action;
-	t_line*			movement;
-	// t_line			height;
-	int				speed;
-	int				spawn_time;
-}					t_m_object;
-
-typedef struct		s_object{
+typedef struct		s_object
+{
 	int				n_textures;
 	int*			textures;
 	int*			face_ang;
@@ -286,9 +280,9 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				sidedef_bottom[WIDTH]; //for cutting sprites
-	int				sidedef_top[WIDTH]; //for clipping sprites
-	int				sidedef_mid_bottom[WIDTH]; //for clipping sprites
+	int				sidedef_bottom[WIDTH];
+	int				sidedef_top[WIDTH];
+	int				sidedef_mid_bottom[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {
@@ -310,7 +304,6 @@ typedef struct		s_lib {
 	int				tot_len_infection;
 	t_sprite		*sprites;
 	int				n_mov_sprites;
-	t_m_object		*mov_sprites;
 	t_window		window;
 	int				*sprite_order;
 	double			light;
@@ -341,6 +334,14 @@ typedef struct		s_gamedesign {
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
+typedef struct		s_render
+{
+	t_sidedef		near_sidedef;
+	t_point			intersect;
+	double			distance;
+	double			min_distance;
+}					t_render;
+
 typedef struct		s_doom {
 	t_line			tests;
 	SDL_Window		*window;
@@ -355,6 +356,7 @@ typedef struct		s_doom {
 	t_groceries		*groceries;
 	t_menu			*menu;
 	t_hud			*hud;
+	int				game_state;
 	bool			is_running;
 	bool			game_editor;
 	bool			hud_display;
@@ -384,7 +386,7 @@ typedef struct		s_doom {
 	t_prev_sidedef	prev_sidedef;
 	int				save_poster;
 	int				game_time;
-	int				game_start_time;
+	struct timespec	game_start_time;
 	int				save_scissor_lift;
 	int				up;
 }					t_doom;
@@ -393,7 +395,7 @@ typedef struct		s_doom {
 int					main(void);
 void				game_init(t_doom *doom);
 void				doom_init(t_doom *doom);
-int					sdl_init(t_doom *doom);
+void				sdl_init(t_doom *doom);
 void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
 void				init_events(t_event *event);
@@ -422,26 +424,6 @@ void				doom_exit_read_failure(t_doom *doom, \
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 int					line_num(int i);
-
-/*events functions*/
-void				key_press(t_doom *doom, t_event *event,\
-						SDL_KeyboardEvent *key);
-void				key_release(t_event *event, SDL_KeyboardEvent *key);
-void				key_handler(t_doom *doom, t_event *event, double dt);
-void				mouse_press(t_doom *doom,\
-						SDL_MouseButtonEvent *button, t_event event);
-void				mouse_release(t_doom *doom,\
-						SDL_MouseButtonEvent *button);
-void				camera_movement(t_doom *doom,\
-						SDL_MouseMotionEvent *motion, double dt);
-void				move_cam_direction(t_doom *doom,\
-						SDL_MouseMotionEvent *motion,\
-						double dt, t_event *event);
-void				set_new_position(t_doom *doom, t_event *event, double dt);
-int					check_floor_diff(t_doom *doom, int sector, int next_sector);
-int					check_sector_height_diff(t_doom *doom,\
-						int sector, int next_sector);
-bool				handle_mouse_state(t_doom *doom);
 
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
@@ -480,8 +462,7 @@ void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
 void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
-// void				draw_window(t_doom *doom, t_plane plane,
-						// t_sidedef sidedef, int x);
+
 void				draw_window_as_sprite(t_doom *doom);
 void				save_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
@@ -503,8 +484,8 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
-int					set_poster(int x, double distance, t_point intersect,\
-						t_sidedef *poster);
+int					set_poster(t_doom *doom, int x, double distance, \
+						t_point intersect);
 void				draw_poster(t_doom *doom, t_plane plane,\
 						int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
@@ -517,6 +498,7 @@ void				add_light_to_pixel(t_doom *doom, t_sector sector,\
 void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
 t_ray				init_ray(t_doom *doom, int x);
+double				clamp_angle(double angle);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
