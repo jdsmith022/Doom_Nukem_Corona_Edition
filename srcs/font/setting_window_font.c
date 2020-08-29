@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:40:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 16:56:47 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 17:59:23 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_text_3(t_doom *doom, t_font *lib, int start)
 	lib[9].font_rect.x = WIDTH / 20;
 	lib[9].font_rect.y = start * 0.5;
 	lib[9].font_color = doom->lib.font_lib.font_color.blue;
-	lib[10].str = "Righthanded				or				Lefthanded";
+	lib[10].str = "Lefthanded				or				Righthanded";
 	lib[10].font_rect.x = WIDTH / 20;
 	lib[10].font_rect.y = start * 1.5;
 	lib[10].font_color = doom->lib.font_lib.font_color.blue;

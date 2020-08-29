@@ -21,7 +21,7 @@ static void		draw_add_on(t_doom *doom, int sprite_i, int right_select)
 	draw_stripes_bar(doom, bar, sprite_i);
 }
 
-static void			add_mist_to_sanitizer(t_doom *doom, int spraying_hand)
+static void			add_mist_to_sanitizer(t_doom *doom, int spraying_hand, int right_select)
 {
 	int				diff;
 
@@ -35,59 +35,61 @@ static void			add_mist_to_sanitizer(t_doom *doom, int spraying_hand)
 	{
 		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
 		if (diff == 0)
-			draw_add_on(doom, spraying_hand);
+			draw_add_on(doom, spraying_hand, right_select);
 	}
 }
 
-static void	set_player_sprite(t_doom *doom, int spray_hand, int spraying_hand,
-				int left_select, int right_select)
+static void	set_player_sprite(t_doom *doom, int *spray_hand, int *spraying_hand,
+				int *left_select, int *right_select)
 {
+	printf("doom->sprite: %d -- hand: %d\n", doom->player_sprite, doom->player_handed);
 	if (doom->player_sprite == player_1)
 	{
 		if (doom->player_handed == right)
 		{
-			spray_hand = 102;
-			spraying_hand = 108;
+			*spray_hand = 102;
+			*spraying_hand = 108;
 		}
 		else
 		{
-			spray_hand = 103;
-			spraying_hand = 107;
+			*spray_hand = 103;
+			*spraying_hand = 107;
 		}
-		left_select = 98;
-		right_select = 99;
+		*left_select = 98;
+		*right_select = 99;
 	}
-	if (doom->player_sprite == player_2)
+	else if (doom->player_sprite == player_2)
 	{
 		if (doom->player_handed == right)
 		{
-			spray_hand = 104;
-			spraying_hand = 110;
+			*spray_hand = 104;
+			*spraying_hand = 110;
 		}
 		else
 		{
-			spray_hand = 105;
-			spraying_hand = 109;
+			*spray_hand = 105;
+			*spraying_hand = 109;
 		}
-		left_select = 100;
-		right_select = 101;
+		*left_select = 100;
+		*right_select = 101;
 	}
-	else
+	else if (doom->player_sprite == player_3)
 	{
 		if (doom->player_handed == right)
 		{
-			spray_hand = 106;
-			spraying_hand = 111;
+			*spray_hand = 106;
+			*spraying_hand = 111;
 		}
 		else
 		{
-			spray_hand = 29;
-			spraying_hand = 30;
+			*spray_hand = 29;
+			*spraying_hand = 30;
 		}
-		left_select = 74;
-		right_select = 75;
+		*left_select = 74;
+		*right_select = 75;
 	}
 	doom->player_sprite = set;
+	printf("%d, %d, %d, %d\n", *spray_hand, *spraying_hand, *left_select, *right_select);
 }
 
 void		draw_player_adds(t_doom *doom)
@@ -99,7 +101,7 @@ void		draw_player_adds(t_doom *doom)
 	static int		right_select;
 
 	if (doom->player_sprite != set)
-		set_player_sprite(doom, spray_hand, spraying_hand, left_select, right_select);
+		set_player_sprite(doom, &spray_hand, &spraying_hand, &left_select, &right_select);
 	if (doom->own_event.scissor_lift == TRUE)
 	{
 		sprite_i = SCISSOR;
@@ -107,7 +109,7 @@ void		draw_player_adds(t_doom *doom)
 	}
 	if (doom->own_event.shoot == TRUE)
 	{
-		add_mist_to_sanitizer(doom, spraying_hand);
+		add_mist_to_sanitizer(doom, spraying_hand, right_select);
 		sprite_i = spray_hand;
 		draw_add_on(doom, sprite_i, right_select);
 		draw_add_on(doom, CROSS_HAIR, right_select);

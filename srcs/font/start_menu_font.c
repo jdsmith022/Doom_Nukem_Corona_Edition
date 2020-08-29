@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:38:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 17:26:22 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 17:55:04 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[3].font_rect.y = 300;
 	lib[3].font_color = doom->lib.font_lib.font_color.blue;
 	lib[4].str = "Player Settings";
-	lib[4].font_rect.x = WIDTH / 2.8;
+	lib[4].font_rect.x = WIDTH / 2.7;
 	lib[4].font_rect.y = 450;
 	lib[4].font_color = doom->lib.font_lib.font_color.blue;
 	set_text2(doom, lib);

@@ -62,7 +62,8 @@ typedef enum			e_settings
 	player_2,
 	player_3,
 	left,
-	right
+	right,
+	set
 }						t_settings;
 
 # pragma pack(push, 1)
