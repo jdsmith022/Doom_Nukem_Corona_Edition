@@ -323,6 +323,14 @@ typedef struct		s_gamedesign {
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
+typedef struct		s_player
+{
+	int				spray_hand;
+	int				spraying_hand;
+	int				left_select;
+	int				right_select;
+}					t_player;
+
 typedef struct		s_render
 {
 	t_sidedef		near_sidedef;
