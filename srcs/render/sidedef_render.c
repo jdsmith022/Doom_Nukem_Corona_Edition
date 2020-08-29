@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:46 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:03:22 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 15:52:37 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ static void		next_sector_render(t_doom *doom, t_ray ray,
 static void		set_near_sidedef_distance(t_doom *doom,
 						t_render *render, int x)
 {
-	if (doom->lib.sidedef[x].action == 4 || \
-	doom->lib.sidedef[x].action == 8)
+	if (doom->lib.sidedef[x].action == 4 || doom->lib.sidedef[x].action == 8)
 		render->near_sidedef.poster = \
 			set_poster(doom, x, render->distance, render->intersect);
 	else

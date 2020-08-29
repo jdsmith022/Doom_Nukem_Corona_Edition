@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 15:51:28 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 16:16:26 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,22 @@
 static void		set_reason_for_gameover(t_doom *doom)
 {
 	TTF_Font	*font;
-	char		*reason;
-	char		*status;
 	
 	printf("here\n");
-	reason = "Oh bummer! You ran out of time!!";
-	status = "Try again and keep safe!";
 	font = doom->lib.font_lib.font_30;
-	doom->lib.font_lib.game_over_font[1].str = reason;
+	doom->lib.font_lib.game_over_font[1].str = "Oh bummer! You ran out of time!!";
 	single_font_to_sdl(doom, doom->lib.font_lib.game_over_font[1], font);
-	doom->lib.font_lib.game_over_font[2].str = status;
+	printf("1: %s\n", doom->lib.font_lib.game_over_font[1].str);
+	doom->lib.font_lib.game_over_font[2].str =  "Try again and keep safe!";
 	single_font_to_sdl(doom, doom->lib.font_lib.game_over_font[2], font);
+	printf("2: %s\n", doom->lib.font_lib.game_over_font[2].str);
 	printf("end");
 }
 
 static void	game_over_menu(t_doom *doom)
 {
-	if (doom->hud->corona_level < 100)
-		set_reason_for_gameover(doom);
 	while (doom->menu->state == game_over)
 	{
-		printf("in while loop\n");
 		doom->hud_display = FALSE;
 		SDL_SetRelativeMouseMode(SDL_FALSE);
 		print_background(doom, 0x00002E);
@@ -78,7 +73,9 @@ void			menus(t_doom *doom)
 {
 	if (doom->menu->state == game_over)
 	{
-
+		printf("yo\n");
+		if (doom->hud->corona_level < 100)
+			set_reason_for_gameover(doom);
 		game_over_menu(doom);
 	}
 	if (doom->menu->state == game_paused)

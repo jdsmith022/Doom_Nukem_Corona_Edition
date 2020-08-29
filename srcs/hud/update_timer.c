@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:16:05 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:16:06 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 16:19:24 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,10 @@ void		update_timer(t_doom *doom, t_font *lib)
 	free(timer);
 	lib[6].str = new_time;
 	free(new_time);
-	lib[6].font_rect.x = WIDTH / 2.4;
-	lib[6].font_rect.y = 15;
-	lib[6].font_color = doom->lib.font_lib.font_color.white;
 	if (time < 100)
 		lib[6].font_color = doom->lib.font_lib.font_color.red;
 	else
 		lib[6].font_color = doom->lib.font_lib.font_color.white;
 	font = doom->lib.font_lib.font_22;
 	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[6], font);
-}
-
-static void	update_sanitizer_levels(t_doom *doom, t_font *lib,
-				int level, char *sanitizer_level)
-{
-	TTF_Font	*font;
-
-	lib[5].str = sanitizer_level;
-	lib[5].font_rect.x = WIDTH - 250;
-	lib[5].font_rect.y = HEIGHT - 35;
-	if (level < 15)
-		lib[5].font_color = doom->lib.font_lib.font_color.red;
-	else
-		lib[5].font_color = doom->lib.font_lib.font_color.white;
-	font = doom->lib.font_lib.font_22;
-	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[5], font);
-	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[0], font);
-	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[1], font);
-	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[2], font);
-	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[3], font);
 }
