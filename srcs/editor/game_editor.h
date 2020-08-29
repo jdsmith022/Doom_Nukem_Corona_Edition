@@ -5,12 +5,6 @@
 # include <stdint.h>
 // # include "../../includes/doom.h"
 
-
-#define EDIT doom->game_design
-#define SIDEDEF EDIT.sidedef
-#define SECTOR EDIT.sector
-#define OBJECT EDIT.object
-
 #define FRAME_COUNT 8
 #define FRAME_WIDTH 32
 #define FRAME_HEIGHT 32

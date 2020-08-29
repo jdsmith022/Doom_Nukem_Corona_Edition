@@ -517,9 +517,7 @@ void				open_game_editor(t_doom *doom);
 void				add_sidedef(t_doom *doom, int x, int y);
 void				del_sidedef(t_doom *doom);
 void				add_sector(t_doom *doom);
-void				del_sector(t_doom *doom);
-void				draw_bar(t_doom *doom, Uint32 **pixels, t_bar bar);
-void				draw_bar_point(t_doom *doom, Uint32 **pixels, t_bar bar);
+void				del_sector(t_gamedesign *game_design);
 void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
@@ -535,8 +533,8 @@ void				add_object(t_doom *doom, int x, int y);
 void				draw_object(t_doom *doom, Uint32 **pixels);
 void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
 void				del_obj(t_doom *doom);
-void				add_specifications(t_doom *doom, int index);
-void				add_obj_lines(int x, int y, t_doom *doom, int index);
+void				add_specifications(t_gamedesign *gd, int index);
+void				add_obj_lines(int x, int y, t_gamedesign gd, t_line *ln);
 void				coor_pos(t_doom *doom);
 
 

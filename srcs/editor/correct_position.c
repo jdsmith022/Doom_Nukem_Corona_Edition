@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 
-void    add_to_line(t_line *line, double x, double y)
+static void    add_to_line(t_line *line, double x, double y)
 {
     line->start.x += fabs(x);
 	line->end.x += fabs(x);
@@ -9,43 +9,50 @@ void    add_to_line(t_line *line, double x, double y)
 	line->end.y += fabs(y);
 }
 
-void	change_pos(double x, double y, t_doom *doom)
+static int change_object(t_sprite **object, int k, t_sector sector, t_point change)
+{
+	int side;
+	
+	side = 0;
+	while (k < sector.i_objects + sector.n_objects)
+	{
+		while (side < 4)
+		{
+			add_to_line(&object[k]->lines[side], change.x, change.y);
+			side++;
+		}
+		object[k]->pos.x += fabs(change.x);
+		object[k]->pos.y += fabs(change.y);
+		k++;
+	}
+	return (k);
+}
+
+static void	change_pos(t_point change, t_doom *doom)
 {
 	int i;
 	int j;
 	int k;
-	int side;
 
 	i = 0;
 	j = 0;
 	k = 0;
-	while (i <= EDIT.s_len)
+	while (i <= doom->game_design.s_len)
 	{
-		SECTOR[i].diff_x += fabs(x);
-		SECTOR[i].diff_y += fabs(y);
-		while (j < SECTOR[i].i_sidedefs \
-		+ SECTOR[i].n_sidedefs)
+		doom->game_design.sector[i].diff_x += fabs(change.x);
+		doom->game_design.sector[i].diff_y += fabs(change.y);
+		while (j < doom->game_design.sector[i].i_sidedefs \
+		+ doom->game_design.sector[i].n_sidedefs)
 		{
-            add_to_line(&SIDEDEF[j].line, x, y);
+            add_to_line(&doom->game_design.sidedef[j].line, change.x, change.y);
 			j++;
 		}
-		while (k < SECTOR[i].i_objects \
-		+ SECTOR[i].n_objects)
-		{
-			side = 0;
-			while (side < 4)
-			{
-				add_to_line(&OBJECT[k].lines[side], x, y);
-				side++;
-			}
-            OBJECT[k].pos.x += fabs(x);
-            OBJECT[k].pos.y += fabs(y);
-			k++;
-		}
+		k = change_object(&doom->game_design.object, k,\
+		doom->game_design.sector[i], change);
 		i++;
 	}
-    EDIT.pl_x += fabs(x);
-    EDIT.pl_y += fabs(y);
+    doom->game_design.pl_x += fabs(change.x);
+    doom->game_design.pl_y += fabs(change.y);
 }
 
 void    check_line(t_line line, double *x, double *y)
@@ -63,29 +70,29 @@ void    check_line(t_line line, double *x, double *y)
 void	coor_pos(t_doom *doom)
 {
 	int		i;
-	double	x;
-	double	y;
+	t_point change;
 	int		side;
 
 	i = 0;
-	x = 0.0;
-	y = 0.0;
-	while (i < EDIT.w_len)
+	change.x = 0.0;
+	change.y = 0.0;
+	while (i < doom->game_design.w_len)
 	{
-        check_line(SIDEDEF[i].line, &x, &y);
+        check_line(doom->game_design.sidedef[i].line, &change.x, &change.y);
 		i++;
 	}
 	i = 0;
-	while (i < EDIT.o_len)
+	while (i < doom->game_design.o_len)
 	{
 		side = 0;
 		while (side < 4)
 		{
-            check_line(OBJECT[i].lines[side], &x, &y);
+            check_line(doom->game_design.object[i].lines[side],\
+			&change.x, &change.y);
 			side++;
 		}
 		i++;
 	}
-	if (x < 0.0 || y < 0.0)
-		change_pos(x, y, doom);
+	if (change.x < 0.0 || change.y < 0.0)
+		change_pos(change, doom);
 }
