@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-98
+112
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -409,6 +409,34 @@ assets/sprites/groceries/butter.bmp
 assets/sprites/groceries/pickled_eggs.bmp
 #97
 assets/sprites/groceries/fish.bmp
+#98
+assets/sprites/player/left_hand_reaching_0.bmp
+#99
+assets/sprites/player/right_hand_reaching_0.bmp
+#100
+assets/sprites/player/left_hand_reaching_1.bmp
+#101
+assets/sprites/player/right_hand_reaching_1.bmp
+#102
+assets/sprites/player/spray_right_hand_0.bmp
+#103
+assets/sprites/player/spray_left_hand_0.bmp
+#104
+assets/sprites/player/spray_right_hand_1.bmp
+#105
+assets/sprites/player/spray_left_hand_1.bmp
+#106
+assets/sprites/player/spray_right_hand_2.bmp
+#107
+assets/sprites/player/spraying_left_hand_0.bmp
+#108
+assets/sprites/player/spraying_right_hand_0.bmp
+#109
+assets/sprites/player/spraying_left_hand_1.bmp
+#110
+assets/sprites/player/spraying_right_hand_1.bmp
+#111
+assets/sprites/player/spraying_right_hand_2.bmp
 
 
 #ADD LEFT HAND AND RIGHT HAND

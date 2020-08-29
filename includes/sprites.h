@@ -91,7 +91,7 @@ void				find_sidedef_intersect_per_sector(t_doom *doom,\
 int					sprite_collision(t_doom *doom, t_line movement);
 void				exit_scissor_lift(t_doom *doom);
 void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index,\
-					int i, double distance);
+					int i);
 void				remove_red_virus(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
 void				draw_stripes_bar(t_doom *doom, t_line bar, int sprite_i);
