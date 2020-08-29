@@ -496,6 +496,7 @@ void				add_light_to_pixel(t_doom *doom, t_sector sector,\
 void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
 t_ray				init_ray(t_doom *doom, int x);
+double				clamp_angle(double angle);
 
 /*game editor*/
 void				open_game_editor(t_doom *doom);
