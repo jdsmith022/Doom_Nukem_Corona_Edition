@@ -1,4 +1,3 @@
-
 #include "../../includes/doom.h"
 
 static void		put_window_pixel(t_doom *doom, t_point pixel, Uint32 tex_dex,
@@ -59,7 +58,6 @@ void			save_window(t_doom *doom, t_plane plane,
 	doom->lib.window.sidedef_offset[x] = sidedef.offset;
 }
 
-//I will norm it wednesday :-D
 void			draw_window_as_sprite(t_doom *doom)
 {
 	Uint32	*pixels;
@@ -68,23 +66,20 @@ void			draw_window_as_sprite(t_doom *doom)
 	t_plane	plane;
 
 	x = doom->lib.window.x_start;
-	while (x < doom->lib.window.x_end)
+	while (x <= doom->lib.window.x_end)
 	{
-		// printf("X");
 		plane.height_standard = doom->lib.window.height_standard[x];
 		plane.wall_offset = doom->lib.window.wall_offset[x];
 		plane.sidedef_top = doom->lib.window.y_pixel_top[x];
 		pixel.y = doom->lib.window.y_pixel_top[x];
 		pixel.x = x;
 		pixels = doom->surface->pixels;
-		// light_sidedef_x_change(doom,\
-		doom->lib.sidedef[doom->lib.window.index], x);
 		while (pixel.y < doom->lib.window.y_pixel_bottom[x])
 		{
-			// if (doom->light == FALSE)
-				// light_sidedef_y_change(doom, pixel.y);
-			add_light_to_pixel(doom, doom->lib.sector[doom->lib.window.curr_sector], pixel.x, pixel.y);
-			doom->lib.sidedef[doom->lib.window.index].offset = doom->lib.window.sidedef_offset[x];
+			add_light_to_pixel(doom,\
+			doom->lib.sector[doom->lib.window.curr_sector], pixel.x, pixel.y);
+			doom->lib.sidedef[doom->lib.window.index].offset =\
+			doom->lib.window.sidedef_offset[x];
 			put_window_texture(doom, pixel, plane,\
 			doom->lib.sidedef[doom->lib.window.index]);
 			pixel.y++;
@@ -93,21 +88,3 @@ void			draw_window_as_sprite(t_doom *doom)
 	}
 	init_window(doom);
 }
-
-//NOT USING ANY MORE
-// void			draw_window(t_doom *doom, t_plane plane,
-// 					t_sidedef sidedef, int x)
-// {
-// 	Uint32	*pixels;
-// 	t_point	pixel;
-
-// 	pixel.y = plane.sidedef_top;
-// 	pixel.x = x;
-// 	pixels = doom->surface->pixels;
-// 	while (pixel.y < plane.sidedef_bottom)
-// 	{
-// 		add_light_to_pixel(doom, doom->lib.sector[sidedef.sector], x, pixel.y);
-// 		put_window_texture(doom, pixel, plane, sidedef);
-// 		pixel.y++;
-// 	}
-// }

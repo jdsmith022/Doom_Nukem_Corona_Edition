@@ -1,7 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
-//CHECK MODULO TIME
 int			find_virus_bottom(t_doom *doom, t_sprite *sprite,\
 			int virus_bottom, int virus_top)
 {
@@ -11,44 +10,13 @@ int			find_virus_bottom(t_doom *doom, t_sprite *sprite,\
 	int		val;
 
 	val = doom->lib.sprite_height[doom->lib.move];
-	// move = height_space_part / 4;
 	height_space_part = (virus_bottom - virus_top) / 5;
 	if (sprite->index % 3 == 0)
-	{
 		virus_bottom -= height_space_part;
-		// if (val == 4 || val == 13 || val == 14 || val == 3)
-		// 	virus_bottom = virus_bottom - (2 * move);
-		// else if (val == 5 || val == 12 || val == 15 || val == 2)
-		// 	virus_bottom = virus_bottom - move;
-		// else if (val == 7 || val == 10 || val == 17 || val == 0)
-		// 	virus_bottom = virus_bottom + move;
-		// else if (val == 8 || val == 9 || val == 18 || val == 19)
-		// 	virus_bottom = virus_bottom + (2 * move);
-	}
 	else if (sprite->index % 3 == 1)
-	{
 		virus_bottom -= (height_space_part * 2);
-		// if (val == 0 || val == 9 || val == 10 || val == 19)
-		// 	virus_bottom = virus_bottom - (2 * move);
-		// else if (val == 1 || val == 8 || val == 11 || val == 18)
-		// 	virus_bottom = virus_bottom - move;
-		// else if (val == 3 || val == 6 || val == 13 || val == 16)
-		// 	virus_bottom = virus_bottom + move;
-		// else if (val == 4 || val == 5 || val == 14 || val == 15)
-		// 	virus_bottom = virus_bottom + (2 * move);
-	}
 	else
-	{
 		virus_bottom -= (height_space_part * 3);
-		// if (val == 6 || val == 5)
-		// 	virus_bottom = virus_bottom - (2 * move);
-		// else if (val == 7 || val == 4)
-		// 	virus_bottom = virus_bottom - move;
-		// else if (val == 9 || val == 2)
-		// 	virus_bottom = virus_bottom + move;
-		// else if (val == 0 || val == 1)
-		// 	virus_bottom = virus_bottom + (2 * move);
-	}
 	virus_bottom = virus_move(virus_bottom, height_space_part,\
 		val, sprite->index);
 	return (virus_bottom);
