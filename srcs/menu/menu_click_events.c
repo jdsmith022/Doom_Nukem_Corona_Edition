@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 17:24:30 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 17:25:03 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 		doom->player_handed = right;
 	else
 		doom->player_handed = left;
-	printf("player: %d --- hand: %d\n", doom->player_sprite, doom->player_handed);
 }
 
 static void		difficulty_setting(t_doom *doom, int x, int y)
