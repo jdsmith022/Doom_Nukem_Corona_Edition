@@ -127,7 +127,6 @@ typedef struct			s_sprite {
 	int					visible;
 	double				distance;
 	int					prev_sectors[50];
-	// double				light;
 }						t_sprite;
 
 typedef struct		s_ray {
@@ -192,6 +191,7 @@ typedef struct		s_event {
 	int				sanitizer_refills;
 	struct timespec	refill_pause;
 	struct timespec	sprite_timer;
+	struct timespec virus_timer;
 }					t_event;
 
 typedef struct		s_object
@@ -307,6 +307,8 @@ typedef struct		s_lib {
 	t_window		window;
 	int				*sprite_order;
 	double			light;
+	int				sprite_height[20];
+	int				move;
 }					t_lib;
 
 typedef struct		s_gamedesign {

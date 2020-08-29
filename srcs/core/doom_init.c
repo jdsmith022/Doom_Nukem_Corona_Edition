@@ -8,6 +8,13 @@ static void		init_sprites(t_doom *doom)
 	doom->visible_sprites = 0;
 	doom->save_scissor_lift = -1;
 	doom->lib.sprite_order = NULL;
+	int	i = 0;
+	while (i < 20)
+	{
+		doom->lib.sprite_height[i] = i;
+		i++;
+	}
+	doom->lib.move = 0;
 }
 
 static void		init_render(t_doom *doom)

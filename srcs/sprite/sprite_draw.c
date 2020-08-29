@@ -2,31 +2,31 @@
 #include "../../includes/sprites.h"
 #include "../../includes/hud.h"
 
-int			get_lib_info(t_doom *doom, int index_sp)
-{
-	int		index;
+// int			get_lib_info(t_doom *doom, int index_sp)
+// {
+// 	int		index;
 
-	if (index_sp == LEFT_SELECT || index_sp == RIGHT_SELECT || index_sp == SCISSOR\
-		|| index_sp == SPRAY_HAND || index_sp == SPRAYING_HAND || index_sp == CROSS_HAIR ||
-		(index_sp >= 98 && index_sp <= 111))
-	{
-		index = index_sp;
-		doom->lib.light = -1;
-	}
-	else
-		index = doom->lib.sprites[index_sp].visible;
-	return (index);
-}
+// 	if (index_sp == LEFT_SELECT || index_sp == RIGHT_SELECT || index_sp == SCISSOR\
+// 		|| index_sp == SPRAY_HAND || index_sp == SPRAYING_HAND || index_sp == CROSS_HAIR ||
+// 		(index_sp >= 98 && index_sp <= 111))
+// 	{
+// 		index = index_sp;
+// 		doom->lib.light = -1;
+// 	}
+// 	else
+// 		index = doom->lib.sprites[index_sp].visible;
+// 	return (index);
+// }
 
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex,\
-			Uint32 index, int index_sp)
+			Uint32 index, int i)
 {
 	char	*pixels;
 	char	*text;
 	t_rgb	rgb;
-	int		i;
+	// int		i;
 
-	i = get_lib_info(doom, index_sp);
+	// i = get_lib_info(doom, index_sp);
 	pixels = doom->surface->pixels;
 	text = doom->lib.obj_lib[i]->pixels;
 	rgb.r = text[pix_dex];
@@ -171,7 +171,7 @@ void	draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
 					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
 					+ ((int)tex_x *\
 					doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-					put_pixel_tex(doom, pix_dex, index, index_sp);
+					put_pixel_tex(doom, pix_dex, index, i_sprite);
 				}
 				screen_y++;
 			}
