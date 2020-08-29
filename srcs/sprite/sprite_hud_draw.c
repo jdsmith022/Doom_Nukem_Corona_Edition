@@ -8,7 +8,8 @@ static void		draw_add_on(t_doom *doom, int sprite_i, int right_select)
 	t_line bar;
 
 	scale_bar(doom, &bar, sprite_i);
-	if (sprite_i == right_select)
+	if (sprite_i == right_select || \
+	(doom->player_handed == right && doom->own_event.shoot == TRUE))
 	{
 		bar.start.x += 450;
 		bar.end.x += 450;
@@ -89,7 +90,6 @@ static void	set_player_sprite(t_doom *doom, int *spray_hand, int *spraying_hand,
 		*right_select = 75;
 	}
 	doom->player_sprite = set;
-	printf("%d, %d, %d, %d\n", *spray_hand, *spraying_hand, *left_select, *right_select);
 }
 
 void		draw_player_adds(t_doom *doom)
