@@ -18,7 +18,6 @@ static void	init_events_2(t_event *event)
 	event->toilet_paper = FALSE;
 	event->trolly = FALSE;
 	event->sliding_door = -1;
-	event->corona_hit = FALSE;
 }
 
 void		init_events(t_event *event)

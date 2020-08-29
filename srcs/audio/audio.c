@@ -1,4 +1,5 @@
 #include "../../includes/doom.h"
+#include "../../includes/hud.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/audio.h"
 
@@ -63,8 +64,15 @@ void	play_action_sounds(t_audio *audio, t_event *event)
 		play_sound(audio->sounds[CLICK], -1);
 		event->light_switch_changed = FALSE;
 	}
-	if (event->corona_hit)
+}
+
+void	play_combat_sounds(t_audio *audio, int state)
+{
+	if (state == corona_hit)
+	{
+		printf("Hit by corona!\n");
 		play_sound(audio->sounds[HIT], -1);
+	}
 }
 
 void	audio(t_doom *doom, t_event *event)
@@ -77,6 +85,7 @@ void	audio(t_doom *doom, t_event *event)
 	{
 		play_movement_sounds(doom->audio, event);
 		play_action_sounds(doom->audio, event);
+		play_combat_sounds(doom->audio, doom->hud->update);
 		play_scissor_sounds(doom->audio, event);
 	}
 }
