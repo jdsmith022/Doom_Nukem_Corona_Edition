@@ -1,6 +1,8 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 #include "sprites.h"
+#include "../../includes/render.h"
+
 
 void put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 				Uint32 pixel_dex)

@@ -6,12 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:12:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:12:13 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 14:05:32 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
+#include "../../includes/render.h"
 
 static void		draw_font_instructions(t_doom *doom, t_font *font_lib,
 				int start_dex, int end_dex)

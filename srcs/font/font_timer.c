@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 19:12:16 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 14:48:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		font_timer_box_long(t_doom *doom, bool *flag,
 	else
 	{
 		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
-		if (diff <= 10)
+		if (diff <= 15)
 			print_vanishing_text_box(doom, start_dex, end_dex);
 	}
 }

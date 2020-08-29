@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:16:17 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:16:17 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 16:19:57 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static void	update_sanitizer_levels(t_doom *doom, t_font *lib,
 	TTF_Font	*font;
 
 	lib[5].str = sanitizer_level;
-	lib[5].font_rect.x = WIDTH - 250;
-	lib[5].font_rect.y = HEIGHT - 35;
 	if (level < 15)
 		lib[5].font_color = doom->lib.font_lib.font_color.red;
 	else
@@ -46,8 +44,6 @@ void	update_levels(t_doom *doom, t_font *lib)
 	corona_level = ft_itoa(level);
 	percent = ft_strcat(corona_level, "%");
 	lib[4].str = corona_level;
-	lib[4].font_rect.x = 175;
-	lib[4].font_rect.y = HEIGHT - 35;
 	if (level > 84)
 		lib[4].font_color = doom->lib.font_lib.font_color.red;
 	else

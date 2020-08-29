@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
+#include "../../includes/render.h"
 #include "../../includes/hud.h"
 
 int			get_lib_info(t_doom *doom, int index_sp)

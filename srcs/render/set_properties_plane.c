@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   set_properties_plane.c                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:03:14 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:03:16 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 static int	set_plane_bottom(t_doom *doom, double scale,
 				t_sidedef sidedef, t_sector sector)

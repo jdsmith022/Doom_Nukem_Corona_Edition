@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:54 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:15:56 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 13:56:42 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 static void		check_level_limits(t_doom *doom)
 {
-	// if (doom->hud->corona_level >= 100)
-		// doom->menu->game_over = TRUE;
+	if (doom->hud->corona_level >= 100)
+		doom->menu->state = game_over;
 	if (doom->hud->corona_level < 0)
 		doom->hud->corona_level = 0;
 	if (doom->hud->sanitizer_level >= 100)

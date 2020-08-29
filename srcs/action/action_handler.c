@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   action_handler.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:06:02 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 #include "../../includes/sprites.h"
+#include "../../includes/render.h"
 
 static void		shoot_action(t_doom *doom)
 {

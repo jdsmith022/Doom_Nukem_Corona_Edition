@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:41:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 15:40:13 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 15:21:49 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 void		save_pause_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
-	int			font_size;
 
 	*len = 3;
 	doom->lib.font_lib.pause_font = \

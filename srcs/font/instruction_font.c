@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:41:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 19:10:05 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 15:21:44 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void	set_instruction_text(t_doom *doom, t_font *lib, int len)
 void		save_instruction_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
-	int			font_size;
 
 	*len = 26;
 	doom->lib.font_lib.instruction_font = \

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:39:34 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 10:21:01 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/08/29 15:21:38 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 void		save_hud_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
-	int			font_size;
 
 	*len = 7;
 	doom->lib.font_lib.hud_font = \

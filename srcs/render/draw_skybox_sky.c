@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_skybox_sky.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:09 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:02:13 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 static void		put_sky(t_doom *doom, SDL_Surface *lib,
 					Uint32 index, Uint64 pixel_dex)
