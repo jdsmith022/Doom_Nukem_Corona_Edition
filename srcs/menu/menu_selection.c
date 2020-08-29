@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 15:45:45 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 15:51:28 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void		set_reason_for_gameover(t_doom *doom)
 	single_font_to_sdl(doom, doom->lib.font_lib.game_over_font[1], font);
 	doom->lib.font_lib.game_over_font[2].str = status;
 	single_font_to_sdl(doom, doom->lib.font_lib.game_over_font[2], font);
+	printf("end");
 }
 
 static void	game_over_menu(t_doom *doom)

@@ -23,7 +23,7 @@ static void		put_pixel_from_img(char *img_pixels, t_doom *doom,
 	rgb.r = *img_pixels;
 	rgb.g = *(img_pixels + 1);
 	rgb.b = *(img_pixels + 2);
-	if (rgb.r == (char)255 && rgb.b == (char)255 && rgb.g == (char)255)
+	if (rgb.r == (Uint8)255 && rgb.b == (Uint8)255 && rgb.g == (Uint8)255)
 		return ;
 	ft_memcpy(doom->surface->pixels + index, &rgb, sizeof(t_rgb));
 }

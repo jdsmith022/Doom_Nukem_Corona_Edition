@@ -5,24 +5,25 @@
 
 static void	check_select_sprite(t_doom *doom)
 {
-	uint8_t type;
+	uint8_t		type;
+	t_sprite	*sprite;
 
-	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
+	sprite = &doom->lib.sprites[doom->own_event.virus_hit_index];
+	if (sprite->action == 4)
 	{
 		doom->own_event.corona_hit = TRUE;
 		doom->hud->update = corona_hit;
 	}
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 12)
+	else if (sprite->action == 12)
 	{
 		doom->own_event.trolly = TRUE;
 		doom->lib.sidedef[17].action = 0;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 15;
+		sprite->action = 15;
 	}
-	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 14)
+	else if (sprite->action == 14)
 	{
-		type = *(int *)doom->lib.obj_lib[doom->lib.sprites	\
-		[doom->own_event.virus_hit_index].textures[0]]->userdata;
-		doom->lib.sprites[doom->own_event.virus_hit_index].action = 15;
+		type = *(int *)doom->lib.obj_lib[sprite->textures[0]]->userdata;
+		sprite->action = 15;
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}

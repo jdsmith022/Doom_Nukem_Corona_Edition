@@ -55,6 +55,7 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
+
 typedef enum			e_gamestate
 {
 	updated,
@@ -64,9 +65,9 @@ typedef enum			e_gamestate
 # pragma pack(push, 1)
 
 typedef struct			s_rgb {
-	char				r;
-	char				g;
-	char				b;
+	Uint8				r;
+	Uint8				g;
+	Uint8				b;
 }						t_rgb;
 
 # pragma pack(pop)
@@ -111,14 +112,15 @@ typedef struct			s_sprite {
 	int					visible;
 	double				distance;
 	int					prev_sectors[50];
+	// double				light;
 }						t_sprite;
 
-typedef struct			s_ray {
-	t_line				line;
-	double				angle;
-	double				plane_x;
-	int					filter;
-}						t_ray;
+typedef struct		s_ray {
+	t_line			line;
+	double			angle;
+	double			plane_x;
+	int				filter;
+}					t_ray;
 
 typedef struct		s_event {
 	bool			mouse_press;
@@ -289,6 +291,7 @@ typedef struct		s_lib {
 	int				n_mov_sprites;
 	t_window		window;
 	int				*sprite_order;
+	double			light;
 }					t_lib;
 
 typedef struct		s_gamedesign {
