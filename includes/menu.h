@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 16:02:26 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 15:39:07 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void					doom_start(t_doom *doom);
 void					mouse_settings(t_doom *doom);
 void					key_settings_menu(t_doom *doom);
 void					pause_click_event(t_doom *doom, SDL_Rect rect);
-void					game_over_click_event(t_doom *doom, SDL_Rect rect);
 void					setting_menu_click_event(t_doom *doom, SDL_Rect rect);
 void					start_menu_click_event(t_doom *doom, SDL_Rect rect1,\
 							SDL_Rect rect2, SDL_Rect rect3);
