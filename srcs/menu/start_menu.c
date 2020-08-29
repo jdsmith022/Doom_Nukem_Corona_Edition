@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:15:28 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 17:10:02 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void		doom_start(t_doom *doom)
 		if (doom->menu->settings == FALSE)
 			print_background(doom, 0x00002E);
 		else
+		{
 			print_background(doom, 0xF2F2F2);
+			print_player_sprite(doom);
+		}
 		font_to_screen(doom);
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));

@@ -56,11 +56,14 @@ typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
 
-typedef enum			e_gamestate
+typedef enum			e_settings
 {
-	updated,
-	changed
-}						t_gamestate;
+	player_1,
+	player_2,
+	player_3,
+	left,
+	right
+}						t_settings;
 
 # pragma pack(push, 1)
 
@@ -341,6 +344,8 @@ typedef struct		s_doom {
 	t_groceries		*groceries;
 	t_menu			*menu;
 	t_hud			*hud;
+	int				player_sprite;
+	int				player_handed;
 	int				game_state;
 	bool			is_running;
 	bool			game_editor;

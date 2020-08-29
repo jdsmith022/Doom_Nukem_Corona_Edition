@@ -41,7 +41,6 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 			mouse_release(doom, &event.button);
 		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
-		// doom->game_state = changed;
 	}
 }
 

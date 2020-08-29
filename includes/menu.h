@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 15:39:07 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 17:07:26 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void					add_score_to_sdl_text(t_doom *doom);
 void					print_background(t_doom *doom, Uint32 color);
 void					menus(t_doom *doom);
 void					menu_print_loop(t_doom *doom);
+void					print_player_sprite(t_doom *doom);
 
 #endif
