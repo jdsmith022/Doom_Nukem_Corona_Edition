@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
+#include "../../includes/render.h"
 
 t_point		sidedef_sprite_intersect(t_line sidedef, t_line sprite)
 {

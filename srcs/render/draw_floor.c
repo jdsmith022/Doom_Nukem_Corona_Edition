@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_floor.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:01:34 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:01:36 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 static void		calculate_floor_dist(t_doom *doom, int x, int y,
 					t_sector *sector)

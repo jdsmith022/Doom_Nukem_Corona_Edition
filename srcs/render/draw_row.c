@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_row.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:01:48 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:01:54 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 void			put_pixel_slope(t_doom *doom, Uint32 index, int x, int y)
 {

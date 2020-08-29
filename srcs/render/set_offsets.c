@@ -6,11 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:22 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 22:03:23 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 14:03:10 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 void	wall_offset(t_plane *plane, int sidedef_top)
 {

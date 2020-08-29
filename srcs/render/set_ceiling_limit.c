@@ -6,11 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:12 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 22:03:12 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 14:03:02 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 void		set_ceiling_limit(t_doom *doom, t_sidedef sidedef,
 				t_sector *sector)

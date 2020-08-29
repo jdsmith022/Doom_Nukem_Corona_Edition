@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   plane_projections.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:02:37 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 static void		set_sector_properties(t_doom *doom, t_sidedef sidedef,
 					t_sector *sector, t_plane *plane)

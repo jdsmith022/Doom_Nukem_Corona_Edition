@@ -1,310 +1,376 @@
-// #ifndef STRUCT_H
-// # define STRUCT_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-// # include "doom.h"
+# include "doom.h"
 
-// # define WIDTH 800
-// # define HEIGHT 600
+# define NAME "Doom Nukem Corona Edition"
 
-// typedef struct s_audio		t_audio;
-// typedef struct s_groceries	t_groceries;
-// typedef struct s_menu		t_menu;
-// typedef struct s_hud		t_hud;
+# define TRUE 1
+# define FALSE 0
 
-// # pragma pack(push, 1)
+# define NUM_LEVELS 1
 
-// typedef struct			s_rgb {
-// 	char				r;
-// 	char				g;
-// 	char				b;
-// }						t_rgb;
+# define INIT_ERR	"error: initialization of SDL"
+# define MALLOC_ERR "error: malloc"
+# define OPEN_ERR	"error: opening file"
+# define FONT_ERR	"error: writing font to screen"
 
-// # pragma pack(pop)
+# define WIDTH 800
+# define HEIGHT 600
 
-// typedef struct			s_rgb_d {
-// 	double				r;
-// 	double				g;
-// 	double				b;
-// }						t_rgb_d;
+# define STD_TEXT_HEIGHT 96
 
-// typedef struct			s_coord {
-// 	uint16_t			x;
-// 	uint16_t			y;
-// }						t_coord;
+# define PI 3.14159265359
 
-// typedef struct			s_point {
-// 	double				x;
-// 	double				y;
-// }						t_point;
+# define PLAYER_HEIGHT 50
+# define MOVE_SPEED 100
+# define SENSITIVITY 0.9
+# define GRAVITY -2
+# define VELOCITY  5
 
-// typedef struct			s_line {
-// 	t_point				start;
-// 	t_point				end;
-// }						t_line;
+# define RED 1
+# define GREEN 2
+# define BLUE 3
+# define FONT_MASK 0X36
+# define WINDOW_MASK 0XFF
 
-// typedef struct			s_sprite {
-// 	int					index;			//start index
-// 	int					amount;			//which side is viewed how many textures does the sprite have?
-// 	t_point				pos;
-// 	t_point				sprite_begin;
-// 	double				size;			//products: 16, shopper: 48
-// 	t_line				*lines;
-// 	// double				angle;			//GEBRUIK IK NIET what is the angle on the map
-// 	int					action;	//1 health green, 2 health red, 3 facemask, 4 virus green + placement, 5 virus red + placement, 6 inactive virus 7 scissor lift, 8 inactive health sprite 9 shopper
-// 	int					*textures;		//index to texture, +0, +1, +2 or +3
-// 	int					block;			//can the player walk through it or not
-// 	int					sector;
-// 	int					n_sector; //amount of checked sector stored in prev_sectors
-// 	double				width;
-// 	double				height;
-// 	double				sprite_x;		//x cord translated to viewer space
-// 	double				sprite_y;		//y cord translated to viewer space
-// 	int					visible;		//this is only turned on for the drawing... can't use it for other options
-// 	double				distance;
-// 	// int					face;
-// 	int					prev_sectors[50];	//where to empty them again? don't forget to protect
-// }						t_sprite;
+# define SLOPE_COLOR 0X505052
 
-// typedef struct		s_ray {
-// 	t_line			line;
-// 	double			angle;
-// 	double			plane_x;
-// 	int				filter;
-// }					t_ray;
+# define SECTORS		doom->lib.sector
+# define SIDEDEFS		doom->lib.sidedef
+# define TEXTURES		doom->lib.tex_lib
+# define SPRITES		doom->lib.sprites
+# define OBJ_LIB		doom->lib.obj_lib
 
-// typedef struct		s_event {
-// 	bool			mouse_press;
-// 	bool			mouse_state_switched;
-// 	bool			jump;
-// 	bool			bend;
-// 	bool			select;
-// 	bool			shoot;
-// 	int				hold_angle;
-// 	int				hold_x;
-// 	int				hold_y;
-// 	int				cam_move_f;
-// 	int				cam_move_b;
-// 	int				cam_move_l;
-// 	int				cam_move_r;
-// 	int				floor_diff;
-// 	int				ceiling_diff;
-// 	int				next_sector_height;
-// 	int				step_down;
-// 	double			velocity;
-// 	int				y_pitch;
-// 	int				virus_hit_index;
-// 	bool			virus_red;
-// 	int				virus_red_i;
-// 	bool			scissor_lift;
-// 	bool			scissor_lift_up;
-// 	bool			scissor_lift_down;
-// 	bool			parked_too_close;
-// 	bool			fall;
-// 	bool			mist;
-// 	bool			spray_mist;
-// 	bool			trolly;
-// 	bool			light_switch;
-// 	bool			light_timer;
-// 	struct timespec	light_time;
-// 	double			hold_light;
+# define OUTSIDE 1
+# define EXIT_LEVEL 2
+# define START_SECTOR 3
+# define START_TIMER 4
+# define CHECKOUT 5
 
-// 	int				fall_count;
-// }					t_event;
+# define WINDOW 6
 
-// typedef struct		s_m_object{
-// 	int				amount;
-// 	int*			textures;
-// 	int*			face_ang;
-// 	char*			name;
-// 	int				action;
-// 	t_line*			movement;
-// 	// t_line			height;
-// 	int				speed;
-// 	int				spawn_time;
-// }					t_m_object;
+typedef struct s_audio		t_audio;
+typedef struct s_groceries	t_groceries;
+typedef struct s_menu		t_menu;
+typedef struct s_hud		t_hud;
 
-// typedef struct		s_object{
-// 	int				n_textures;
-// 	int*			textures;
-// 	int*			face_ang;
-// 	char*			name;
-// 	int				action;
-// 	t_line			location;
-// }					t_object;
+typedef enum			e_gamestate
+{
+	updated,
+	changed
+}						t_gamestate;
 
-// typedef struct		s_plane
-// {
-// 	t_point			intersect;
-// 	t_line			line;
-// 	int				sidedef_top;
-// 	int				sidedef_bottom;
-// 	int				sidedef_height;
-// 	int				mid_texture_top;
-// 	int				mid_texture_bottom;
-// 	double			height_standard;
-// 	int				ceiling_start;
-// 	int				floor_start;
-// 	int				wall_offset;
-// }					t_plane;
+# pragma pack(push, 1)
 
-// typedef struct		s_prev_sidedef {
-// 	int				id;
-// 	double			distance;
-// 	t_point			intersect;
-// }					t_prev_sidedef;
+typedef struct			s_rgb {
+	char				r;
+	char				g;
+	char				b;
+}						t_rgb;
 
-// typedef struct		s_sidedef {
-// 	t_point			intersect;
-// 	t_line			line;
-// 	int				id;
-// 	int				action;
-// 	int				sector;
-// 	int				opp_sidedef;
-// 	int				opp_sector;
-// 	double			offset;
-// 	int				dir;
-// 	int				txt_1;
-// 	int				txt_2;
-// 	int				txt_3;
-// 	double			distance;
-// 	int				infection;
-// 	int				poster;
-// 	t_prev_sidedef	prev_sidedef;
-// }					t_sidedef;
+# pragma pack(pop)
 
-// typedef	struct		s_slope {
-// 	double			distance;
-// 	double			height;
-// 	double			bottom_height;
-// 	int				bottom_plane;
-// 	double			dist_to_bottom;
-// 	int				opp_side;
-// 	int				sidedef_id;
-// 	int				prev_floor_id;
-// 	int				prev_ceiling_id;
-// 	double			delta_height;
-// 	t_point			intersect;
-// 	t_point			prev_intersect;
-// 	t_point			conn_point;
-// }					t_slope;
+typedef struct			s_rgb_d {
+	double				r;
+	double				g;
+	double				b;
+}						t_rgb_d;
 
-// typedef struct		s_sector {
-// 	int				id;
-// 	int				action;
-// 	int				n_sidedefs;
-// 	int				i_sidedefs;
-// 	int				n_objects;
-// 	int				i_objects;
-// 	double			light_level;
-// 	double			hold_light;
-// 	int				light;
-// 	int				slope_floor_id;
-// 	int				slope_ceiling_id;
-// 	int				slope_ceiling;
-// 	double			slope_floor;
-// 	int				floor_end;
-// 	int				ceiling_end;
-// 	int				height_ceiling;
-// 	double			height_floor;
-// 	int				txt_ceiling;
-// 	int				txt_floor;
-// 	int				diff_x;
-// 	int				diff_y;
-// 	int				plane_x;
-// 	t_slope			slope;
-// 	int				sidedef_bottom[WIDTH];
-// 	int				sidedef_top[WIDTH];
-// }					t_sector;
+typedef struct			s_coord {
+	uint16_t			x;
+	uint16_t			y;
+}						t_coord;
 
-// typedef struct		s_lib {
-// 	SDL_Surface		**tex_lib;
-// 	int				len_tex_lib;
-// 	SDL_Surface		**obj_lib;
-// 	int				len_obj_lib;
-// 	SDL_Surface		**sky_lib;
-// 	t_line			*sky_sd;
-// 	t_font_lib		font_lib;
-// 	int				portal_ceiling;
-// 	int				len_sky_lib;
-// 	t_sector		*sector;
-// 	int				n_sectors;
-// 	t_sidedef		*sidedef;
-// 	int				len_sidedef;
-// 	t_sidedef		*infection;
-// 	int				cur_len_infection;
-// 	int				tot_len_infection;
-// 	t_sprite		*sprites;
-// 	int				n_mov_sprites;
-// 	t_m_object		*mov_sprites;
-// }					t_lib;
+typedef struct			s_point {
+	double				x;
+	double				y;
+}						t_point;
 
-// typedef struct		s_gamedesign {
-// 	t_sector		*sector;
-// 	int				s_len;
-// 	int				s_size;
-// 	t_sidedef		*sidedef;
-// 	int				w_len;
-// 	int				w_size;
-// 	int				o_len;
-// 	int				o_size;
-// 	int				cur_sec;
-// 	int				cur_sd;
-// 	int				portal_sd;
-// 	int				portal_sec;
-// 	int				pl_pos;
-// 	int				pl_x;
-// 	int				pl_y;
-// 	int				pl_sec;
-// 	int				object_bar;
-// 	int				sidedef_bar;
-// 	SDL_Surface		**sym_lib;
-// }					t_gamedesign;
+typedef struct			s_line {
+	t_point				start;
+	t_point				end;
+}						t_line;
 
-// typedef struct		s_doom {
-// 	t_line			tests;
-// 	SDL_Window		*window;
-// 	SDL_Surface		*surface;
-// 	SDL_Event		event;
-// 	SDL_Cursor		*cursor;
-// 	t_lib			lib;
-// 	t_point			pos;
-// 	t_event			own_event;
-// 	t_gamedesign	game_design;
-// 	t_audio			*audio;
-// 	t_groceries		*groceries;
-// 	t_menu			*menu;
-// 	t_hud			*hud;
-// 	bool			is_running;
-// 	bool			game_editor;
-// 	bool			hud_display;
-// 	bool			light;
-// 	bool			start_timer;
-// 	double			player_std_height;
-// 	double			player_height;
-// 	double			player_width;
-// 	int				texture_width;
-// 	int				texture_height;
-// 	int				i_sidedef;
-// 	int				i_sector;
-// 	int				prev_sector;
-// 	double			ray_angle;
-// 	double			dir_angle;
-// 	double			ray_adjacent;
-// 	double			distance;
-// 	double			horizontal_plane_dist;
-// 	int				obj_height;
-// 	double			max_ray;
-// 	double			dist_to_plane;
-// 	int				visible_sprites;
-// 	int				difficulty;
-// 	int				total_sprites;
-// 	t_line			level_exit;
-// 	double			stripe_distance[WIDTH];
-// 	t_prev_sidedef	prev_sidedef;
-// 	int				save_poster;
-// 	int 			game_time;
-// 	int				game_start_time;
-// 	int				save_scissor_lift;
-// }					t_doom;
+typedef struct			s_sprite {
+	int					index;
+	int					amount;
+	t_point				pos;
+	t_point				sprite_begin;
+	double				size;
+	t_line				*lines;
+	int					action;
+	int					*textures;
+	int					block;
+	int					sector;
+	int					n_sector;
+	double				width;
+	double				height;
+	double				sprite_x;
+	double				sprite_y;
+	int					visible;
+	double				distance;
+	int					prev_sectors[50];
+}						t_sprite;
 
-// #endif
+typedef struct		s_ray {
+	t_line			line;
+	double			angle;
+	double			plane_x;
+	int				filter;
+}					t_ray;
+
+typedef struct		s_event {
+	bool			mouse_press;
+	bool			mouse_state_switched;
+	bool			jump;
+	bool			bend;
+	bool			select;
+	bool			shoot;
+	bool			mouse_pointer;
+	bool			set_step;
+	int				sliding_door;
+	int				hold_angle;
+	int				hold_x;
+	int				hold_y;
+	int				move_pos_f;
+	int				move_pos_b;
+	int				move_pos_l;
+	int				move_pos_r;
+	int				floor_diff;
+	int				ceiling_diff;
+	int				next_sector_height;
+	int				step_down;
+	double			velocity;
+	int				y_pitch;
+	int				virus_hit_index;
+	bool			virus_red;
+	int				virus_red_i;
+	bool			corona_hit;
+	bool			scissor_lift;
+	bool			scissor_lift_up;
+	bool			scissor_lift_down;
+	bool			parked_too_close;
+	bool			fall;
+	bool			mist;
+	bool			spray_mist;
+	bool			trolly;
+	bool			light_switch;
+	bool			light_switch_changed;
+	bool			refill;
+	bool			action;
+	bool			spray_shopper;
+	bool			sprite_collision;
+	bool			toilet_paper;
+	bool			window;
+	int				sprite_collision_dist;
+	int				sprite_index;
+	struct timespec	light_time;
+	double			hold_light;
+	int				hold_light_sector;
+	int				click_light;
+	int				fall_count;
+	bool			groc_pickup;
+	bool			died;
+	int				sanitizer_refills;
+	struct timespec	refill_pause;
+	struct timespec	sprite_timer;
+}					t_event;
+
+typedef struct		s_object
+{
+	int				n_textures;
+	int*			textures;
+	int*			face_ang;
+	char*			name;
+	int				action;
+	t_line			location;
+}					t_object;
+
+typedef struct		s_plane
+{
+	t_point			intersect;
+	t_line			line;
+	int				x;
+	int				sidedef_top;
+	int				sidedef_bottom;
+	int				sidedef_height;
+	int				mid_texture_top;
+	int				mid_texture_bottom;
+	double			height_standard;
+	int				ceiling_start;
+	int				floor_start;
+	int				wall_offset;
+}					t_plane;
+
+typedef struct		s_prev_sidedef {
+	int				id;
+	double			distance;
+	t_point			intersect;
+}					t_prev_sidedef;
+
+typedef struct		s_window {
+	int				index;
+	int				x_start;
+	int				x_end;
+	int				y_pixel_top[WIDTH];
+	int				y_pixel_bottom[WIDTH];
+	double			height_standard[WIDTH];
+	int				wall_offset[WIDTH];
+	double			sidedef_offset[WIDTH];
+	int				opp_sector;
+	int				curr_sector;
+}					t_window;
+
+typedef struct		s_sidedef {
+	t_point			intersect;
+	t_line			line;
+	int				id;
+	int				action;
+	int				sector;
+	int				opp_sidedef;
+	int				opp_sector;
+	double			offset;
+	int				dir;
+	int				txt_1;
+	int				txt_2;
+	int				txt_3;
+	double			distance;
+	double			angle;
+	int				poster;
+	t_prev_sidedef	prev_sidedef;
+}					t_sidedef;
+
+typedef struct		s_sector {
+	int				id;
+	int				action;
+	int				n_sidedefs;
+	int				i_sidedefs;
+	int				n_objects;
+	int				i_objects;
+	double			light_level;
+	double			hold_light;
+	int				light;
+	int				slope_floor_id;
+	int				slope_ceiling_id;
+	double			slope_ceiling;
+	double			slope_floor;
+	int				floor_end;
+	int				ceiling_end;
+	double			height_ceiling;
+	double			height_floor;
+	int				txt_ceiling;
+	int				txt_floor;
+	int				diff_x;
+	int				diff_y;
+	int				sidedef_bottom[WIDTH];
+	int				sidedef_top[WIDTH];
+	int				sidedef_mid_bottom[WIDTH];
+}					t_sector;
+
+typedef struct		s_lib {
+	SDL_Surface		**tex_lib;
+	int				len_tex_lib;
+	SDL_Surface		**obj_lib;
+	int				len_obj_lib;
+	SDL_Surface		**sky_lib;
+	t_line			*sky_sd;
+	t_font_lib		font_lib;
+	int				portal_ceiling;
+	int				len_sky_lib;
+	t_sector		*sector;
+	int				n_sectors;
+	t_sidedef		*sidedef;
+	int				len_sidedef;
+	t_sidedef		*infection;
+	int				cur_len_infection;
+	int				tot_len_infection;
+	t_sprite		*sprites;
+	int				n_mov_sprites;
+	t_window		window;
+	int				*sprite_order;
+}					t_lib;
+
+typedef struct		s_gamedesign {
+	t_sector		*sector;
+	int				s_len;
+	int				s_size;
+	t_sidedef		*sidedef;
+	int				w_len;
+	int				w_size;
+	t_sprite		*object;
+	int				o_len;
+	int				o_size;
+	int				cur_tex;
+	int				cur_sec;
+	int				cur_sd;
+	int				cur_obj;
+	int				portal_sd;
+	int				portal_sec;
+	int				pl_pos;
+	int				pl_x;
+	int				pl_y;
+	int				pl_sec;
+	int				object_bar;
+	int				sidedef_bar;
+	SDL_Surface		**sym_lib;
+}					t_gamedesign;
+
+typedef struct		s_render
+{
+	t_sidedef		near_sidedef;
+	t_point			intersect;
+	double			distance;
+	double			min_distance;
+}					t_render;
+
+typedef struct		s_doom {
+	t_line			tests;
+	SDL_Window		*window;
+	SDL_Surface		*surface;
+	SDL_Event		event;
+	SDL_Cursor		*cursor;
+	t_lib			lib;
+	t_point			pos;
+	t_event			own_event;
+	t_gamedesign	game_design;
+	t_audio			*audio;
+	t_groceries		*groceries;
+	t_menu			*menu;
+	t_hud			*hud;
+	int				game_state;
+	bool			is_running;
+	bool			game_editor;
+	bool			hud_display;
+	bool			light;
+	bool			start_timer;
+	double			player_std_height;
+	double			player_height;
+	double			cam_slope_height;
+	double			player_width;
+	int				texture_width;
+	int				texture_height;
+	int				i_sidedef;
+	int				i_sector;
+	int				prev_sector;
+	double			ray_angle;
+	double			dir_angle;
+	double			ray_adjacent;
+	double			distance;
+	double			horizontal_plane_dist;
+	int				obj_height;
+	double			max_ray;
+	double			dist_to_plane;
+	int				visible_sprites;
+	int				difficulty;
+	int				total_sprites;
+	double			stripe_distance[WIDTH];
+	t_prev_sidedef	prev_sidedef;
+	int				save_poster;
+	int				game_time;
+	struct timespec	game_start_time;
+	int				save_scissor_lift;
+	int				up;
+}					t_doom;
+
+#endif

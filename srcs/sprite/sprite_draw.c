@@ -1,5 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
+#include "../../includes/render.h"
+
 
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index, int i,\
 			double distance)

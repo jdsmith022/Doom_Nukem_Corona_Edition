@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   render_sky_box.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:57 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:02:58 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 static void			set_properties_plane_sky(t_doom *doom,
 						t_plane *plane, int x, double distance)
