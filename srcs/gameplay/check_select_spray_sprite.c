@@ -8,7 +8,10 @@ static void	check_select_sprite(t_doom *doom)
 	uint8_t type;
 
 	if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 4)
+	{
 		doom->own_event.corona_hit = TRUE;
+		doom->hud->update = corona_hit;
+	}
 	else if (doom->lib.sprites[doom->own_event.virus_hit_index].action == 12)
 	{
 		doom->own_event.trolly = TRUE;

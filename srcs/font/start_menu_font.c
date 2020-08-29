@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:38:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 17:17:50 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 15:22:06 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 void		save_start_menu_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
-	int			font_size;
 
 	*len = 7;
 	doom->lib.font_lib.start_menu_font = \

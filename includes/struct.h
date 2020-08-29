@@ -24,7 +24,7 @@
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 100
-# define SENSITIVITY 0.9
+# define SENSITIVITY 0.2
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -113,12 +113,12 @@ typedef struct			s_sprite {
 	int					prev_sectors[50];
 }						t_sprite;
 
-typedef struct		s_ray {
-	t_line			line;
-	double			angle;
-	double			plane_x;
-	int				filter;
-}					t_ray;
+typedef struct			s_ray {
+	t_line				line;
+	double				angle;
+	double				plane_x;
+	int					filter;
+}						t_ray;
 
 typedef struct		s_event {
 	bool			mouse_press;
