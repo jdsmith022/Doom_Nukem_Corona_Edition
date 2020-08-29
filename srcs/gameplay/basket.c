@@ -38,8 +38,6 @@ static bool		valid_input(uint8_t type, t_list **head)
 {
 	if (!type || type > GROC_COUNT)
 		return (false);
-	if (get_basket_len(head) >= MAX_BASKET_LEN)
-		return (false);
 	return (true);
 }
 
@@ -68,7 +66,7 @@ void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	}
 	if (is_in_basket((t_item *)temp->content, type))
 		change_amount((t_item *)temp->content, 1);
-	else
+	else if (get_basket_len(head) < MAX_BASKET_LEN)
 		temp->next = ft_lstnew(&item, sizeof(t_item));
 }
 

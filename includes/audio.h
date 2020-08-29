@@ -11,7 +11,8 @@
 # define OFF			0
 # define ON				1
 
-# define NUM_OF_SOUNDS	12
+# define NUM_OF_SOUNDS	13
+# define CHANNELS		8
 
 # define BUTTON 		0
 # define FOOTSTEPS 		1
@@ -23,8 +24,9 @@
 # define PICKUP			7
 # define HIT			8
 # define ENGINE			9
-# define LIFT_UP		10
-# define LIFT_DOWN		11
+# define LEVEL_EXIT		10
+# define LIFT_UP		11
+# define LIFT_DOWN		12
 
 # define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 # define S_FOOTSTEPS 	"/Movement/Footsteps/footstep_loop.wav"
@@ -33,9 +35,10 @@
 # define S_DEATH		"/Death Screams/Human/sfx_deathscream_human4.wav"
 # define S_FALL			"/Movement/Falling Sounds/sfx_sounds_falling1.wav"
 # define S_CLICK		"/General Sounds/Buttons/lightswitch.wav"
-# define S_PICKUP		"/Weapons/Single Shot Sounds/sfx_weapon_singleshot11.wav"
-# define S_HIT			"/Weapons/Single Shot Sounds/sfx_weapon_singleshot11.wav"
+# define S_PICKUP		"/Weapons/Single Shot Sounds/singleshot11.wav"
+# define S_HIT			"/Weapons/Single Shot Sounds/singleshot11.wav"
 # define S_ENGINE		"/General Sounds/Buttons/scissorlift_engine.wav"
+# define S_CHECKOUT		"/General Sounds/Buttons/cash_register.wav"
 # define S_LIFT_U		"/General Sounds/Buttons/scissorlift_updown.wav"
 # define S_LIFT_D		"/General Sounds/Buttons/scissorlift_updown.wav"
 # define MU_1			"/music/main_theme.wav"
@@ -45,7 +48,7 @@ static const char *g_audio_paths[] = {
 	S_UI_1, S_FOOTSTEPS, S_JUMP,
 	S_GUNSHOT, S_DEATH, S_FALL,
 	S_CLICK, S_PICKUP, S_HIT, S_ENGINE,
-	S_LIFT_U, S_LIFT_D, MU_1, MU_2
+	S_CHECKOUT, S_LIFT_U, S_LIFT_D, MU_1, MU_2
 };
 
 typedef struct s_event	t_event;
@@ -55,6 +58,7 @@ typedef struct			s_audio_event {
 	bool				jump_toggled;
 	bool				groc_pickup;
 	bool				prev_scissor_state;
+	bool				prev_fall_state;
 }						t_audio_event;
 
 typedef struct			s_audio {
@@ -77,5 +81,6 @@ void					resume_music();
 void					play_sound(Mix_Chunk *sample, int channel);
 void					loop_sound(Mix_Chunk *sample, int channel);
 void					pause_sound(Mix_Chunk *sample, int channel);
+void					stop_sounds(void);
 
 #endif

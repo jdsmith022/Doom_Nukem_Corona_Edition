@@ -80,7 +80,7 @@ void				init_audio(t_doom *doom)
 		exit_error(doom, Mix_GetError());
 	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format,
 		&doom->audio->channels);
-	Mix_AllocateChannels(8);
+	Mix_AllocateChannels(CHANNELS);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	Mix_Volume(4, MIX_MAX_VOLUME / 9);
 	Mix_Volume(6, MIX_MAX_VOLUME / 4);
