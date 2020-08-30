@@ -354,8 +354,6 @@ typedef struct		s_doom {
 	t_menu			*menu;
 	t_hud			*hud;
 	t_player		player;
-	int				player_sprite;
-	int				player_handed;
 	int				game_state;
 	bool			is_running;
 	bool			game_editor;
