@@ -22,7 +22,7 @@ int				find_shelf(t_lib lib, t_ray ray, int sector, int prev_sector)
 		}
 		x++;
 	}
-	if (min_dist > 40)
+	if (min_dist > 50)
 		return (false);
 	if (lib.sidedef[safe_x].opp_sector != -1 &&
 		lib.sidedef[safe_x].opp_sector != prev_sector)

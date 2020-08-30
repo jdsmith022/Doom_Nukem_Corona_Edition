@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-112
+113
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -437,6 +437,8 @@ assets/sprites/player/spraying_left_hand_1.bmp
 assets/sprites/player/spraying_right_hand_1.bmp
 #111
 assets/sprites/player/spraying_right_hand_2.bmp
+#112
+assets/sprites/groceries/honey.bmp
 
 
 #ADD LEFT HAND AND RIGHT HAND
