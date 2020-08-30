@@ -36,7 +36,7 @@
 # define S_DEATH		"/Death Screams/Human/sfx_deathscream_human4.wav"
 # define S_FALL			"/Movement/Falling Sounds/sfx_sounds_falling1.wav"
 # define S_CLICK		"/General Sounds/Buttons/lightswitch.wav"
-# define S_PICKUP		"/Weapons/Single Shot Sounds/singleshot11.wav"
+# define S_PICKUP		"/General Sounds/Coins/pickup.wav"
 # define S_HIT			"/Weapons/Single Shot Sounds/singleshot11.wav"
 # define S_ENGINE		"/General Sounds/Buttons/scissorlift_engine.wav"
 # define S_CHECKOUT		"/General Sounds/Buttons/cash_register.wav"
