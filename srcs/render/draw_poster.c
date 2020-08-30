@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 16:44:24 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 17:10:17 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	sector.height_ceiling = -PLAYER_HEIGHT + 10;
 	doom->texture_height = 16;
 	doom->texture_width = 16;
-	printf("x: %d\n", plane.x);
 	set_properties_plane_sidedef(doom, poster, sector, &plane);
 	draw_onesided_sidedef(doom, plane, poster, x);
 	doom->texture_height = 96;

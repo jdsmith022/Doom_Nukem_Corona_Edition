@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:46 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 17:07:00 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 17:10:11 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static void		set_near_sidedef_distance(t_doom *doom,
 		render->near_sidedef = set_properties_sidedef(render->intersect,\
 			render->distance, doom->lib.sidedef[x], doom);
 		render->near_sidedef.poster = -1;
-		printf("here\n");
 	}
 }
 
