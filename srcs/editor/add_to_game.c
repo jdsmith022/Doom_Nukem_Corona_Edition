@@ -7,6 +7,7 @@ static t_sidedef	*new_level_sidedef(t_doom *doom,\
 	t_sidedef	*new;
 	int			i;
 
+	free(doom->lib.sidedef);
 	new = (t_sidedef*)malloc(sizeof(t_sidedef) * w_len);
 	if (new == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
@@ -26,7 +27,6 @@ static t_sprite	*new_level_object(t_doom *doom,\
 	int			i;
 	int 		side;
 
-	free(doom->lib.sidedef);
 	if (o_len > 0)
 	{
 		new = (t_sprite*)malloc(sizeof(t_sprite) * (o_len + 1));
@@ -52,7 +52,7 @@ static t_sector	*new_level_sector(t_doom *doom,\
 	int			i;
 
 	free(doom->lib.sector);
-	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 1));
+	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 2));
 	if (new == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	i = 0;
