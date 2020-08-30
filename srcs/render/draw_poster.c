@@ -6,11 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 22:02:59 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:15:55 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 int				set_poster(t_doom *doom, int x, double distance,
 					t_point intersect)
@@ -48,8 +49,7 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	sector.height_ceiling = -PLAYER_HEIGHT + 10;
 	doom->texture_height = 16;
 	doom->texture_width = 16;
-	set_properties_plane_sidedef(doom, \
-		poster, sector, &plane);
+	set_properties_plane_sidedef(doom, poster, sector, &plane);
 	draw_onesided_sidedef(doom, plane, poster, x);
 	doom->texture_height = 96;
 	doom->texture_width = 96;

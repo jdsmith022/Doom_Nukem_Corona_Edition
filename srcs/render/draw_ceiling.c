@@ -6,11 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 22:03:04 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 14:01:30 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
 
 static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 					t_sector sector)

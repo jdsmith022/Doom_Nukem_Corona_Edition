@@ -27,11 +27,8 @@ typedef struct s_line		t_line;
 /*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
-t_point				line_intersection(t_point start1, t_point delta1,
-							t_point start2, t_point delta2);
-t_point				line_delta(t_point start, t_point end);
-double				point_distance_angle(t_point p1, t_point p2, double angle);
-double				point_line_distance(t_point point, t_line line);
+void				init_sliding_door(t_doom *doom, t_sidedef *sidedef);
+void				render_sliding_door(t_doom *doom, t_sidedef *sidedef);
 double				sidedef_intersection_distance(t_ray ray, t_line line,\
 						t_point *intersect);
 void				set_offset(t_sidedef *sidedef, t_sidedef curr_sidedef,
@@ -41,42 +38,41 @@ void				project_on_plane(t_doom *doom, t_sidedef sidedef, int x);
 void				set_properties_plane(t_doom *doom, t_sidedef sidedef,\
 						t_plane *plane, t_sector *sector);
 void				set_properties_plane_sidedef(t_doom *doom,\
-						t_sidedef sidedef, t_sector *sector, t_plane *plane);
+						t_sidedef sidedef, t_sector sector, t_plane *plane);
 void				set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
-						t_sector *opp_sector, t_plane *plane);
+						t_sector opp_sector, t_plane *plane);
 t_sidedef			set_properties_sidedef(t_point intersect, double distance,
 						t_sidedef curr_sidedef, t_doom *doom);
+double				set_slope_height_floor(t_doom *doom, t_sidedef sidedef,\
+						t_sector sector);
+double				set_slope_height_ceiling(t_doom *doom, t_sidedef sidedef,\
+						t_sector sector);
+
 void				wall_offset(t_plane *plane, int sidedef_top);
-
-void				slope_plane_settings(t_doom *doom, t_sidedef sidedef,
-						t_sector *sector, int flag);
-//void				set_slope_bottom_values(t_doom *doom,\
-						t_sidedef sidedef, t_sector *sector);
-double				set_slope_delta(t_doom *doom, t_sector *sector, int y);
-t_sidedef			get_other_side_of_line(t_doom *doom,\
-						t_sidedef sidedef, t_sector sector);
-int					get_opp_side_of_slope(t_sector sector, int slope_id);
-t_point				get_connecting_point(t_line sidedef, t_line conn_sidedef);
-
 void				set_texture_properties(t_doom *doom);
 void				set_floor_limit(t_doom *doom, t_plane *plane,\
 						t_sidedef sidedef, t_sector *sector);
-void				set_ceiling_limit(t_doom *doom, t_plane *plane,\
-						t_sidedef sidedef, t_sector *sector);
+void				set_ceiling_limit(t_doom *doom, t_sidedef sidedef, \
+						t_sector *sector);
 Uint8				find_slope_line_offset(t_point start, t_point end);
-
 void				draw_onesided_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
 void				draw_portal_sidedef(t_doom *doom, t_plane plane,\
 						t_sidedef sidedef, int x);
-void				draw_sidedef(t_doom *doom, t_plane plane,\
+void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
+void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+
+void				draw_window_as_sprite(t_doom *doom);
+void				save_window(t_doom *doom, t_plane plane,
 						t_sidedef sidedef, int x);
+void				init_window(t_doom *doom);
 void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
-void				draw_ceiling(t_doom *doom, int x, t_sector sector, int y);
-void				draw_floor(t_doom *doom, int x, t_sector sector, int y);
+void				put_pixel_slope(t_doom *doom, Uint32 index, int x, int y);
+void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
+						int mask);
 
 void				sidedef_render_skybox(t_doom *doom, t_ray ray,\
 						t_line *sky_sd);
@@ -87,17 +83,20 @@ void				draw_skybox(t_doom *doom, int x, t_sidedef sidedef,\
 void				draw_ground(t_doom *doom, int x, int y);
 void				draw_sky(t_doom *doom, int x, int y);
 
-void				draw_poster(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x);
+int					set_poster(t_doom *doom, int x, double distance, \
+						t_point intersect);
+void				draw_poster(t_doom *doom, t_plane plane,\
+						int poster_index, int x);
 void				draw_texture(SDL_Surface *texture, t_doom *doom, \
 						int x, int y);
 void				draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect rect);
 
-void				add_saturation(char *r, char *g, char *b, double light);
+void				add_saturation(Uint8 *r, Uint8 *g, Uint8 *b, double light);
 void				add_light_to_pixel(t_doom *doom, t_sector sector,\
 						int x, int y);
+void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
-double				clamp_angle(double angle);
 t_ray				init_ray(t_doom *doom, int x);
+double				clamp_angle(double angle);
 
 #endif

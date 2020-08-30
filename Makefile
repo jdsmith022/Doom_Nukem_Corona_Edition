@@ -26,7 +26,7 @@ MENU = srcs/menu/
 ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_point \
-			doom_update exit free_library_struct free_library_sdl update_hud_ui \
+			doom_update exit free_library_struct free_library_sdl update_screen \
 			doom_init_events doom_init_ui
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff key_select_and_shoot
@@ -43,10 +43,10 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
 				printing_map init_game draw_sidedef_object objects \
 				correct_position
-AUDIO_FILES = audio audio_init playback helpers
+AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
-				sprite_hud_scale find_prev_sectors
+				sprite_hud_scale find_prev_sectors sprite_set_player_sprites
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui \
 				 position gameplay game_over timer sprite_hit \
@@ -60,8 +60,8 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				shopper_hit_font
 HUD_FILES = update_hud calculate_hud_levels update_levels \
 			update_list_and_basket update_timer
-MENU_FILES = start_menu event_settings game_over print_background menu_selection \
-			menu_click_events finished_text print_menu
+MENU_FILES = start_menu event_settings print_background menu_selection \
+			menu_click_events finished_text print_menu print_player_sprite
 ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 

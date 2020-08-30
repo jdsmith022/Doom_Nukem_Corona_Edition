@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
+#include "../../includes/render.h"
 
 void		find_prev_sectors(t_doom *doom, t_sprite *sprite)
 {

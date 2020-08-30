@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:10:05 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:54:36 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,10 @@ static t_font	*font_to_screen_2(t_doom *doom,
 		font_lib = doom->lib.font_lib.pause_font;
 		*len = doom->lib.font_lib.pause_font_len;
 	}
-	else if (doom->hud_display == TRUE)
-	{
-		font_lib = doom->lib.font_lib.hud_font;
-		*len = doom->lib.font_lib.hud_font_len;
-	}
 	else if (doom->menu->state == game_over)
 	{
 		font_lib = doom->lib.font_lib.game_over_font;
-		*len = doom->lib.font_lib.game_font_len;
+		*len = 2;
 	}
 	else if (doom->menu->state == finished)
 	{

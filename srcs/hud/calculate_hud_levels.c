@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:54 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:15:56 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:01:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 static void		check_level_limits(t_doom *doom)
 {
-	// if (doom->hud->corona_level >= 100)
-		// doom->menu->game_over = TRUE;
-	if (doom->hud->corona_level < 0)
+	if (doom->hud->corona_level >= 100)
+		doom->menu->state = game_over;
+	else if (doom->hud->corona_level < 0)
 		doom->hud->corona_level = 0;
 	if (doom->hud->sanitizer_level >= 100)
 		doom->hud->sanitizer_level = 100;
-	if (doom->hud->sanitizer_level < 0)
+	else if (doom->hud->sanitizer_level < 0)
 		doom->hud->sanitizer_level = 0;
 }
 
 void			calculate_hud_levels(t_doom *doom)
 {
 	if (doom->hud->update == sanitizer)
-		doom->hud->sanitizer_level += 15;
+		doom->hud->sanitizer_level += 10;
 	else if (doom->hud->update == sanitizer_shooting)
 		doom->hud->sanitizer_level -= 1;
 	else if (doom->hud->update == facemask)
 		doom->hud->corona_level -= 8;
 	else if (doom->hud->update == health_pack)
-		doom->hud->corona_level -= 2;
+		doom->hud->corona_level -= 4;
 	else if (doom->hud->update == shopper_collision)
-		doom->hud->corona_level += 5;
+		doom->hud->corona_level += 4;
 	else if (doom->hud->update == health_pack_plus)
 		doom->hud->corona_level -= 10;
 	else if (doom->hud->update == corona_hit)

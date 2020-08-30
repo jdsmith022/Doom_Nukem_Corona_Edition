@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   doom_render.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:01:21 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:01:22 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
+#include "../../includes/render.h"
+
 
 double	clamp_angle(double angle)
 {

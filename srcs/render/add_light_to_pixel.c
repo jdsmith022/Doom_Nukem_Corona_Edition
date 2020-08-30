@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   add_light_to_pixel.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:00:59 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/29 14:00:59 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/render.h"
+
 
 void	add_light_to_pixel(t_doom *doom, t_sector sector, int x, int y)
 {

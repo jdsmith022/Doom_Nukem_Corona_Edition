@@ -17,8 +17,11 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 		audio(doom, &doom->own_event);
 		groceries(doom);
 	}
-	if (doom->game_editor == TRUE && doom->menu->state == start_game)
+	else if (doom->game_editor == TRUE)
+	{
 		open_game_editor(doom);
+		font_to_screen(doom);
+	}
 }
 
 static void	sdl_poll_events(t_doom *doom, double dt)
@@ -41,7 +44,6 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 			mouse_release(doom, &event.button);
 		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
-		// doom->game_state = changed;
 	}
 }
 

@@ -6,13 +6,14 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:15:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/29 14:05:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/render.h"
 
 static void		print_missing_groceries(t_doom *doom)
 {

@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/font.h"
+#include "../../includes/render.h"
 
 void			draw_item(t_doom *doom, t_item item)
 {

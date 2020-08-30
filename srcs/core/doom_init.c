@@ -33,6 +33,8 @@ static void		init_player(t_doom *doom)
 	doom->player_width = 48;
 	doom->player_std_height = PLAYER_HEIGHT;
 	doom->i_sector = 0;
+	doom->player_handed = left;
+	doom->player_sprite = player_1;
 }
 
 static void		init_settings(t_doom *doom)

@@ -8,7 +8,9 @@ static void		draw_add_on(t_doom *doom, int sprite_i)
 	t_line bar;
 
 	scale_bar(doom, &bar, sprite_i);
-	if (sprite_i == RIGHT_SELECT)
+	if (sprite_i == doom->player.right_select || \
+	(doom->player_handed == right && doom->own_event.shoot == TRUE \
+	&& sprite_i != CROSS_HAIR))
 	{
 		bar.start.x += 450;
 		bar.end.x += 450;
@@ -35,14 +37,16 @@ static void			add_mist_to_sanitizer(t_doom *doom)
 	{
 		diff = find_time_difference(doom, doom->own_event.sprite_timer.tv_sec);
 		if (diff == 0)
-			draw_add_on(doom, SPRAYING_HAND);
+			draw_add_on(doom, doom->player.spraying_hand);
 	}
 }
 
 void		draw_player_adds(t_doom *doom)
 {
-	size_t	sprite_i;
+	size_t			sprite_i;
 
+	if (doom->player_sprite != set)
+		set_player_sprite(doom);
 	if (doom->own_event.scissor_lift == TRUE)
 	{
 		sprite_i = SCISSOR;
@@ -51,16 +55,16 @@ void		draw_player_adds(t_doom *doom)
 	if (doom->own_event.shoot == TRUE)
 	{
 		add_mist_to_sanitizer(doom);
-		sprite_i = SPRAY_HAND;
+		sprite_i = doom->player.spray_hand;
 		draw_add_on(doom, sprite_i);
-		draw_add_on(doom, 76);
+		draw_add_on(doom, CROSS_HAIR);
 	}
 	else if (doom->own_event.select == TRUE)
 	{
 		if (doom->own_event.hold_x <= WIDTH / 2)
-			sprite_i = LEFT_SELECT;
+			sprite_i = doom->player.left_select;
 		else
-			sprite_i = RIGHT_SELECT;
+			sprite_i = doom->player.right_select;
 		draw_add_on(doom, sprite_i);
 		draw_add_on(doom, CROSS_HAIR);
 	}

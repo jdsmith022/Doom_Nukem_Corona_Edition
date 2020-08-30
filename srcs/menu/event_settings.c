@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:14:37 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:32:09 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		mouse_handler(t_doom *doom)
 
 	if (doom->menu->settings == TRUE)
 	{
-		rect1 = doom->lib.font_lib.setting_menu_font[9].font_rect;
+		rect1 = doom->lib.font_lib.setting_menu_font[13].font_rect;
 		setting_menu_click_event(doom, rect1);
 	}
 	else if (doom->menu->state == menu)
@@ -72,7 +72,6 @@ void			mouse_settings(t_doom *doom)
 			}
 		}
 	}
-	if (event.type == SDL_MOUSEBUTTONDOWN || \
-	event.type == SDL_MOUSEBUTTONUP)
+	if (event.type == SDL_MOUSEBUTTONDOWN)
 		mouse_handler(doom);
 }
