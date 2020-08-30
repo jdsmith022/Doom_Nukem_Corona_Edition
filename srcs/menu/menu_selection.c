@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 12:31:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 15:25:57 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/audio.h"
 #include "../../includes/hud.h"
 
-static void		set_reason_and_statement(t_doom *doom, char **reason, char **statement)
+static void		set_reason(t_doom *doom, char **reason, char **statement)
 {
 	if (doom->hud->corona_level < 100)
 	{
@@ -27,7 +27,6 @@ static void		set_reason_and_statement(t_doom *doom, char **reason, char **statem
 		*reason = "You're corona level reached 100!";
 		*statement = "Time to self-quarantine!";
 	}
-	
 }
 
 static void		set_reason_for_gameover(t_doom *doom)
@@ -35,18 +34,20 @@ static void		set_reason_for_gameover(t_doom *doom)
 	TTF_Font	*font;
 	char		*reason;
 	char		*statement;
-	
+
 	font = doom->lib.font_lib.font_30;
-	set_reason_and_statement(doom, &reason, &statement);
+	set_reason(doom, &reason, &statement);
 	doom->lib.font_lib.game_over_font[2].str = reason;
 	single_font_to_sdl(doom, doom->lib.font_lib.game_over_font[2], font);
-	doom->lib.font_lib.game_over_font[3].str =  statement;
+	doom->lib.font_lib.game_over_font[3].str = statement;
 	single_font_to_sdl(doom, doom->lib.font_lib.game_over_font[3], font);
 }
 
 static void	game_over_menu(t_doom *doom)
 {
 	SDL_SetRelativeMouseMode(SDL_TRUE);
+	stop_sounds();
+	play_sound(doom->audio->sounds[GAMEOVER], -1);
 	while (doom->menu->state == game_over)
 	{
 		doom->hud_display = FALSE;
@@ -61,6 +62,8 @@ static void	game_over_menu(t_doom *doom)
 
 static void		finished_menu(t_doom *doom)
 {
+	stop_sounds();
+	play_sound(doom->audio->sounds[LVL_FINISH], -1);
 	add_score_to_sdl_text(doom);
 	while (doom->menu->state == finished)
 		menu_print_loop(doom);

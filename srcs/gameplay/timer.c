@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/menu.h"
+#include "../../includes/audio.h"
 
 static void	show_invisible_sprite(t_doom *doom)
 {

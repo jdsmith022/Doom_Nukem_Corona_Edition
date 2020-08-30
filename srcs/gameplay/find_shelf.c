@@ -2,7 +2,6 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/render.h"
 
-
 int				find_shelf(t_lib lib, t_ray ray, int sector, int prev_sector)
 {
 	t_point		isect;
