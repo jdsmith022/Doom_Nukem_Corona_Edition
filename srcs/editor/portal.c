@@ -19,7 +19,7 @@ void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 
 void		new_portal(t_gamedesign *gd, t_doom *doom)
 {
-    add_sidedef(doom, gd->sidedef[gd->portal_sd].line.start.x,\
+	add_sidedef(doom, gd->sidedef[gd->portal_sd].line.start.x,\
 		gd->sidedef[gd->portal_sd].line.start.y);
 	add_sidedef(doom, gd->sidedef[gd->portal_sd].line.end.x,\
 		gd->sidedef[gd->portal_sd].line.end.y);

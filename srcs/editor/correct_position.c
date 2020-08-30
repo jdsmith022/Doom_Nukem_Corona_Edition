@@ -1,18 +1,19 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 
-static void    add_to_line(t_line *line, double x, double y)
+static void	add_to_line(t_line *line, double x, double y)
 {
-    line->start.x += fabs(x);
+	line->start.x += fabs(x);
 	line->end.x += fabs(x);
 	line->start.y += fabs(y);
 	line->end.y += fabs(y);
 }
 
-static int change_object(t_sprite **object, int k, t_sector sector, t_point change)
+static int	change_object(t_sprite **object,\
+int k, t_sector sector, t_point change)
 {
 	int side;
-	
+
 	side = 0;
 	while (k < sector.i_objects + sector.n_objects)
 	{
@@ -44,18 +45,18 @@ static void	change_pos(t_point change, t_doom *doom)
 		while (j < doom->game_design.sector[i].i_sidedefs \
 		+ doom->game_design.sector[i].n_sidedefs)
 		{
-            add_to_line(&doom->game_design.sidedef[j].line, change.x, change.y);
+			add_to_line(&doom->game_design.sidedef[j].line, change.x, change.y);
 			j++;
 		}
 		k = change_object(&doom->game_design.object, k,\
 		doom->game_design.sector[i], change);
 		i++;
 	}
-    doom->game_design.pl_x += fabs(change.x);
-    doom->game_design.pl_y += fabs(change.y);
+	doom->game_design.pl_x += fabs(change.x);
+	doom->game_design.pl_y += fabs(change.y);
 }
 
-void    check_line(t_line line, double *x, double *y)
+void		check_line(t_line line, double *x, double *y)
 {
 	if (line.start.x < *x)
 		*x = line.start.x;
@@ -67,18 +68,17 @@ void    check_line(t_line line, double *x, double *y)
 		*y = line.end.y;
 }
 
-void	coor_pos(t_doom *doom)
+void		coor_pos(t_doom *doom, int side)
 {
 	int		i;
 	t_point change;
-	int		side;
 
 	i = 0;
 	change.x = 0.0;
 	change.y = 0.0;
 	while (i < doom->game_design.w_len)
 	{
-        check_line(doom->game_design.sidedef[i].line, &change.x, &change.y);
+		check_line(doom->game_design.sidedef[i].line, &change.x, &change.y);
 		i++;
 	}
 	i = 0;
@@ -87,7 +87,7 @@ void	coor_pos(t_doom *doom)
 		side = 0;
 		while (side < 4)
 		{
-            check_line(doom->game_design.object[i].lines[side],\
+			check_line(doom->game_design.object[i].lines[side],\
 			&change.x, &change.y);
 			side++;
 		}

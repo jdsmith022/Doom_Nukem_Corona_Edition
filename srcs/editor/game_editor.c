@@ -28,5 +28,6 @@ void	open_game_editor(t_doom *doom)
 	}
 	draw_object(doom, &pixels);
 	curr_time = SDL_GetTicks();
-	doom->game_start_time = doom->game_start_time + (curr_time - hold_time);
+	doom->game_start_time = doom->game_start_time +\
+	(curr_time - hold_time);
 }

@@ -26,6 +26,7 @@ static t_sprite	*new_level_object(t_doom *doom,\
 	int			i;
 	int 		side;
 
+	free(doom->lib.sidedef);
 	if (o_len > 0)
 	{
 		new = (t_sprite*)malloc(sizeof(t_sprite) * (o_len + 1));
@@ -50,6 +51,7 @@ static t_sector	*new_level_sector(t_doom *doom,\
 	t_sector	*new;
 	int			i;
 
+	free(doom->lib.sector);
 	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 1));
 	if (new == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
@@ -97,11 +99,9 @@ void		add_to_game(t_doom *doom)
 	{
 		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
 		{
-			coor_pos(doom);
-			box_in_sectors(doom);  // give these walls a flag so that they are not drawn if the sector is outside
-			free(doom->lib.sector); //rm when there are multiple levels		
-			free(doom->lib.sidedef); //rm when there are multiple levels
-			rmove(doom->lib.sprites, doom); //neccesary to stop the leaks but it just breaks the code and it sucks
+			coor_pos(doom, 0);
+			box_in_sectors(doom);
+			rmove(doom->lib.sprites, doom);
 			doom->lib.sector = new_level_sector(doom,\
 				doom->game_design.sector, doom->game_design.s_len + 1);
 			doom->lib.sidedef = new_level_sidedef(doom,\
