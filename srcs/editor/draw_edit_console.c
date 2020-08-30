@@ -4,103 +4,6 @@
 #include "../../includes/render.h"
 
 
-void put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
-				Uint32 pixel_dex)
-{
-	char	*pixels;
-	char	*texture;
-
-	pixels = doom->surface->pixels;
-	texture = doom->game_design.sym_lib[tex_dex]->pixels;
-	pixels[index] =  texture[pixel_dex];
-	pixels[index + 1] = texture[pixel_dex + 1];
-	pixels[index + 2] = texture[pixel_dex + 2];
-}
-
-void    put_textures(int x, int y, int index, t_doom *doom)
-{
-    int save_x;
-	Uint32 shift;
-    double sx;
-	double sy;
-	double change_x;
-	double change_y;
-	SDL_Surface		*texture;
-
-
-    save_x = x;
-    sx = 0;
-	sy = 0;
-	texture = doom->game_design.sidedef_bar == 1 ? doom->lib.tex_lib[index] : doom->lib.obj_lib[index];
-	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
-	change_x = (double)texture->w / 48.0;
-	change_y = (double)texture->h / 48.0;
-    while ((int)sy < texture->h)
-    {
-		put_texture(doom, (Uint32)index, (Uint32)((y * WIDTH + x) * 4), (Uint32)(((int)sy * texture->w + (int)sx) * shift));
-		x++;
-		sx += change_x;
-        if ((int)sx >= texture->w)
-        {
-            x = save_x;
-            y++;
-			sx = 0;
-			sy += change_y;
-        }
-    }
-}
-
-void	put_images(int x, int y, int index, t_doom *doom)
-{
-    int save_x;
-	Uint32 shift;
-    double sx;
-	double sy;
-	double change_x;
-	double change_y;
-
-    save_x = x;
-    sx = 0;
-	sy = 0;
-	shift = doom->game_design.sym_lib[index]->format->BitsPerPixel == 24 ? 3 : 4;
-	change_x = (double)doom->game_design.sym_lib[index]->w / 32.0;
-	change_y = (double)doom->game_design.sym_lib[index]->h / 32.0;
-    while ((int)sy < doom->game_design.sym_lib[index]->h)
-    {
-		put_symbol(doom, (Uint32)index, (Uint32)((y * WIDTH + x) * 4), (Uint32)(((int)sy * doom->game_design.sym_lib[index]->w + (int)sx) * shift));
-		x++;
-		sx += change_x;
-        if ((int)sx >= doom->game_design.sym_lib[index]->w)
-        {
-            x = save_x;
-            y++;
-			sx = 0;
-			sy += change_y;
-        }
-    }
-}
-
-void    draw_screen_colors(Uint32 *pixels, t_doom *doom)
-{
-    int x;
-    int y;
-
-    y = 0;
-    while (y < HEIGHT)
-	{
-        x = 0;
-		while (x < WIDTH)
-		{
-			if (x < WIDTH - (WIDTH / 5) && x > WIDTH / 5)
-					pixels[((y * WIDTH) + x)] = 0;
-			else
-				pixels[((y * WIDTH) + x)] = 0x8c3cde6;
-            x++;
-		}
-        y++;
-	}
-}
-
 void	draw_sector_images(Uint32 *pixels, t_doom *doom)
 {
 	int state;
@@ -109,49 +12,50 @@ void	draw_sector_images(Uint32 *pixels, t_doom *doom)
 	doom->game_design.sidedef_bar = 1;
 	put_images(DEL_SECTOR_X, DEL_SECTOR_Y, garbage, doom);
 	put_images(ADD_SECTOR_X, ADD_SECTOR_Y, plus, doom);
-
 	put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 	put_images(AR_RIGHT_X, AR_RIGHT_Y, arrow_right, doom);
-
-	put_textures(TEX_FL_X, TEX_FL_Y, SECTOR[doom->game_design.cur_sec].txt_floor, doom);
+	put_textures(TEX_FL_X, TEX_FL_Y, \
+	doom->game_design.sector[doom->game_design.cur_sec].txt_floor, doom);
 	put_images(AR_LEFT_TF_X, AR_LEFT_TF_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TF_X, AR_RIGHT_TF_Y, arrow_right, doom);
-
-	put_textures(TEX_CE_X, TEX_CE_Y, SECTOR[doom->game_design.cur_sec].txt_ceiling, doom);
+	put_textures(TEX_CE_X, TEX_CE_Y, \
+	doom->game_design.sector[doom->game_design.cur_sec].txt_ceiling, doom);
 	put_images(AR_LEFT_TC_X, AR_LEFT_TC_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TC_X, AR_RIGHT_TC_Y, arrow_right, doom);
 	doom->game_design.sidedef_bar = state;
 }
 
+void	draw_sidedef_textures(Uint32 *pixels, t_doom *doom)
+{
+	if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_2 != -1)
+		put_textures(TEX_S2_X, TEX_S2_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_2, doom);
+	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
+	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
+	if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1)
+	{
+		if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_1 != -1)
+			put_textures(TEX_S1_X, TEX_S1_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
+		put_images(AR_LEFT_TS1_X, AR_LEFT_TS1_Y, arrow_left, doom);
+		put_images(AR_RIGHT_TS1_X, AR_RIGHT_TS1_Y, arrow_right, doom);
+		if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_3 != -1)
+			put_textures(TEX_S3_X, TEX_S3_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_3, doom);
+		put_images(AR_LEFT_TS3_X, AR_LEFT_TS3_Y, arrow_left, doom);
+		put_images(AR_RIGHT_TS3_X, AR_RIGHT_TS3_Y, arrow_right, doom);
+	}
+}
+
 void	draw_sidedef_images(Uint32 *pixels, t_doom *doom)
 {
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
-
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-
-	if (doom->game_design.cur_sd >= SECTOR[doom->game_design.cur_sec].i_sidedefs && doom->game_design.sidedef_bar == 1)
+	if (doom->game_design.cur_sd >= \
+	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs \
+	&& doom->game_design.sidedef_bar == 1)
 	{
 		put_images(RM_SD_X, RM_SD_Y, garbage, doom);
 		put_images(PORTAL_X, PORTAL_Y, plus, doom);
-
-		if (SIDEDEF[doom->game_design.cur_sd].txt_2 != -1)
-			put_textures(TEX_S2_X, TEX_S2_Y, SIDEDEF[doom->game_design.cur_sd].txt_2, doom);
-		put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
-		put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
-
-		if (SIDEDEF[doom->game_design.cur_sd].opp_sidedef != -1)
-		{
-			if (SIDEDEF[doom->game_design.cur_sd].txt_1 != -1)
-				put_textures(TEX_S1_X, TEX_S1_Y, SIDEDEF[doom->game_design.cur_sd].txt_1, doom);
-			put_images(AR_LEFT_TS1_X, AR_LEFT_TS1_Y, arrow_left, doom);
-			put_images(AR_RIGHT_TS1_X, AR_RIGHT_TS1_Y, arrow_right, doom);
-
-			if (SIDEDEF[doom->game_design.cur_sd].txt_3 != -1)
-				put_textures(TEX_S3_X, TEX_S3_Y, SIDEDEF[doom->game_design.cur_sd].txt_3, doom);
-			put_images(AR_LEFT_TS3_X, AR_LEFT_TS3_Y, arrow_left, doom);
-			put_images(AR_RIGHT_TS3_X, AR_RIGHT_TS3_Y, arrow_right, doom);
-		}
+		draw_sidedef_textures(pixels, doom);
 	}
 	if (doom->game_design.portal_sec != -1)
 	{
@@ -163,15 +67,14 @@ void	draw_sidedef_images(Uint32 *pixels, t_doom *doom)
 void	draw_object_images(Uint32 *pixels, t_doom *doom)
 {
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
-
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-
-	put_textures(TEX_S2_X, TEX_S2_Y, LEVEL_SPRITES[doom->game_design.cur_tex].tex1, doom);
+	put_textures(TEX_S2_X, TEX_S2_Y, LS[doom->game_design.cur_tex].tex1, doom);
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
-
-	if (doom->game_design.cur_obj >= SECTOR[doom->game_design.cur_sec].i_objects && doom->game_design.object_bar == 1)
+	if (doom->game_design.cur_obj >= \
+	doom->game_design.sector[doom->game_design.cur_sec].i_objects \
+	&& doom->game_design.object_bar == 1)
 		put_images(DEL_OBJ_X, DEL_OBJ_Y, garbage, doom);
 }
 

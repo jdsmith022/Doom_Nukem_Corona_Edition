@@ -4,35 +4,35 @@
 void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 {
 	del_sidedef(doom);
-	EDIT.cur_sec += dir;
-	if (EDIT.portal_sec == EDIT.cur_sec)
-		EDIT.cur_sec += dir;
-	if (EDIT.cur_sec < 0)
-		EDIT.cur_sec = EDIT.s_len;
-	if (EDIT.cur_sec > EDIT.s_len)
-		EDIT.cur_sec = 0;
-	if (EDIT.portal_sec == EDIT.cur_sec)
-		EDIT.cur_sec += dir;
-	SECTOR[EDIT.cur_sec].diff_x = diff_x;
-	SECTOR[EDIT.cur_sec].diff_y = diff_y;
+	doom->game_design.cur_sec += dir;
+	if (doom->game_design.portal_sec == doom->game_design.cur_sec)
+		doom->game_design.cur_sec += dir;
+	if (doom->game_design.cur_sec < 0)
+		doom->game_design.cur_sec = doom->game_design.s_len;
+	if (doom->game_design.cur_sec > doom->game_design.s_len)
+		doom->game_design.cur_sec = 0;
+	if (doom->game_design.portal_sec == doom->game_design.cur_sec)
+		doom->game_design.cur_sec += dir;
+	doom->game_design.sector[doom->game_design.cur_sec].diff_x = diff_x;
+	doom->game_design.sector[doom->game_design.cur_sec].diff_y = diff_y;
 }
 
-void		new_portal(t_doom *doom)
+void		new_portal(t_gamedesign *gd, t_doom *doom)
 {
-    add_sidedef(doom, SIDEDEF[EDIT.portal_sd].line.start.x, SIDEDEF[EDIT.portal_sd].line.start.y);
-	add_sidedef(doom, SIDEDEF[EDIT.portal_sd].line.end.x, SIDEDEF[EDIT.portal_sd].line.end.y);
-	if (EDIT.portal_sd > EDIT.cur_sd)
-		EDIT.portal_sd++;
-	SIDEDEF[EDIT.portal_sd].opp_sidedef = EDIT.cur_sd;
-	SIDEDEF[EDIT.portal_sd].opp_sector = EDIT.cur_sec;
-	SIDEDEF[EDIT.cur_sd].opp_sidedef = EDIT.portal_sd;
-	SIDEDEF[EDIT.cur_sd].opp_sector = EDIT.portal_sec;
-	// SIDEDEF[EDIT.cur_sd].txt_2 = -1;
-	// SIDEDEF[EDIT.portal_sd].txt_2 = -1; //neccesary?
-	SECTOR[EDIT.cur_sec].diff_x = SECTOR[EDIT.portal_sec].diff_x;
-	SECTOR[EDIT.cur_sec].diff_y = SECTOR[EDIT.portal_sec].diff_y;
-	if (EDIT.portal_sd > EDIT.cur_sd)
-		EDIT.portal_sd--;
+    add_sidedef(doom, gd->sidedef[gd->portal_sd].line.start.x,\
+		gd->sidedef[gd->portal_sd].line.start.y);
+	add_sidedef(doom, gd->sidedef[gd->portal_sd].line.end.x,\
+		gd->sidedef[gd->portal_sd].line.end.y);
+	if (gd->portal_sd > gd->cur_sd)
+		gd->portal_sd++;
+	gd->sidedef[gd->portal_sd].opp_sidedef = gd->cur_sd;
+	gd->sidedef[gd->portal_sd].opp_sector = gd->cur_sec;
+	gd->sidedef[gd->cur_sd].opp_sidedef = gd->portal_sd;
+	gd->sidedef[gd->cur_sd].opp_sector = gd->portal_sec;
+	gd->sector[gd->cur_sec].diff_x = gd->sector[gd->portal_sec].diff_x;
+	gd->sector[gd->cur_sec].diff_y = gd->sector[gd->portal_sec].diff_y;
+	if (gd->portal_sd > gd->cur_sd)
+		gd->portal_sd--;
 }
 
 void		add_portal(t_doom *doom, int dir)
@@ -44,11 +44,12 @@ void		add_portal(t_doom *doom, int dir)
 		del_portal(doom, dir, diff_x, diff_y);
 	else
 	{
-		EDIT.portal_sd = EDIT.cur_sd;
-		EDIT.portal_sec = EDIT.cur_sec;
-		EDIT.cur_sec = EDIT.cur_sec > 0 ? EDIT.cur_sec - 1 : EDIT.s_len;
+		doom->game_design.portal_sd = doom->game_design.cur_sd;
+		doom->game_design.portal_sec = doom->game_design.cur_sec;
+		doom->game_design.cur_sec = doom->game_design.cur_sec > 0 \
+			? doom->game_design.cur_sec - 1 : doom->game_design.s_len;
 	}
-	new_portal(doom);
-	diff_x = SECTOR[EDIT.cur_sec].diff_x;
-	diff_y = SECTOR[EDIT.cur_sec].diff_y;
+	new_portal(&(doom->game_design), doom);
+	diff_x = doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+	diff_y = doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 }

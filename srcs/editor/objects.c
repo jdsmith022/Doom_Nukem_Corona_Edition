@@ -6,59 +6,63 @@ void		del_obj(t_doom *doom)
 {
 	int i;
 
-	i = EDIT.cur_sec + 1;
-	while (i <= EDIT.s_len)
+	i = doom->game_design.cur_sec + 1;
+	while (i <= doom->game_design.s_len)
 	{
-		SECTOR[i].i_objects--;
+		doom->game_design.sector[i].i_objects--;
 		i++;
 	}
-	i = EDIT.cur_obj;
-	while (i < EDIT.o_len - 1)
+	i = doom->game_design.cur_obj;
+	while (i < doom->game_design.o_len - 1)
 	{
-		OBJECT[i] = OBJECT[i + 1];
+		doom->game_design.object[i] = doom->game_design.object[i + 1];
 		i++;
 	}
-	SECTOR[EDIT.cur_sec].n_objects--;
-	EDIT.o_len--;
-	EDIT.cur_obj--;
+	doom->game_design.sector[doom->game_design.cur_sec].n_objects--;
+	doom->game_design.o_len--;
+	doom->game_design.cur_obj--;
 }
 
 void        correct_i_object(int i, t_doom *doom)
 {
-	while (i <= EDIT.o_len)
+	while (i <= doom->game_design.o_len)
 	{
-		SECTOR[i].i_objects++;
+		doom->game_design.sector[i].i_objects++;
 		i++;
 	}
-	SECTOR[EDIT.cur_sec].n_objects++;
+	doom->game_design.sector[doom->game_design.cur_sec].n_objects++;
 
 }
 
-t_sprite *cpy_object(t_doom *doom, t_sprite *object, int *o_size)
+void	cpy_object(t_doom *doom, t_sprite **object, int *o_size)
 {
 	t_sprite	*new;
 	int			i;
+	int			side;
 
-	new = (t_sprite*)malloc(sizeof(t_sprite) * *o_size * 2);
+	new = (t_sprite*)ft_memalloc(sizeof(t_sprite) * *o_size * 2);
 	if (new == NULL)
 		doom_exit_failure(doom, "error: cpy object");
 	i = 0;
 	while (i < *o_size)
 	{
-		new[i] = object[i];
+		new[i] = object[0][i];
+		new[i].lines = (t_line*)ft_memalloc(sizeof(t_line) * 4);
+		new[i].textures = (int*)ft_memalloc(sizeof(int) * 4);
+		side = 0;
+		while (side < 4)
+		{
+			new[i].lines[side] = object[0][i].lines[side];
+			new[i].textures[side] = object[0][i].textures[side];
+			side++;
+		}
+		free(object[0][i].lines);
+		free(object[0][i].textures);
 		i++;
 	}
-	free(object);
+	free(*object);
 	*o_size *= 2;
-	while (i < *o_size)
-	{
-		new[i].lines = (t_line*)malloc(sizeof(t_line) * 4);
-		new[i].textures = (int*)malloc(sizeof(int) * 4);
-		if (new[i].lines == NULL || new[i].textures == NULL)
-			doom_exit_failure(doom, "error: cpy object");
-		i++;
-	}
-	return (new);
+	*object = new;
 }
 
 void		mv_object(t_sprite **object, int o_len, int id)
@@ -66,6 +70,7 @@ void		mv_object(t_sprite **object, int o_len, int id)
 	int			i;
 	t_sprite	safe;
 	t_sprite	safe2;
+	int			side;
 
 	i = id;
 	safe = object[0][i];
@@ -73,7 +78,7 @@ void		mv_object(t_sprite **object, int o_len, int id)
 	i++;
 	while (i < o_len)
 	{
-		safe2 = object[0][o_len];
+		safe2 = object[0][i];
 		object[0][i] = safe;
 		safe = safe2;
 		i++;
@@ -81,71 +86,73 @@ void		mv_object(t_sprite **object, int o_len, int id)
 	object[0][i] = safe;
 }
 
-void	add_obj_lines(int x, int y, t_doom *doom, int index)
+void	add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln)
 {
-    OBJECT[index].lines[0].start.x = x + LEVEL_SPRITES[EDIT.cur_tex].start_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[0].end.x = x + LEVEL_SPRITES[EDIT.cur_tex].start_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[0].start.y = y + LEVEL_SPRITES[EDIT.cur_tex].start_y + SECTOR[EDIT.cur_sec].diff_y;
-    OBJECT[index].lines[0].end.y = y + LEVEL_SPRITES[EDIT.cur_tex].end_y + SECTOR[EDIT.cur_sec].diff_y;
-	OBJECT[index].lines[1].start.x = x + LEVEL_SPRITES[EDIT.cur_tex].end_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[1].end.x = x + LEVEL_SPRITES[EDIT.cur_tex].end_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[1].start.y = y + LEVEL_SPRITES[EDIT.cur_tex].start_y + SECTOR[EDIT.cur_sec].diff_y;
-    OBJECT[index].lines[1].end.y = y + LEVEL_SPRITES[EDIT.cur_tex].end_y + SECTOR[EDIT.cur_sec].diff_y;
-	OBJECT[index].lines[2].start.x = x + LEVEL_SPRITES[EDIT.cur_tex].start_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[2].end.x = x + LEVEL_SPRITES[EDIT.cur_tex].end_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[2].start.y = y + LEVEL_SPRITES[EDIT.cur_tex].start_y + SECTOR[EDIT.cur_sec].diff_y;
-    OBJECT[index].lines[2].end.y = y + LEVEL_SPRITES[EDIT.cur_tex].start_y + SECTOR[EDIT.cur_sec].diff_y;
-	OBJECT[index].lines[3].start.x = x + LEVEL_SPRITES[EDIT.cur_tex].start_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[3].end.x = x + LEVEL_SPRITES[EDIT.cur_tex].end_x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[index].lines[3].start.y = y + LEVEL_SPRITES[EDIT.cur_tex].end_y + SECTOR[EDIT.cur_sec].diff_y;
-    OBJECT[index].lines[3].end.y = y + LEVEL_SPRITES[EDIT.cur_tex].end_y + SECTOR[EDIT.cur_sec].diff_y;
+    ln[0][0].start.x = x + LS[gd.cur_tex].start_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][0].end.x = x + LS[gd.cur_tex].start_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][0].start.y = y + LS[gd.cur_tex].start_y + gd.sector[gd.cur_sec].diff_y;
+    ln[0][0].end.y = y + LS[gd.cur_tex].end_y + gd.sector[gd.cur_sec].diff_y;
+	ln[0][1].start.x = x + LS[gd.cur_tex].end_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][1].end.x = x + LS[gd.cur_tex].end_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][1].start.y = y + LS[gd.cur_tex].start_y + gd.sector[gd.cur_sec].diff_y;
+    ln[0][1].end.y = y + LS[gd.cur_tex].end_y + gd.sector[gd.cur_sec].diff_y;
+	ln[0][2].start.x = x + LS[gd.cur_tex].start_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][2].end.x = x + LS[gd.cur_tex].end_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][2].start.y = y + LS[gd.cur_tex].start_y + gd.sector[gd.cur_sec].diff_y;
+    ln[0][2].end.y = y + LS[gd.cur_tex].start_y + gd.sector[gd.cur_sec].diff_y;
+	ln[0][3].start.x = x + LS[gd.cur_tex].start_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][3].end.x = x + LS[gd.cur_tex].end_x + gd.sector[gd.cur_sec].diff_x;
+    ln[0][3].start.y = y + LS[gd.cur_tex].end_y + gd.sector[gd.cur_sec].diff_y;
+    ln[0][3].end.y = y + LS[gd.cur_tex].end_y + gd.sector[gd.cur_sec].diff_y;
 }
 
-void	add_specifications(t_doom *doom, int index)
+void	add_specifications(t_gamedesign *gd, int index)
 {
-	OBJECT[index].index = LEVEL_SPRITES[EDIT.cur_tex].index;
-    OBJECT[index].amount = 4;
-  	OBJECT[index].size = LEVEL_SPRITES[EDIT.cur_tex].size;
-    OBJECT[index].textures[0] = LEVEL_SPRITES[EDIT.cur_tex].tex1;
-    OBJECT[index].textures[1] = LEVEL_SPRITES[EDIT.cur_tex].tex2;
-    OBJECT[index].textures[2] = LEVEL_SPRITES[EDIT.cur_tex].tex3;
-    OBJECT[index].textures[3] = LEVEL_SPRITES[EDIT.cur_tex].tex4;
-    OBJECT[index].block = LEVEL_SPRITES[EDIT.cur_tex].block;
-    OBJECT[index].sector = EDIT.cur_sec;
-    OBJECT[index].visible = -1;
-	OBJECT[index].action = LEVEL_SPRITES[EDIT.cur_tex].action;
+	gd->object[index].index = LS[gd->cur_tex].index;
+    gd->object[index].amount = 4;
+  	gd->object[index].size = LS[gd->cur_tex].size;
+    gd->object[index].textures[0] = LS[gd->cur_tex].tex1;
+    gd->object[index].textures[1] = LS[gd->cur_tex].tex2;
+    gd->object[index].textures[2] = LS[gd->cur_tex].tex3;
+    gd->object[index].textures[3] = LS[gd->cur_tex].tex4;
+    gd->object[index].block = LS[gd->cur_tex].block;
+    gd->object[index].sector = gd->cur_sec;
+   	gd->object[index].visible = -1;
+	gd->object[index].action = LS[gd->cur_tex].action;
 }
 
 void    add_object_to_array(int x, int y, t_doom *doom)
 {
-    OBJECT[EDIT.o_len].pos.x = x + SECTOR[EDIT.cur_sec].diff_x;
-    OBJECT[EDIT.o_len].pos.y = y + SECTOR[EDIT.cur_sec].diff_y;
-	add_specifications(doom, EDIT.o_len);
-	add_obj_lines(x, y, doom, EDIT.o_len);
+	doom->game_design.object[doom->game_design.o_len].lines = (t_line*)malloc(sizeof(t_line) * 4);
+	doom->game_design.object[doom->game_design.o_len].textures = (int*)malloc(sizeof(int) * 4);
+    doom->game_design.object[doom->game_design.o_len].pos.x = \
+		x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
+    doom->game_design.object[doom->game_design.o_len].pos.y = \
+		y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
+	add_specifications(&(doom->game_design), doom->game_design.o_len);
+	add_obj_lines(x, y, doom->game_design,\
+	&(doom->game_design.object[doom->game_design.o_len].lines));
 }
 
 
 void    add_object(t_doom *doom, int x, int y)
 {
-    if (OBJECT == NULL)
+    if (doom->game_design.object == NULL)
 	{
-		OBJECT = (t_sprite*)malloc(sizeof(t_sprite) * 2);
-		OBJECT[0].lines = (t_line*)malloc(sizeof(t_line) * 4);
-		OBJECT[0].textures = (int*)malloc(sizeof(int) * 4);
-		OBJECT[1].lines = (t_line*)malloc(sizeof(t_line) * 4);
-		OBJECT[1].textures = (int*)malloc(sizeof(int) * 4);
-		EDIT.o_size = 2;
-		EDIT.o_len = 0;
+		doom->game_design.object = (t_sprite*)malloc(sizeof(t_sprite) * 2);
+		doom->game_design.o_size = 2;
+		doom->game_design.o_len = 0;
 	}
-    if (EDIT.o_size < EDIT.o_len + 1)
-			OBJECT = cpy_object(doom, OBJECT, &EDIT.o_size);
+    if (doom->game_design.o_size < doom->game_design.o_len + 1)
+		cpy_object(doom, &(doom->game_design.object), &doom->game_design.o_size);
 	add_object_to_array(x, y, doom);
-    if (EDIT.cur_sec != EDIT.s_len)
-		mv_object(&OBJECT, EDIT.o_len, \
-		SECTOR[EDIT.cur_sec].i_objects);
-    correct_i_object(EDIT.cur_sec + 1, doom);
-    EDIT.cur_obj = EDIT.cur_sec != EDIT.s_len ? \
-	SECTOR[EDIT.cur_sec].i_objects \
-	: EDIT.o_len;
-    EDIT.o_len++;
+    if (doom->game_design.cur_sec != doom->game_design.s_len)
+		mv_object(&doom->game_design.object, doom->game_design.o_len, \
+		doom->game_design.sector[doom->game_design.cur_sec].i_objects);
+    correct_i_object(doom->game_design.cur_sec + 1, doom);
+    doom->game_design.cur_obj = doom->game_design.cur_sec != \
+		doom->game_design.s_len ? \
+		doom->game_design.sector[doom->game_design.cur_sec].i_objects \
+		: doom->game_design.o_len;
+    doom->game_design.o_len++;
 }

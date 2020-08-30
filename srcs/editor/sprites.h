@@ -54,7 +54,7 @@ typedef struct s_level_sprite
 	int			action;
 }				t_level_sprite;
 
-static const	t_level_sprite LEVEL_SPRITES[] = {
+static const	t_level_sprite LS[] = {
 	{SCISSOR_LIFT, START_X_L, START_Y_L, END_X_L, END_Y_L, 7, 8, 7, 8, BLOCK, X_LARGE, 7},
 	{SHOPPER, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM, 9, 10, 11, 12, BLOCK, LARGE, 9},
 	{FACE_MASK, START_X_SM, START_Y_SM, END_X_SM, END_Y_SM, 13, 13, 13, 13, NO_BLOCK, SMALL, 3},
