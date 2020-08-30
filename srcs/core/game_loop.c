@@ -32,21 +32,13 @@ void			game_loop(t_doom *doom)
 	dt = get_timeframe(&last_frame_time);
 	while (doom->is_running == TRUE)
 	{
-		printf("0");	
 		timer(doom);
-		printf("1");
 		dt = get_timeframe(&last_frame_time);
-		printf("2");
 		doom_update(doom, dt);
-		printf("3");
 		if (doom->game_editor == FALSE && doom->menu->state == start_game)
 			doom_render(doom);
-		printf("4");
 		update_screen(doom);
-		printf("5");
 		set_to_window(doom);
-		printf("6");
 	}
-	printf("7");
 	doom_exit_success(doom);
 }
