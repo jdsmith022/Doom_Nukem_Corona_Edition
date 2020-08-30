@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 13:40:27 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 19:06:06 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.checkout, 20, 21);
+			&doom->lib.font_lib.bools.checkout, 21, 22);
 	else if (doom->lib.font_lib.bools.trolly == TRUE && \
 	doom->lib.sector[doom->i_sector].action == START_SECTOR)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 19, 20);
+			&doom->lib.font_lib.bools.text, 20, 21);
 	else if (doom->lib.font_lib.bools.health_pack == TRUE)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 24, 25);
+			&doom->lib.font_lib.bools.text, 25, 26);
 	else if (doom->lib.font_lib.bools.facemask == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 25, 26);
@@ -98,7 +98,7 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 	{
 		set_background_coords_middle_large(doom);
 		font_timer_box_long(doom, \
-			&doom->lib.font_lib.bools.start_sector, 10, 19);
+			&doom->lib.font_lib.bools.start_sector, 10, 20);
 	}
 }
 
