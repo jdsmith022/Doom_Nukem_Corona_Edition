@@ -57,9 +57,7 @@ void		draw_player_adds(t_doom *doom)
 		add_mist_to_sanitizer(doom);
 		sprite_i = doom->player.spray_hand;
 		draw_add_on(doom, sprite_i);
-		printf("here\n");
 		draw_add_on(doom, CROSS_HAIR);
-		printf("cross hair done\n");
 	}
 	else if (doom->own_event.select == TRUE)
 	{
