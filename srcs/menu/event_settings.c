@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 17:20:55 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:32:09 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void			mouse_settings(t_doom *doom)
 			}
 		}
 	}
-	if (event.type == SDL_MOUSEBUTTONDOWN || \
-	event.type == SDL_MOUSEBUTTONUP)
+	if (event.type == SDL_MOUSEBUTTONDOWN)
 		mouse_handler(doom);
 }
