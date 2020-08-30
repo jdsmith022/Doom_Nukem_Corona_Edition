@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:06:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 19:44:26 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ static void		select_action(t_doom *doom)
 		{
 			check_sprite_hit(doom);
 			if (poster.action == 8)
+			{
+				printf("huh: %d -- %d sector: %d\n", poster.action, poster.id, poster.sector);
 				sanitizer_refill(doom);
+			}
 		}
 	}
 }
