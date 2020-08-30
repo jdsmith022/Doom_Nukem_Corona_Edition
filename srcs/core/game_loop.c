@@ -1,6 +1,7 @@
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
+#include "../../includes/gameplay.h"
 
 static void		set_to_window(t_doom *doom)
 {
