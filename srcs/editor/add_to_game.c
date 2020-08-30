@@ -1,7 +1,8 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 
-t_sidedef	*new_level_sidedef(t_doom *doom, t_sidedef *sidedef, int w_len)
+static t_sidedef	*new_level_sidedef(t_doom *doom,\
+					t_sidedef *sidedef, int w_len)
 {
 	t_sidedef	*new;
 	int			i;
@@ -18,7 +19,8 @@ t_sidedef	*new_level_sidedef(t_doom *doom, t_sidedef *sidedef, int w_len)
 	return (new);
 }
 
-t_sprite	*new_level_object(t_doom *doom, t_sprite *object, int o_len)
+static t_sprite	*new_level_object(t_doom *doom,\
+				t_sprite *object, int o_len)
 {
 	t_sprite	*new;
 	int			i;
@@ -32,12 +34,8 @@ t_sprite	*new_level_object(t_doom *doom, t_sprite *object, int o_len)
 		i = 0;
 		while (i < o_len)
 		{
-			// side = 0;
-			// while (side < 4)
-			// {
-			// 	printf("start_x %f start_y %f end_x %f endy %f\n", object[i].lines[side].start.x, object[i].lines[side].start.y, object[i].lines[side].end.x , object[i].lines[side].end.y);
-			// 	side++;
-			// }
+			new[i].lines = (t_line*)ft_memalloc(sizeof(t_line) * 4);
+			new[i].textures = (int*)ft_memalloc(sizeof(int) * 4);
 			new[i] = object[i];
 			i++;
 		}
@@ -46,7 +44,8 @@ t_sprite	*new_level_object(t_doom *doom, t_sprite *object, int o_len)
 	return (NULL);
 }
 
-t_sector	*new_level_sector(t_doom *doom, t_sector *sector, int s_len)
+static t_sector	*new_level_sector(t_doom *doom,\
+				t_sector *sector, int s_len)
 {
 	t_sector	*new;
 	int			i;
@@ -63,7 +62,7 @@ t_sector	*new_level_sector(t_doom *doom, t_sector *sector, int s_len)
 	return (new);
 }
 
-t_sector	*light_correction(t_sector *sector, int len)
+static t_sector	*light_correction(t_sector *sector, int len)
 {
 	int i;
 
@@ -78,31 +77,45 @@ t_sector	*light_correction(t_sector *sector, int len)
 	return (sector);
 }
 
+void		rmove(t_sprite *sprite, t_doom *doom)
+{
+	int i;
+
+	i = 0;
+	while (i < doom->total_sprites)
+	{
+		free(sprite[i].lines);
+		free(sprite[i].textures);
+		i++;
+	}
+	free(sprite);
+}
+
 void		add_to_game(t_doom *doom)
 {
-	if (SECTOR != NULL && EDIT.w_len > 2)
+	if (doom->game_design.sector != NULL && doom->game_design.w_len > 2)
 	{
-		if (EDIT.pl_x > 0 && EDIT.pl_y > 0)
+		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
 		{
 			coor_pos(doom);
 			box_in_sectors(doom);  // give these walls a flag so that they are not drawn if the sector is outside
 			free(doom->lib.sector); //rm when there are multiple levels		
 			free(doom->lib.sidedef); //rm when there are multiple levels
-			free(doom->lib.sprites); //rm when there are multiple levels		
+			rmove(doom->lib.sprites, doom); //neccesary to stop the leaks but it just breaks the code and it sucks
 			doom->lib.sector = new_level_sector(doom,\
-				SECTOR, EDIT.s_len + 1);
+				doom->game_design.sector, doom->game_design.s_len + 1);
 			doom->lib.sidedef = new_level_sidedef(doom,\
-				SIDEDEF, EDIT.w_len + 1);
+				doom->game_design.sidedef, doom->game_design.w_len + 1);
 			doom->lib.sprites = new_level_object(doom,\
-				OBJECT, EDIT.o_len); //wat moet hier in als er geen sprites zijn
-			doom->total_sprites = EDIT.o_len;
+				doom->game_design.object, doom->game_design.o_len);
+			doom->total_sprites = doom->game_design.o_len;
 			doom->lib.sector = light_correction(\
-				doom->lib.sector, EDIT.s_len);
-			doom->pos.x = EDIT.pl_x;
-			doom->pos.y = EDIT.pl_y;
-			doom->i_sector = EDIT.pl_sec;
+				doom->lib.sector, doom->game_design.s_len);
+			doom->pos.x = doom->game_design.pl_x;
+			doom->pos.y = doom->game_design.pl_y;
+			doom->i_sector = doom->game_design.pl_sec;
 			doom->player_height = doom->player_height \
-			+ doom->lib.sector[EDIT.pl_sec].height_floor;
+			+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 			doom->light = TRUE;
 		}
 	}

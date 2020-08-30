@@ -2,11 +2,11 @@
 #include "game_editor.h"
 
 
-void    draw_bar_point(t_doom *doom, Uint32 **pixels, t_bar bar)
+void    draw_bar_point(Uint32 **pixels, t_bar bar)
 {
-	double place;
-	int i;
-	int j;
+	double	place;
+	int		i;
+	int		j;
 
 	place = bar.cur_height;
 	place -= bar.min;
@@ -26,7 +26,7 @@ void    draw_bar_point(t_doom *doom, Uint32 **pixels, t_bar bar)
 		j++;
 	}
 }
-void    draw_bar(t_doom *doom, Uint32 **pixels, t_bar bar)
+void    draw_bar(Uint32 **pixels, t_bar bar)
 {
 	int i;
 	int safe;
@@ -46,7 +46,7 @@ void    draw_bar(t_doom *doom, Uint32 **pixels, t_bar bar)
 	}
 }
 
-void    bars(Uint32 **pixels, t_doom *doom)
+void	height_floor_bar(t_doom *doom, Uint32 **pixels)
 {
 	t_bar bar;
 
@@ -57,9 +57,16 @@ void    bars(Uint32 **pixels, t_doom *doom)
 	bar.y = HF_Y;
 	bar.height = HF_HEIGHT;
 	bar.len = HF_LEN;
-	bar.cur_height = SECTOR[EDIT.cur_sec].height_floor;
-	draw_bar(doom, pixels, bar);
-	draw_bar_point(doom, pixels, bar);
+	bar.cur_height = \
+	doom->game_design.sector[doom->game_design.cur_sec].height_floor;
+	draw_bar(pixels, bar);
+	draw_bar_point(pixels, bar);
+}
+
+void	height_ceiling_bar(t_doom *doom, Uint32 **pixels)
+{
+	t_bar bar;
+
 	bar.min = HC_MIN;
 	bar.max = HC_MAX;
 	bar.diff = HC_DIFF;
@@ -67,9 +74,18 @@ void    bars(Uint32 **pixels, t_doom *doom)
 	bar.y = HC_Y;
 	bar.height = HC_HEIGHT;
 	bar.len = HC_LEN;
-	bar.cur_height = SECTOR[EDIT.cur_sec].height_ceiling;
-	draw_bar(doom, pixels, bar);
-	draw_bar_point(doom, pixels, bar);
+	bar.cur_height = \
+	doom->game_design.sector[doom->game_design.cur_sec].height_ceiling;
+	draw_bar(pixels, bar);
+	draw_bar_point(pixels, bar);
+}
+
+void    bars(Uint32 **pixels, t_doom *doom)
+{
+	t_bar bar;
+
+	height_floor_bar(doom, pixels);
+	height_ceiling_bar(doom, pixels);
 	bar.min = LL_MIN;
 	bar.max = LL_MAX;
 	bar.diff = LL_DIFF;
@@ -77,7 +93,8 @@ void    bars(Uint32 **pixels, t_doom *doom)
 	bar.y = LL_Y;
 	bar.height = LL_HEIGHT;
 	bar.len = LL_LEN;
-	bar.cur_height = SECTOR[EDIT.cur_sec].light_level;
-	draw_bar(doom, pixels, bar);
-	draw_bar_point(doom, pixels, bar);
+	bar.cur_height = \
+	doom->game_design.sector[doom->game_design.cur_sec].light_level;
+	draw_bar(pixels, bar);
+	draw_bar_point(pixels, bar);
 }

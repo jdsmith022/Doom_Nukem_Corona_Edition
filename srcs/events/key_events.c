@@ -62,7 +62,7 @@ static void		key_press2(t_doom *doom, t_event *event,
 	key->keysym.sym == SDLK_e || key->keysym.sym == SDLK_t)
 		key_select_and_shoot(doom, event, key);
 	else if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
-		printing_map(&(EDIT));
+		printing_map(&(doom->game_design));
 	else if (key->keysym.sym == SDLK_SPACE)
 		event->jump = TRUE;
 	else if (key->keysym.sym == SDLK_x)

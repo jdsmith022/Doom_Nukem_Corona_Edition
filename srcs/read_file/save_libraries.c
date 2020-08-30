@@ -29,7 +29,7 @@ void			save_libraries(t_doom *doom)
 	//     error("Please run program in this fashion: ./duke_nukem", 0);
 	modified();
 	fd = open_file(doom, "srcs/read_file/start_skybox_full");
-	EDIT.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
+	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
 	doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
