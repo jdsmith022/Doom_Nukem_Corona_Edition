@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 11:27:23 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 11:33:15 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ static void		set_reason_for_gameover(t_doom *doom)
 
 static void	game_over_menu(t_doom *doom)
 {
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 	while (doom->menu->state == game_over)
 	{
-		SDL_SetRelativeMouseMode(SDL_TRUE);
 		mouse_settings(doom);
-		doom->hud_display = FALSE;
 		print_background(doom, 0x00002E);
 		set_reason_for_gameover(doom);
 		font_to_screen(doom);
