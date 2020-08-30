@@ -145,7 +145,6 @@ int			sprite_collision(t_doom *doom, t_line movement)
 			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
 				return (1);
 		}
-		printf("action: %d\n", doom->lib.sprites[index].action);
 		check_sprite_distance(doom, index);
 		index++;
 		x++;

@@ -116,7 +116,6 @@ typedef struct			s_sprite {
 	int					visible;
 	double				distance;
 	int					prev_sectors[50];
-	// double				light;
 }						t_sprite;
 
 typedef struct		s_ray {
@@ -296,6 +295,8 @@ typedef struct		s_lib {
 	t_window		window;
 	int				*sprite_order;
 	double			light;
+	int				sprite_height[20];
+	int				move;
 }					t_lib;
 
 typedef struct		s_gamedesign {

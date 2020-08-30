@@ -86,6 +86,7 @@ void			draw_stripes_bar(t_doom *doom, t_line bar, int i_sprite)
 	stripe = (int)bar.start.x;
 	screen_y = (int)bar.start.y;
 	index = 0;
+	doom->lib.light = -1;
 	while (stripe < (int)bar.end.x && stripe >= 0 && stripe < WIDTH)
 	{
 		//of kan ik deze hele while loop in een aparte functie zetten?

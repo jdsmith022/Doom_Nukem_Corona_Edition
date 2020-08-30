@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 #include "sprites.h"
+#include "../../includes/render.h"
 
 void    draw_screen_colors(Uint32 *pixels, t_doom *doom)
 {

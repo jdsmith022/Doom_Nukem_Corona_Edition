@@ -3,31 +3,13 @@
 #include "../../includes/render.h"
 #include "../../includes/hud.h"
 
-int			get_lib_info(t_doom *doom, int index_sp)
-{
-	int		index;
-
-	if (index_sp == LEFT_SELECT || index_sp == RIGHT_SELECT || index_sp == SCISSOR\
-		|| index_sp == SPRAY_HAND || index_sp == SPRAYING_HAND || index_sp == CROSS_HAIR ||
-		(index_sp >= 98 && index_sp <= 111))
-	{
-		index = index_sp;
-		doom->lib.light = -1;
-	}
-	else
-		index = doom->lib.sprites[index_sp].visible;
-	return (index);
-}
-
 void		put_pixel_tex(t_doom *doom, Uint32 pix_dex,\
-			Uint32 index, int index_sp)
+			Uint32 index, int i)
 {
 	char	*pixels;
 	char	*text;
 	t_rgb	rgb;
-	int		i;
 
-	i = get_lib_info(doom, index_sp);
 	pixels = doom->surface->pixels;
 	text = doom->lib.obj_lib[i]->pixels;
 	rgb.r = text[pix_dex];
@@ -138,44 +120,47 @@ void	sprite_light(t_doom *doom, t_sprite sprite)
 	}
 }
 
-void	draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
+void	put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite, int index_sp)
 {
 	Uint32		index;
 	Uint32		pix_dex;
-	int			i_sprite;
-	int			tex_y;
-	int			tex_x;
-	int			stripe;
+	t_coord		tex;
 	int			screen_y;
+	int			sprite_i;
 
-	i_sprite = doom->lib.sprites[index_sp].visible;
+	sprite_i = doom->lib.sprites[index_sp].visible;
+	screen_y = (int)sprite->start.y;
+	tex.x = find_x(doom, sprite, index_sp, stripe);
+	while (screen_y < (int)sprite->end.y && screen_y < HEIGHT &&\
+		no_clipping_region(screen_y, doom->lib.sprites[index_sp],\
+		doom, stripe) == 1)
+	{
+		if (screen_y >= 0)
+		{
+			index = (Uint32)(screen_y * doom->surface->pitch) +\
+			(int)(stripe * doom->surface->format->BytesPerPixel);
+			tex.y = find_y(doom, sprite, index_sp, screen_y);
+			pix_dex = ((int)tex.y *\
+			doom->lib.obj_lib[sprite_i]->pitch) + ((int)tex.x *\
+			doom->lib.obj_lib[sprite_i]->format->BytesPerPixel);
+			put_pixel_tex(doom, pix_dex, index, sprite_i);
+		}
+		screen_y++;
+	}
+}
+
+void	draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
+{
+	int			stripe;
+
 	stripe = (int)sprite->start.x;
-	// screen_y = (int)sprite->start.y;
-	// index = 0;
 	while (stripe < (int)sprite->end.x && stripe >= 0 && stripe < WIDTH)
 	{
 		if (doom->stripe_distance[stripe] >\
 		doom->lib.sprites[index_sp].distance)
 		{
 			sprite_light(doom, doom->lib.sprites[index_sp]);
-			screen_y = (int)sprite->start.y;
-			tex_x = find_x(doom, sprite, index_sp, stripe);
-			while (screen_y < (int)sprite->end.y && screen_y < HEIGHT &&\
-				no_clipping_region(screen_y, doom->lib.sprites[index_sp],\
-				doom, stripe) == 1)
-			{
-				if (screen_y >= 0)
-				{
-					index = (Uint32)(screen_y * doom->surface->pitch) +\
-					(int)(stripe * doom->surface->format->BytesPerPixel);
-					tex_y = find_y(doom, sprite, index_sp, screen_y);
-					pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
-					+ ((int)tex_x *\
-					doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-					put_pixel_tex(doom, pix_dex, index, index_sp);
-				}
-				screen_y++;
-			}
+			put_stripe_sprite(doom, stripe, sprite, index_sp);
 		}
 		stripe++;
 	}

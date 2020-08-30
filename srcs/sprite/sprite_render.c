@@ -39,6 +39,10 @@ void		draw_sprite(t_doom *doom, int *sprite_order)
 
 void		sprite_render(t_doom *doom)
 {
+	if (doom->lib.move < 19)
+		doom->lib.move++;
+	else
+		doom->lib.move = 0;
 	if (doom->lib.sprite_order != NULL)
 	{
 		ft_bzero(doom->lib.sprite_order, doom->visible_sprites);
