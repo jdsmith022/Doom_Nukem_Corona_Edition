@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:43 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:14:43 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 17:01:29 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static char		*win_lose_status_2(t_doom *doom, t_font *lib)
 	lib[1].font_color = doom->lib.font_lib.font_color.red;
 	lib[1].font_rect.x = WIDTH / 12;
 	lib[1].font_rect.y = HEIGHT / 2.5;
-	missing_groceries(doom, lib);
+	if (doom->groceries)
+		missing_groceries(doom, lib);
 	return (status);
 }
 

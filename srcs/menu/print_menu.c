@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:05:43 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 17:31:32 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,12 @@ void			menu_print_loop(t_doom *doom)
 	SDL_SetCursor(doom->cursor);
 	mouse_settings(doom);
 	print_background(doom, 0x00002E);
-	if (doom->groceries->info.won == FALSE && \
-	doom->menu->state == finished)
-		print_missing_groceries(doom);
+	if (doom->groceries)
+	{
+		if (doom->groceries->info.won == FALSE && \
+		doom->menu->state == finished)
+			print_missing_groceries(doom);
+	}
 	font_to_screen(doom);
 	SDL_UpdateWindowSurface(doom->window);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));

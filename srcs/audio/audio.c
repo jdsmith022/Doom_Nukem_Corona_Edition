@@ -72,6 +72,8 @@ void	play_combat_sounds(t_audio *audio, int state)
 {
 	if (state == corona_hit)
 		play_sound(audio->sounds[HIT], -1);
+	if (state == sanitizer)
+		play_sound(audio->sounds[PICKUP], -1);
 }
 
 void	audio(t_doom *doom, t_event *event)
