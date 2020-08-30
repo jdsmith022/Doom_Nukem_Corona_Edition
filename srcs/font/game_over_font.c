@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:40:46 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 15:23:15 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 10:45:13 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ static void	set_text(t_doom *doom, t_font *lib, int len)
 	lib[0].font_rect.x = WIDTH / 2.65;
 	lib[0].font_rect.y = 200;
 	lib[0].font_color = doom->lib.font_lib.font_color.green;
-	lib[1].str = "You're corona level reached 100!";
-	lib[1].font_rect.x = WIDTH / 4.5;
-	lib[1].font_rect.y = 275;
+	lib[1].str = "Press ESC to exit";
+	lib[1].font_rect.x = WIDTH / 2.7;
+	lib[1].font_rect.y = 500;
 	lib[1].font_color = doom->lib.font_lib.font_color.green;
-	lib[2].str = "Time to self-quarantine!";
-	lib[2].font_rect.x = WIDTH / 3.4;
-	lib[2].font_rect.y = 325;
+	lib[2].str = "You're corona level reached 100!";
+	lib[2].font_rect.x = WIDTH / 4.5;
+	lib[2].font_rect.y = 275;
 	lib[2].font_color = doom->lib.font_lib.font_color.green;
-	lib[3].str = "Press ESC to exit";
-	lib[3].font_rect.x = WIDTH / 2.7;
-	lib[3].font_rect.y = 500;
+	lib[3].str = "Time to self-quarantine!";
+	lib[3].font_rect.x = WIDTH / 3.4;
+	lib[3].font_rect.y = 325;
 	lib[3].font_color = doom->lib.font_lib.font_color.green;
 }
 

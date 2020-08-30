@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 16:30:00 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 11:04:34 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ static t_font	*font_to_screen_2(t_doom *doom,
 	else if (doom->menu->state == game_over)
 	{
 		font_lib = doom->lib.font_lib.game_over_font;
-		printf("%s \t %s\n", font_lib[1].str, font_lib[2].str);
-		*len = doom->lib.font_lib.game_font_len;
+		*len = 2;
 	}
 	else if (doom->menu->state == finished)
 	{
