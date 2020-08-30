@@ -3,7 +3,7 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				50
+# define GROC_COUNT				48
 
 # define APPLE					1
 # define BACON					2
@@ -292,16 +292,6 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/potatoes.bmp",
 		"assets/sprites/groceries/swee_potatoe.bmp",
 		POTATO
-	},
-	{
-		"assets/textures/shelves/onions.bmp",
-		"assets/sprites/groceries/white_onion.bmp",
-		ONION
-	},
-	{
-		"assets/textures/shelves/paprika.bmp",
-		"assets/sprites/groceries/yellow_paprika.bmp",
-		PAPRIKA
 	}
 };
 
