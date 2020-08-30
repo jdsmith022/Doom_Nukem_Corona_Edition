@@ -37,8 +37,9 @@ static void			assign_missing(t_doom *doom, t_game_over *info, t_item *g)
 			item->amount = rem_amount(item->amount, \
 			doom->groceries->shopping_list[i].amount);
 			ft_memcpy(&g[j], item, sizeof(t_item));
-			j++;
 		}
+		ft_memcpy(&g[j], item, sizeof(t_item));
+		j++;
 		i++;
 	}
 	info->groceries_to_display = g;

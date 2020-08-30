@@ -21,6 +21,8 @@ static void	check_select_sprite(t_doom *doom)
 	{
 		type = *(int *)doom->lib.obj_lib[sprite->textures[0]]->userdata;
 		sprite->action = 15;
+		if (!doom->groceries)
+			return ;
 		add_item_to_basket(doom, &doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);
 	}
