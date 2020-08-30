@@ -27,6 +27,7 @@ static void			assign_missing(t_doom *doom, t_game_over *info, t_item *g)
 	j = 0;
 	while (i < doom->groceries->shopping_list_len)
 	{
+		printf("Get missing!\n");
 		item = get_item_from_basket(doom->groceries->shopping_list[i].type, \
 		&BASKET);
 		if (!item)
@@ -38,7 +39,8 @@ static void			assign_missing(t_doom *doom, t_game_over *info, t_item *g)
 			doom->groceries->shopping_list[i].amount);
 			ft_memcpy(&g[j], item, sizeof(t_item));
 		}
-		ft_memcpy(&g[j], item, sizeof(t_item));
+		else 
+			ft_memcpy(&g[j], item, sizeof(t_item));
 		j++;
 		i++;
 	}

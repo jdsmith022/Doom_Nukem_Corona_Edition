@@ -56,7 +56,7 @@ static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 	}
 	if (event->groc_pickup)
 	{
-		play_sound(audio->sounds[CLICK], -1); // change sound
+		play_sound(audio->sounds[HIT], -1); // change sound
 		event->groc_pickup = FALSE;
 	}
 	if (event->light_switch_changed && doom->i_sidedef != -1)
