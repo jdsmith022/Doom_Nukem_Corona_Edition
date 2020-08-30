@@ -1,5 +1,7 @@
 
 #include "../../includes/doom.h"
+#include "../../includes/menu.h"
+#include "../../includes/gameplay.h"
 
 static void		set_to_window(t_doom *doom)
 {
@@ -33,8 +35,9 @@ void			game_loop(t_doom *doom)
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		doom_render(doom);
-		update_hud_ui(doom);
+		if (doom->game_editor == FALSE && doom->menu->state == start_game)
+			doom_render(doom);
+		update_screen(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

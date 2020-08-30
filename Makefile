@@ -26,7 +26,7 @@ MENU = srcs/menu/
 ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_point \
-			doom_update exit free_library_struct free_library_sdl update_hud_ui \
+			doom_update exit free_library_struct free_library_sdl update_screen \
 			doom_init_events doom_init_ui
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff key_select_and_shoot

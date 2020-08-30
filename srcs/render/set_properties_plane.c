@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:03:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:03:16 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:17:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	plane->height_standard = doom->texture_height / \
 		sidedef.distance * doom->dist_to_plane;
 	scale = plane->height_standard / doom->texture_height;
-	mid_texture_top = \
-		set_plane_top(doom, scale, sidedef, opp_sector);
+	mid_texture_top = set_plane_top(doom, scale, sidedef, opp_sector);
 	if (mid_texture_top < 0)
 		plane->mid_texture_top = 0;
 	else if (mid_texture_top > HEIGHT)
@@ -83,9 +82,7 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	plane->height_standard = \
 		doom->texture_height / sidedef.distance * doom->dist_to_plane;
 	scale = plane->height_standard / doom->texture_height;
-	sidedef_top = \
-		set_plane_top(doom, scale, sidedef, sector);
+	sidedef_top = set_plane_top(doom, scale, sidedef, sector);
 	wall_offset(plane, sidedef_top);
-	plane->sidedef_bottom = \
-		set_plane_bottom(doom, scale, sidedef, sector);
+	plane->sidedef_bottom = set_plane_bottom(doom, scale, sidedef, sector);
 }

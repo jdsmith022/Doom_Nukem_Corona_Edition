@@ -45,9 +45,8 @@ t_point				line_delta(t_point start, t_point end);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 
-void				timer(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
-void				update_hud_ui(t_doom *doom);
+void				update_screen(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);

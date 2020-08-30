@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 16:58:08 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 13:05:15 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void		init_hud(t_doom *doom)
 	doom->hud->update = -1;
 	doom->hud->sanitizer_level = 100;
 	doom->hud->corona_level = 0;
-	doom->hud->hold_time = 360;
-	doom->hud->curr_time = 360;
+	doom->hud->hold_time = 600;
+	doom->hud->curr_time = 600;
 }
