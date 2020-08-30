@@ -49,8 +49,8 @@ static void			set_missing_groceries(t_doom *doom, t_game_over *info)
 {
 	t_item			*missing_groc;
 
-	missing_groc = (t_item *)ft_memalloc(sizeof(t_item) * \
-	doom->groceries->shopping_list_len); // note: FREE (on program exit)
+	missing_groc = (t_item *)ft_memalloc(sizeof(t_item) *
+	doom->groceries->shopping_list_len);
 	if (!missing_groc)
 		doom_exit_failure(doom, "failed to allocate missing groceries\n");
 	if (basket_is_empty(doom, info))
