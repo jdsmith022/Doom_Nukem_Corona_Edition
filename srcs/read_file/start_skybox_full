@@ -444,7 +444,7 @@ assets/sprites/player/spraying_right_hand_2.bmp
 #number of sectors
 50
 #number of walls
-380
+379
 #number of sliding walls
 2
 
@@ -2584,9 +2584,9 @@ assets/sprites/player/spraying_right_hand_2.bmp
 672
 1056
 0
-44
-44
-44
+43
+43
+43
 66
 
 #sidedef ##PROTAL TO SECTOR 9##
@@ -2620,9 +2620,9 @@ assets/sprites/player/spraying_right_hand_2.bmp
 480
 1248
 0
-44
-44
-44
+43
+43
+43
 69
 
 #sidedef
@@ -2632,9 +2632,9 @@ assets/sprites/player/spraying_right_hand_2.bmp
 480
 1152
 0
-44
-44
-44
+43
+43
+43
 70
 
 #sector[9]## SECTOR 9##########################################################
@@ -6591,17 +6591,17 @@ assets/sprites/player/spraying_right_hand_2.bmp
 16
 179
 
-##LIGHT SWITCH##
+##SANITIZER##
 #poster
 -1
 416
 2304
 432
 2304
-4
-85
-85
-85
+8
+11
+11
+11
 180
 
 #OBJECTS IN SECTOR 22
@@ -14616,7 +14616,7 @@ assets/sprites/player/spraying_right_hand_2.bmp
 14
 0
 -1
-9
+8
 14
 47
 0
@@ -14709,27 +14709,14 @@ assets/sprites/player/spraying_right_hand_2.bmp
 ##SANITIZER##
 #poster
 -1
-2816
-1420
-2816
-1436
-8
-87
-87
-87
-363
-
-##LIGHT SWITCH##
-#poster
--1
 1952
 1382
 1952
 1366
-4
-85
-85
-85
+8
+11
+11
+11
 364
 
 #OBJECT IN SECTOR 47
