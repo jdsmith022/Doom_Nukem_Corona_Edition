@@ -20,6 +20,8 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 	else if (doom->game_editor == TRUE)
 	{
 		open_game_editor(doom);
+		doom->lib.sector[doom->i_sector].action = START_TIMER;
+    	doom->menu->start_timer = FALSE;
 		font_to_screen(doom);
 	}
 }
