@@ -23,7 +23,6 @@ void	open_game_editor(t_doom *doom)
 	while (i < SECTOR[EDIT.cur_sec].i_sidedefs\
 		+ SECTOR[EDIT.cur_sec].n_sidedefs)
 	{
-		printf("draw\n");
 		draw_lines(doom, &pixels, i);
 		i++;
 	}
