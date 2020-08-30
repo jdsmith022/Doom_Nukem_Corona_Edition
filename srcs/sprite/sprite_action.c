@@ -117,7 +117,7 @@ static void	check_sprite_distance(t_doom *doom, int index)
 		}
 		else if (doom->lib.sprites[index].action == 11)
 		{
-			doom->game_start_time.tv_sec += 60000;
+			doom->game_start_time.tv_sec += 60;
 			doom->lib.sprites[index].action = 8;
 		}
 		else
