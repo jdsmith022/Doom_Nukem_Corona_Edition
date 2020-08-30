@@ -20,8 +20,10 @@ void		scale_bar(t_doom *doom, t_line *bar, int i)
 	h = doom->lib.obj_lib[i]->h;
 	w = doom->lib.obj_lib[i]->w;
 	bar_width = (bar_height / h) * w;
-	if (i == SCISSOR || i == CROSS_HAIR)
+	if (i == SCISSOR || (i == CROSS_HAIR && doom->player_handed == left))
 		bar->start.x = (WIDTH / 2) - (bar_width / 2);
+	else if (i == CROSS_HAIR && doom->player_handed == right)
+		bar->start.x = WIDTH / 2 - 20;
 	else
 		bar->start.x = 10;
 	bar->end.x = bar->start.x + bar_width;

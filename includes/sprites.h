@@ -93,6 +93,7 @@ void				exit_scissor_lift(t_doom *doom);
 void				put_pixel_tex(t_doom *doom, Uint32 pix_dex, Uint32 index,\
 					int i);
 void				remove_red_virus(t_doom *doom);
+void				set_player_sprite(t_doom *doom);
 void				draw_player_adds(t_doom *doom);
 void				draw_stripes_bar(t_doom *doom, t_line bar, int sprite_i);
 void				scale_bar(t_doom *doom, t_line *bar, int sprite_i);

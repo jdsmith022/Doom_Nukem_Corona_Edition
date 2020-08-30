@@ -46,7 +46,7 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
-				sprite_hud_scale find_prev_sectors
+				sprite_hud_scale find_prev_sectors sprite_set_player_sprites
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui \
 				 position gameplay game_over timer sprite_hit \
