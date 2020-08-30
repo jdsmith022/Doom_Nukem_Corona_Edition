@@ -4652,9 +4652,9 @@ assets/sprites/player/spraying_right_hand_2.bmp
 672
 1824
 0
-16
-16
-16
+27
+27
+27
 113
 
 #sidedef
@@ -4664,9 +4664,9 @@ assets/sprites/player/spraying_right_hand_2.bmp
 768
 1824
 0
-16
-16
-16
+22
+22
+22
 114
 
 #sidedef ##PORTAL TO SECTOR 15
@@ -12385,9 +12385,9 @@ assets/sprites/player/spraying_right_hand_2.bmp
 1376
 1510
 0
-16
-16
-16
+26
+26
+26
 287
 
 #sidedef#
