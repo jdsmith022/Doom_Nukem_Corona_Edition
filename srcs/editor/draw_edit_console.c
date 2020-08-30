@@ -26,17 +26,20 @@ void	draw_sector_images(Uint32 *pixels, t_doom *doom)
 void	draw_sidedef_textures(Uint32 *pixels, t_doom *doom)
 {
 	if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_2 != -1)
-		put_textures(TEX_S2_X, TEX_S2_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_2, doom);
+		put_textures(TEX_S2_X, TEX_S2_Y,\
+		doom->game_design.sidedef[doom->game_design.cur_sd].txt_2, doom);
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1)
 	{
 		if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_1 != -1)
-			put_textures(TEX_S1_X, TEX_S1_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
+			put_textures(TEX_S1_X, TEX_S1_Y,\
+			doom->game_design.sidedef[doom->game_design.cur_sd].txt_1, doom);
 		put_images(AR_LEFT_TS1_X, AR_LEFT_TS1_Y, arrow_left, doom);
 		put_images(AR_RIGHT_TS1_X, AR_RIGHT_TS1_Y, arrow_right, doom);
 		if (doom->game_design.sidedef[doom->game_design.cur_sd].txt_3 != -1)
-			put_textures(TEX_S3_X, TEX_S3_Y, doom->game_design.sidedef[doom->game_design.cur_sd].txt_3, doom);
+			put_textures(TEX_S3_X, TEX_S3_Y,\
+			doom->game_design.sidedef[doom->game_design.cur_sd].txt_3, doom);
 		put_images(AR_LEFT_TS3_X, AR_LEFT_TS3_Y, arrow_left, doom);
 		put_images(AR_RIGHT_TS3_X, AR_RIGHT_TS3_Y, arrow_right, doom);
 	}
@@ -84,7 +87,7 @@ void	draw_map_images(Uint32 *pixels, t_doom *doom)
 	put_images(AR_DOWN_M_X, AR_DOWN_M_Y, arrow_up, doom);
 }
 
-void    draw_images(Uint32 *pixels, t_doom *doom)
+void	draw_images(Uint32 *pixels, t_doom *doom)
 {
 	draw_sector_images(pixels, doom);
 	draw_map_images(pixels, doom);
