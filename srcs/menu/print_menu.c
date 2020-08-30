@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 17:31:32 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/08/31 00:38:32 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void		print_missing_groceries(t_doom *doom)
 	index = 0;
 	info = doom->groceries->info.groceries_to_display;
 	info->position.y = HEIGHT - 200;
-	info->position.x = WIDTH / SHOPPING_LIST_L - 25;
-	while (index < SHOPPING_LIST_L)
+	info->position.x = WIDTH / doom->groceries->shopping_list_len - 25;
+	while (index < doom->groceries->shopping_list_len)
 	{
 		info->position.x += 100;
 		if (info[index].amount != 0)
