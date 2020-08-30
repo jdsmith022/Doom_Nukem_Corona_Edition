@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-113
+118
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -220,7 +220,7 @@ assets/sprites/groceries/red_apple.bmp
 #2
 assets/sprites/groceries/cherry.bmp
 #3
-assets/sprites/groceries/coffee.bmp
+assets/sprites/groceries/cereal.bmp
 #4
 assets/sprites/groceries/wine1.bmp
 #5
@@ -358,7 +358,7 @@ assets/sprites/groceries/round_jar2.bmp
 #71
 assets/sprites/groceries/ketchup.bmp
 #72
-assets/sprites/groceries/mayo.bmp
+assets/sprites/groceries/pickled_eggs.bmp
 #73
 assets/sprites/groceries/glass_jar1.bmp
 #74
@@ -438,8 +438,17 @@ assets/sprites/player/spraying_right_hand_1.bmp
 #111
 assets/sprites/player/spraying_right_hand_2.bmp
 #112
-assets/sprites/groceries/honey.bmp
-
+assets/textures/checkout/checkout_font.bmp
+#113
+assets/textures/checkout/checkout_font_2.bmp
+#114
+assets/textures/checkout/checkout_font_3.bmp
+#115
+assets/textures/checkout/checkout_side.bmp
+#116
+assets/textures/checkout/checkout_side_2.bmp
+#117
+assets/textures/checkout/checkout_side_3.bmp
 
 #ADD LEFT HAND AND RIGHT HAND
 
@@ -451,7 +460,7 @@ assets/sprites/groceries/honey.bmp
 2
 
 #number of objects
-320
+328
 
 ##OUTSIDE SECTOR 0 ###############################################
 ## TO ADD: plant sprites and clock sprite##
@@ -956,7 +965,7 @@ assets/sprites/groceries/honey.bmp
 100
 8
 16
-1
+0
 4
 #line
 37
@@ -1120,32 +1129,32 @@ assets/sprites/groceries/honey.bmp
 
 #object1 in sector1 TROLLEY 31 front 32 side
 10
-130
-300
+120
+360
 12
 16
 1
 4
 31
+115
+355
 125
-295
-135
-295
+355
 32
-135
-295
-135
-305
+125
+355
+125
+365
 31
-135
-305
 125
-305
+365
+115
+365
 32
-125
-305
-125
-295
+115
+365
+115
+355
 
 #START OF GAME#################################################################
 
@@ -2703,7 +2712,7 @@ assets/sprites/groceries/honey.bmp
 73
 
 #OBJECTS in SECTOR 9
-#object0 in sector 9 glass_jar1
+#object0 in sector 9 glass_jar6
 35
 700
 1075
@@ -2711,22 +2720,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-38
+43
 695
 1070
 705
 1070
-38
+43
 705
 1070
 705
 1080
-38
+43
 705
 1080
 695
 1080
-38
+43
 695
 1080
 695
@@ -2790,7 +2799,7 @@ assets/sprites/groceries/honey.bmp
 705
 1105
 
-#object3 in sector 9 glass_jar4
+#object3 in sector 9 glass_jar8
 38
 690
 1175
@@ -2798,28 +2807,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-41
+45
 685
 1170
 695
 1170
-41
+45
 695
 1170
 695
 1180
-41
+45
 695
 1180
 685
 1180
-41
+45
 685
 1180
 685
 1170
 
-#object4 in sector 9 glass_jar5
+#object4 in sector 9 glass_jar8
 39
 705
 1190
@@ -2827,28 +2836,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-42
+45
 700
 1185
 710
 1185
-42
+45
 710
 1185
 710
 1195
-42
+45
 710
 1195
 700
 1195
-42
+45
 700
 1195
 700
 1185
 
-#object5 in sector 9 jam1
+#object5 in sector 9 glass_jar8
 40
 690
 1220
@@ -2856,28 +2865,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-46
+45
 685
 1215
 695
 1215
-46
+45
 695
 1215
 695
 1225
-46
+45
 695
 1225
 685
 1225
-46
+45
 685
 1225
 685
 1215
 
-#object6 in sector 9 jam3
+#object6 in sector 9 glass_jar3
 41
 710
 1160
@@ -2885,22 +2894,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-48
+40
 705
 1155
 715
 1155
-48
+40
 715
 1155
 715
 1165
-48
+40
 715
 1165
 705
 1165
-48
+40
 705
 1165
 705
@@ -2935,7 +2944,7 @@ assets/sprites/groceries/honey.bmp
 685
 1145
 
-#object8 in sector 9 jam3
+#object8 in sector 9 glass_jar_3
 43
 710
 1160
@@ -2943,22 +2952,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-48
+40
 705
 1155
 715
 1155
-48
+40
 715
 1155
 715
 1165
-48
+40
 715
 1165
 705
 1165
-48
+40
 705
 1165
 705
@@ -3908,61 +3917,61 @@ assets/sprites/groceries/honey.bmp
 #SHOPPERS IN SECTOR 10
 #object21 in sector 10 shopper
 102
-320
+450
 1300
 9
 60
 1
 4
 10
-310
+440
 1290
-330
+450
 1290
 9
-330
+450
 1290
-330
+450
 1310
 11
-330
+450
 1310
-310
+440
 1310
 12
-310
+440
 1310
-310
+440
 1290
 
 #object22 in sector 10 shopper
 103
 500
-1600
+1570
 9
 60
 1
 4
 10
 490
-1690
+1560
 510
-1690
+1560
 9
 510
-1690
+1560
 510
-1610
+1580
 11
 510
-1610
+1580
 490
-1610
+1580
 12
 490
-1610
+1580
 490
-1690
+1560
 
 #object23 in sector 10 shopper
 104
@@ -5173,7 +5182,7 @@ assets/sprites/groceries/honey.bmp
 2000
 2
 32
-1
+0
 4
 15
 605
@@ -5202,7 +5211,7 @@ assets/sprites/groceries/honey.bmp
 2000
 3
 16
-1
+0
 4
 13
 925
@@ -5338,117 +5347,117 @@ assets/sprites/groceries/honey.bmp
 140
 
 #OBJECTS IN SECTOR 16
-#object0 in sector 16 orange tart
+#object0 in sector 16 health pack plus #14
 69
 690
 1900
-0
-16
 1
+16
+0
 4
-51
+14
 685
 1895
 695
 1895
-51
+14
 695
 1895
 695
 1905
-51
+14
 695
 1905
 685
 1905
-51
+14
 685
 1905
 685
 1895
 
-#object1 in sector 16 apple tart #22
+#object1 in sector 16 health pack #15
 70
 860
 1900
-0
+2
 16
-1
+0
 4
-22
+15
 855
 1895
 865
 1895
-22
+15
 865
 1895
 865
 1905
-22
+15
 865
 1905
 855
 1905
-22
+15
 855
 1905
 855
 1895
 
-#object2 in sector 16 plant_1
+#object2 in sector 16 clock
 71
 690
 2000
-0
+8
 16
-1
+0
 4
-34
+37
 685
 1995
 695
 1995
-34
+37
 695
 1995
 695
 2005
-34
+37
 695
 2005
 685
 2005
-34
+37
 685
 2005
 685
 1995
 
-#object3 in sector 16 plant_2
+#object3 in sector 16 face mask #13
 72
 860
 2000
-0
+3
 16
-1
+0
 4
-35
+13
 855
 1995
 865
 1995
-35
+13
 865
 1995
 865
 2005
-35
+13
 865
 2005
 855
 2005
-35
+13
 855
 2005
 855
@@ -5599,7 +5608,7 @@ assets/sprites/groceries/honey.bmp
 1800
 1
 16
-1
+0
 4
 14
 925
@@ -6210,7 +6219,7 @@ assets/sprites/groceries/honey.bmp
 2035
 1
 16
-1
+0
 4
 14
 375
@@ -7042,7 +7051,7 @@ assets/sprites/groceries/honey.bmp
 2740
 1
 16
-1
+0
 4
 14
 330
@@ -7129,7 +7138,7 @@ assets/sprites/groceries/honey.bmp
 184
 
 #OBJECTS IN SECTOR 23
-#object0 in sector 23 red wine #56
+#object0 in sector 23 wine2 57
 159
 310
 2450
@@ -7137,28 +7146,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-56
+57
 305
 2445
 315
 2445
-56
+57
 315
 2445
 315
 2455
-56
+57
 315
 2455
 305
 2455
-56
+57
 305
 2455
 305
 2445
 
-#object1 in sector 23 red wine #56
+#object1 in sector 23 wine1 58
 160
 335
 2455
@@ -7166,28 +7175,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-56
+58
 330
 2440
 335
 2440
-56
+58
 335
 2440
 335
 2460
-56
+58
 335
 2460
 330
 2460
-56
+58
 330
 2460
 330
 2440
 
-#object2 in sector 23 red wine #56
+#object2 in sector 23 wine2 #57
 161
 350
 2445
@@ -7195,28 +7204,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-56
+57
 345
 2440
 355
 2440
-56
+57
 355
 2440
 355
 2460
-56
+57
 355
 2460
 345
 2460
-56
+57
 345
 2460
 345
 2440
 
-#object3 in sector 23 wine1 #56
+#object3 in sector 23 wine2 #57
 162
 375
 2455
@@ -7224,22 +7233,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-56
+57
 370
 2440
 380
 2440
-56
+57
 380
 2440
 380
 2460
-56
+57
 380
 2460
 370
 2460
-56
+57
 370
 2460
 370
@@ -7917,7 +7926,7 @@ assets/sprites/groceries/honey.bmp
 -1
 1184
 2304
-1376
+1280
 2304
 0
 15
@@ -7927,9 +7936,9 @@ assets/sprites/groceries/honey.bmp
 
 #sidedef##PORTAL TO 27#####
 27
-1376
+1280
 2304
-1440
+1504
 2304
 0
 15
@@ -7939,7 +7948,7 @@ assets/sprites/groceries/honey.bmp
 
 #sidedef
 -1
-1440
+1504
 2304
 1536
 2304
@@ -8297,13 +8306,13 @@ assets/sprites/groceries/honey.bmp
 #line
 18
 1475
-1095
+1195
 1485
-1095
+1195
 #line
 18
 1485
-1095
+1195
 1485
 2205
 #line
@@ -8317,7 +8326,7 @@ assets/sprites/groceries/honey.bmp
 1475
 2205
 1475
-1095
+1195
 
 #object9 in sector 26 virus
 186
@@ -8714,15 +8723,15 @@ assets/sprites/groceries/honey.bmp
 10
 -1
 4
-4
+9
 27
 5
 
 #sidedef##PORTAL TO 26#####
 26
-1376
+1280
 2304
-1440
+1504
 2304
 0
 15
@@ -8732,9 +8741,9 @@ assets/sprites/groceries/honey.bmp
 
 #sidedef
 -1
-1376
+1280
 2304
-1376
+1280
 2496
 0
 15
@@ -8744,9 +8753,9 @@ assets/sprites/groceries/honey.bmp
 
 #sidedef##PORTAL TO SECTOR 28##
 28
-1376
+1280
 2496
-1440
+1504
 2496
 0
 15
@@ -8756,9 +8765,9 @@ assets/sprites/groceries/honey.bmp
 
 #sidedef
 -1
-1440
+1504
 2496
-1440
+1504
 2304
 0
 15
@@ -8769,7 +8778,7 @@ assets/sprites/groceries/honey.bmp
 #OBJECTS IN SECTOR 27
 #object0 in sector 27 virus
 198
-1410
+1450
 2340
 4
 16
@@ -8777,27 +8786,27 @@ assets/sprites/groceries/honey.bmp
 4
 #line
 18
-1405
+1445
 2335
-1415
+1455
 2335
 #line
 18
-1415
+1455
 2335
-1415
+1455
 2345
 #line
 18
-1415
+1455
 2345
-1405
+1445
 2345
 #line
 18
-1405
+1445
 2345
-1405
+1445
 2335
 
 #object1 in sector 27 virus
@@ -8899,6 +8908,170 @@ assets/sprites/groceries/honey.bmp
 1405
 2455
 
+#object4 in sector 27 virus
+323
+1380
+2330
+4
+16
+0
+4
+#line
+18
+1375
+2325
+1385
+2325
+#line
+18
+1385
+2325
+1385
+2335
+#line
+18
+1385
+2335
+1375
+2335
+#line
+18
+1375
+2335
+1375
+2325
+
+#object5 in sector 27 virus
+324
+1350
+2370
+4
+16
+0
+4
+#line
+18
+1345
+2365
+1355
+2365
+#line
+18
+1355
+2365
+1355
+2375
+#line
+18
+1355
+2375
+1345
+2375
+#line
+18
+1345
+2375
+1345
+2365
+
+#object6 in sector 27 virus
+325
+1360
+2420
+4
+16
+0
+4
+#line
+18
+1355
+2415
+1365
+2415
+#line
+18
+1365
+2415
+1365
+2425
+#line
+18
+1365
+2425
+1355
+2425
+#line
+18
+1355
+2425
+1355
+2415
+
+#object7 in sector 27 virus
+326
+1370
+2470
+4
+16
+0
+4
+#line
+18
+1365
+2465
+1375
+2465
+#line
+18
+1375
+2465
+1375
+2475
+#line
+18
+1375
+2475
+1365
+2475
+#line
+18
+1365
+2475
+1365
+2465
+
+#object8 in sector 27 virus
+327
+1360
+2460
+4
+16
+0
+4
+#line
+18
+1355
+2455
+1365
+2455
+#line
+18
+1365
+2455
+1365
+2465
+#line
+18
+1365
+2465
+1355
+2465
+#line
+18
+1355
+2465
+1355
+2455
 
 ###EXIT SECTOR###############
 
@@ -8913,34 +9086,22 @@ assets/sprites/groceries/honey.bmp
 14
 10
 -1
-8
-0
+6
+3
 28
 2
 
 #sidedef##PORTAL TO SECTOR 27##
 27
-1376
+1280
 2496
-1440
+1504
 2496
 0
 15
 15
 15
 213
-
-#sidedef
--1
-1376
-2496
-1280
-2496
-0
-15
-15
-15
-214
 
 #sidedef
 -1
@@ -8952,7 +9113,7 @@ assets/sprites/groceries/honey.bmp
 15
 15
 15
-215
+214
 
 #sidedef
 -1
@@ -9002,17 +9163,105 @@ assets/sprites/groceries/honey.bmp
 15
 219
 
-#sidedef
--1
-1504
-2496
-1440
-2496
+#OBJECTS IN SECTOR 28
+#object0 in sector 28 checkout front: 112 side: 115
+320
+1336
+2528
 0
-15
-15
-15
-220
+50
+1
+4
+#line1
+112
+1326
+2518
+1341
+2518
+#line2
+115
+1341
+2518
+1341
+2538
+#line3
+112
+1341
+2538
+1326
+2538
+#line4
+115
+1326
+2538
+1326
+2518
+
+#object1 in sector 28 checkout front: 113 side: 116
+321
+1392
+2528
+0
+50
+1
+4
+#line1
+113
+1382
+2518
+1402
+2518
+#line2
+116
+1402
+2518
+1402
+2538
+#line3
+113
+1402
+2538
+1382
+2538
+#line4
+116
+1382
+2538
+1382
+2518
+
+#object0 in sector 28 checkout front: 114 side: 117
+322
+1448
+2528
+0
+50
+1
+4
+#line1
+114
+1438
+2518
+1458
+2518
+#line2
+117
+1458
+2518
+1458
+2538
+#line3
+114
+1458
+2538
+1438
+2538
+#line4
+117
+1438
+2538
+1438
+2518
 
 
 #sector[29]## SECTOR 29##########################################################
@@ -9788,7 +10037,7 @@ assets/sprites/groceries/honey.bmp
 #object11 in sector 29 virus
 213
 705
-800
+830
 4
 16
 0
@@ -9796,27 +10045,27 @@ assets/sprites/groceries/honey.bmp
 #line
 18
 700
-795
+825
 710
-795
+825
 #line
 18
 710
-795
+825
 710
-805
+835
 #line
 18
 710
-805
+835
 700
-805
+835
 #line
 18
 700
-805
+835
 700
-795
+825
 
 #object12 in sector 29 virus
 214
@@ -10181,7 +10430,7 @@ assets/sprites/groceries/honey.bmp
 790
 3
 16
-1
+0
 4
 13
 925
@@ -10210,7 +10459,7 @@ assets/sprites/groceries/honey.bmp
 800
 1
 16
-1
+0
 4
 14
 1200
@@ -10681,7 +10930,7 @@ assets/sprites/groceries/honey.bmp
 755
 363
 
-#object3 in sector 30 yellow paprika 61
+#object3 in sector 30 red_apple 63
 239
 820
 368
@@ -10689,22 +10938,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-61
+63
 815
 363
 825
 363
-61
+63
 825
 363
 825
 373
-61
+63
 825
 373
 815
 373
-61
+63
 815
 373
 815
@@ -10855,7 +11104,7 @@ assets/sprites/groceries/honey.bmp
 1115
 363
 
-#object9 in sector 30 garlic 68
+#object9 in sector 30 kiwi 67
 245
 1140
 368
@@ -10863,22 +11112,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-68
+67
 1135
 363
 1145
 363
-68
+67
 1145
 363
 1145
 373
-68
+67
 1145
 373
 1135
 373
-68
+67
 1135
 373
 1135
@@ -11344,7 +11593,7 @@ assets/sprites/groceries/honey.bmp
 730
 1
 16
-1
+0
 4
 14
 1325
@@ -11902,7 +12151,7 @@ assets/sprites/groceries/honey.bmp
 1250
 2
 16
-1
+0
 4
 15
 1515
@@ -12282,7 +12531,7 @@ assets/sprites/groceries/honey.bmp
 1270
 3
 16
-1
+0
 4
 13
 1535
@@ -12949,7 +13198,7 @@ assets/sprites/groceries/honey.bmp
 1480
 2
 32
-1
+0
 4
 15
 1625
@@ -12978,7 +13227,7 @@ assets/sprites/groceries/honey.bmp
 1480
 1
 16
-1
+0
 4
 14
 1625
@@ -13067,11 +13316,11 @@ assets/sprites/groceries/honey.bmp
 #OBJECTS IN SECTOR 36
 
 #COFEE (2) #3
-#object0 in sector 36 coffee #3
+#object0 in sector 36 cereal #3
 302
 1390
 1332
-0
+14
 16
 1
 4
@@ -13096,11 +13345,11 @@ assets/sprites/groceries/honey.bmp
 1385
 1327
 
-#object1 in sector 36 coffee #3
+#object1 in sector 36 cereal #3
 303
 1390
 1347
-0
+14
 16
 1
 4
@@ -13126,11 +13375,11 @@ assets/sprites/groceries/honey.bmp
 1342
 
 #cereal (1) #69
-#object2 in sector 36 coffee #3
+#object2 in sector 36 cereal #3
 304
 1390
 1360
-0
+14
 16
 1
 4
@@ -13331,30 +13580,30 @@ assets/sprites/groceries/honey.bmp
 312
 
 #OBJECTS IN SECTOR 38
-#object0 in sector 38 plant
+#object0 in sector 38 health pack plus
 73
 1170
 1350
-0
-32
 1
+16
+0
 4
-36
+14
 1165
 1345
 1175
 1345
-36
+14
 1175
 1345
 1175
 1355
-36
+14
 1175
 1355
 1165
 1355
-36
+14
 1165
 1355
 1165
@@ -14136,7 +14385,7 @@ assets/sprites/groceries/honey.bmp
 1560
 1
 16
-1
+0
 4
 14
 1145
@@ -14374,59 +14623,59 @@ assets/sprites/groceries/honey.bmp
 349
 
 #OBJECTS IN SECTOR 45
-#object0 in sector 45 #69
+#object0 in sector 45 #72
 314
 1105
 1542
-0
+14
 16
 1
 4
-69
+72
 1100
 1537
 1110
 1537
-69
+72
 1110
 1537
 1110
 1547
-69
+72
 1110
 1547
 1100
 1547
-69
+72
 1100
 1547
 1100
 1537
 
-#object1 in sector 45 #70
+#object1 in sector 45 jam 1
 315
 1105
 1574
-0
+14
 16
 1
 4
-70
+46
 1100
 1569
 1110
 1569
-70
+46
 1110
 1569
 1110
 1579
-70
+46
 1110
 1579
 1100
 1579
-70
+46
 1100
 1579
 1100
@@ -14461,11 +14710,11 @@ assets/sprites/groceries/honey.bmp
 1100
 1601
 
-#object3 in sector 45 #72
+#object3 in sector 45 #72 pickled eggs
 317
 1105
 1638
-0
+14
 16
 1
 4

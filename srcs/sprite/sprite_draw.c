@@ -76,49 +76,60 @@ static int		find_y(t_doom *doom, t_line *sprite, int index_sp, int screen_y)
 	return (tex_y);
 }
 
-int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
-{
-	int		i;
-	int		y_bottom;
-	// int		y_top;
-	int		mid_bottom;
+// int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
+// {
+// 	int		i;
+// 	int		y_bottom;
+// 	// int		y_top;
+// 	int		mid_bottom;
 
-	mid_bottom = 0;
-	i = 0;
-	while (i < sprite.n_sector)
-	{
-		mid_bottom =\
-		doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
-		if (mid_bottom == -1)
-			return (-1);
-		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
-		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
-			return (-1);
-		if (mid_bottom > 0 && mid_bottom < HEIGHT && mid_bottom < screen_y)
-			return (-1);
-		i++;
-	}
-	return (1);
-}
+// 	mid_bottom = 0;
+// 	i = 0;
+// 	while (i < sprite.n_sector)
+// 	{
+// 		mid_bottom =\
+// 		doom->lib.sector[sprite.prev_sectors[i]].sidedef_mid_bottom[x];
+// 		if (mid_bottom == -1)
+// 			return (-1);
+// 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].sidedef_bottom[x];
+// 		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
+// 			return (-1);
+// 		if (mid_bottom > 0 && mid_bottom < HEIGHT && mid_bottom < screen_y)
+// 			return (-1);
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
-void	sprite_light(t_doom *doom, t_sprite sprite)
-{
-	if (doom->light == TRUE)
-	{
-		if (doom->lib.sector[sprite.sector].light == TRUE)
-			doom->lib.light = doom->lib.sector[sprite.sector].light_level;
-		else
-			doom->lib.light = 0.15;
-	}
-	else
-	{
-		doom->lib.light = 1 / (sprite.distance / 70);
-		doom->lib.light = sprite.sprite_x > WIDTH / 2 ? \
-			doom->lib.light - (sprite.sprite_x - (float)WIDTH / 2.0) * 1.0 /\
-			(float)WIDTH : + doom->lib.light - ((float)WIDTH / 2.0 -\
-			sprite.sprite_x) * 1.0 / (float)WIDTH;
-	}
-}
+// void	sprite_light(t_doom *doom, t_sprite sprite)
+// {
+// 	int		half_width;
+// 	int		half_height;
+// 	int		x;
+
+// 	half_width = 0;
+// 	half_height = 0;
+// 	x = sprite.sprite_x;
+// 	if (doom->light == TRUE)
+// 	{
+// 		if (doom->lib.sector[sprite.sector].light == TRUE)
+// 			doom->lib.light = doom->lib.sector[sprite.sector].light_level;
+// 		else
+// 			doom->lib.light = 0.15;
+// 	}
+// 	else
+// 	{
+// 		half_width = (float)WIDTH / 2;
+// 		doom->lib.light = 1 / (sprite.distance / 70);
+// 		if (sprite.sprite_x > half_width)
+// 			doom->lib.light -= (x - half_width) * 1.0 / (float)WIDTH;
+// 		else
+// 		{
+// 			doom->lib.light =\
+// 			+doom->lib.light - (half_width - x) * 1.0 / (float)WIDTH;
+// 		}	
+// 	}
+// }
 
 void	put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite, int index_sp)
 {

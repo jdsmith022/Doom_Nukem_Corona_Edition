@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 19:44:26 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 22:23:42 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,16 @@ static void		select_action(t_doom *doom)
 	t_sidedef poster;
 
 	poster = doom->lib.sidedef[doom->i_sidedef];
-	light_switch(doom);
+	if (doom->i_sidedef != -1)
+		light_switch(doom);
 	if (doom->own_event.select == TRUE)
 	{
 		if (doom->own_event.mouse_press)
 		{
 			check_sprite_hit(doom);
-			if (poster.action == 8)
-			{
-				printf("huh: %d -- %d sector: %d\n", poster.action, poster.id, poster.sector);
-				sanitizer_refill(doom);
-			}
+			if (poster.action == 8 && \
+			doom->lib.sidedef[doom->i_sidedef].distance < 100.00)
+				sanitizer_refill(doom);	
 		}
 	}
 }

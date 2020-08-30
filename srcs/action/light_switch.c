@@ -58,7 +58,7 @@ void			light_switch(t_doom *doom)
 	t_sidedef poster;
 
 	poster = doom->lib.sidedef[doom->i_sidedef];
-	if (doom->lib.sidedef[doom->i_sidedef].distance < 100.00 \
+	if (doom->lib.sidedef[doom->i_sidedef].distance < 150.00 \
 	&& doom->own_event.select == TRUE && poster.action == 4)
 		if (doom->own_event.mouse_press &&
 		doom->own_event.light_switch == FALSE)
