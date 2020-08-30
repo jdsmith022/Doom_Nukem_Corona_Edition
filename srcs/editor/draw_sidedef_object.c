@@ -4,6 +4,7 @@
 t_angle_line calc_angle(t_line line, t_doom *doom)
 {
 	t_angle_line angle;
+
 	angle.diff.x = (line.end.x) - (line.start.x);
 	angle.diff.y = (line.end.y) - (line.start.y);
 	angle.steps.x = (float)angle.diff.x / (float)(abs(angle.diff.x) + abs(angle.diff.y));
@@ -15,9 +16,9 @@ t_angle_line calc_angle(t_line line, t_doom *doom)
 
 void	draw_portal(t_doom *doom, Uint32 **pixels, int sector)
 {
-	t_angle_line angle;
-	double	i;
-	int		b;
+	t_angle_line	angle;
+	double			i;
+	int				b;
 
 	b = doom->game_design.sector[sector].i_sidedefs;
 	while (b < doom->game_design.sector[sector].i_sidedefs + doom->game_design.sector[sector].n_sidedefs)
@@ -39,9 +40,9 @@ void	draw_portal(t_doom *doom, Uint32 **pixels, int sector)
 
 void	draw_lines(t_doom *doom, Uint32 **pixels, int b)
 {
-	t_angle_line angle;
-	double	i;
-	int		color;
+	t_angle_line	angle;
+	double			i;
+	int				color;
 
 	angle = calc_angle(doom->game_design.sidedef[b].line, doom);
 	i = 0.0;
@@ -113,4 +114,3 @@ void draw_object(t_doom *doom, Uint32 **pixels)
         i++;
 	}
 }
-

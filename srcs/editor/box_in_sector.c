@@ -31,8 +31,8 @@ static void		check_corners(t_line line, t_line *diff)
 
 static t_line	corners(t_doom *doom)
 {
-	int i;
-	int side;
+	int		i;
+	int		side;
 	t_line	diff;
 
 	init_diff(&diff);

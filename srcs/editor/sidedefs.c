@@ -107,6 +107,15 @@ void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
 	doom->game_design.w_len++;
 }
 
+void		sidedef_init(t_doom *doom, int *start, int *id)
+{
+	doom->game_design.sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * 2);
+	doom->game_design.w_size = 2;
+	doom->game_design.w_len = 0;
+	start = 0;
+	id = 0;
+}
+
 void		add_sidedef(t_doom *doom, int x, int y)
 {
 	static int	start;
@@ -114,13 +123,7 @@ void		add_sidedef(t_doom *doom, int x, int y)
 	int			i;
 
 	if (doom->game_design.sidedef == NULL)
-	{
-		doom->game_design.sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * 2);
-		doom->game_design.w_size = 2;
-		doom->game_design.w_len = 0;
-		start = 0;
-		id = 0;
-	}
+		sidedef_init(doom, &start, &id);
 	if (!start)
 	{
 		if (doom->game_design.w_size < doom->game_design.w_len + 1)

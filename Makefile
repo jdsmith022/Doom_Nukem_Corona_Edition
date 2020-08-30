@@ -42,13 +42,14 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
 				mouse_events_game_editor box_in_sector draw_edit_console \
 				printing_map init_game draw_sidedef_object objects \
-				correct_position
+				correct_position mouse_event_dependencies put_textures \
+				mouse_event_sidedef
 AUDIO_FILES = audio audio_init playback helpers
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_draw2
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui add_infection \
-				 position gameplay game_over timer shooting
+				 position gameplay game_over timer shooting 
 FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				save_font_libraries hud_font set_vanishing_box_coordinates \
 				start_menu_font setting_window_font game_over_font \

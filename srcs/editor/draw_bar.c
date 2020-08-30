@@ -4,9 +4,9 @@
 
 void    draw_bar_point(Uint32 **pixels, t_bar bar)
 {
-	double place;
-	int i;
-	int j;
+	double	place;
+	int		i;
+	int		j;
 
 	place = bar.cur_height;
 	place -= bar.min;
