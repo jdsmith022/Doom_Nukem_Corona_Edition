@@ -36,11 +36,11 @@
 
 # define SLOPE_COLOR 0X505052
 
-# define SECTORS		doom->lib.sector
-# define SIDEDEFS		doom->lib.sidedef
-# define TEXTURES		doom->lib.tex_lib
-# define SPRITES		doom->lib.sprites
-# define OBJ_LIB		doom->lib.obj_lib
+# define SECTORS		doom->lib.sector //remove
+# define SIDEDEFS		doom->lib.sidedef //remove
+# define TEXTURES		doom->lib.tex_lib //remove
+# define SPRITES		doom->lib.sprites //remove
+# define OBJ_LIB		doom->lib.obj_lib //remove
 
 # define OUTSIDE 1
 # define EXIT_LEVEL 2

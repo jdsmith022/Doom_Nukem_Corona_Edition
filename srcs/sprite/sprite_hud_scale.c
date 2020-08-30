@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_hud_scale.c                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:17 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/30 21:54:19 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/sprites.h"
@@ -73,38 +85,38 @@ static int		find_y_bar(t_doom *doom, t_line *bar,\
 	return (tex_y);
 }
 
-void			draw_stripes_bar(t_doom *doom, t_line bar, int i_sprite)
+static void		put_stripe_bar(t_doom *doom, int stripe,\
+				t_line bar, int i_sprite)
 {
+	int			screen_y;
+	t_coord		tex;
 	Uint32		index;
 	Uint32		pix_dex;
+
+	screen_y = (int)bar.start.y;
+	tex.x = find_x_bar(doom, &bar, stripe, i_sprite);
+	while (screen_y < (int)bar.end.y)
+	{
+		index = (Uint32)(screen_y * doom->surface->pitch) +\
+		(int)(stripe * doom->surface->format->BytesPerPixel);
+		tex.y = find_y_bar(doom, &bar, screen_y, i_sprite);
+		pix_dex = ((int)tex.y * doom->lib.obj_lib[i_sprite]->pitch)\
+		+ ((int)tex.x *\
+		doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
+		put_pixel_tex(doom, pix_dex, index, i_sprite);
+		screen_y++;
+	}
+}
+
+void			draw_stripes_bar(t_doom *doom, t_line bar, int i_sprite)
+{
 	int			stripe;
-	int			tex_y;
-	int			tex_x;
-	//use t_coord instead of two integers?
-	int			screen_y;
 
 	stripe = (int)bar.start.x;
-	screen_y = (int)bar.start.y;
-	index = 0;
 	doom->lib.light = -1;
 	while (stripe < (int)bar.end.x && stripe >= 0 && stripe < WIDTH)
 	{
-		//of kan ik deze hele while loop in een aparte functie zetten?
-		//(nodig als parameter: doom, &bar, stripe, i_sprite)
-		//(extra variables: screen_y, Uint32 index, Uint32 pix_dex, tex_x, tex_y)
-		screen_y = (int)bar.start.y;
-		tex_x = find_x_bar(doom, &bar, stripe, i_sprite);
-		while (screen_y < (int)bar.end.y)
-		{
-			index = (Uint32)(screen_y * doom->surface->pitch) +\
-			(int)(stripe * doom->surface->format->BytesPerPixel);
-			tex_y = find_y_bar(doom, &bar, screen_y, i_sprite);
-			pix_dex = ((int)tex_y * doom->lib.obj_lib[i_sprite]->pitch)\
-			+ ((int)tex_x *\
-			doom->lib.obj_lib[i_sprite]->format->BytesPerPixel);
-			put_pixel_tex(doom, pix_dex, index, i_sprite);
-			screen_y++;
-		}
+		put_stripe_bar(doom, stripe, bar, i_sprite);
 		stripe++;
 	}
 }

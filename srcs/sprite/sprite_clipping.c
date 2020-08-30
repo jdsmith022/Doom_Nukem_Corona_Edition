@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_clipping.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/30 21:54:30 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 
 int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
