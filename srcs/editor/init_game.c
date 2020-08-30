@@ -30,7 +30,7 @@ void	init_game_design(t_doom *doom)
 	doom->game_design.cur_sec = 0;
 	doom->game_design.cur_sd = -1;
 	doom->game_design.cur_tex = 0;
-	doom->game_design.cur_obj = -1;
+	doom->game_design.cur_obj = 7;
 	doom->game_design.pl_pos = 0;
 	doom->game_design.pl_sec = 0;
 	doom->game_design.w_len = 0;
@@ -40,5 +40,6 @@ void	init_game_design(t_doom *doom)
 	doom->game_design.sidedef_bar = 1;
 	doom->game_design.portal_sec = -1;
 	doom->game_design.portal_sd = -1;
+	doom->game_design.custum_level = TRUE;
 	init_first_sector(doom);
 }

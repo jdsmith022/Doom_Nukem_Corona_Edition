@@ -77,7 +77,7 @@ void				add_object(t_doom *doom, int x, int y);
 void				draw_object(t_doom *doom, Uint32 **pixels);
 void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
 void				del_obj(t_doom *doom);
-void				add_specifications(t_gamedesign *gd, int index);
+void				add_specifications(t_doom *doom, t_gamedesign *gd, int index);
 void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
 void				coor_pos(t_doom *doom);
 void				add_player(t_doom *doom, int x, int y);

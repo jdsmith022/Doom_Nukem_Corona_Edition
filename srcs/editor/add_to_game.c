@@ -50,7 +50,7 @@ static t_sector	*new_level_sector(t_doom *doom,\
 	t_sector	*new;
 	int			i;
 
-	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 1));
+	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 2));
 	if (new == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	i = 0;

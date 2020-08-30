@@ -92,10 +92,8 @@ void	mouse_press_object(t_doom *doom, int x, int y)
 		object_texture(doom, 1);
 	else if (x > DEL_OBJ_X && x < DEL_OBJ_X + FRAME_WIDTH && \
 	y > DEL_OBJ_Y && y < DEL_OBJ_Y + FRAME_HEIGHT)
-	{
 		if (doom->game_design.cur_obj >= doom->game_design.sector[doom->game_design.cur_sec].i_objects)
 			del_obj(doom);
-	}
 }
 
 void	mouse_press_game_editor(t_doom *doom, int x, int y)

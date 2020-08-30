@@ -6,6 +6,7 @@ void		del_obj(t_doom *doom)
 {
 	int i;
 
+	printf("delet objects\n");
 	i = doom->game_design.cur_sec + 1;
 	while (i <= doom->game_design.s_len)
 	{
@@ -106,7 +107,7 @@ void	add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln)
     ln[0][3].end.y = y + LS[gd.cur_tex].end_y + gd.sector[gd.cur_sec].diff_y;
 }
 
-void	add_specifications(t_gamedesign *gd, int index)
+void	add_specifications(t_doom *doom, t_gamedesign *gd, int index)
 {
 	gd->object[index].index = LS[gd->cur_tex].index;
     gd->object[index].amount = 4;
@@ -129,7 +130,7 @@ void    add_object_to_array(int x, int y, t_doom *doom)
 		x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
     doom->game_design.object[doom->game_design.o_len].pos.y = \
 		y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
-	add_specifications(&(doom->game_design), doom->game_design.o_len);
+	add_specifications(doom, &(doom->game_design), doom->game_design.o_len);
 	add_obj_lines(x, y, doom->game_design,\
 	&(doom->game_design.object[doom->game_design.o_len].lines));
 }
@@ -150,9 +151,5 @@ void    add_object(t_doom *doom, int x, int y)
 		mv_object(&doom->game_design.object, doom->game_design.o_len, \
 		doom->game_design.sector[doom->game_design.cur_sec].i_objects);
     correct_i_object(doom->game_design.cur_sec + 1, doom);
-    doom->game_design.cur_obj = doom->game_design.cur_sec != \
-		doom->game_design.s_len ? \
-		doom->game_design.sector[doom->game_design.cur_sec].i_objects \
-		: doom->game_design.o_len;
     doom->game_design.o_len++;
 }

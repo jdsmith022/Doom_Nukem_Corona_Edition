@@ -66,10 +66,16 @@ void	draw_sidedef_images(Uint32 *pixels, t_doom *doom)
 
 void	draw_object_images(Uint32 *pixels, t_doom *doom)
 {
+	SDL_Rect texture;
+
+	texture.h = 8;
+	texture.w = 8;
+	texture.x = TEX_S2_X;
+	texture.y = TEX_S2_Y;
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-	put_textures(TEX_S2_X, TEX_S2_Y, LS[doom->game_design.cur_tex].tex1, doom);
+	draw_img(doom->lib.obj_lib[doom->game_design.cur_obj], doom, texture);
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	if (doom->game_design.cur_obj >= \
