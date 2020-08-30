@@ -7,7 +7,7 @@
 #define FRAME_WIDTH 32
 #define FRAME_HEIGHT 32
 #define SIDEBAR_SECTOR 160
-#define SIDEBAR_SIDEDEF 6405
+#define SIDEBAR_SIDEDEF 640
 #define MINUS_X 160
 #define MINUS_Y 0
 #define PLUS_X 672

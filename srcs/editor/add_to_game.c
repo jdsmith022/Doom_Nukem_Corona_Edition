@@ -101,7 +101,7 @@ void		add_to_game(t_doom *doom)
 			box_in_sectors(doom);  // give these walls a flag so that they are not drawn if the sector is outside
 			free(doom->lib.sector); //rm when there are multiple levels		
 			free(doom->lib.sidedef); //rm when there are multiple levels
-			// rmove(doom->lib.sprites, doom); //neccesary to stop the leaks but it just breaks the code and it sucks
+			rmove(doom->lib.sprites, doom); //neccesary to stop the leaks but it just breaks the code and it sucks
 			doom->lib.sector = new_level_sector(doom,\
 				doom->game_design.sector, doom->game_design.s_len + 1);
 			doom->lib.sidedef = new_level_sidedef(doom,\

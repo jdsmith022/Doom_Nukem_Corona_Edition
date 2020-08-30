@@ -34,7 +34,7 @@ void        correct_i_object(int i, t_doom *doom)
 
 }
 
-t_sprite *cpy_object(t_doom *doom, t_sprite *object, int *o_size)
+void	cpy_object(t_doom *doom, t_sprite **object, int *o_size)
 {
 	t_sprite	*new;
 	int			i;
@@ -46,23 +46,23 @@ t_sprite *cpy_object(t_doom *doom, t_sprite *object, int *o_size)
 	i = 0;
 	while (i < *o_size)
 	{
+		new[i] = object[0][i];
 		new[i].lines = (t_line*)ft_memalloc(sizeof(t_line) * 4);
 		new[i].textures = (int*)ft_memalloc(sizeof(int) * 4);
-		// side = 0;
-		// while (side < 4)
-		// {
-		// 	new[i].lines[side] = object[i].lines[side];
-		// 	new[i].textures[side] = object[i].textures[side];
-		// 	side++;
-		// }
-		new[i] = object[i];
-		// free(object[i].lines); //crashes
-		// free(object[i].textures); //crashes
+		side = 0;
+		while (side < 4)
+		{
+			new[i].lines[side] = object[0][i].lines[side];
+			new[i].textures[side] = object[0][i].textures[side];
+			side++;
+		}
+		free(object[0][i].lines);
+		free(object[0][i].textures);
 		i++;
 	}
-	free(object);
+	free(*object);
 	*o_size *= 2;
-	return (new);
+	*object = new;
 }
 
 void		mv_object(t_sprite **object, int o_len, int id)
@@ -70,6 +70,7 @@ void		mv_object(t_sprite **object, int o_len, int id)
 	int			i;
 	t_sprite	safe;
 	t_sprite	safe2;
+	int			side;
 
 	i = id;
 	safe = object[0][i];
@@ -77,7 +78,7 @@ void		mv_object(t_sprite **object, int o_len, int id)
 	i++;
 	while (i < o_len)
 	{
-		safe2 = object[0][o_len];
+		safe2 = object[0][i];
 		object[0][i] = safe;
 		safe = safe2;
 		i++;
@@ -143,10 +144,7 @@ void    add_object(t_doom *doom, int x, int y)
 		doom->game_design.o_len = 0;
 	}
     if (doom->game_design.o_size < doom->game_design.o_len + 1)
-			doom->game_design.object = cpy_object(doom, \
-				doom->game_design.object, &doom->game_design.o_size);
-	// if (doom->game_design.o_len + 1 >= 50)
-	// 	return ;
+		cpy_object(doom, &(doom->game_design.object), &doom->game_design.o_size);
 	add_object_to_array(x, y, doom);
     if (doom->game_design.cur_sec != doom->game_design.s_len)
 		mv_object(&doom->game_design.object, doom->game_design.o_len, \
