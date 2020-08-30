@@ -18,7 +18,10 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 		groceries(doom);
 	}
 	else if (doom->game_editor == TRUE)
+	{
 		open_game_editor(doom);
+		font_to_screen(doom);
+	}
 }
 
 static void	sdl_poll_events(t_doom *doom, double dt)
