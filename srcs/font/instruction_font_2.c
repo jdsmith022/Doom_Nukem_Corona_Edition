@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 19:13:44 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/30 21:00:27 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	set_instruction_text_6(t_doom *doom, t_font *lib)
 	lib[20].font_rect.x = WIDTH / 2 - 150;
 	lib[20].font_rect.y = HEIGHT / 2 + 165;
 	lib[20].font_color = doom->lib.font_lib.font_color.red;
-	lib[21].str = "Make sure you're read to checkout!";
+	lib[21].str = "Make sure you're ready to checkout!";
 	lib[21].font_rect.x = WIDTH / 2 - 150;
 	lib[21].font_rect.y = HEIGHT / 2 + 165;
 	lib[21].font_color = doom->lib.font_lib.font_color.red;
