@@ -17,7 +17,7 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 		audio(doom, &doom->own_event);
 		groceries(doom);
 	}
-	if (doom->game_editor == TRUE && doom->menu->state == start_game)
+	else if (doom->game_editor == TRUE)
 		open_game_editor(doom);
 }
 

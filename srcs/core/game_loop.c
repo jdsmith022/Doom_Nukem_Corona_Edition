@@ -33,7 +33,8 @@ void			game_loop(t_doom *doom)
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		doom_render(doom);
+		if (doom->game_editor == FALSE)
+			doom_render(doom);
 		update_hud_ui(doom);
 		set_to_window(doom);
 	}
