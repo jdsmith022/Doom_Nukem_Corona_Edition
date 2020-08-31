@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:18:04 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:24:00 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:31:57 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	jump_player(t_doom *doom, double dt)
 	duration += dt;
 	og_height = PLAYER_HEIGHT + height_floor;
 	jump_height = (int)(doom->own_event.velocity * duration);
-	if (((doom->player.height + jump_height) <= (doom->texture_height - \
+	if (((doom->player.height + jump_height) <= (doom->cast.texture_height - \
 	(height_ceiling + height_floor)) && \
 	((doom->player.height + jump_height) >= height_floor)))
 		doom->player.height += jump_height;
@@ -88,7 +88,7 @@ void	get_up(t_doom *doom, double dt)
 		(int)(doom->own_event.velocity * duration) + (PLAYER_HEIGHT - 20);
 	height_floor = doom->lib.sector[doom->i_sector].height_floor;
 	height_ceiling = doom->lib.sector[doom->i_sector].height_ceiling;
-	if (((doom->player.height + jump_height) <= (doom->texture_height - \
+	if (((doom->player.height + jump_height) <= (doom->cast.texture_height - \
 	(height_ceiling + height_floor)) && \
 	((doom->player.height + jump_height) >= height_floor)))
 		doom->player.height += jump_height;

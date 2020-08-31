@@ -30,12 +30,12 @@ void			game_loop(t_doom *doom)
 
 	last_frame_time = 0;
 	dt = get_timeframe(&last_frame_time);
-	while (doom->is_running == TRUE)
+	while (doom->game.is_running == TRUE)
 	{
 		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		if (doom->game_editor == FALSE && doom->menu->state == start_game)
+		if (doom->game.editor == FALSE && doom->menu->state == start_game)
 			doom_render(doom);
 		update_screen(doom);
 		set_to_window(doom);

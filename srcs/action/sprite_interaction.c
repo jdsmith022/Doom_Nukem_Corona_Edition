@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:34 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:17:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:31:57 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		scissor_lift_up(t_doom *doom)
 	t_event	*event;
 
 	event = &doom->own_event;
-	max_height = doom->texture_height + \
+	max_height = doom->cast.texture_height + \
 		doom->lib.sector[doom->i_sector].height_ceiling - (PLAYER_HEIGHT / 2);
 	if (doom->player.height <= max_height)
 	{

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:01:54 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:33:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		put_row(t_doom *doom, SDL_Surface *lib,
 	r = texture[pixel_dex];
 	g = texture[pixel_dex + 1];
 	b = texture[pixel_dex + 2];
-	add_saturation(&r, &g, &b, doom->distance);
+	add_saturation(&r, &g, &b, doom->cast.distance);
 	pixels = doom->surface->pixels;
 	texture = lib->pixels;
 	pixels[index] = r;
@@ -55,12 +55,12 @@ void			row_calculations(t_doom *doom, double dist, Uint32 index,
 	Uint8	bpp;
 
 	bpp = lib->format->BytesPerPixel;
-	floor.x = dist * cos(doom->ray_angle);
-	floor.y = dist * sin(doom->ray_angle);
+	floor.x = dist * cos(doom->cast.ray_angle);
+	floor.y = dist * sin(doom->cast.ray_angle);
 	floor.x += doom->pos.x;
 	floor.y += doom->pos.y;
-	texture.x = (int)floor.x % doom->texture_width;
-	texture.y = (int)floor.y % doom->texture_height;
+	texture.x = (int)floor.x % doom->cast.texture_width;
+	texture.y = (int)floor.y % doom->cast.texture_height;
 	pixel_dex = (((int)texture.y * lib->pitch)\
 		+ ((int)texture.x * bpp));
 	put_row(doom, lib, index, pixel_dex);

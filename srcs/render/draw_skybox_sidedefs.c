@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:02:06 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:32:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void		draw_side_textures(t_doom *doom, t_plane plane, double offset,
 	pixel.y = plane.intersect.y;
 	bpp = doom->surface->format->BytesPerPixel;
 	index = (Uint32)(pixel.y * doom->surface->pitch) + (int)(pixel.x * bpp);
-	wall_y = (double)(doom->texture_height / plane.height_standard) *\
+	wall_y = (double)(doom->cast.texture_height / plane.height_standard) *\
 		((int)(pixel.y + plane.wall_offset) - plane.sidedef_top);
 	bpp = doom->lib.sky_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = ((int)wall_y * doom->lib.sky_lib[tex_dex]->pitch) +\
@@ -64,12 +64,12 @@ static int		set_offset_skybox(t_line line, t_point intersect, t_doom *doom,
 	diff = find_slope_line_offset(start, end);
 	if (start.x == end.x || diff == 1)
 	{
-		offset = ft_rounder(intersect.y) % doom->texture_width;
+		offset = ft_rounder(intersect.y) % doom->cast.texture_width;
 		*dir = 0;
 	}
 	else if (start.y == end.y || diff == 2)
 	{
-		offset = ft_rounder(intersect.x) % doom->texture_width;
+		offset = ft_rounder(intersect.x) % doom->cast.texture_width;
 		*dir = 1;
 	}
 	return (offset);
@@ -88,7 +88,7 @@ void			find_skybox_sidedef_texture(t_doom *doom, int x,
 	plane.intersect.y = plane.sidedef_top;
 	while (plane.intersect.y < plane.sidedef_bottom)
 	{
-		dir_angle = doom->dir_angle;
+		dir_angle = doom->cast.dir_angle;
 		if ((dir_angle > PI / 2 && dir_angle < (3 * PI) / 2)\
 		&& dir == 0)
 			tex_dex = 1;

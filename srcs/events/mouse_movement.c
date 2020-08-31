@@ -48,7 +48,7 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 	radian = PI / 180;
 	dir_x = 1;
 	dir_y = 1;
-	doom->dir_angle += to_radians(motion->xrel) * (SENSITIVITY * (dt * 2));
+	doom->cast.dir_angle += to_radians(motion->xrel) * (SENSITIVITY * (dt * 2));
 	set_pitch(doom, motion, dt, event);
 }
 

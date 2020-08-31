@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:28:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:24:07 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ static void		pause_menu(t_doom *doom)
 	struct timespec hold_time;
 	struct timespec curr_time;
 
-	clock_gettime(doom->game_time, &hold_time);
+	clock_gettime(doom->game.play_time, &hold_time);
 	while (doom->menu->state == game_paused)
 	{
 		Mix_PauseMusic();
 		menu_print_loop(doom);
 	}
 	resume_music();
-	clock_gettime(doom->game_time, &curr_time);
-	doom->game_start_time.tv_sec = \
-		doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
-	doom->hud_display = TRUE;
+	clock_gettime(doom->game.play_time, &curr_time);
+	doom->game.start_time.tv_sec = \
+		doom->game.start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
+	doom->game.hud_display = TRUE;
 	SDL_SetRelativeMouseMode(TRUE);
 }
 

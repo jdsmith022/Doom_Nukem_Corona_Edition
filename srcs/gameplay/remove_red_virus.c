@@ -95,7 +95,7 @@ void			remove_red_virus(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.virus_red == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
+		clock_gettime(doom->game.play_time, &doom->own_event.sprite_timer);
 		doom->own_event.virus_red = FALSE;
 	}
 	else

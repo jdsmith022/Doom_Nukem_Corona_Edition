@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:12 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:34:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void		set_ceiling_limit(t_doom *doom, t_sidedef sidedef,
 		sector->ceiling_end = 0;
 	else
 	{
-		plane_height_std = doom->texture_height / sidedef.prev_sidedef.distance\
-			* doom->dist_to_plane;
-		scale = plane_height_std / doom->texture_height;
-		diff = doom->texture_height - doom->player.height;
+		plane_height_std = doom->cast.texture_height / sidedef.prev_sidedef.distance\
+			* doom->cast.dist_to_plane;
+		scale = plane_height_std / doom->cast.texture_height;
+		diff = doom->cast.texture_height - doom->player.height;
 		height_ceiling = sector->height_ceiling / \
-			sidedef.prev_sidedef.distance * doom->dist_to_plane;
+			sidedef.prev_sidedef.distance * doom->cast.dist_to_plane;
 		plane_top = ((HEIGHT / 2) - (diff * scale)) - \
 			(doom->own_event.y_pitch + height_ceiling);
 		if (plane_top < 0)

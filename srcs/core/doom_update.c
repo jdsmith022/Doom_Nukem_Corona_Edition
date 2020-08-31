@@ -10,13 +10,13 @@
 static void	core_gameplay_loop(t_doom *doom, double dt)
 {
 	key_handler(doom, &doom->own_event, dt);
-	if (doom->game_editor == FALSE && doom->menu->state == start_game)
+	if (doom->game.editor == FALSE && doom->menu->state == start_game)
 	{
 		sprite_reset(doom);
 		action_handler(doom);
 		audio(doom, &doom->own_event);
 	}
-	else if (doom->game_editor == TRUE)
+	else if (doom->game.editor == TRUE)
 	{
 		open_game_editor(doom);
 		doom->lib.sector[doom->i_sector].action = START_TIMER;
@@ -34,7 +34,7 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
-			doom->is_running = FALSE;
+			doom->game.is_running = FALSE;
 		if (event.type == SDL_KEYDOWN)
 			key_press(doom, &doom->own_event, &event.key);
 		if (event.type == SDL_KEYUP)

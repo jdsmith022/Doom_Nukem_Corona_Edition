@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:11:42 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:31:57 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void		put_window_texture(t_doom *doom, t_point pixel, t_plane plane,
 	int		bpp;
 
 	tex_dex = sidedef.txt_2;
-	wall_y = (double)(doom->texture_height / plane.height_standard) *\
+	wall_y = (double)(doom->cast.texture_height / plane.height_standard) *\
 		((double)(pixel.y + plane.wall_offset) - plane.sidedef_top);
-	if (wall_y > doom->texture_height)
-		wall_y -= doom->texture_height;
+	if (wall_y > doom->cast.texture_height)
+		wall_y -= doom->cast.texture_height;
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));

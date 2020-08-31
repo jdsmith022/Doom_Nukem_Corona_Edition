@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:11:46 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 19:06:34 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		print_random_font(t_doom *doom, bool *flag, Uint32 index)
 
 	if (*flag == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 		*flag = FALSE;
 	}
 	else

@@ -10,9 +10,9 @@ void	open_game_editor(t_doom *doom)
 	struct timespec		hold_time;
 	struct timespec		curr_time;
 
-	clock_gettime(doom->game_time, &hold_time);
+	clock_gettime(doom->game.play_time, &hold_time);
 	SDL_SetRelativeMouseMode(SDL_FALSE);
-	doom->distance = 1;
+	doom->cast.distance = 1;
 	pixels = doom->surface->pixels;
 	if (doom->game_design.sector == NULL)
 		init_game_design(doom);
@@ -27,6 +27,6 @@ void	open_game_editor(t_doom *doom)
 		i++;
 	}
 	draw_object(doom, &pixels);
-	clock_gettime(doom->game_time, &curr_time);
-	doom->game_start_time.tv_sec = doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
+	clock_gettime(doom->game.play_time, &curr_time);
+	doom->game.start_time.tv_sec = doom->game.start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 17:10:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:22:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;
 	doom->own_event.select = FALSE;
-	doom->start_timer = FALSE;
-	doom->hud->hold_time /= doom->difficulty;
-	doom->hud->curr_time /= doom->difficulty;
+	doom->game.start_timer = FALSE;
+	doom->hud->hold_time /= doom->game.difficulty;
+	doom->hud->curr_time /= doom->game.difficulty;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 void		doom_start(t_doom *doom)
 {
-	doom->difficulty = 1;
+	doom->game.difficulty = 1;
 	while (doom->menu->state != start_game)
 	{
 		mouse_settings(doom);
@@ -50,7 +50,7 @@ void		doom_start(t_doom *doom)
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
 	Mix_HaltMusic();
-	if (doom->game_editor == FALSE)
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+	if (doom->game.editor == FALSE)
+		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	set_menu_game_variables(doom);
 }

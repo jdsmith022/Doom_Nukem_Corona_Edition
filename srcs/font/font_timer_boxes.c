@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:21:17 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:21:38 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		font_timer_box_short(t_doom *doom, bool *flag,
 
 	if (*flag == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 		*flag = FALSE;
 	}
 	else
@@ -41,7 +41,7 @@ void		font_timer_box_long(t_doom *doom, bool *flag,
 
 	if (*flag == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 		*flag = FALSE;
 	}
 	else
@@ -61,7 +61,7 @@ void		font_timer_box_start(t_doom *doom, bool *flag)
 
 	if (*flag == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 		*flag = FALSE;
 	}
 	else

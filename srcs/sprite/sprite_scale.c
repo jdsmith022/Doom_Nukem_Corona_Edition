@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:57 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:34:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite,\
 	double		height_floor;
 
 	height_floor = doom->lib.sector[sprite->sector].height_floor\
-		/ sprite->distance * doom->dist_to_plane;
+		/ sprite->distance * doom->cast.dist_to_plane;
 	sidedef_bottom = ((HEIGHT / 2) + (doom->player.height * scale)) -\
 		(doom->own_event.y_pitch + height_floor);
 	return (sidedef_bottom);
@@ -56,7 +56,7 @@ int			calculate_sprite_top(t_doom *doom, t_sprite *sprite,\
 
 	diff = STD_TEXT_HEIGHT - doom->player.height;
 	height_ceiling = doom->lib.sector[sprite->sector].height_ceiling\
-		/ sprite->distance * doom->dist_to_plane;
+		/ sprite->distance * doom->cast.dist_to_plane;
 	sidedef_top = ((HEIGHT / 2) - ((double)diff * scale)) -\
 		(doom->own_event.y_pitch + height_ceiling);	
 	return (sidedef_top);
@@ -70,10 +70,10 @@ double		sprite_calculations(t_doom *doom, t_sprite *sprite,\
 	int			plane_height_standard;
 	double		scale;
 
-	sprite->height = sprite->size / sprite->distance * doom->dist_to_plane;
-	plane_height_standard = doom->texture_height / sprite->distance\
-		* doom->dist_to_plane;
-	scale = (double)plane_height_standard / doom->texture_height;
+	sprite->height = sprite->size / sprite->distance * doom->cast.dist_to_plane;
+	plane_height_standard = doom->cast.texture_height / sprite->distance\
+		* doom->cast.dist_to_plane;
+	scale = (double)plane_height_standard / doom->cast.texture_height;
 	sidedef_bottom = calculate_sprite_bottom(doom, sprite, scale);
 	sidedef_top = calculate_sprite_top(doom, sprite, scale);
 	if (sprite->action == 4 || sprite->action == 5)

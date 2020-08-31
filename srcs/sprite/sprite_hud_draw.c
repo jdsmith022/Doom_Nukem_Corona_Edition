@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:23 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 13:15:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void			add_mist_to_sanitizer(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.mist == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
+		clock_gettime(doom->game.play_time, &doom->own_event.sprite_timer);
 		doom->own_event.mist = FALSE;
 	}
 	else

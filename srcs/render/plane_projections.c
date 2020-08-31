@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:09:13 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:33:02 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 	double		fov;
 
 	fov = 60 * (PI / 180);
-	sidedef.distance *= cos(doom->ray_adjacent * plane->x - fov / 2);
+	sidedef.distance *= cos(doom->cast.ray_adjacent * plane->x - fov / 2);
 	sidedef.prev_sidedef.distance *= \
-		cos(doom->ray_adjacent * plane->x - fov / 2);
+		cos(doom->cast.ray_adjacent * plane->x - fov / 2);
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
 	if (sidedef.opp_sector != -1)

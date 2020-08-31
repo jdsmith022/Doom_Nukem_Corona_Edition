@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:03:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:34:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	set_plane_bottom(t_doom *doom, double scale,
 
 	if (sector.slope_floor_id != -1)
 		sector.height_floor += set_slope_height_floor(doom, sidedef, sector);
-	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
+	height_floor = sector.height_floor / sidedef.distance * doom->cast.dist_to_plane;
 	sidedef_bottom = ((HEIGHT / 2) + (doom->player.height * scale)) \
 		- (doom->own_event.y_pitch + height_floor);
 	if (sidedef_bottom < 0)
@@ -39,14 +39,14 @@ static int	set_plane_top(t_doom *doom, double scale,
 	int		diff;
 
 	if (sidedef.poster == -1)
-		diff = doom->texture_height - doom->player.height;
+		diff = doom->cast.texture_height - doom->player.height;
 	else
 		diff = STD_TEXT_HEIGHT - doom->player.height;
 	if (sector.slope_ceiling_id != -1)
 		sector.height_ceiling -= \
 			set_slope_height_ceiling(doom, sidedef, sector);
 	height_ceiling = sector.height_ceiling / \
-		sidedef.distance * doom->dist_to_plane;
+		sidedef.distance * doom->cast.dist_to_plane;
 	sidedef_top = ((HEIGHT / 2) - (diff * scale)) \
 		- (doom->own_event.y_pitch + height_ceiling);
 	return (sidedef_top);
@@ -59,9 +59,9 @@ void		set_properties_plane_portal(t_doom *doom, t_sidedef sidedef,
 	int			mid_texture_top;
 	int			mid_texture_bottom;
 
-	plane->height_standard = doom->texture_height / \
-		sidedef.distance * doom->dist_to_plane;
-	scale = plane->height_standard / doom->texture_height;
+	plane->height_standard = doom->cast.texture_height / \
+		sidedef.distance * doom->cast.dist_to_plane;
+	scale = plane->height_standard / doom->cast.texture_height;
 	mid_texture_top = set_plane_top(doom, scale, sidedef, opp_sector);
 	if (mid_texture_top < 0)
 		plane->mid_texture_top = 0;
@@ -80,8 +80,8 @@ void		set_properties_plane_sidedef(t_doom *doom, t_sidedef sidedef,
 	int			sidedef_top;
 
 	plane->height_standard = \
-		doom->texture_height / sidedef.distance * doom->dist_to_plane;
-	scale = plane->height_standard / doom->texture_height;
+		doom->cast.texture_height / sidedef.distance * doom->cast.dist_to_plane;
+	scale = plane->height_standard / doom->cast.texture_height;
 	sidedef_top = set_plane_top(doom, scale, sidedef, sector);
 	wall_offset(plane, sidedef_top);
 	plane->sidedef_bottom = set_plane_bottom(doom, scale, sidedef, sector);

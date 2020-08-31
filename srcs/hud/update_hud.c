@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:16:23 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:16:24 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:18:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static void	draw_hud_bottom_bar(t_doom *doom)
 
 void		update_hud(t_doom *doom)
 {
-	if (doom->game_editor == FALSE && doom->menu->state != game_over)
+	if (doom->game.editor == FALSE && doom->menu->state != game_over)
 	{
 		draw_hud_top_bar(doom);
 		draw_player_adds(doom);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 00:38:32 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/08/31 17:17:55 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		print_missing_groceries(t_doom *doom)
 
 void			menu_print_loop(t_doom *doom)
 {
-	doom->hud_display = FALSE;
+	doom->game.hud_display = FALSE;
 	SDL_SetRelativeMouseMode(SDL_FALSE);
 	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
 	SDL_SetCursor(doom->cursor);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 14:16:51 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:34:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void			set_properties_plane_sky(t_doom *doom,
 	int		div_height_std;
 	int		new_height;
 
-	distance *= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
+	distance *= cos(doom->cast.ray_adjacent * x - (60 * (PI / 180)) / 2);
 	new_height = (HEIGHT + doom->player.height) / 2;
-	plane->height_standard = doom->texture_height /\
-		distance * doom->dist_to_plane;
+	plane->height_standard = doom->cast.texture_height /\
+		distance * doom->cast.dist_to_plane;
 	div_height_std = plane->height_standard / 2;
 	sidedef_top = (new_height - div_height_std)\
 		- doom->own_event.y_pitch;
@@ -38,17 +38,17 @@ static void			set_properties_plane_sky(t_doom *doom,
 
 static void			set_properties(t_doom *doom, int set)
 {
-	doom->dir_angle = clamp_angle(doom->dir_angle);
+	doom->cast.dir_angle = clamp_angle(doom->cast.dir_angle);
 	if (set == 0)
 	{
-		doom->texture_width = doom->lib.sky_lib[0]->w;
-		doom->texture_height = doom->lib.sky_lib[0]->h;
+		doom->cast.texture_width = doom->lib.sky_lib[0]->w;
+		doom->cast.texture_height = doom->lib.sky_lib[0]->h;
 		doom->player.std_height = 32;
 	}
 	else
 	{
-		doom->texture_width = 96;
-		doom->texture_height = 96;
+		doom->cast.texture_width = 96;
+		doom->cast.texture_height = 96;
 		doom->player.std_height = 48;
 	}
 }
@@ -83,9 +83,9 @@ static void			set_ray(t_ray *ray, t_doom *doom)
 {
 	ray->line.start.x = 64;
 	ray->line.start.y = 64;
-	ray->line.end.x = ray->line.start.x + doom->max_ray\
+	ray->line.end.x = ray->line.start.x + doom->cast.max_ray\
 		* cos(ray->angle);
-	ray->line.end.y = ray->line.start.y + doom->max_ray\
+	ray->line.end.y = ray->line.start.y + doom->cast.max_ray\
 		* sin(ray->angle);
 }
 
