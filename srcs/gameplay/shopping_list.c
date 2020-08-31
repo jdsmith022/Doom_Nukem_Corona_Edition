@@ -26,9 +26,9 @@ static uint8_t	get_next_grocery(t_doom *doom, uint32_t *curr_texture)
 {
 	uint8_t		type;
 
-	while (!is_existing_grocery(doom, TEXTURES[*curr_texture]))
+	while (!is_existing_grocery(doom, doom->lib.tex_lib[*curr_texture]))
 		*curr_texture += 1;
-	type = *(int *)TEXTURES[*curr_texture]->userdata;
+	type = *(int *)doom->lib.tex_lib[*curr_texture]->userdata;
 	*curr_texture += 1;
 	return (type);
 }

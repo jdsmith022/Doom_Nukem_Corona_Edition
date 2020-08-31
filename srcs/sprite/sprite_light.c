@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:11 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:54:12 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 17:17:33 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sprite_light(t_doom *doom, t_sprite sprite)
 	half_width = 0;
 	half_height = 0;
 	x = sprite.sprite_x;
-	if (doom->light == TRUE)
+	if (doom->game.light == TRUE)
 	{
 		if (doom->lib.sector[sprite.sector].light == TRUE)
 			doom->lib.light = doom->lib.sector[sprite.sector].light_level;

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   check_diff.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/31 17:44:36 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/events.h"
@@ -8,7 +19,7 @@ int		check_sector_height_diff(t_doom *doom, int sector, int next_sector)
 
 	enough_height = TRUE;
 	doom->own_event.next_sector_height = \
-	doom->texture_height - \
+	doom->cast.texture_height - \
 	(doom->own_event.floor_diff + doom->own_event.ceiling_diff);
 	if (doom->own_event.bend == FALSE && \
 	doom->own_event.next_sector_height < PLAYER_HEIGHT)

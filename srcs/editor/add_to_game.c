@@ -71,7 +71,7 @@ static void			add_to_game2(t_doom *doom)
 	doom->i_sector = doom->game_design.pl_sec;
 	doom->player.height = doom->player.height \
 		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
-	doom->light = TRUE;
+	doom->game.light = TRUE;
 }
 
 void				add_to_game(t_doom *doom)

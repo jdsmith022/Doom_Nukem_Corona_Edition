@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:50 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:17:51 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		light_timer(t_doom *doom, int *flag)
 
 	if (*flag == light)
 	{
-		clock_gettime(doom->game_time, &doom->own_event.light_time);
+		clock_gettime(doom->game.play_time, &doom->own_event.light_time);
 		*flag = set;
 		doom->lib.sidedef[doom->i_sidedef].txt_2 = 86;
 	}

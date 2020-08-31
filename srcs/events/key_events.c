@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   key_events.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/31 17:44:40 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
@@ -62,7 +73,7 @@ static void		key_press2(t_doom *doom, t_event *event,
 	else if (key->keysym.sym == SDLK_r || \
 	key->keysym.sym == SDLK_e || key->keysym.sym == SDLK_t)
 		key_select_and_shoot(doom, event, key);
-	else if (key->keysym.sym == SDLK_v && doom->game_editor == TRUE)
+	else if (key->keysym.sym == SDLK_v && doom->game.editor == TRUE)
 		printing_map(&(doom->game_design));
 	else if (key->keysym.sym == SDLK_SPACE)
 		event->jump = TRUE;
@@ -70,11 +81,11 @@ static void		key_press2(t_doom *doom, t_event *event,
 		event->bend = TRUE;
 	else if (key->keysym.sym == SDLK_n)
 	{
-		doom->game_editor = FALSE;
-		doom->hud_display = TRUE;
+		doom->game.editor = FALSE;
+		doom->game.hud_display = TRUE;
 		SDL_SetRelativeMouseMode(SDL_TRUE);
 		if (doom->lib.font_lib.bools.walking_info == TRUE)
-			clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
+			clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	}
 }
 
@@ -82,7 +93,7 @@ void			key_press(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_ESCAPE)
-		doom->is_running = FALSE;
+		doom->game.is_running = FALSE;
 	else if (key->keysym.sym == SDLK_w)
 		event->move_pos_f = TRUE;
 	else if (key->keysym.sym == SDLK_s)

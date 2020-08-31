@@ -15,7 +15,7 @@ uint8_t			get_num_of_groceries(t_doom *doom)
 	num_of_groceries = 0;
 	while (i < doom->lib.len_tex_lib)
 	{
-		if (*(uint8_t *)TEXTURES[i]->userdata)
+		if (*(uint8_t *)doom->lib.tex_lib[i]->userdata)
 			num_of_groceries++;
 		i++;
 	}

@@ -36,12 +36,6 @@
 
 # define SLOPE_COLOR 0X505052
 
-# define SECTORS		doom->lib.sector //remove
-# define SIDEDEFS		doom->lib.sidedef //remove
-# define TEXTURES		doom->lib.tex_lib //remove
-# define SPRITES		doom->lib.sprites //remove
-# define OBJ_LIB		doom->lib.obj_lib //remove
-
 # define OUTSIDE 1
 # define EXIT_LEVEL 2
 # define START_SECTOR 3
@@ -342,16 +336,31 @@ typedef struct		s_player
 
 typedef struct		s_game_state
 {
-	int				game_state;
 	bool			is_running;
-	bool			game_editor;
+	bool			editor;
 	bool			light;
 	bool			hud_display;
+	bool			start_timer;
+	struct timespec	start_time;
 	int				difficulty;
-	int				game_time;
+	int				play_time;
 	int				save_poster;
 
 }					t_game_state;
+
+typedef struct		s_ray_casting
+{
+	int				texture_width;
+	int				texture_height;
+	int				poster;
+	double			dir_angle;
+	double			ray_angle;
+	double			ray_adjacent;
+	double			max_ray;
+	double			distance;
+	double			horizontal_plane_dist;
+	double			dist_to_plane;
+}					t_ray_casting;
 
 typedef struct		s_render
 {
@@ -377,34 +386,16 @@ typedef struct		s_doom {
 	t_hud			*hud;
 	t_player		player;
 	t_game_state	game;
-	int				game_state;
-	bool			is_running;
-	bool			game_editor;
-	bool			hud_display;
-	bool			light;
-	bool			start_timer;
-	double			cam_slope_height;
-	int				texture_width;
-	int				texture_height;
-	int				poster;
+	t_ray_casting	cast;
+	t_prev_sidedef	prev_sidedef;
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
-	double			ray_angle;
-	double			dir_angle;
-	double			ray_adjacent;
-	double			distance;
-	double			horizontal_plane_dist;
+
 	int				obj_height;
-	double			max_ray;
-	double			dist_to_plane;
 	int				visible_sprites;
-	int				difficulty;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
-	t_prev_sidedef	prev_sidedef;
-	int				game_time;
-	struct timespec	game_start_time;
 	int				save_scissor_lift;
 }					t_doom;
 

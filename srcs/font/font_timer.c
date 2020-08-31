@@ -6,18 +6,20 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:23:30 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:40:10 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
+#include "../../includes/menu.h"
 
 static void		font_timer_3(t_doom *doom, t_event *event)
 {
 	if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
-	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
+	doom->menu->start_timer == FALSE && \
+	doom->lib.font_lib.bools.trolly == FALSE)
 	{
 		set_background_coords_middle_large(doom);
 		font_timer_box_long(doom, \
@@ -42,8 +44,8 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 	else if (doom->lib.font_lib.bools.facemask == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 26, 27);
-	else if (doom->own_event.sanitizer_refills > 3 && \
-	doom->poster == refill_station)
+	else if (doom->own_event.sanitizer_refills > 2 && \
+	doom->cast.poster == refill_station)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 27, 28);
 	else
@@ -57,7 +59,7 @@ void			font_timer(t_doom *doom)
 	event = &doom->own_event;
 	set_background_coords_middle_small(doom);
 	if (doom->lib.font_lib.bools.walking_text == TRUE \
-	&& doom->game_editor == FALSE && \
+	&& doom->game.editor == FALSE && \
 	doom->lib.sector[doom->i_sector].action == OUTSIDE)
 		font_timer_box_start(doom, \
 			&doom->lib.font_lib.bools.text);

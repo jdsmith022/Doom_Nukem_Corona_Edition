@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:54 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 23:19:34 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/08/31 18:36:55 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void		check_level_limits(t_doom *doom)
 {
-	if (doom->hud->corona_level >= 1000)
+	if (doom->hud->corona_level >= 100)
 		doom->menu->state = game_over;
 	else if (doom->hud->corona_level < 0)
 		doom->hud->corona_level = 0;
@@ -37,7 +37,7 @@ void			calculate_hud_levels(t_doom *doom)
 	else if (doom->hud->update == health_pack)
 		doom->hud->corona_level -= 4;
 	else if (doom->hud->update == shopper_collision)
-		doom->hud->corona_level += 1;
+		doom->hud->corona_level += 2;
 	else if (doom->hud->update == health_pack_plus)
 	{
 		if (doom->hud->corona_level >= 10)
@@ -46,7 +46,7 @@ void			calculate_hud_levels(t_doom *doom)
 			doom->hud->corona_level -= doom->hud->corona_level;
 	}
 	else if (doom->hud->update == corona_hit)
-		doom->hud->corona_level += 1;
+		doom->hud->corona_level += 3;
 	else if (doom->hud->update == boxes)
 		doom->hud->corona_level += 2;
 	check_level_limits(doom);

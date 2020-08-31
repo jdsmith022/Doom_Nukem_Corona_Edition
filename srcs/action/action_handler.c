@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:25:17 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:32:08 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void		select_action(t_doom *doom)
 	}
 	if (doom->own_event.groc_pickup == 0 && doom->own_event.mouse_pointer == 0)
 	{
-		if (poster.action == 4 && doom->poster == light_click)
+		if (poster.action == 4 && doom->cast.poster == light_click)
 			light_switch(doom, poster);
-		if (poster.action == 8 && doom->poster == refill_station \
+		if (poster.action == 8 && doom->cast.poster == refill_station \
 		&& poster.distance < 40.0 && doom->own_event.mouse_press)
 			sanitizer_refill(doom);
 	}

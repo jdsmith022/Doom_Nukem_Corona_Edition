@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:28:12 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:29:09 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:17:55 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			game_over_menu(t_doom *doom)
 	play_sound(doom->audio->sounds[GAMEOVER], -1);
 	while (doom->menu->state == game_over)
 	{
-		doom->hud_display = FALSE;
+		doom->game.hud_display = FALSE;
 		mouse_settings(doom);
 		print_background(doom, 0x00002E);
 		set_reason_for_gameover(doom);

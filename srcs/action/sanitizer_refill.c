@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:17:30 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	sanitizer_pause(t_doom *doom)
 
 	if (doom->own_event.sd_action == refill)
 	{
-		clock_gettime(doom->game_time, &doom->own_event.refill_pause);
+		clock_gettime(doom->game.play_time, &doom->own_event.refill_pause);
 		doom->own_event.sd_action = set;
 		doom->lib.font_lib.bools.text = TRUE;
 	}

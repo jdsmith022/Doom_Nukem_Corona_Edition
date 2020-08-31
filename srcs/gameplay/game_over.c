@@ -1,11 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 
-static uint8_t		rem_amount(uint8_t a, uint8_t b)
-{
-	return (a > b ? a - b : b - a);
-}
-
 static bool			basket_is_empty(t_doom *doom, t_game_over *info)
 {
 	if (!doom->groceries->basket_len)
@@ -17,31 +12,38 @@ static bool			basket_is_empty(t_doom *doom, t_game_over *info)
 	return (FALSE);
 }
 
+static void			check_item_from_basket(t_item *item, t_item *list,
+						int i, t_item g)
+{
+	if (!item)
+	{
+		ft_memcpy(&g, &list[i], sizeof(t_item));
+	}
+	else if (item->amount != list->amount)
+	{
+		if (item->amount > list[i].amount)
+			item->amount -= list[i].amount;
+		else
+			item->amount = list[i].amount - item->amount;
+		ft_memcpy(&g, item, sizeof(t_item));
+	}
+}
+
 static void			assign_missing(t_doom *doom, t_game_over *info, t_item *g)
 {
 	uint8_t			i;
 	uint8_t			j;
 	t_item			*item;
+	t_item			*list;
 
 	i = 0;
 	j = 0;
+	list = &doom->groceries->shopping_list[i];
 	while (i < doom->groceries->shopping_list_len)
 	{
-		item = get_item_from_basket(doom->groceries->shopping_list[i].type,
-		&doom->groceries->basket);
-		if (!item)
-		{
-			ft_memcpy(&g[j], &doom->groceries->shopping_list[i],
-			sizeof(t_item));
-			j++;
-		}
-		else if (item->amount != doom->groceries->shopping_list[i].amount)
-		{
-			item->amount = rem_amount(item->amount,
-			doom->groceries->shopping_list[i].amount);
-			ft_memcpy(&g[j], item, sizeof(t_item));
-			j++;
-		}
+		item = get_item_from_basket(list[i].type, &doom->groceries->basket);
+		check_item_from_basket(item, list, i, g[j]);
+		j++;
 		i++;
 	}
 	info->groceries_to_display = g;

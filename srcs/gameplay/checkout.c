@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 
-uint8_t	get_basket_len(t_list **head)
+uint8_t			get_basket_len(t_list **head)
 {
 	uint8_t		len;
 	t_list		*temp;

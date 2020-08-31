@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:36:41 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:33:02 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 	double		fov;
 
 	fov = 60 * (PI / 180);
-	sidedef.distance *= cos(doom->ray_adjacent * plane->x - fov / 2);
+	sidedef.distance *= cos(doom->cast.ray_adjacent * plane->x - fov / 2);
 	sidedef.prev_sidedef.distance *= \
-		cos(doom->ray_adjacent * plane->x - fov / 2);
+		cos(doom->cast.ray_adjacent * plane->x - fov / 2);
 	plane->intersect = sidedef.intersect;
 	set_properties_plane_sidedef(doom, sidedef, *sector, plane);
 	if (sidedef.opp_sector != -1)
@@ -43,8 +43,23 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 	set_sector_properties(doom, sidedef, sector, plane);
 }
 
-void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
-				t_sidedef sidedef, int x)
+static void		set_values_clipping_sprites_2(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x)
+{
+	if (plane.mid_texture_top == HEIGHT)
+		doom->lib.sector[sidedef.sector].mid_top[x] = -1;
+	else
+		doom->lib.sector[sidedef.sector].mid_top[x] =\
+			plane.mid_texture_top;
+	if (plane.mid_texture_bottom == 0)
+		doom->lib.sector[sidedef.sector].mid_bottom[x] = -1;
+	else
+		doom->lib.sector[sidedef.sector].mid_bottom[x] = \
+			plane.mid_texture_bottom;
+}
+
+void			set_values_clipping_sprites(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x)
 {
 	if (plane.sidedef_bottom >= 0 && plane.sidedef_bottom <= HEIGHT)
 		doom->lib.sector[sidedef.sector].bottom[x] = \
@@ -56,18 +71,7 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	else
 		doom->lib.sector[sidedef.sector].bottom[x] = 0;
 	if (sidedef.opp_sector != -1 || sidedef.action == 6)
-	{
-		if (plane.mid_texture_top == HEIGHT)
-			doom->lib.sector[sidedef.sector].mid_top[x] = -1;
-		else
-			doom->lib.sector[sidedef.sector].mid_top[x] =\
-				plane.mid_texture_top;
-		if (plane.mid_texture_bottom == 0)
-			doom->lib.sector[sidedef.sector].mid_bottom[x] = -1;
-		else
-			doom->lib.sector[sidedef.sector].mid_bottom[x] = \
-				plane.mid_texture_bottom;
-	}
+		set_values_clipping_sprites_2(doom, plane, sidedef, x);
 	else
 	{
 		doom->lib.sector[sidedef.sector].mid_bottom[x] = 0;
