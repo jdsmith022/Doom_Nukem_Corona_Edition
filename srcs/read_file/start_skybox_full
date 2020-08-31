@@ -11760,13 +11760,13 @@ assets/sprites/groceries/honey.bmp
 #line
 18
 1265
-1005
+1105
 1275
-1005
+1105
 #line
 18
 1275
-1005
+1105
 1275
 1115
 #line
@@ -11780,7 +11780,7 @@ assets/sprites/groceries/honey.bmp
 1265
 1115
 1265
-1005
+1105
 
 #object3 in sector 32 virus
 267
@@ -13893,7 +13893,7 @@ assets/sprites/groceries/honey.bmp
 1071
 1040
 
-#object1 in sector 41 TOILET PAPER 2 #52
+#object1 in sector 41 TOILET PAPER 2 #27
 248
 1125
 1045
@@ -13901,22 +13901,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-52
+27
 1120
 1040
 1130
 1040
-52
+27
 1130
 1040
 1130
 1050
-52
+27
 1130
 1050
 1120
 1050
-52
+27
 1120
 1050
 1120
@@ -14015,7 +14015,7 @@ assets/sprites/groceries/honey.bmp
 1071
 1010
 
-#object1 in sector 42 TOILET PAPER 2 #52
+#object1 in sector 42 TOILET PAPER 2 #27
 250
 1096
 1015
@@ -14023,22 +14023,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-52
+27
 1091
 1010
 1101
 1010
-52
+27
 1101
 1010
 1101
 1020
-52
+27
 1101
 1020
 1091
 1020
-52
+27
 1091
 1020
 1091
@@ -14073,7 +14073,7 @@ assets/sprites/groceries/honey.bmp
 1111
 1010
 
-#object3 in sector 42 TOILET PAPER 2 #52
+#object3 in sector 42 TOILET PAPER 2 #27
 252
 1125
 1015
@@ -14081,22 +14081,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-52
+27
 1120
 1010
 1130
 1010
-52
+27
 1130
 1010
 1130
 1020
-52
+27
 1130
 1020
 1120
 1020
-52
+27
 1120
 1020
 1120
@@ -15468,7 +15468,7 @@ assets/sprites/groceries/honey.bmp
 2145
 2006
 
-#object1 in sector 48 TOILET PAPER 2 #52
+#object1 in sector 48 TOILET PAPER 2 #27
 89
 2250
 1223
@@ -15497,7 +15497,7 @@ assets/sprites/groceries/honey.bmp
 2245
 1218
 
-#object2 in sector 48 TOILET PAPER 2 #52
+#object2 in sector 48 TOILET PAPER 2 #27
 90
 2450
 1223
@@ -15763,7 +15763,7 @@ assets/sprites/groceries/honey.bmp
 2495
 1587
 
-#object1 in sector 49 TOILET PAPER 2 #52
+#object1 in sector 49 TOILET PAPER 2 #27
 97
 2560
 1580
@@ -15792,7 +15792,7 @@ assets/sprites/groceries/honey.bmp
 2555
 1575
 
-#object2 in sector 49 TOILET PAPER 2 #52
+#object2 in sector 49 TOILET PAPER 2 #27
 98
 2650
 1580
