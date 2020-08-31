@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:33:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:42:19 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	poster = &doom->lib.sidedef[poster_index];
 	sector = doom->lib.sector[poster->sector];
 	relocate_poster(doom, poster);
-	poster->distance *= cos(doom->cast.ray_adjacent * x - (60 * (PI / 180)) / 2);
+	poster->distance *= \
+		cos(doom->cast.ray_adjacent * x - (60 * (PI / 180)) / 2);
 	sector.height_floor = PLAYER_HEIGHT - 10;
 	sector.height_ceiling = -PLAYER_HEIGHT + 10;
 	doom->cast.texture_height = 16;
