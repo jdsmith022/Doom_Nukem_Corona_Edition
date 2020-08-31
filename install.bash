@@ -6,9 +6,6 @@ if test ! $(which brew); then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-function linuxInstall {
-
-}
 
 function osInstall {
     # Update homebrew recipes
@@ -19,13 +16,11 @@ function osInstall {
     brew install SDL2_mixer	
 }
 
-OS_NAME = 'uname -s'
+OS_NAME=`uname -s`
 
-if $OS_NAME == "Darwin"; then
+if [[ $OS_NAME=="Darwin" ]]; then
     osInstall
-else if $OS_NAME == "Linux"; then
-    linuxInstall
 else
-    echo "Error: OS-'$OS_NAME' is not supported"
+    echo "Error: $OS_NAME is not supported"
     exit 1
 fi
