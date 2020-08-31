@@ -25,6 +25,7 @@ static void		light_timer(t_doom *doom, int *flag, int *hold_poster)
 			doom->lib.sector[sector].light_level = \
 				doom->own_event.hold_light;
 			doom->lib.sidedef[doom->i_sidedef].txt_2 = 85;
+			doom->own_event.light_switch_changed = TRUE;
 			*hold_poster = -1;
 		}
 	}
