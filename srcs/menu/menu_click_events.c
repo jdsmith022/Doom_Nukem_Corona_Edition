@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 18:02:33 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/08/31 13:18:31 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void			setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 	y >= (rect.y) && y <= (rect.y + 25))
 		doom->menu->settings = FALSE;
 	if (x >= 250 && x <= 300 && y >= 15 && y <= 70)
-		doom->player_sprite = player_1;
+		doom->player.character = player_1;
 	else if (x >= 400 && x <= 450 && y >= 15 && y <= 70)
-		doom->player_sprite = player_2;
+		doom->player.character = player_2;
 	else if (x >= 550 && x <= 600 && y >= 15 && y <= 70)
-		doom->player_sprite = player_3;
+		doom->player.character = player_3;
 	if (x >= 40 && x <= 160 && y >= 75 && y <= 95)
-		doom->player_handed = left;
+		doom->player.handed = left;
 	else if (x >= 230 && x <= 340 && y >= 75 && y <= 95)
-		doom->player_handed = right;
+		doom->player.handed = right;
 }
 
 static void		difficulty_setting(t_doom *doom, int x, int y)

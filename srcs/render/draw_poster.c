@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 22:24:23 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 13:11:36 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int				set_poster(t_doom *doom, int x, double distance,
 	poster->distance = distance;
 	poster->intersect = intersect;
 	doom->i_sidedef = x;
+	doom->poster = TRUE;
 	return (x);
 }
 
@@ -39,19 +40,19 @@ void			draw_poster(t_doom *doom, t_plane plane,
 {
 	t_sector	sector;
 	double		poster_height;
-	t_sidedef	poster;
+	t_sidedef	*poster;
 
-	poster = doom->lib.sidedef[poster_index];
-	sector = doom->lib.sector[poster.sector];
-	relocate_poster(doom, &poster);
-	poster.distance *= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
+	poster = &doom->lib.sidedef[poster_index];
+	sector = doom->lib.sector[poster->sector];
+	relocate_poster(doom, poster);
+	poster->distance *= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
 	sector.height_floor = PLAYER_HEIGHT - 10;
 	sector.height_ceiling = -PLAYER_HEIGHT + 10;
 	doom->texture_height = 16;
 	doom->texture_width = 16;
-	doom->i_sidedef = poster.id;
-	set_properties_plane_sidedef(doom, poster, sector, &plane);
-	draw_onesided_sidedef(doom, plane, poster, x);
+	doom->i_sidedef = poster->id;
+	set_properties_plane_sidedef(doom, *poster, sector, &plane);
+	draw_onesided_sidedef(doom, plane, *poster, x);
 	doom->texture_height = 96;
 	doom->texture_width = 96;
 }

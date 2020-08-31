@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:17 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:54:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 13:12:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void		scale_bar(t_doom *doom, t_line *bar, int i)
 	h = doom->lib.obj_lib[i]->h;
 	w = doom->lib.obj_lib[i]->w;
 	bar_width = (bar_height / h) * w;
-	if (i == SCISSOR || (i == CROSS_HAIR && doom->player_handed == left))
+	if (i == SCISSOR || (i == CROSS_HAIR && doom->player.handed == left))
 		bar->start.x = (WIDTH / 2) - (bar_width / 2);
-	else if (i == CROSS_HAIR && doom->player_handed == right)
+	else if (i == CROSS_HAIR && doom->player.handed == right)
 		bar->start.x = WIDTH / 2 - 20;
 	else
 		bar->start.x = 10;

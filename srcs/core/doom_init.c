@@ -5,10 +5,12 @@
 
 static void		init_sprites(t_doom *doom)
 {
+	int i;
+
+	i = 0;
 	doom->visible_sprites = 0;
 	doom->save_scissor_lift = -1;
 	doom->lib.sprite_order = NULL;
-	int	i = 0;
 	while (i < 20)
 	{
 		doom->lib.sprite_height[i] = i;
@@ -33,8 +35,8 @@ static void		init_player(t_doom *doom)
 	doom->player_width = 48;
 	doom->player_std_height = PLAYER_HEIGHT;
 	doom->i_sector = 0;
-	doom->player_handed = left;
-	doom->player_sprite = player_1;
+	doom->player.handed = left;
+	doom->player.character = player_1;
 }
 
 static void		init_settings(t_doom *doom)
@@ -44,6 +46,7 @@ static void		init_settings(t_doom *doom)
 	doom->hud_display = TRUE;
 	doom->game_editor = FALSE;
 	doom->start_timer = FALSE;
+	doom->poster = FALSE;
 }
 
 void			init_window(t_doom *doom)

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 09:50:01 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 13:01:55 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ static void		select_action(t_doom *doom)
 		if (doom->own_event.mouse_press)
 		{
 			check_sprite_hit(doom);
-			if (poster.action == 8 && \
-			doom->lib.sidedef[doom->i_sidedef].distance < 100.00)
-				sanitizer_refill(doom);	
+			if (poster.action == 8 && poster.distance < 100.00)
+				sanitizer_refill(doom);
 		}
 	}
 }

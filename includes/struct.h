@@ -332,6 +332,8 @@ typedef struct		s_player
 	int				spraying_hand;
 	int				left_select;
 	int				right_select;
+	int				character;
+	int				handed;
 }					t_player;
 
 typedef struct		s_render
@@ -357,8 +359,6 @@ typedef struct		s_doom {
 	t_menu			*menu;
 	t_hud			*hud;
 	t_player		player;
-	int				player_sprite;
-	int				player_handed;
 	int				game_state;
 	bool			is_running;
 	bool			game_editor;
@@ -371,6 +371,7 @@ typedef struct		s_doom {
 	double			player_width;
 	int				texture_width;
 	int				texture_height;
+	bool			poster;
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
