@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 
-void	init_first_sector(t_doom *doom)
+static void		init_first_sector(t_doom *doom)
 {
 	doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
 	doom->game_design.sector[doom->game_design.s_len].slope_floor_id = -1;
@@ -20,7 +20,7 @@ void	init_first_sector(t_doom *doom)
 	doom->game_design.sector[doom->game_design.s_len].light_level = 10;
 }
 
-void	init_game_design(t_doom *doom)
+void			init_game_design(t_doom *doom)
 {
 	doom->game_design.sector = (t_sector*)malloc(sizeof(t_sector) * 2);
 	if (doom->game_design.sector == NULL)

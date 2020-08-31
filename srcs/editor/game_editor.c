@@ -28,5 +28,6 @@ void	open_game_editor(t_doom *doom)
 	}
 	draw_object(doom, &pixels);
 	clock_gettime(doom->game_time, &curr_time);
-	doom->game_start_time.tv_sec = doom->game_start_time.tv_sec + (curr_time.tv_sec - hold_time.tv_sec);
+	doom->game_start_time.tv_sec = doom->game_start_time.tv_sec +\
+		(curr_time.tv_sec - hold_time.tv_sec);
 }

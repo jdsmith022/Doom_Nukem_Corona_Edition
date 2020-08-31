@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "game_editor.h"
 
-void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
+static void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 {
 	del_sidedef(doom);
 	doom->game_design.cur_sec += dir;
@@ -17,9 +17,9 @@ void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 	doom->game_design.sector[doom->game_design.cur_sec].diff_y = diff_y;
 }
 
-void		new_portal(t_gamedesign *gd, t_doom *doom)
+static void		new_portal(t_gamedesign *gd, t_doom *doom)
 {
-    add_sidedef(doom, gd->sidedef[gd->portal_sd].line.start.x,\
+	add_sidedef(doom, gd->sidedef[gd->portal_sd].line.start.x,\
 		gd->sidedef[gd->portal_sd].line.start.y);
 	add_sidedef(doom, gd->sidedef[gd->portal_sd].line.end.x,\
 		gd->sidedef[gd->portal_sd].line.end.y);
@@ -35,7 +35,7 @@ void		new_portal(t_gamedesign *gd, t_doom *doom)
 		gd->portal_sd--;
 }
 
-void		add_portal(t_doom *doom, int dir)
+void			add_portal(t_doom *doom, int dir)
 {
 	static int diff_x;
 	static int diff_y;

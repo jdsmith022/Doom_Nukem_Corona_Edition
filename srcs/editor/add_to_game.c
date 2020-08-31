@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include  "../../includes/game_editor.h"
 
 static t_sidedef	*new_level_sidedef(t_doom *doom,\
 					t_sidedef *sidedef, int w_len)
@@ -19,12 +19,12 @@ static t_sidedef	*new_level_sidedef(t_doom *doom,\
 	return (new);
 }
 
-static t_sprite	*new_level_object(t_doom *doom,\
+static t_sprite		*new_level_object(t_doom *doom,\
 				t_sprite *object, int o_len)
 {
 	t_sprite	*new;
 	int			i;
-	int 		side;
+	int			side;
 
 	if (o_len > 0)
 	{
@@ -44,7 +44,7 @@ static t_sprite	*new_level_object(t_doom *doom,\
 	return (NULL);
 }
 
-static t_sector	*new_level_sector(t_doom *doom,\
+static t_sector		*new_level_sector(t_doom *doom,\
 				t_sector *sector, int s_len)
 {
 	t_sector	*new;
@@ -62,36 +62,19 @@ static t_sector	*new_level_sector(t_doom *doom,\
 	return (new);
 }
 
-static t_sector	*light_correction(t_sector *sector, int len)
+static void			add_to_game2(t_doom *doom)
 {
-	int i;
-
-	i = 0;
-	while (i <= len)
-	{
-		if (sector[i].light_level != 0)
-			sector[i].light_level /= 10.0;
-		sector[i].light = TRUE;
-		i++;
-	}
-	return (sector);
+	doom->lib.sector = light_correction(\
+		doom->lib.sector, doom->game_design.s_len);
+	doom->pos.x = doom->game_design.pl_x;
+	doom->pos.y = doom->game_design.pl_y;
+	doom->i_sector = doom->game_design.pl_sec;
+	doom->player_height = doom->player_height \
+		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
+	doom->light = TRUE;
 }
 
-void		rmove(t_sprite *sprite, t_doom *doom)
-{
-	int i;
-
-	i = 0;
-	while (i < doom->total_sprites)
-	{
-		free(sprite[i].lines);
-		free(sprite[i].textures);
-		i++;
-	}
-	free(sprite);
-}
-
-void		add_to_game(t_doom *doom)
+void				add_to_game(t_doom *doom)
 {
 	if (doom->game_design.sector != NULL && doom->game_design.w_len > 2)
 	{
@@ -109,14 +92,7 @@ void		add_to_game(t_doom *doom)
 			doom->lib.sprites = new_level_object(doom,\
 				doom->game_design.object, doom->game_design.o_len);
 			doom->total_sprites = doom->game_design.o_len;
-			doom->lib.sector = light_correction(\
-				doom->lib.sector, doom->game_design.s_len);
-			doom->pos.x = doom->game_design.pl_x;
-			doom->pos.y = doom->game_design.pl_y;
-			doom->i_sector = doom->game_design.pl_sec;
-			doom->player_height = doom->player_height \
-			+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
-			doom->light = TRUE;
+			add_to_game2(doom);
 		}
 	}
 }

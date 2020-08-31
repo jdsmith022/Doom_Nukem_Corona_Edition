@@ -56,44 +56,6 @@ void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 int					line_num(int i);
 
-/*game editor*/
-void				open_game_editor(t_doom *doom);
-void				add_sidedef(t_doom *doom, int x, int y);
-void				del_sidedef(t_doom *doom);
-void				add_sector(t_doom *doom);
-void				del_sector(t_gamedesign *game_design);
-void				add_portal(t_doom *doom, int dir);
-void				add_to_game(t_doom *doom);
-void				mouse_press_game_editor(t_doom *doom, int x, int y);
-void				printing_map(t_gamedesign *design);
-void				bars(Uint32 **pixels, t_doom *doom);
-void				draw_images(Uint32 *pixels, t_doom *doom);
-void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
-void				box_in_sectors(t_doom *doom);
-void				init_game_design(t_doom *doom);
-void				init_game_design(t_doom *doom);
-void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
-void				add_object(t_doom *doom, int x, int y);
-void				draw_object(t_doom *doom, Uint32 **pixels);
-void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
-void				del_obj(t_doom *doom);
-void				add_specifications(t_gamedesign *gd, int index);
-void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
-void				coor_pos(t_doom *doom);
-void				add_player(t_doom *doom, int x, int y);
-void				change_sector(t_doom *doom, int change);
-void				change_texture(t_doom *doom, int *texture, int change);
-void				change_sidedef(t_doom *doom, int change);
-void				object_change(t_doom *doom, int change);
-void				sidedef_object(t_doom *doom);
-void				object_texture(t_doom *doom, int change);
-void				mouse_press_sidedef(t_doom *doom, int x, int y);
-void				put_images(int x, int y, int index, t_doom *doom);
-void				put_textures(int x, int y, int index, t_doom *doom);
-void				put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
-					Uint32 pixel_dex);
-void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
-
 // /*sprite functions*/
 // void				sprite_init(t_doom *doom);
 // void				sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector);
