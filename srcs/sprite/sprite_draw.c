@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 12:26:43 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 12:39:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
 	t_coord		tex;
 	int			screen_y;
 	int			sprite_i;
-	int			max_y;
 
 	sprite_i = doom->lib.sprites[index_sp].visible;
 	screen_y = (int)sprite->start.y;

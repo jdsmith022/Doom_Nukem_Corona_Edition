@@ -18,7 +18,7 @@ static int		intersect_values(int opp_sector, int prev_sector,\
 				t_point intersect)
 {
 	if ((!isnan(intersect.x) && !isnan(intersect.y))\
-	&& opp_sector != prev_sector && opp_sector != -1)
+	&&/* opp_sector != prev_sector &&*/ opp_sector != -1)
 		return (1);
 	return (-1);
 }
