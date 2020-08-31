@@ -270,9 +270,10 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				sidedef_bottom[WIDTH];
-	int				sidedef_top[WIDTH];
-	int				sidedef_mid_bottom[WIDTH];
+	int				bottom[WIDTH];
+	int				top[WIDTH];
+	int				mid_bottom[WIDTH];
+	int				mid_top[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {

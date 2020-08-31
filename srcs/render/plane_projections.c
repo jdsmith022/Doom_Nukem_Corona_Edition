@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 09:28:26 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/08/31 12:10:37 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,32 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 				t_sidedef sidedef, int x)
 {
 	if (plane.sidedef_bottom >= 0 && plane.sidedef_bottom <= HEIGHT)
-		doom->lib.sector[sidedef.sector].sidedef_bottom[x] = \
+		doom->lib.sector[sidedef.sector].bottom[x] = \
 			plane.sidedef_bottom;
 	else
-		doom->lib.sector[sidedef.sector].sidedef_bottom[x] = 0;
+		doom->lib.sector[sidedef.sector].bottom[x] = 0;
 	if (plane.sidedef_top >= 0 && plane.sidedef_top <= HEIGHT)
-		doom->lib.sector[sidedef.sector].sidedef_top[x] = plane.sidedef_top;
+		doom->lib.sector[sidedef.sector].top[x] = plane.sidedef_top;
 	else
-		doom->lib.sector[sidedef.sector].sidedef_bottom[x] = 0;
+		doom->lib.sector[sidedef.sector].bottom[x] = 0;
 	if (sidedef.opp_sector != -1 || sidedef.action == 6)
 	{
-		if (plane.mid_texture_bottom == 0)
-			doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = -1;
+		if (plane.mid_texture_top == HEIGHT)
+			doom->lib.sector[sidedef.sector].mid_top[x] = -1;
 		else
-			doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = \
+			doom->lib.sector[sidedef.sector].mid_top[x] =\
+				plane.mid_texture_top;
+		if (plane.mid_texture_bottom == 0)
+			doom->lib.sector[sidedef.sector].mid_bottom[x] = -1;
+		else
+			doom->lib.sector[sidedef.sector].mid_bottom[x] = \
 				plane.mid_texture_bottom;
 	}
 	else
-		doom->lib.sector[sidedef.sector].sidedef_mid_bottom[x] = 0;
+	{
+		doom->lib.sector[sidedef.sector].mid_bottom[x] = 0;
+		doom->lib.sector[sidedef.sector].mid_top[x] = 0;
+	}
 }
 
 void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
