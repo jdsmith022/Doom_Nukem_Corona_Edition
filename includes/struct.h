@@ -23,8 +23,8 @@
 # define PI 3.14159265359
 
 # define PLAYER_HEIGHT 50
-# define MOVE_SPEED 150
-# define SENSITIVITY 0.4
+# define MOVE_SPEED 100
+# define SENSITIVITY 0.2
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -35,12 +35,6 @@
 # define WINDOW_MASK 0XFF
 
 # define SLOPE_COLOR 0X505052
-
-# define SECTORS		doom->lib.sector //remove
-# define SIDEDEFS		doom->lib.sidedef //remove
-# define TEXTURES		doom->lib.tex_lib //remove
-# define SPRITES		doom->lib.sprites //remove
-# define OBJ_LIB		doom->lib.obj_lib //remove
 
 # define OUTSIDE 1
 # define EXIT_LEVEL 2

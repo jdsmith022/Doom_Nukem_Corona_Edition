@@ -32,8 +32,11 @@ void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
 void				init_events(t_event *event);
 void				init_audio(t_doom *doom);
+void				init_window(t_doom *doom);
 void				game_loop(t_doom *doom);
+double				get_timeframe(long *last_frame_time);
 void				doom_update(t_doom *doom, double dt_time);
+void				update_screen(t_doom *doom);
 void				doom_render(t_doom *doom);
 
 double				point_distance(t_point p1, t_point p2);
@@ -45,8 +48,6 @@ t_point				line_delta(t_point start, t_point end);
 t_point				line_intersection(t_point start1, t_point delta1,
 							t_point start2, t_point delta2);
 
-double				get_timeframe(long *last_frame_time);
-void				update_screen(t_doom *doom);
 void				doom_exit_success(t_doom *doom);
 void				doom_exit_failure(t_doom *doom, const char *exit_message);
 void				doom_exit_lib_failure(t_bmp *bmp, const char *exit_meassge);
