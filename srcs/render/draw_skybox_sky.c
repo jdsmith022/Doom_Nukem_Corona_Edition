@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:09 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:02:13 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 14:16:51 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void			draw_sky(t_doom *doom, int x, int y)
 
 	tex_dex = 0;
 	bpp = doom->surface->format->BytesPerPixel;
-	height = (HEIGHT + doom->player_height) / 2;
+	height = (HEIGHT + doom->player.height) / 2;
 	while (y > 0)
 	{
 		index = (y * doom->surface->pitch) + (x * bpp);
-		dist = doom->player_std_height /\
+		dist = doom->player.std_height /\
 			(height - (y + doom->own_event.y_pitch)) * doom->dist_to_plane;
 		dist /= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
 		row_cal(doom, dist, index, doom->lib.sky_lib[tex_dex]);

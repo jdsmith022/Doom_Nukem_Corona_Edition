@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:02:58 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 14:16:51 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void			set_properties_plane_sky(t_doom *doom,
 	int		new_height;
 
 	distance *= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);
-	new_height = (HEIGHT + doom->player_height) / 2;
+	new_height = (HEIGHT + doom->player.height) / 2;
 	plane->height_standard = doom->texture_height /\
 		distance * doom->dist_to_plane;
 	div_height_std = plane->height_standard / 2;
@@ -43,13 +43,13 @@ static void			set_properties(t_doom *doom, int set)
 	{
 		doom->texture_width = doom->lib.sky_lib[0]->w;
 		doom->texture_height = doom->lib.sky_lib[0]->h;
-		doom->player_std_height = 32;
+		doom->player.std_height = 32;
 	}
 	else
 	{
 		doom->texture_width = 96;
 		doom->texture_height = 96;
-		doom->player_std_height = 48;
+		doom->player.std_height = 48;
 	}
 }
 

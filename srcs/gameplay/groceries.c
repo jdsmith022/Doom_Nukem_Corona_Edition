@@ -12,8 +12,8 @@ static void		set_shelf_type(t_doom *doom, uint8_t *type)
 
 bool			mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 {
-	if (mouse_x >= pos.x && mouse_x <= (pos.x + pos.w + 5) &&
-		mouse_y >= pos.y && mouse_y <= (pos.y + pos.h + 5))
+	if (mouse_x >= pos.x && mouse_x <= (pos.x + pos.w + 12) &&
+		mouse_y >= pos.y && mouse_y <= (pos.y + pos.h + 12))
 		return (true);
 	else
 		return (false);
@@ -41,13 +41,13 @@ bool			click_on_basket(t_list **basket, uint8_t *type, int x, int y)
 void			handle_groceries(t_doom *doom)
 {
 	uint8_t		type;
+	int			x;
+	int			y;
 
-	if (!handle_mouse_state(doom))
-		return ;
+	SDL_GetMouseState(&x, &y);
 	if (!doom->groceries->shopping_list || !doom->groceries->shopping_list_len)
 		return ;
-	if (click_on_basket(&doom->groceries->basket, &type,
-	doom->own_event.hold_x, doom->own_event.hold_y))
+	if (click_on_basket(&doom->groceries->basket, &type, x, y))
 	{
 		remove_item_from_basket(&doom->groceries->basket, type);
 		set_positions(&doom->groceries->basket);

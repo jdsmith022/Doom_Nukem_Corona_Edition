@@ -59,7 +59,7 @@ static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 		play_sound(audio->sounds[PICKUP], -1);
 		event->groc_pickup = FALSE;
 	}
-	if (event->light_switch_changed && doom->poster == light_click)
+	else if (event->light_switch_changed && doom->poster == light_click)
 	{
 		play_sound(audio->sounds[CLICK], -1);
 		event->light_switch_changed = FALSE;

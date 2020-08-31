@@ -121,12 +121,12 @@ typedef struct			s_sprite {
 	int					prev_sectors[50];
 }						t_sprite;
 
-typedef struct		s_ray {
-	t_line			line;
-	double			angle;
-	double			plane_x;
-	int				filter;
-}					t_ray;
+typedef struct			s_ray {
+	t_line				line;
+	double				angle;
+	double				plane_x;
+	int					filter;
+}						t_ray;
 
 typedef struct		s_event {
 	bool			mouse_press;
@@ -335,7 +335,22 @@ typedef struct		s_player
 	int				right_select;
 	int				character;
 	int				handed;
+	double			std_height;
+	double			height;
 }					t_player;
+
+typedef struct		s_game_state
+{
+	int				game_state;
+	bool			is_running;
+	bool			game_editor;
+	bool			light;
+	bool			hud_display;
+	int				difficulty;
+	int				game_time;
+	int				save_poster;
+
+}					t_game_state;
 
 typedef struct		s_render
 {
@@ -360,16 +375,14 @@ typedef struct		s_doom {
 	t_menu			*menu;
 	t_hud			*hud;
 	t_player		player;
+	t_game_state	game;
 	int				game_state;
 	bool			is_running;
 	bool			game_editor;
 	bool			hud_display;
 	bool			light;
 	bool			start_timer;
-	double			player_std_height;
-	double			player_height;
 	double			cam_slope_height;
-	double			player_width;
 	int				texture_width;
 	int				texture_height;
 	int				poster;
@@ -389,11 +402,9 @@ typedef struct		s_doom {
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
-	int				save_poster;
 	int				game_time;
 	struct timespec	game_start_time;
 	int				save_scissor_lift;
-	int				up;
 }					t_doom;
 
 #endif

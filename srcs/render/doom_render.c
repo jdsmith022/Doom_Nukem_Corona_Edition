@@ -6,14 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 13:29:07 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 15:17:27 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"
-
 
 double	clamp_angle(double angle)
 {

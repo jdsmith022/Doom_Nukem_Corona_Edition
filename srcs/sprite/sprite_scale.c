@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:57 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:53:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite,\
 
 	height_floor = doom->lib.sector[sprite->sector].height_floor\
 		/ sprite->distance * doom->dist_to_plane;
-	sidedef_bottom = ((HEIGHT / 2) + (doom->player_height * scale)) -\
+	sidedef_bottom = ((HEIGHT / 2) + (doom->player.height * scale)) -\
 		(doom->own_event.y_pitch + height_floor);
 	return (sidedef_bottom);
 }
@@ -54,7 +54,7 @@ int			calculate_sprite_top(t_doom *doom, t_sprite *sprite,\
 	double		height_ceiling;
 	int			sidedef_top;
 
-	diff = STD_TEXT_HEIGHT - doom->player_height;
+	diff = STD_TEXT_HEIGHT - doom->player.height;
 	height_ceiling = doom->lib.sector[sprite->sector].height_ceiling\
 		/ sprite->distance * doom->dist_to_plane;
 	sidedef_top = ((HEIGHT / 2) - ((double)diff * scale)) -\

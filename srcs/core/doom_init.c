@@ -31,9 +31,8 @@ static void		init_player(t_doom *doom)
 {
 	doom->pos.x = 23;
 	doom->pos.y = 130;
-	doom->player_height = PLAYER_HEIGHT;
-	doom->player_width = 48;
-	doom->player_std_height = PLAYER_HEIGHT;
+	doom->player.height = PLAYER_HEIGHT;
+	doom->player.std_height = PLAYER_HEIGHT;
 	doom->i_sector = 0;
 	doom->player.handed = left;
 	doom->player.character = player_1;

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 22:39:24 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		activate_scissor_lift(t_doom *doom, int index)
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
-	doom->player_height += 10;
+	doom->player.height += 10;
 }
 
 static void	check_walking(t_doom *doom, t_sprite shopper)
