@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 10:13:44 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 10:53:05 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 			&doom->lib.font_lib.bools.text, 25, 26);
 	else if (doom->lib.font_lib.bools.health_pack == TRUE)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 26, 27);
+			&doom->lib.font_lib.bools.text, 25, 26);
 	else if (doom->lib.font_lib.bools.facemask == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 25, 26);
