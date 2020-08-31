@@ -59,7 +59,7 @@ static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 		play_sound(audio->sounds[PICKUP], -1);
 		event->groc_pickup = FALSE;
 	}
-	if (event->light_switch_changed && doom->i_sidedef != -1)
+	if (event->light_switch_changed && doom->poster == light_click)
 	{
 		play_sound(audio->sounds[CLICK], -1);
 		event->light_switch_changed = FALSE;
@@ -72,7 +72,7 @@ static void	play_combat_sounds(t_doom *doom, t_audio *audio, int state)
 {
 	if (state == corona_hit)
 		play_sound(audio->sounds[HIT], -1);
-	if (state == sanitizer && doom->i_sidedef != -1
+	if (state == sanitizer && doom->poster == refill_station \
 	&& doom->hud->sanitizer_level < 100)
 		play_sound(audio->sounds[POWERUP], -1);
 }

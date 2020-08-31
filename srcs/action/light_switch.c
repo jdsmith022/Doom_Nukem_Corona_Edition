@@ -55,16 +55,13 @@ static void		check_poster_location(t_doom *doom, t_sidedef poster,
 	doom->own_event.mouse_press = FALSE;
 	doom->own_event.light_switch_changed = TRUE;
 	*hold_poster = poster.action;
-
 }
 
-void			light_switch(t_doom *doom)
+void			light_switch(t_doom *doom, t_sidedef poster)
 {
-	t_sidedef	poster;
 	static int	hold_poster = -1;
 
-	poster = doom->lib.sidedef[doom->i_sidedef];
-	if (doom->lib.sidedef[doom->i_sidedef].distance < 150.00 \
+	if (poster.distance < 100.00 \
 	&& doom->own_event.select == TRUE && poster.action == 4)
 		if (doom->own_event.mouse_press &&
 		doom->own_event.light_switch == FALSE)

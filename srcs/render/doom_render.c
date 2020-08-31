@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 13:12:28 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 13:29:07 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			doom_render(t_doom *doom)
 	ray.line.start = doom->pos;
 	ray.filter = 0;
 	doom->visible_sprites = 0;
-	doom->poster = FALSE;
+	doom->poster = set;
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);

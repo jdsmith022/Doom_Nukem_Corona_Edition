@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 13:11:36 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 13:28:34 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int				set_poster(t_doom *doom, int x, double distance,
 	poster->distance = distance;
 	poster->intersect = intersect;
 	doom->i_sidedef = x;
-	doom->poster = TRUE;
+	if (poster->action == 8)
+		doom->poster = refill_station;
+	else
+		doom->poster = light_click;
 	return (x);
 }
 

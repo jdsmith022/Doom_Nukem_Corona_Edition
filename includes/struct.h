@@ -55,7 +55,6 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
-
 typedef enum			e_settings
 {
 	player_1,
@@ -64,7 +63,9 @@ typedef enum			e_settings
 	left,
 	right,
 	refill,
+	refill_station,
 	light,
+	light_click,
 	set
 }						t_settings;
 
@@ -371,7 +372,7 @@ typedef struct		s_doom {
 	double			player_width;
 	int				texture_width;
 	int				texture_height;
-	bool			poster;
+	int				poster;
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
