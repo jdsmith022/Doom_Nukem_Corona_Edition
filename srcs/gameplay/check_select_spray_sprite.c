@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   check_select_spray_sprite.c                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 15:20:00 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/31 15:20:02 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/gameplay.h"

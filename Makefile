@@ -59,11 +59,12 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				start_menu_font setting_window_font game_over_font \
 				font_timer pause_font vanishing_text_box set_font_style \
 				instruction_font instruction_font_2 time_difference \
-				shopper_hit_font
+				shopper_hit_font font_timer_boxes
 HUD_FILES = update_hud calculate_hud_levels update_levels \
 			update_list_and_basket update_timer
 MENU_FILES = start_menu event_settings print_background menu_selection \
-			menu_click_events finished_text print_menu print_player_sprite
+			menu_click_events finished_text print_menu print_player_sprite \
+			game_over_menu
 ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 

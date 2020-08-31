@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:01:30 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		calculate_ceiling_dist(t_doom *doom, int x, int y,
 	double dist;
 	double diff;
 
-	diff = doom->texture_height - doom->player_height;
+	diff = doom->texture_height - doom->player.height;
 	dist = (diff + sector.height_ceiling) / ((HEIGHT / 2) -\
 		(y + doom->own_event.y_pitch));
 	dist *= doom->dist_to_plane;

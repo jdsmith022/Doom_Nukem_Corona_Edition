@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 12:10:37 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 16:36:41 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,4 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	draw_floor(doom, x, sector, plane.sidedef_bottom);
 	if (sidedef.poster != -1)
 		draw_poster(doom, plane, sidedef.poster, x);
-	else if (sidedef.sector != doom->i_sector)
-		doom->i_sidedef = -1;
 }

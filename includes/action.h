@@ -10,7 +10,7 @@ typedef struct s_doom	t_doom;
 void				action_handler(t_doom *doom);
 void				relocate_moving_wall(t_point *intersect,\
 						t_sidedef *near_sidedef, t_doom *doom, int x);
-void				light_switch(t_doom *doom);
+void				light_switch(t_doom *doom, t_sidedef poster);
 void				add_infection(t_doom *doom);
 void				scissor_lift_up(t_doom *doom);
 void				scissor_lift_down(t_doom *doom);

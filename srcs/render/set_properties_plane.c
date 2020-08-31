@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:03:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 13:17:43 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	set_plane_bottom(t_doom *doom, double scale,
 	if (sector.slope_floor_id != -1)
 		sector.height_floor += set_slope_height_floor(doom, sidedef, sector);
 	height_floor = sector.height_floor / sidedef.distance * doom->dist_to_plane;
-	sidedef_bottom = ((HEIGHT / 2) + (doom->player_height * scale)) \
+	sidedef_bottom = ((HEIGHT / 2) + (doom->player.height * scale)) \
 		- (doom->own_event.y_pitch + height_floor);
 	if (sidedef_bottom < 0)
 		sidedef_bottom = 0;
@@ -39,9 +39,9 @@ static int	set_plane_top(t_doom *doom, double scale,
 	int		diff;
 
 	if (sidedef.poster == -1)
-		diff = doom->texture_height - doom->player_height;
+		diff = doom->texture_height - doom->player.height;
 	else
-		diff = STD_TEXT_HEIGHT - doom->player_height;
+		diff = STD_TEXT_HEIGHT - doom->player.height;
 	if (sector.slope_ceiling_id != -1)
 		sector.height_ceiling -= \
 			set_slope_height_ceiling(doom, sidedef, sector);
