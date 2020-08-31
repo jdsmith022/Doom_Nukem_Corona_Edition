@@ -24,7 +24,7 @@ static void	play_movement_sounds(t_audio *audio, t_event *event)
 	if (event->jump == FALSE)
 		audio->event->jump_toggled = FALSE;
 	if ((event->move_pos_f || event->move_pos_b) &&
-		!event->jump && event->set_step)
+		!event->jump && event->set_step && !event->scissor_lift)
 	{
 		loop_sound(audio->sounds[FOOTSTEPS], 6);
 		event->set_step = FALSE;
@@ -32,7 +32,7 @@ static void	play_movement_sounds(t_audio *audio, t_event *event)
 	else
 		pause_sound(audio->sounds[FOOTSTEPS], 6);
 	if ((event->move_pos_l || event->move_pos_r) &&
-		!event->jump && event->set_step)
+		!event->jump && event->set_step && !event->scissor_lift)
 	{
 		loop_sound(audio->sounds[FOOTSTEPS], 6);
 		event->set_step = FALSE;
@@ -56,7 +56,7 @@ static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 	}
 	if (event->groc_pickup)
 	{
-		play_sound(audio->sounds[HIT], -1); // change sound
+		play_sound(audio->sounds[PICKUP], -1);
 		event->groc_pickup = FALSE;
 	}
 	if (event->light_switch_changed && doom->i_sidedef != -1)
@@ -72,7 +72,7 @@ static void	play_combat_sounds(t_doom *doom, t_audio *audio, int state)
 {
 	if (state == corona_hit)
 		play_sound(audio->sounds[HIT], -1);
-	if (state == sanitizer && doom->i_sidedef != -1 \
+	if (state == sanitizer && doom->i_sidedef != -1
 	&& doom->hud->sanitizer_level < 100)
 		play_sound(audio->sounds[PICKUP], -1);
 }

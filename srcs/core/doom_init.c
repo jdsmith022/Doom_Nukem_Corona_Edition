@@ -27,12 +27,12 @@ static void		init_render(t_doom *doom)
 
 static void		init_player(t_doom *doom)
 {
-	doom->pos.x = 1300;
-	doom->pos.y = 2200;
+	doom->pos.x = 23;
+	doom->pos.y = 130;
 	doom->player_height = PLAYER_HEIGHT;
 	doom->player_width = 48;
 	doom->player_std_height = PLAYER_HEIGHT;
-	doom->i_sector = 26;
+	doom->i_sector = 0;
 	doom->player_handed = left;
 	doom->player_sprite = player_1;
 }
