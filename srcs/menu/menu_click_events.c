@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 13:18:31 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 16:29:17 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void			setting_menu_click_event(t_doom *doom, SDL_Rect rect)
 
 	x = doom->own_event.hold_x;
 	y = doom->own_event.hold_y;
-
 	if (x >= (rect.x) && x <= (rect.x + 200) && \
 	y >= (rect.y) && y <= (rect.y + 25))
 		doom->menu->settings = FALSE;

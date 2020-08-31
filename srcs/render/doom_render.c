@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 15:17:27 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 16:31:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"
 
-double	clamp_angle(double angle)
+double			clamp_angle(double angle)
 {
 	if (angle > 360 * (PI / 180))
 		angle -= 360 * (PI / 180);
