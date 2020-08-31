@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_light.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:11 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/30 21:54:12 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 
 void	sprite_light(t_doom *doom, t_sprite sprite)

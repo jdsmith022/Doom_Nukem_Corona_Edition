@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_hud_draw.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:23 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/30 21:54:24 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
-#include "../../includes/gameplay.h"
 #include "../../includes/sprites.h"
 
 static void		draw_add_on(t_doom *doom, int sprite_i)

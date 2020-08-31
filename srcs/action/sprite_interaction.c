@@ -76,10 +76,6 @@ void		scissor_lift_down(t_doom *doom)
 		doom->player_height -= 20;
 		event->y_pitch = 0;
 	}
-	if (doom->player_height <= 50)
-	{
+	else
 		doom->player_height = 50;
-		event->scissor_lift_down = FALSE;
-		event->scissor_lift = FALSE;
-	}
 }

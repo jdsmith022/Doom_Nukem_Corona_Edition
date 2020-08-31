@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_check.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:26 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/30 22:33:44 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
@@ -58,15 +70,18 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 	}
 }
 
-int			scissor_lift_check(t_doom *doom, t_sprite sprite)
+static int		scissor_lift_check(t_doom *doom, t_sprite *sprite)
 {
-	if (doom->own_event.scissor_lift == TRUE && sprite.action == 7)
+	if (doom->own_event.scissor_lift == TRUE && sprite->action == 7)
+	{
+		sprite->distance = point_distance(doom->pos, sprite->pos);
 		return (1);
+	}
 	else
 		return (-1);
 }
 
-void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void			sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	int		i;
 	int		sprite_i;
@@ -79,7 +94,7 @@ void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 		doom->lib.sprites[sprite_i].action != 6 &&\
 		doom->lib.sprites[sprite_i].action != 8 &&\
 		doom->lib.sprites[sprite_i].action != 15 &&\
-		scissor_lift_check(doom, doom->lib.sprites[sprite_i]) == -1)
+		scissor_lift_check(doom, &doom->lib.sprites[sprite_i]) == -1)
 			check_visibility_sprite(doom, ray, sprite_i, prev_sector);
 		i++;
 		sprite_i++;

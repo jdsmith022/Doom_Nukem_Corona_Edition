@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_action.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/30 22:39:24 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/font.h"
@@ -30,6 +42,7 @@ void		exit_scissor_lift(t_doom *doom)
 	{
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
+		doom->own_event.scissor_lift_down = FALSE;
 	}
 	else
 	{
