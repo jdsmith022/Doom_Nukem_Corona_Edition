@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 22:42:48 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/08/31 12:42:44 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void		find_ceiling_limit(t_doom *doom, t_sector sector, int *limit)
 		*limit = doom->lib.portal_ceiling;
 	else
 		*limit = sector.ceiling_end;
-	printf("limit = %d -- %d\n", *limit, doom->game_design.custum_level);
 }
 
 void			draw_ceiling(t_doom *doom, int x,

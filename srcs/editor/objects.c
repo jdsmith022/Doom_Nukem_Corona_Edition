@@ -135,7 +135,6 @@ void    add_object_to_array(int x, int y, t_doom *doom)
 	&(doom->game_design.object[doom->game_design.o_len].lines));
 }
 
-
 void    add_object(t_doom *doom, int x, int y)
 {
     if (doom->game_design.object == NULL)
