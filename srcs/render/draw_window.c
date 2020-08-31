@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:30:38 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:11:42 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,17 @@ void			save_window(t_doom *doom, t_plane plane,
 	doom->lib.window.sidedef_offset[x] = sidedef.offset;
 }
 
+static void		calculate_window_pixels(t_doom *doom, t_point pixel,
+					t_plane plane, int x)
+{
+	add_light_to_pixel(doom,\
+	doom->lib.sector[doom->lib.window.curr_sector], pixel.x, pixel.y);
+	doom->lib.sidedef[doom->lib.window.index].offset =\
+	doom->lib.window.sidedef_offset[x];
+	put_window_texture(doom, pixel, plane,\
+	doom->lib.sidedef[doom->lib.window.index]);
+}
+
 void			draw_window_as_sprite(t_doom *doom)
 {
 	Uint32	*pixels;
@@ -89,12 +100,7 @@ void			draw_window_as_sprite(t_doom *doom)
 		pixels = doom->surface->pixels;
 		while (pixel.y < doom->lib.window.y_pixel_bottom[x])
 		{
-			add_light_to_pixel(doom,\
-			doom->lib.sector[doom->lib.window.curr_sector], pixel.x, pixel.y);
-			doom->lib.sidedef[doom->lib.window.index].offset =\
-			doom->lib.window.sidedef_offset[x];
-			put_window_texture(doom, pixel, plane,\
-			doom->lib.sidedef[doom->lib.window.index]);
+			calculate_window_pixels(doom, pixel, plane, x);
 			pixel.y++;
 		}
 		x++;

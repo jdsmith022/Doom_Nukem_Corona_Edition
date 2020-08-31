@@ -2,7 +2,7 @@
 #include "../../includes/font.h"
 #include "../../includes/sprites.h"
 
-int				virus_move(int bottom, int height, int val,\
+int				virus_move(int bottom, int height, int val,
 				int sprite_index)
 {
 	int		move;
@@ -29,7 +29,7 @@ int				virus_move(int bottom, int height, int val,\
 		else if (val == 9 || val == 10)
 			bottom = bottom + (4 * move);
 	}
-	else if (sprite_index %5 == 1)
+	else if (sprite_index % 5 == 1)
 	{
 		if (val == 4 || val == 13 || val == 14 || val == 3)
 			bottom = bottom - (2 * move);
@@ -70,7 +70,7 @@ int				virus_move(int bottom, int height, int val,\
 		else if (val == 15 || val == 18)
 			bottom = bottom + (3 * move);
 		else if (val == 16 || val == 17)
-			bottom = bottom + (4 * move);	
+			bottom = bottom + (4 * move);
 	}
 	else
 	{
@@ -86,7 +86,6 @@ int				virus_move(int bottom, int height, int val,\
 			bottom = bottom + (2 * move);
 	}
 	return (bottom);
-
 }
 
 void			remove_red_virus(t_doom *doom)
