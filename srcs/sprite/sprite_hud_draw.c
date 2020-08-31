@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:23 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:54:24 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 14:57:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		draw_add_on(t_doom *doom, int sprite_i)
 	draw_stripes_bar(doom, bar, sprite_i);
 }
 
-static void			add_mist_to_sanitizer(t_doom *doom)
+static void		add_mist_to_sanitizer(t_doom *doom)
 {
 	int				diff;
 
@@ -52,7 +52,7 @@ static void			add_mist_to_sanitizer(t_doom *doom)
 	}
 }
 
-void		draw_player_adds(t_doom *doom)
+void			draw_player_adds(t_doom *doom)
 {
 	size_t			sprite_i;
 

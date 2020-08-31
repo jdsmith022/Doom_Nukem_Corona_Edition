@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_hit.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 14:50:49 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/31 14:54:16 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
-#include "../../includes/hud.h"
-#include "../../includes/font.h"
 #include "../../includes/sprites.h"
 
 static bool		sprite_has_action(t_sprite sprite)
@@ -34,14 +44,14 @@ static void		check_hit_new(t_doom *doom)
 {
 	int			i;
 
-	i = doom->visible_sprites - 1;
-	while (i >= 0)
+	i = 0;
+	while (i < doom->visible_sprites)
 	{
 		if (doom->lib.sprites[doom->lib.sprite_order[i]].distance < 150 &&\
 		sprite_has_action(doom->lib.sprites[doom->lib.sprite_order[i]]) &&\
 		sprite_in_shooting_area(doom, doom->lib.sprite_order[i]) != -1)
 			doom->own_event.virus_hit_index = doom->lib.sprite_order[i];
-		i--;
+		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:26 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 22:33:44 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 14:57:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		check_visibility_sprite(t_doom *doom, t_ray ray, int sprite_i,\
 	}
 }
 
-static int		scissor_lift_check(t_doom *doom, t_sprite *sprite)
+static int	scissor_lift_check(t_doom *doom, t_sprite *sprite)
 {
 	if (doom->own_event.scissor_lift == TRUE && sprite->action == 7)
 	{
@@ -81,7 +81,7 @@ static int		scissor_lift_check(t_doom *doom, t_sprite *sprite)
 		return (-1);
 }
 
-void			sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
+void		sprite_check(t_doom *doom, t_ray ray, int sector, int prev_sector)
 {
 	int		i;
 	int		sprite_i;

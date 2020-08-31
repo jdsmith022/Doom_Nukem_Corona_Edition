@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:11 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:54:12 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 14:56:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 void	sprite_light(t_doom *doom, t_sprite sprite)
 {
 	int		half_width;
-	int		half_height;
 	int		x;
 
 	half_width = 0;
-	half_height = 0;
 	x = sprite.sprite_x;
 	if (doom->light == TRUE)
 	{
@@ -38,6 +36,6 @@ void	sprite_light(t_doom *doom, t_sprite sprite)
 		{
 			doom->lib.light =\
 			+doom->lib.light - (half_width - x) * 1.0 / (float)WIDTH;
-		}	
+		}
 	}
 }

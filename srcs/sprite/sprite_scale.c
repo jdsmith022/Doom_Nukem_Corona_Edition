@@ -6,14 +6,14 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:57 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:53:58 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 14:58:39 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
-int			find_virus_bottom(t_doom *doom, t_sprite *sprite,\
+static int		find_virus_bottom(t_doom *doom, t_sprite *sprite,\
 			int virus_bottom, int virus_top)
 {
 	int		height_space_part;
@@ -34,7 +34,7 @@ int			find_virus_bottom(t_doom *doom, t_sprite *sprite,\
 	return (virus_bottom);
 }
 
-int		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite,\
+static int		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite,\
 			double scale)
 {
 	int			sidedef_bottom;
@@ -47,7 +47,7 @@ int		calculate_sprite_bottom(t_doom *doom, t_sprite *sprite,\
 	return (sidedef_bottom);
 }
 
-int			calculate_sprite_top(t_doom *doom, t_sprite *sprite,\
+static int		calculate_sprite_top(t_doom *doom, t_sprite *sprite,\
 			double scale)
 {
 	int			diff;
@@ -58,11 +58,11 @@ int			calculate_sprite_top(t_doom *doom, t_sprite *sprite,\
 	height_ceiling = doom->lib.sector[sprite->sector].height_ceiling\
 		/ sprite->distance * doom->dist_to_plane;
 	sidedef_top = ((HEIGHT / 2) - ((double)diff * scale)) -\
-		(doom->own_event.y_pitch + height_ceiling);	
+		(doom->own_event.y_pitch + height_ceiling);
 	return (sidedef_top);
 }
 
-double		sprite_calculations(t_doom *doom, t_sprite *sprite,\
+static double	sprite_calculations(t_doom *doom, t_sprite *sprite,\
 			t_sector sector)
 {
 	int			sidedef_bottom;
@@ -82,8 +82,8 @@ double		sprite_calculations(t_doom *doom, t_sprite *sprite,\
 	return (sidedef_bottom);
 }
 
-void		scale_sprite(t_doom *doom, t_line *coords,\
-			t_sprite *sprite)
+void			scale_sprite(t_doom *doom, t_line *coords,\
+				t_sprite *sprite)
 {
 	double		h;
 	double		w;

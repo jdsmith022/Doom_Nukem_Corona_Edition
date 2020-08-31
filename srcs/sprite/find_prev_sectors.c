@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   find_prev_sectors.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 15:11:35 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/31 15:12:01 by rsteigen      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 
@@ -18,7 +30,7 @@ static int		intersect_values(int opp_sector, int prev_sector,\
 				t_point intersect)
 {
 	if ((!isnan(intersect.x) && !isnan(intersect.y))\
-	&&/* opp_sector != prev_sector &&*/ opp_sector != -1)
+	&& opp_sector != -1)
 		return (1);
 	return (-1);
 }
@@ -48,7 +60,7 @@ static int		no_intersect(t_point intersect, int opp_sector,\
 	return (-1);
 }
 
-void		find_sidedef_intersect_per_sector(t_doom *doom,\
+void			find_sidedef_intersect_per_sector(t_doom *doom,\
 			t_sprite *sprite, int curr_sector, int prev_sector)
 {
 	t_point	intersect;

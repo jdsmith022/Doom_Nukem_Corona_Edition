@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 12:39:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 15:13:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/render.h"
 #include "../../includes/hud.h"
 
-void		put_pixel_tex(t_doom *doom, Uint32 pix_dex,\
+void			put_pixel_tex(t_doom *doom, Uint32 pix_dex,\
 			Uint32 index, int i)
 {
 	char	*pixels;
@@ -88,7 +88,7 @@ static int		find_y(t_doom *doom, t_line *sprite, int index_sp, int screen_y)
 	return (tex_y);
 }
 
-void	put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
+static void		put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
 		int index_sp)
 {
 	Uint32		index;
@@ -118,7 +118,7 @@ void	put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
 	}
 }
 
-void	draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
+void			draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
 {
 	int			stripe;
 

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 09:44:46 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 09:48:30 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 14:55:59 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	set_player_sprite_2(t_doom *doom)
 	doom->player.right_select = 101;
 }
 
-void	set_player_sprite(t_doom *doom)
+void		set_player_sprite(t_doom *doom)
 {
 	if (doom->player_sprite == player_1)
 	{

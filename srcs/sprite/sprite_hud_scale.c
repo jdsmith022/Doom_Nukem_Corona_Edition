@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:17 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:54:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/08/31 15:07:35 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/hud.h"
 #include "../../includes/sprites.h"
 
-void		scale_bar(t_doom *doom, t_line *bar, int i)
+void			scale_bar(t_doom *doom, t_line *bar, int i)
 {
 	double	bar_height;
 	double	bar_width;

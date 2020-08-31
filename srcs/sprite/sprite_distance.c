@@ -1,66 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sprite_action.c                                    :+:    :+:            */
+/*   sprite_distance.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 22:39:24 by rsteigen      ########   odam.nl         */
+/*   Created: 2020/08/31 15:02:29 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/31 15:07:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
-#include "../../includes/font.h"
-#include "../../includes/action.h"
 #include "../../includes/sprites.h"
-
-int			sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
-{
-	int		value;
-
-	value = 0;
-	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE)\
-	|| sprite.action == 9 || sprite.action == 12)
-		value = 15;
-	if (movement.end.x >= sprite.lines[0].start.x - value &&\
-	movement.end.x <= sprite.lines[0].end.x + value &&\
-	movement.end.y >= sprite.lines[1].start.y - value &&\
-	movement.end.y <= sprite.lines[1].end.y + value)
-		return (1);
-	return (-1);
-}
-
-void		exit_scissor_lift(t_doom *doom)
-{
-	double		distance;
-
-	distance = point_distance(doom->pos,\
-	doom->lib.sprites[doom->save_scissor_lift].pos);
-	if (distance > 60)
-	{
-		doom->save_scissor_lift = -1;
-		doom->own_event.scissor_lift = FALSE;
-		doom->own_event.scissor_lift_down = FALSE;
-	}
-	else
-	{
-		doom->own_event.parked_too_close = TRUE;
-		doom->lib.font_lib.bools.text = TRUE;
-	}
-}
-
-void		activate_scissor_lift(t_doom *doom, int index)
-{
-	doom->own_event.scissor_lift = TRUE;
-	doom->lib.font_lib.bools.text = TRUE;
-	doom->lib.font_lib.bools.scissor_lift = TRUE;
-	doom->pos.x = doom->lib.sprites[index].pos.x;
-	doom->pos.y = doom->lib.sprites[index].pos.y;
-	doom->save_scissor_lift = index;
-	doom->player_height += 10;
-}
 
 static void	check_walking(t_doom *doom, t_sprite shopper)
 {
@@ -109,7 +61,7 @@ static void	check_sprite_distance2(t_doom *doom, int index)
 	}
 }
 
-static void	check_sprite_distance(t_doom *doom, int index)
+void		check_sprite_distance(t_doom *doom, int index)
 {
 	if (doom->lib.sprites[index].distance > 0.1 &&\
 	doom->lib.sprites[index].distance < 50)
@@ -136,31 +88,4 @@ static void	check_sprite_distance(t_doom *doom, int index)
 		else
 			check_sprite_distance2(doom, index);
 	}
-}
-
-int			sprite_collision(t_doom *doom, t_line movement)
-{
-	int		x;
-	int		sector;
-	int		index;
-
-	x = 0;
-	sector = doom->i_sector;
-	index = doom->lib.sector[sector].i_objects;
-	while (x < doom->lib.sector[sector].n_objects)
-	{
-		if (doom->lib.sprites[index].block == 1)
-		{
-			if (doom->lib.sprites[index].distance < 70\
-			&& doom->own_event.scissor_lift == FALSE &&\
-			doom->lib.sprites[index].action == 7)
-				activate_scissor_lift(doom, index);
-			if (sprite_is_hit(doom, movement, doom->lib.sprites[index]) == 1)
-				return (1);
-		}
-		check_sprite_distance(doom, index);
-		index++;
-		x++;
-	}
-	return (-1);
 }
