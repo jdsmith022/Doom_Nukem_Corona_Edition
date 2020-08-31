@@ -109,7 +109,7 @@ typedef struct s_line		t_line;
 # define SECTOR_BUTTON_X 768
 # define SECTOR_BUTTON_Y 568
 
-# define HF_MAX 30
+# define HF_MAX 20
 # define HF_MIN -30
 # define HF_DIFF 60
 # define HF_X 0
@@ -118,7 +118,7 @@ typedef struct s_line		t_line;
 # define HF_LEN 160.0
 
 # define HC_MAX 30
-# define HC_MIN -30
+# define HC_MIN -10
 # define HC_DIFF 60
 # define HC_X 0
 # define HC_Y 225

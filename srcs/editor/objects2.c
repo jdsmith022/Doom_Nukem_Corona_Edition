@@ -25,7 +25,7 @@ void		del_obj(t_doom *doom)
 
 void		correct_i_object(int i, t_doom *doom)
 {
-	while (i <= doom->game_design.o_len)
+	while (i <= doom->game_design.s_len)
 	{
 		doom->game_design.sector[i].i_objects++;
 		i++;
@@ -35,56 +35,57 @@ void		correct_i_object(int i, t_doom *doom)
 
 static void	add_obj_lines2(int x, int y, t_gamedesign gd, t_line **ln)
 {
-	ln[0][2].start.x = x + level_sprites[gd.cur_tex].start_x +\
+	ln[0][2].start.x = x + level_sprites[gd.index_obj].start_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][2].end.x = x + level_sprites[gd.cur_tex].end_x +\
+	ln[0][2].end.x = x + level_sprites[gd.index_obj].end_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][2].start.y = y + level_sprites[gd.cur_tex].start_y +\
+	ln[0][2].start.y = y + level_sprites[gd.index_obj].start_y +\
 		gd.sector[gd.cur_sec].diff_y;
-	ln[0][2].end.y = y + level_sprites[gd.cur_tex].start_y +\
+	ln[0][2].end.y = y + level_sprites[gd.index_obj].start_y +\
 		gd.sector[gd.cur_sec].diff_y;
-	ln[0][3].start.x = x + level_sprites[gd.cur_tex].start_x +\
+	ln[0][3].start.x = x + level_sprites[gd.index_obj].start_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][3].end.x = x + level_sprites[gd.cur_tex].end_x +\
+	ln[0][3].end.x = x + level_sprites[gd.index_obj].end_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][3].start.y = y + level_sprites[gd.cur_tex].end_y +\
+	ln[0][3].start.y = y + level_sprites[gd.index_obj].end_y +\
 		gd.sector[gd.cur_sec].diff_y;
-	ln[0][3].end.y = y + level_sprites[gd.cur_tex].end_y +\
+	ln[0][3].end.y = y + level_sprites[gd.index_obj].end_y +\
 		gd.sector[gd.cur_sec].diff_y;
 }
 
 void		add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln)
 {
-	ln[0][0].start.x = x + level_sprites[gd.cur_tex].start_x +\
+	ln[0][0].start.x = x + level_sprites[gd.index_obj].start_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][0].end.x = x + level_sprites[gd.cur_tex].start_x +\
+	ln[0][0].end.x = x + level_sprites[gd.index_obj].start_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][0].start.y = y + level_sprites[gd.cur_tex].start_y + \
+	ln[0][0].start.y = y + level_sprites[gd.index_obj].start_y + \
 		gd.sector[gd.cur_sec].diff_y;
-	ln[0][0].end.y = y + level_sprites[gd.cur_tex].end_y +\
+	ln[0][0].end.y = y + level_sprites[gd.index_obj].end_y +\
 		gd.sector[gd.cur_sec].diff_y;
-	ln[0][1].start.x = x + level_sprites[gd.cur_tex].end_x +\
+	ln[0][1].start.x = x + level_sprites[gd.index_obj].end_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][1].end.x = x + level_sprites[gd.cur_tex].end_x +\
+	ln[0][1].end.x = x + level_sprites[gd.index_obj].end_x +\
 		gd.sector[gd.cur_sec].diff_x;
-	ln[0][1].start.y = y + level_sprites[gd.cur_tex].start_y +\
+	ln[0][1].start.y = y + level_sprites[gd.index_obj].start_y +\
 		gd.sector[gd.cur_sec].diff_y;
-	ln[0][1].end.y = y + level_sprites[gd.cur_tex].end_y +\
+	ln[0][1].end.y = y + level_sprites[gd.index_obj].end_y +\
 		gd.sector[gd.cur_sec].diff_y;
 	add_obj_lines2(x, y, gd, ln);
 }
 
 void		add_specifications(t_gamedesign *gd, int index)
 {
-	gd->object[index].index = level_sprites[gd->cur_tex].index;
+	gd->object[index].index = level_sprites[gd->index_obj].index;
 	gd->object[index].amount = 4;
-	gd->object[index].size = level_sprites[gd->cur_tex].size;
-	gd->object[index].textures[0] = level_sprites[gd->cur_tex].tex1;
-	gd->object[index].textures[1] = level_sprites[gd->cur_tex].tex2;
-	gd->object[index].textures[2] = level_sprites[gd->cur_tex].tex3;
-	gd->object[index].textures[3] = level_sprites[gd->cur_tex].tex4;
-	gd->object[index].block = level_sprites[gd->cur_tex].block;
+	gd->object[index].size = level_sprites[gd->index_obj].size;
+	gd->object[index].textures[0] = level_sprites[gd->index_obj].tex1;
+	gd->object[index].textures[1] = level_sprites[gd->index_obj].tex2;
+	gd->object[index].textures[2] = level_sprites[gd->index_obj].tex3;
+	gd->object[index].textures[3] = level_sprites[gd->index_obj].tex4;
+	gd->object[index].block = level_sprites[gd->index_obj].block;
 	gd->object[index].sector = gd->cur_sec;
 	gd->object[index].visible = -1;
-	gd->object[index].action = level_sprites[gd->cur_tex].action;
+	gd->object[index].action = level_sprites[gd->index_obj].action;
+	printf("index = %d,	object id:	%d, level %d\n", index, level_sprites[gd->index_obj].index, gd->cur_sec);
 }
