@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 13:57:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 16:23:30 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,14 @@
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
 
-static void		font_timer_box_short(t_doom *doom, bool *flag,
-					int start_dex, int end_dex)
+static void		font_timer_3(t_doom *doom, t_event *event)
 {
-	int				diff;
-
-	if (*flag == TRUE)
+	if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
+	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
 	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
-		*flag = FALSE;
-	}
-	else
-	{
-		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
-		if (diff <= 2)
-			print_vanishing_text_box(doom, start_dex, end_dex);
-	}
-}
-
-static void		font_timer_box_long(t_doom *doom, bool *flag,
-					int start_dex, int end_dex)
-{
-	int				diff;
-	clockid_t		clkid;
-	struct timespec	time;
-	time_t			sec;
-
-	if (*flag == TRUE)
-	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
-		*flag = FALSE;
-	}
-	else
-	{
-		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
-		if (diff <= 15)
-			print_vanishing_text_box(doom, start_dex, end_dex);
-	}
-}
-
-static void		font_timer_box_start(t_doom *doom, bool *flag)
-{
-	int				diff;
-	clockid_t		clkid;
-	struct timespec	time;
-	time_t			sec;
-
-	if (*flag == TRUE)
-	{
-		clock_gettime(doom->game_time, &doom->lib.font_lib.timer);
-		*flag = FALSE;
-	}
-	else
-	{
-		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
-		if (diff <= 5)
-			print_vanishing_text_box(doom, 0, 3);
-		else
-			doom->lib.font_lib.bools.walking_text = FALSE;
+		set_background_coords_middle_large(doom);
+		font_timer_box_long(doom, \
+			&doom->lib.font_lib.bools.start_sector, 10, 20);
 	}
 }
 
@@ -96,13 +46,8 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 	doom->poster == refill_station)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 27, 28);
-	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
-	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
-	{
-		set_background_coords_middle_large(doom);
-		font_timer_box_long(doom, \
-			&doom->lib.font_lib.bools.start_sector, 10, 20);
-	}
+	else
+		font_timer_3(doom, event);
 }
 
 void			font_timer(t_doom *doom)
