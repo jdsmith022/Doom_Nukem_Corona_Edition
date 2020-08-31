@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include  "../../includes/game_editor.h"
+#include "../../includes/game_editor.h"
 
 static t_sidedef	*new_level_sidedef(t_doom *doom,\
 					t_sidedef *sidedef, int w_len)

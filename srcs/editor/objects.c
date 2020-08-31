@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
-#include "sprites.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
+#include "../../includes/sprites.h"
 
 static void		copy_lines(t_sprite *new, t_sprite **object, int *side, int i)
 {

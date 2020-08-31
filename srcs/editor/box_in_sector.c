@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
 static void		init_diff(t_line *diff)
 {

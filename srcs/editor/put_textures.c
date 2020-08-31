@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
-#include "sprites.h"
+#include "../../includes/game_editor.h"
+#include "../../includes/sprites.h"
 #include "../../includes/render.h"
 
 static void	set_points_textures(t_doom *doom, t_point *i,

@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include  "../../includes/game_editor.h"
+#include "../../includes/game_editor.h"
 
 t_sector	*light_correction(t_sector *sector, int len)
 {

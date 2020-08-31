@@ -12,7 +12,6 @@
 
 # include "../libft/libft.h"
 # include "../bmp/srcs/bmp.h"
-# include "../srcs/editor/game_editor.h"
 # include "font.h"
 # include "struct.h"
 

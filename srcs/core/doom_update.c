@@ -6,6 +6,7 @@
 #include "../../includes/sprites.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/game_editor.h"
 
 static void	core_gameplay_loop(t_doom *doom, double dt)
 {
@@ -21,7 +22,7 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 	{
 		open_game_editor(doom);
 		doom->lib.sector[doom->i_sector].action = START_TIMER;
-    	doom->menu->start_timer = FALSE;
+		doom->menu->start_timer = FALSE;
 		font_to_screen(doom);
 	}
 }

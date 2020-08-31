@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
 static void		add_to_line(t_line *line, double x, double y)
 {

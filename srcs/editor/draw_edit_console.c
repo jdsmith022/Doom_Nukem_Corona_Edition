@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
-#include "sprites.h"
+#include "../../includes/game_editor.h"
+#include "../../includes/sprites.h"
 #include "../../includes/render.h"
 
 static void		draw_sidedef_textures(Uint32 *pixels, t_doom *doom)
@@ -50,7 +50,8 @@ static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-	put_textures(TEX_S2_X, TEX_S2_Y, LS[doom->game_design.cur_tex].tex1, doom);
+	put_textures(TEX_S2_X, TEX_S2_Y, \
+	level_sprites[doom->game_design.cur_tex].tex1, doom);
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	if (doom->game_design.cur_obj >= \

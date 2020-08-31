@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
 static void	add_to_fd(int num, int fd)
 {
@@ -46,7 +46,7 @@ static void	printing_sector(t_gamedesign *design, int i, int fd)
 	}
 }
 
-void	printing_map(t_gamedesign *design)
+void		printing_map(t_gamedesign *design)
 {
 	int fd;
 	int i;

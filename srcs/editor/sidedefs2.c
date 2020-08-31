@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
 t_sidedef	*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size)
 {

@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
-#include "sprites.h"
+#include "../../includes/game_editor.h"
+#include "../../includes/sprites.h"
 
 void	change_texture(t_doom *doom, int *txt, int change)
 {

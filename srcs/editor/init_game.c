@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
 static void		init_first_sector(t_doom *doom)
 {

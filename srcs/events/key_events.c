@@ -5,6 +5,7 @@
 #include "../../includes/action.h"
 #include "../../includes/sprites.h"
 #include "../../includes/events.h"
+#include "../../includes/game_editor.h"
 
 void			key_handler(t_doom *doom, t_event *event, double dt)
 {

@@ -1,5 +1,5 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
 static void	mouse_press_sidedef_txt2(t_doom *doom, int x, int y)
 {

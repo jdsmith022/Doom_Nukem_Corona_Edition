@@ -1,6 +1,6 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
-#include "sprites.h"
+#include "../../includes/game_editor.h"
+#include "../../includes/sprites.h"
 
 static void		mouse_press_map(t_doom *doom, int x, int y)
 {

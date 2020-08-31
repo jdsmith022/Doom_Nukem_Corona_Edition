@@ -17,6 +17,8 @@ typedef struct s_ray		t_ray;
 typedef struct s_point		t_point;
 typedef struct s_line		t_line;
 
+# define LEVEL_SPRITE_LEN 5
+
 # define FRAME_COUNT 8
 # define FRAME_WIDTH 32
 # define FRAME_HEIGHT 32
