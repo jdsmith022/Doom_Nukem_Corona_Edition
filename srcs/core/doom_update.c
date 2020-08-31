@@ -13,10 +13,9 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 	key_handler(doom, &doom->own_event, dt);
 	if (doom->game_editor == FALSE && doom->menu->state == start_game)
 	{
-		action_handler(doom);
 		sprite_reset(doom);
+		action_handler(doom);
 		audio(doom, &doom->own_event);
-		groceries(doom);
 	}
 	else if (doom->game_editor == TRUE)
 	{

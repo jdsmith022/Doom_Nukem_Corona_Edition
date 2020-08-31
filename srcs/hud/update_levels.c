@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:16:17 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 16:19:57 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 16:27:22 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	update_sanitizer_levels(t_doom *doom, t_font *lib,
 	single_font_to_sdl(doom, doom->lib.font_lib.hud_font[3], font);
 }
 
-void	update_levels(t_doom *doom, t_font *lib)
+void		update_levels(t_doom *doom, t_font *lib)
 {
 	TTF_Font	*font;
 	int			level;

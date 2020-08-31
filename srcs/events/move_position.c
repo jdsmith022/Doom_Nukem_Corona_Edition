@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:04:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:04:05 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 16:18:38 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "../../includes/sprites.h"
 #include "../../includes/events.h"
 #include "../../includes/render.h"
-
 
 static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 						t_line move)

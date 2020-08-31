@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:34 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:01:36 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void		calculate_floor_dist(t_doom *doom, int x, int y,
 	double dist;
 	double diff;
 
-	diff = doom->player_height - PLAYER_HEIGHT;
-	dist = (doom->player_height - sector->height_floor) / \
+	diff = doom->player.height - PLAYER_HEIGHT;
+	dist = (doom->player.height - sector->height_floor) / \
 		((y + doom->own_event.y_pitch) - (HEIGHT / 2));
 	dist *= doom->dist_to_plane;
 	dist /= cos(doom->ray_adjacent * x - (60 * (PI / 180)) / 2);

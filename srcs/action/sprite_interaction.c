@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_interaction.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 16:17:34 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/31 16:17:35 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
@@ -31,13 +42,13 @@ void		player_fall(t_doom *doom)
 	if (event->scissor_lift == FALSE)
 	{
 		min_height = doom->lib.sector[doom->i_sector].height_floor + 10;
-		if (doom->player_height > min_height)
+		if (doom->player.height > min_height)
 		{
 			if (event->fall_count == -1)
 				doom->lib.font_lib.bools.text = TRUE;
-			doom->player_height -= 20 - (GRAVITY * (duration + 0.05));
-			if (doom->player_height < min_height)
-				doom->player_height = min_height;
+			doom->player.height -= 20 - (GRAVITY * (duration + 0.05));
+			if (doom->player.height < min_height)
+				doom->player.height = min_height;
 			doom->hud->update = boxes;
 			doom->own_event.select = FALSE;
 			doom->own_event.shoot = FALSE;
@@ -55,12 +66,12 @@ void		scissor_lift_up(t_doom *doom)
 	event = &doom->own_event;
 	max_height = doom->texture_height + \
 		doom->lib.sector[doom->i_sector].height_ceiling - (PLAYER_HEIGHT / 2);
-	if (doom->player_height <= max_height)
+	if (doom->player.height <= max_height)
 	{
-		doom->player_height += 20;
-		if (doom->player_height > max_height)
+		doom->player.height += 20;
+		if (doom->player.height > max_height)
 		{
-			doom->player_height = max_height;
+			doom->player.height = max_height;
 			event->scissor_lift_up = FALSE;
 		}
 	}
@@ -71,15 +82,11 @@ void		scissor_lift_down(t_doom *doom)
 	t_event	*event;
 
 	event = &doom->own_event;
-	if (doom->player_height > 50)
+	if (doom->player.height > 50)
 	{
-		doom->player_height -= 20;
+		doom->player.height -= 20;
 		event->y_pitch = 0;
 	}
-	if (doom->player_height <= 50)
-	{
-		doom->player_height = 50;
-		event->scissor_lift_down = FALSE;
-		event->scissor_lift = FALSE;
-	}
+	else
+		doom->player.height = 50;
 }

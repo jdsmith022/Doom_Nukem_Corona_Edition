@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_action.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/31 14:12:35 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/font.h"
@@ -30,6 +42,7 @@ void		exit_scissor_lift(t_doom *doom)
 	{
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
+		doom->own_event.scissor_lift_down = FALSE;
 	}
 	else
 	{
@@ -46,7 +59,7 @@ void		activate_scissor_lift(t_doom *doom, int index)
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
-	doom->player_height += 10;
+	doom->player.height += 10;
 }
 
 static void	check_walking(t_doom *doom, t_sprite shopper)

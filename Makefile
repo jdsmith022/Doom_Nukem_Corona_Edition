@@ -2,7 +2,7 @@ GREEN = $(shell printf "\e[38;5;10m")
 WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
-NAME = doom
+NAME = doom-nukem
 FLAGS = -Wall -Wextra -Werror -O2 -Wpedantic
 
 LIBFT = libft
@@ -48,7 +48,8 @@ EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game add_to_ga
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_action sprite_hud_draw \
-				sprite_hud_scale find_prev_sectors sprite_set_player_sprites
+				sprite_hud_scale find_prev_sectors sprite_set_player_sprites\
+				sprite_light sprite_clipping
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui \
 				 position gameplay game_over timer sprite_hit \
@@ -59,11 +60,12 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				start_menu_font setting_window_font game_over_font \
 				font_timer pause_font vanishing_text_box set_font_style \
 				instruction_font instruction_font_2 time_difference \
-				shopper_hit_font
+				shopper_hit_font font_timer_boxes
 HUD_FILES = update_hud calculate_hud_levels update_levels \
 			update_list_and_basket update_timer
 MENU_FILES = start_menu event_settings print_background menu_selection \
-			menu_click_events finished_text print_menu print_player_sprite
+			menu_click_events finished_text print_menu print_player_sprite \
+			game_over_menu
 ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 

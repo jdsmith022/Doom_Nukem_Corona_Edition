@@ -3,7 +3,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/audio.h"
 
-void	play_scissor_sounds(t_audio *audio, t_event *event)
+static void	play_scissor_sounds(t_audio *audio, t_event *event)
 {
 	if (event->scissor_lift != audio->event->prev_scissor_state)
 	{
@@ -19,12 +19,12 @@ void	play_scissor_sounds(t_audio *audio, t_event *event)
 		play_sound(audio->sounds[LIFT_DOWN], -1);
 }
 
-void	play_movement_sounds(t_audio *audio, t_event *event)
+static void	play_movement_sounds(t_audio *audio, t_event *event)
 {
 	if (event->jump == FALSE)
 		audio->event->jump_toggled = FALSE;
 	if ((event->move_pos_f || event->move_pos_b) &&
-		!event->jump && event->set_step)
+		!event->jump && event->set_step && !event->scissor_lift)
 	{
 		loop_sound(audio->sounds[FOOTSTEPS], 6);
 		event->set_step = FALSE;
@@ -32,7 +32,7 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 	else
 		pause_sound(audio->sounds[FOOTSTEPS], 6);
 	if ((event->move_pos_l || event->move_pos_r) &&
-		!event->jump && event->set_step)
+		!event->jump && event->set_step && !event->scissor_lift)
 	{
 		loop_sound(audio->sounds[FOOTSTEPS], 6);
 		event->set_step = FALSE;
@@ -45,9 +45,9 @@ void	play_movement_sounds(t_audio *audio, t_event *event)
 	}
 }
 
-void	play_action_sounds(t_audio *audio, t_event *event)
+static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 {
-	if (event->shoot && event->mouse_press)
+	if (event->shoot && event->mouse_press && doom->hud->sanitizer_level > 0)
 		play_sound(audio->sounds[GUNSHOT], -1);
 	if (event->fall && !audio->event->prev_fall_state)
 	{
@@ -59,7 +59,7 @@ void	play_action_sounds(t_audio *audio, t_event *event)
 		play_sound(audio->sounds[PICKUP], -1);
 		event->groc_pickup = FALSE;
 	}
-	if (event->light_switch_changed)
+	else if (event->light_switch_changed && doom->poster == light_click)
 	{
 		play_sound(audio->sounds[CLICK], -1);
 		event->light_switch_changed = FALSE;
@@ -68,15 +68,16 @@ void	play_action_sounds(t_audio *audio, t_event *event)
 		audio->event->prev_fall_state = event->fall;
 }
 
-void	play_combat_sounds(t_audio *audio, int state)
+static void	play_combat_sounds(t_doom *doom, t_audio *audio, int state)
 {
 	if (state == corona_hit)
 		play_sound(audio->sounds[HIT], -1);
-	if (state == sanitizer)
-		play_sound(audio->sounds[PICKUP], -1);
+	if (state == sanitizer && doom->poster == refill_station \
+	&& doom->hud->sanitizer_level < 100)
+		play_sound(audio->sounds[POWERUP], -1);
 }
 
-void	audio(t_doom *doom, t_event *event)
+void		audio(t_doom *doom, t_event *event)
 {
 	if (doom->audio->engine == OFF)
 		return ;
@@ -85,8 +86,8 @@ void	audio(t_doom *doom, t_event *event)
 	if (doom->audio->sound_vol)
 	{
 		play_movement_sounds(doom->audio, event);
-		play_action_sounds(doom->audio, event);
-		play_combat_sounds(doom->audio, doom->hud->update);
+		play_action_sounds(doom, doom->audio, event);
+		play_combat_sounds(doom, doom->audio, doom->hud->update);
 		play_scissor_sounds(doom->audio, event);
 	}
 }

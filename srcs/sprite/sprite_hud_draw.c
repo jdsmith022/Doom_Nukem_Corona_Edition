@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sprite_hud_draw.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/30 21:54:23 by rsteigen      #+#    #+#                 */
+/*   Updated: 2020/08/31 13:15:21 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
-#include "../../includes/gameplay.h"
 #include "../../includes/sprites.h"
 
 static void		draw_add_on(t_doom *doom, int sprite_i)
@@ -9,7 +20,7 @@ static void		draw_add_on(t_doom *doom, int sprite_i)
 
 	scale_bar(doom, &bar, sprite_i);
 	if (sprite_i == doom->player.right_select || \
-	(doom->player_handed == right && doom->own_event.shoot == TRUE \
+	(doom->player.handed == right && doom->own_event.shoot == TRUE \
 	&& sprite_i != CROSS_HAIR))
 	{
 		bar.start.x += 450;
@@ -45,7 +56,7 @@ void		draw_player_adds(t_doom *doom)
 {
 	size_t			sprite_i;
 
-	if (doom->player_sprite != set)
+	if (doom->player.character != set)
 		set_player_sprite(doom);
 	if (doom->own_event.scissor_lift == TRUE)
 	{

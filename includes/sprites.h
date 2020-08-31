@@ -101,5 +101,9 @@ void				scale_bar(t_doom *doom, t_line *bar, int sprite_i);
 int					pixel_is_white(t_doom *doom, int index);
 int					virus_move(int bottom, int height, int move_value,\
 					int sprite_index);
+int					no_clipping_region(int screen_y, t_sprite sprite,\
+					t_doom *doom, int x);
+int					clip_top(t_doom *doom, int index_sp, int x, int screen_y);
+void				sprite_light(t_doom *doom, t_sprite sprite);
 
 #endif

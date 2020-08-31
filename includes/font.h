@@ -39,6 +39,7 @@ typedef struct		s_bools
 	bool			troll_text;
 	bool			facemask;
 	bool			health_pack;
+	bool			limit;
 }					t_bools;
 
 typedef struct		s_font_lib
@@ -97,6 +98,11 @@ void				set_instruction_text_4(t_doom *doom, t_font *lib);
 void				save_pause_font(t_doom *doom, int *len);
 
 void				font_timer(t_doom *doom);
+void				font_timer_box_short(t_doom *doom, bool *flag,
+						int start_dex, int end_dex);
+void				font_timer_box_long(t_doom *doom, bool *flag,
+						int start_dex, int end_dex);
+void				font_timer_box_start(t_doom *doom, bool *flag);
 void				print_vanishing_text_box(t_doom *doom,
 						int start, int stop);
 void				set_background_coords_top(t_doom *doom);

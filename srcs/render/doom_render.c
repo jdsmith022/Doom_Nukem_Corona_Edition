@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:01:22 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 16:31:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"
 
-
-double	clamp_angle(double angle)
+double			clamp_angle(double angle)
 {
 	if (angle > 360 * (PI / 180))
 		angle -= 360 * (PI / 180);
@@ -49,6 +48,7 @@ void			doom_render(t_doom *doom)
 	ray.line.start = doom->pos;
 	ray.filter = 0;
 	doom->visible_sprites = 0;
+	doom->poster = set;
 	while (x < WIDTH)
 	{
 		ray.angle = clamp_angle(ray.angle);

@@ -15,10 +15,6 @@ typedef struct s_sprite	t_sprite;
 # define MAX_SL_LEN		4
 # define MAX_BASKET_LEN 8
 
-# define SHOPPING_LIST 	doom->groceries->shopping_list
-# define BASKET			doom->groceries->basket
-# define SHOPPING_LIST_L doom->groceries->shopping_list_len
-
 typedef struct			s_item {
 	uint8_t				type;
 	uint8_t				amount;

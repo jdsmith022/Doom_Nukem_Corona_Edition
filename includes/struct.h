@@ -36,11 +36,11 @@
 
 # define SLOPE_COLOR 0X505052
 
-# define SECTORS		doom->lib.sector
-# define SIDEDEFS		doom->lib.sidedef
-# define TEXTURES		doom->lib.tex_lib
-# define SPRITES		doom->lib.sprites
-# define OBJ_LIB		doom->lib.obj_lib
+# define SECTORS		doom->lib.sector //remove
+# define SIDEDEFS		doom->lib.sidedef //remove
+# define TEXTURES		doom->lib.tex_lib //remove
+# define SPRITES		doom->lib.sprites //remove
+# define OBJ_LIB		doom->lib.obj_lib //remove
 
 # define OUTSIDE 1
 # define EXIT_LEVEL 2
@@ -55,7 +55,6 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
-
 typedef enum			e_settings
 {
 	player_1,
@@ -63,6 +62,10 @@ typedef enum			e_settings
 	player_3,
 	left,
 	right,
+	refill,
+	refill_station,
+	light,
+	light_click,
 	set
 }						t_settings;
 
@@ -118,12 +121,12 @@ typedef struct			s_sprite {
 	int					prev_sectors[50];
 }						t_sprite;
 
-typedef struct		s_ray {
-	t_line			line;
-	double			angle;
-	double			plane_x;
-	int				filter;
-}					t_ray;
+typedef struct			s_ray {
+	t_line				line;
+	double				angle;
+	double				plane_x;
+	int					filter;
+}						t_ray;
 
 typedef struct		s_event {
 	bool			mouse_press;
@@ -163,7 +166,6 @@ typedef struct		s_event {
 	bool			light_switch;
 	bool			light_switch_changed;
 	bool			refill;
-	bool			action;
 	bool			spray_shopper;
 	bool			sprite_collision;
 	bool			toilet_paper;
@@ -171,6 +173,7 @@ typedef struct		s_event {
 	int				sprite_collision_dist;
 	int				sprite_index;
 	struct timespec	light_time;
+	int				sd_action;
 	double			hold_light;
 	int				hold_light_sector;
 	int				click_light;
@@ -268,9 +271,10 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				sidedef_bottom[WIDTH];
-	int				sidedef_top[WIDTH];
-	int				sidedef_mid_bottom[WIDTH];
+	int				bottom[WIDTH];
+	int				top[WIDTH];
+	int				mid_bottom[WIDTH];
+	int				mid_top[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {
@@ -330,7 +334,24 @@ typedef struct		s_player
 	int				spraying_hand;
 	int				left_select;
 	int				right_select;
+	int				character;
+	int				handed;
+	double			std_height;
+	double			height;
 }					t_player;
+
+typedef struct		s_game_state
+{
+	int				game_state;
+	bool			is_running;
+	bool			game_editor;
+	bool			light;
+	bool			hud_display;
+	int				difficulty;
+	int				game_time;
+	int				save_poster;
+
+}					t_game_state;
 
 typedef struct		s_render
 {
@@ -355,20 +376,17 @@ typedef struct		s_doom {
 	t_menu			*menu;
 	t_hud			*hud;
 	t_player		player;
-	int				player_sprite;
-	int				player_handed;
+	t_game_state	game;
 	int				game_state;
 	bool			is_running;
 	bool			game_editor;
 	bool			hud_display;
 	bool			light;
 	bool			start_timer;
-	double			player_std_height;
-	double			player_height;
 	double			cam_slope_height;
-	double			player_width;
 	int				texture_width;
 	int				texture_height;
+	int				poster;
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
@@ -385,11 +403,9 @@ typedef struct		s_doom {
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
 	t_prev_sidedef	prev_sidedef;
-	int				save_poster;
 	int				game_time;
 	struct timespec	game_start_time;
 	int				save_scissor_lift;
-	int				up;
 }					t_doom;
 
 #endif

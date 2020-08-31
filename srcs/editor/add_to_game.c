@@ -69,7 +69,7 @@ static void			add_to_game2(t_doom *doom)
 	doom->pos.x = doom->game_design.pl_x;
 	doom->pos.y = doom->game_design.pl_y;
 	doom->i_sector = doom->game_design.pl_sec;
-	doom->player_height = doom->player_height \
+	doom->player.height = doom->player.height \
 		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 	doom->light = TRUE;
 }

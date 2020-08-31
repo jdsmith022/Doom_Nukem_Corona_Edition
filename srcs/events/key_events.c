@@ -21,12 +21,12 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 	if (event->step_down == TRUE && event->fall == FALSE)
 		step_down(doom, dt);
 	if ((event->bend == TRUE && event->scissor_lift == FALSE) || \
-	(doom->player_height < doom->player_std_height +\
+	(doom->player.height < doom->player.std_height +\
 	doom->lib.sector[doom->i_sector].height_floor \
 	&& event->fall == FALSE))
 		bend_down(doom);
 	if (event->bend == TRUE && event->scissor_lift == TRUE && \
-		doom->player_height == 50)
+		doom->player.height <= 50)
 		exit_scissor_lift(doom);
 	else if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);
