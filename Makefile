@@ -2,7 +2,7 @@ GREEN = $(shell printf "\e[38;5;10m")
 WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
-NAME = doom
+NAME = doom-nukem
 FLAGS = -Wall -Wextra -Werror -O2 -Wpedantic
 
 LIBFT = libft
