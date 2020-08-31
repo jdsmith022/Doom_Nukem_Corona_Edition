@@ -1,5 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
+#include "../../includes/menu.h"
 
 static t_sidedef	*new_level_sidedef(t_doom *doom,\
 					t_sidedef *sidedef, int w_len)
@@ -7,6 +8,7 @@ static t_sidedef	*new_level_sidedef(t_doom *doom,\
 	t_sidedef	*new;
 	int			i;
 
+	free(doom->lib.sidedef);
 	new = (t_sidedef*)malloc(sizeof(t_sidedef) * w_len);
 	if (new == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
@@ -50,7 +52,7 @@ static t_sector		*new_level_sector(t_doom *doom,\
 	t_sector	*new;
 	int			i;
 
-	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 1));
+	new = (t_sector*)malloc(sizeof(t_sector) * (s_len + 2));
 	if (new == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
 	i = 0;
@@ -72,6 +74,7 @@ static void			add_to_game2(t_doom *doom)
 	doom->player.height = doom->player.height \
 		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 	doom->game.light = TRUE;
+	doom->menu->state == start_game;
 }
 
 void				add_to_game(t_doom *doom)

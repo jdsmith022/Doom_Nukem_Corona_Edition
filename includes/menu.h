@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 16:28:59 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 22:17:00 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum			e_menu_state
 	game_paused,
 	finished,
 	begin,
-	start_timer
+	start_timer,
 }						t_menu_state;
 
 typedef struct			s_menu {
