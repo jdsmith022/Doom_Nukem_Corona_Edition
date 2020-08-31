@@ -27,7 +27,7 @@ ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_point \
 			doom_update exit free_library_struct free_library_sdl update_screen \
-			doom_init_events doom_init_ui
+			doom_init_events doom_init_ui doom_init_window
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff key_select_and_shoot
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
