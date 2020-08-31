@@ -9444,9 +9444,9 @@ assets/sprites/groceries/honey.bmp
 736
 520
 0
-16
-16
-16
+38
+38
+38
 234
 
 
@@ -9456,23 +9456,23 @@ assets/sprites/groceries/honey.bmp
 672
 520
 672
-712
+620
 0
-70
-70
-70
+16
+16
+16
 235
 
 #sidedefs
 -1
 672
-712
+620
 672
 808
 0
-16
-16
-16
+70
+70
+70
 236
 
 #sidedefs
@@ -9504,23 +9504,23 @@ assets/sprites/groceries/honey.bmp
 736
 744
 736
-552
+648
 0
-71
-71
-71
+37
+37
+37
 239
 
 #sidedefs
 -1
 736
-552
-736
 520
+736
+648
 0
-72
-72
-72
+16
+16
+16
 240
 
 ##Second Column##
