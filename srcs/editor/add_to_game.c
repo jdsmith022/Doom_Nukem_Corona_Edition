@@ -74,7 +74,7 @@ static void			add_to_game2(t_doom *doom)
 	doom->player.height = doom->player.height \
 		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 	doom->game.light = TRUE;
-	doom->menu->state == start_game;
+	doom->menu->state = start_game;
 }
 
 void				add_to_game(t_doom *doom)
@@ -85,9 +85,9 @@ void				add_to_game(t_doom *doom)
 		{
 			coor_pos(doom);
 			box_in_sectors(doom);  // give these walls a flag so that they are not drawn if the sector is outside
-			free(doom->lib.sector); //rm when there are multiple levels		
-			free(doom->lib.sidedef); //rm when there are multiple levels
-			rmove(doom->lib.sprites, doom); //neccesary to stop the leaks but it just breaks the code and it sucks
+			// free(doom->lib.sector); //rm when there are multiple levels		
+			// rm when there are multiple levels
+			// rmove(doom->lib.sprites, doom); //neccesary to stop the leaks but it just breaks the code and it sucks
 			doom->lib.sector = new_level_sector(doom,\
 				doom->game_design.sector, doom->game_design.s_len + 1);
 			doom->lib.sidedef = new_level_sidedef(doom,\
