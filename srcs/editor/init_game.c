@@ -40,5 +40,6 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.sidedef_bar = 1;
 	doom->game_design.portal_sec = -1;
 	doom->game_design.portal_sd = -1;
+	doom->game_design.cur_tex = 7;
 	init_first_sector(doom);
 }

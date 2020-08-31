@@ -314,6 +314,7 @@ typedef struct		s_gamedesign {
 	int				o_len;
 	int				o_size;
 	int				cur_tex;
+	int				index_obj;
 	int				cur_sec;
 	int				cur_sd;
 	int				cur_obj;

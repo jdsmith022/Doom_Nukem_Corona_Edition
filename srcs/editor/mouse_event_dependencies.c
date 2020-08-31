@@ -20,10 +20,14 @@ void	change_sidedef(t_doom *doom, int change)
 
 void	object_texture(t_doom *doom, int change)
 {
-	if (doom->game_design.cur_tex + change <= LEVEL_SPRITE_LEN && \
-	doom->game_design.cur_tex + change >= 0)
+	static int		index;
+
+	if (index + change <= LEVEL_SPRITE_LEN && \
+	index + change >= 0)
 	{
-		doom->game_design.cur_tex += change;
+		index += change;
+		doom->game_design.cur_tex = level_sprites[index].index;
+		doom->game_design.index_obj = index;
 		if (doom->game_design.cur_obj >= \
 		doom->game_design.sector[doom->game_design.cur_sec].i_objects && \
 		doom->game_design.cur_obj < \
