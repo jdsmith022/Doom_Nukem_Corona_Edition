@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 15:25:57 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/08/31 09:38:56 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 static void		set_reason(t_doom *doom, char **reason, char **statement)
 {
-	if (doom->hud->corona_level < 100)
+	printf("level: %d",doom->hud->corona_level);
+	if (doom->hud->corona_level >= 100)
 	{
 		*reason = "Oh bummer! You ran out of time!!";
 		*statement = "Try again and keep safe!";
@@ -27,6 +28,7 @@ static void		set_reason(t_doom *doom, char **reason, char **statement)
 		*reason = "You're corona level reached 100!";
 		*statement = "Time to self-quarantine!";
 	}
+	printf("reason: %s -- statement: %s\n", *reason, *statement);
 }
 
 static void		set_reason_for_gameover(t_doom *doom)
