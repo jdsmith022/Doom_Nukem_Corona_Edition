@@ -185,7 +185,7 @@ typedef struct		s_event {
 	struct timespec	sprite_timer;
 }					t_event;
 
-typedef strucs		s_object
+typedef struct		s_object
 {
 	int				n_textures;
 	int*			textures;
