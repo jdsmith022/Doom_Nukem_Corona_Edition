@@ -3,7 +3,7 @@
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
 
-static void		light_timer(t_doom *doom, int *flag)
+static void		light_timer(t_doom *doom, int *flag, int *hold_poster)
 {
 	int diff;
 	int	sector;
@@ -25,6 +25,8 @@ static void		light_timer(t_doom *doom, int *flag)
 			doom->lib.sector[sector].light_level = \
 				doom->own_event.hold_light;
 			doom->lib.sidedef[doom->i_sidedef].txt_2 = 85;
+			doom->own_event.light_switch_changed = TRUE;
+			*hold_poster = -1;
 		}
 	}
 }
@@ -45,28 +47,33 @@ static void		change_sector_light(t_doom *doom)
 	doom->own_event.click_light = 1;
 }
 
-static void		check_poster_location(t_doom *doom)
+static void		check_poster_location(t_doom *doom, t_sidedef poster,
+					int *hold_poster)
 {
 	doom->own_event.light_switch = TRUE;
 	doom->own_event.sd_action = light;
 	doom->own_event.mouse_press = FALSE;
 	doom->own_event.light_switch_changed = TRUE;
+	*hold_poster = poster.action;
+
 }
 
 void			light_switch(t_doom *doom)
 {
-	t_sidedef poster;
+	t_sidedef	poster;
+	static int	hold_poster = -1;
 
 	poster = doom->lib.sidedef[doom->i_sidedef];
 	if (doom->lib.sidedef[doom->i_sidedef].distance < 150.00 \
 	&& doom->own_event.select == TRUE && poster.action == 4)
 		if (doom->own_event.mouse_press &&
 		doom->own_event.light_switch == FALSE)
-			check_poster_location(doom);
-	if (doom->own_event.light_switch == TRUE && poster.action != 8)
+			check_poster_location(doom, poster, &hold_poster);
+	if (doom->own_event.light_switch == TRUE && poster.action == 4 \
+	&& hold_poster != -1)
 	{
 		if (doom->own_event.click_light == -1)
 			change_sector_light(doom);
-		light_timer(doom, &doom->own_event.sd_action);
+		light_timer(doom, &doom->own_event.sd_action, &hold_poster);
 	}
 }

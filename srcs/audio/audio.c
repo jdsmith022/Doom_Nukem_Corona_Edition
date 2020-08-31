@@ -47,7 +47,7 @@ static void	play_movement_sounds(t_audio *audio, t_event *event)
 
 static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 {
-	if (event->shoot && event->mouse_press)
+	if (event->shoot && event->mouse_press && doom->hud->sanitizer_level > 0)
 		play_sound(audio->sounds[GUNSHOT], -1);
 	if (event->fall && !audio->event->prev_fall_state)
 	{
@@ -74,7 +74,7 @@ static void	play_combat_sounds(t_doom *doom, t_audio *audio, int state)
 		play_sound(audio->sounds[HIT], -1);
 	if (state == sanitizer && doom->i_sidedef != -1
 	&& doom->hud->sanitizer_level < 100)
-		play_sound(audio->sounds[PICKUP], -1);
+		play_sound(audio->sounds[POWERUP], -1);
 }
 
 void		audio(t_doom *doom, t_event *event)

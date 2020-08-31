@@ -12,6 +12,7 @@ static void	sanitizer_pause(t_doom *doom)
 	{
 		clock_gettime(doom->game_time, &doom->own_event.refill_pause);
 		doom->own_event.sd_action = set;
+		doom->lib.font_lib.bools.text = TRUE;
 	}
 	else
 	{

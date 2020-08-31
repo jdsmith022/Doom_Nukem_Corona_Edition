@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:18 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 19:06:06 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 10:53:05 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void		font_timer_box_start(t_doom *doom, bool *flag)
 
 static void		font_timer_2(t_doom *doom, t_event *event)
 {
-	set_background_coords_middle_narrow(doom);
 	if (event->spray_shopper == TRUE)
 		shopper_hit_random_font(doom);
 	else if (doom->lib.sector[doom->i_sector].action == CHECKOUT)
@@ -86,13 +85,16 @@ static void		font_timer_2(t_doom *doom, t_event *event)
 	else if (doom->lib.font_lib.bools.trolly == TRUE && \
 	doom->lib.sector[doom->i_sector].action == START_SECTOR)
 		font_timer_box_short(doom, \
-			&doom->lib.font_lib.bools.text, 20, 21);
+			&doom->lib.font_lib.bools.text, 25, 26);
 	else if (doom->lib.font_lib.bools.health_pack == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 25, 26);
 	else if (doom->lib.font_lib.bools.facemask == TRUE)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 25, 26);
+	else if (doom->own_event.sanitizer_refills > 3)
+		font_timer_box_short(doom, \
+			&doom->lib.font_lib.bools.text, 27, 29);
 	else if (doom->lib.sector[doom->i_sector].action == START_SECTOR && \
 	doom->start_timer == FALSE && doom->lib.font_lib.bools.trolly == FALSE)
 	{
@@ -124,5 +126,8 @@ void			font_timer(t_doom *doom)
 		font_timer_box_short(doom, \
 			&doom->lib.font_lib.bools.text, 8, 10);
 	else
+	{
+		set_background_coords_middle_narrow(doom);
 		font_timer_2(doom, event);
+	}
 }
