@@ -326,6 +326,7 @@ typedef struct		s_gamedesign {
 	int				pl_sec;
 	int				object_bar;
 	int				sidedef_bar;
+	bool			custom_level;
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
