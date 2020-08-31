@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:41:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 19:01:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 10:06:02 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		save_instruction_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
 
-	*len = 27;
+	*len = 28;
 	doom->lib.font_lib.instruction_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.instruction_font == NULL)
