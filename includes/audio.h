@@ -11,7 +11,7 @@
 # define OFF			0
 # define ON				1
 
-# define NUM_OF_SOUNDS	14
+# define NUM_OF_SOUNDS	15
 # define CHANNELS		8
 
 # define BUTTON 		0
@@ -21,13 +21,14 @@
 # define SCREAM			4
 # define FALL			5
 # define CLICK			6
-# define PICKUP			7
-# define HIT			8
-# define ENGINE			9
-# define LVL_FINISH		10
-# define GAMEOVER		11
-# define LIFT_UP		12
-# define LIFT_DOWN		13
+# define POWERUP		7
+# define PICKUP			8
+# define HIT			9
+# define ENGINE			10
+# define LVL_FINISH		11
+# define GAMEOVER		12
+# define LIFT_UP		13
+# define LIFT_DOWN		14
 
 # define S_UI_1 		"/General Sounds/Buttons/sfx_sounds_button1.wav"
 # define S_FOOTSTEPS 	"/Movement/Footsteps/footstep_loop.wav"
@@ -36,7 +37,8 @@
 # define S_DEATH		"/Death Screams/Human/sfx_deathscream_human4.wav"
 # define S_FALL			"/Movement/Falling Sounds/sfx_sounds_falling1.wav"
 # define S_CLICK		"/General Sounds/Buttons/lightswitch.wav"
-# define S_PICKUP		"/General Sounds/Coins/pickup.wav"
+# define S_POWERUP		"/General Sounds/Coins/powerup.wav"
+# define S_PICKUP		"/General Sounds/Buttons/pickup_item.wav"
 # define S_HIT			"/Weapons/Single Shot Sounds/singleshot11.wav"
 # define S_ENGINE		"/General Sounds/Buttons/scissorlift_engine.wav"
 # define S_CHECKOUT		"/General Sounds/Buttons/cash_register.wav"
@@ -49,7 +51,7 @@
 static const char *g_audio_paths[] = {
 	S_UI_1, S_FOOTSTEPS, S_JUMP,
 	S_GUNSHOT, S_DEATH, S_FALL,
-	S_CLICK, S_PICKUP, S_HIT, S_ENGINE,
+	S_CLICK, S_POWERUP, S_PICKUP, S_HIT, S_ENGINE,
 	S_CHECKOUT, S_GAMEOVER, S_LIFT_U, S_LIFT_D,
 	MU_1, MU_2
 };

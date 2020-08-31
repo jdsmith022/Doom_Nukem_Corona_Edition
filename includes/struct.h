@@ -63,6 +63,8 @@ typedef enum			e_settings
 	player_3,
 	left,
 	right,
+	refill,
+	light,
 	set
 }						t_settings;
 
@@ -163,7 +165,6 @@ typedef struct		s_event {
 	bool			light_switch;
 	bool			light_switch_changed;
 	bool			refill;
-	bool			action;
 	bool			spray_shopper;
 	bool			sprite_collision;
 	bool			toilet_paper;
@@ -171,6 +172,7 @@ typedef struct		s_event {
 	int				sprite_collision_dist;
 	int				sprite_index;
 	struct timespec	light_time;
+	int				sd_action;
 	double			hold_light;
 	int				hold_light_sector;
 	int				click_light;

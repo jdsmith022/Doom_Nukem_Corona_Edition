@@ -8,10 +8,10 @@ static void	sanitizer_pause(t_doom *doom)
 {
 	int diff;
 
-	if (doom->own_event.action == TRUE)
+	if (doom->own_event.sd_action == refill)
 	{
 		clock_gettime(doom->game_time, &doom->own_event.refill_pause);
-		doom->own_event.action = FALSE;
+		doom->own_event.sd_action = set;
 	}
 	else
 	{
@@ -29,7 +29,7 @@ static void	check_poster(t_doom *doom)
 	if (doom->lib.sidedef[doom->i_sidedef].action == 8)
 	{
 		doom->own_event.refill = TRUE;
-		doom->own_event.action = TRUE;
+		doom->own_event.sd_action = refill;
 	}
 }
 

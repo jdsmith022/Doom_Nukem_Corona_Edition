@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-118
+119
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -449,6 +449,8 @@ assets/textures/checkout/checkout_side.bmp
 assets/textures/checkout/checkout_side_2.bmp
 #117
 assets/textures/checkout/checkout_side_3.bmp
+#118
+assets/sprites/groceries/honey.bmp
 
 #ADD LEFT HAND AND RIGHT HAND
 
@@ -2595,9 +2597,9 @@ assets/textures/checkout/checkout_side_3.bmp
 672
 1056
 0
-44
-44
-44
+43
+43
+43
 66
 
 #sidedef ##PROTAL TO SECTOR 9##
@@ -2619,9 +2621,9 @@ assets/textures/checkout/checkout_side_3.bmp
 576
 1248
 0
-42
-42
-42
+44
+44
+44
 68
 
 #sidedef
@@ -2631,9 +2633,9 @@ assets/textures/checkout/checkout_side_3.bmp
 480
 1248
 0
-44
-44
-44
+43
+43
+43
 69
 
 #sidedef
@@ -2643,9 +2645,9 @@ assets/textures/checkout/checkout_side_3.bmp
 480
 1152
 0
-44
-44
-44
+43
+43
+43
 70
 
 #sector[9]## SECTOR 9##########################################################
@@ -4979,9 +4981,9 @@ assets/textures/checkout/checkout_side_3.bmp
 672
 2048
 0
-16
-16
-16
+34
+34
+34
 121
 
 #sidedef
@@ -6602,17 +6604,17 @@ assets/textures/checkout/checkout_side_3.bmp
 16
 179
 
-##LIGHT SWITCH##
+##SANITIZER##
 #poster
 -1
 416
 2304
 432
 2304
-4
-85
-85
-85
+8
+87
+87
+87
 180
 
 #OBJECTS IN SECTOR 22
@@ -11208,9 +11210,9 @@ assets/textures/checkout/checkout_side_3.bmp
 1440
 500
 0
-16
-16
-16
+24
+24
+24
 258
 
 #sidedefs
@@ -14132,7 +14134,7 @@ assets/textures/checkout/checkout_side_3.bmp
 1504
 1510
 1504
-1702
+1600
 0
 46
 46
@@ -14142,7 +14144,7 @@ assets/textures/checkout/checkout_side_3.bmp
 #sidedef
 -1
 1504
-1510
+1600
 1504
 1702
 0
@@ -14844,7 +14846,6 @@ assets/textures/checkout/checkout_side_3.bmp
 85
 354
 
-
 #sector[47]## SECTOR 47 WAREHOUSE##########################################################
 2
 0
@@ -14945,18 +14946,17 @@ assets/textures/checkout/checkout_side_3.bmp
 85
 362
 
-
-##LIGHT SWITCH##
+##SANITIZER##
 #poster
 -1
 1952
 1382
 1952
 1366
-4
-85
-85
-85
+8
+87
+87
+87
 364
 
 #OBJECT IN SECTOR 47
