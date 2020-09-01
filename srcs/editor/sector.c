@@ -1,11 +1,11 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
-void		reset_portals(t_gamedesign *gd)
+static void			reset_portals(t_gamedesign *gd)
 {
 	int i;
 
-	i =	gd->sector[gd->cur_sec].i_sidedefs;
+	i = gd->sector[gd->cur_sec].i_sidedefs;
 	while (i < gd->sector[gd->cur_sec].i_sidedefs + \
 	gd->sector[gd->cur_sec].n_sidedefs)
 	{
@@ -18,7 +18,7 @@ void		reset_portals(t_gamedesign *gd)
 	}
 }
 
-void		del_sector(t_gamedesign *gd)
+void				del_sector(t_gamedesign *gd)
 {
 	int i;
 	int n_sidedef;
@@ -45,7 +45,7 @@ void		del_sector(t_gamedesign *gd)
 	gd->cur_sd = gd->sector[gd->cur_sec].i_sidedefs - 1;
 }
 
-t_sector *cpy_sector(t_doom *doom, t_sector *sector, int *s_size)
+static t_sector		*cpy_sector(t_doom *doom, t_sector *sector, int *s_size)
 {
 	t_sector	*new;
 	int			i;
@@ -64,12 +64,11 @@ t_sector *cpy_sector(t_doom *doom, t_sector *sector, int *s_size)
 	return (new);
 }
 
-
-void	add_sector(t_doom *doom)
+void				add_sector(t_doom *doom)
 {
 	if (doom->game_design.s_len + 1 == doom->game_design.s_size)
-		doom->game_design.sector = \
-			cpy_sector(doom, doom->game_design.sector, &doom->game_design.s_size);
+		doom->game_design.sector = cpy_sector(doom, doom->game_design.sector,\
+			&doom->game_design.s_size);
 	doom->game_design.s_len++;
 	doom->game_design.sector[doom->game_design.s_len].slope_floor = 0;
 	doom->game_design.sector[doom->game_design.s_len].slope_floor_id = -1;

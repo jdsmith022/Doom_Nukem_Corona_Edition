@@ -27,7 +27,7 @@ ACTION = srcs/action/
 
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line calculations_point \
 			doom_update exit free_library_struct free_library_sdl update_screen \
-			doom_init_events doom_init_ui
+			doom_init_events doom_init_ui doom_init_window
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff key_select_and_shoot
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
@@ -39,11 +39,12 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type create_sidedef
-EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game \
+EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game add_to_game2\
 				mouse_events_game_editor box_in_sector draw_edit_console \
-				printing_map init_game draw_sidedef_object objects \
-				correct_position mouse_event_dependencies put_textures \
-				mouse_event_sidedef
+				draw_edit_console2 printing_map init_game draw_sidedef_object \
+				objects2 draw_sidedef_object2 objects correct_position \
+				mouse_event_dependencies put_textures put_textures2 mouse_event_sidedef \
+				sidedefs2 mouse_event_dependencies2
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \
@@ -59,11 +60,12 @@ FONT_FILES = draw_font set_font_colors font_to_sdl game_editor_font \
 				start_menu_font setting_window_font game_over_font \
 				font_timer pause_font vanishing_text_box set_font_style \
 				instruction_font instruction_font_2 time_difference \
-				shopper_hit_font
+				shopper_hit_font font_timer_boxes
 HUD_FILES = update_hud calculate_hud_levels update_levels \
 			update_list_and_basket update_timer
 MENU_FILES = start_menu event_settings print_background menu_selection \
-			menu_click_events finished_text print_menu print_player_sprite
+			menu_click_events finished_text print_menu print_player_sprite \
+			game_over_menu
 ACTION_FILES = light_switch moving_sidedef sprite_interaction \
 				player_action action_handler sanitizer_refill
 

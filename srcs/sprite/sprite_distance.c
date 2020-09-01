@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 15:02:29 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 15:07:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/01 11:12:21 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void		check_sprite_distance(t_doom *doom, int index)
 		}
 		else if (doom->lib.sprites[index].action == 11)
 		{
-			doom->game_start_time.tv_sec += 60;
+			doom->game.start_time.tv_sec += 60;
 			doom->lib.sprites[index].action = 8;
 		}
 		else

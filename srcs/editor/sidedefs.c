@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
-void		del_sidedef(t_doom *doom)
+void			del_sidedef(t_doom *doom)
 {
 	int i;
 
@@ -29,46 +29,7 @@ void		del_sidedef(t_doom *doom)
 	doom->game_design.cur_sd--;
 }
 
-t_sidedef	*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size)
-{
-	t_sidedef	*new;
-	int			i;
-
-	new = (t_sidedef*)malloc(sizeof(t_sidedef) * *w_size * 2);
-	if (new == NULL)
-		doom_exit_failure(doom, MALLOC_ERR);
-	i = 0;
-	while (i < *w_size)
-	{
-		new[i] = sidedef[i];
-		i++;
-	}
-	free(sidedef);
-	*w_size *= 2;
-	return (new);
-}
-
-void		mv_sidedef(t_sidedef **sidedef, int w_len, int id)
-{
-	int			i;
-	t_sidedef	safe;
-	t_sidedef	safe2;
-
-	i = id;
-	safe = sidedef[0][i];
-	sidedef[0][i] = sidedef[0][w_len];
-	i++;
-	while (i < w_len)
-	{
-		safe2 = sidedef[0][i];
-		sidedef[0][i] = safe;
-		safe = safe2;
-		i++;
-	}
-	sidedef[0][i] = safe;
-}
-
-void		correct_count(t_doom *doom)
+static void		correct_count(t_doom *doom)
 {
 	int i;
 
@@ -80,7 +41,7 @@ void		correct_count(t_doom *doom)
 	}
 }
 
-void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
+static void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
 {
 	doom->game_design.sidedef[doom->game_design.w_len].line.end.x = \
 	x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
@@ -107,7 +68,7 @@ void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
 	doom->game_design.w_len++;
 }
 
-void		sidedef_init(t_doom *doom, int *start, int *id)
+static void		sidedef_init(t_doom *doom, int *start, int *id)
 {
 	doom->game_design.sidedef = (t_sidedef*)malloc(sizeof(t_sidedef) * 2);
 	doom->game_design.w_size = 2;
@@ -116,7 +77,7 @@ void		sidedef_init(t_doom *doom, int *start, int *id)
 	id = 0;
 }
 
-void		add_sidedef(t_doom *doom, int x, int y)
+void			add_sidedef(t_doom *doom, int x, int y)
 {
 	static int	start;
 	static int	id;

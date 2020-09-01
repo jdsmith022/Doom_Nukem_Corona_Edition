@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 13:54:36 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:18:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			font_to_screen(t_doom *doom)
 		font_lib = doom->lib.font_lib.setting_menu_font;
 		len = doom->lib.font_lib.setting_font_len;
 	}
-	else if (doom->game_editor == TRUE)
+	else if (doom->game.editor == TRUE)
 	{
 		font_lib = doom->lib.font_lib.game_editor_font;
 		len = doom->lib.font_lib.ge_font_len;

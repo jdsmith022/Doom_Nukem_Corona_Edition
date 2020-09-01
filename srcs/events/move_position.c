@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:04:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:04:05 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 17:32:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "../../includes/sprites.h"
 #include "../../includes/events.h"
 #include "../../includes/render.h"
-
 
 static int			check_collision(t_doom *doom, t_sidedef *sidedef,
 						t_line move)
@@ -114,9 +113,9 @@ void				set_new_position(t_doom *doom, t_event *event, double dt)
 		direction = MOVE_SPEED;
 		if (event->move_pos_b == TRUE)
 			direction = -MOVE_SPEED;
-		move.end.x = doom->pos.x + (direction * dt) * cos(doom->dir_angle);
-		move.end.y = doom->pos.y + (direction * dt) * sin(doom->dir_angle);
-		angle = doom->dir_angle;
+		move.end.x = doom->pos.x + (direction * dt) * cos(doom->cast.dir_angle);
+		move.end.y = doom->pos.y + (direction * dt) * sin(doom->cast.dir_angle);
+		angle = doom->cast.dir_angle;
 	}
 	else if (event->move_pos_r == TRUE || event->move_pos_l == TRUE)
 	{
@@ -124,10 +123,10 @@ void				set_new_position(t_doom *doom, t_event *event, double dt)
 		if (event->move_pos_l == TRUE)
 			direction = -90 * PI / 180;
 		move.end.x = doom->pos.x + (MOVE_SPEED * dt) * \
-			cos(doom->dir_angle + direction);
+			cos(doom->cast.dir_angle + direction);
 		move.end.y = doom->pos.y + (MOVE_SPEED * dt) * \
-			sin(doom->dir_angle + direction);
-		angle = doom->dir_angle + direction;
+			sin(doom->cast.dir_angle + direction);
+		angle = doom->cast.dir_angle + direction;
 	}
 	move_position(doom, move, angle);
 }

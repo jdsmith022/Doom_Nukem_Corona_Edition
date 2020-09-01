@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   mouse_movement.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:48 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/08/31 17:44:49 by jesmith       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../editor/game_editor.h"
 #include "../../includes/events.h"
+#include "../../includes/game_editor.h"
 
 static double	to_radians(int degrees)
 {
@@ -48,7 +59,7 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 	radian = PI / 180;
 	dir_x = 1;
 	dir_y = 1;
-	doom->dir_angle += to_radians(motion->xrel) * (SENSITIVITY * (dt * 2));
+	doom->cast.dir_angle += to_radians(motion->xrel) * (SENSITIVITY * (dt * 2));
 	set_pitch(doom, motion, dt, event);
 }
 

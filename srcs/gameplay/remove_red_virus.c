@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 14:51:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 14:51:33 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/01 11:12:41 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void			remove_red_virus(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.virus_red == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
+		clock_gettime(doom->game.play_time, &doom->own_event.sprite_timer);
 		doom->own_event.virus_red = FALSE;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 15:06:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/01 11:17:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	activate_scissor_lift(t_doom *doom, int index)
 	doom->pos.x = doom->lib.sprites[index].pos.x;
 	doom->pos.y = doom->lib.sprites[index].pos.y;
 	doom->save_scissor_lift = index;
-	doom->player_height += 10;
+	doom->player.height += 10;
 }
 
 int			sprite_collision(t_doom *doom, t_line movement)

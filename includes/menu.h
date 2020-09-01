@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 17:07:26 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/08/31 22:17:00 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum			e_menu_state
 	game_paused,
 	finished,
 	begin,
-	start_timer
+	start_timer,
 }						t_menu_state;
 
 typedef struct			s_menu {
@@ -46,6 +46,7 @@ void					instruction_window(t_doom *doom);
 void					add_score_to_sdl_text(t_doom *doom);
 void					print_background(t_doom *doom, Uint32 color);
 void					menus(t_doom *doom);
+void					game_over_menu(t_doom *doom);
 void					menu_print_loop(t_doom *doom);
 void					print_player_sprite(t_doom *doom);
 

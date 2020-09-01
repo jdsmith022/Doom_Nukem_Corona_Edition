@@ -1,8 +1,7 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
-
-void    draw_bar_point(Uint32 **pixels, t_bar bar)
+static void		draw_bar_point(Uint32 **pixels, t_bar bar)
 {
 	double	place;
 	int		i;
@@ -19,14 +18,16 @@ void    draw_bar_point(Uint32 **pixels, t_bar bar)
 	{
 		while (i < 8)
 		{
-			pixels[0][(((bar.y - 2 + j) * WIDTH) + (int)place - 4 + i)] = 0xff800000;
+			pixels[0][(((bar.y - 2 + j) * WIDTH) + \
+				(int)place - 4 + i)] = 0xff800000;
 			i++;
 		}
 		i = 0;
 		j++;
 	}
 }
-void    draw_bar(Uint32 **pixels, t_bar bar)
+
+static void		draw_bar(Uint32 **pixels, t_bar bar)
 {
 	int i;
 	int safe;
@@ -46,7 +47,7 @@ void    draw_bar(Uint32 **pixels, t_bar bar)
 	}
 }
 
-void	height_floor_bar(t_doom *doom, Uint32 **pixels)
+static void		height_floor_bar(t_doom *doom, Uint32 **pixels)
 {
 	t_bar bar;
 
@@ -63,7 +64,7 @@ void	height_floor_bar(t_doom *doom, Uint32 **pixels)
 	draw_bar_point(pixels, bar);
 }
 
-void	height_ceiling_bar(t_doom *doom, Uint32 **pixels)
+static void		height_ceiling_bar(t_doom *doom, Uint32 **pixels)
 {
 	t_bar bar;
 
@@ -80,7 +81,7 @@ void	height_ceiling_bar(t_doom *doom, Uint32 **pixels)
 	draw_bar_point(pixels, bar);
 }
 
-void    bars(Uint32 **pixels, t_doom *doom)
+void			bars(Uint32 **pixels, t_doom *doom)
 {
 	t_bar bar;
 

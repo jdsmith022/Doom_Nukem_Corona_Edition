@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:23 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 14:57:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/01 11:12:01 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		draw_add_on(t_doom *doom, int sprite_i)
 
 	scale_bar(doom, &bar, sprite_i);
 	if (sprite_i == doom->player.right_select || \
-	(doom->player_handed == right && doom->own_event.shoot == TRUE \
+	(doom->player.handed == right && doom->own_event.shoot == TRUE \
 	&& sprite_i != CROSS_HAIR))
 	{
 		bar.start.x += 450;
@@ -41,7 +41,7 @@ static void		add_mist_to_sanitizer(t_doom *doom)
 	diff = 0;
 	if (doom->own_event.mist == TRUE)
 	{
-		clock_gettime(doom->game_time, &doom->own_event.sprite_timer);
+		clock_gettime(doom->game.play_time, &doom->own_event.sprite_timer);
 		doom->own_event.mist = FALSE;
 	}
 	else
@@ -56,7 +56,7 @@ void			draw_player_adds(t_doom *doom)
 {
 	size_t			sprite_i;
 
-	if (doom->player_sprite != set)
+	if (doom->player.character != set)
 		set_player_sprite(doom);
 	if (doom->own_event.scissor_lift == TRUE)
 	{

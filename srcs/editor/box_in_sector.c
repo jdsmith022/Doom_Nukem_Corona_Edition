@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
-#include "game_editor.h"
+#include "../../includes/game_editor.h"
 
-static void	init_diff(t_line *diff)
+static void		init_diff(t_line *diff)
 {
 	diff->start.x = 0;
 	diff->start.y = 0;

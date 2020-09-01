@@ -457,7 +457,7 @@ assets/sprites/groceries/honey.bmp
 #number of sectors
 50
 #number of walls
-378
+400
 #number of sliding walls
 2
 
@@ -2714,7 +2714,7 @@ assets/sprites/groceries/honey.bmp
 73
 
 #OBJECTS in SECTOR 9
-#object0 in sector 9 glass_jar6
+#object0 in sector 9 glass_jar3
 35
 700
 1075
@@ -2722,28 +2722,28 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-43
+40
 695
 1070
 705
 1070
-43
+40
 705
 1070
 705
 1080
-43
+40
 705
 1080
 695
 1080
-43
+40
 695
 1080
 695
 1070
 
-#object1 in sector 9 glass_jar6
+#object1 in sector 9 glass_jar3
 36
 690
 1100
@@ -2751,22 +2751,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-43
+40
 685
 1095
 695
 1095
-43
+40
 695
 1095
 695
 1105
-43
+40
 695
 1105
 685
 1105
-43
+40
 685
 1105
 685
@@ -9444,9 +9444,9 @@ assets/sprites/groceries/honey.bmp
 736
 520
 0
-16
-16
-16
+38
+38
+38
 234
 
 
@@ -9456,23 +9456,23 @@ assets/sprites/groceries/honey.bmp
 672
 520
 672
-712
+620
 0
-70
-70
-70
+16
+16
+16
 235
 
 #sidedefs
 -1
 672
-712
+620
 672
 808
 0
-16
-16
-16
+70
+70
+70
 236
 
 #sidedefs
@@ -9504,23 +9504,23 @@ assets/sprites/groceries/honey.bmp
 736
 744
 736
-552
+648
 0
-71
-71
-71
+37
+37
+37
 239
 
 #sidedefs
 -1
 736
-552
-736
 520
+736
+648
 0
-72
-72
-72
+16
+16
+16
 240
 
 ##Second Column##
@@ -10874,7 +10874,7 @@ assets/sprites/groceries/honey.bmp
 635
 363
 
-#object1 in sector 30 white onion 59
+#object1 in sector 30 red apple 63
 237
 700
 368
@@ -10882,22 +10882,22 @@ assets/sprites/groceries/honey.bmp
 16
 1
 4
-59
+63
 695
 363
 705
 363
-59
+63
 705
 363
 705
 373
-59
+63
 705
 373
 695
 373
-59
+63
 695
 373
 695
