@@ -300,15 +300,16 @@ typedef struct		s_lib {
 
 typedef struct		s_gamedesign {
 	t_sector		*sector;
-	int				s_len;
-	int				s_size;
+	t_ed_sector		*ed_sector;
 	t_sidedef		*sidedef;
 	t_ed_sidedef	*ed_sidedef;
-	bool			finish_sector;
+	int				sd_len;
+	int				sc_len;
+	int				o_len;
+	int				s_size;
 	int				w_len;
 	int				w_size;
 	t_sprite		*object;
-	int				o_len;
 	int				o_size;
 	int				cur_tex;
 	int				index_obj;

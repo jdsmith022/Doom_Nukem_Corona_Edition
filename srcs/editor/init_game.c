@@ -22,8 +22,8 @@ static void		init_first_sector(t_doom *doom)
 
 void			init_game_design(t_doom *doom)
 {
-	doom->game_design.sector = (t_sector*)malloc(sizeof(t_sector) * 2);
-	if (doom->game_design.sector == NULL)
+	doom->game_design.ed_sector = (t_ed_sector*)malloc(sizeof(t_ed_sector));
+	if (doom->game_design.ed_sector == NULL)
 		doom_exit_failure(doom, "error: game design sector malloc");
 	doom->game_design.txt_1 = 0;
 	doom->game_design.txt_3 = 1;
