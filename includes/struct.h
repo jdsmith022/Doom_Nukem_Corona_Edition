@@ -302,6 +302,7 @@ typedef struct		s_gamedesign {
 	int				s_len;
 	int				s_size;
 	t_sidedef		*sidedef;
+	t_ed_sidedef	*ed_sidedef;
 	int				w_len;
 	int				w_size;
 	t_sprite		*object;

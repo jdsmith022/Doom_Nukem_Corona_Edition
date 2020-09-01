@@ -133,6 +133,17 @@ typedef struct s_line		t_line;
 # define LL_HEIGHT 5
 # define LL_LEN 160.0
 
+
+typedef struct 			s_ed_sidedef
+{
+	int					id;
+	t_line				line;
+	int					texture;
+	int					opp_sidedef;
+	int					sector;
+	struct t_ed_sidedef *next;
+}						t_ed_sidedef;			
+
 typedef enum		e_game_editor_im
 {
 	plus,
