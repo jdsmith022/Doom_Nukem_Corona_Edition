@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:33:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/01 20:44:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void			set_values_clipping_sprites(t_doom *doom, t_plane plane,
 	if (plane.sidedef_top >= 0 && plane.sidedef_top <= HEIGHT)
 		doom->lib.sector[sidedef.sector].top[x] = plane.sidedef_top;
 	else
-		doom->lib.sector[sidedef.sector].bottom[x] = 0;
+		doom->lib.sector[sidedef.sector].top[x] = 0;
 	if (sidedef.opp_sector != -1 || sidedef.action == 6)
 		set_values_clipping_sprites_2(doom, plane, sidedef, x);
 	else

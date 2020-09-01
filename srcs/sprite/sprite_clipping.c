@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 13:12:27 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/01 20:44:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		clip_top(t_doom *doom, int index_sp, int x, int screen_y)
 		mid_top =\
 		doom->lib.sector[sprite.prev_sectors[i]].mid_top[x];
 		if (mid_top == -1)
+			return (1);
+		if (y_top == -1)
 			return (1);
 		if (mid_top > 0 && mid_top < HEIGHT && mid_top > screen_y)
 			return (1);
