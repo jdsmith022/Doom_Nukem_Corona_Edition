@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 15:46:00 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/01 18:01:48 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,14 @@
 
 static void	core_gameplay_loop(t_doom *doom, double dt)
 {
-	key_handler(doom, &doom->own_event, dt);
-	if (doom->game.editor == FALSE && doom->menu->state == start_game)
-	{
-		sprite_reset(doom);
-		action_handler(doom);
-		audio(doom, &doom->own_event);
-	}
-	else if (doom->game.editor == TRUE)
-	{
-		open_game_editor(doom);
-		draw_font(doom, doom->lib.font_lib.game_editor_font,\
-			doom->lib.font_lib.ge_font_len);
-	}
+	if (doom->game.editor == TRUE)
+		open_game_editor(doom, dt);
+	sprite_reset(doom);
+	action_handler(doom);
+	audio(doom, &doom->own_event);
 }
 
-static void	sdl_poll_events(t_doom *doom, double dt)
+void	sdl_poll_events(t_doom *doom, double dt)
 {
 	SDL_Event event;
 
@@ -46,7 +38,11 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
+		{
 			doom->game.is_running = FALSE;
+			if (doom->game.editor == TRUE)
+				doom->game.editor = FALSE;
+		}
 		if (event.type == SDL_KEYDOWN)
 			key_press(doom, &doom->own_event, &event.key);
 		if (event.type == SDL_KEYUP)
@@ -58,10 +54,11 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
+	key_handler(doom, &doom->own_event, dt);
 }
 
 void		doom_update(t_doom *doom, double dt)
 {
-	sdl_poll_events(doom, dt);
 	core_gameplay_loop(doom, dt);
+	sdl_poll_events(doom, dt);
 }

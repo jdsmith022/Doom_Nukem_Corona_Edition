@@ -141,7 +141,7 @@ typedef struct 			s_ed_sidedef
 	int					texture;
 	int					opp_sidedef;
 	int					sector;
-	struct t_ed_sidedef *next;
+	struct s_ed_sidedef *next;
 }						t_ed_sidedef;			
 
 typedef enum		e_game_editor_im
@@ -185,7 +185,7 @@ typedef struct	s_angle_line {
 }				t_angle_line;
 
 /*game editor*/
-void				open_game_editor(t_doom *doom);
+void				open_game_editor(t_doom *doom, double dt);
 void				add_sidedef(t_doom *doom, int x, int y);
 void				del_sidedef(t_doom *doom);
 void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);

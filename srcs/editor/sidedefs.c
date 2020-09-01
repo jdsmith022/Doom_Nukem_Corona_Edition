@@ -29,45 +29,6 @@ void			del_sidedef(t_doom *doom)
 	doom->game_design.cur_sd--;
 }
 
-static void		correct_count(t_doom *doom)
-{
-	int i;
-
-	i = doom->game_design.cur_sec + 1;
-	while (i <= doom->game_design.s_len)
-	{
-		doom->game_design.sector[i].i_sidedefs++;
-		i++;
-	}
-}
-
-static void		add_sidedef_to_array(int id, int x, int y, t_doom *doom)
-{
-	doom->game_design.sidedef[doom->game_design.w_len].line.end.x = \
-	x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
-	doom->game_design.sidedef[doom->game_design.w_len].line.end.y = \
-	y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
-	doom->game_design.sidedef[doom->game_design.w_len].id = id;
-	doom->game_design.sidedef[doom->game_design.w_len].sector = \
-	doom->game_design.cur_sec;
-	doom->game_design.sidedef[doom->game_design.w_len].opp_sidedef = -1;
-	doom->game_design.sidedef[doom->game_design.w_len].opp_sector = -1;
-	doom->game_design.sidedef[doom->game_design.w_len].txt_1 = 0;
-	doom->game_design.sidedef[doom->game_design.w_len].txt_2 = 0;
-	doom->game_design.sidedef[doom->game_design.w_len].txt_3 = 0;
-	doom->game_design.sidedef[doom->game_design.w_len].action = 0;
-	if (doom->game_design.cur_sec != doom->game_design.s_len)
-		mv_sidedef(&doom->game_design.sidedef, doom->game_design.w_len, \
-		doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs);
-	correct_count(doom);
-	doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs++;
-	doom->game_design.cur_sd = doom->game_design.cur_sec !=\
-	doom->game_design.s_len ?
-	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs \
-	: doom->game_design.w_len;
-	doom->game_design.w_len++;
-}
-
 static void		sidedef_init(t_doom *doom, t_line line, int id)
 {
 	t_ed_sidedef *sidedef;
@@ -77,7 +38,7 @@ static void		sidedef_init(t_doom *doom, t_line line, int id)
 	doom->game_design.ed_sidedef = ft_memalloc(sizeof(t_ed_sidedef) * 1);
 	if (!doom->game_design.ed_sidedef)
 		doom_exit_failure(doom, "error: malloc sidedef in editor\n");
-	sidedef = &doom->game_design.ed_sidedef;
+	sidedef = doom->game_design.ed_sidedef;
 	sidedef->id = id;
 	sidedef->opp_sidedef = -1;
 	sidedef->texture = doom->game_design.cur_tex;
@@ -86,31 +47,41 @@ static void		sidedef_init(t_doom *doom, t_line line, int id)
 	sidedef->next = NULL;
 }
 
-void			add_sidedef(t_doom *doom, t_line line)
+static bool			snap_close_sector(t_point start, t_point *end)
 {
-	static int	start;
-	static int	id;
-	int			i;
+	double		distance;
 
-	sidedef_init(doom, line, id);
-	
-	// if (doom->game_design.sidedef == NULL)
-	// 	sidedef_init(doom, &start, &id);
-	// if (!start)
-	// {
-	// 	if (doom->game_design.w_size < doom->game_design.w_len + 1)
-	// 		doom->game_design.sidedef = cpy_sidedef(doom,\
-	// 		doom->game_design.sidedef, &doom->game_design.w_size);
-	// 	doom->game_design.sidedef[doom->game_design.w_len].line.start.x = \
-	// 	x + doom->game_design.sector[doom->game_design.cur_sec].diff_x;
-	// 	doom->game_design.sidedef[doom->game_design.w_len].line.start.y = \
-	// 	y + doom->game_design.sector[doom->game_design.cur_sec].diff_y;
-	// 	start = 1;
-	// }
-	// else
-	// {
-	// 	add_sidedef_to_array(id, x, y, doom);
-	// 	start = 0;
-	// 	id++;
-	// }
+	distance = point_distance(start, *end);
+	if (distance < 10)
+	{
+		*end = start;
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+void			add_sidedef(t_doom *doom, int x, int y)
+{
+	static t_line	line;
+	static t_point	start_sector;
+	static int		id;
+	int				i;
+
+	if (line.start.x == -1)
+	{
+		line.start.x = x;
+		line.start.y = y;
+		start_sector = line.start;
+		doom->game_design.finish_sector = FALSE;
+	}
+	else if (line.end.x == -1)
+	{
+		line.end.x = x;
+		line.end.y = y;
+		if (snap_close_sector(start_sector, &line.end) == TRUE)
+			doom->game_design.finish_sector = TRUE;
+		else
+			line.end = line.start;
+		sidedef_init(doom, line, id);
+	}
 }

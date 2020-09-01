@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:44:40 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/01 17:54:53 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,11 @@ void			key_press(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
 	if (key->keysym.sym == SDLK_ESCAPE)
+	{
 		doom->game.is_running = FALSE;
+		if (doom->game.editor == TRUE)
+			doom->game.editor = FALSE;
+	}
 	else if (key->keysym.sym == SDLK_w)
 		event->move_pos_f = TRUE;
 	else if (key->keysym.sym == SDLK_s)

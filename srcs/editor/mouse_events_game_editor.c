@@ -18,7 +18,11 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 		doom->game_design.sector[doom->game_design.cur_sec].diff_y -= 10;
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	doom->game_design.pl_pos == 0 && doom->game_design.sidedef_bar == 1)
+	{
+		printf("add sidedef\n");
 		add_sidedef(doom, x, y);
+		printf("after add sidedef\n");
+	}
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	doom->game_design.pl_pos == 0 && doom->game_design.object_bar == 1)
 		add_object(doom, x, y);

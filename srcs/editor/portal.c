@@ -13,8 +13,6 @@ static void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
 		doom->game_design.cur_sec = 0;
 	if (doom->game_design.portal_sec == doom->game_design.cur_sec)
 		doom->game_design.cur_sec += dir;
-	// doom->game_design.sector[doom->game_design.cur_sec].diff_x = diff_x;
-	// doom->game_design.sector[doom->game_design.cur_sec].diff_y = diff_y;
 }
 
 static void		new_portal(t_gamedesign *gd, t_doom *doom)
@@ -31,8 +29,6 @@ static void		new_portal(t_gamedesign *gd, t_doom *doom)
 	gd->sidedef[gd->portal_sd].opp_sector = gd->cur_sec;
 	gd->sidedef[gd->cur_sd].opp_sidedef = gd->portal_sd;
 	gd->sidedef[gd->cur_sd].opp_sector = gd->portal_sec;
-	// gd->sector[gd->cur_sec].diff_x = gd->sector[gd->portal_sec].diff_x;
-	// gd->sector[gd->cur_sec].diff_y = gd->sector[gd->portal_sec].diff_y;
 	if (gd->portal_sd > gd->cur_sd)
 		gd->portal_sd--;
 }

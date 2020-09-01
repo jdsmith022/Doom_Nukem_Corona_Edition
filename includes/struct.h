@@ -48,6 +48,7 @@ typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
+typedef struct s_ed_sidedef t_ed_sidedef;
 
 typedef enum			e_settings
 {
@@ -303,6 +304,7 @@ typedef struct		s_gamedesign {
 	int				s_size;
 	t_sidedef		*sidedef;
 	t_ed_sidedef	*ed_sidedef;
+	bool			finish_sector;
 	int				w_len;
 	int				w_size;
 	t_sprite		*object;

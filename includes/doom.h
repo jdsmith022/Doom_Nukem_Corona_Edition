@@ -33,8 +33,10 @@ void				init_events(t_event *event);
 void				init_audio(t_doom *doom);
 void				init_window(t_doom *doom);
 void				game_loop(t_doom *doom);
+void				set_to_window(t_doom *doom);
 double				get_timeframe(long *last_frame_time);
 void				doom_update(t_doom *doom, double dt_time);
+void				sdl_poll_events(t_doom *doom, double dt);
 void				update_screen(t_doom *doom);
 void				doom_render(t_doom *doom);
 

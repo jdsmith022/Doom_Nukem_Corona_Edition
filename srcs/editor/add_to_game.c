@@ -1,6 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/menu.h"
+#include "../../includes/game_editor.h"
 
 static t_sidedef	*new_level_sidedef(t_doom *doom,\
 					t_sidedef *sidedef, int w_len)
@@ -77,6 +78,7 @@ static void			add_to_game2(t_doom *doom)
 	doom->menu->state = start_game;
 	doom->lib.sector[doom->i_sector].action = START_TIMER;
 	doom->menu->start_timer = FALSE;
+	doom->game.editor = FALSE;
 }
 
 void				add_to_game(t_doom *doom)
