@@ -145,7 +145,7 @@ typedef struct		s_event {
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
-	int				virus_hit_index;
+	int				hit_index;
 	bool			virus_red;
 	int				virus_red_i;
 	bool			corona_hit;

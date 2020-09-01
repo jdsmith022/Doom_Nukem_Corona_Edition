@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 14:50:49 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/31 14:54:16 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/01 15:16:29 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ static bool		sprite_has_action(t_sprite sprite)
 	int action;
 
 	action = sprite.action;
-	if (action == 4 || action == 9 || action == 13 ||
-	action == 11 || action == 12 || action == 14)
+	if (action == 1 || action == 2 || action == 3 ||\
+	action == 4 || action == 9 || action == 13 || action == 11 ||\
+	action == 12 || action == 14)
 		return (true);
 	return (false);
 }
@@ -50,7 +51,7 @@ static void		check_hit_new(t_doom *doom)
 		if (doom->lib.sprites[doom->lib.sprite_order[i]].distance < 150 &&\
 		sprite_has_action(doom->lib.sprites[doom->lib.sprite_order[i]]) &&\
 		sprite_in_shooting_area(doom, doom->lib.sprite_order[i]) != -1)
-			doom->own_event.virus_hit_index = doom->lib.sprite_order[i];
+			doom->own_event.hit_index = doom->lib.sprite_order[i];
 		i++;
 	}
 }
@@ -60,7 +61,7 @@ void			check_sprite_hit(t_doom *doom)
 	t_ray	ray;
 
 	check_hit_new(doom);
-	if (doom->own_event.virus_hit_index != -1)
+	if (doom->own_event.hit_index != -1)
 		check_select_spray_sprite(doom);
-	doom->own_event.virus_hit_index = -1;
+	doom->own_event.hit_index = -1;
 }

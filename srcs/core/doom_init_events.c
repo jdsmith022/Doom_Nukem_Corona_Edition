@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:45:52 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/01 14:29:20 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		init_events(t_event *event)
 	event->scissor_lift = FALSE;
 	event->scissor_lift_down = FALSE;
 	event->scissor_lift_up = FALSE;
-	event->virus_hit_index = -1;
+	event->hit_index = -1;
 	event->parked_too_close = FALSE;
 	event->fall = FALSE;
 	event->fall_count = -1;
