@@ -139,8 +139,8 @@ typedef struct 			s_ed_sidedef
 	int					id;
 	t_line				line;
 	int					texture;
-	int					opp_sidedef;
 	int					sector;
+	int					opp_sector;
 	struct s_ed_sidedef *next;
 }						t_ed_sidedef;			
 
@@ -205,12 +205,11 @@ void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				box_in_sectors(t_doom *doom);
 void				init_game_design(t_doom *doom);
 void				init_game_design(t_doom *doom);
-void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
+void				draw_lines(t_doom *doom, Uint32 **pixels, t_ed_sidedef *ed_sidedef);
 void				add_object(t_doom *doom, int x, int y);
 void				set_angle(t_angle_line *angle, double *i);
 void				set_pixels(Uint32 **pixels, t_angle_line angle, int color);
 void				draw_object(t_doom *doom, Uint32 **pixels);
-void				draw_lines(t_doom *doom, Uint32 **pixels, int b);
 void				del_obj(t_doom *doom);
 void				correct_i_object(int i, t_doom *doom);
 void				add_specifications(t_gamedesign *gd, int index);

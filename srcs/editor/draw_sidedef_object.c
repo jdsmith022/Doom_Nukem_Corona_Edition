@@ -45,21 +45,22 @@ static void			draw_portal(t_doom *doom, Uint32 **pixels, int sector)
 	}
 }
 
-void				draw_lines(t_doom *doom, Uint32 **pixels, int b)
+void				draw_lines(t_doom *doom, Uint32 **pixels, t_ed_sidedef *ed_sidedef)
 {
 	t_angle_line	angle;
 	double			i;
 	int				color;
 
-	angle = calc_angle(doom->game_design.sidedef[b].line, doom);
+	angle = calc_angle(ed_sidedef->line, doom);
+	printf("%f - %f\n", ed_sidedef->line.start.x, ed_sidedef->line.start.y);
 	i = 0.0;
-	if (doom->game_design.sidedef[b].opp_sidedef != -1)
+	if (ed_sidedef->opp_sector != -1)
 		draw_portal(doom, pixels, \
-			doom->game_design.sidedef[b].opp_sector);
-	if (doom->game_design.sidedef[b].opp_sidedef != -1 && \
-	doom->game_design.cur_sd != b)
+			ed_sidedef->opp_sector);
+	if (ed_sidedef->opp_sector != -1 && \
+	doom->game_design.cur_sd != ed_sidedef->id)
 		color = 0xffFFA07A;
-	else if (doom->game_design.cur_sd != b || \
+	else if (doom->game_design.cur_sd != ed_sidedef->id || \
 		doom->game_design.sidedef_bar == 0)
 		color = 0x8c3cde6;
 	else

@@ -4,6 +4,7 @@
 
 static void		mouse_press_map(t_doom *doom, int x, int y)
 {
+	printf("in moese\n");
 	if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && \
 	y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
 		doom->game_design.sector[doom->game_design.cur_sec].diff_x -= 10;

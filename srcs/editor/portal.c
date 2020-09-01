@@ -48,6 +48,4 @@ void			add_portal(t_doom *doom, int dir)
 			? doom->game_design.cur_sec - 1 : doom->game_design.s_len;
 	}
 	new_portal(&(doom->game_design), doom);
-	// diff_x = doom->game_design.sector[doom->game_design.cur_sec].diff_x;
-	// diff_y = doom->game_design.sector[doom->game_design.cur_sec].diff_y;
 }

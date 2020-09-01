@@ -42,5 +42,7 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.portal_sd = -1;
 	doom->game_design.cur_tex = 7;
 	doom->game_design.custom_level = TRUE;
+	doom->game_design.drawing_sd.start.x = -1;
+	doom->game_design.drawing_sd.end.x = -1;
 	init_first_sector(doom);
 }
