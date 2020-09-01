@@ -133,6 +133,16 @@ typedef struct s_line		t_line;
 # define LL_HEIGHT 5
 # define LL_LEN 160.0
 
+typedef struct			s_ed_sector
+{
+	int					id;
+	int					n_sidedefs;
+	int					i_sidedefs;
+	int					height_floor;
+	int					height_ceiling;
+	int					light_level;	
+	struct s_ed_sector	*next;
+}						t_ed_sector;
 
 typedef struct 			s_ed_sidedef
 {

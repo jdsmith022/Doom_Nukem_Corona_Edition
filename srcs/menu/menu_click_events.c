@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 19:18:22 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/01 21:59:24 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
 	{
 		doom->game.editor = TRUE;
 		doom->menu->state = start_game;
+		printf("her\n");
 	}
 	else if (x >= 425 && x <= 560 && y >= 300 && y <= 330)
 		difficulty_setting(doom, x, y);

@@ -8,7 +8,7 @@ static void		set_draw_lines(t_doom *doom, Uint32 **pixels)
 	t_ed_sidedef *ed_sidedef;
 
 	ed_sidedef = doom->game_design.ed_sidedef;
-	while (ed_sidedef->next != NULL)\
+	while (ed_sidedef)
 	{
 		draw_lines(doom, pixels, ed_sidedef);
 		ed_sidedef = ed_sidedef->next;
@@ -32,8 +32,7 @@ void	open_game_editor(t_doom *doom, double dt)
 		draw_screen_colors(pixels, doom);
 		draw_images(pixels, doom);
 		bars(&pixels, doom);
-		if (doom->game_design.ed_sidedef != NULL)
-			set_draw_lines(doom, &pixels);
+		set_draw_lines(doom, &pixels);
 		draw_object(doom, &pixels);
 		draw_font(doom, doom->lib.font_lib.game_editor_font,\
 			doom->lib.font_lib.ge_font_len);

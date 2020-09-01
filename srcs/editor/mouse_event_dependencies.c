@@ -5,16 +5,13 @@
 void	change_texture(t_doom *doom, int *txt, int change)
 {
 	if (doom->lib.len_tex_lib > *txt + change && *txt + change >= 0)
-		*txt += change;
+		doom->game_design.cur_tex += change;
 }
 
 void	change_sidedef(t_doom *doom, int change)
 {
-	if (doom->game_design.cur_sd + change < \
-	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs \
-	+ doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs &&
-	doom->game_design.cur_sd >= \
-	doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - change)
+	if (doom->game_design.cur_sd + change < doom->game_design.s_len &&
+	doom->game_design.cur_sd + change >= 0)
 		doom->game_design.cur_sd += change;
 }
 

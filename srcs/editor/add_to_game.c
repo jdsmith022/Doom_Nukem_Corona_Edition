@@ -83,10 +83,12 @@ static void			add_to_game2(t_doom *doom)
 
 void				add_to_game(t_doom *doom)
 {
+	printf("in add to game\n");
 	if (doom->game_design.sector != NULL && doom->game_design.w_len > 2)
 	{
 		if (doom->game_design.pl_x > 0 && doom->game_design.pl_y > 0)
 		{
+			printf("is good\n");
 			coor_pos(doom);
 			box_in_sectors(doom);  // give these walls a flag so that they are not drawn if the sector is outside
 			// free(doom->lib.sector); //rm when there are multiple levels		
