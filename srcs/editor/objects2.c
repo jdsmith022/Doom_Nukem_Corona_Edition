@@ -87,5 +87,4 @@ void		add_specifications(t_gamedesign *gd, int index)
 	gd->object[index].sector = gd->cur_sec;
 	gd->object[index].visible = -1;
 	gd->object[index].action = level_sprites[gd->index_obj].action;
-	printf("index = %d,	object id:	%d, level %d\n", index, level_sprites[gd->index_obj].index, gd->cur_sec);
 }
