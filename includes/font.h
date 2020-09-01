@@ -98,6 +98,7 @@ void				set_instruction_text_4(t_doom *doom, t_font *lib);
 void				save_pause_font(t_doom *doom, int *len);
 
 void				font_timer(t_doom *doom);
+void				draw_font(t_doom *doom, t_font *font_lib, uint8_t len);
 void				font_timer_box_short(t_doom *doom, bool *flag,
 						int start_dex, int end_dex);
 void				font_timer_box_long(t_doom *doom, bool *flag,

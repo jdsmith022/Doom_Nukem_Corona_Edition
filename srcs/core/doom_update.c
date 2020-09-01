@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:46:27 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/01 15:46:00 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../includes/action.h"
 #include "../../includes/events.h"
 #include "../../includes/menu.h"
+#include "../../includes/font.h"
 #include "../../includes/sprites.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
@@ -31,9 +32,8 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 	else if (doom->game.editor == TRUE)
 	{
 		open_game_editor(doom);
-		doom->lib.sector[doom->i_sector].action = START_TIMER;
-		doom->menu->start_timer = FALSE;
-		font_to_screen(doom);
+		draw_font(doom, doom->lib.font_lib.game_editor_font,\
+			doom->lib.font_lib.ge_font_len);
 	}
 }
 

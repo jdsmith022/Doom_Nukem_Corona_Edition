@@ -75,6 +75,8 @@ static void			add_to_game2(t_doom *doom)
 		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 	doom->game.light = TRUE;
 	doom->menu->state = start_game;
+	doom->lib.sector[doom->i_sector].action = START_TIMER;
+	doom->menu->start_timer = FALSE;
 }
 
 void				add_to_game(t_doom *doom)
