@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/01 11:17:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/02 13:04:31 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ void		exit_scissor_lift(t_doom *doom)
 	doom->lib.sprites[doom->save_scissor_lift].pos);
 	if (distance > 60)
 	{
+		printf("exit scissor lift\n");
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
 		doom->own_event.scissor_lift_down = FALSE;
 	}
 	else
 	{
+		printf("too close\n");
 		doom->own_event.parked_too_close = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
 	}
@@ -53,6 +55,7 @@ void		exit_scissor_lift(t_doom *doom)
 
 static void	activate_scissor_lift(t_doom *doom, int index)
 {
+	printf("activate scissor lift\n");
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = TRUE;

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:44:40 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/02 13:11:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		event->move_pos_b == TRUE || event->move_pos_r == TRUE ||\
 		event->move_pos_l == TRUE))
 		set_new_position(doom, event, dt);
+	if (event->jump == TRUE)
+		printf("jump: %d, SL: %d, fall: %d\n", event->jump, event->scissor_lift, event->fall);
 	if (event->jump == TRUE && event->scissor_lift == FALSE \
 		&& event->fall == FALSE)
 		jump_player(doom, dt);
@@ -38,7 +40,11 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		bend_down(doom);
 	if (event->bend == TRUE && event->scissor_lift == TRUE && \
 		doom->player.height <= 50)
+	{
 		exit_scissor_lift(doom);
+		event->fall = FALSE;
+		printf("SL: %d, UP: %d, DOWN: %d\n", doom->own_event.scissor_lift,  doom->own_event.scissor_lift_up,  doom->own_event.scissor_lift_down);
+	}
 	else if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);
 	else if (event->scissor_lift_down == TRUE)
@@ -76,7 +82,10 @@ static void		key_press2(t_doom *doom, t_event *event,
 	else if (key->keysym.sym == SDLK_v && doom->game.editor == TRUE)
 		printing_map(&(doom->game_design));
 	else if (key->keysym.sym == SDLK_SPACE)
+	{
 		event->jump = TRUE;
+		printf("event jump is true\n");
+	}
 	else if (key->keysym.sym == SDLK_x)
 		event->bend = TRUE;
 	else if (key->keysym.sym == SDLK_n)
