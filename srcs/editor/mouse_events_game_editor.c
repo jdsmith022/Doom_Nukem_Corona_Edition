@@ -7,6 +7,12 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	t_gamedesign editor;
 
 	editor =  doom->game_design;
+	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
+	editor.edit_sector == FALSE && editor.open_connection == TRUE)
+		check_connection(doom, x, y);
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
+	editor.edit_sector == FALSE && editor.open_connection == FALSE)
+		add_sidedef(doom, x, y);
 	// if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && \
 	// y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
 	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_x -= 10;
@@ -19,18 +25,7 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	// else if (x > AR_UP_M_X && x < AR_UP_M_X + FRAME_WIDTH && \
 	// y > AR_UP_M_Y && y < AR_UP_M_Y + FRAME_HEIGHT)
 	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_y -= 10;
-	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.edit_sector == FALSE && editor.open_connection == TRUE)
-		check_connection(doom, x, y);
-	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.edit_sector == FALSE && editor.open_connection == FALSE)
-		add_sidedef(doom, x, y);
-	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.pl_pos == 0 && editor.object_bar == 1)
-		// add_object(doom, x, y);
-	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.pl_pos == 1)
-		add_player(doom, x, y);
+	
 }
 
 // static void		mouse_press_sector_txt(t_doom *doom, int x, int y)
@@ -55,13 +50,7 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 
 static void		mouse_press_sector(t_doom *doom, int x, int y)
 {
-	if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
-	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
-	{
-		if (doom->game_design.sc_len > 0)
-			delete_sector(&(doom->game_design));
-	}
-	else if (x > HF_X && x < HF_X + HF_LEN && y > HF_Y && y < HF_Y + HF_HEIGHT)
+	if (x > HF_X && x < HF_X + HF_LEN && y > HF_Y && y < HF_Y + HF_HEIGHT)
 		doom->game_design.floor_height = \
 			(float)(x - HF_X) / HF_LEN * HF_DIFF + HF_MIN;
 	else if (x > HC_X && x < HC_X + HC_LEN && y > HC_Y && y < HC_Y + HC_HEIGHT)

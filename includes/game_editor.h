@@ -142,7 +142,7 @@ typedef struct			s_ed_sector
 	int					height_ceiling;
 	int					light_level;	
 	struct s_ed_sector	*next;
-	struct s_ed_sector	*previous;;
+	struct s_ed_sector	*previous;
 }						t_ed_sector;
 
 typedef struct 			s_ed_sidedef
@@ -203,7 +203,7 @@ void				set_sector_values(t_doom *doom);
 bool				snap_close_sector(t_point start, t_point *end);
 void				check_connection(t_doom *doom, int x, int y);
 void				add_sidedef(t_doom *doom, int x, int y);
-void				delete_sector(t_gamedesign *editor);
+void				delete_sector(t_doom *doom);
 void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);
 t_sidedef			*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size);
 void				rmove(t_sprite *sprite, t_doom *doom);

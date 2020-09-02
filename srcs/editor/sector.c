@@ -2,11 +2,11 @@
 #include "../../includes/game_editor.h"
 
 
-static void		delete_portals(t_gamedesign *editor, int sector)
+static void		delete_portals(t_doom *doom, int sector)
 {
 	t_ed_sidedef *sidedef;
 
-	sidedef = editor->sd_head;
+	sidedef = doom->game_design.sd_head;
 	while(sidedef->next != NULL)
 	{
 		if (sidedef->opp_sector == sector)
@@ -15,58 +15,59 @@ static void		delete_portals(t_gamedesign *editor, int sector)
 	}
 }
 
-static void		reset_values(t_gamedesign *editor)
+static void		reset_values(t_doom *doom)
 {
+	t_gamedesign *editor;
+
+	editor = &doom->game_design;
 	ft_bzero(editor->ed_sidedef, sizeof(t_ed_sidedef));
 	editor->ed_sidedef->next = NULL;
+	editor->ed_sidedef->id = 0;
+	editor->sd_head = editor->ed_sidedef;
 	ft_bzero(editor->ed_sector, sizeof(t_ed_sector));
 	editor->draw_line.start.x = -1;
 	editor->draw_line.start.y = -1;
 	editor->draw_line.end.x = -1;
 	editor->draw_line.end.y = -1;
 	editor->ed_sector->next = NULL;
-	editor->ed_sector->light_level = 10;
-	editor->ed_sector->height_ceiling = 0;
-	editor->ed_sector->height_floor = 0;
+	doom->game_design.ed_sector->light_level = 10;
+	doom->game_design.ed_sector->height_ceiling = 0;
+	doom->game_design.ed_sector->height_floor = 0;
+	doom->game_design.ed_sector->id = 0;
 	editor->ed_sector = FALSE;
+	printf("reset %d\n", doom->game_design.ed_sector->light_level);
 }
 
-void			delete_sector(t_gamedesign *editor)
+void			delete_sector(t_doom *doom)
 {
 	t_ed_sidedef	*sidedef;
 	t_ed_sidedef	*previous;
 	t_ed_sidedef	*next;
 	int				sector;
 
-	sector = editor->ed_sidedef->sector;
-	sidedef = editor->sd_head;
+	sector = doom->game_design.ed_sidedef->sector;
+	sidedef = doom->game_design.sd_head;
 	while (sidedef->next != NULL && sidedef->sector != sector)
 		sidedef = sidedef->next;
-	while (sidedef && sidedef->sector == sector && editor->sd_len > 1)
+	while (sidedef && sidedef->sector == sector && doom->game_design.sd_len > 1)
 	{
 		previous = sidedef->previous;
 		next = sidedef->next;
-		if (previous != NULL && next != NULL)
-		{
+		if (previous != NULL)
 			previous->next = next;
+		if (next != NULL)
 			next->previous = previous;
-		}
-		else
-			previous->next = NULL;
 		ft_bzero(sidedef, sizeof(t_ed_sidedef));
 		free(sidedef);
-		if (next == NULL)
-			sidedef = previous;
-		else
-			sidedef = next;
-		editor->sd_len--;
+		sidedef = next;
+		doom->game_design.sd_len--;
 	}
-	editor->ed_sidedef = sidedef;
-	editor->cur_sd = sidedef->id;
-	if (editor->sd_len == 1)
-		reset_values(editor);
+	doom->game_design.ed_sidedef = sidedef;
+	doom->game_design.cur_sd = sidedef->id;
+	if (doom->game_design.sd_len == 1)
+		reset_values(doom);
 	else
-		delete_portals(editor, sector);
+		delete_portals(doom, sector);
 }
 
 static void		set_sector_sidedefs(t_doom *doom)
