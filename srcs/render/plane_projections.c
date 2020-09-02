@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 16:32:06 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/02 17:48:05 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,26 +119,26 @@ static void		set_values_clipping_sprites(t_doom *doom, t_plane plane,
 	if (sidedef.opp_sector != -1 || sidedef.action == 6)
 	{
 		//plane mid bottom
-		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
+		if (in_range(plane.mid_texture_bottom, -1, HEIGHT + 1) &&\
 		doom->lib.sector[sidedef.sector].mid_bottom.start.x == -1)
 		{
 			doom->lib.sector[sidedef.sector].mid_bottom.start.x = x;
 			doom->lib.sector[sidedef.sector].mid_bottom.start.y = plane.mid_texture_bottom;
 		}
-		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
+		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT + 1) &&\
 		doom->lib.sector[sidedef.sector].mid_bottom.start.x != -1)
 		{
 			doom->lib.sector[sidedef.sector].mid_bottom.end.x = x;
 			doom->lib.sector[sidedef.sector].mid_bottom.end.y = plane.mid_texture_bottom;
 		}
 		//plane mid top
-		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
+		if (in_range(plane.mid_texture_bottom, -1, HEIGHT + 1) &&\
 		doom->lib.sector[sidedef.sector].mid_top.start.x == -1)
 		{
 			doom->lib.sector[sidedef.sector].mid_top.start.x = x;
 			doom->lib.sector[sidedef.sector].mid_top.start.y = plane.mid_texture_top;
 		}
-		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
+		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT + 1) &&\
 		doom->lib.sector[sidedef.sector].mid_top.start.x != -1)
 		{
 			doom->lib.sector[sidedef.sector].mid_top.end.x = x;
@@ -155,7 +155,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	plane.x = x;
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, &sector);
-	// set_values_clipping_sprites(doom, plane, sidedef, x);
+	set_values_clipping_sprites(doom, plane, sidedef, x);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)

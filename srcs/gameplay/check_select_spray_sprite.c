@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 15:20:00 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 15:14:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/02 16:40:56 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void	check_spray_sprite(t_doom *doom)
 
 void		check_select_spray_sprite(t_doom *doom)
 {
-	if (doom->lib.sprites[doom->own_event.hit_index].distance < 100.0)
+	if (doom->lib.sprites[doom->own_event.hit_index].distance < 150.0)
 	{
 		if (doom->own_event.shoot == TRUE)
 			check_spray_sprite(doom);

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/02 12:02:01 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/02 17:47:39 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,60 @@
 // 	return (-1);
 // }
 
-// int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
-// {
-// 	int		i;
-// 	int		y_bottom;
-// 	int		mid_bottom;
+int		check_y_side_line(t_line line, int x, int y)
+{
+	t_point		compare;
+	int			diff;
+	int			diff_compare;
 
-// 	mid_bottom = 0;
-// 	i = 0;
-// 	while (i < sprite.n_sector)
-// 	{
-// 		mid_bottom =\
-// 		doom->lib.sector[sprite.prev_sectors[i]].mid_bottom[x];
-// 		if (mid_bottom == -1)
-// 			return (-1);
-// 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].bottom[x];
-// 		if (y_bottom > 0 && y_bottom < HEIGHT && y_bottom < screen_y)
-// 			return (-1);
-// 		if (mid_bottom > 0 && mid_bottom < HEIGHT && mid_bottom < screen_y)
-// 			return (-1);
-// 		i++;
-// 	}
-// 	return (1);
-// }
+	compare.x = line.start.x;
+	compare.y = line.start.y;
+	//if it is under the line return -1
+	//if it is above the line return 1
+	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
+			(y - line.start.y) * (line.end.x - line.start.x);
+	diff_compare = (x - line.start.x) * (line.end.y - line.start.y) -\
+					(y - line.start.y) * (line.end.x - line.start.x);
+	if (diff < 0 && diff_compare < 0)
+		return (-1);
+	else
+		return (1);
+}
+
+int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
+{
+	int		i;
+	t_line	y_bottom;
+	t_line	mid_bottom;
+
+	i = 0;
+	if(sprite.action == 10)
+		printf("n_sector: %d\n", sprite.n_sector);
+	while (i < sprite.n_sector)
+	{
+		mid_bottom =\
+		doom->lib.sector[sprite.prev_sectors[i]].mid_bottom;
+		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].bottom;
+		if (sprite.action == 10)
+		{
+			printf("bottom %d: (%f;%f) (%f;%f)\n", i, mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+			printf("mid_bottom %d: (%f;%f) (%f;%f)\n", i, mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+		}
+		//do you want it neg of pos from this line?
+		if (check_y_side_line(y_bottom, x, screen_y) == -1)
+		{
+			if (sprite.action == 10)
+				printf("(mid_bottom) check_y_side_line == -1\n");
+			return (-1);
+		}	
+		if (mid_bottom.start.x != -1 &&\
+			check_y_side_line(mid_bottom, x, screen_y) == -1)
+		{
+			if (sprite.action == 10)
+				printf("(mid_bottom) check_y_side_line == -1");
+			return (-1);
+		}
+		i++;
+	}
+	return (1);
+}
