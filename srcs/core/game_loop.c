@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 15:43:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/02 12:13:38 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ void			game_loop(t_doom *doom)
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
 		if (doom->game.editor == FALSE && doom->menu->state == start_game)
-		{
 			doom_render(doom);
-			update_screen(doom);
-		}
+		update_screen(doom);
 		set_to_window(doom);
 	}
 	doom_exit_success(doom);

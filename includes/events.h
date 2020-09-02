@@ -24,6 +24,5 @@ void				set_new_position(t_doom *doom, t_event *event, double dt);
 int					check_floor_diff(t_doom *doom, int sector, int next_sector);
 int					check_sector_height_diff(t_doom *doom,\
 						int sector, int next_sector);
-bool				handle_mouse_state(t_doom *doom);
 
 #endif
