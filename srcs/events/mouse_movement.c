@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 18:19:54 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/02 18:52:35 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion, double dt,
 		event->y_pitch = limit_pos;
 	if (event->y_pitch < limit_neg)
 		event->y_pitch = limit_neg;
-	printf("nex_pitch: %d --- event-->ypitch: %d ---- motion: %d, %d\n", next_pitch, event->y_pitch, motion->x, motion->y);
 	doom->own_event.hold_x = motion->x;
 	doom->own_event.hold_y = motion->y;
 }
@@ -70,7 +69,6 @@ static void		check_mouse_parameters(t_doom *doom)
 	t_event *event;
 
 	event = &doom->own_event;
-	
 	if (event->hold_x < 0)
 		event->hold_x = 0;
 	else if (event->hold_x > WIDTH)
