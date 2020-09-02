@@ -24,7 +24,7 @@
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 100
-# define SENSITIVITY 0.2
+# define SENSITIVITY 0.4
 # define GRAVITY -2
 # define VELOCITY  5
 

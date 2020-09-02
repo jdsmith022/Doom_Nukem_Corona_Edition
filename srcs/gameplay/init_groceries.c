@@ -1,12 +1,12 @@
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 
-void			set_grocery_font(TTF_Font **font)
+static void		set_grocery_font(TTF_Font **font)
 {
 	*font = TTF_OpenFont("srcs/font/font_style/Cicle_Semi.ttf", 16);
 }
 
-uint8_t			get_num_of_groceries(t_doom *doom)
+static uint8_t	get_num_of_groceries(t_doom *doom)
 {
 	uint16_t	i;
 	uint8_t		num_of_groceries;

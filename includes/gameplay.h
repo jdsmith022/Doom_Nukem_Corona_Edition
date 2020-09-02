@@ -74,7 +74,6 @@ void					timer(t_doom *doom);
 
 void					check_sprite_hit(t_doom *doom);
 void					check_select_spray_sprite(t_doom *doom);
-int						sprite_in_shooting_area(t_doom *doom, int sprite_i);
 int						sprite_in_range(t_doom *doom, t_ray ray, int sprite_i,
 						int prev_sector);
 
