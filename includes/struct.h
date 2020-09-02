@@ -265,6 +265,10 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
+	t_line			bottom;
+	t_line			top;
+	t_line			mid_bottom;
+	t_line			mid_top;
 	// int				bottom[WIDTH];
 	// int				top[WIDTH];
 	// int				mid_bottom[WIDTH];
