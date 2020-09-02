@@ -74,7 +74,7 @@ static void	create_portal(t_doom *doom)
 static void	set_sidedef_to_prev(t_doom *doom)
 {
 	t_ed_sidedef *sidedef;
-	
+
 	sidedef = doom->game_design.ed_sidedef;
 	if (sidedef->id - 1 >= 0)
 	{
@@ -87,7 +87,7 @@ static void	set_sidedef_to_prev(t_doom *doom)
 static void	set_sidedef_to_next(t_doom *doom)
 {
 	t_ed_sidedef *sidedef;
-	
+
 	sidedef = doom->game_design.ed_sidedef;
 	if (sidedef->id + 1 < doom->game_design.sd_len)
 	{

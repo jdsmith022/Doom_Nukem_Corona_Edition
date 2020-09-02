@@ -13,7 +13,6 @@ static void		delete_portals(t_gamedesign *editor, int sector)
 			sidedef->opp_sector = -1;
 		sidedef = sidedef->next;
 	}
-
 }
 
 static void		reset_values(t_gamedesign *editor)
@@ -43,19 +42,23 @@ void			delete_sector(t_gamedesign *editor)
 	sidedef = editor->sd_head;
 	while (sidedef->next != NULL && sidedef->sector != sector)
 		sidedef = sidedef->next;
-	while (sidedef->next != NULL && sidedef->sector == sector && editor->sd_len > 1)
+	while (sidedef && sidedef->sector == sector && editor->sd_len > 1)
 	{
-		printf("delete id = %d\n", sidedef->id);
 		previous = sidedef->previous;
 		next = sidedef->next;
-		if (previous != NULL)
+		if (previous != NULL && next != NULL)
+		{
 			previous->next = next;
-		else if (next == NULL)
+			next->previous = previous;
+		}
+		else
 			previous->next = NULL;
-		next->previous = previous;
 		ft_bzero(sidedef, sizeof(t_ed_sidedef));
 		free(sidedef);
-		sidedef = next;
+		if (next == NULL)
+			sidedef = previous;
+		else
+			sidedef = next;
 		editor->sd_len--;
 	}
 	editor->ed_sidedef = sidedef;
