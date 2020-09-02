@@ -12,11 +12,11 @@ void	add_player(t_doom *doom, int x, int y)
 
 void	change_sector(t_doom *doom, int change)
 {
-	if (doom->game_design.cur_sec + change <= doom->game_design.s_len &&
+	if (doom->game_design.cur_sec + change <= doom->game_design.sc_len &&
 		doom->game_design.cur_sec + change >= 0)
 	{
 		doom->game_design.cur_sec += change;
-		doom->game_design.cur_sd = \
-		doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1;
+		// doom->game_design.cur_sd = \
+		// doom->game_design.sector[doom->game_design.cur_sec].i_sidedefs - 1;
 	}
 }

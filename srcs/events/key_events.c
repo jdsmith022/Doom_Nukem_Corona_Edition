@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 17:54:53 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/02 10:39:45 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,13 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 static void		key_press2(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
-	if (key->keysym.sym == SDLK_b)
-		add_to_game(doom);
-	else if (key->keysym.sym == SDLK_y)
+	// if (key->keysym.sym == SDLK_b)
+		// add_to_game(doom);
+	if (key->keysym.sym == SDLK_y)
 		doom->menu->state = game_paused;
 	else if (key->keysym.sym == SDLK_r || \
 	key->keysym.sym == SDLK_e || key->keysym.sym == SDLK_t)
 		key_select_and_shoot(doom, event, key);
-	else if (key->keysym.sym == SDLK_v && doom->game.editor == TRUE)
-		printing_map(&(doom->game_design));
 	else if (key->keysym.sym == SDLK_SPACE)
 		event->jump = TRUE;
 	else if (key->keysym.sym == SDLK_x)

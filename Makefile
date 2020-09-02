@@ -40,8 +40,8 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type create_sidedef
 EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_to_game add_to_game2\
-				mouse_events_game_editor box_in_sector draw_edit_console \
-				draw_edit_console2 printing_map init_game draw_sidedef_object \
+				mouse_events_game_editor draw_edit_console \
+				draw_edit_console2 init_game draw_sidedef_object \
 				objects2 draw_sidedef_object2 objects correct_position \
 				mouse_event_dependencies put_textures put_textures2 mouse_event_sidedef \
 				sidedefs2 mouse_event_dependencies2

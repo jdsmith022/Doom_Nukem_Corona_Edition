@@ -48,17 +48,17 @@ typedef struct s_line		t_line;
 # define AR_RIGHT_Y 0
 
 # define AR_LEFT_S_X 664
-# define AR_LEFT_S_Y 0
+# define AR_LEFT_S_Y 160
 # define AR_RIGHT_S_X 744
-# define AR_RIGHT_S_Y 0
+# define AR_RIGHT_S_Y 160
 
 # define CROSS_P_X 714
-# define CROSS_P_Y 150
+# define CROSS_P_Y 400
 
-# define PORTAL_X 744
-# define PORTAL_Y 225
-# define RM_SD_X 669
-# define RM_SD_Y 225
+# define PORTAL_X 714
+# define PORTAL_Y 240
+# define RM_SD_X 714
+# define RM_SD_Y 320
 
 # define DEL_OBJ_X 714
 # define DEL_OBJ_Y 225
@@ -90,11 +90,11 @@ typedef struct s_line		t_line;
 # define AR_RIGHT_TS1_Y 375
 
 # define AR_LEFT_TS2_X 640
-# define AR_LEFT_TS2_Y 450
+# define AR_LEFT_TS2_Y 80
 # define TEX_S2_X 696
 # define TEX_S2_Y 450
 # define AR_RIGHT_TS2_X 768
-# define AR_RIGHT_TS2_Y 450
+# define AR_RIGHT_TS2_Y 80
 
 # define AR_LEFT_TS3_X 640
 # define AR_LEFT_TS3_Y 525
@@ -142,6 +142,7 @@ typedef struct			s_ed_sector
 	int					height_ceiling;
 	int					light_level;	
 	struct s_ed_sector	*next;
+	struct s_ed_sector	*previous;;
 }						t_ed_sector;
 
 typedef struct 			s_ed_sidedef
@@ -152,6 +153,7 @@ typedef struct 			s_ed_sidedef
 	int					sector;
 	int					opp_sector;
 	struct s_ed_sidedef *next;
+	struct s_ed_sidedef *previous;
 }						t_ed_sidedef;			
 
 typedef enum		e_game_editor_im
@@ -196,6 +198,8 @@ typedef struct	s_angle_line {
 
 /*game editor*/
 void				open_game_editor(t_doom *doom, double dt);
+void				set_sidedef_values(t_doom *doom, t_line line);
+void				check_connection(t_doom *doom, int x, int y);
 void				add_sidedef(t_doom *doom, int x, int y);
 void				del_sidedef(t_doom *doom);
 void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);
@@ -228,7 +232,6 @@ void				coor_pos(t_doom *doom);
 void				add_player(t_doom *doom, int x, int y);
 void				change_sector(t_doom *doom, int change);
 void				change_texture(t_doom *doom, int *texture, int change);
-void				change_sidedef(t_doom *doom, int change);
 void				object_change(t_doom *doom, int change);
 void				sidedef_object(t_doom *doom);
 void				object_texture(t_doom *doom, int change);

@@ -49,6 +49,7 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 typedef struct s_ed_sidedef t_ed_sidedef;
+typedef struct s_ed_sector	t_ed_sector;
 
 typedef enum			e_settings
 {
@@ -299,10 +300,13 @@ typedef struct		s_lib {
 }					t_lib;
 
 typedef struct		s_gamedesign {
-	t_sector		*sector;
+	bool			edit_sector;
+	bool			open_connection;
 	t_ed_sector		*ed_sector;
-	t_sidedef		*sidedef;
 	t_ed_sidedef	*ed_sidedef;
+	double			floor_height;
+	double			ceiling_height;
+	double			light_level;
 	int				sd_len;
 	int				sc_len;
 	int				o_len;
