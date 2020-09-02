@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:18:04 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:31:57 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/02 17:02:13 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	jump_player(t_doom *doom, double dt)
 	int				height_ceiling;
 	int				jump_height;
 
+	printf("top of jump\n");
 	doom->own_event.jump = TRUE;
 	height_floor = doom->lib.sector[doom->i_sector].height_floor;
 	height_ceiling = doom->lib.sector[doom->i_sector].height_ceiling;
@@ -75,6 +76,7 @@ void	jump_player(t_doom *doom, double dt)
 		doom->own_event.jump = FALSE;
 		duration = 0.5;
 	}
+	printf("bottom of jump -- height: %f\n", doom->player.height);
 }
 
 void	get_up(t_doom *doom, double dt)
