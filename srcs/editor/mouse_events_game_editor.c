@@ -55,15 +55,12 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 
 static void		mouse_press_sector(t_doom *doom, int x, int y)
 {
-	if (x > DEL_SECTOR_X && x < DEL_SECTOR_X + FRAME_WIDTH && \
-	y > DEL_SECTOR_Y && y < DEL_SECTOR_Y + FRAME_HEIGHT)
+	if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
+	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
 	{
-		// if (doom->game_design.sc_len > 0)
-		// 	del_sector(&(doom->game_design));
+		if (doom->game_design.sc_len > 0)
+			delete_sector(&(doom->game_design));
 	}
-	// else if (x > ADD_SECTOR_X && x < ADD_SECTOR_X + FRAME_WIDTH && \
-	// y > ADD_SECTOR_Y && y < ADD_SECTOR_Y + FRAME_HEIGHT)
-	// 	add_sector(doom);
 	else if (x > HF_X && x < HF_X + HF_LEN && y > HF_Y && y < HF_Y + HF_HEIGHT)
 		doom->game_design.floor_height = \
 			(float)(x - HF_X) / HF_LEN * HF_DIFF + HF_MIN;
@@ -73,13 +70,6 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 	else if (x > LL_X && x < LL_X + LL_LEN && y > LL_Y && y < LL_Y + LL_HEIGHT)
 		doom->game_design.light_level = \
 		(float)(x - LL_X) / LL_LEN * LL_DIFF + LL_MIN;
-	else if (x > AR_LEFT_X && x < AR_LEFT_X + FRAME_WIDTH && \
-	y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT)
-		change_sector(doom, 1);
-	else if (x > AR_RIGHT_X && x < AR_RIGHT_X + FRAME_WIDTH && \
-	y > AR_RIGHT_Y && y < AR_RIGHT_Y + FRAME_HEIGHT)
-		change_sector(doom, -1);
-	// mouse_press_sector_txt(doom, x, y);
 }
 
 static void		mouse_press_object(t_doom *doom, int x, int y)
@@ -107,27 +97,13 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 
 void			mouse_press_game_editor(t_doom *doom, int x, int y)
 {
-	if (doom->game_design.portal_sec != -1 &&\
-	((x < AR_LEFT_SC_X || (x > AR_LEFT_SC_X + FRAME_WIDTH &&\
-	x < AR_RIGHT_SC_X) || x > AR_RIGHT_SC_X + FRAME_WIDTH) \
-	|| (y < AR_LEFT_SC_Y || y > AR_LEFT_SC_Y + FRAME_HEIGHT)))
-	{
-		doom->game_design.portal_sec = -1;
-		doom->game_design.portal_sd = -1;
-	}
-	if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
-	y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
-		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
 	mouse_press_map(doom, x, y);
 	mouse_press_sector(doom, x, y);
-	if (x > SIDEDEF_BUTTON_X && x < SIDEDEF_BUTTON_X + FRAME_WIDTH && \
-	y > SIDEDEF_BUTTON_Y && y < SIDEDEF_BUTTON_Y + FRAME_WIDTH)
-		sidedef_object(doom);
-	if (x > SECTOR_BUTTON_X && x < SECTOR_BUTTON_X + FRAME_WIDTH && \
-	y > SECTOR_BUTTON_Y && y < SECTOR_BUTTON_Y + FRAME_WIDTH)
-		sidedef_object(doom);
 	if (doom->game_design.edit_sector == TRUE)
 	{
+		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
+			y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
+		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
 		mouse_press_sidedef(doom, x, y);
 		mouse_press_object(doom, x, y);
 	}

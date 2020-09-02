@@ -1,85 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-// void			del_sidedef(t_doom *doom)
-// {
-// 	int i;
-
-// 	if (doom->game_design.sidedef[doom->game_design.cur_sd].opp_sidedef != -1)
-// 	{
-// 		doom->game_design.sidedef[doom->game_design.sidedef\
-// 		[doom->game_design.cur_sd].opp_sidedef].opp_sidedef = -1;
-// 		doom->game_design.sidedef[doom->game_design.sidedef\
-// 		[doom->game_design.cur_sd].opp_sidedef].opp_sector = -1;
-// 	}
-// 	i = doom->game_design.cur_sec + 1;
-// 	while (i <= doom->game_design.sc_len)
-// 	{
-// 		doom->game_design.sector[i].i_sidedefs--;
-// 		i++;
-// 	}
-// 	i = doom->game_design.cur_sd;
-// 	while (i < doom->game_design.w_len - 1)
-// 	{
-// 		doom->game_design.sidedef[i] = doom->game_design.sidedef[i + 1];
-// 		i++;
-// 	}
-// 	doom->game_design.sector[doom->game_design.cur_sec].n_sidedefs--;
-// 	doom->game_design.w_len--;
-// 	doom->game_design.cur_sd--;
-// }
-
-
-static void		set_sector_sidedefs(t_doom *doom)
-{
-	t_ed_sidedef	*sidedef;
-	int				i_sidedef;
-	int				n_sidedefs;
-
-	i_sidedef = -1;
-	n_sidedefs = 0;
-	sidedef = doom->game_design.ed_sidedef;
-	while (sidedef->next != NULL)
-	{
-		sidedef = sidedef->next;
-		if (i_sidedef == -1 && sidedef->sector == doom->game_design.cur_sec)
-			i_sidedef = sidedef->id;
-		if (sidedef->sector == doom->game_design.cur_sec)
-		{
-			n_sidedefs++;
-			printf("%d\n", n_sidedefs);
-		}
-	}
-	doom->game_design.ed_sector->i_sidedefs = i_sidedef;
-	doom->game_design.ed_sector->n_sidedefs = n_sidedefs;
-}
-
-static void		set_sector_values(t_doom *doom)
-{
-	t_ed_sector *prev;
-	int			id;
-
-	id = doom->game_design.sc_len;
-	while (doom->game_design.ed_sector->next != NULL)
-		doom->game_design.ed_sector = doom->game_design.ed_sector->next;
-	doom->game_design.ed_sector->next = ft_memalloc(sizeof(t_ed_sector));
-	if (!doom->game_design.ed_sector->next)
-		doom_exit_failure(doom, "error: malloc sector in editor\n");
-	prev = 	doom->game_design.ed_sector;
-	doom->game_design.ed_sector = doom->game_design.ed_sector->next;
-	doom->game_design.ed_sector->previous = prev;
-	set_sector_sidedefs(doom);
-	doom->game_design.ed_sector->height_floor = doom->game_design.floor_height;
-	doom->game_design.ed_sector->height_ceiling =\
-		doom->game_design.ceiling_height;
-	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
-	doom->game_design.ed_sector->id = id;
-	doom->game_design.ed_sector->next = NULL;
-	doom->game_design.sc_len++;
-	doom->game_design.cur_sec++;
-	printf("set sector %d, %d\n", doom->game_design.ed_sector->i_sidedefs, doom->game_design.ed_sector->n_sidedefs);
-}
-
 void			set_sidedef_values(t_doom *doom, t_line line)
 {
 	t_ed_sidedef	*prev;
@@ -101,8 +22,37 @@ void			set_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.ed_sidedef->line = line;
 	doom->game_design.ed_sidedef->next = NULL;
 	doom->game_design.cur_sd = id;
-	printf("---> id = %d sector = %d\n", id, doom->game_design.ed_sidedef->sector);
+	printf("sidedef id = %d\n", doom->game_design.ed_sidedef->id);
 	doom->game_design.sd_len++;
+}
+
+static bool		line_intersect(t_doom *doom, t_point start, int x, int y)
+{
+	t_ed_sidedef	*sidedef;
+	t_line			line1;
+	t_line			line2;
+	t_point			intersect;
+
+	sidedef = doom->game_design.sd_head;
+	line1.start = start;
+	line1.end.x = x;
+	line1.end.y = y;
+	while (sidedef->next != NULL)
+	{
+		line2 = sidedef->line;
+		intersect = check_line_intersection(line1, line2);
+		if (isnan(intersect.x) ==  FALSE && isnan(intersect.y) == FALSE)
+			return (TRUE);
+		sidedef = sidedef->next;
+	}
+	return (FALSE);
+}
+
+static void		get_connectin_sidedef(t_doom *doom, t_line line)
+{
+	set_sidedef_values(doom, line);
+	doom->game_design.draw_line.start = line.end;
+	doom->game_design.open_connection = FALSE;
 }
 
 void			check_connection(t_doom *doom, int x, int y)
@@ -110,67 +60,56 @@ void			check_connection(t_doom *doom, int x, int y)
 	t_ed_sidedef	*sidedef;
 	double			dist_end;
 	double			dist_start;
-	t_point			end_line;
+	t_line			line;
 
 	sidedef = doom->game_design.ed_sidedef;
-	dist_start = point_distance(end_line, sidedef->line.start);
-	dist_end = point_distance(end_line, sidedef->line.end);
-	if (dist_start < dist_end)
-		doom->game_design.draw_line.start = sidedef->line.start;
-	else
-		doom->game_design.draw_line.start = sidedef->line.end;
-	doom->game_design.draw_line.end = end_line;
-	doom->game_design.open_connection = FALSE;
-}
-
-static bool			snap_close_sector(t_point start, t_point *end)
-{
-	double		distance;
-
-	distance = point_distance(start, *end);
-	if (distance < 10)
+	line.end.x = x;
+	line.end.y = y;
+	dist_start = point_distance(line.end, sidedef->line.start);
+	dist_end = point_distance(line.end, sidedef->line.end);
+	if (dist_start < dist_end && line_intersect(doom, sidedef->line.start, x, y) == FALSE)
 	{
-		*end = start;
-		return (TRUE);
+		line.start = sidedef->line.start;
+		doom->game_design.start_sector = sidedef->line.end;
+		get_connectin_sidedef(doom, line);
 	}
-	return (FALSE);
+	else if (line_intersect(doom, sidedef->line.end, x, y) == FALSE)
+	{
+		line.start = sidedef->line.end;
+		doom->game_design.start_sector = sidedef->line.start;
+		set_sidedef_values(doom, line);
+		get_connectin_sidedef(doom, line);
+	}
 }
-
 
 void			add_sidedef(t_doom *doom, int x, int y)
 {
-	static t_point	start_sector;
-	t_line			line;
+	t_gamedesign	*editor;
+	t_point			intersect;
+	t_point			line_end;
 
-	doom->game_design.edit_sector = FALSE;
-	if (doom->game_design.draw_line.start.x == -1)
+	editor = &doom->game_design;
+	editor->edit_sector = FALSE;
+	if (editor->draw_line.start.x == -1)
 	{
-		doom->game_design.draw_line.start.x = x;
-		doom->game_design.draw_line.start.y = y;
-		start_sector = doom->game_design.draw_line.start;
+		editor->draw_line.start.x = x;
+		editor->draw_line.start.y = y;
+		editor->start_sector = editor->draw_line.start;
 	}
-	else if (doom->game_design.draw_line.end.x == -1)
+	else if (editor->draw_line.end.x == -1 && line_intersect(doom, editor->draw_line.start, x, y) == FALSE)
 	{
-		doom->game_design.draw_line.end.x = x;
-		doom->game_design.draw_line.end.y = y;
-		if (snap_close_sector(start_sector, &doom->game_design.draw_line.end) == TRUE)
+		editor->draw_line.end.x = x;
+		editor->draw_line.end.y = y;
+		if (snap_close_sector(editor->start_sector, &editor->draw_line.end) == TRUE)
 		{
-			doom->game_design.edit_sector = TRUE;
-			line = doom->game_design.draw_line;
-			doom->game_design.draw_line.start.x = -1;
-			doom->game_design.draw_line.start.y = -1;
-			doom->game_design.draw_line.end.x = -1;
-			doom->game_design.draw_line.end.y = -1;
-			set_sidedef_values(doom, line);
+			editor->edit_sector = TRUE;
+			set_sidedef_values(doom, editor->draw_line);
 			set_sector_values(doom);
 		}
 		else
-		{
-			line = doom->game_design.draw_line;
-			doom->game_design.draw_line.end.x = -1;
-			doom->game_design.draw_line.end.y = -1;
-			doom->game_design.draw_line.start = line.end;
-			set_sidedef_values(doom, line);
-		}
+			set_sidedef_values(doom, editor->draw_line);
+		editor->draw_line.start = editor->draw_line.end;
+		editor->draw_line.end.x = -1;
+		editor->draw_line.end.y = -1;
 	}
 }

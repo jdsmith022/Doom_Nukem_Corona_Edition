@@ -41,7 +41,6 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 		put_images(RM_SD_X, RM_SD_Y, garbage, doom);
 		put_images(PORTAL_X, PORTAL_Y, plus, doom);
 	}
-	draw_sector_images(pixels, doom);
 	draw_map_images(pixels, doom);
 	if (doom->game_design.object_bar == 1)
 		draw_object_images(pixels, doom);

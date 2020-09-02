@@ -1,19 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-static void		del_portal(t_doom *doom, int dir, int diff_x, int diff_y)
-{
-	del_sidedef(doom);
-	doom->game_design.cur_sec += dir;
-	if (doom->game_design.portal_sec == doom->game_design.cur_sec)
-		doom->game_design.cur_sec += dir;
-	if (doom->game_design.cur_sec < 0)
-		doom->game_design.cur_sec = doom->game_design.sc_len;
-	if (doom->game_design.cur_sec > doom->game_design.sc_len)
-		doom->game_design.cur_sec = 0;
-	if (doom->game_design.portal_sec == doom->game_design.cur_sec)
-		doom->game_design.cur_sec += dir;
-}
 
 // static void		new_portal(t_gamedesign *gd, t_doom *doom)
 // {

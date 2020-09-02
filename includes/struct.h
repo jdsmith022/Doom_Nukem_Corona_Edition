@@ -304,8 +304,12 @@ typedef struct		s_gamedesign {
 	bool			open_connection;
 	t_ed_sector		*ed_sector;
 	t_ed_sidedef	*ed_sidedef;
+	t_ed_sidedef	*sd_head;
+	t_ed_sector		*sc_head;
 	double			floor_height;
 	double			ceiling_height;
+	t_line			draw_line;
+	t_point			start_sector;
 	double			light_level;
 	int				sd_len;
 	int				sc_len;
@@ -331,7 +335,6 @@ typedef struct		s_gamedesign {
 	int				txt_ceiling;
 	int				txt_1;
 	int				txt_3;
-	t_line			draw_line;
 	int				sidedef_bar;
 	bool			custom_level;
 	SDL_Surface		**sym_lib;

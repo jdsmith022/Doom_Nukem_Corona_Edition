@@ -45,8 +45,4 @@ void	change_texture(t_doom *doom, int *txt, int change)
 // 		doom->game_design.cur_obj += change;
 // }
 
-void	sidedef_object(t_doom *doom)
-{
-	doom->game_design.sidedef_bar = doom->game_design.sidedef_bar == 0 ? 1 : 0;
-	doom->game_design.object_bar = doom->game_design.object_bar == 1 ? 0 : 1;
-}
+

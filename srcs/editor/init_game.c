@@ -49,6 +49,7 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.ed_sector = ft_memalloc(sizeof(t_ed_sector));
 	if (!doom->game_design.ed_sector)
 		doom_exit_failure(doom, "error: game design sector malloc");
+	doom->game_design.sc_head = doom->game_design.ed_sector;
 	doom->game_design.ed_sector->next = NULL;
 	doom->game_design.ed_sector->light_level = 10;
 	doom->game_design.ed_sector->height_ceiling = 0;
@@ -56,5 +57,6 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.ed_sidedef = ft_memalloc(sizeof(t_ed_sidedef));
 	if (!doom->game_design.ed_sidedef)
 		doom_exit_failure(doom, "error: malloc sidedef in editor\n");
+	doom->game_design.sd_head = doom->game_design.ed_sidedef;
 	doom->game_design.ed_sidedef->next = NULL;
 }

@@ -63,10 +63,12 @@ static void	create_portal(t_doom *doom)
 	t_ed_sector		*sector;
 
 	sidedef = doom->game_design.ed_sidedef;
-	sidedef->opp_sector = doom->game_design.sc_len + 1;
+	sidedef->opp_sector = doom->game_design.sc_len;
 	set_sidedef_values(doom, sidedef->line);
+	doom->game_design.ed_sidedef->opp_sector = sidedef->sector;
 	doom->game_design.edit_sector = FALSE;
 	doom->game_design.open_connection = TRUE;
+	printf("create portal opp_sector = %d\n", sidedef->opp_sector);
 }
 
 static void	set_sidedef_to_prev(t_doom *doom)
@@ -76,8 +78,8 @@ static void	set_sidedef_to_prev(t_doom *doom)
 	sidedef = doom->game_design.ed_sidedef;
 	if (sidedef->id - 1 >= 0)
 	{
-		doom->game_design.cur_sd--;
 		sidedef = sidedef->previous;
+		doom->game_design.cur_sd = sidedef->id;
 		doom->game_design.ed_sidedef = sidedef;
 	}
 }
@@ -89,8 +91,8 @@ static void	set_sidedef_to_next(t_doom *doom)
 	sidedef = doom->game_design.ed_sidedef;
 	if (sidedef->id + 1 < doom->game_design.sd_len)
 	{
-		doom->game_design.cur_sd++;
 		sidedef = sidedef->next;
+		doom->game_design.cur_sd = sidedef->id;
 		doom->game_design.ed_sidedef = sidedef;
 	}
 }
