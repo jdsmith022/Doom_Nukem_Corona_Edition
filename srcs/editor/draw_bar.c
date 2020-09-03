@@ -58,7 +58,7 @@ static void		height_floor_bar(t_doom *doom, Uint32 **pixels)
 	bar.y = HF_Y;
 	bar.height = HF_HEIGHT;
 	bar.len = HF_LEN;
-	printf("%d\n", doom->game_design.ed_sector->height_floor);
+	// printf("%d\n", doom->game_design.ed_sector->height_floor);
 	bar.cur_height = \
 	doom->game_design.ed_sector->height_floor;
 	draw_bar(pixels, bar);
