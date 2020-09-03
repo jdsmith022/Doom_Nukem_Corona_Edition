@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:15 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 14:46:58 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/02 10:06:11 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 #include "../../includes/read.h"
+#include "../../includes/audio.h"
+#include "../../includes/font.h"
 
 int	main(void)
 {
@@ -21,11 +23,11 @@ int	main(void)
 
 	ft_bzero(&doom, sizeof(t_doom));
 	sdl_init(&doom);
-	save_libraries(&doom);
 	save_font_libraries(&doom);
-	printf("in game loop\n");
-	doom_init(&doom);
 	doom_start(&doom);
+	save_libraries(&doom);
+	doom_init(&doom);
+	Mix_HaltMusic();
 	game_loop(&doom);
 	return (0);
 }

@@ -4,48 +4,6 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 
-static void		void_free_libs(void *lib)
-{
-	ft_bzero(lib, sizeof(lib));
-	free(lib);
-}
-
-static void		free_sld_libs(SDL_Surface **lib, int len)
-{
-	size_t index;
-
-	index = 0;
-	while (index < len)
-	{
-		ft_bzero(lib[index], sizeof(lib[index]));
-		free(lib[index]);
-		index++;
-	}
-	free(lib);
-}
-
-static void			free_sdls_lib(t_doom *doom)
-{
-	SDL_Surface	**lib;
-	int			len;
-
-	if (doom->lib.obj_lib)
-	{
-		lib = doom->lib.obj_lib;
-		len = doom->lib.len_obj_lib;
-		free_sld_libs(lib, len);
-	}
-}
-
-static void			free_structs_lib(t_doom *doom)
-{
-	if (doom->lib.sector)
-		void_free_libs(doom->lib.sector);
-	if (doom->lib.sidedef)
-		void_free_libs(doom->lib.sidedef);
-}
-
-
 static void	set_sidedef_lib(t_doom *doom)
 {
 	t_ed_sidedef *ed_sidedef;
@@ -111,11 +69,12 @@ static void	set_sector_lib(t_doom *doom)
 
 void 	add_lists_to_libs(t_doom *doom)
 {
-	free_structs_lib(doom);
-	free_sdls_lib(doom);
 	set_sector_lib(doom);
 	set_sidedef_lib(doom);
 	// set_object_lib(doom);
+	doom->lib.obj_lib = (SDL_Surface **)ft_memalloc(sizeof(SDL_Surface*));
+	if (doom->lib.obj_lib == NULL)
+		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
 	doom->lib.len_obj_lib = 0; // wont need after objects are being set 
 		// doom->lib.sector = light_correction(\
 		// doom->lib.sector, doom->game_design.s_len);
