@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 21:59:54 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/03 16:42:37 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../../includes/hud.h"
 #include "../../includes/audio.h"
 
-static void	set_menu_game_variables(t_doom *doom)
+void	set_menu_game_variables(t_doom *doom)
 {
 	doom->lib.font_lib.bools.walking_info = TRUE;
 	doom->lib.font_lib.bools.walking_text = TRUE;
@@ -30,7 +30,6 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->hud->hold_time /= doom->game.difficulty;
 	doom->hud->curr_time /= doom->game.difficulty;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
-	printf("hihi\n");
 }
 
 void		doom_start(t_doom *doom)

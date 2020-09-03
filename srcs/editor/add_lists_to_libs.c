@@ -2,6 +2,7 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/menu.h"
 #include "../../includes/gameplay.h"
+#include "../../includes/menu.h"
 
 static void		void_free_libs(void *lib)
 {
@@ -116,8 +117,6 @@ void 	add_lists_to_libs(t_doom *doom)
 	set_sidedef_lib(doom);
 	// set_object_lib(doom);
 	doom->lib.len_obj_lib = 0; // wont need after objects are being set 
-	doom->game.editor = FALSE;
-	doom->game.is_running = TRUE;
 		// doom->lib.sector = light_correction(\
 		// doom->lib.sector, doom->game_design.s_len);
 	doom->pos.x = doom->game_design.pl_x;
@@ -127,13 +126,14 @@ void 	add_lists_to_libs(t_doom *doom)
 		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
 	doom->game.light = TRUE;
 	doom->menu->state = start_game;
-	doom->lib.sector[doom->i_sector].action = START_TIMER;
 	doom->menu->start_timer = FALSE;
 	doom->lib.sector[doom->i_sector].action = START_TIMER;
 	doom->game.hud_display = TRUE;
+	set_menu_game_variables(doom);
 	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 	init_groceries(doom);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
-	SDL_SetRelativeMouseMode(SDL_TRUE);
+	SDL_UpdateWindowSurface(doom->window);
 	printf("added: %d\n", doom->lib.sidedef[0].id);
 }

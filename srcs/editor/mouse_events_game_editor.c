@@ -96,7 +96,10 @@ void			mouse_press_game_editor(t_doom *doom, int x, int y)
 		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
 		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
 		doom->game_design.player_placed == TRUE)
+		{
 			doom->game.editor = FALSE;
+			return ;
+		}
 		mouse_press_sidedef(doom, x, y);
 		mouse_press_object(doom, x, y);
 	}

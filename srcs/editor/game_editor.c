@@ -25,7 +25,6 @@ void	open_game_editor(t_doom *doom, double dt)
 	doom->own_event.mouse_pointer = TRUE;
 	while (doom->game.editor == TRUE)
 	{
-		sdl_poll_events(doom, dt);
 		doom->cast.distance = 1;
 		pixels = doom->surface->pixels;
 		draw_screen_colors(pixels, doom);
@@ -36,6 +35,7 @@ void	open_game_editor(t_doom *doom, double dt)
 		draw_font(doom, doom->lib.font_lib.game_editor_font,\
 			doom->lib.font_lib.ge_font_len);
 		set_to_window(doom);
+		sdl_poll_events(doom, dt);
 	}
 	add_lists_to_libs(doom);
 }
