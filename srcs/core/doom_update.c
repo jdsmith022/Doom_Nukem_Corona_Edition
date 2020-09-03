@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 22:04:44 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/03 16:18:50 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	sdl_poll_events(t_doom *doom, double dt)
 			if (doom->game.editor == TRUE)
 				doom->game.editor = FALSE;
 		}
-		if (event.type == SDL_KEYDOWN)
+		if (event.type == SDL_KEYDOWN && doom->game.editor == FALSE)
 			key_press(doom, &doom->own_event, &event.key);
-		if (event.type == SDL_KEYUP)
+		if (event.type == SDL_KEYUP && doom->game.editor == FALSE)
 			key_release(&doom->own_event, &event.key);
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 			mouse_press(doom, &event.button, doom->own_event);
@@ -59,7 +59,6 @@ void	sdl_poll_events(t_doom *doom, double dt)
 
 void		doom_update(t_doom *doom, double dt)
 {
-		printf("3\n");
 	core_gameplay_loop(doom, dt);
 	sdl_poll_events(doom, dt);
 }

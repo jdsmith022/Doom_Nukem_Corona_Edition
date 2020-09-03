@@ -37,4 +37,5 @@ void	open_game_editor(t_doom *doom, double dt)
 			doom->lib.font_lib.ge_font_len);
 		set_to_window(doom);
 	}
+	add_lists_to_libs(doom);
 }

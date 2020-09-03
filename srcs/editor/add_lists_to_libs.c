@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/menu.h"
-#include "../../includes/game_editor.h"
+#include "../../includes/gameplay.h"
 
 static void		void_free_libs(void *lib)
 {
@@ -51,7 +51,7 @@ static void	set_sidedef_lib(t_doom *doom)
 	t_sidedef	*lib_sidedef;
 	int			index;
 
-	ed_sidedef = doom->game_design.sd_head;
+	ed_sidedef = doom->game_design.sd_head->next;
 	lib_sidedef = (t_sidedef *)ft_memalloc(sizeof(t_sidedef) * doom->game_design.sd_len);
 	if (lib_sidedef == NULL)
 		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
@@ -59,6 +59,7 @@ static void	set_sidedef_lib(t_doom *doom)
 	while (ed_sidedef)
 	{
 		lib_sidedef[index].id = ed_sidedef->id;
+		printf("sidedef id here: %d\n", lib_sidedef[index].id);
 		lib_sidedef[index].line = ed_sidedef->line;
 		lib_sidedef[index].txt_1 = 14;
 		lib_sidedef[index].txt_2 = 32; // ed_sidedef->texture;
@@ -78,7 +79,7 @@ static void	set_sector_lib(t_doom *doom)
 	t_sector	*lib_sector;
 	int			index;
 
-	ed_sector = doom->game_design.sc_head;
+	ed_sector = doom->game_design.sc_head->next;
 	lib_sector = (t_sector *)ft_memalloc(sizeof(t_sector) * doom->game_design.sc_len);
 	if (lib_sector == NULL)
 		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
@@ -86,6 +87,7 @@ static void	set_sector_lib(t_doom *doom)
 	while (ed_sector)
 	{
 		lib_sector[index].id = ed_sector->id;
+		printf("sector id here: %d\n", lib_sector[index].id);
 		lib_sector[index].n_sidedefs = ed_sector->n_sidedefs;
 		lib_sector[index].i_sidedefs = ed_sector->i_sidedefs;
 		lib_sector[index].height_floor = ed_sector->height_floor;
@@ -108,17 +110,30 @@ static void	set_sector_lib(t_doom *doom)
 
 void 	add_lists_to_libs(t_doom *doom)
 {
-	printf("here\n");
 	free_structs_lib(doom);
-	printf("htere\n");
 	free_sdls_lib(doom);
-	printf("everywhere\n");
 	set_sector_lib(doom);
-	printf("and not where\n");
 	set_sidedef_lib(doom);
 	// set_object_lib(doom);
+	doom->lib.len_obj_lib = 0; // wont need after objects are being set 
 	doom->game.editor = FALSE;
 	doom->game.is_running = TRUE;
-	
-	printf("bye\n");
+		// doom->lib.sector = light_correction(\
+		// doom->lib.sector, doom->game_design.s_len);
+	doom->pos.x = doom->game_design.pl_x;
+	doom->pos.y = doom->game_design.pl_y;
+	doom->i_sector = doom->game_design.pl_sec;
+	doom->player.height = PLAYER_HEIGHT \
+		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
+	doom->game.light = TRUE;
+	doom->menu->state = start_game;
+	doom->lib.sector[doom->i_sector].action = START_TIMER;
+	doom->menu->start_timer = FALSE;
+	doom->lib.sector[doom->i_sector].action = START_TIMER;
+	doom->game.hud_display = TRUE;
+	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
+	init_groceries(doom);
+	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
+	SDL_SetRelativeMouseMode(SDL_TRUE);
+	printf("added: %d\n", doom->lib.sidedef[0].id);
 }

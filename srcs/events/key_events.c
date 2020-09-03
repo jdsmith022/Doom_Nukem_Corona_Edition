@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 10:39:45 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/03 16:18:56 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void			key_release(t_event *event, SDL_KeyboardEvent *key)
 static void		key_press2(t_doom *doom, t_event *event,
 					SDL_KeyboardEvent *key)
 {
-	// if (key->keysym.sym == SDLK_b)
-		// add_to_game(doom);
 	if (key->keysym.sym == SDLK_y)
 		doom->menu->state = game_paused;
 	else if (key->keysym.sym == SDLK_r || \
@@ -77,14 +75,6 @@ static void		key_press2(t_doom *doom, t_event *event,
 		event->jump = TRUE;
 	else if (key->keysym.sym == SDLK_x)
 		event->bend = TRUE;
-	else if (key->keysym.sym == SDLK_n)
-	{
-		doom->game.editor = FALSE;
-		doom->game.hud_display = TRUE;
-		SDL_SetRelativeMouseMode(SDL_TRUE);
-		if (doom->lib.font_lib.bools.walking_info == TRUE)
-			clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
-	}
 }
 
 void			key_press(t_doom *doom, t_event *event,
