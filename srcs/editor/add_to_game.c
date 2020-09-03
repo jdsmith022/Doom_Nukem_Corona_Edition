@@ -79,6 +79,7 @@
 // 	doom->lib.sector[doom->i_sector].action = START_TIMER;
 // 	doom->menu->start_timer = FALSE;
 // 	doom->game.editor = FALSE;
+	// SDL_SetRelativeMouseMode(SDL_TRUE);
 // }
 
 // void				add_to_game(t_doom *doom)
