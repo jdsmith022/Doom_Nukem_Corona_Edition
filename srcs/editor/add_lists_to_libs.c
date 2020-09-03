@@ -26,6 +26,13 @@ static void	set_sidedef_lib(t_doom *doom)
 		lib.sidedef[index].opp_sector = ed_sidedef->opp_sector;
 		lib.sidedef[index].action = 0;
 		lib.sidedef[index].poster = -1;
+		ft_bzero(ed_sidedef->previous, sizeof(t_ed_sidedef));
+		free(ed_sidedef->previous);
+		if (ed_sidedef->next == NULL)
+		{
+			ft_bzero(ed_sidedef, sizeof(t_ed_sidedef));
+			free(ed_sidedef);
+		}
 		ed_sidedef = ed_sidedef->next;
 		index++;
 	}
@@ -61,6 +68,13 @@ static void	set_sector_lib(t_doom *doom)
 		lib.sector[index].slope_ceiling = 0;
 		lib.sector[index].txt_ceiling = 14;
 		lib.sector[index].txt_floor = 17;
+		ft_bzero(ed_sector->previous, sizeof(t_ed_sector));
+		free(ed_sector->previous);
+		if (ed_sector->next == NULL)
+		{
+			ft_bzero(ed_sector, sizeof(t_ed_sector));
+			free(ed_sector);
+		}
 		ed_sector = ed_sector->next;
 		index++;
 	}

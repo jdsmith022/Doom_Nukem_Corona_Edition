@@ -22,7 +22,6 @@ void			set_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.ed_sidedef->line = line;
 	doom->game_design.ed_sidedef->next = NULL;
 	doom->game_design.cur_sd = id;
-	printf("sidedef id = %d\n", doom->game_design.ed_sidedef->id);
 	doom->game_design.sd_len++;
 }
 
@@ -113,7 +112,6 @@ void			check_connection(t_doom *doom, int x, int y)
 		get_connection_sidedef(doom, line);
 	}
 }
-
 
 void			add_sidedef(t_doom *doom, int x, int y)
 {
