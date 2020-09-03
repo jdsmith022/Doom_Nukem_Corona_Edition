@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/02 21:17:42 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/03 18:39:25 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ int		check_y_side_line(t_line line, int x, int y)
 	int			diff_compare;
 
 	compare.x = line.start.x;
-	compare.y = line.start.y;
+	compare.y = line.start.y + 1;
 	//if it is under the line return -1
 	//if it is above the line return 1
 	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
 			(y - line.start.y) * (line.end.x - line.start.x);
-	diff_compare = (x - line.start.x) * (line.end.y - line.start.y) -\
-					(y - line.start.y) * (line.end.x - line.start.x);
-	if ((diff < 0 && diff_compare < 0) || diff == 0)
+	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
+					(compare.y - line.start.y) * (line.end.x - line.start.x);
+	if ((diff < 0 && diff_compare < 0) || (diff > 0 && diff_compare > 0)\
+		|| diff == 0)
 		return (-1);
 	else
 		return (1);
@@ -65,35 +66,56 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	int		i;
 	t_line	y_bottom;
 	t_line	mid_bottom;
+	int		return_value;
 
 	i = 0;
-	if ((sprite.action == 10 && sprite.sector == 35) || (sprite.action == 14 && sprite.sector == 48) || (sprite.action == 14 && sprite.sector == 49))
-		printf("n_sector: %d\n", sprite.n_sector);
+	return_value = 1;
 	while (i < sprite.n_sector)
 	{
 		mid_bottom =\
 		doom->lib.sector[sprite.prev_sectors[i]].mid_bottom;
 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].bottom;
-		if ((sprite.action == 10 && sprite.sector == 35) || (sprite.action == 14 && sprite.sector == 48) || (sprite.action == 14 && sprite.sector == 49))
+		// do you want it neg of pos from this line?
+		if (mid_bottom.start.x != -1)
 		{
-			printf("bottom %d: (%f;%f) (%f;%f)\n", i, mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
-			printf("mid_bottom %d: (%f;%f) (%f;%f)\n", i, mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+			if (mid_bottom.start.x > 0 && mid_bottom.start.x < WIDTH &&\
+				mid_bottom.start.y > 0 && mid_bottom.start.y < HEIGHT)
+			{
+				if (sprite.action == 14 && sprite.sector == 11)
+				{
+					printf("IF1\nline: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+					printf("coord: (%d;%d)\n", x, screen_y);
+				}
+				if (x < mid_bottom.start.x)
+					return_value = 1;
+			}
+			if (mid_bottom.end.x > 0 && mid_bottom.end.x < WIDTH &&\
+				mid_bottom.end.y > 0 && mid_bottom.end.y < HEIGHT)
+			{
+				if (sprite.action == 14 && sprite.sector == 11)
+				{
+					printf("IF 2\nline: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+					printf("coord: (%d;%d)\n", x, screen_y);
+				}
+				if (x > mid_bottom.end.x)
+					return_value = 1;
+			}
+			if (sprite.action == 14 && sprite.sector == 11)
+			{
+				printf("AFTER line: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+				printf("coord: (%d;%d)\n", x, screen_y);
+			}
+			if (check_y_side_line(mid_bottom, x, screen_y) == -1)
+			{
+				printf("return -1\n");
+				return (-1);
+			}
 		}
-		//do you want it neg of pos from this line?
-		// if (check_y_side_line(y_bottom, x, screen_y) == -1)
-		// {
-		// 	if ((sprite.action == 10 && sprite.sector == 35) || (sprite.action == 14 && sprite.sector == 48) || (sprite.action == 14 && sprite.sector == 49))
-		// 		printf("(mid_bottom) check_y_side_line == -1\n");
-		// 	return (-1);
-		// }
-		if (mid_bottom.start.x != -1 &&\
-			check_y_side_line(mid_bottom, x, screen_y) == -1)
+		if (check_y_side_line(y_bottom, x, screen_y) == -1)
 		{
-			if ((sprite.action == 10 && sprite.sector == 35) || (sprite.action == 14 && sprite.sector == 48) || (sprite.action == 14 && sprite.sector == 49))
-				printf("(mid_bottom) check_y_side_line == -1\n");
 			return (-1);
 		}
 		i++;
 	}
-	return (1);
+	return (return_value);
 }
