@@ -60,7 +60,7 @@ static void		height_floor_bar(t_doom *doom, Uint32 **pixels)
 	bar.len = HF_LEN;
 	// printf("%d\n", doom->game_design.ed_sector->height_floor);
 	bar.cur_height = \
-	doom->game_design.ed_sector->height_floor;
+		doom->game_design.floor_height;
 	draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
 }
@@ -77,7 +77,7 @@ static void		height_ceiling_bar(t_doom *doom, Uint32 **pixels)
 	bar.height = HC_HEIGHT;
 	bar.len = HC_LEN;
 	bar.cur_height = \
-	doom->game_design.ed_sector->height_ceiling;
+	doom->game_design.ceiling_height;
 	draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
 }
@@ -96,7 +96,7 @@ void			bars(Uint32 **pixels, t_doom *doom)
 	bar.height = LL_HEIGHT;
 	bar.len = LL_LEN;
 	bar.cur_height = \
-	doom->game_design.ed_sector->light_level;
+	doom->game_design.light_level;
 	draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
 }

@@ -1,6 +1,21 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
+void	add_player(t_doom *doom, int x, int y)
+{
+	t_point	pos;
+
+	pos.x = x;
+	pos.y = y;
+	if (check_sector_in_sector(doom, pos) == TRUE)
+	{
+		doom->game_design.pl_x = x;
+		doom->game_design.pl_y = y;
+		doom->game_design.player_placed = TRUE;
+	}
+	doom->game_design.pl_pos = 0;
+}
+
 void		mouse_press_sidedef_txt(t_doom *doom, int x, int y)
 {
 	if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && \

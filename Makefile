@@ -38,12 +38,11 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type create_sidedef
-EDITOR_FILES = game_editor draw_bar sector sidedefs portal add_lists_to_libs add_to_game2\
+EDITOR_FILES = game_editor draw_bar sector sidedefs add_lists_to_libs add_to_game2\
 				mouse_events_game_editor draw_edit_console \
 			 	init_game draw_sidedef_object \
-				objects2 draw_sidedef_object2 objects correct_position \
-				mouse_event_dependencies put_textures put_textures2 mouse_event_sidedef \
-				sidedefs2 mouse_event_dependencies2
+				objects2 draw_sidedef_object2 sprites correct_position \
+				put_textures put_textures2 mouse_event_sidedef 
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \

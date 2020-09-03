@@ -57,9 +57,9 @@ static void	set_sector_lib(t_doom *doom)
 		lib.sector[index].i_sidedefs = ed_sector->i_sidedefs;
 		lib.sector[index].height_floor = ed_sector->height_floor;
 		lib.sector[index].height_ceiling = ed_sector->height_ceiling;
-		lib.sector[index].n_objects = doom->game_design.n_objects;
-		lib.sector[index].i_objects = doom->game_design.i_objects;
-		lib.sector[index].light_level = 10;// ed_sector->light_level;
+		lib.sector[index].n_objects = doom->game_design.n_sprites;
+		lib.sector[index].i_objects = doom->game_design.i_sprites;
+		lib.sector[index].light_level = doom->game_design.light_level;
 		lib.sector[index].action = 0;
 		lib.sector[index].hold_light = 0;
 		lib.sector[index].slope_floor_id = -1;
@@ -83,15 +83,17 @@ static void	set_sector_lib(t_doom *doom)
 
 void 	add_lists_to_libs(t_doom *doom)
 {
+	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
+	doom->game_design.ed_sector->height_floor = doom->game_design.floor_height;
+	doom->game_design.ed_sector->height_ceiling = \
+		doom->game_design.ceiling_height;
 	set_sector_lib(doom);
 	set_sidedef_lib(doom);
-	// set_object_lib(doom);
-	// doom->lib.obj_lib = (SDL_Surface **)ft_memalloc(sizeof(SDL_Surface*));
-	// if (doom->lib.obj_lib == NULL)
-	doom->lib.sprites = (t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.o_len);
+	doom->lib.sprites = \
+		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
 	if (doom->lib.sprites == NULL)
 		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
-	doom->lib.len_obj_lib = 0; // wont need after objects are being set 
+	doom->lib.len_obj_lib = 0;
 	doom->lib.sector = light_correction(\
 		doom->lib.sector, doom->game_design.sc_len);
 	doom->pos.x = doom->game_design.pl_x;

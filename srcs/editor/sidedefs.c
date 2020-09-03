@@ -48,7 +48,7 @@ static bool		line_intersect(t_doom *doom, t_point start, int x, int y)
 	return (FALSE);
 }
 
-bool		check_sector_in_sector(t_doom *doom, t_line line)
+bool		check_sector_in_sector(t_doom *doom, t_point pos)
 {
 	t_ray			ray;
 	int				counter;
@@ -57,9 +57,9 @@ bool		check_sector_in_sector(t_doom *doom, t_line line)
 
 	counter = 0;
 	sidedef = doom->game_design.sd_head;
-	ray.line.start = line.end;
-	ray.line.end.x = line.end.x + doom->cast.max_ray;
-	ray.line.end.y = line.end.y;
+	ray.line.start = pos;
+	ray.line.end.x = pos.x + doom->cast.max_ray;
+	ray.line.end.y = pos.y;
 	while (sidedef->next != NULL)
 	{
 		intersect = check_line_intersection(ray.line, sidedef->line);
@@ -80,7 +80,7 @@ bool		check_sector_in_sector(t_doom *doom, t_line line)
 
 static void		get_connection_sidedef(t_doom *doom, t_line line)
 {
-	if (check_sector_in_sector(doom, line) == TRUE)
+	if (check_sector_in_sector(doom, line.end) == TRUE)
 		return ;
 	set_sidedef_values(doom, line);
 	doom->game_design.draw_line.start = line.end;

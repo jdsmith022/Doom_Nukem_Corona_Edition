@@ -14,7 +14,7 @@ static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-	draw_img(doom->lib.obj_lib[doom->game_design.cur_tex], doom, texture);
+	draw_img(doom->lib.obj_lib[doom->game_design.tex_index], doom, texture);
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	put_images(DEL_OBJ_X, DEL_OBJ_Y, garbage, doom);
@@ -38,11 +38,15 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	else if (doom->game_design.edit_sector == TRUE)
 	{
+		bars(&pixels, doom);
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 		put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 		put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
 		put_images(RM_SD_X, RM_SD_Y, garbage, doom);
 		put_images(PORTAL_X, PORTAL_Y, plus, doom);
+		put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
+		put_images(AR_RIGHT_X, AR_LEFT_Y, arrow_right, doom);
+		put_textures_sprites(TEX_SPR_X, TEX_SPR_Y, doom->game_design.spr_tex, doom);
 	}
 	draw_map_images(pixels, doom);
 	if (doom->game_design.object_bar == 1)

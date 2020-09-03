@@ -42,10 +42,11 @@ typedef struct s_line		t_line;
 # define ADD_SECTOR_X 24
 # define ADD_SECTOR_Y 75
 
-# define AR_LEFT_X 24
-# define AR_LEFT_Y 0
-# define AR_RIGHT_X 104
-# define AR_RIGHT_Y 0
+# define AR_LEFT_X 0
+# define AR_LEFT_Y 400
+# define AR_RIGHT_X 128
+# define TEX_SPR_X 40
+# define TEX_SPR_Y 380
 
 # define AR_LEFT_S_X 664
 # define AR_LEFT_S_Y 160
@@ -133,6 +134,24 @@ typedef struct s_line		t_line;
 # define LL_HEIGHT 5
 # define LL_LEN 160.0
 
+# define SCISSOR_LIFT 7
+# define SHOPPER 9
+# define FACE_MASK 13
+# define HEALTH_PACK_PLUS 14
+# define HEALTH_PACK 15
+# define CORONA 19
+
+typedef struct 			s_ed_sprite
+{
+	int					id;
+	int					type;
+	t_point				pos;
+	int					sector;
+	struct s_ed_sprite	*next;
+	struct s_ed_sprite	*previous;	
+}						t_ed_sprite;
+
+
 typedef struct			s_ed_sector
 {
 	int					id;
@@ -205,7 +224,7 @@ void				check_connection(t_doom *doom, int x, int y);
 void				add_sidedef(t_doom *doom, int x, int y);
 void				delete_sector(t_doom *doom);
 void				add_sector(t_doom *doom);
-bool				check_sector_in_sector(t_doom *doom, t_line line);
+bool				check_sector_in_sector(t_doom *doom, t_point pos);
 t_sector			*light_correction(t_sector *sector, int len);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
 void				bars(Uint32 **pixels, t_doom *doom);
@@ -222,10 +241,12 @@ void				add_player(t_doom *doom, int x, int y);
 void				put_images(int x, int y, int index, t_doom *doom);
 void				put_textures(int x, int y, int index, t_doom *doom);
 void				put_textures_sidedef(int x, int y, int index, t_doom *doom);
+void				put_textures_sprites(int x, int y, int index, t_doom *doom);
 void				put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 					Uint32 pixel_dex);
 void				mouse_press_sidedef_txt(t_doom *doom, int x, int y);
 void				mouse_press_sidedef(t_doom *doom, int x, int y);
+void				put_sprite(t_doom *doom, int x, int y);
 
 
 void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
