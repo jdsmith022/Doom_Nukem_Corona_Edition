@@ -1,18 +1,17 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-// void		mouse_press_sidedef_txt(t_doom *doom, int x, int y)
-// {
-// 	else if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && \
-// 	y > AR_LEFT_TS2_Y && y < AR_LEFT_TS2_Y + FRAME_HEIGHT)
-// 		change_texture(doom,\
-// 			&(doom->game_design.sidedef[doom->game_design.cur_sd].txt_2), -1);
-// 	else if (x > AR_RIGHT_TS2_X && x < AR_RIGHT_TS2_X + FRAME_WIDTH && \
-// 	y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT)
-// 		change_texture(doom, \
-// 			&(doom->game_design.sidedef[doom->game_design.cur_sd].txt_2), 1);
-// }
-
+void		mouse_press_sidedef_txt(t_doom *doom, int x, int y)
+{
+	if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && \
+	y > AR_LEFT_TS2_Y && y < AR_LEFT_TS2_Y + FRAME_HEIGHT && \
+	doom->game_design.tex_index - 1 >= 0)
+		doom->game_design.tex_index--;
+	else if (x > AR_RIGHT_TS2_X && x < AR_RIGHT_TS2_X + FRAME_WIDTH && \
+	y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT &&\
+	doom->game_design.tex_index + 1 < 12)
+		doom->game_design.tex_index++;
+}
 
 static void	create_portal(t_doom *doom)
 {

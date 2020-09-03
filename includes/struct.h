@@ -309,11 +309,15 @@ typedef struct		s_gamedesign {
 	t_line			draw_line;
 	t_point			start_sector;
 	double			light_level;
+	int				cur_sd;
 	int				sd_len;
 	int				sc_len;
 	int				o_len; //remove
 	int				n_objects;
 	int				i_objects;
+	int				sd_tex_index[12];
+	int				tex_index;
+
 	int				s_size;
 	int				w_len;
 	int				w_size;
@@ -322,7 +326,6 @@ typedef struct		s_gamedesign {
 	int				cur_tex;
 	int				index_obj;
 	int				cur_sec;
-	int				cur_sd;
 	int				cur_obj;
 	int				portal_sd;
 	int				portal_sec;

@@ -3,7 +3,6 @@
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"
 
-
 static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 {
 	SDL_Rect texture;
@@ -33,6 +32,8 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 {
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
+	put_textures_sidedef(TEX_S2_X, TEX_S2_Y, \
+	doom->game_design.tex_index, doom);
 	if (doom->game_design.player_placed == TRUE)
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	else if (doom->game_design.edit_sector == TRUE)

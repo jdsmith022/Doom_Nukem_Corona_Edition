@@ -17,7 +17,8 @@ void			set_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.ed_sidedef->previous = prev;
 	doom->game_design.ed_sidedef->id = id;
 	doom->game_design.ed_sidedef->opp_sector = -1;
-	doom->game_design.ed_sidedef->texture = doom->game_design.cur_tex;
+	doom->game_design.ed_sidedef->texture = \
+		doom->game_design.sd_tex_index[doom->game_design.tex_index];
 	doom->game_design.ed_sidedef->sector = doom->game_design.cur_sec;
 	doom->game_design.ed_sidedef->line = line;
 	doom->game_design.ed_sidedef->next = NULL;
@@ -129,6 +130,8 @@ void			add_sidedef(t_doom *doom, int x, int y)
 	}
 	else if (editor->draw_line.end.x == -1 && line_intersect(doom, editor->draw_line.start, x, y) == FALSE)
 	{
+		doom->game_design.ed_sidedef->texture = \
+			doom->game_design.sd_tex_index[doom->game_design.tex_index];
 		editor->draw_line.end.x = x;
 		editor->draw_line.end.y = y;
 		if (snap_close_sector(editor->start_sector, &editor->draw_line.end) == TRUE)

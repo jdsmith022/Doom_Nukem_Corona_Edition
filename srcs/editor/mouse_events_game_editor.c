@@ -88,6 +88,7 @@ void			mouse_press_game_editor(t_doom *doom, int x, int y)
 {
 	mouse_press_map(doom, x, y);
 	mouse_press_sector(doom, x, y);
+	mouse_press_sidedef_txt(doom, x, y);
 	if (doom->game_design.edit_sector == TRUE)
 	{
 		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \

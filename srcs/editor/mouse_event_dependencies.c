@@ -2,11 +2,6 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
-void	change_texture(t_doom *doom, int *txt, int change)
-{
-	if (doom->lib.len_tex_lib > *txt + change && *txt + change >= 0)
-		doom->game_design.cur_tex += change;
-}
 
 
 // void	object_texture(t_doom *doom, int change)

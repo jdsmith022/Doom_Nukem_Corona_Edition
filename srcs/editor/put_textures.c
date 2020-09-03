@@ -12,7 +12,7 @@ static void	set_points_textures(t_doom *doom, t_point *i,
 	i->y = 0;
 }
 
-void		put_textures(int x, int y, int index, t_doom *doom)
+void		put_textures_sidedef(int x, int y, int index, t_doom *doom)
 {
 	int				save_x;
 	Uint32			shift;
@@ -21,8 +21,8 @@ void		put_textures(int x, int y, int index, t_doom *doom)
 	SDL_Surface		*texture;
 
 	save_x = x;
-	texture = doom->game_design.sidedef_bar == 1 ? \
-	doom->lib.tex_lib[index] : doom->lib.obj_lib[index];
+	index = doom->game_design.sd_tex_index[doom->game_design.tex_index];
+	texture = doom->lib.tex_lib[index];
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
 	set_points_textures(doom, &i, &change, texture);
 	while ((int)i.y < texture->h)

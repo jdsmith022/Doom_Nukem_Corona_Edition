@@ -92,7 +92,7 @@ typedef struct s_line		t_line;
 # define AR_LEFT_TS2_X 640
 # define AR_LEFT_TS2_Y 80
 # define TEX_S2_X 696
-# define TEX_S2_Y 450
+# define TEX_S2_Y 80
 # define AR_RIGHT_TS2_X 768
 # define AR_RIGHT_TS2_Y 80
 
@@ -204,44 +204,46 @@ bool				snap_close_sector(t_point start, t_point *end);
 void				check_connection(t_doom *doom, int x, int y);
 void				add_sidedef(t_doom *doom, int x, int y);
 void				delete_sector(t_doom *doom);
-void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);
-t_sidedef			*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size);
-void				rmove(t_sprite *sprite, t_doom *doom);
-t_sector			*light_correction(t_sector *sector, int len);
 void				add_sector(t_doom *doom);
 bool				check_sector_in_sector(t_doom *doom, t_line line);
-void				add_portal(t_doom *doom, int dir);
-void				add_to_game(t_doom *doom);
+t_sector			*light_correction(t_sector *sector, int len);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
-void				printing_map(t_gamedesign *design);
 void				bars(Uint32 **pixels, t_doom *doom);
-void				draw_sector_images(Uint32 *pixels, t_doom *doom);
 void				draw_images(Uint32 *pixels, t_doom *doom);
-void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void				init_game_design(t_doom *doom);
 void				draw_lines(t_doom *doom, Uint32 **pixels, t_ed_sidedef *ed_sidedef);
 void				add_object(t_doom *doom, int x, int y);
 void				set_angle(t_angle_line *angle, double *i);
 void				set_pixels(Uint32 **pixels, t_angle_line angle, int color);
 void				draw_object(t_doom *doom, Uint32 **pixels);
-void				del_obj(t_doom *doom);
-
+void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void 				add_lists_to_libs(t_doom *doom);
-
-void				correct_i_object(int i, t_doom *doom);
-void				add_specifications(t_gamedesign *gd, int index);
-void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
-void				coor_pos(t_doom *doom);
 void				add_player(t_doom *doom, int x, int y);
-void				change_texture(t_doom *doom, int *texture, int change);
-void				object_change(t_doom *doom, int change);
-void				sidedef_object(t_doom *doom);
-void				object_texture(t_doom *doom, int change);
-void				mouse_press_sidedef(t_doom *doom, int x, int y);
 void				put_images(int x, int y, int index, t_doom *doom);
 void				put_textures(int x, int y, int index, t_doom *doom);
+void				put_textures_sidedef(int x, int y, int index, t_doom *doom);
 void				put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 					Uint32 pixel_dex);
-void				draw_screen_colors(Uint32 *pixels, t_doom *doom);
+void				mouse_press_sidedef_txt(t_doom *doom, int x, int y);
+void				mouse_press_sidedef(t_doom *doom, int x, int y);
+
+
+void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
+void				object_texture(t_doom *doom, int change);
+void				sidedef_object(t_doom *doom);
+void				object_change(t_doom *doom, int change);
+
+void				add_specifications(t_gamedesign *gd, int index);
+void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);
+t_sidedef			*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size);
+void				rmove(t_sprite *sprite, t_doom *doom);
+void				add_portal(t_doom *doom, int dir);
+void				add_to_game(t_doom *doom);
+void				printing_map(t_gamedesign *design);
+void				draw_sector_images(Uint32 *pixels, t_doom *doom);
+void				del_obj(t_doom *doom);
+void				correct_i_object(int i, t_doom *doom);
+void				coor_pos(t_doom *doom);
+void				change_texture(t_doom *doom, int *texture, int change);
 
 #endif

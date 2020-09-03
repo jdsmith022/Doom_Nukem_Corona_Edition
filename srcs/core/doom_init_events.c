@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 14:29:20 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/03 18:34:46 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void		init_events(t_event *event)
 	event->fall_count = -1;
 	event->mouse_state_switched = TRUE;
 	event->groc_pickup = FALSE;
+	event->select = FALSE;
+	event->shoot = FALSE;
 	init_events_2(event);
 }

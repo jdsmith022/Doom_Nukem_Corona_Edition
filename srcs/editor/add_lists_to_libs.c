@@ -20,7 +20,7 @@ static void	set_sidedef_lib(t_doom *doom)
 		lib.sidedef[index].id = ed_sidedef->id;
 		lib.sidedef[index].line = ed_sidedef->line;
 		lib.sidedef[index].txt_1 = 14;
-		lib.sidedef[index].txt_2 = 32; // ed_sidedef->texture;
+		lib.sidedef[index].txt_2 = ed_sidedef->texture;
 		lib.sidedef[index].txt_3 = 17;
 		lib.sidedef[index].sector = ed_sidedef->sector;
 		lib.sidedef[index].opp_sector = ed_sidedef->opp_sector;
@@ -107,6 +107,7 @@ void 	add_lists_to_libs(t_doom *doom)
 	set_menu_game_variables(doom);
 	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	SDL_SetRelativeMouseMode(SDL_TRUE);
+	doom->own_event.mouse_pointer = FALSE;
 	init_groceries(doom);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	SDL_UpdateWindowSurface(doom->window);
