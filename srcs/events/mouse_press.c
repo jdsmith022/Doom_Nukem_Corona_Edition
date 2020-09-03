@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 18:54:49 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 20:04:59 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,4 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
 	}
 	if (doom->game.editor == TRUE)
 		mouse_press_game_editor(doom, button->x, button->y);
-}
-
-bool	handle_mouse_state(t_doom *doom)
-{
-	if (doom->own_event.mouse_state_switched)
-		return (FALSE);
-	doom->own_event.mouse_state_switched = TRUE;
-	return (TRUE);
 }
