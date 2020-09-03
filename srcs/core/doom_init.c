@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 17:04:31 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 18:27:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void		init_settings(t_doom *doom)
 	doom->own_event.select = FALSE;
 	doom->own_event.shoot = FALSE;
 	doom->cast.poster = FALSE;
+	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 }
 
 void			doom_init(t_doom *doom)

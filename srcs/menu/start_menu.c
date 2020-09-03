@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 17:02:52 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 18:30:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,5 @@ void		doom_start(t_doom *doom)
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
-	if (doom->game.editor == FALSE)
-		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	set_menu_game_variables(doom);
 }
