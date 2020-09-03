@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 16:18:50 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 17:16:20 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	sdl_poll_events(t_doom *doom, double dt)
 		if (event.type == SDL_MOUSEMOTION && doom->own_event.fall == FALSE)
 			move_cam_direction(doom, &event.motion, dt, &doom->own_event);
 	}
-	key_handler(doom, &doom->own_event, dt);
 }
 
 void		doom_update(t_doom *doom, double dt)
 {
 	core_gameplay_loop(doom, dt);
 	sdl_poll_events(doom, dt);
+	key_handler(doom, &doom->own_event, dt);
 }

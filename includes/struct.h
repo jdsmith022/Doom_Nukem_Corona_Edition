@@ -290,7 +290,6 @@ typedef struct		s_lib {
 	int				cur_len_infection;
 	int				tot_len_infection;
 	t_sprite		*sprites;
-	int				n_mov_sprites;
 	t_window		window;
 	int				*sprite_order;
 	double			light;

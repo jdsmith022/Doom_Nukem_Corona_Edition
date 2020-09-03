@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 10:12:40 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 17:02:52 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
 
-static void	set_menu_game_variables(t_doom *doom)
+void	set_menu_game_variables(t_doom *doom)
 {
 	t_font font_lib;
 
@@ -27,13 +27,14 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->lib.font_lib.bools.checkout = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;
-	doom->own_event.select = FALSE;
-	doom->game.start_timer = FALSE;
 	doom->hud->hold_time /= doom->game.difficulty;
 	doom->hud->curr_time /= doom->game.difficulty;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
-	SDL_BlitSurface(font_lib.font_surface, NULL, \
-		doom->surface, &font_lib.font_rect);
+	if (doom->game.editor == FALSE)
+	{
+		SDL_BlitSurface(font_lib.font_surface, NULL, \
+			doom->surface, &font_lib.font_rect);
+	}
 	SDL_UpdateWindowSurface(doom->window);
 }
 

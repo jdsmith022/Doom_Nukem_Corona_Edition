@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 16:13:15 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 17:47:31 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,8 @@ void			game_loop(t_doom *doom)
 	{
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
-		// printf("test11: %d\n", doom->lib.sidedef[0].id);
-		// printf("sd len: %d\n", doom->game_design.sd_len);
 		timer(doom);
 		doom_render(doom);
-		// printf("test: %d\n", doom->lib.sector[doom->i_sector].id);
-		// printf("test22: %d\n", doom->lib.sidedef[0].id);
 		update_screen(doom);
 		set_to_window(doom);
 	}
