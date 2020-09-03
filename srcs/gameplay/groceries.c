@@ -19,12 +19,12 @@ static bool		mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 		return (false);
 }
 
-static bool			click_on_basket(t_list **basket, uint8_t *type, int x, int y)
+static bool			click_on_basket(t_list **b, uint8_t *type, int x, int y)
 {
 	t_list		*temp;
 	t_item		*item;
 
-	temp = *basket;
+	temp = *b;
 	while (temp)
 	{
 		item = (t_item *)temp->content;

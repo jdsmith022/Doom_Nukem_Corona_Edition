@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 14:50:49 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/02 14:44:56 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/02 15:12:50 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		check_hit_new(t_doom *doom)
 	i = 0;
 	while (i < doom->visible_sprites)
 	{
-		if (doom->lib.sprites[doom->lib.sprite_order[i]].distance < 150 &&\
+		if (doom->lib.sprites[doom->lib.sprite_order[i]].distance < 320 &&\
 		sprite_has_action(doom->lib.sprites[doom->lib.sprite_order[i]]) &&\
 		sprite_in_shooting_area(doom, doom->lib.sprite_order[i]) != -1)
 			doom->own_event.hit_index = doom->lib.sprite_order[i];

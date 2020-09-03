@@ -3,7 +3,7 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				49
+# define GROC_COUNT				50
 
 # define APPLE					1
 # define BACON					2
@@ -51,6 +51,7 @@
 # define JARS2					45
 # define JARS3					46
 # define HONEY					47
+# define SHRIMP					48
 
 # define TEX_APPLE				"assets/textures/shelves/apple.bmp"
 # define TEX_BACON				"assets/textures/shelves/sausage_bacon.bmp"
@@ -292,6 +293,11 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/round_jars.bmp",
 		"assets/sprites/groceries/honey.bmp",
 		HONEY
+	},
+	{
+		"assets/textures/shelves/fish2.bmp",
+		"assets/sprites/groceries/shrimp.bmp",
+		SHRIMP
 	}
 };
 
