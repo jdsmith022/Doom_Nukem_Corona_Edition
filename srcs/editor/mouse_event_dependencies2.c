@@ -4,9 +4,15 @@
 
 void	add_player(t_doom *doom, int x, int y)
 {
-	doom->game_design.pl_x = x;
-	doom->game_design.pl_y = y;
-	doom->game_design.pl_sec = doom->game_design.cur_sec;
+	t_line	line;
+
+	line.end.x = x;
+	line.end.y = y;
+	if (check_sector_in_sector(doom, line) == TRUE)
+	{
+		doom->game_design.pl_x = x;
+		doom->game_design.pl_y = y;
+		doom->game_design.player_placed = TRUE;
+	}
 	doom->game_design.pl_pos = 0;
 }
-

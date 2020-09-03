@@ -33,7 +33,9 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 {
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
-	if (doom->game_design.edit_sector == TRUE)
+	if (doom->game_design.player_placed == TRUE)
+		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
+	else if (doom->game_design.edit_sector == TRUE)
 	{
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 		put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);

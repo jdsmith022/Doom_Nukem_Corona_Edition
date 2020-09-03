@@ -71,9 +71,9 @@ void		mouse_press_sidedef(t_doom *doom, int x, int y)
 	// editor.pl_pos == 0 && editor.object_bar == 1)
 		// add_object(doom, x, y);
 	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.pl_pos == 1)
+	editor.pl_pos == TRUE && editor.edit_sector == TRUE)
 		add_player(doom, x, y);
 	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
 	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
-			delete_sector(doom);
+		delete_sector(doom);
 }

@@ -48,10 +48,10 @@ static bool		line_intersect(t_doom *doom, t_point start, int x, int y)
 	return (FALSE);
 }
 
-static bool		check_sector_in_sector(t_doom *doom, t_line line)
+bool		check_sector_in_sector(t_doom *doom, t_line line)
 {
 	t_ray			ray;
-	int 			counter;
+	int				counter;
 	t_point			intersect;
 	t_ed_sidedef	*sidedef;
 
@@ -68,6 +68,8 @@ static bool		check_sector_in_sector(t_doom *doom, t_line line)
 			ray.line.start.x = intersect.x + 1;
 			ray.line.start.y = intersect.y;
 			counter++;
+			if (doom->game_design.pl_pos == TRUE && counter == 1)
+				doom->game_design.pl_sec = sidedef->sector;
 		}
 		sidedef = sidedef->next;
 	}
@@ -97,21 +99,19 @@ void			check_connection(t_doom *doom, int x, int y)
 	line.end.y = y;
 	dist_start = point_distance(line.end, sidedef->line.start);
 	dist_end = point_distance(line.end, sidedef->line.end);
-	if (dist_start < dist_end && line_intersect(doom, sidedef->line.start, x, y) == FALSE)
+	if (dist_start < dist_end && \
+	line_intersect(doom, sidedef->line.start, x, y) == FALSE)
 	{
-		printf("on top!\n");
 		line.start = sidedef->line.start;
 		doom->game_design.start_sector = sidedef->line.end;
 		get_connection_sidedef(doom, line);
 	}
 	else if (line_intersect(doom, sidedef->line.end, x, y) == FALSE)
 	{
-		printf("as below!\n");
 		line.start = sidedef->line.end;
 		doom->game_design.start_sector = sidedef->line.start;
 		get_connection_sidedef(doom, line);
 	}
-	printf("open_connection: %d\n", doom->game_design.open_connection);
 }
 
 

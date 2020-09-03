@@ -59,4 +59,5 @@ void			init_game_design(t_doom *doom)
 		doom_exit_failure(doom, "error: malloc sidedef in editor\n");
 	doom->game_design.sd_head = doom->game_design.ed_sidedef;
 	doom->game_design.ed_sidedef->next = NULL;
+	doom->game_design.player_placed = FALSE;
 }

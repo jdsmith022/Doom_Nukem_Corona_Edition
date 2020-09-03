@@ -232,7 +232,6 @@ typedef struct		s_sidedef {
 	int				id;
 	int				action;
 	int				sector;
-	int				opp_sidedef;
 	int				opp_sector;
 	double			offset;
 	int				dir;
@@ -313,7 +312,9 @@ typedef struct		s_gamedesign {
 	double			light_level;
 	int				sd_len;
 	int				sc_len;
-	int				o_len;
+	int				o_len; //remove
+	int				n_objects;
+	int				i_objects;
 	int				s_size;
 	int				w_len;
 	int				w_size;
@@ -337,6 +338,7 @@ typedef struct		s_gamedesign {
 	int				txt_3;
 	int				sidedef_bar;
 	bool			custom_level;
+	bool			player_placed;
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 

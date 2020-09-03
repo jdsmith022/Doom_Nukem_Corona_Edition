@@ -209,6 +209,7 @@ t_sidedef			*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size);
 void				rmove(t_sprite *sprite, t_doom *doom);
 t_sector			*light_correction(t_sector *sector, int len);
 void				add_sector(t_doom *doom);
+bool				check_sector_in_sector(t_doom *doom, t_line line);
 void				add_portal(t_doom *doom, int dir);
 void				add_to_game(t_doom *doom);
 void				mouse_press_game_editor(t_doom *doom, int x, int y);
@@ -224,6 +225,9 @@ void				set_angle(t_angle_line *angle, double *i);
 void				set_pixels(Uint32 **pixels, t_angle_line angle, int color);
 void				draw_object(t_doom *doom, Uint32 **pixels);
 void				del_obj(t_doom *doom);
+
+void 				add_lists_to_libs(t_doom *doom);
+
 void				correct_i_object(int i, t_doom *doom);
 void				add_specifications(t_gamedesign *gd, int index);
 void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);

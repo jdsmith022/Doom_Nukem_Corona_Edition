@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:15 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 22:34:43 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/03 14:46:58 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	sdl_init(&doom);
 	save_libraries(&doom);
 	save_font_libraries(&doom);
+	printf("in game loop\n");
 	doom_init(&doom);
 	doom_start(&doom);
 	game_loop(&doom);
