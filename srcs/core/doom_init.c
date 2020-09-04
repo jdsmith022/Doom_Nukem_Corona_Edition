@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 15:54:38 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/04 13:26:10 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,28 @@
 static void		init_sprites(t_doom *doom)
 {
 	int i;
+	t_sector *sector;
 
 	i = 0;
 	doom->visible_sprites = 0;
 	doom->save_scissor_lift = -1;
 	doom->lib.sprite_order = NULL;
+	sector = doom->lib.sector;
+	doom->lib.move = 0;
 	while (i < 20)
 	{
 		doom->lib.sprite_height[i] = i;
 		i++;
 	}
+	doom->clip = (t_clip*)malloc(sizeof(t_clip) * 1);
+	//if (!doom->clip)
+	//exit?
+	//set content to NULL
+	//and content size to ZERO
+	//else malloc for content (not necessary)
+	doom->clip->next = NULL;
+	doom->head = doom->clip;
 	i = 0;
-	while (i < doom->lib.n_sectors)
-	{
-		doom->lib.sector[i].bottom.start.x = -1;
-		doom->lib.sector[i].bottom.start.y = -1;
-		doom->lib.sector[i].bottom.end.x = -1;
-		doom->lib.sector[i].bottom.end.y = -1;
-		doom->lib.sector[i].top.start.x = -1;
-		doom->lib.sector[i].top.start.y = -1;
-		doom->lib.sector[i].top.end.x = -1;
-		doom->lib.sector[i].top.end.y = -1;
-		doom->lib.sector[i].mid_bottom.start.x = -1;
-		doom->lib.sector[i].mid_bottom.start.y = -1;
-		doom->lib.sector[i].mid_bottom.end.x = -1;
-		doom->lib.sector[i].mid_bottom.end.y = -1;
-		doom->lib.sector[i].mid_top.start.x = -1;
-		doom->lib.sector[i].mid_top.start.y = -1;
-		doom->lib.sector[i].mid_top.end.x = -1;
-		doom->lib.sector[i].mid_top.end.y = -1;
-		i++;
-	}
-	doom->lib.move = 0;
 }
 
 static void		init_render(t_doom *doom)

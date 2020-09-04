@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/02 20:26:50 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/04 10:40:30 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ static void		put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
 	sprite_i = doom->lib.sprites[index_sp].visible;
 	screen_y = (int)sprite->start.y;
 	tex.x = find_x(doom, sprite, index_sp, stripe);
-	while (screen_y < (int)sprite->end.y && screen_y < HEIGHT &&\
+	while (screen_y < (int)sprite->end.y && screen_y < HEIGHT/* &&\
 		no_clipping_region(screen_y, doom->lib.sprites[index_sp],\
-		doom, stripe) == 1)
+		doom, stripe) == 1*/)
 	{
 		if (screen_y >= 0 /* && clip_top(doom, index_sp, stripe, screen_y) == -1*/)
 		{

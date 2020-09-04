@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:16:23 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:18:16 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 09:51:35 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ void		update_hud(t_doom *doom)
 {
 	if (doom->game.editor == FALSE && doom->menu->state != game_over)
 	{
-		draw_hud_top_bar(doom);
+		// draw_hud_top_bar(doom);
 		draw_player_adds(doom);
-		draw_hud_bottom_bar(doom);
-		draw_hud_side_bar(doom);
+		// draw_hud_bottom_bar(doom);
+		// draw_hud_side_bar(doom);
 		calculate_hud_levels(doom);
 		update_levels(doom, doom->lib.font_lib.hud_font);
 		if (doom->menu->start_timer == TRUE)

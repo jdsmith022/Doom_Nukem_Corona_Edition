@@ -49,6 +49,14 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
+typedef enum			e_clip_values
+{
+	bottom,
+	mid_bottom,
+	top,
+	top_bottom
+}						t_clip_values;
+
 typedef enum			e_settings
 {
 	player_1,
@@ -265,14 +273,6 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	t_line			bottom;
-	t_line			top;
-	t_line			mid_bottom;
-	t_line			mid_top;
-	// int				bottom[WIDTH];
-	// int				top[WIDTH];
-	// int				mid_bottom[WIDTH];
-	// int				mid_top[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {
@@ -376,6 +376,14 @@ typedef struct		s_render
 	double			min_distance;
 }					t_render;
 
+typedef struct		s_clip
+{
+	int				sector_id;
+	int				state;
+	t_line			clip_val;
+	struct s_clip	*next;
+}					t_clip;
+
 typedef struct		s_doom {
 	t_line			tests;
 	SDL_Window		*window;
@@ -397,12 +405,16 @@ typedef struct		s_doom {
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
-
 	int				obj_height;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
 	int				save_scissor_lift;
+	t_clip			*bottom;
+	t_clip			*top;
+	t_clip			*mid_bottom;
+	t_clip			*mit_top;
+	// t_clip			*head_bottom; //save heads?
 }					t_doom;
 
 #endif

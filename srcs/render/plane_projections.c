@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 18:24:57 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/04 13:27:24 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,68 +86,79 @@ static bool			in_range(int nb, int min, int max)
 	return (FALSE);
 }
 
-static void		set_values_clipping_sprites(t_doom *doom, t_plane plane,
-					t_sidedef sidedef, int x)
+// static void		set_values_clipping_sprites(t_doom *doom, t_plane plane,
+// 					t_sidedef sidedef, int x)
+// {
+// 	//plane sidedef bottom
+// 	if (in_range(plane.sidedef_bottom, -1, HEIGHT + 1) &&\
+// 	doom->lib.sector[sidedef.sector].bottom.start.x == -1)
+// 	{
+// 		doom->lib.sector[sidedef.sector].bottom.start.x = x;
+// 		doom->lib.sector[sidedef.sector].bottom.start.y = plane.sidedef_bottom;
+// 	}
+// 	else if (in_range(plane.sidedef_bottom, -1, HEIGHT + 1) &&\
+// 	doom->lib.sector[sidedef.sector].bottom.start.x != -1)
+// 	{
+// 		doom->lib.sector[sidedef.sector].bottom.end.x = x;
+// 		doom->lib.sector[sidedef.sector].bottom.end.y = plane.sidedef_bottom;
+// 	}
+// 	//plane sidedef top
+// 	if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
+// 	doom->lib.sector[sidedef.sector].top.start.x == -1)
+// 	{
+// 		doom->lib.sector[sidedef.sector].top.start.x = x;
+// 		doom->lib.sector[sidedef.sector].top.start.y = plane.sidedef_top;
+// 	}
+// 	else if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
+// 	doom->lib.sector[sidedef.sector].top.start.x != -1)
+// 	{
+// 		doom->lib.sector[sidedef.sector].top.end.x = x;
+// 		doom->lib.sector[sidedef.sector].top.end.y = plane.sidedef_top;
+// 	}
+// 	//PORTALS
+// 	if (sidedef.opp_sector != -1 || sidedef.action == 6)
+// 	{
+// 		//plane mid bottom
+// 		if (in_range(plane.mid_texture_bottom, 0, HEIGHT ) &&\
+// 		(doom->lib.sector[sidedef.sector].mid_bottom.start.x == -1))
+// 		{
+// 			doom->lib.sector[sidedef.sector].mid_bottom.start.x = x;
+// 			doom->lib.sector[sidedef.sector].mid_bottom.start.y =\
+// 			plane.mid_texture_bottom;
+// 		}
+// 		else if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
+// 		doom->lib.sector[sidedef.sector].mid_bottom.start.x != -1)
+// 		{
+// 			doom->lib.sector[sidedef.sector].mid_bottom.end.x = x;
+// 			doom->lib.sector[sidedef.sector].mid_bottom.end.y =\
+// 			plane.mid_texture_bottom;
+// 		}
+// 		//plane mid top
+// 		if (in_range(plane.mid_texture_top, 0, HEIGHT) &&\
+// 		doom->lib.sector[sidedef.sector].mid_top.start.x == -1)
+// 		{
+// 			doom->lib.sector[sidedef.sector].mid_top.start.x = x;
+// 			doom->lib.sector[sidedef.sector].mid_top.start.y =\
+// 			plane.mid_texture_top;
+// 		}
+// 		else if (in_range(plane.mid_texture_top, 0, HEIGHT) &&\
+// 		doom->lib.sector[sidedef.sector].mid_top.start.x != -1)
+// 		{
+// 			doom->lib.sector[sidedef.sector].mid_top.end.x = x;
+// 			doom->lib.sector[sidedef.sector].mid_top.end.y =\
+// 			plane.mid_texture_top;
+// 		}
+// 	}
+// }
+
+static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
+				t_sidedef sidedef, int x)
 {
-	//plane sidedef bottom
-	if (in_range(plane.sidedef_bottom, -1, HEIGHT + 1) &&\
-	doom->lib.sector[sidedef.sector].bottom.start.x == -1)
+	//if portal
+	if (sidedef.opp_sector != -1)
 	{
-		doom->lib.sector[sidedef.sector].bottom.start.x = x;
-		doom->lib.sector[sidedef.sector].bottom.start.y = plane.sidedef_bottom;
-	}
-	else if (in_range(plane.sidedef_bottom, -1, HEIGHT + 1) &&\
-	doom->lib.sector[sidedef.sector].bottom.start.x != -1)
-	{
-		doom->lib.sector[sidedef.sector].bottom.end.x = x;
-		doom->lib.sector[sidedef.sector].bottom.end.y = plane.sidedef_bottom;
-	}
-	//plane sidedef top
-	if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
-	doom->lib.sector[sidedef.sector].top.start.x == -1)
-	{
-		doom->lib.sector[sidedef.sector].top.start.x = x;
-		doom->lib.sector[sidedef.sector].top.start.y = plane.sidedef_top;
-	}
-	else if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
-	doom->lib.sector[sidedef.sector].top.start.x != -1)
-	{
-		doom->lib.sector[sidedef.sector].top.end.x = x;
-		doom->lib.sector[sidedef.sector].top.end.y = plane.sidedef_top;
-	}
-	//PORTALS
-	if (sidedef.opp_sector != -1 || sidedef.action == 6)
-	{
-		//plane mid bottom
-		if (in_range(plane.mid_texture_bottom, 0, HEIGHT ) &&\
-		(doom->lib.sector[sidedef.sector].mid_bottom.start.x == -1))
-		{
-			doom->lib.sector[sidedef.sector].mid_bottom.start.x = x;
-			doom->lib.sector[sidedef.sector].mid_bottom.start.y =\
-			plane.mid_texture_bottom;
-		}
-		else if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
-		doom->lib.sector[sidedef.sector].mid_bottom.start.x != -1)
-		{
-			doom->lib.sector[sidedef.sector].mid_bottom.end.x = x;
-			doom->lib.sector[sidedef.sector].mid_bottom.end.y =\
-			plane.mid_texture_bottom;
-		}
-		//plane mid top
-		if (in_range(plane.mid_texture_top, 0, HEIGHT) &&\
-		doom->lib.sector[sidedef.sector].mid_top.start.x == -1)
-		{
-			doom->lib.sector[sidedef.sector].mid_top.start.x = x;
-			doom->lib.sector[sidedef.sector].mid_top.start.y =\
-			plane.mid_texture_top;
-		}
-		else if (in_range(plane.mid_texture_top, 0, HEIGHT) &&\
-		doom->lib.sector[sidedef.sector].mid_top.start.x != -1)
-		{
-			doom->lib.sector[sidedef.sector].mid_top.end.x = x;
-			doom->lib.sector[sidedef.sector].mid_top.end.y =\
-			plane.mid_texture_top;
-		}
+		//check for sidedef_id
+
 	}
 }
 

@@ -6,32 +6,32 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/03 18:39:25 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/04 10:41:26 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-int		check_y_side_line(t_line line, int x, int y)
-{
-	t_point		compare;
-	int			diff;
-	int			diff_compare;
+// int		check_y_side_line(t_line line, int x, int y)
+// {
+// 	t_point		compare;
+// 	int			diff;
+// 	int			diff_compare;
 
-	compare.x = line.start.x;
-	compare.y = line.start.y + 1;
-	//if it is under the line return -1
-	//if it is above the line return 1
-	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
-			(y - line.start.y) * (line.end.x - line.start.x);
-	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
-					(compare.y - line.start.y) * (line.end.x - line.start.x);
-	if ((diff < 0 && diff_compare < 0) || (diff > 0 && diff_compare > 0)\
-		|| diff == 0)
-		return (-1);
-	else
-		return (1);
-}
+// 	compare.x = line.start.x;
+// 	compare.y = line.start.y + 1;
+// 	//if it is under the line return -1
+// 	//if it is above the line return 1
+// 	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
+// 			(y - line.start.y) * (line.end.x - line.start.x);
+// 	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
+// 					(compare.y - line.start.y) * (line.end.x - line.start.x);
+// 	if ((diff < 0 && diff_compare < 0) || (diff > 0 && diff_compare > 0)\
+// 		|| diff == 0)
+// 		return (-1);
+// 	else
+// 		return (1);
+// }
 
 
 // int		clip_top(t_doom *doom, int index_sp, int x, int screen_y)
@@ -61,61 +61,61 @@ int		check_y_side_line(t_line line, int x, int y)
 // 	return (-1);
 // }
 
-int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
-{
-	int		i;
-	t_line	y_bottom;
-	t_line	mid_bottom;
-	int		return_value;
+// int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
+// {
+// 	int		i;
+// 	t_line	y_bottom;
+// 	t_line	mid_bottom;
+// 	int		return_value;
 
-	i = 0;
-	return_value = 1;
-	while (i < sprite.n_sector)
-	{
-		mid_bottom =\
-		doom->lib.sector[sprite.prev_sectors[i]].mid_bottom;
-		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].bottom;
-		// do you want it neg of pos from this line?
-		if (mid_bottom.start.x != -1)
-		{
-			if (mid_bottom.start.x > 0 && mid_bottom.start.x < WIDTH &&\
-				mid_bottom.start.y > 0 && mid_bottom.start.y < HEIGHT)
-			{
-				if (sprite.action == 14 && sprite.sector == 11)
-				{
-					printf("IF1\nline: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
-					printf("coord: (%d;%d)\n", x, screen_y);
-				}
-				if (x < mid_bottom.start.x)
-					return_value = 1;
-			}
-			if (mid_bottom.end.x > 0 && mid_bottom.end.x < WIDTH &&\
-				mid_bottom.end.y > 0 && mid_bottom.end.y < HEIGHT)
-			{
-				if (sprite.action == 14 && sprite.sector == 11)
-				{
-					printf("IF 2\nline: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
-					printf("coord: (%d;%d)\n", x, screen_y);
-				}
-				if (x > mid_bottom.end.x)
-					return_value = 1;
-			}
-			if (sprite.action == 14 && sprite.sector == 11)
-			{
-				printf("AFTER line: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
-				printf("coord: (%d;%d)\n", x, screen_y);
-			}
-			if (check_y_side_line(mid_bottom, x, screen_y) == -1)
-			{
-				printf("return -1\n");
-				return (-1);
-			}
-		}
-		if (check_y_side_line(y_bottom, x, screen_y) == -1)
-		{
-			return (-1);
-		}
-		i++;
-	}
-	return (return_value);
-}
+// 	i = 0;
+// 	return_value = 1;
+// 	while (i < sprite.n_sector)
+// 	{
+// 		mid_bottom =\
+// 		doom->lib.sector[sprite.prev_sectors[i]].mid_bottom;
+// 		y_bottom = doom->lib.sector[sprite.prev_sectors[i]].bottom;
+// 		// do you want it neg of pos from this line?
+// 		if (mid_bottom.start.x != -1)
+// 		{
+// 			if (mid_bottom.start.x > 0 && mid_bottom.start.x < WIDTH &&\
+// 				mid_bottom.start.y > 0 && mid_bottom.start.y < HEIGHT)
+// 			{
+// 				if (sprite.action == 14 && sprite.sector == 11)
+// 				{
+// 					printf("IF1\nline: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+// 					printf("coord: (%d;%d)\n", x, screen_y);
+// 				}
+// 				if (x < mid_bottom.start.x)
+// 					return_value = 1;
+// 			}
+// 			if (mid_bottom.end.x > 0 && mid_bottom.end.x < WIDTH &&\
+// 				mid_bottom.end.y > 0 && mid_bottom.end.y < HEIGHT)
+// 			{
+// 				if (sprite.action == 14 && sprite.sector == 11)
+// 				{
+// 					printf("IF 2\nline: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+// 					printf("coord: (%d;%d)\n", x, screen_y);
+// 				}
+// 				if (x > mid_bottom.end.x)
+// 					return_value = 1;
+// 			}
+// 			if (sprite.action == 14 && sprite.sector == 11)
+// 			{
+// 				printf("AFTER line: (%f;%f) - (%f;%f) ", mid_bottom.start.x, mid_bottom.start.y, mid_bottom.end.x, mid_bottom.end.y);
+// 				printf("coord: (%d;%d)\n", x, screen_y);
+// 			}
+// 			if (check_y_side_line(mid_bottom, x, screen_y) == -1)
+// 			{
+// 				// printf("return -1\n");
+// 				return (-1);
+// 			}
+// 		}
+// 		if (check_y_side_line(y_bottom, x, screen_y) == -1)
+// 		{
+// 			return (-1);
+// 		}
+// 		i++;
+// 	}
+// 	return (return_value);
+// }
