@@ -30,11 +30,19 @@ static void		draw_map_images(Uint32 *pixels, t_doom *doom)
 
 void			draw_images(Uint32 *pixels, t_doom *doom)
 {
+	SDL_Rect texture;
+	int		index;
+
+	texture.h = 8;
+	texture.w = 8;
+	texture.x = TEX_SPR_X;
+	texture.y = TEX_SPR_Y;
+	index = doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	put_textures_sidedef(TEX_S2_X, TEX_S2_Y, \
 	doom->game_design.tex_index, doom);
-	put_images(RM_SD_X, RM_SD_Y, garbage, doom);//sidedef
+	put_images(RM_SD_X, RM_SD_Y, garbage, doom);
 	if (doom->game_design.player_placed == TRUE)
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	else if (doom->game_design.edit_sector == TRUE)
@@ -43,11 +51,11 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 		put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 		put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-		put_images(RM_SD_X, RM_SC_Y, garbage, doom);//sector
+		put_images(RM_SD_X, RM_SC_Y, garbage, doom);
 		put_images(PORTAL_X, PORTAL_Y, plus, doom);
 		put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 		put_images(AR_RIGHT_X, AR_LEFT_Y, arrow_right, doom);
-		put_textures_sprites(TEX_SPR_X, TEX_SPR_Y, doom->game_design.spr_tex, doom);
+		draw_img(doom->lib.obj_lib[index], doom, texture);
 	}
 	draw_map_images(pixels, doom);
 	if (doom->game_design.object_bar == 1)
