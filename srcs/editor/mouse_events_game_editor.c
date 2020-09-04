@@ -14,7 +14,7 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	editor.edit_sector == FALSE && editor.open_connection == FALSE)
 		add_sidedef(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.edit_sector == TRUE)
+	editor.edit_sector == TRUE && editor.pl_pos != 1)
 		put_sprite(doom, x, y);
 	// if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && \
 	// y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
@@ -57,7 +57,7 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 		doom->game_design.spr_tex--;
 	else if (x > AR_RIGHT_X && x < AR_RIGHT_X + FRAME_WIDTH && \
 	y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT && \
-	doom->game_design.spr_tex + 1 < 6)
+	doom->game_design.spr_tex + 1 < 7)
 		doom->game_design.spr_tex++;
 	// else if (x > DEL_OBJ_X && x < DEL_OBJ_X + FRAME_WIDTH && \
 	// y > DEL_OBJ_Y && y < DEL_OBJ_Y + FRAME_HEIGHT)

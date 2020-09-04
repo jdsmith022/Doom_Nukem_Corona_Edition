@@ -121,12 +121,9 @@ void 			add_lists_to_libs(t_doom *doom)
 {
 	flush_sector_list_info(doom);
 	set_sector_lib(doom);
+	set_sprite_lib(doom);
 	set_sidedef_lib(doom);
-	doom->lib.sprites = \
-		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
-	if (doom->lib.sprites == NULL)
-		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
-	doom->lib.len_obj_lib = 0;
+	// doom->lib.len_obj_lib = 0;
 	set_gameplay_settings(doom);
 	// init_groceries(doom);
 }

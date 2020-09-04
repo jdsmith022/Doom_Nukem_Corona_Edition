@@ -9,6 +9,7 @@ static void			init_editor_sprites(t_doom *doom)
 	doom->game_design.ed_spr_index[3] = HEALTH_PACK_PLUS;
 	doom->game_design.ed_spr_index[4] = HEALTH_PACK;
 	doom->game_design.ed_spr_index[5] = CORONA;
+	doom->game_design.ed_spr_index[6] = SPR_CHECKOUT;
 }
 
 static void			init_sidedef_textures(t_doom *doom)

@@ -141,6 +141,20 @@ typedef struct s_line		t_line;
 # define HEALTH_PACK_PLUS 14
 # define HEALTH_PACK 15
 # define CORONA 19
+# define SPR_CHECKOUT 112
+
+# define SMALL 16
+# define MEDIUM 32
+# define LARGE 48
+# define X_LARGE 64
+
+# define BLOCK 1
+# define NO_BLOCK 0
+
+# define START_X_S
+
+# define LENGTH_SMALL 5
+# define LENGTH_LARGE 10
 
 typedef struct 			s_ed_sprite
 {
@@ -250,6 +264,13 @@ void				mouse_press_sidedef(t_doom *doom, int x, int y);
 void				put_sprite(t_doom *doom, int x, int y);
 bool				line_intersect(t_doom *doom, t_point start, int x, int y);
 void				delete_sidedef(t_doom *doom);
+
+void				set_sprite_lib(t_doom *doom);
+void				set_spr_corona(t_sprite *sprite);
+void				set_spr_health_pack(t_sprite *sprite);
+void				set_spr_health_pack_pl(t_sprite *sprite);
+void				set_spr_checkout(t_sprite *sprite);
+void				set_spr_lines(t_sprite *sprite, int lenght);
 
 void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
 void				object_texture(t_doom *doom, int change);
