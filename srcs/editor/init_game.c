@@ -27,22 +27,8 @@ static void			init_sidedef_textures(t_doom *doom)
 	doom->game_design.sd_tex_index[11] = 76;
 }
 
-void			init_game_design(t_doom *doom)
+static void		init_lists(t_doom *doom)
 {
-	doom->game_design.sd_len = 0;
-	doom->game_design.sc_len = 0;
-	doom->game_design.cur_sec = 0;
-	doom->game_design.cur_sd = 0;
-	doom->game_design.tex_index = 0;
-	doom->game_design.spr_len = 0;
-	doom->game_design.spr_tex = 0;
-	doom->game_design.pl_pos = 0;
-	doom->game_design.pl_sec = 0;
-	doom->game_design.sc_len = 0;
-	doom->game_design.light_level = 10;
-	doom->game_design.custom_level = TRUE;
-	doom->game_design.draw_line.start.x = -1;
-	doom->game_design.draw_line.end.x = -1;
 	doom->game_design.ed_sector = (t_ed_sector*)ft_memalloc(sizeof(t_ed_sector));
 	if (!doom->game_design.ed_sector)
 		doom_exit_failure(doom, "error: game design sector malloc");
@@ -61,7 +47,26 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.ed_sidedef->next = NULL;
 	doom->game_design.ed_sprite->next = NULL;
 	doom->game_design.sp_head = doom->game_design.ed_sprite;
+}
+
+void			init_game_design(t_doom *doom)
+{
+	doom->game_design.sd_len = 0;
+	doom->game_design.sc_len = 0;
+	doom->game_design.cur_sec = 0;
+	doom->game_design.cur_sd = 0;
+	doom->game_design.tex_index = 0;
+	doom->game_design.spr_len = 0;
+	doom->game_design.spr_tex = 0;
+	doom->game_design.pl_pos = 0;
+	doom->game_design.pl_sec = 0;
+	doom->game_design.sc_len = 0;
+	doom->game_design.light_level = 10;
+	doom->game_design.custom_level = TRUE;
+	doom->game_design.draw_line.start.x = -1;
+	doom->game_design.draw_line.end.x = -1;
 	doom->game_design.player_placed = FALSE;
+	init_lists(doom);
 	init_sidedef_textures(doom);
 	init_editor_sprites(doom);
 }

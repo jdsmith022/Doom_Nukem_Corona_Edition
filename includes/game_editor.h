@@ -148,7 +148,7 @@ typedef struct 			s_ed_sprite
 	t_point				pos;
 	int					sector;
 	struct s_ed_sprite	*next;
-	struct s_ed_sprite	*previous;	
+	struct s_ed_sprite	*previous;
 }						t_ed_sprite;
 
 
@@ -159,7 +159,7 @@ typedef struct			s_ed_sector
 	int					i_sidedefs;
 	int					height_floor;
 	int					height_ceiling;
-	int					light_level;	
+	int					light_level;
 	struct s_ed_sector	*next;
 	struct s_ed_sector	*previous;
 }						t_ed_sector;
@@ -173,7 +173,7 @@ typedef struct 			s_ed_sidedef
 	int					opp_sector;
 	struct s_ed_sidedef *next;
 	struct s_ed_sidedef *previous;
-}						t_ed_sidedef;			
+}						t_ed_sidedef;
 
 typedef enum		e_game_editor_im
 {
@@ -247,7 +247,7 @@ void				put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 void				mouse_press_sidedef_txt(t_doom *doom, int x, int y);
 void				mouse_press_sidedef(t_doom *doom, int x, int y);
 void				put_sprite(t_doom *doom, int x, int y);
-
+bool				line_intersect(t_doom *doom, t_point start, int x, int y);
 
 void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
 void				object_texture(t_doom *doom, int change);

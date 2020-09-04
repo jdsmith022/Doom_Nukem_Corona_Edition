@@ -94,8 +94,6 @@ static void		set_gameplay_settings(t_doom *doom)
 	doom->menu->state = start_game;
 	doom->menu->start_timer = FALSE;
 	doom->lib.sector[doom->i_sector].action = START_TIMER;
-	SDL_SetRelativeMouseMode(SDL_TRUE);
-	doom->own_event.mouse_pointer = FALSE;
 	doom->game.hud_display = TRUE;
 	doom->lib.font_lib.bools.walking_info = TRUE;
 	doom->lib.font_lib.bools.walking_text = TRUE;
@@ -104,6 +102,8 @@ static void		set_gameplay_settings(t_doom *doom)
 	doom->lib.font_lib.bools.checkout = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;
+	SDL_SetRelativeMouseMode(SDL_TRUE);
+	doom->own_event.mouse_pointer = FALSE;
 	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	SDL_UpdateWindowSurface(doom->window);
@@ -128,5 +128,5 @@ void 			add_lists_to_libs(t_doom *doom)
 		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
 	doom->lib.len_obj_lib = 0;
 	set_gameplay_settings(doom);
-	init_groceries(doom);
+	// init_groceries(doom);
 }
