@@ -3,81 +3,70 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				50
+# define GROC_COUNT				49
 
-# define APPLE					1
-# define BACON					2
-# define CHERRY					3
-# define JAM					4
-# define SODA					5
-# define WATER					6
-# define WINE					7
-# define CHEESE					8
-# define COOKIE					9
-# define BREAD					10
-# define POTATO					11
-# define MELON					12
-# define SOAP					13
-# define ONION					14
-# define PEPPER					15
-# define CHICKEN				16
-# define FISH					17
-# define MEAT					18
-# define CEREAL					19
-# define TEA					20
-# define GRAPES					21
-# define TOILET					22
-# define LEMON					23
-# define ALCOHOL				24
-# define WINE2					25
-# define WINE3					26
-# define TART					27
-# define BUTTER					28
-# define PIE_CHERRY				29
-# define PIE_LEMON				30
-# define KETCHUP				31
-# define TOMATO					32
-# define CHOCOLATE				33
-# define KIWI					34
-# define OLIVE					35
-# define CUCUMBER				36
-# define PAPRIKA				37
-# define MARMELADE				38
-# define STEAK					39
-# define BROWNIE				40
-# define MILK					42
-# define SPRAY					43
-# define JARS1					44
-# define JARS2					45
-# define JARS3					46
-# define HONEY					47
-# define SHRIMP					48
+typedef enum					e_groc_types {
+	APPLE = 1, BACON, CHERRY, JAM,
+	SODA, WATER, WINE, CHEESE,
+	COOKIE, BREAD, POTATO, MELON,
+	SOAP, ONION, PEPPER, CHICKEN,
+	FISH, MEAT, CEREAL, TEA,
+	GRAPES, TOILET, LEMON, ALCOHOL,
+	WINE2, WINE3, TART, BUTTER,
+	PIE_CHERRY, PIE_LEMON, KETCHUP, TOMATO,
+	CHOCOLATE, KIWI, OLIVE, CUCUMBER,
+	PAPRIKA, MARMELADE, STEAK, BROWNIE,
+	MILK, SPRAY, JARS1, JARS2,
+	JARS3, HONEY, SHRIMP
+}								t_groc_types;
 
-# define TEX_APPLE				"assets/textures/shelves/apple.bmp"
-# define TEX_BACON				"assets/textures/shelves/sausage_bacon.bmp"
-# define TEX_CHERRY				"assets/textures/shelves/cherry_strawberry.bmp"
-# define TEX_JAM				"assets/textures/shelves/jar6.bmp"
-# define TEX_COLA				"assets/textures/shelves/soda2.bmp"
-# define TEX_WATER				"assets/textures/shelves/water.bmp"
-# define TEX_WINE				"assets/textures/shelves/wine.bmp"
-# define TEX_COOKIE				"assets/textures/shelves/cookies.bmp"
-# define TEX_CHEESE				"assets/textures/shelves/cheese.bmp"
-# define TEX_POTATO				"assets/textures/shelves/potatoes.bmp"
-# define TEX_MELON				"assets/textures/shelves/melon.bmp"
-# define TEX_SOAP				"assets/textures/shelves/soaps.bmp"
-
-# define SPR_APPLE				"assets/sprites/groceries/red_apple.bmp"
-# define SPR_BACON				"assets/sprites/groceries/bacon.bmp"
-# define SPR_CHERRY				"assets/sprites/groceries/cherry.bmp"
-# define SPR_JAM				"assets/sprites/groceries/jam.bmp"
-# define SPR_COLA				"assets/sprites/groceries/cola.bmp"
-# define SPR_WATER				"assets/sprites/groceries/water.bmp"
-# define SPR_WINE				"assets/sprites/groceries/wine1.bmp"
-# define SPR_COOKIE				"assets/sprites/groceries/Cookie.bmp"
-# define SPR_CHEESE				"assets/sprites/groceries/Cheese.bmp"
-# define SPR_POTATO 			"assets/sprites/groceries/potato.bmp"
-# define SPR_MELON				"assets/sprites/groceries/watermelon.bmp"
-# define SPR_SOAP				"assets/sprites/groceries/soap.bmp"
+// # define APPLE					1
+// # define BACON					2
+// # define CHERRY					3
+// # define JAM					4
+// # define SODA					5
+// # define WATER					6
+// # define WINE					7
+// # define CHEESE					8
+// # define COOKIE					9
+// # define BREAD					10
+// # define POTATO					11
+// # define MELON					12
+// # define SOAP					13
+// # define ONION					14
+// # define PEPPER					15
+// # define CHICKEN				16
+// # define FISH					17
+// # define MEAT					18
+// # define CEREAL					19
+// # define TEA					20
+// # define GRAPES					21
+// # define TOILET					22
+// # define LEMON					23
+// # define ALCOHOL				24
+// # define WINE2					25
+// # define WINE3					26
+// # define TART					27
+// # define BUTTER					28
+// # define PIE_CHERRY				29
+// # define PIE_LEMON				30
+// # define KETCHUP				31
+// # define TOMATO					32
+// # define CHOCOLATE				33
+// # define KIWI					34
+// # define OLIVE					35
+// # define CUCUMBER				36
+// # define PAPRIKA				37
+// # define MARMELADE				38
+// # define STEAK					39
+// # define BROWNIE				40
+// # define MILK					42
+// # define SPRAY					43
+// # define JARS1					44
+// # define JARS2					45
+// # define JARS3					46
+// # define HONEY					47
+// # define SHRIMP					48
 
 typedef struct s_doom			t_doom;
 typedef struct s_item			t_item;
@@ -88,22 +77,64 @@ typedef struct					s_grocery_paths {
 	uint8_t						type;
 }								t_grocery_paths;
 
+t_groc_types					g_types;
+
 static const t_grocery_paths	g_groc_paths[] = {
-	{TEX_APPLE, SPR_APPLE, APPLE},
-	{TEX_BACON, SPR_BACON, BACON},
-	{TEX_CHERRY, SPR_CHERRY, CHERRY},
-	{TEX_JAM, SPR_JAM, JAM},
-	{TEX_COLA, SPR_COLA, SODA},
-	{TEX_WATER, SPR_WATER, WATER},
-	{TEX_WINE, SPR_WINE, WINE},
-	{TEX_CHEESE, SPR_CHEESE, CHEESE},
-	{TEX_COOKIE, SPR_COOKIE, COOKIE},
+	{
+		"assets/textures/shelves/apple.bmp",
+		"assets/sprites/groceries/red_apple.bmp",
+		APPLE
+	},
+	{
+		"assets/textures/shelves/sausage_bacon.bmp",
+		"assets/sprites/groceries/bacon.bmp",
+		BACON
+	},
+	{
+		"assets/textures/shelves/cherry_strawberry.bmp",
+		"assets/sprites/groceries/cherry.bmp",
+		CHERRY
+	},
+	{
+		"assets/textures/shelves/jar6.bmp",
+		"assets/sprites/groceries/jam.bmp",
+		JAM
+	},
+	{
+		"assets/textures/shelves/soda2.bmp",
+		"assets/sprites/groceries/cola.bmp",
+		SODA
+	},
+	{
+		"assets/textures/shelves/water.bmp",
+		"assets/sprites/groceries/water.bmp",
+		WATER
+	},
+	{
+		"assets/textures/shelves/wine.bmp",
+		"assets/sprites/groceries/wine1.bmp",
+		WINE
+	},
+	{
+		"assets/textures/shelves/cookies.bmp",
+		"assets/sprites/groceries/Cookie.bmp",
+		COOKIE
+	},
+	{
+		"assets/textures/shelves/cheese.bmp",
+		"assets/sprites/groceries/Cheese.bmp",
+		CHEESE
+	},
 	{
 		"assets/textures/shelves/bread.bmp",
 		"assets/sprites/groceries/bread.bmp",
 		BREAD
 	},
-	{TEX_POTATO, SPR_POTATO, POTATO},
+	{
+		"assets/textures/shelves/potatoes.bmp",
+		"assets/sprites/groceries/potato.bmp",
+		POTATO
+	},
 	{
 		"assets/textures/shelves/melon.bmp",
 		"assets/sprites/groceries/watermelon.bmp",
