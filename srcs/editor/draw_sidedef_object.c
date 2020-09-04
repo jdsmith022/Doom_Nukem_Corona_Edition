@@ -60,8 +60,7 @@ void				draw_lines(t_doom *doom, Uint32 **pixels,
 	if (ed_sidedef->opp_sector != -1 && \
 	doom->game_design.cur_sd != ed_sidedef->id)
 		color = 0xffFFA07A;
-	else if (doom->game_design.cur_sd != ed_sidedef->id || \
-		doom->game_design.sidedef_bar == 0)
+	else if (doom->game_design.cur_sd != ed_sidedef->id)
 		color = 0x8c3cde6;
 	else
 		color = 0xff4287f5;

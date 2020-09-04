@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 16:40:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 09:19:35 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,5 @@ void					menus(t_doom *doom);
 void					game_over_menu(t_doom *doom);
 void					menu_print_loop(t_doom *doom);
 void					print_player_sprite(t_doom *doom);
-void					set_menu_game_variables(t_doom *doom);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 07:56:06 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/04 09:19:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
 
-void	set_menu_game_variables(t_doom *doom)
+static void	set_menu_game_variables(t_doom *doom)
 {
 	t_font font_lib;
 

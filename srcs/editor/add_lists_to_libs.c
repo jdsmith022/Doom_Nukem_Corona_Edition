@@ -4,7 +4,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 
-static void	set_sidedef_lib(t_doom *doom)
+static void		set_sidedef_lib(t_doom *doom)
 {
 	t_ed_sidedef *ed_sidedef;
 	t_lib		lib;
@@ -39,7 +39,7 @@ static void	set_sidedef_lib(t_doom *doom)
 	doom->lib.sidedef = lib.sidedef;
 }
 
-static void	set_sector_lib(t_doom *doom)
+static void		set_sector_lib(t_doom *doom)
 {
 	t_ed_sector *ed_sector;
 	t_lib		lib;
@@ -81,19 +81,8 @@ static void	set_sector_lib(t_doom *doom)
 	doom->lib.sector = lib.sector;
 }
 
-void 	add_lists_to_libs(t_doom *doom)
+static void		set_gameplay_settings(t_doom *doom)
 {
-	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
-	doom->game_design.ed_sector->height_floor = doom->game_design.floor_height;
-	doom->game_design.ed_sector->height_ceiling = \
-		doom->game_design.ceiling_height;
-	set_sector_lib(doom);
-	set_sidedef_lib(doom);
-	doom->lib.sprites = \
-		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
-	if (doom->lib.sprites == NULL)
-		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
-	doom->lib.len_obj_lib = 0;
 	doom->lib.sector = light_correction(\
 		doom->lib.sector, doom->game_design.sc_len);
 	doom->pos.x = doom->game_design.pl_x;
@@ -105,12 +94,39 @@ void 	add_lists_to_libs(t_doom *doom)
 	doom->menu->state = start_game;
 	doom->menu->start_timer = FALSE;
 	doom->lib.sector[doom->i_sector].action = START_TIMER;
-	doom->game.hud_display = TRUE;
-	set_menu_game_variables(doom);
-	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 	doom->own_event.mouse_pointer = FALSE;
-	init_groceries(doom);
+	doom->game.hud_display = TRUE;
+	doom->lib.font_lib.bools.walking_info = TRUE;
+	doom->lib.font_lib.bools.walking_text = TRUE;
+	doom->lib.font_lib.bools.start_sector = TRUE;
+	doom->lib.font_lib.bools.trolly = FALSE;
+	doom->lib.font_lib.bools.checkout = TRUE;
+	doom->lib.font_lib.bools.scissor_lift = FALSE;
+	doom->lib.font_lib.bools.text = FALSE;
+	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	SDL_UpdateWindowSurface(doom->window);
+}
+
+static void		flush_sector_list_info(t_doom *doom)
+{
+	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
+	doom->game_design.ed_sector->height_floor = doom->game_design.floor_height;
+	doom->game_design.ed_sector->height_ceiling = \
+		doom->game_design.ceiling_height;
+}
+
+void 			add_lists_to_libs(t_doom *doom)
+{
+	flush_sector_list_info(doom);
+	set_sector_lib(doom);
+	set_sidedef_lib(doom);
+	doom->lib.sprites = \
+		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
+	if (doom->lib.sprites == NULL)
+		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
+	doom->lib.len_obj_lib = 0;
+	set_gameplay_settings(doom);
+	init_groceries(doom);
 }
