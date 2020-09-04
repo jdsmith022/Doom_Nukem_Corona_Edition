@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 18:52:35 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 16:20:20 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion, double dt,
 	int limit_pos;
 	int limit_neg;
 
-	printf("top of mouse\n");
 	if (doom->own_event.scissor_lift == TRUE)
 	{
 		limit_pos = 400;
