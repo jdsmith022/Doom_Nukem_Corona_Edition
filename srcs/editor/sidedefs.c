@@ -31,17 +31,19 @@ void			delete_sidedef(t_doom *doom)
 	t_ed_sidedef *sidedef;
 	t_ed_sidedef *previous;
 
-	printf("here\n");
-	sidedef = doom->game_design.sd_head;
-	while (sidedef->next != NULL)
-		sidedef = sidedef->next;
-	printf("sidedef sec: %d --- cur_sec: %d\n", sidedef->sector, doom->game_design.cur_sec);
-	if (sidedef->sector == doom->game_design.cur_sec)
+	sidedef = doom->game_design.ed_sidedef;
+	if (sidedef->sector == doom->game_design.cur_sec && doom->game_design.sd_len > 1)
 	{
 		previous = sidedef->previous;
 		previous->next = NULL;
 		ft_bzero(sidedef, sizeof(sidedef));
 		free(sidedef);
+		doom->game_design.draw_line.start = previous->line.end;
+		doom->game_design.sd_len--;
+		doom->game_design.cur_sd--;
+		doom->game_design.draw_line.end.x = -1;
+		doom->game_design.draw_line.end.y = -1;
+		doom->game_design.ed_sidedef = previous;
 	}
 }
 

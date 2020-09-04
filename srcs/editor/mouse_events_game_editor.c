@@ -74,6 +74,9 @@ void			mouse_press_game_editor(t_doom *doom, int x, int y)
 	printf("mouse %d - %d\n", x, y);
 	mouse_press_map(doom, x, y);
 	mouse_press_sidedef_txt(doom, x, y);
+	if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
+	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
+		delete_sidedef(doom);
 	if (doom->game_design.edit_sector == TRUE)
 	{
 		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
