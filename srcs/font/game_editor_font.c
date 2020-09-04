@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 08:36:45 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/04 10:40:11 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ static void	set_editor_text_3(t_doom *doom, t_font *lib)
 	lib[10].font_rect.x = 645;
 	lib[10].font_rect.y = 140;
 	lib[10].font_color = doom->lib.font_lib.font_color.black;
+	lib[11].str = "Delete sector";
+	lib[11].font_rect.x = 660;
+	lib[11].font_rect.y = 400;
+	lib[11].font_color = doom->lib.font_lib.font_color.black;
 }
 
 static void	set_editor_text_2(t_doom *doom, t_font *lib)
@@ -34,13 +38,13 @@ static void	set_editor_text_2(t_doom *doom, t_font *lib)
 	lib[7].font_rect.x = 645;
 	lib[7].font_rect.y = 215;
 	lib[7].font_color = doom->lib.font_lib.font_color.black;
-	lib[8].str = "Delete Sector";
-	lib[8].font_rect.x = 660;
+	lib[8].str = "Delete wall";
+	lib[8].font_rect.x = 670;
 	lib[8].font_rect.y = 300;
 	lib[8].font_color = doom->lib.font_lib.font_color.black;
 	lib[9].str = "Place player";
 	lib[9].font_rect.x = 665;
-	lib[9].font_rect.y = 380;
+	lib[9].font_rect.y = 480;
 	lib[9].font_color = doom->lib.font_lib.font_color.black;
 	set_editor_text_3(doom, lib);
 }
@@ -78,7 +82,7 @@ void		save_game_editor_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
 
-	*len = 11;
+	*len = 12;
 	doom->lib.font_lib.game_editor_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.game_editor_font == NULL)

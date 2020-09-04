@@ -89,5 +89,8 @@ void		mouse_press_sidedef(t_doom *doom, int x, int y)
 		add_player(doom, x, y);
 	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
 	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
+		delete_sidedef(doom);
+	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
+	y > RM_SC_Y && y < RM_SC_Y + FRAME_HEIGHT)
 		delete_sector(doom);
 }

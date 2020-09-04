@@ -26,6 +26,25 @@ void			set_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.sd_len++;
 }
 
+void			delete_sidedef(t_doom *doom)
+{
+	t_ed_sidedef *sidedef;
+	t_ed_sidedef *previous;
+
+	printf("here\n");
+	sidedef = doom->game_design.sd_head;
+	while (sidedef->next != NULL)
+		sidedef = sidedef->next;
+	printf("sidedef sec: %d --- cur_sec: %d\n", sidedef->sector, doom->game_design.cur_sec);
+	if (sidedef->sector == doom->game_design.cur_sec)
+	{
+		previous = sidedef->previous;
+		previous->next = NULL;
+		ft_bzero(sidedef, sizeof(sidedef));
+		free(sidedef);
+	}
+}
+
 void			add_sidedef(t_doom *doom, int x, int y)
 {
 	t_gamedesign	*editor;

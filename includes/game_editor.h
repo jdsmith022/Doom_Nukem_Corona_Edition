@@ -54,12 +54,13 @@ typedef struct s_line		t_line;
 # define AR_RIGHT_S_Y 160
 
 # define CROSS_P_X 714
-# define CROSS_P_Y 400
+# define CROSS_P_Y 500
 
 # define PORTAL_X 714
 # define PORTAL_Y 240
 # define RM_SD_X 714
 # define RM_SD_Y 320
+# define RM_SC_Y 420
 
 # define DEL_OBJ_X 714
 # define DEL_OBJ_Y 225
@@ -248,6 +249,7 @@ void				mouse_press_sidedef_txt(t_doom *doom, int x, int y);
 void				mouse_press_sidedef(t_doom *doom, int x, int y);
 void				put_sprite(t_doom *doom, int x, int y);
 bool				line_intersect(t_doom *doom, t_point start, int x, int y);
+void				delete_sidedef(t_doom *doom);
 
 void				add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
 void				object_texture(t_doom *doom, int change);

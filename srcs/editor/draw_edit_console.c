@@ -34,6 +34,7 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	put_textures_sidedef(TEX_S2_X, TEX_S2_Y, \
 	doom->game_design.tex_index, doom);
+	put_images(RM_SD_X, RM_SD_Y, garbage, doom);//sidedef
 	if (doom->game_design.player_placed == TRUE)
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	else if (doom->game_design.edit_sector == TRUE)
@@ -42,7 +43,7 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 		put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 		put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-		put_images(RM_SD_X, RM_SD_Y, garbage, doom);
+		put_images(RM_SD_X, RM_SC_Y, garbage, doom);//sector
 		put_images(PORTAL_X, PORTAL_Y, plus, doom);
 		put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 		put_images(AR_RIGHT_X, AR_LEFT_Y, arrow_right, doom);
