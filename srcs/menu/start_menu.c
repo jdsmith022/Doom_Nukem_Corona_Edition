@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 18:30:43 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 07:56:06 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	set_menu_game_variables(t_doom *doom)
 	{
 		SDL_BlitSurface(font_lib.font_surface, NULL, \
 			doom->surface, &font_lib.font_rect);
+		SDL_UpdateWindowSurface(doom->window);
 	}
-	SDL_UpdateWindowSurface(doom->window);
 }
 
 void		doom_start(t_doom *doom)

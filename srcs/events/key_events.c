@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 17:28:37 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 08:11:15 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,22 @@ void			key_press(t_doom *doom, t_event *event,
 	{
 		doom->game.is_running = FALSE;
 		if (doom->game.editor == TRUE)
-			doom->game.editor = FALSE;
+			doom_exit_success(doom);
 	}
-	else if (key->keysym.sym == SDLK_w)
-		event->move_pos_f = TRUE;
-	else if (key->keysym.sym == SDLK_s)
-		event->move_pos_b = TRUE;
-	else if (key->keysym.sym == SDLK_a)
-		event->move_pos_l = TRUE;
-	else if (key->keysym.sym == SDLK_d)
-		event->move_pos_r = TRUE;
-	else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
-		event->scissor_lift_up = TRUE;
-	else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
-		event->scissor_lift_down = TRUE;
-	key_press2(doom, event, key);
+	else if (doom->game.editor == FALSE)
+	{
+		if (key->keysym.sym == SDLK_w)
+			event->move_pos_f = TRUE;
+		else if (key->keysym.sym == SDLK_s)
+			event->move_pos_b = TRUE;
+		else if (key->keysym.sym == SDLK_a)
+			event->move_pos_l = TRUE;
+		else if (key->keysym.sym == SDLK_d)
+			event->move_pos_r = TRUE;
+		else if (key->keysym.sym == SDLK_UP && event->scissor_lift == TRUE)
+			event->scissor_lift_up = TRUE;
+		else if (key->keysym.sym == SDLK_DOWN && event->scissor_lift == TRUE)
+			event->scissor_lift_down = TRUE;
+		key_press2(doom, event, key);
+	}
 }

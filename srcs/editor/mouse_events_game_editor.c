@@ -37,14 +37,21 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 	{
 		doom->game_design.floor_height = \
 			(float)(x - HF_X) / HF_LEN * HF_DIFF + HF_MIN;
-		printf("height = %f\n", doom->game_design.floor_height);
 	}
 	else if (x > HC_X && x < HC_X + HC_LEN && y > HC_Y && y < HC_Y + HC_HEIGHT)
+	{
 		doom->game_design.ceiling_height = \
 		(float)(x - HC_X) / HC_LEN * HC_DIFF + HC_MIN;
+		if (doom->game_design.ceiling_height > 15)
+			doom->game_design.ceiling_height = 15;
+	}
 	else if (x > LL_X && x < LL_X + LL_LEN && y > LL_Y && y < LL_Y + LL_HEIGHT)
+	{
 		doom->game_design.light_level = \
 		(float)(x - LL_X) / LL_LEN * LL_DIFF + LL_MIN;
+		if (doom->game_design.ceiling_height < 5)
+			doom->game_design.ceiling_height = 5;
+	}
 }
 
 static void		mouse_press_object(t_doom *doom, int x, int y)

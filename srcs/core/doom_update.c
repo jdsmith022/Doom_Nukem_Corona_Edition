@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 17:16:20 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 08:11:53 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	sdl_poll_events(t_doom *doom, double dt)
 	SDL_Event event;
 
 	event = doom->event;
-	doom->own_event.mouse_press = FALSE;
+	// doom->own_event.mouse_press = FALSE;
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
 		{
-			doom->game.is_running = FALSE;
 			if (doom->game.editor == TRUE)
-				doom->game.editor = FALSE;
+				doom_exit_success(doom);
+			doom->game.is_running = FALSE;
 		}
-		if (event.type == SDL_KEYDOWN && doom->game.editor == FALSE)
+		if (event.type == SDL_KEYDOWN)
 			key_press(doom, &doom->own_event, &event.key);
 		if (event.type == SDL_KEYUP && doom->game.editor == FALSE)
 			key_release(&doom->own_event, &event.key);
