@@ -38,6 +38,21 @@ static bool enough_dist_to_sprites(t_doom *doom, t_point pos)
 	return (TRUE);
 }
 
+static void	set_ed_sprite(t_doom *doom, t_point pos)
+{
+	int id;
+
+	id = doom->game_design.spr_len;
+	doom->game_design.ed_sprite->id = id;
+	doom->game_design.ed_sprite->pos = pos;
+	doom->game_design.ed_sprite->sector = doom->game_design.pl_sec;
+	doom->game_design.ed_sprite->type = \
+		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
+	doom->game_design.cur_sprite = id;
+	doom->game_design.spr_len++;
+}
+
+
 void	put_sprite(t_doom *doom, int x, int y)
 {
 	t_point		pos;
@@ -46,10 +61,10 @@ void	put_sprite(t_doom *doom, int x, int y)
 
 	pos.x = x;
 	pos.y = y;
-	if (check_sector_in_sector(doom, pos) == TRUE && enough_dist_to_sprites(doom, pos) == TRUE &&
+	if (check_sector_in_sector(doom, pos) == TRUE && \
+	enough_dist_to_sprites(doom, pos) == TRUE && \
 	check_enough_dist_to_sidedef(doom, pos) == TRUE)
 	{
-		id = doom->game_design.spr_len;
 		while (doom->game_design.ed_sprite->next != NULL)
 			doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 		doom->game_design.ed_sprite->next =\
@@ -58,14 +73,8 @@ void	put_sprite(t_doom *doom, int x, int y)
 			doom_exit_failure(doom, "error: malloc sprite in editor\n");
 		prev = doom->game_design.ed_sprite;
 		doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
-		doom->game_design.ed_sprite->id = id;
-		doom->game_design.ed_sprite->pos = pos;
-		doom->game_design.ed_sprite->sector = doom->game_design.pl_sec;
-		doom->game_design.ed_sprite->type = \
-			doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 		doom->game_design.ed_sprite->next = NULL;
 		doom->game_design.ed_sprite->previous = prev;
-		doom->game_design.cur_sprite = id;
-		doom->game_design.spr_len++;
+		set_ed_sprite(doom, pos);
 	}
 }
