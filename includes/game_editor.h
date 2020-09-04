@@ -45,7 +45,7 @@ typedef struct s_line		t_line;
 # define AR_LEFT_X 0
 # define AR_LEFT_Y 400
 # define AR_RIGHT_X 128
-# define TEX_SPR_X 40
+# define TEX_SPR_X 50
 # define TEX_SPR_Y 380
 
 # define AR_LEFT_S_X 664

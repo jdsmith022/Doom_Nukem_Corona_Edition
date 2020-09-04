@@ -13,10 +13,9 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.edit_sector == FALSE && editor.open_connection == FALSE)
 		add_sidedef(doom, x, y);
-	// else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	// editor.edit_sector == TRUE)
-	// 	put_sprite(doom, x, y);
-
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
+	editor.edit_sector == TRUE)
+		put_sprite(doom, x, y);
 	// if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && \
 	// y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
 	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_x -= 10;
@@ -71,7 +70,7 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 
 void			mouse_press_game_editor(t_doom *doom, int x, int y)
 {
-	printf("mouse %d - %d\n", x, y);
+	// printf("mouse %d - %d\n", x, y);
 	mouse_press_map(doom, x, y);
 	mouse_press_sidedef_txt(doom, x, y);
 	if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \

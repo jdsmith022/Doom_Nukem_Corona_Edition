@@ -2,6 +2,22 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
+static bool enough_dist_to_sprites(t_doom *doom, t_point pos)
+{
+	t_ed_sprite 	*sprite;
+	double			distance;
+
+	sprite = doom->game_design.sp_head->next;
+	while (sprite != NULL)
+	{
+		distance = point_distance(sprite->pos, pos);
+		if (distance <= 20)
+			return (FALSE);
+		sprite = sprite->next;
+	}
+	return (TRUE);
+}
+
 void	put_sprite(t_doom *doom, int x, int y)
 {
 	t_point		pos;
@@ -10,7 +26,7 @@ void	put_sprite(t_doom *doom, int x, int y)
 
 	pos.x = x;
 	pos.y = y;
-	if (check_sector_in_sector(doom, pos) == TRUE)
+	if (check_sector_in_sector(doom, pos) == TRUE && enough_dist_to_sprites(doom, pos) == TRUE)
 	{
 		id = doom->game_design.spr_len;
 		while (doom->game_design.ed_sprite->next != NULL)
