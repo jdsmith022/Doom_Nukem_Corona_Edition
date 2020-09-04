@@ -39,6 +39,7 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.pl_pos = 0;
 	doom->game_design.pl_sec = 0;
 	doom->game_design.sc_len = 0;
+	doom->game_design.light_level = 10;
 	doom->game_design.custom_level = TRUE;
 	doom->game_design.draw_line.start.x = -1;
 	doom->game_design.draw_line.end.x = -1;

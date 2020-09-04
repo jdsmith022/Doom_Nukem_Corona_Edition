@@ -43,10 +43,10 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 	{
 		doom->game_design.light_level = \
 		(float)(x - LL_X) / LL_LEN * LL_DIFF + LL_MIN;
-		// if (doom->game_design.light_level < 5)
-		// 	doom->game_design.light_level = 5;
-		// if (doom->game_design.light_level > 15)
-		// 	doom->game_design.light_level = 15;
+		if (doom->game_design.light_level < 3)
+			doom->game_design.light_level = 3;
+		if (doom->game_design.light_level > 15)
+			doom->game_design.light_level = 15
 	}
 }
 
