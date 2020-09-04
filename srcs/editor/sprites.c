@@ -2,6 +2,26 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
+static bool check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
+{
+	t_ed_sidedef	*sidedef;
+	double			distance;
+	double			min_distance;
+
+	sidedef = doom->game_design.sd_head;
+	min_distance = INFINITY;
+	while (sidedef != NULL)
+	{
+		distance = point_line_distance(pos, sidedef->line);
+		if (distance < min_distance)
+			min_distance = distance;
+		sidedef = sidedef->next;
+	}
+	if (min_distance > 20.0)
+		return (TRUE);
+	return (FALSE);
+}
+
 static bool enough_dist_to_sprites(t_doom *doom, t_point pos)
 {
 	t_ed_sprite 	*sprite;
@@ -26,9 +46,9 @@ void	put_sprite(t_doom *doom, int x, int y)
 
 	pos.x = x;
 	pos.y = y;
-	if (check_sector_in_sector(doom, pos) == TRUE && enough_dist_to_sprites(doom, pos) == TRUE)
+	if (check_sector_in_sector(doom, pos) == TRUE && enough_dist_to_sprites(doom, pos) == TRUE &&
+	check_enough_dist_to_sidedef(doom, pos) == TRUE)
 	{
-		printf("top of if: %d\n", doom->game_design.pl_sec);
 		id = doom->game_design.spr_len;
 		while (doom->game_design.ed_sprite->next != NULL)
 			doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
@@ -41,7 +61,6 @@ void	put_sprite(t_doom *doom, int x, int y)
 		doom->game_design.ed_sprite->id = id;
 		doom->game_design.ed_sprite->pos = pos;
 		doom->game_design.ed_sprite->sector = doom->game_design.pl_sec;
-		printf("when savinng sector = %d -- %d\n", doom->game_design.ed_sprite->sector, doom->game_design.pl_sec);
 		doom->game_design.ed_sprite->type = \
 			doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 		doom->game_design.ed_sprite->next = NULL;
