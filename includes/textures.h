@@ -20,54 +20,6 @@ typedef enum					e_groc_types {
 	JARS3, HONEY, SHRIMP
 }								t_groc_types;
 
-// # define APPLE					1
-// # define BACON					2
-// # define CHERRY					3
-// # define JAM					4
-// # define SODA					5
-// # define WATER					6
-// # define WINE					7
-// # define CHEESE					8
-// # define COOKIE					9
-// # define BREAD					10
-// # define POTATO					11
-// # define MELON					12
-// # define SOAP					13
-// # define ONION					14
-// # define PEPPER					15
-// # define CHICKEN				16
-// # define FISH					17
-// # define MEAT					18
-// # define CEREAL					19
-// # define TEA					20
-// # define GRAPES					21
-// # define TOILET					22
-// # define LEMON					23
-// # define ALCOHOL				24
-// # define WINE2					25
-// # define WINE3					26
-// # define TART					27
-// # define BUTTER					28
-// # define PIE_CHERRY				29
-// # define PIE_LEMON				30
-// # define KETCHUP				31
-// # define TOMATO					32
-// # define CHOCOLATE				33
-// # define KIWI					34
-// # define OLIVE					35
-// # define CUCUMBER				36
-// # define PAPRIKA				37
-// # define MARMELADE				38
-// # define STEAK					39
-// # define BROWNIE				40
-// # define MILK					42
-// # define SPRAY					43
-// # define JARS1					44
-// # define JARS2					45
-// # define JARS3					46
-// # define HONEY					47
-// # define SHRIMP					48
-
 typedef struct s_doom			t_doom;
 typedef struct s_item			t_item;
 
