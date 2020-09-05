@@ -11,9 +11,10 @@ static void		set_sidedef_lib(t_doom *doom)
 	int			index;
 
 	ed_sidedef = doom->game_design.sd_head->next;
-	lib.sidedef = (t_sidedef*)ft_memalloc(sizeof(t_sidedef) * doom->game_design.sd_len);
+	lib.sidedef = \
+		(t_sidedef*)ft_memalloc(sizeof(t_sidedef) * doom->game_design.sd_len);
 	if (lib.sidedef == NULL)
-		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
+		doom_exit_failure(doom, "error: saving game editor info");
 	index = 0;
 	while (ed_sidedef)
 	{
@@ -39,14 +40,15 @@ static void		set_sidedef_lib(t_doom *doom)
 	doom->lib.sidedef = lib.sidedef;
 }
 
-static void		set_sector_lib(t_doom *doom)
+void		set_sector_lib(t_doom *doom)
 {
 	t_ed_sector *ed_sector;
 	t_lib		lib;
 	int			index;
 
 	ed_sector = doom->game_design.sc_head->next;
-	lib.sector = (t_sector*)ft_memalloc(sizeof(t_sector) * doom->game_design.sc_len);
+	lib.sector = \
+		(t_sector*)ft_memalloc(sizeof(t_sector) * doom->game_design.sc_len);
 	if (lib.sector == NULL)
 		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
 	index = 0;
@@ -125,5 +127,5 @@ void 			add_lists_to_libs(t_doom *doom)
 	set_sidedef_lib(doom);
 	// doom->lib.len_obj_lib = 0;
 	set_gameplay_settings(doom);
-	// init_groceries(doom);
+	init_groceries(doom);
 }

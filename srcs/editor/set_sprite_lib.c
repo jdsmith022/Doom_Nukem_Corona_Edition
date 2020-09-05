@@ -31,9 +31,10 @@ void		set_sprite_lib(t_doom *doom)
 	int			spr_index;
 
 	ed_sprite = doom->game_design.sp_head->next;
-	lib.sprites = (t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
+	lib.sprites = \
+		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
 	if (lib.sprites == NULL)
-		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
+		doom_exit_failure(doom, "error: saving game editor info");
 	index = 0;
 	sc_index = 0;
 	spr_index = -1;

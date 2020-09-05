@@ -78,7 +78,7 @@ void			mouse_press_game_editor(t_doom *doom, int x, int y)
 		doom->game_design.place_checkout == FALSE)
 		{
 			doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
-			doom->game_design.place_checkout = TRUE;
+			// doom->game_design.place_checkout = TRUE;
 		}
 		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
 		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \

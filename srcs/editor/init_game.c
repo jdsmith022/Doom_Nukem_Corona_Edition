@@ -30,13 +30,16 @@ static void			init_sidedef_textures(t_doom *doom)
 
 static void		init_lists(t_doom *doom)
 {
-	doom->game_design.ed_sector = (t_ed_sector*)ft_memalloc(sizeof(t_ed_sector));
+	doom->game_design.ed_sector = \
+		(t_ed_sector*)ft_memalloc(sizeof(t_ed_sector));
 	if (!doom->game_design.ed_sector)
 		doom_exit_failure(doom, "error: game design sector malloc");
-	doom->game_design.ed_sidedef = (t_ed_sidedef*)ft_memalloc(sizeof(t_ed_sidedef));
+	doom->game_design.ed_sidedef = \
+		(t_ed_sidedef*)ft_memalloc(sizeof(t_ed_sidedef));
 	if (!doom->game_design.ed_sidedef)
 		doom_exit_failure(doom, "error: malloc sidedef in editor\n");
-	doom->game_design.ed_sprite = (t_ed_sprite*)ft_memalloc(sizeof(t_ed_sprite));
+	doom->game_design.ed_sprite = \
+		(t_ed_sprite*)ft_memalloc(sizeof(t_ed_sprite));
 	if (!doom->game_design.ed_sprite)
 		doom_exit_failure(doom, "error: malloc sprite in editor\n");
 	doom->game_design.sc_head = doom->game_design.ed_sector;

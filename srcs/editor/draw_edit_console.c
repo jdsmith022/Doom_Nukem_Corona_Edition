@@ -22,10 +22,10 @@ static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 	texture.w = 8;
 	texture.x = TEX_S2_X;
 	texture.y = TEX_S2_Y;
-	if (doom->game_design.place_checkout == TRUE)
-		place_checkout_sprite(doom);
-	else
-	{
+	// if (doom->game_design.place_checkout == TRUE)
+	// 	place_checkout_sprite(doom);
+	// else
+	// {
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 		put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 		put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
@@ -33,7 +33,7 @@ static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 		put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 		put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 		put_images(DEL_OBJ_X, DEL_OBJ_Y, garbage, doom);
-	}
+	// }
 }
 
 static void		draw_map_images(Uint32 *pixels, t_doom *doom)
@@ -57,7 +57,6 @@ static void		draw_edit_images(t_doom *doom, Uint32 *pixels,
 	put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 	put_images(AR_RIGHT_X, AR_LEFT_Y, arrow_right, doom);
 	draw_img(doom->lib.obj_lib[index], doom, texture);
-
 }
 
 void			draw_images(Uint32 *pixels, t_doom *doom)

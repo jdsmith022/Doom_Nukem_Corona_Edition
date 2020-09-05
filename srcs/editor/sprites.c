@@ -2,20 +2,19 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
-void			delete_sprite(t_doom *doom) // not working properly
+void			delete_sprite(t_doom *doom)
 {
 	t_ed_sprite *sprite;
 	t_ed_sprite *previous;
 
-	printf("here: len %d\n", doom->game_design.spr_len);
 	sprite = doom->game_design.ed_sprite;
-	if (doom->game_design.spr_len >= 1)
+	if (doom->game_design.spr_len > 0)
 	{
-		doom->game_design.spr_len--;
 		if (doom->game_design.spr_len == 1)
 		{
 			ft_bzero(sprite, sizeof(sprite));
 			free(sprite);
+			doom->game_design.sp_head->next = NULL;
 		}
 		else
 		{
@@ -25,11 +24,12 @@ void			delete_sprite(t_doom *doom) // not working properly
 			free(sprite);
 			doom->game_design.ed_sprite = previous;
 		}
+		doom->game_design.spr_len--;
 	}
 	printf(" len: %d\n", doom->game_design.spr_len);
 }
 
-static bool check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
+static bool			check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
 {
 	t_ed_sidedef	*sidedef;
 	double			distance;
@@ -49,9 +49,9 @@ static bool check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
 	return (FALSE);
 }
 
-static bool enough_dist_to_sprites(t_doom *doom, t_point pos)
+static bool			enough_dist_to_sprites(t_doom *doom, t_point pos)
 {
-	t_ed_sprite 	*sprite;
+	t_ed_sprite		*sprite;
 	double			distance;
 
 	sprite = doom->game_design.sp_head->next;
@@ -65,7 +65,7 @@ static bool enough_dist_to_sprites(t_doom *doom, t_point pos)
 	return (TRUE);
 }
 
-static void	set_ed_sprite(t_doom *doom, t_point pos)
+static void				set_ed_sprite(t_doom *doom, t_point pos)
 {
 	int id;
 
@@ -75,19 +75,18 @@ static void	set_ed_sprite(t_doom *doom, t_point pos)
 	doom->game_design.ed_sprite->sector = doom->game_design.pl_sec;
 	doom->game_design.cur_sprite = id;
 	doom->game_design.spr_len++;
-	if (doom->game_design.place_checkout == TRUE) //putting green health pack
-	{
-		doom->game_design.ed_sprite->type = \
-			doom->game_design.ed_spr_index[6];
-		doom->game_design.place_checkout = FALSE;
-	}
-	else
+	// if (doom->game_design.place_checkout == TRUE) //putting green health pack
+	// {
+	// 	doom->game_design.ed_sprite->type = \
+	// 		doom->game_design.ed_spr_index[6];
+	// 	doom->game_design.place_checkout = FALSE;
+	// }
+	// else
 		doom->game_design.ed_sprite->type = \
 			doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 }
 
-
-void	put_sprite(t_doom *doom, int x, int y)
+void					put_sprite(t_doom *doom, int x, int y)
 {
 	t_point		pos;
 	int			id;
