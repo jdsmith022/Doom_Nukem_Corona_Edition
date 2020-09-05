@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:07 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/05 12:25:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 17:30:46 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void		sprite_render(t_doom *doom)
 		doom->visible_sprites, doom->lib.sprites);
 	draw_sprite(doom, doom->lib.sprite_order);
 	free_clipping_values(doom->clip);
+	doom->clip->prev_sidedef = -1;
 }

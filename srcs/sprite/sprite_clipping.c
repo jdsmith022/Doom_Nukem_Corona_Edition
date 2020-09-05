@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/05 13:19:02 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 17:27:08 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,14 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 		{
 			// if (sprite.sector == 36)
 				// printf("test2\n");
-			if (check_y_side_line(node->line, x, screen_y) == -1)
+			if (x > node->line.start.x && x < node->line.end.x)
 			{
-				// if (sprite.sector == 36)
-					// printf("test2\n");
-				return (-1);
+				if (check_y_side_line(node->line, x, screen_y) == -1)
+				{
+					// if (sprite.sector == 36)
+						// printf("test2\n");
+					return (-1);
+				}
 			}
 		}
 		node = node->next;
