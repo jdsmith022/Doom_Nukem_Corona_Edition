@@ -30,6 +30,7 @@ typedef struct			s_game_over {
 
 typedef struct			s_groceries {
 	uint8_t				num_of_groceries;
+	t_item				*groceries_in_level;
 	t_item				*shopping_list;
 	uint8_t				shopping_list_len;
 	uint8_t				basket_len;
@@ -49,7 +50,7 @@ bool					change_amount(t_item *item, int8_t amount);
 void					del_node(t_list **head, t_list *node);
 void					del_groceries(t_groceries *groc);
 void					print_basket(t_list **basket);
-void					generate_shopping_list(t_doom *doom);
+void					generate_shopping_list(t_doom *doom, t_item *s_list);
 bool					checkout(t_groceries *groceries);
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
 void					draw_shopping_ui(t_doom *doom, t_groceries *groceries);

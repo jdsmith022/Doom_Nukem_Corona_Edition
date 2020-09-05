@@ -31,7 +31,7 @@ static void	free_list(t_list *head)
 	}
 }
 
-void	del_groceries(t_groceries *groc)
+void		del_groceries(t_groceries *groc)
 {
 	free(groc->shopping_list);
 	free_list(groc->basket);

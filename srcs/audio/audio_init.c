@@ -38,7 +38,7 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 	while (i < NUM_OF_SOUNDS)
 	{
 		path = ft_strjoin(audio->path, g_audio_paths[i]);
-		audio->sounds[i] = \
+		audio->sounds[i] =
 			Mix_LoadWAV(path);
 		free(path);
 		i++;
@@ -71,7 +71,7 @@ void				init_audio(t_doom *doom)
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio));
 	if (doom->audio == NULL)
 		doom_exit_failure(doom, "error: audio malloc");
-	doom->audio->engine = ON;
+	doom->audio->engine = OFF;
 	if (!doom->audio || doom->audio->engine == OFF)
 		return ;
 	set_audio_event(doom);
