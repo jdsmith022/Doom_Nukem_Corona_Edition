@@ -6,20 +6,20 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/05 10:59:34 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/05 12:48:13 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 17:53:33 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/render.h"
 
-void		free_clipping_values(t_clip_lists *lists)
+void		free_clipping_values(t_clip *list)
 {
 	t_clip		*node;
 	t_clip		*temp;
 
 	//free bottom
-	node = lists->head_mid_bottom->next;
+	node = list->next;
 	//standard free function for t_clip linked list
 	if (node == NULL)
 		return ;
@@ -54,6 +54,6 @@ t_clip		*new_clip_start(int id, int x, int y)
 		new->line.start.x = x;
 		new->line.start.y = y;
 	}
-	new->next = NULL;
+	// new->next = NULL;
 	return (new);
 }

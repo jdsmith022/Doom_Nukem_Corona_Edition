@@ -99,6 +99,6 @@ void				add_tint_to_color(Uint32 *color, int tint, int mask);
 t_ray				init_ray(t_doom *doom, int x);
 double				clamp_angle(double angle);
 t_clip				*new_clip_start(int id, int x, int y);
-void				free_clipping_values(t_clip_lists *lists);
+void				free_clipping_values(t_clip *list);
 
 #endif

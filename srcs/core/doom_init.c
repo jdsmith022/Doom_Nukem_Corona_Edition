@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 12:05:52 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 19:28:14 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,33 @@ static void		init_sprites(t_doom *doom)
 		i++;
 	}
 	doom->clip = (t_clip_lists*)malloc(sizeof(t_clip_lists) * 1);
-	doom->clip->prev_sidedef = -1;
 	//protect
-	// doom->clip->head_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
-	// // if (!doom->clip->head_bottom)
-	// // 	printf("exit\n");
-	// //exit?
-	// //set content to NULL
-	// //and content size to ZERO
-	// //else malloc for content (not necessary)
-	// doom->clip->head_bottom->next = NULL;
-	// doom->clip->head_top = (t_clip*)malloc(sizeof(t_clip) * 1);
-	// //if (!doom->clip)
-	// //exit?
-	// //set content to NULL
-	// //and content size to ZERO
-	// //else malloc for content (not necessary)
-	// doom->clip->head_top->next = NULL;
 	
-	printf("before mid bottom\n");
+	//BOTTOM
+	// printf("before bottom\n");
+	doom->clip->prev_bottom = -1;
+	doom->clip->bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	//protect
+	// printf("after bottom\n");
+	doom->clip->bottom->next = NULL;
+	doom->clip->head_bottom = doom->clip->bottom;
+
+	// printf("before top\n");
+	//TOP
+	doom->clip->prev_top = -1;
+	doom->clip->top = (t_clip*)malloc(sizeof(t_clip) * 1);
+	// printf("after malloc top\n");
+	//protect
+	doom->clip->top->next = NULL;
+	doom->clip->head_top = doom->clip->top->next;
+	
+	//MID BOTTOM
+	doom->clip->prev_mid_bottom = -1;
 	doom->clip->mid_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
-	printf("after mid bottom\n");
-	//if (!doom->clip)
-	//exit?
-	//set content to NULL
-	//and content size to ZERO
-	//else malloc for content (not necessary)
+	//protect
 	doom->clip->mid_bottom->next = NULL;
 	doom->clip->head_mid_bottom = doom->clip->mid_bottom;
-	// doom->clip->mid_bottom = doom->clip->mid_bottom->next;
-	printf("after setting\n");
+
 
 	// doom->clip->head_mid_top = (t_clip*)malloc(sizeof(t_clip) * 1);
 	// //if (!doom->clip)
