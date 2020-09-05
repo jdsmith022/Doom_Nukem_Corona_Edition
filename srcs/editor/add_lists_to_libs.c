@@ -119,13 +119,12 @@ static void		flush_sector_list_info(t_doom *doom)
 		doom->game_design.ceiling_height;
 }
 
-void 			add_lists_to_libs(t_doom *doom)
+void			add_lists_to_libs(t_doom *doom)
 {
 	flush_sector_list_info(doom);
 	set_sector_lib(doom);
 	set_sprite_lib(doom);
 	set_sidedef_lib(doom);
-	// doom->lib.len_obj_lib = 0;
 	set_gameplay_settings(doom);
 	init_groceries(doom);
 }

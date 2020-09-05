@@ -5,7 +5,7 @@
 
 static void		place_checkout_sprite(t_doom *doom)
 {
-		SDL_Rect texture;
+	SDL_Rect texture;
 
 	texture.h = 8;
 	texture.w = 8;
@@ -22,10 +22,10 @@ static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 	texture.w = 8;
 	texture.x = TEX_S2_X;
 	texture.y = TEX_S2_Y;
-	// if (doom->game_design.place_checkout == TRUE)
-	// 	place_checkout_sprite(doom);
-	// else
-	// {
+	if (doom->game_design.place_checkout == TRUE)
+		place_checkout_sprite(doom);
+	else
+	{
 		put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 		put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 		put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
@@ -33,7 +33,7 @@ static void		draw_object_images(Uint32 *pixels, t_doom *doom)
 		put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 		put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 		put_images(DEL_OBJ_X, DEL_OBJ_Y, garbage, doom);
-	// }
+	}
 }
 
 static void		draw_map_images(Uint32 *pixels, t_doom *doom)
