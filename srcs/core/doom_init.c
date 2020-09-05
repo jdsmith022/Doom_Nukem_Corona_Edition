@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 10:44:10 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 12:05:52 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,44 @@ static void		init_sprites(t_doom *doom)
 		i++;
 	}
 	doom->clip = (t_clip_lists*)malloc(sizeof(t_clip_lists) * 1);
+	doom->clip->prev_sidedef = -1;
 	//protect
-	doom->clip->head_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
-	// if (!doom->clip->head_bottom)
-	// 	printf("exit\n");
-	//exit?
-	//set content to NULL
-	//and content size to ZERO
-	//else malloc for content (not necessary)
-	doom->clip->head_bottom->next = NULL;
-	doom->clip->head_top = (t_clip*)malloc(sizeof(t_clip) * 1);
+	// doom->clip->head_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	// // if (!doom->clip->head_bottom)
+	// // 	printf("exit\n");
+	// //exit?
+	// //set content to NULL
+	// //and content size to ZERO
+	// //else malloc for content (not necessary)
+	// doom->clip->head_bottom->next = NULL;
+	// doom->clip->head_top = (t_clip*)malloc(sizeof(t_clip) * 1);
+	// //if (!doom->clip)
+	// //exit?
+	// //set content to NULL
+	// //and content size to ZERO
+	// //else malloc for content (not necessary)
+	// doom->clip->head_top->next = NULL;
+	
+	printf("before mid bottom\n");
+	doom->clip->mid_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	printf("after mid bottom\n");
 	//if (!doom->clip)
 	//exit?
 	//set content to NULL
 	//and content size to ZERO
 	//else malloc for content (not necessary)
-	doom->clip->head_top->next = NULL;
-	doom->clip->head_mid_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
-	//if (!doom->clip)
-	//exit?
-	//set content to NULL
-	//and content size to ZERO
-	//else malloc for content (not necessary)
-	doom->clip->head_mid_bottom->next = NULL;
-	doom->clip->head_mid_top = (t_clip*)malloc(sizeof(t_clip) * 1);
-	//if (!doom->clip)
-	//exit?
-	//set content to NULL
-	//and content size to ZERO
-	//else malloc for content (not necessary)
-	doom->clip->head_mid_top->next = NULL;
+	doom->clip->mid_bottom->next = NULL;
+	doom->clip->head_mid_bottom = doom->clip->mid_bottom;
+	// doom->clip->mid_bottom = doom->clip->mid_bottom->next;
+	printf("after setting\n");
+
+	// doom->clip->head_mid_top = (t_clip*)malloc(sizeof(t_clip) * 1);
+	// //if (!doom->clip)
+	// //exit?
+	// //set content to NULL
+	// //and content size to ZERO
+	// //else malloc for content (not necessary)
+	// doom->clip->head_mid_top->next = NULL;
 }
 
 static void		init_render(t_doom *doom)
@@ -87,9 +95,9 @@ static void		init_settings(t_doom *doom)
 	doom->game.is_running = TRUE;
 	doom->game.light = TRUE;
 	doom->game.hud_display = TRUE;
-	doom->game.editor = FALSE;
 	doom->game.start_timer = FALSE;
 	doom->cast.poster = FALSE;
+	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 }
 
 void			doom_init(t_doom *doom)
@@ -97,8 +105,6 @@ void			doom_init(t_doom *doom)
 	init_groceries(doom);
 	init_player(doom);
 	init_settings(doom);
-	init_audio(doom);
-	init_menu(doom);
 	init_render(doom);
 	init_sprites(doom);
 	init_events(&doom->own_event);

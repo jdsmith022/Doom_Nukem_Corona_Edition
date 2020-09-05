@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 10:31:19 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 13:31:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,16 +151,33 @@ static bool			in_range(int nb, int min, int max)
 // 	}
 // }
 
-// static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
-// 				t_sidedef sidedef, int x)
-// {
-// 	//if portal
-// 	if (sidedef.opp_sector != -1)
-// 	{
-// 		//check for sidedef_id
+static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
+				t_sidedef sidedef, int x)
+{
+	t_clip		*node;
 
-// 	}
-// }
+	if (sidedef.opp_sector != -1)
+	{
+		//SAVE MID BOTTOM VALUES IN LINKED LIST
+		//de eerste line wordt opgeslagen
+		if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
+		doom->clip->prev_sidedef != sidedef.id)
+		{
+			doom->clip->prev_sidedef = sidedef.id;
+			node = new_clip_start(sidedef.sector, x, plane.mid_texture_bottom);
+			//protect
+			node->next = NULL;
+			doom->clip->mid_bottom->next = node;
+		}
+		else if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
+		doom->clip->prev_sidedef == sidedef.id)
+		{
+			doom->clip->head_mid_bottom->next->line.end.x = x;
+			doom->clip->head_mid_bottom->next->line.end.y =\
+			plane.mid_texture_bottom;
+		}
+	}
+}
 
 void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 {
@@ -170,7 +187,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	plane.x = x;
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, &sector);
-	// set_values_clipping_sprites(doom, plane, sidedef, x);
+	set_values_clipping_sprites(doom, plane, sidedef, x);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)

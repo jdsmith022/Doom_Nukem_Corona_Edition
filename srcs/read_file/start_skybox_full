@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-119
+122
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -451,6 +451,12 @@ assets/textures/checkout/checkout_side_2.bmp
 assets/textures/checkout/checkout_side_3.bmp
 #118
 assets/sprites/groceries/honey.bmp
+#119
+assets/sprites/groceries/red_onion.bmp
+#120
+assets/sprites/groceries/lemon_pie.bmp
+#121
+assets/sprites/groceries/shrimp.bmp
 
 #ADD LEFT HAND AND RIGHT HAND
 
@@ -11969,7 +11975,7 @@ assets/sprites/groceries/honey.bmp
 #object1 in sector 33 virus
 270
 1270
-1170
+1200
 4
 24
 0
@@ -11977,32 +11983,32 @@ assets/sprites/groceries/honey.bmp
 #line
 18
 1265
-1165
+1195
 1275
-1165
+1195
 #line
 18
 1275
-1165
+1195
 1275
-1175
+1205
 #line
 18
 1275
-1175
+1205
 1265
-1175
+1205
 #line
 18
 1265
-1175
+1205
 1265
-1165
+1195
 
 #object2 in sector 33 virus
 271
 1290
-1165
+1200
 4
 24
 0
@@ -12010,27 +12016,27 @@ assets/sprites/groceries/honey.bmp
 #line
 18
 1285
-1160
+1195
 1295
-1160
+1195
 #line
 18
 1295
-1160
+1195
 1295
-1170
+1205
 #line
 18
 1295
-1170
+1205
 1285
-1170
+1205
 #line
 18
 1285
-1170
+1205
 1285
-1160
+1195
 
 #sector[34]## SECTOR 34##########################################################
 4
@@ -15378,7 +15384,7 @@ assets/sprites/groceries/honey.bmp
 #sector[48]## SECTOR 48 WAREHOUSE##########################################################
 10
 70
-10
+78
 0
 -1
 96
@@ -15674,7 +15680,7 @@ assets/sprites/groceries/honey.bmp
 #sector[49]## SECTOR 49 WAREHOUSE##########################################################
 10
 70
-10
+78
 0
 -1
 96

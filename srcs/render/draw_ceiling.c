@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 22:20:01 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/04 13:16:02 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			draw_ceiling(t_doom *doom, int x,
 		calculate_ceiling_dist(doom, x, y, sector);
 		add_light_to_pixel(doom, sector, x, y);
 		if (sector.slope_floor_id != -1)
-			put_pixel_slope(doom, index, x, y);
+			put_pixel_slope(doom, x, y);
 		else
 			row_calculations(doom, doom->cast.horizontal_plane_dist, index,\
 				doom->lib.tex_lib[tex_dex]);

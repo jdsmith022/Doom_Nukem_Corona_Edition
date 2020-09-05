@@ -10,7 +10,7 @@ static void		set_shelf_type(t_doom *doom, uint8_t *type)
 	*type = find_shelf(doom->lib, ray, doom->i_sector, doom->i_sector);
 }
 
-bool			mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
+static bool		mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 {
 	if (mouse_x >= pos.x && mouse_x <= (pos.x + pos.w + 12) &&
 		mouse_y >= pos.y && mouse_y <= (pos.y + pos.h + 12))
@@ -19,12 +19,12 @@ bool			mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 		return (false);
 }
 
-bool			click_on_basket(t_list **basket, uint8_t *type, int x, int y)
+static bool			click_on_basket(t_list **b, uint8_t *type, int x, int y)
 {
 	t_list		*temp;
 	t_item		*item;
 
-	temp = *basket;
+	temp = *b;
 	while (temp)
 	{
 		item = (t_item *)temp->content;

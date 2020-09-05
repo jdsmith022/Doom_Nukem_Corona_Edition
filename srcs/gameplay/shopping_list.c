@@ -50,21 +50,20 @@ void			generate_shopping_list(t_doom *doom)
 	s_list = ft_memalloc(sizeof(t_item) * shopping_list_len);
 	doom->groceries->shopping_list = s_list;
 	srand(time(0));
-	if (shopping_list_len > 0 /*&&  doom->game_design.custom_level == FALSE*/)
+	if (shopping_list_len > 0 && doom->game_design.custom_level == FALSE)
 	{
 		s_list[0].type = TOILET;
 		s_list[0].amount = (rand() % 5) + 1;
 		set_sprite(doom, s_list[0].type, &s_list[0]);
 		s_list[0].position = get_position(0, WIDTH - 35, 60);
 	}
-	printf("Groceries: \n");
+	printf("Shopping list: \n");
 	while (i < (shopping_list_len))
 	{
 		curr_texture = rand() % (doom->groceries->num_of_groceries - 1);
 		printf("(%d) ", curr_texture);
 		s_list[i].type = get_next_grocery(doom, &curr_texture);
-		// s_list[i].type = 31 + i;
-		printf("%d ", s_list[i].type);
+		printf("type: %d ", s_list[i].type);
 		s_list[i].amount = (rand() % 5) + 1;
 		set_sprite(doom, s_list[i].type, &s_list[i]);
 		s_list[i].position = get_position(i, WIDTH - 35, 60);

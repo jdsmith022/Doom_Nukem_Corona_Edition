@@ -70,7 +70,7 @@ void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
-void				put_pixel_slope(t_doom *doom, Uint32 index, int x, int y);
+void				put_pixel_slope(t_doom *doom, int x, int y);
 void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
 						int mask);
 
@@ -98,5 +98,7 @@ void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
 t_ray				init_ray(t_doom *doom, int x);
 double				clamp_angle(double angle);
+t_clip				*new_clip_start(int id, int x, int y);
+void				free_clipping_values(t_clip_lists *lists);
 
 #endif

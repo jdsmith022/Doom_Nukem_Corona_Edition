@@ -6,32 +6,32 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/04 10:41:26 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/05 13:19:02 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-// int		check_y_side_line(t_line line, int x, int y)
-// {
-// 	t_point		compare;
-// 	int			diff;
-// 	int			diff_compare;
+int		check_y_side_line(t_line line, int x, int y)
+{
+	t_point		compare;
+	int			diff;
+	int			diff_compare;
 
-// 	compare.x = line.start.x;
-// 	compare.y = line.start.y + 1;
-// 	//if it is under the line return -1
-// 	//if it is above the line return 1
-// 	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
-// 			(y - line.start.y) * (line.end.x - line.start.x);
-// 	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
-// 					(compare.y - line.start.y) * (line.end.x - line.start.x);
-// 	if ((diff < 0 && diff_compare < 0) || (diff > 0 && diff_compare > 0)\
-// 		|| diff == 0)
-// 		return (-1);
-// 	else
-// 		return (1);
-// }
+	compare.x = line.start.x;
+	compare.y = line.start.y + 1;
+	//if it is under the line return -1
+	//if it is above the line return 1
+	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
+			(y - line.start.y) * (line.end.x - line.start.x);
+	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
+					(compare.y - line.start.y) * (line.end.x - line.start.x);
+	if ((diff < 0 && diff_compare < 0) || (diff > 0 && diff_compare > 0)\
+		|| diff == 0)
+		return (-1);
+	else
+		return (1);
+}
 
 
 // int		clip_top(t_doom *doom, int index_sp, int x, int screen_y)
@@ -60,6 +60,48 @@
 // 	}
 // 	return (-1);
 // }
+
+int		check_sector_values(t_sprite sprite, int id)
+{
+	int		i;
+
+	i = 0;
+	while (i < sprite.n_sector)
+	{
+		if (sprite.prev_sectors[i] == id)
+			return (1);
+		i++;
+	}
+	return (-1);
+}
+
+int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
+{
+	t_clip	*node;
+
+	//mid_bottom
+	node = doom->clip->head_mid_bottom->next;
+	//loop through mid_bottom_lines
+		//if sidedef_id corresponds with one of the sector id's in prev_sector
+	while (node != NULL)
+	{
+		// if (sprite.sector == 36)
+			// printf("test1\n");
+		if (check_sector_values(sprite, node->id) == 1)
+		{
+			// if (sprite.sector == 36)
+				// printf("test2\n");
+			if (check_y_side_line(node->line, x, screen_y) == -1)
+			{
+				// if (sprite.sector == 36)
+					// printf("test2\n");
+				return (-1);
+			}
+		}
+		node = node->next;
+	}
+	return (1);
+}
 
 // int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 // {

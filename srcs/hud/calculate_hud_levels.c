@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:54 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 12:27:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/02 15:36:18 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			calculate_hud_levels(t_doom *doom)
 			doom->hud->corona_level -= doom->hud->corona_level;
 	}
 	else if (doom->hud->update == corona_hit)
-		doom->hud->corona_level += 3;
+		doom->hud->corona_level += 1;
 	else if (doom->hud->update == boxes)
 		doom->hud->corona_level += 2;
 	check_level_limits(doom);
