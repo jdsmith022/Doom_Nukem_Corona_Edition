@@ -3,49 +3,6 @@
 #include "../../includes/menu.h"
 #include "../../includes/gameplay.h"
 
-void		set_sector_lib(t_doom *doom)
-{
-	t_ed_sector *ed_sector;
-	t_lib		lib;
-	int			index;
-
-	ed_sector = doom->game_design.sc_head->next;
-	lib.sector = \
-		(t_sector*)ft_memalloc(sizeof(t_sector) * doom->game_design.sc_len);
-	if (lib.sector == NULL)
-		doom_exit_failure(doom, "error: saving game editor info");
-	index = 0;
-	while (ed_sector)
-	{
-		lib.sector[index].id = ed_sector->id;
-		lib.sector[index].n_sidedefs = ed_sector->n_sidedefs;
-		lib.sector[index].i_sidedefs = ed_sector->i_sidedefs;
-		lib.sector[index].height_floor = ed_sector->height_floor;
-		lib.sector[index].height_ceiling = ed_sector->height_ceiling;
-		lib.sector[index].n_objects = doom->game_design.n_sprites;
-		lib.sector[index].i_objects = doom->game_design.i_sprites;
-		lib.sector[index].light_level = doom->game_design.light_level;
-		lib.sector[index].action = 0;
-		lib.sector[index].hold_light = 0;
-		lib.sector[index].slope_floor_id = -1;
-		lib.sector[index].slope_floor = 0;
-		lib.sector[index].slope_ceiling_id = -1;
-		lib.sector[index].slope_ceiling = 0;
-		lib.sector[index].txt_ceiling = 14;
-		lib.sector[index].txt_floor = 17;
-		ft_bzero(ed_sector->previous, sizeof(t_ed_sector));
-		free(ed_sector->previous);
-		if (ed_sector->next == NULL)
-		{
-			ft_bzero(ed_sector, sizeof(t_ed_sector));
-			free(ed_sector);
-		}
-		ed_sector = ed_sector->next;
-		index++;
-	}
-	doom->lib.sector = lib.sector;
-}
-
 static void		set_gameplay_settings(t_doom *doom)
 {
 	doom->i_sector = doom->i_sector;

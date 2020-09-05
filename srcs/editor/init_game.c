@@ -3,7 +3,7 @@
 
 static void			init_groceries_types(t_doom *doom)
 {
-
+	
 }
 
 static void			init_editor_sprites(t_doom *doom)

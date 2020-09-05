@@ -6,7 +6,7 @@
 
 static void		place_checkout_sprite(t_doom *doom)
 {
-	TTF_Font		*font;
+	TTF_Font	*font;
 	t_font		lib;
 	SDL_Rect	texture;
 

@@ -33,7 +33,7 @@ void			delete_sidedef(t_doom *doom)
 
 	sidedef = doom->game_design.ed_sidedef;
 	if (sidedef->sector == doom->game_design.sc_len && \
-	doom->game_design.sd_len > 1)
+	doom->game_design.sd_len > 1 && sidedef->opp_sector == -1)
 	{
 		previous = sidedef->previous;
 		previous->next = NULL;
@@ -46,6 +46,8 @@ void			delete_sidedef(t_doom *doom)
 		doom->game_design.draw_line.end.y = -1;
 		doom->game_design.ed_sidedef = previous;
 	}
+	if (sidedef->opp_sector != -1)
+		doom->game_design.open_connection = TRUE;
 }
 
 void			add_sidedef(t_doom *doom, int x, int y)
@@ -74,7 +76,7 @@ void			add_sidedef(t_doom *doom, int x, int y)
 		{
 			editor->edit_sector = TRUE;
 			set_ed_sidedef_values(doom, editor->draw_line);
-			set_sector_values(doom);
+			set_ed_sector_values(doom);
 		}
 		else
 			set_ed_sidedef_values(doom, editor->draw_line);

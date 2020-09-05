@@ -77,7 +77,6 @@ static void				set_ed_sprite(t_doom *doom, t_point pos)
 	doom->game_design.spr_len++;
 	doom->game_design.ed_sprite->type = \
 		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
-	printf("sprite sector %d\n", doom->game_design.ed_sprite->type);
 }
 
 void					put_sprite(t_doom *doom, int x, int y)
