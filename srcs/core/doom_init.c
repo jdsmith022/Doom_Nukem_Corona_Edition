@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 13:26:10 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/05 10:44:10 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,37 @@ static void		init_sprites(t_doom *doom)
 		doom->lib.sprite_height[i] = i;
 		i++;
 	}
-	doom->clip = (t_clip*)malloc(sizeof(t_clip) * 1);
+	doom->clip = (t_clip_lists*)malloc(sizeof(t_clip_lists) * 1);
+	//protect
+	doom->clip->head_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	// if (!doom->clip->head_bottom)
+	// 	printf("exit\n");
+	//exit?
+	//set content to NULL
+	//and content size to ZERO
+	//else malloc for content (not necessary)
+	doom->clip->head_bottom->next = NULL;
+	doom->clip->head_top = (t_clip*)malloc(sizeof(t_clip) * 1);
 	//if (!doom->clip)
 	//exit?
 	//set content to NULL
 	//and content size to ZERO
 	//else malloc for content (not necessary)
-	doom->clip->next = NULL;
-	doom->head = doom->clip;
-	i = 0;
+	doom->clip->head_top->next = NULL;
+	doom->clip->head_mid_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	//if (!doom->clip)
+	//exit?
+	//set content to NULL
+	//and content size to ZERO
+	//else malloc for content (not necessary)
+	doom->clip->head_mid_bottom->next = NULL;
+	doom->clip->head_mid_top = (t_clip*)malloc(sizeof(t_clip) * 1);
+	//if (!doom->clip)
+	//exit?
+	//set content to NULL
+	//and content size to ZERO
+	//else malloc for content (not necessary)
+	doom->clip->head_mid_top->next = NULL;
 }
 
 static void		init_render(t_doom *doom)

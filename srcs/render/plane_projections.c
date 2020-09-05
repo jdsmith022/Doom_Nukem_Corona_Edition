@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 13:27:24 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/05 10:31:19 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,16 +151,16 @@ static bool			in_range(int nb, int min, int max)
 // 	}
 // }
 
-static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
-				t_sidedef sidedef, int x)
-{
-	//if portal
-	if (sidedef.opp_sector != -1)
-	{
-		//check for sidedef_id
+// static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
+// 				t_sidedef sidedef, int x)
+// {
+// 	//if portal
+// 	if (sidedef.opp_sector != -1)
+// 	{
+// 		//check for sidedef_id
 
-	}
-}
+// 	}
+// }
 
 void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 {
@@ -170,7 +170,7 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	plane.x = x;
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, &sector);
-	set_values_clipping_sprites(doom, plane, sidedef, x);
+	// set_values_clipping_sprites(doom, plane, sidedef, x);
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)
