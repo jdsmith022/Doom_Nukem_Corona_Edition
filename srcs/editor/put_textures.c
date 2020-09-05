@@ -21,6 +21,7 @@ void		put_textures_sprites(int x, int y, int index, t_doom *doom)
 	SDL_Surface		*texture;
 
 	save_x = x;
+	printf("in put textures sidedef\n");
 	index = doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 	texture = doom->lib.obj_lib[index];
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;

@@ -32,7 +32,7 @@ void	set_spr_checkout(t_sprite *sprite)
 	sprite->textures[2] = 114;
 	sprite->textures[3] = 117;
 	sprite->block = BLOCK;
-	sprite->action = 50;
+	sprite->action = 0;
 	set_spr_lines(sprite, LENGTH_LARGE);
 }
 

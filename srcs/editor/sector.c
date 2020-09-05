@@ -95,7 +95,7 @@ static void		set_sector_sidedefs(t_doom *doom)
 	doom->game_design.ed_sector->n_sidedefs = n_sidedefs;
 }
 
-void		set_sector_values(t_doom *doom)
+void		set_ed_sector_values(t_doom *doom)
 {
 	t_ed_sector *prev;
 	int			id;

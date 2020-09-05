@@ -1,11 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-static void			init_groceries_types(t_doom *doom)
-{
-
-}
-
 static void			init_editor_sprites(t_doom *doom)
 {
 	doom->game_design.ed_spr_index[0] = SCISSOR_LIFT;
@@ -33,7 +28,7 @@ static void			init_sidedef_textures(t_doom *doom)
 	doom->game_design.sd_tex_index[11] = 26; //BREAD
 }
 
-static void		init_lists(t_doom *doom)
+static void			init_lists(t_doom *doom)
 {
 	doom->game_design.ed_sector = \
 		(t_ed_sector*)ft_memalloc(sizeof(t_ed_sector));
@@ -58,7 +53,7 @@ static void		init_lists(t_doom *doom)
 	doom->game_design.sp_head = doom->game_design.ed_sprite;
 }
 
-void			init_game_design(t_doom *doom)
+void				init_game_design(t_doom *doom)
 {
 	doom->game_design.sd_len = 0;
 	doom->game_design.sc_len = 0;

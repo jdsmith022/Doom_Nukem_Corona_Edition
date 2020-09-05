@@ -4,7 +4,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 
-static void	delete_list(t_doom *doom)
+static void		delete_list(t_doom *doom)
 {
 	t_ed_sprite *ed_sprite;
 	t_ed_sprite *next;
@@ -23,7 +23,43 @@ static void	delete_list(t_doom *doom)
 	free(doom->game_design.sp_head);
 }
 
-void		set_sprite_lib(t_doom *doom)
+static void		set_sector_sprite_values(t_sector *sector, int *spr_index,\
+				int *sc_index, int index)
+{
+	sector->i_objects = *spr_index;
+	sector->n_objects = index - *spr_index;
+	*sc_index += 1;
+	*spr_index = -1;
+}
+
+static void		sort_sprite_per_sector(t_doom *doom, t_lib lib)
+{
+	t_ed_sprite *ed_sprite;
+	int			index;
+	int			sc_index;
+	int			spr_index;
+
+	index = 0;
+	sc_index = 0;
+	spr_index = -1;
+	ed_sprite = doom->game_design.sp_head->next;
+	while (sc_index < doom->game_design.sc_len && ed_sprite)
+	{
+		if (ed_sprite->sector == sc_index && spr_index == -1)
+			spr_index = index;
+		if (ed_sprite->sector == sc_index)
+			set_sprite_values(doom, &lib.sprites[index], ed_sprite, &index);
+		ed_sprite = ed_sprite->next;
+		if (ed_sprite == NULL && sc_index < doom->game_design.sc_len)
+		{
+			set_sector_sprite_values(&doom->lib.sector[sc_index], \
+				&spr_index, &sc_index, index);
+			ed_sprite = doom->game_design.sp_head->next;
+		}
+	}
+}
+
+void			set_sprite_lib(t_doom *doom)
 {
 	t_ed_sprite *ed_sprite;
 	t_lib		lib;
@@ -31,33 +67,11 @@ void		set_sprite_lib(t_doom *doom)
 	int			sc_index;
 	int			spr_index;
 
-	ed_sprite = doom->game_design.sp_head->next;
 	lib.sprites = \
 		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
 	if (lib.sprites == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
-	index = 0;
-	sc_index = 0;
-	spr_index = -1;
-	while (sc_index < doom->game_design.sc_len && ed_sprite)
-	{
-		if (ed_sprite->sector == sc_index)
-		{
-			if (spr_index == -1)
-				spr_index = index;
-			set_sprite_values(doom, &lib.sprites[index], ed_sprite);
-			index++;
-		}
-		ed_sprite = ed_sprite->next;
-		if (ed_sprite == NULL && sc_index < doom->game_design.sc_len)
-		{
-			doom->lib.sector[sc_index].i_objects = spr_index;
-			doom->lib.sector[sc_index].n_objects = index - spr_index;
-			ed_sprite = doom->game_design.sp_head->next;
-			sc_index++;
-			spr_index = -1;
-		}
-	}
+	sort_sprite_per_sector(doom, lib);
 	delete_list(doom);
 	doom->lib.sprites = lib.sprites;
 	doom->total_sprites = doom->game_design.spr_len;

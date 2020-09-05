@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-bool		line_intersect(t_doom *doom, t_point start, int x, int y)
+bool			line_intersect(t_doom *doom, t_point start, int x, int y)
 {
 	t_ed_sidedef	*sidedef;
 	t_line			line1;

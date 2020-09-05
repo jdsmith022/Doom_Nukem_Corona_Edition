@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-void		mouse_press_sidedef_txt(t_doom *doom, int x, int y)
+void			mouse_press_sidedef_txt(t_doom *doom, int x, int y)
 {
 	if (x > AR_LEFT_TS2_X && x < AR_LEFT_TS2_X + FRAME_WIDTH && \
 	y > AR_LEFT_TS2_Y && y < AR_LEFT_TS2_Y + FRAME_HEIGHT && \
@@ -16,7 +16,7 @@ void		mouse_press_sidedef_txt(t_doom *doom, int x, int y)
 		delete_sidedef(doom);
 }
 
-static void	create_portal(t_doom *doom)
+static void		create_portal(t_doom *doom)
 {
 	t_ed_sidedef	*sidedef;
 	t_ed_sector		*sector;
@@ -29,7 +29,7 @@ static void	create_portal(t_doom *doom)
 	doom->game_design.open_connection = TRUE;
 }
 
-static void	set_sidedef_to_prev(t_doom *doom)
+static void		set_sidedef_to_prev(t_doom *doom)
 {
 	t_ed_sidedef *sidedef;
 
@@ -42,7 +42,7 @@ static void	set_sidedef_to_prev(t_doom *doom)
 	}
 }
 
-static void	set_sidedef_to_next(t_doom *doom)
+static void		set_sidedef_to_next(t_doom *doom)
 {
 	t_ed_sidedef *sidedef;
 
@@ -55,7 +55,7 @@ static void	set_sidedef_to_next(t_doom *doom)
 	}
 }
 
-void		mouse_press_sidedef(t_doom *doom, int x, int y)
+void			mouse_press_sidedef(t_doom *doom, int x, int y)
 {
 	t_gamedesign editor;
 
