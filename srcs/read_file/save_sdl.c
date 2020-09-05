@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 00:46:28 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/05 16:44:46 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static SDL_Surface	**read_from_line(t_doom *doom, char *line,
 	while (index < len)
 	{
 		get_line(doom, &line, map_fd, 0);
+		modified(doom, line);
 		fd = open(line, O_RDONLY);
 		if (fd < 0)
 			safe_read_line_exit(doom, images, line);

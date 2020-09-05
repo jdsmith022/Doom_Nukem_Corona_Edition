@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
-int				open_file(t_doom *doom, char *filename)
+int			open_file(t_doom *doom, char *filename)
 {
 	int		fd;
 
@@ -11,23 +11,22 @@ int				open_file(t_doom *doom, char *filename)
 	return (fd);
 }
 
-static void		modified(void)
+void		modified(t_doom *doom, char *file_name)
 {
 	struct stat filestat;
 
-	stat("srcs/read_file/start_skybox_full", &filestat);
-	/* turn on and add the last modified date before handing in*/
-	// if (ft_strcmp(ctime(&filestat.st_mtime), "Tue Jul 21 11:47:15 2020\n") != 0)
-	//     error("file has been modified", 0);
+	stat(file_name, &filestat);
+	if ((long long)filestat.st_mtime != (long long)filestat.st_birthtime)
+		doom_exit_failure(doom, "error: file has been modified");
 }
 
-void			save_libraries(t_doom *doom)
+void		save_libraries(t_doom *doom)
 {
 	int fd;
 
 	// if (argc != 1)
 	//     error("Please run program in this fashion: ./duke_nukem", 0);
-	modified();
+	modified(doom, "srcs/read_file/start_skybox_full");
 	fd = open_file(doom, "srcs/read_file/start_skybox_full");
 	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
