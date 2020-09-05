@@ -38,36 +38,6 @@ static void		reset_values(t_doom *doom)
 	editor->edit_sector = FALSE;
 }
 
-static void		delete_sprites_in_sector(t_doom *doom, int sector)
-{
-	t_ed_sprite *sprite;
-	t_ed_sprite *prev;
-	t_ed_sprite *next;
-
-	sprite = doom->game_design.sp_head;
-	while (sprite->next != NULL)
-	{
-		if (sprite->sector == sector)
-		{
-			prev = sprite->previous;
-			next = sprite->next;
-			if (prev != NULL)
-				prev->next = next;
-			if (next != NULL)
-				next->previous = prev;
-			ft_bzero(sprite, sizeof(t_ed_sprite));
-			free(sprite);
-			if (next == NULL)
-				sprite = prev;
-			else
-				sprite = next;
-			doom->game_design.spr_len--;
-		}
-		else
-			sprite = sprite->next;
-	}
-}
-
 static void		delete_sidedefs_in_sector(t_doom *doom, int sector)
 {
 	t_ed_sidedef	*sidedef;

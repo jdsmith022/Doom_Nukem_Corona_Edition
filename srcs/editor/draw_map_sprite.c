@@ -47,6 +47,7 @@ void				draw_ed_sprite(t_doom *doom, Uint32 **pixels)
 	sprite = doom->game_design.sp_head->next;
 	while (sprite != NULL)
 	{
+		// printf("draw sprite\n");
 		draw_sprite_pos(doom, pixels, sprite, side);
 		sprite = sprite->next;
 	}

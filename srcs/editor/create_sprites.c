@@ -2,24 +2,6 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
-void				delete_sprite(t_doom *doom)
-{
-	t_ed_sprite *sprite;
-	t_ed_sprite *previous;
-
-	sprite = doom->game_design.ed_sprite;
-	if (doom->game_design.spr_len > 1)
-	{
-		sprite = doom->game_design.ed_sprite;
-		doom->game_design.ed_sprite = sprite->previous;
-		doom->game_design.ed_sprite->next = NULL;
-		ft_bzero(sprite, sizeof(t_ed_sprite));
-		free(sprite);
-		doom->game_design.spr_len--;
-		doom->game_design.cur_sprite = doom->game_design.ed_sprite->id;
-	}
-}
-
 static bool			check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
 {
 	t_ed_sidedef	*sidedef;

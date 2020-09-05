@@ -252,6 +252,7 @@ void					put_sprite(t_doom *doom, int x, int y);
 bool					line_intersect(t_doom *doom, t_point start, int x, int y);
 void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
+void					delete_sprites_in_sector(t_doom *doom, int sector);
 void					set_sector_lib(t_doom *doom);
 void					set_sidedef_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
