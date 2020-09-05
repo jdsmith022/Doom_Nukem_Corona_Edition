@@ -198,7 +198,6 @@ typedef struct 			s_ed_sidedef
 	struct s_ed_sidedef *previous;
 }						t_ed_sidedef;
 
-
 typedef struct			s_bar {
 	int					min;
 	int					max;
@@ -210,14 +209,6 @@ typedef struct			s_bar {
 	int					cur_height;
 }						t_bar;
 
-//remove cause in a different file but couldn't find yet
-
-typedef struct			s_poin
-{
-	double				x;
-	double				y;
-}						t_poin;
-
 typedef struct			s_point_int
 {
 	int					x;
@@ -226,8 +217,8 @@ typedef struct			s_point_int
 
 typedef struct			s_angle_line {
 	t_point_int			diff;
-	t_poin				steps;
-	t_poin				start;
+	t_point				steps;
+	t_point				start;
 }						t_angle_line;
 
 /*game editor*/
@@ -244,14 +235,15 @@ void					mouse_press_game_editor(t_doom *doom, int x, int y);
 void					bars(Uint32 **pixels, t_doom *doom);
 void					draw_images(Uint32 *pixels, t_doom *doom);
 void					init_game_design(t_doom *doom);
-void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels, t_ed_sidedef *ed_sidedef);
+void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels, \
+							t_ed_sidedef *ed_sidedef);
 void					add_sprite(t_doom *doom, int x, int y);
 void					draw_ed_sprite(t_doom *doom, Uint32 **pixels);
 void					draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void 					add_lists_to_libs(t_doom *doom);
 void					put_images(int x, int y, int index, t_doom *doom);
-void					put_textures(int x, int y, int index, t_doom *doom);
-void					put_textures_sidedef(int x, int y, int index, t_doom *doom);
+void					put_textures_sidedef(int x, int y, int index, \
+							t_doom *doom);
 void					put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 							Uint32 pixel_dex);
 void					mouse_press_sidedef_txt(t_doom *doom, int x, int y);
@@ -260,7 +252,6 @@ void					put_sprite(t_doom *doom, int x, int y);
 bool					line_intersect(t_doom *doom, t_point start, int x, int y);
 void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
-
 void					set_sector_lib(t_doom *doom);
 void					set_sidedef_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
@@ -271,23 +262,4 @@ void					set_spr_checkout(t_sprite *sprite);
 void					set_spr_lines(t_sprite *sprite, int lenght);
 void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
 							t_ed_sprite *ed_sprite, int *index);
-
-// void					add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
-// void					object_texture(t_doom *doom, int change);
-// void					sidedef_object(t_doom *doom);
-// void					object_change(t_doom *doom, int change);
-
-// void				add_specifications(t_gamedesign *gd, int index);
-// void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);
-// t_sidedef			*cpy_sidedef(t_doom *doom, t_sidedef *sidedef, int *w_size);
-// void				rmove(t_sprite *sprite, t_doom *doom);
-// void				add_portal(t_doom *doom, int dir);
-// void				add_to_game(t_doom *doom);
-// void				printing_map(t_gamedesign *design);
-// void				draw_sector_images(Uint32 *pixels, t_doom *doom);
-// void				del_obj(t_doom *doom);
-// void				correct_i_object(int i, t_doom *doom);
-// void				coor_pos(t_doom *doom);
-// void				change_texture(t_doom *doom, int *texture, int change);
-
 #endif
