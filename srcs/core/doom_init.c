@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 19:28:14 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 19:56:11 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void		init_sprites(t_doom *doom)
 	// printf("after malloc top\n");
 	//protect
 	doom->clip->top->next = NULL;
-	doom->clip->head_top = doom->clip->top->next;
+	doom->clip->head_top = doom->clip->top;
 	
 	//MID BOTTOM
 	doom->clip->prev_mid_bottom = -1;
