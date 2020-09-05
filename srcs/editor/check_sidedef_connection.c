@@ -27,7 +27,7 @@ static void		get_connection_sidedef(t_doom *doom, t_line line)
 {
 	if (check_sector_in_sector(doom, line.end) == TRUE)
 		return ;
-	set_sidedef_values(doom, line);
+	set_ed_sidedef_values(doom, line);
 	doom->game_design.draw_line.start = line.end;
 	doom->game_design.open_connection = FALSE;
 }

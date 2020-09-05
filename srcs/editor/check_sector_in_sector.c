@@ -6,7 +6,8 @@ static void		check_min_distance(t_doom *doom, t_point *distance,
 {
 	if (distance->x < distance->y)
 	{
-		doom->game_design.pl_sec = sidedef->sector;
+		doom->game_design.cur_sector = sidedef->sector;
+		printf("current sector = %d\n", doom->game_design.cur_sector);
 		distance->y = distance->x;
 	}
 }

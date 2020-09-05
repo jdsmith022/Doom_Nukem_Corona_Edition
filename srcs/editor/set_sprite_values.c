@@ -5,7 +5,7 @@
 static void  set_spr_scissor_lift(t_sprite *sprite)
 {
 	sprite->index = SCISSOR_LIFT;
-	sprite->size = MEDIUM;
+	sprite->size = X_LARGE;
 	sprite->textures[0] = 7;
 	sprite->textures[1] = 8;
 	sprite->textures[2] = 7;

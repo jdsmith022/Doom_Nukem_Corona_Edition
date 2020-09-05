@@ -232,7 +232,7 @@ typedef struct			s_angle_line {
 
 /*game editor*/
 void					open_game_editor(t_doom *doom, double dt);
-void					set_sidedef_values(t_doom *doom, t_line line);
+void					set_ed_sidedef_values(t_doom *doom, t_line line);
 void					set_sector_values(t_doom *doom);
 bool					snap_close_sector(t_point start, t_point *end);
 void					check_connection(t_doom *doom, int x, int y);
@@ -267,6 +267,7 @@ void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
 
 void					set_sector_lib(t_doom *doom);
+void					set_sidedef_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
 void					set_spr_corona(t_sprite *sprite);
 void					set_spr_health_pack(t_sprite *sprite);

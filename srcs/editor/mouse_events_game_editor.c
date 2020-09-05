@@ -6,16 +6,19 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 {
 	t_gamedesign editor;
 
-	editor =  doom->game_design;
+	editor = doom->game_design;
 	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
+	editor.pl_pos == TRUE && editor.edit_sector == TRUE)
+		add_player(doom, x, y);
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
+	(editor.edit_sector == TRUE || editor.place_checkout == TRUE))
+		put_sprite(doom, x, y);
+	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.edit_sector == FALSE && editor.open_connection == TRUE)
 		check_connection(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.edit_sector == FALSE && editor.open_connection == FALSE)
 		add_sidedef(doom, x, y);
-	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.edit_sector == TRUE && editor.pl_pos != 1)
-		put_sprite(doom, x, y);
 }
 
 static void		mouse_press_sector(t_doom *doom, int x, int y)
@@ -38,6 +41,10 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 	else if (x > DEL_SECTOR_X && x < DEL_SECTOR_X + 35 && y > DEL_SECTOR_Y \
 	&& y < DEL_SECTOR_Y + 35)
 		delete_sector(doom);
+	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
+	y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
+	doom->game_design.place_checkout == FALSE)
+		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
 }
 
 static void		mouse_press_object(t_doom *doom, int x, int y)
@@ -48,7 +55,7 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 		doom->game_design.spr_tex--;
 	else if (x > AR_RIGHT_X && x < AR_RIGHT_X + FRAME_WIDTH && \
 	y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT && \
-	doom->game_design.spr_tex + 1 < 7)
+	doom->game_design.spr_tex + 1 < 6)
 		doom->game_design.spr_tex++;
 	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
 	y > RM_SC_Y && y < RM_SC_Y + FRAME_HEIGHT)
@@ -58,25 +65,15 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 void			mouse_press_game_editor(t_doom *doom, int x, int y)
 {
 	mouse_press_map(doom, x, y);
-	mouse_press_sidedef_txt(doom, x, y);
-	if (doom->game_design.edit_sector == TRUE)
+	if (doom->game_design.place_checkout == FALSE)
 	{
-		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
-		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
-		doom->game_design.place_checkout == FALSE)
-		{
-			doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
-			doom->game_design.place_checkout = TRUE;
-		}
-		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
-		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
-		doom->game_design.player_placed == TRUE)
-		{
-			doom->game.editor = FALSE;
-			return ;
-		}
-		mouse_press_sector(doom, x, y);
+		mouse_press_sidedef_txt(doom, x, y);
 		mouse_press_sidedef(doom, x, y);
+	}
+	if (doom->game_design.edit_sector == TRUE && \
+	doom->game_design.place_checkout == FALSE)
+	{
+		mouse_press_sector(doom, x, y);
 		mouse_press_object(doom, x, y);
 	}
 }

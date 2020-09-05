@@ -8,7 +8,7 @@ void			delete_sprite(t_doom *doom)
 	t_ed_sprite *previous;
 
 	sprite = doom->game_design.ed_sprite;
-	if (doom->game_design.spr_len > 1) // keeps first object in sector
+	if (doom->game_design.spr_len > 1)
 	{
 		if (doom->game_design.spr_len == 1)
 		{
@@ -27,7 +27,6 @@ void			delete_sprite(t_doom *doom)
 		}
 		doom->game_design.spr_len--;
 	}
-	printf(" len: %d\n", doom->game_design.spr_len);
 }
 
 static bool			check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
@@ -73,18 +72,12 @@ static void				set_ed_sprite(t_doom *doom, t_point pos)
 	id = doom->game_design.spr_len;
 	doom->game_design.ed_sprite->id = id;
 	doom->game_design.ed_sprite->pos = pos;
-	doom->game_design.ed_sprite->sector = doom->game_design.pl_sec;
+	doom->game_design.ed_sprite->sector = doom->game_design.cur_sector;
 	doom->game_design.cur_sprite = id;
 	doom->game_design.spr_len++;
-	if (doom->game_design.place_checkout == TRUE) //putting green health pack
-	{
-		doom->game_design.ed_sprite->type = \
-			doom->game_design.ed_spr_index[6];
-		doom->game_design.place_checkout = FALSE;
-	}
-	else
-		doom->game_design.ed_sprite->type = \
-			doom->game_design.ed_spr_index[doom->game_design.spr_tex];
+	doom->game_design.ed_sprite->type = \
+		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
+	printf("sprite sector %d\n", doom->game_design.ed_sprite->sector);
 }
 
 void					put_sprite(t_doom *doom, int x, int y)
@@ -106,9 +99,11 @@ void					put_sprite(t_doom *doom, int x, int y)
 		if (!doom->game_design.ed_sprite->next)
 			doom_exit_failure(doom, "error: malloc sprite in editor\n");
 		prev = doom->game_design.ed_sprite;
-		doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 		doom->game_design.ed_sprite->previous = prev;
+		doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 		doom->game_design.ed_sprite->next = NULL;
 		set_ed_sprite(doom, pos);
+		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
+			doom->game.editor = FALSE;
 	}
 }

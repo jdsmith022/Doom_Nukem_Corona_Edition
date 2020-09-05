@@ -67,6 +67,7 @@ void			delete_sector(t_doom *doom)
 	}
 	doom->game_design.ed_sidedef = sidedef;
 	doom->game_design.cur_sd = sidedef->id;
+	doom->game_design.sc_len--;
 	if (doom->game_design.sd_len == 1)
 		reset_values(doom);
 	else
@@ -85,9 +86,9 @@ static void		set_sector_sidedefs(t_doom *doom)
 	while (sidedef->next != NULL)
 	{
 		sidedef = sidedef->next;
-		if (i_sidedef == -1 && sidedef->sector == doom->game_design.cur_sec)
+		if (i_sidedef == -1 && sidedef->sector == doom->game_design.sc_len)
 			i_sidedef = sidedef->id;
-		if (sidedef->sector == doom->game_design.cur_sec)
+		if (sidedef->sector == doom->game_design.sc_len)
 			n_sidedefs++;
 	}
 	doom->game_design.ed_sector->i_sidedefs = i_sidedef;
@@ -116,7 +117,6 @@ void		set_sector_values(t_doom *doom)
 	doom->game_design.ed_sector->id = id;
 	doom->game_design.ed_sector->next = NULL;
 	doom->game_design.sc_len++;
-	doom->game_design.cur_sec++;
 }
 
 bool			snap_close_sector(t_point start, t_point *end)

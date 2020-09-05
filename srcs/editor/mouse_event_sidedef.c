@@ -23,7 +23,7 @@ static void	create_portal(t_doom *doom)
 
 	sidedef = doom->game_design.ed_sidedef;
 	sidedef->opp_sector = doom->game_design.sc_len;
-	set_sidedef_values(doom, sidedef->line);
+	set_ed_sidedef_values(doom, sidedef->line);
 	doom->game_design.ed_sidedef->opp_sector = sidedef->sector;
 	doom->game_design.edit_sector = FALSE;
 	doom->game_design.open_connection = TRUE;
@@ -69,7 +69,4 @@ void		mouse_press_sidedef(t_doom *doom, int x, int y)
 	else if (x > PORTAL_X && x < PORTAL_X + FRAME_WIDTH && \
 		y > PORTAL_Y && y < PORTAL_Y + FRAME_HEIGHT)
 		create_portal(doom);
-	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.pl_pos == TRUE && editor.edit_sector == TRUE)
-		add_player(doom, x, y);
 }

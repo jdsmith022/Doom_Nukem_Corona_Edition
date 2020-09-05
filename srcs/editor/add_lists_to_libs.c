@@ -3,42 +3,6 @@
 #include "../../includes/menu.h"
 #include "../../includes/gameplay.h"
 
-static void		set_sidedef_lib(t_doom *doom)
-{
-	t_ed_sidedef *ed_sidedef;
-	t_lib		lib;
-	int			index;
-
-	ed_sidedef = doom->game_design.sd_head->next;
-	lib.sidedef = \
-		(t_sidedef*)ft_memalloc(sizeof(t_sidedef) * doom->game_design.sd_len);
-	if (lib.sidedef == NULL)
-		doom_exit_failure(doom, "error: saving game editor info");
-	index = 0;
-	while (ed_sidedef)
-	{
-		lib.sidedef[index].id = ed_sidedef->id;
-		lib.sidedef[index].line = ed_sidedef->line;
-		lib.sidedef[index].txt_1 = 14;
-		lib.sidedef[index].txt_2 = ed_sidedef->texture;
-		lib.sidedef[index].txt_3 = 17;
-		lib.sidedef[index].sector = ed_sidedef->sector;
-		lib.sidedef[index].opp_sector = ed_sidedef->opp_sector;
-		lib.sidedef[index].action = 0;
-		lib.sidedef[index].poster = -1;
-		ft_bzero(ed_sidedef->previous, sizeof(t_ed_sidedef));
-		free(ed_sidedef->previous);
-		if (ed_sidedef->next == NULL)
-		{
-			ft_bzero(ed_sidedef, sizeof(t_ed_sidedef));
-			free(ed_sidedef);
-		}
-		ed_sidedef = ed_sidedef->next;
-		index++;
-	}
-	doom->lib.sidedef = lib.sidedef;
-}
-
 void		set_sector_lib(t_doom *doom)
 {
 	t_ed_sector *ed_sector;
@@ -49,7 +13,7 @@ void		set_sector_lib(t_doom *doom)
 	lib.sector = \
 		(t_sector*)ft_memalloc(sizeof(t_sector) * doom->game_design.sc_len);
 	if (lib.sector == NULL)
-		doom_exit_failure(doom, "error: saving game editor info"); // add freeing of lists
+		doom_exit_failure(doom, "error: saving game editor info");
 	index = 0;
 	while (ed_sector)
 	{
@@ -84,13 +48,12 @@ void		set_sector_lib(t_doom *doom)
 
 static void		set_gameplay_settings(t_doom *doom)
 {
+	doom->i_sector = doom->i_sector;
+	doom->pos = doom->pos;
 	doom->lib.sector = light_correction(\
 		doom->lib.sector, doom->game_design.sc_len);
-	doom->pos.x = doom->game_design.pl_x;
-	doom->pos.y = doom->game_design.pl_y;
-	doom->i_sector = doom->game_design.pl_sec;
 	doom->player.height = PLAYER_HEIGHT \
-		+ doom->lib.sector[doom->game_design.pl_sec].height_floor;
+		+ doom->lib.sector[doom->i_sector].height_floor;
 	doom->game.light = TRUE;
 	doom->menu->state = start_game;
 	doom->menu->start_timer = FALSE;
@@ -126,4 +89,5 @@ void			add_lists_to_libs(t_doom *doom)
 	set_sidedef_lib(doom);
 	set_gameplay_settings(doom);
 	init_groceries(doom);
+	printf("%f - %f, %d\n", doom->pos.x, doom->pos.y, doom->i_sector);
 }

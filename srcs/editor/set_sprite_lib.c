@@ -7,19 +7,20 @@
 static void	delete_list(t_doom *doom)
 {
 	t_ed_sprite *ed_sprite;
+	t_ed_sprite *next;
 
 	ed_sprite = doom->game_design.sp_head->next;
 	while (ed_sprite)
 	{
-		ft_bzero(ed_sprite->previous, sizeof(t_ed_sprite));
-		free(ed_sprite->previous);
-		if (ed_sprite->next == NULL)
+		next = ed_sprite->next;
+		if (ed_sprite == NULL)
 		{
 			ft_bzero(ed_sprite, sizeof(t_ed_sprite));
 			free(ed_sprite);
 		}
-		ed_sprite = ed_sprite->next;
+		ed_sprite = next;
 	}
+	free(doom->game_design.sp_head);
 }
 
 void		set_sprite_lib(t_doom *doom)
