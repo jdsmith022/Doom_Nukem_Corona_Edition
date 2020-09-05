@@ -268,6 +268,7 @@ bool					line_intersect(t_doom *doom, t_point start, int x, int y);
 void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
 
+void					set_sector_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
 void					set_spr_corona(t_sprite *sprite);
 void					set_spr_health_pack(t_sprite *sprite);
@@ -277,10 +278,11 @@ void					set_spr_lines(t_sprite *sprite, int lenght);
 void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
 							t_ed_sprite *ed_sprite);
 
-void					add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
-void					object_texture(t_doom *doom, int change);
-void					sidedef_object(t_doom *doom);
-void					object_change(t_doom *doom, int change);
+void					add_player(t_doom *doom, int x, int y);
+// void					add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
+// void					object_texture(t_doom *doom, int change);
+// void					sidedef_object(t_doom *doom);
+// void					object_change(t_doom *doom, int change);
 
 // void				add_specifications(t_gamedesign *gd, int index);
 // void				mv_sidedef(t_sidedef **sidedef, int w_len, int id);

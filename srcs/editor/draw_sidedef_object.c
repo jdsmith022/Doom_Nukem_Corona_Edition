@@ -18,7 +18,7 @@ t_angle_line		calc_angle(t_line line, t_doom *doom)
 	return (angle);
 }
 
-static void put_pixel(t_doom *doom, int x, int y, int color)
+static void			put_pixel(t_doom *doom, int x, int y, int color)
 {
 	Uint32 *pixels;
 
@@ -53,7 +53,6 @@ void				draw_lines(t_doom *doom, Uint32 **pixels,
 	}
 }
 
-
 static void			draw_object_side(t_doom *doom, Uint32 **pixels,
 						t_ed_sprite *sprite, int side)
 {
@@ -64,7 +63,8 @@ static void			draw_object_side(t_doom *doom, Uint32 **pixels,
 	t_line			line[4];
 
 	i = 0.0;
-	if (doom->game_design.cur_sprite != sprite->id || doom->game_design.object_bar == 0)
+	if (doom->game_design.cur_sprite != sprite->id || \
+	doom->game_design.object_bar == 0)
 		color = 0x8c3cde6;
 	else
 		color = 0xff4287f5;
@@ -73,7 +73,7 @@ static void			draw_object_side(t_doom *doom, Uint32 **pixels,
 	while (x < sprite->pos.x + 5)
 	{
 		y = sprite->pos.y - 5;
-		while ( y < sprite->pos.y + 5)
+		while (y < sprite->pos.y + 5)
 		{
 			put_pixel(doom, x, y, color);
 			y++;
@@ -84,8 +84,8 @@ static void			draw_object_side(t_doom *doom, Uint32 **pixels,
 
 void				draw_object(t_doom *doom, Uint32 **pixels)
 {
-	t_ed_sprite *sprite;
-	int		side;
+	t_ed_sprite	*sprite;
+	int			side;
 
 	sprite = doom->game_design.sp_head->next;
 	while (sprite != NULL)

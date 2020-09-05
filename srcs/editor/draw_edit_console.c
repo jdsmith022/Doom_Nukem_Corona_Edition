@@ -61,8 +61,8 @@ static void		draw_edit_images(t_doom *doom, Uint32 *pixels,
 
 void			draw_images(Uint32 *pixels, t_doom *doom)
 {
-	SDL_Rect texture;
-	int		index;
+	SDL_Rect	texture;
+	int			index;
 
 	texture.h = 8;
 	texture.w = 8;

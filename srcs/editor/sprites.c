@@ -75,13 +75,13 @@ static void				set_ed_sprite(t_doom *doom, t_point pos)
 	doom->game_design.ed_sprite->sector = doom->game_design.pl_sec;
 	doom->game_design.cur_sprite = id;
 	doom->game_design.spr_len++;
-	// if (doom->game_design.place_checkout == TRUE) //putting green health pack
-	// {
-	// 	doom->game_design.ed_sprite->type = \
-	// 		doom->game_design.ed_spr_index[6];
-	// 	doom->game_design.place_checkout = FALSE;
-	// }
-	// else
+	if (doom->game_design.place_checkout == TRUE) //putting green health pack
+	{
+		doom->game_design.ed_sprite->type = \
+			doom->game_design.ed_spr_index[6];
+		doom->game_design.place_checkout = FALSE;
+	}
+	else
 		doom->game_design.ed_sprite->type = \
 			doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 }

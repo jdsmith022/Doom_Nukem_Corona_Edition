@@ -1,9 +1,8 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-#include <stdio.h>
-
-static void		set_draw_lines(t_doom *doom, Uint32 **pixels, t_ed_sidedef *head)
+static void		set_draw_lines(t_doom *doom, Uint32 **pixels,
+					t_ed_sidedef *head)
 {
 	t_ed_sidedef *ed_sidedef;
 
@@ -29,7 +28,6 @@ void	open_game_editor(t_doom *doom, double dt)
 		pixels = doom->surface->pixels;
 		draw_screen_colors(pixels, doom);
 		draw_images(pixels, doom);
-		// bars(&pixels, doom);
 		set_draw_lines(doom, &pixels, doom->game_design.sd_head);
 		draw_object(doom, &pixels);
 		draw_font(doom, doom->lib.font_lib.game_editor_font,\
