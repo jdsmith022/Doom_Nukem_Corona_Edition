@@ -22,52 +22,56 @@ static uint8_t	is_existing_grocery(t_doom *doom, SDL_Surface *curr)
 	return (FALSE);
 }
 
-static uint8_t	get_next_grocery(t_doom *doom, uint32_t *curr_texture)
+static uint8_t	get_next_grocery(t_doom *doom, uint32_t curr_texture)
 {
 	uint8_t		type;
 
-	while (!is_existing_grocery(doom, doom->lib.tex_lib[*curr_texture]))
+	while (!is_existing_grocery(doom, doom->lib.tex_lib[curr_texture]))
 	{
-		if (*curr_texture < doom->groceries->num_of_groceries - 1)
-			*curr_texture += 1;
+		if (curr_texture < doom->groceries->num_of_groceries - 1)
+			curr_texture += 1;
 		else
-			*curr_texture = 0;
+			curr_texture = 0;
 	}
-	type = *(int *)doom->lib.tex_lib[*curr_texture]->userdata;
-	*curr_texture += 1;
+	type = *(int *)doom->lib.tex_lib[curr_texture]->userdata;
+	curr_texture += 1;
 	return (type);
 }
 
-void			generate_shopping_list(t_doom *doom)
+static t_item	create_item(uint8_t type, int i)
+{
+	t_item item;
+
+	item.type = type;
+	item.amount = (rand() % 5) + 1;
+	item.position = get_position(i, WIDTH - 35, 60);
+	return (item);
+}
+
+void			generate_shopping_list(t_doom *doom, t_item *s_list)
 {
 	uint32_t	curr_texture;
 	uint8_t		shopping_list_len;
 	uint8_t		i;
-	t_item		*s_list;
 
-	i = 1; //check if doom->game_design.custom_level == FALSE, else i = 0
 	shopping_list_len = doom->groceries->shopping_list_len;
+	if (!shopping_list_len)
+		return ;
 	s_list = ft_memalloc(sizeof(t_item) * shopping_list_len);
 	doom->groceries->shopping_list = s_list;
 	srand(time(0));
-	if (shopping_list_len > 0 && doom->game_design.custom_level == FALSE)
+	i = 0;
+	if (!doom->game_design.custom_level)
 	{
-		s_list[0].type = TOILET;
-		s_list[0].amount = (rand() % 5) + 1;
-		set_sprite(doom, s_list[0].type, &s_list[0]);
-		s_list[0].position = get_position(0, WIDTH - 35, 60);
-	}
-	printf("Shopping list: \n");
-	while (i < (shopping_list_len))
-	{
-		curr_texture = rand() % (doom->groceries->num_of_groceries - 1);
-		printf("(%d) ", curr_texture);
-		s_list[i].type = get_next_grocery(doom, &curr_texture);
-		printf("type: %d ", s_list[i].type);
-		s_list[i].amount = (rand() % 5) + 1;
+		s_list[i] = create_item(TOILET, i);
 		set_sprite(doom, s_list[i].type, &s_list[i]);
-		s_list[i].position = get_position(i, WIDTH - 35, 60);
 		i++;
 	}
-	printf("\n");
+	while (i < shopping_list_len)
+	{
+		curr_texture = rand() % (doom->groceries->num_of_groceries - 1);
+		s_list[i] = create_item(get_next_grocery(doom, curr_texture), i);
+		set_sprite(doom, s_list[i].type, &s_list[i]);
+		i++;
+	}
 }
