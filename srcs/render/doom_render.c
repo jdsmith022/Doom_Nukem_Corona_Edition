@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:21 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 17:55:51 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/05 21:12:13 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ void			doom_render(t_doom *doom)
 		sidedef_render(doom, ray, doom->i_sector, doom->i_sector);
 		ray.angle += doom->cast.ray_adjacent;
 		x++;
+	}
+	t_clip *temp = doom->clip->head_mid_bottom->next;
+	while (temp != NULL)
+	{
+		printf("#%d (%f;%f)-(%f;%f)\n", temp->id, temp->line.start.x, temp->line.start.y, temp->line.end.x, temp->line.end.y);
+		temp = temp->next;
+		if (temp == NULL)
+			printf("\n");
 	}
 	if (doom->visible_sprites > 0)
 		sprite_render(doom);
