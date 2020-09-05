@@ -50,7 +50,7 @@ void			generate_shopping_list(t_doom *doom)
 	s_list = ft_memalloc(sizeof(t_item) * shopping_list_len);
 	doom->groceries->shopping_list = s_list;
 	srand(time(0));
-	if (shopping_list_len > 0 /*&&  doom->game_design.custom_level == FALSE*/)
+	if (shopping_list_len > 0 && doom->game_design.custom_level == FALSE)
 	{
 		s_list[0].type = TOILET;
 		s_list[0].amount = (rand() % 5) + 1;
