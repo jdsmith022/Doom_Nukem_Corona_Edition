@@ -125,5 +125,6 @@ void			add_lists_to_libs(t_doom *doom)
 	set_sprite_lib(doom);
 	set_sidedef_lib(doom);
 	set_gameplay_settings(doom);
+	del_groceries(doom->groceries);
 	init_groceries(doom);
 }

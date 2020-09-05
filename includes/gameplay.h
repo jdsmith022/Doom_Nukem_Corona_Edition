@@ -30,6 +30,7 @@ typedef struct			s_game_over {
 
 typedef struct			s_groceries {
 	uint8_t				num_of_groceries;
+	t_item				*groceries_in_level;
 	t_item				*shopping_list;
 	uint8_t				shopping_list_len;
 	uint8_t				basket_len;
