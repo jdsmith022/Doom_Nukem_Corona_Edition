@@ -8,13 +8,14 @@ void			delete_sprite(t_doom *doom)
 	t_ed_sprite *previous;
 
 	sprite = doom->game_design.ed_sprite;
-	if (doom->game_design.spr_len > 0)
+	if (doom->game_design.spr_len > 1) // keeps first object in sector
 	{
 		if (doom->game_design.spr_len == 1)
 		{
 			ft_bzero(sprite, sizeof(sprite));
 			free(sprite);
 			doom->game_design.sp_head->next = NULL;
+			sprite = doom->game_design.sp_head;
 		}
 		else
 		{

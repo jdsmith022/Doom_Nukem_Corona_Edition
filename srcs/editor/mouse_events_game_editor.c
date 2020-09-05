@@ -16,18 +16,6 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.edit_sector == TRUE && editor.pl_pos != 1)
 		put_sprite(doom, x, y);
-	// if (x > AR_RIGHT_M_X && x < AR_RIGHT_M_X + FRAME_WIDTH && \
-	// y > AR_RIGHT_M_Y && y < AR_RIGHT_M_Y + FRAME_HEIGHT)
-	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_x -= 10;
-	// else if (x > AR_LEFT_M_X && x < AR_LEFT_M_X + FRAME_WIDTH && \
-	// y > AR_LEFT_M_Y && y < AR_LEFT_M_Y + FRAME_HEIGHT)
-	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_x += 10;
-	// else if (x > AR_DOWN_M_X && x < AR_DOWN_M_X + FRAME_WIDTH && \
-	// y > AR_DOWN_M_Y && y < AR_DOWN_M_Y + FRAME_HEIGHT)
-	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_y += 10;
-	// else if (x > AR_UP_M_X && x < AR_UP_M_X + FRAME_WIDTH && \
-	// y > AR_UP_M_Y && y < AR_UP_M_Y + FRAME_HEIGHT)
-	// 	doom->game_design.sector[doom->game_design.cur_sec].diff_y -= 10;
 }
 
 static void		mouse_press_sector(t_doom *doom, int x, int y)

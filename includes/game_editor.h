@@ -38,9 +38,7 @@ typedef struct s_line		t_line;
 # define AR_DOWN_M_Y 0
 
 # define DEL_SECTOR_X 65
-# define DEL_SECTOR_Y 525
-// # define ADD_SECTOR_X 24
-// # define ADD_SECTOR_Y 75
+# define DEL_SECTOR_Y 550
 
 # define AR_LEFT_X 0
 # define AR_LEFT_Y 400

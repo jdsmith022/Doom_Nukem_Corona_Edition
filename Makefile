@@ -40,9 +40,9 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib 
 			 set_texture_type create_sidedef
 EDITOR_FILES = game_editor draw_bar sector sidedefs add_lists_to_libs \
 				mouse_events_game_editor draw_edit_console init_game draw_sidedef_object \
-				objects2 draw_sidedef_object2 sprites correct_position \
-				put_textures put_textures2 mouse_event_sidedef check_sector_in_sector \
-				set_utilities check_sidedef_connection set_sprite_lib set_sprite_values \
+				draw_sidedef_object2 sprites put_textures set_sprite_values \
+				put_textures2 mouse_event_sidedef check_sector_in_sector \
+				set_utilities check_sidedef_connection set_sprite_lib \
 				set_sprite_values_2 set_sector_lib add_player
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \

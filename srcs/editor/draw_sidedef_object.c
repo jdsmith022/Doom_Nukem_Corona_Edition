@@ -90,6 +90,8 @@ void				draw_object(t_doom *doom, Uint32 **pixels)
 	sprite = doom->game_design.sp_head->next;
 	while (sprite != NULL)
 	{
+		if (sprite->type == 6)
+			printf("inside while\n");
 		draw_object_side(doom, pixels, sprite, side);
 		sprite = sprite->next;
 	}
