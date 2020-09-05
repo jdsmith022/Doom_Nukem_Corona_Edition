@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:56 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:31:57 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/05 17:51:02 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	pixels = doom->surface->pixels;
+	if (doom->game.light == FALSE || doom->lib.sector[sidedef.sector].action != OUTSIDE)
+		calculate_ceiling_dist(doom, pixel.x, pixel.y, doom->lib.sector[sidedef.sector]);
 	while (pixel.y < plane.mid_texture_top)
 	{
 		sidedef.txt_2 = sidedef.txt_1;
@@ -95,8 +97,13 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	t_point	pixel;
 	char	*pixels;
 
+
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
+	if (doom->game.light == FALSE || \
+	doom->lib.sector[sidedef.sector].action != OUTSIDE)	
+		calculate_ceiling_dist(doom, pixel.x, pixel.y, \
+		doom->lib.sector[sidedef.sector]);
 	while (pixel.y < plane.sidedef_bottom)
 	{
 		put_texture_sidedef(doom, sidedef, plane, pixel);

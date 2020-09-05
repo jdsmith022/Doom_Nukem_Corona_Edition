@@ -27,5 +27,6 @@ t_sprite			object_inf(t_doom *doom, int fd, int sector, int obj_len);
 t_sidedef			wall_inf(t_doom *doom, int fd, int sector, int sec_len);
 t_sector			sector_inf(t_doom *doom, int fd, int tex_len);
 void				bmp_safe_exit(t_doom *doom, t_bmp *images);
+void				modified(t_doom *doom, char *file_name);
 
 #endif

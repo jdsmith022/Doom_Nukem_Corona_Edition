@@ -98,5 +98,7 @@ void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
 t_ray				init_ray(t_doom *doom, int x);
 double				clamp_angle(double angle);
+void				calculate_ceiling_dist(t_doom *doom, int x, int y,
+					t_sector sector);
 
 #endif
