@@ -47,6 +47,9 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 		if (doom->game_design.light_level > 15)
 			doom->game_design.light_level = 15;
 	}
+	else if (x > DEL_SECTOR_X && x < DEL_SECTOR_X + 35 && y > DEL_SECTOR_Y \
+	&& y < DEL_SECTOR_Y + 35)
+		delete_sector(doom);
 }
 
 static void		mouse_press_object(t_doom *doom, int x, int y)
@@ -59,28 +62,24 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 	y > AR_LEFT_Y && y < AR_LEFT_Y + FRAME_HEIGHT && \
 	doom->game_design.spr_tex + 1 < 7)
 		doom->game_design.spr_tex++;
-	// else if (x > DEL_OBJ_X && x < DEL_OBJ_X + FRAME_WIDTH && \
-	// y > DEL_OBJ_Y && y < DEL_OBJ_Y + FRAME_HEIGHT)
-	// {
-	// 	if (doom->game_design.cur_obj >= \
-	// 	doom->game_design.sector[doom->game_design.cur_sec].i_objects)
-	// 		del_obj(doom);
-	// }
+	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
+	y > RM_SC_Y && y < RM_SC_Y + FRAME_HEIGHT)
+		delete_sprite(doom);
 }
 
 void			mouse_press_game_editor(t_doom *doom, int x, int y)
 {
-	// printf("mouse %d - %d\n", x, y);
 	mouse_press_map(doom, x, y);
 	mouse_press_sidedef_txt(doom, x, y);
-	if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
-	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
-		delete_sidedef(doom);
 	if (doom->game_design.edit_sector == TRUE)
 	{
 		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
-		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT)
+		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
+		doom->game_design.place_checkout == FALSE)
+		{
 			doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
+			doom->game_design.place_checkout = TRUE;
+		}
 		if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
 		y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
 		doom->game_design.player_placed == TRUE)

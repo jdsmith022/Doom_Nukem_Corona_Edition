@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 10:40:11 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/04 23:08:23 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ static void	set_editor_text_3(t_doom *doom, t_font *lib)
 	lib[10].font_rect.x = 645;
 	lib[10].font_rect.y = 140;
 	lib[10].font_color = doom->lib.font_lib.font_color.black;
-	lib[11].str = "Delete sector";
+	lib[11].str = "Delete object";
 	lib[11].font_rect.x = 660;
 	lib[11].font_rect.y = 400;
 	lib[11].font_color = doom->lib.font_lib.font_color.black;
+	lib[12].str = "Delete Sector";
+	lib[12].font_rect.x = 24;
+	lib[12].font_rect.y = 500;
+	lib[12].font_color = doom->lib.font_lib.font_color.black;
 }
 
 static void	set_editor_text_2(t_doom *doom, t_font *lib)
@@ -82,7 +86,7 @@ void		save_game_editor_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
 
-	*len = 12;
+	*len = 13;
 	doom->lib.font_lib.game_editor_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.game_editor_font == NULL)

@@ -27,33 +27,6 @@ static void put_pixel(t_doom *doom, int x, int y, int color)
 		pixels[(y * WIDTH + x)] = color;
 }
 
-// static void			draw_portal(t_doom *doom, Uint32 **pixels, int sector)
-// {
-// 	t_angle_line	angle;
-// 	double			i;
-// 	int				b;
-
-// 	b = doom->game_design.sector[sector].i_sidedefs;
-// 	while (b < doom->game_design.sector[sector].i_sidedefs +\
-// 		doom->game_design.sector[sector].n_sidedefs)
-// 	{
-// 		angle = calc_angle(doom->game_design.sidedef[b].line, doom);
-// 		i = 0.0;
-// 		while ((int)i < abs(angle.diff.x) + abs(angle.diff.y))
-// 		{
-// 			if ((int)angle.start.x < SIDEBAR_SIDEDEF && \
-// 				(int)angle.start.x > SIDEBAR_SECTOR
-// 			&& (int)angle.start.y > 0 && (int)angle.start.y < HEIGHT)
-// 				pixels[0][((int)angle.start.y * WIDTH) + \
-// 					(int)angle.start.x] = 0xff696969;
-// 			angle.start.x += angle.steps.x * 2;
-// 			angle.start.y += angle.steps.y * 2;
-// 			i += fabs(angle.steps.x) * 2 + fabs(angle.steps.y) * 2;
-// 		}
-// 		b++;
-// 	}
-// }
-
 void				draw_lines(t_doom *doom, Uint32 **pixels,
 						t_ed_sidedef *ed_sidedef)
 {
@@ -63,9 +36,6 @@ void				draw_lines(t_doom *doom, Uint32 **pixels,
 
 	angle = calc_angle(ed_sidedef->line, doom);
 	i = 0.0;
-	// if (ed_sidedef->opp_sector != -1)
-	// 	draw_portal(doom, pixels, \
-	// 		ed_sidedef->opp_sector);
 	if (ed_sidedef->opp_sector != -1 && \
 	doom->game_design.cur_sd != ed_sidedef->id)
 		color = 0xffFFA07A;

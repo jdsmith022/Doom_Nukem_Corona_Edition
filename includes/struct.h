@@ -300,6 +300,7 @@ typedef struct		s_lib {
 
 typedef struct		s_gamedesign {
 	bool			edit_sector;
+	bool			place_checkout;
 	bool			open_connection;
 	t_ed_sector		*ed_sector;
 	t_ed_sector		*sc_head;

@@ -67,6 +67,7 @@ void			init_game_design(t_doom *doom)
 	doom->game_design.draw_line.start.x = -1;
 	doom->game_design.draw_line.end.x = -1;
 	doom->game_design.player_placed = FALSE;
+	doom->game_design.place_checkout = FALSE;
 	init_lists(doom);
 	init_sidedef_textures(doom);
 	init_editor_sprites(doom);

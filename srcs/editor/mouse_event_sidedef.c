@@ -26,6 +26,9 @@ void		mouse_press_sidedef_txt(t_doom *doom, int x, int y)
 	y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT &&\
 	doom->game_design.tex_index + 1 < 12)
 		doom->game_design.tex_index++;
+	if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
+	y > RM_SD_Y && y < RM_SD_Y + FRAME_HEIGHT)
+		delete_sidedef(doom);
 }
 
 static void	create_portal(t_doom *doom)
@@ -81,13 +84,7 @@ void		mouse_press_sidedef(t_doom *doom, int x, int y)
 	else if (x > PORTAL_X && x < PORTAL_X + FRAME_WIDTH && \
 		y > PORTAL_Y && y < PORTAL_Y + FRAME_HEIGHT)
 		create_portal(doom);
-	// else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	// editor.pl_pos == 0 && editor.object_bar == 1)
-		// add_object(doom, x, y);
 	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.pl_pos == TRUE && editor.edit_sector == TRUE)
 		add_player(doom, x, y);
-	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
-	y > RM_SC_Y && y < RM_SC_Y + FRAME_HEIGHT)
-		delete_sector(doom);
 }
