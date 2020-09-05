@@ -39,7 +39,7 @@ static void			draw_sprite_pos(t_doom *doom, Uint32 **pixels,
 	}
 }
 
-void				draw_sprite(t_doom *doom, Uint32 **pixels)
+void				draw_ed_sprite(t_doom *doom, Uint32 **pixels)
 {
 	t_ed_sprite	*sprite;
 	int			side;

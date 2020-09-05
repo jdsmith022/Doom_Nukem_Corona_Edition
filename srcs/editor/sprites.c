@@ -2,7 +2,7 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
-void			delete_sprite(t_doom *doom)
+void				delete_sprite(t_doom *doom)
 {
 	t_ed_sprite *sprite;
 	t_ed_sprite *previous;
@@ -10,22 +10,13 @@ void			delete_sprite(t_doom *doom)
 	sprite = doom->game_design.ed_sprite;
 	if (doom->game_design.spr_len > 1)
 	{
-		if (doom->game_design.spr_len == 1)
-		{
-			ft_bzero(sprite, sizeof(sprite));
-			free(sprite);
-			doom->game_design.sp_head->next = NULL;
-			sprite = doom->game_design.sp_head;
-		}
-		else
-		{
-			previous = sprite->previous;
-			previous->next = NULL;
-			ft_bzero(sprite, sizeof(t_ed_sprite));
-			free(sprite);
-			doom->game_design.ed_sprite = previous;
-		}
+		sprite = doom->game_design.ed_sprite;
+		doom->game_design.ed_sprite = sprite->previous;
+		doom->game_design.ed_sprite->next = NULL;
+		ft_bzero(sprite, sizeof(t_ed_sprite));
+		free(sprite);
 		doom->game_design.spr_len--;
+		doom->game_design.cur_sprite = doom->game_design.ed_sprite->id;
 	}
 }
 
@@ -65,7 +56,7 @@ static bool			enough_dist_to_sprites(t_doom *doom, t_point pos)
 	return (TRUE);
 }
 
-static void				set_ed_sprite(t_doom *doom, t_point pos)
+static void			set_ed_sprite(t_doom *doom, t_point pos)
 {
 	int id;
 
@@ -79,7 +70,7 @@ static void				set_ed_sprite(t_doom *doom, t_point pos)
 		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 }
 
-void					put_sprite(t_doom *doom, int x, int y)
+void				put_sprite(t_doom *doom, int x, int y)
 {
 	t_point		pos;
 	int			id;
@@ -98,10 +89,10 @@ void					put_sprite(t_doom *doom, int x, int y)
 		if (!doom->game_design.ed_sprite->next)
 			doom_exit_failure(doom, "error: malloc sprite in editor\n");
 		prev = doom->game_design.ed_sprite;
-		doom->game_design.ed_sprite->previous = prev;
 		doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
-		doom->game_design.ed_sprite->next = NULL;
+		doom->game_design.ed_sprite->previous = prev;
 		set_ed_sprite(doom, pos);
+		doom->game_design.ed_sprite->next = NULL;
 		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
 			doom->game.editor = FALSE;
 	}

@@ -36,7 +36,7 @@ static t_angle_line		calc_angle(t_line line, t_doom *doom)
 	return (angle);
 }
 
-void					draw_lines(t_doom *doom, Uint32 **pixels,
+void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels,
 						t_ed_sidedef *ed_sidedef)
 {
 	t_angle_line	angle;
