@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:22:47 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/04 09:43:21 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 #include "../../includes/menu.h"
 #include "../../includes/font.h"
 #include "../../includes/hud.h"
-#include "../../includes/audio.h"
 
 static void	set_menu_game_variables(t_doom *doom)
 {
+	t_font font_lib;
+
+	font_lib = doom->lib.font_lib.instruction_font[28];
 	doom->lib.font_lib.bools.walking_info = TRUE;
 	doom->lib.font_lib.bools.walking_text = TRUE;
 	doom->lib.font_lib.bools.start_sector = TRUE;
@@ -25,15 +27,21 @@ static void	set_menu_game_variables(t_doom *doom)
 	doom->lib.font_lib.bools.checkout = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = FALSE;
 	doom->lib.font_lib.bools.text = FALSE;
-	doom->own_event.select = FALSE;
-	doom->game.start_timer = FALSE;
 	doom->hud->hold_time /= doom->game.difficulty;
 	doom->hud->curr_time /= doom->game.difficulty;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
+	if (doom->game.editor == FALSE)
+	{
+		SDL_BlitSurface(font_lib.font_surface, NULL, \
+			doom->surface, &font_lib.font_rect);
+		SDL_UpdateWindowSurface(doom->window);
+	}
 }
 
 void		doom_start(t_doom *doom)
 {
+	init_menu(doom);
+	init_audio(doom);
 	doom->game.difficulty = 1;
 	while (doom->menu->state != start_game)
 	{
@@ -49,8 +57,5 @@ void		doom_start(t_doom *doom)
 		SDL_UpdateWindowSurface(doom->window);
 		ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	}
-	Mix_HaltMusic();
-	if (doom->game.editor == FALSE)
-		clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 	set_menu_game_variables(doom);
 }

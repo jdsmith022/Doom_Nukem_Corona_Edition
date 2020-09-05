@@ -60,11 +60,13 @@ void			generate_shopping_list(t_doom *doom, t_item *s_list)
 	s_list = ft_memalloc(sizeof(t_item) * shopping_list_len);
 	doom->groceries->shopping_list = s_list;
 	srand(time(0));
-	// Check if !game editor level <><><><><><>
 	i = 0;
-	s_list[i] = create_item(TOILET, i);
-	set_sprite(doom, s_list[i].type, &s_list[i]);
-	i++;
+	if (!doom->game_design.custom_level)
+	{
+		s_list[i] = create_item(TOILET, i);
+		set_sprite(doom, s_list[i].type, &s_list[i]);
+		i++;
+	}
 	while (i < shopping_list_len)
 	{
 		curr_texture = rand() % (doom->groceries->num_of_groceries - 1);

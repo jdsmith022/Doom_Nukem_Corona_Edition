@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 13:05:15 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 16:57:27 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		init_menu(t_doom *doom)
 	doom->menu->state = menu;
 	doom->menu->settings = FALSE;
 	doom->menu->start_timer = FALSE;
+	doom->game.editor = FALSE;
 }
 
 void		init_hud(t_doom *doom)
