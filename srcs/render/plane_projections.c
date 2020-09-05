@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 13:31:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 17:38:09 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	{
 		//SAVE MID BOTTOM VALUES IN LINKED LIST
 		//de eerste line wordt opgeslagen
-		if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
+		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
 		doom->clip->prev_sidedef != sidedef.id)
 		{
 			doom->clip->prev_sidedef = sidedef.id;
@@ -169,7 +169,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 			node->next = NULL;
 			doom->clip->mid_bottom->next = node;
 		}
-		else if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
+		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
 		doom->clip->prev_sidedef == sidedef.id)
 		{
 			doom->clip->head_mid_bottom->next->line.end.x = x;
