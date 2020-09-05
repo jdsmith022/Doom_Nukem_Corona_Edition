@@ -90,5 +90,4 @@ void			add_lists_to_libs(t_doom *doom)
 	set_gameplay_settings(doom);
 	del_groceries(doom->groceries);
 	init_groceries(doom);
-	printf("%f - %f, %d\n", doom->pos.x, doom->pos.y, doom->i_sector);
 }

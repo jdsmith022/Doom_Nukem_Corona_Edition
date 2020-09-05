@@ -1,6 +1,11 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
+static void			init_groceries_types(t_doom *doom)
+{
+
+}
+
 static void			init_editor_sprites(t_doom *doom)
 {
 	doom->game_design.ed_spr_index[0] = SCISSOR_LIFT;
@@ -14,18 +19,18 @@ static void			init_editor_sprites(t_doom *doom)
 
 static void			init_sidedef_textures(t_doom *doom)
 {
-	doom->game_design.sd_tex_index[0] = 15;
+	doom->game_design.sd_tex_index[0] = 15; 
 	doom->game_design.sd_tex_index[1] = 16;
-	doom->game_design.sd_tex_index[2] = 20;
-	doom->game_design.sd_tex_index[3] = 22;
-	doom->game_design.sd_tex_index[4] = 27;
-	doom->game_design.sd_tex_index[5] = 30;
-	doom->game_design.sd_tex_index[6] = 37;
-	doom->game_design.sd_tex_index[7] = 44;
-	doom->game_design.sd_tex_index[8] = 66;
-	doom->game_design.sd_tex_index[9] = 69;
-	doom->game_design.sd_tex_index[10] = 71;
-	doom->game_design.sd_tex_index[11] = 76;
+	doom->game_design.sd_tex_index[2] = 19; //APPLE
+	doom->game_design.sd_tex_index[3] = 1; //BACON
+	doom->game_design.sd_tex_index[4] = 3; //CHERRY
+	doom->game_design.sd_tex_index[5] = 46; //JAM
+	doom->game_design.sd_tex_index[6] = 64; //SODA
+	doom->game_design.sd_tex_index[7] = 6; //WATER
+	doom->game_design.sd_tex_index[8] = 75;//WINE
+	doom->game_design.sd_tex_index[9] = 27; //CHEESE
+	doom->game_design.sd_tex_index[10] = 34; //COOKIE
+	doom->game_design.sd_tex_index[11] = 26; //BREAD
 }
 
 static void		init_lists(t_doom *doom)

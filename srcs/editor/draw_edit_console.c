@@ -23,26 +23,16 @@ static void		place_checkout_sprite(t_doom *doom)
 	single_font_to_sdl(doom, lib, font);
 }
 
-static void		draw_object_images(Uint32 *pixels, t_doom *doom)
+static void		draw_sector_images(t_doom *doom, Uint32 *pixels)
 {
-	SDL_Rect texture;
+	SDL_Rect	texture;
+	int			index;
 
 	texture.h = 8;
 	texture.w = 8;
-	texture.x = TEX_S2_X;
-	texture.y = TEX_S2_Y;
-	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
-	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
-	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-	draw_img(doom->lib.obj_lib[doom->game_design.spr_tex], doom, texture);
-	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
-	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
-	put_images(DEL_OBJ_X, DEL_OBJ_Y, garbage, doom);
-}
-
-static void		draw_sector_images(t_doom *doom, Uint32 *pixels,
-					int index, SDL_Rect texture)
-{
+	texture.x = TEX_SPR_X;
+	texture.y = TEX_SPR_Y;
+	index = doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 	bars(&pixels, doom);
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
@@ -55,7 +45,7 @@ static void		draw_sector_images(t_doom *doom, Uint32 *pixels,
 	draw_img(doom->lib.obj_lib[index], doom, texture);
 }
 
-static void		draw_sidedef_images(t_doom *doom, int index)
+static void		draw_sidedef_images(t_doom *doom)
 {
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
@@ -66,19 +56,11 @@ static void		draw_sidedef_images(t_doom *doom, int index)
 
 void			draw_images(Uint32 *pixels, t_doom *doom)
 {
-	SDL_Rect	texture;
-	int			index;
-
-	texture.h = 8;
-	texture.w = 8;
-	texture.x = TEX_SPR_X;
-	texture.y = TEX_SPR_Y;
-	index = doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 	if (doom->game_design.place_checkout == FALSE)
-		draw_sidedef_images(doom, index);
+		draw_sidedef_images(doom);
 	if (doom->game_design.edit_sector == TRUE && \
 	doom->game_design.place_checkout == FALSE)
-		draw_sector_images(doom, pixels, index, texture);
+		draw_sector_images(doom, pixels);
 	else if (doom->game_design.place_checkout == TRUE)
 		place_checkout_sprite(doom);
 }

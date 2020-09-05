@@ -1,11 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/gameplay.h"
-
-static void		create_groceries(t_item *groceries)
-{
-
-}
+#include "../../includes/textures.h"
 
 static void	set_sidedef_values(t_doom *doom, t_sidedef *sidedef,
 				t_ed_sidedef *ed_sidedef)
@@ -37,6 +33,8 @@ void		set_sidedef_lib(t_doom *doom)
 	while (ed_sidedef)
 	{
 		set_sidedef_values(doom, &lib.sidedef[index], ed_sidedef);
+		groceries[index].type = \
+			(uint8_t)doom->lib.tex_lib[ed_sidedef->texture]->userdata;
 		ft_bzero(ed_sidedef->previous, sizeof(t_ed_sidedef));
 		free(ed_sidedef->previous);
 		if (ed_sidedef->next == NULL)
@@ -47,5 +45,7 @@ void		set_sidedef_lib(t_doom *doom)
 		ed_sidedef = ed_sidedef->next;
 		index++;
 	}
+	index = 0;
+	doom->groceries->groceries_in_level = groceries;
 	doom->lib.sidedef = lib.sidedef;
 }
