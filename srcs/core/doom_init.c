@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:47:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/03 18:34:26 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static void		init_settings(t_doom *doom)
 	doom->game.is_running = TRUE;
 	doom->game.light = TRUE;
 	doom->game.hud_display = TRUE;
-	doom->game.editor = FALSE;
 	doom->game.start_timer = FALSE;
 	doom->cast.poster = FALSE;
+	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 }
 
 void			doom_init(t_doom *doom)
@@ -64,8 +64,6 @@ void			doom_init(t_doom *doom)
 	init_groceries(doom);
 	init_player(doom);
 	init_settings(doom);
-	init_audio(doom);
-	init_menu(doom);
 	init_render(doom);
 	init_sprites(doom);
 	init_events(&doom->own_event);

@@ -31,10 +31,13 @@ void		save_libraries(t_doom *doom)
 	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
-	doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
-	doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
-	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
-	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
-	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
+	if (doom->game.editor == FALSE)
+	{
+		doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
+		doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
+		doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
+		doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
+		add_inf_to_lib(doom, doom->lib.n_sectors, fd);
+	}
 	close(fd);
 }

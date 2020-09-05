@@ -48,6 +48,9 @@ typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
+typedef struct s_ed_sidedef t_ed_sidedef;
+typedef struct s_ed_sector	t_ed_sector;
+typedef struct s_ed_sprite	t_ed_sprite;
 
 typedef enum			e_settings
 {
@@ -230,7 +233,6 @@ typedef struct		s_sidedef {
 	int				id;
 	int				action;
 	int				sector;
-	int				opp_sidedef;
 	int				opp_sector;
 	double			offset;
 	int				dir;
@@ -289,7 +291,6 @@ typedef struct		s_lib {
 	int				cur_len_infection;
 	int				tot_len_infection;
 	t_sprite		*sprites;
-	int				n_mov_sprites;
 	t_window		window;
 	int				*sprite_order;
 	double			light;
@@ -298,22 +299,37 @@ typedef struct		s_lib {
 }					t_lib;
 
 typedef struct		s_gamedesign {
-	t_sector		*sector;
-	int				s_len;
+	bool			edit_sector;
+	bool			place_checkout;
+	bool			open_connection;
+	t_ed_sector		*ed_sector;
+	t_ed_sector		*sc_head;
+	t_ed_sidedef	*ed_sidedef;
+	t_ed_sidedef	*sd_head;
+	t_ed_sprite		*ed_sprite;
+	t_ed_sprite		*sp_head;
+	double			floor_height;
+	double			ceiling_height;
+	double			light_level;
+	int				cur_sd;
+	int				cur_sprite;
+	int				spr_tex;
+	int				sd_len;
+	int				sc_len;
+	int				spr_len;
+	int				n_sprites;
+	int				i_sprites;
+	int				sd_tex_index[12];
+	int				ed_spr_index[7];
+	int				tex_index;
+	t_line			draw_line;
+	t_point			start_sector;
+
 	int				s_size;
-	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
 	t_sprite		*object;
-	int				o_len;
-	int				o_size;
-	int				cur_tex;
-	int				index_obj;
 	int				cur_sec;
-	int				cur_sd;
-	int				cur_obj;
-	int				portal_sd;
-	int				portal_sec;
 	int				pl_pos;
 	int				pl_x;
 	int				pl_y;
@@ -321,6 +337,7 @@ typedef struct		s_gamedesign {
 	int				object_bar;
 	int				sidedef_bar;
 	bool			custom_level;
+	bool			player_placed;
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 

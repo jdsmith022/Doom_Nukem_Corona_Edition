@@ -70,7 +70,7 @@ void				row_calculations(t_doom *doom, double dist, Uint32 index,\
 						SDL_Surface *lib);
 void				put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,\
 						Uint32 pixel_dex);
-void				put_pixel_slope(t_doom *doom, Uint32 index, int x, int y);
+void				put_pixel_slope(t_doom *doom, int x, int y);
 void				put_portal_pixel(t_doom *doom, t_point pixel, int tint, \
 						int mask);
 

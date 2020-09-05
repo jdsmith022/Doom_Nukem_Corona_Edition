@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 14:46:24 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/05 10:15:14 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,30 @@
 
 static void	core_gameplay_loop(t_doom *doom, double dt)
 {
-	key_handler(doom, &doom->own_event, dt);
-	if (doom->game.editor == FALSE && doom->menu->state == start_game)
-	{
-		sprite_reset(doom);
-		action_handler(doom);
-		audio(doom, &doom->own_event);
-	}
-	else if (doom->game.editor == TRUE)
-	{
-		open_game_editor(doom);
-		draw_font(doom, doom->lib.font_lib.game_editor_font,\
-			doom->lib.font_lib.ge_font_len);
-	}
+	if (doom->game.editor == TRUE)
+		open_game_editor(doom, dt);
+	sprite_reset(doom);
+	action_handler(doom);
+	audio(doom, &doom->own_event);
 }
 
-static void	sdl_poll_events(t_doom *doom, double dt)
+void	sdl_poll_events(t_doom *doom, double dt)
 {
 	SDL_Event event;
 
 	event = doom->event;
-	doom->own_event.mouse_press = FALSE;
+	// doom->own_event.mouse_press = FALSE;
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
+		{
+			if (doom->game.editor == TRUE)
+				doom_exit_success(doom);
 			doom->game.is_running = FALSE;
+		}
 		if (event.type == SDL_KEYDOWN)
 			key_press(doom, &doom->own_event, &event.key);
-		if (event.type == SDL_KEYUP)
+		if (event.type == SDL_KEYUP && doom->game.editor == FALSE)
 			key_release(&doom->own_event, &event.key);
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 			mouse_press(doom, &event.button, doom->own_event);
@@ -62,6 +58,7 @@ static void	sdl_poll_events(t_doom *doom, double dt)
 
 void		doom_update(t_doom *doom, double dt)
 {
-	sdl_poll_events(doom, dt);
 	core_gameplay_loop(doom, dt);
+	sdl_poll_events(doom, dt);
+	key_handler(doom, &doom->own_event, dt);
 }

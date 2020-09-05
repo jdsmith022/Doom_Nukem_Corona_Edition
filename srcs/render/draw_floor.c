@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:34 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 14:51:56 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/05 18:07:32 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void			draw_floor(t_doom *doom, int x,
 		add_light_to_pixel(doom, sector, x, y);
 		index = (y * doom->surface->pitch) + (x * bpp);
 		if (sector.slope_floor_id != -1)
-			put_pixel_slope(doom, index, x, y);
+			put_pixel_slope(doom, x, y);
 		else
 			row_calculations(doom, doom->cast.horizontal_plane_dist,\
 				index, doom->lib.tex_lib[tex_dex]);
