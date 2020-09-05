@@ -56,6 +56,7 @@ void				doom_exit_read_failure(t_doom *doom, \
 						const char *exit_message, int line);
 void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
+void				free_lists(t_doom *doom);
 int					line_num(int i);
 
 // /*sprite functions*/

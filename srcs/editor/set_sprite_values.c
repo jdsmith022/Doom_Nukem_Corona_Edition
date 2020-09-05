@@ -41,13 +41,14 @@ static void	set_spr_face_mask(t_sprite *sprite)
 	set_spr_lines(sprite, LENGTH_SMALL);
 }
 
-void	set_sprite_values(t_doom *doom, t_sprite *sprite, t_ed_sprite *ed_sprite)
+void		set_sprite_values(t_doom *doom, t_sprite *sprite,
+				t_ed_sprite *ed_sprite)
 {
 	sprite->amount = 4;
 	sprite->pos = ed_sprite->pos;
 	sprite->sector = ed_sprite->sector;
 	sprite->textures = (int*)ft_memalloc(sizeof(int) * 4);
-	if (!sprite->textures)
+	if (sprite->textures == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
 	if (ed_sprite->type == SCISSOR_LIFT)
 		set_spr_scissor_lift(sprite);
