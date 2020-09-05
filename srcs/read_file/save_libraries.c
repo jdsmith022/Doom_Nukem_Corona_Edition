@@ -16,8 +16,11 @@ void		modified(t_doom *doom, char *file_name)
 	struct stat filestat;
 
 	stat(file_name, &filestat);
-	if ((long long)filestat.st_mtime > 1599318395)
+	if ((long long)filestat.st_mtime != (long long)filestat.st_birthtime)
+	{
+		printf("%s\n%lld\n%lld\n%lld\n", file_name, (long long)filestat.st_mtime, (long long)filestat.st_atime, (long long)filestat.st_birthtime);
 		doom_exit_failure(doom, "error: file has been modified");
+	}
 }
 
 void		save_libraries(t_doom *doom)
