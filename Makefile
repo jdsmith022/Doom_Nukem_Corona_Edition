@@ -43,8 +43,10 @@ EDITOR_FILES = 	game_editor \
 				add_lists_to_lib_sidedef\
 				add_lists_to_lib_sector\
 				add_lists_to_lib_sprite\
-				draw_bar sector\
-				sidedefs\
+				draw_bar \
+				create_sector\
+				delete_sector\
+				create_sidedef\
 				mouse_events_game_editor\
 				draw_edit_console\
 				init_game \

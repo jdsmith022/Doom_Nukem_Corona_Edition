@@ -50,6 +50,42 @@ void			delete_sidedef(t_doom *doom)
 		doom->game_design.open_connection = TRUE;
 }
 
+static bool		snap_close_sector(t_point start, t_point *end)
+{
+	double		distance;
+
+	distance = point_distance(start, *end);
+	if (distance < 10)
+	{
+		*end = start;
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+static void		set_sidef_line(t_doom *doom, int x, int y)
+{
+	t_gamedesign *editor;
+
+	editor = &doom->game_design;
+	doom->game_design.ed_sidedef->texture = \
+			doom->game_design.sd_tex_index[doom->game_design.tex_index];
+	editor->draw_line.end.x = x;
+	editor->draw_line.end.y = y;
+	if (snap_close_sector(editor->start_sector, \
+	&editor->draw_line.end) == TRUE)
+	{
+		editor->edit_sector = TRUE;
+		set_ed_sidedef_values(doom, editor->draw_line);
+		set_ed_sector_values(doom);
+	}
+	else
+		set_ed_sidedef_values(doom, editor->draw_line);
+	editor->draw_line.start = editor->draw_line.end;
+	editor->draw_line.end.x = -1;
+	editor->draw_line.end.y = -1;
+}
+
 void			add_sidedef(t_doom *doom, int x, int y)
 {
 	t_gamedesign	*editor;
@@ -66,22 +102,5 @@ void			add_sidedef(t_doom *doom, int x, int y)
 	}
 	else if (editor->draw_line.end.x == -1 && \
 	line_intersect(doom, editor->draw_line.start, x, y) == FALSE)
-	{
-		doom->game_design.ed_sidedef->texture = \
-			doom->game_design.sd_tex_index[doom->game_design.tex_index];
-		editor->draw_line.end.x = x;
-		editor->draw_line.end.y = y;
-		if (snap_close_sector(editor->start_sector, \
-		&editor->draw_line.end) == TRUE)
-		{
-			editor->edit_sector = TRUE;
-			set_ed_sidedef_values(doom, editor->draw_line);
-			set_ed_sector_values(doom);
-		}
-		else
-			set_ed_sidedef_values(doom, editor->draw_line);
-		editor->draw_line.start = editor->draw_line.end;
-		editor->draw_line.end.x = -1;
-		editor->draw_line.end.y = -1;
-	}
+		set_sidef_line(doom, x, y);
 }

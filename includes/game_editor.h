@@ -233,7 +233,6 @@ typedef struct			s_angle_line {
 /*game editor*/
 void					open_game_editor(t_doom *doom, double dt);
 void					set_ed_sidedef_values(t_doom *doom, t_line line);
-bool					snap_close_sector(t_point start, t_point *end);
 void					check_connection(t_doom *doom, int x, int y);
 void					add_sidedef(t_doom *doom, int x, int y);
 void					delete_sector(t_doom *doom);
@@ -253,7 +252,6 @@ void 					add_lists_to_libs(t_doom *doom);
 void					put_images(int x, int y, int index, t_doom *doom);
 void					put_textures(int x, int y, int index, t_doom *doom);
 void					put_textures_sidedef(int x, int y, int index, t_doom *doom);
-void					put_textures_sprites(int x, int y, int index, t_doom *doom);
 void					put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 							Uint32 pixel_dex);
 void					mouse_press_sidedef_txt(t_doom *doom, int x, int y);

@@ -38,14 +38,42 @@ static void		reset_values(t_doom *doom)
 	editor->edit_sector = FALSE;
 }
 
-void			delete_sector(t_doom *doom)
+static void		delete_sprites_in_sector(t_doom *doom, int sector)
+{
+	t_ed_sprite *sprite;
+	t_ed_sprite *prev;
+	t_ed_sprite *next;
+
+	sprite = doom->game_design.sp_head;
+	while (sprite->next != NULL)
+	{
+		if (sprite->sector == sector)
+		{
+			prev = sprite->previous;
+			next = sprite->next;
+			if (prev != NULL)
+				prev->next = next;
+			if (next != NULL)
+				next->previous = prev;
+			ft_bzero(sprite, sizeof(t_ed_sprite));
+			free(sprite);
+			if (next == NULL)
+				sprite = prev;
+			else
+				sprite = next;
+			doom->game_design.spr_len--;
+		}
+		else
+			sprite = sprite->next;
+	}
+}
+
+static void		delete_sidedefs_in_sector(t_doom *doom, int sector)
 {
 	t_ed_sidedef	*sidedef;
 	t_ed_sidedef	*previous;
 	t_ed_sidedef	*next;
-	int				sector;
 
-	sector = doom->game_design.ed_sidedef->sector;
 	sidedef = doom->game_design.sd_head;
 	while (sidedef->next != NULL && sidedef->sector != sector)
 		sidedef = sidedef->next;
@@ -67,67 +95,18 @@ void			delete_sector(t_doom *doom)
 	}
 	doom->game_design.ed_sidedef = sidedef;
 	doom->game_design.cur_sd = sidedef->id;
+}
+
+void			delete_sector(t_doom *doom)
+{
+	int				sector;
+
+	sector = doom->game_design.ed_sidedef->sector;
+	delete_sidedefs_in_sector(doom, sector);
+	delete_sprites_in_sector(doom, sector);
 	doom->game_design.sc_len--;
 	if (doom->game_design.sd_len == 1)
 		reset_values(doom);
 	else
 		delete_portals(doom, sector);
-}
-
-static void		set_sector_sidedefs(t_doom *doom)
-{
-	t_ed_sidedef	*sidedef;
-	int				i_sidedef;
-	int				n_sidedefs;
-
-	i_sidedef = -1;
-	n_sidedefs = 0;
-	sidedef = doom->game_design.sd_head;
-	while (sidedef->next != NULL)
-	{
-		sidedef = sidedef->next;
-		if (i_sidedef == -1 && sidedef->sector == doom->game_design.sc_len)
-			i_sidedef = sidedef->id;
-		if (sidedef->sector == doom->game_design.sc_len)
-			n_sidedefs++;
-	}
-	doom->game_design.ed_sector->i_sidedefs = i_sidedef;
-	doom->game_design.ed_sector->n_sidedefs = n_sidedefs;
-}
-
-void		set_ed_sector_values(t_doom *doom)
-{
-	t_ed_sector *prev;
-	int			id;
-
-	id = doom->game_design.sc_len;
-	while (doom->game_design.ed_sector->next != NULL)
-		doom->game_design.ed_sector = doom->game_design.ed_sector->next;
-	doom->game_design.ed_sector->next = ft_memalloc(sizeof(t_ed_sector));
-	if (!doom->game_design.ed_sector->next)
-		doom_exit_failure(doom, "error: malloc sector in editor\n");
-	prev = doom->game_design.ed_sector;
-	doom->game_design.ed_sector = doom->game_design.ed_sector->next;
-	doom->game_design.ed_sector->previous = prev;
-	set_sector_sidedefs(doom);
-	doom->game_design.ed_sector->height_floor = doom->game_design.floor_height;
-	doom->game_design.ed_sector->height_ceiling =\
-		doom->game_design.ceiling_height;
-	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
-	doom->game_design.ed_sector->id = id;
-	doom->game_design.ed_sector->next = NULL;
-	doom->game_design.sc_len++;
-}
-
-bool			snap_close_sector(t_point start, t_point *end)
-{
-	double		distance;
-
-	distance = point_distance(start, *end);
-	if (distance < 10)
-	{
-		*end = start;
-		return (TRUE);
-	}
-	return (FALSE);
 }
