@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:11 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/06 13:07:06 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/06 23:51:06 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@ void	sprite_light2(t_doom *doom, t_sprite sprite, int x, int y)
 			(x - (float)WIDTH / 2.0) * 1.0 / (float)WIDTH;
 	else
 		doom->lib.light = \
-		+ doom->lib.light - \
+		+doom->lib.light - \
 		((float)WIDTH / 2.0 - x) * 1.0 / (float)WIDTH;
 	if (y > HEIGHT / 2)
 		doom->lib.light -= \
 		(y - (float)HEIGHT / 2.0) * 1.0 / (float)HEIGHT;
 	else
 		doom->lib.light = \
-		+ doom->lib.light - \
+		+doom->lib.light - \
 		((float)HEIGHT / 2.0 - y) * 1.0 / (float)HEIGHT;
-	// if (doom->lib.light > 1.9)
-	// 	doom->lib.light = 1.9;
 	if (doom->lib.light < 0.01)
 		doom->lib.light = 0.01;
 }

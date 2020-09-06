@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 19:58:59 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/06 23:50:42 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
 	}
 	else if (x >= 425 && x <= 560 && y >= 300 && y <= 330)
 		difficulty_setting(doom, x, y);
-	
 }

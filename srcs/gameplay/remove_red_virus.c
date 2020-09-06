@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 14:51:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/01 11:12:41 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 23:49:44 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int			virus_move(int bottom, int height, int val, int index)
 	return (bottom);
 }
 
-void			remove_red_virus(t_doom *doom)
+void		remove_red_virus(t_doom *doom)
 {
 	int			diff;
 

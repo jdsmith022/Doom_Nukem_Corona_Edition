@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:02:58 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 20:07:31 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/06 23:47:50 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void			draw_poster(t_doom *doom, t_plane plane,
 	int			safe_light_dist;
 
 	poster = &doom->lib.sidedef[poster_index];
-	calculate_ceiling_dist(doom, x, plane.sidedef_top,  doom->lib.sector[poster->sector]);
+	calculate_ceiling_dist(doom, x, plane.sidedef_top, \
+		doom->lib.sector[poster->sector]);
 	safe_light_dist = doom->cast.horizontal_plane_dist;
-	// printf("%f\n", doom->cast.horizontal_plane_dist);
 	sector = doom->lib.sector[poster->sector];
 	relocate_poster(doom, poster);
 	poster->distance *= \

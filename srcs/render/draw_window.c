@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 21:27:02 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 23:47:17 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void			draw_window_as_sprite(t_doom *doom)
 		pixel.y = doom->lib.window.y_pixel_top[x];
 		pixel.x = x;
 		pixels = doom->surface->pixels;
-		calculate_ceiling_dist(doom, pixel.x, pixel.y, doom->lib.sector[doom->lib.window.curr_sector]);
+		calculate_ceiling_dist(doom, pixel.x, pixel.y, \
+			doom->lib.sector[doom->lib.window.curr_sector]);
 		while (pixel.y < doom->lib.window.y_pixel_bottom[x])
 		{
 			calculate_window_pixels(doom, pixel, plane, x);
