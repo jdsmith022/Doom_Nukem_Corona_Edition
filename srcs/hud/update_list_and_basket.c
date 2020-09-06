@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:16:11 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 17:14:44 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/06 20:16:14 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,4 @@ void	update_list_and_basket(t_doom *doom)
 		draw_basket_ui(doom, doom->groceries);
 	if (doom->groceries->shopping_list)
 		draw_shopping_ui(doom, doom->groceries);
-	if (doom->lib.sector[doom->i_sector].action == EXIT_LEVEL)
-	{
-		get_game_over_info(doom);
-		doom->menu->state = finished;
-	}
 }
