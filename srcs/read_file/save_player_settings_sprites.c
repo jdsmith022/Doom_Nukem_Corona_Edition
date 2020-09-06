@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/06 11:52:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 11:53:01 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 18:00:02 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,5 @@ void					save_player_sprites(t_doom *doom)
 	int fd;
 
 	fd = open_file(doom, "srcs/read_file/player_sprites");
-	printf("saving\n");
 	doom->lib.player_lib = save_objects(doom, fd, &doom->lib.len_player_lib);
-	printf("done saving\n");
 }

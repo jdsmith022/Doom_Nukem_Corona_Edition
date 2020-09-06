@@ -37,7 +37,6 @@ static void		set_sidedef_to_prev(t_doom *doom)
 	if (sidedef->id - 1 >= 0)
 	{
 		sidedef = sidedef->previous;
-		doom->game_design.cur_sd = sidedef->id;
 		doom->game_design.ed_sidedef = sidedef;
 	}
 }
@@ -50,7 +49,6 @@ static void		set_sidedef_to_next(t_doom *doom)
 	if (sidedef->id + 1 < doom->game_design.sd_len)
 	{
 		sidedef = sidedef->next;
-		doom->game_design.cur_sd = sidedef->id;
 		doom->game_design.ed_sidedef = sidedef;
 	}
 }

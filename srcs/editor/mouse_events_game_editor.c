@@ -74,7 +74,8 @@ static void		mouse_press_object(t_doom *doom, int x, int y)
 	doom->game_design.spr_tex + 1 < 6)
 		doom->game_design.spr_tex++;
 	else if (x > RM_SD_X && x < RM_SD_X + FRAME_WIDTH && \
-	y > RM_SC_Y && y < RM_SC_Y + FRAME_HEIGHT)
+	y > RM_SC_Y && y < RM_SC_Y + FRAME_HEIGHT && \
+	doom->game_design.spr_len > 0)
 		delete_sprite(doom);
 }
 
