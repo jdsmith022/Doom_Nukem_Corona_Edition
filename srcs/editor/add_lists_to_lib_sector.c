@@ -47,5 +47,4 @@ void			set_sector_lib(t_doom *doom)
 		ed_sector = ed_sector->next;
 		index++;
 	}
-	doom->lib.sector = lib.sector;
 }

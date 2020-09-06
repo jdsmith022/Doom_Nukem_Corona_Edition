@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 18:34:26 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 11:57:11 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static void		init_player(t_doom *doom)
 	doom->player.height = PLAYER_HEIGHT;
 	doom->player.std_height = PLAYER_HEIGHT;
 	doom->i_sector = 0;
-	doom->player.handed = left;
-	doom->player.character = player_1;
 }
 
 static void		init_settings(t_doom *doom)
