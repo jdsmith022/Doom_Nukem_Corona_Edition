@@ -67,6 +67,7 @@ static void		set_sidef_line(t_doom *doom, int x, int y)
 {
 	t_gamedesign *editor;
 
+	printf("set sidedef\n");
 	editor = &doom->game_design;
 	doom->game_design.ed_sidedef->texture = \
 			doom->game_design.sd_tex_index[doom->game_design.tex_index];

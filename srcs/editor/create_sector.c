@@ -43,5 +43,6 @@ void			set_ed_sector_values(t_doom *doom)
 	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
 	doom->game_design.ed_sector->id = id;
 	doom->game_design.ed_sector->next = NULL;
+	doom->game_design.open_connection = TRUE;
 	doom->game_design.sc_len++;
 }
