@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:43:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 19:32:04 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/06 19:45:01 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ static void		moving_sidedef(t_doom *doom, t_sidedef *sidedef, int k, int i)
 
 static void		set_col_lib(t_doom *doom, int k, int *total_sd_index, int i)
 {
-
 	if (k != 0)
-		*total_sd_index += doom->lib.sector[i].i_sidedefs;
+		total_sd_index += doom->lib.sector[i].i_sidedefs;
 	doom->lib.sector[i].i_sidedefs = k;
 }
 
