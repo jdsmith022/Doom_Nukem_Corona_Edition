@@ -51,13 +51,14 @@ static void			init_lists(t_doom *doom)
 	doom->game_design.ed_sidedef->next = NULL;
 	doom->game_design.ed_sprite->next = NULL;
 	doom->game_design.sp_head = doom->game_design.ed_sprite;
+	doom->game_design.sp_head->id = -1;
+	doom->game_design.sp_head->sector = -1;
 }
 
 void				init_game_design(t_doom *doom)
 {
 	doom->game_design.sd_len = 0;
 	doom->game_design.sc_len = 0;
-	doom->game_design.cur_sd = 0;
 	doom->game_design.tex_index = 0;
 	doom->game_design.spr_len = 0;
 	doom->game_design.spr_tex = 0;

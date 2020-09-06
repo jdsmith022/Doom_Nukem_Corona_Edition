@@ -13,14 +13,11 @@ static void		delete_list(t_doom *doom)
 	while (ed_sprite)
 	{
 		next = ed_sprite->next;
-		if (ed_sprite == NULL)
-		{
-			ft_bzero(ed_sprite, sizeof(t_ed_sprite));
-			free(ed_sprite);
-		}
+		ft_bzero(ed_sprite, sizeof(t_ed_sprite));
+		free(ed_sprite);
 		ed_sprite = next;
 	}
-	free(doom->game_design.sp_head);
+	// free(doom->game_design.sp_head);
 }
 
 static void		set_sector_sprite_values(t_sector *sector, int *spr_index,\
@@ -67,12 +64,13 @@ void			set_sprite_lib(t_doom *doom)
 	int			sc_index;
 	int			spr_index;
 
+	printf("add list sector = %d, sidedef %d, sprite %d\n",  doom->game_design.sc_len,  doom->game_design.sd_len,  doom->game_design.spr_len);
 	lib.sprites = \
 		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
 	if (lib.sprites == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
 	sort_sprite_per_sector(doom, lib);
-	delete_list(doom);
+	// delete_list(doom);
 	doom->lib.sprites = lib.sprites;
 	doom->total_sprites = doom->game_design.spr_len;
 }

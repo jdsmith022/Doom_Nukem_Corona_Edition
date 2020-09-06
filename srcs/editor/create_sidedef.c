@@ -22,7 +22,6 @@ void			set_ed_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.ed_sidedef->sector = doom->game_design.sc_len;
 	doom->game_design.ed_sidedef->line = line;
 	doom->game_design.ed_sidedef->next = NULL;
-	doom->game_design.cur_sd = id;
 	doom->game_design.sd_len++;
 }
 
@@ -41,7 +40,6 @@ void			delete_sidedef(t_doom *doom)
 		free(sidedef);
 		doom->game_design.draw_line.start = previous->line.end;
 		doom->game_design.sd_len--;
-		doom->game_design.cur_sd--;
 		doom->game_design.draw_line.end.x = -1;
 		doom->game_design.draw_line.end.y = -1;
 		doom->game_design.ed_sidedef = previous;
@@ -67,7 +65,6 @@ static void		set_sidef_line(t_doom *doom, int x, int y)
 {
 	t_gamedesign *editor;
 
-	printf("set sidedef\n");
 	editor = &doom->game_design;
 	doom->game_design.ed_sidedef->texture = \
 			doom->game_design.sd_tex_index[doom->game_design.tex_index];
@@ -95,8 +92,10 @@ void			add_sidedef(t_doom *doom, int x, int y)
 
 	editor = &doom->game_design;
 	editor->edit_sector = FALSE;
+	printf("%f %f\n", editor->draw_line.start.x, editor->draw_line.start.y);
 	if (editor->draw_line.start.x == -1)
 	{
+		printf("start\n");
 		editor->draw_line.start.x = x;
 		editor->draw_line.start.y = y;
 		editor->start_sector = editor->draw_line.start;

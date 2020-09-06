@@ -313,7 +313,6 @@ typedef struct		s_gamedesign {
 	int				cur_sector;
 	int				sd_tex_index[12];
 	int				ed_spr_index[7];
-	int				cur_sd;
 	int				cur_sprite;
 	int				spr_tex;
 	int				sd_len;
