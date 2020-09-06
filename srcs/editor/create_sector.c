@@ -30,7 +30,7 @@ void			set_ed_sector_values(t_doom *doom)
 	id = doom->game_design.sc_len;
 	while (doom->game_design.ed_sector->next != NULL)
 		doom->game_design.ed_sector = doom->game_design.ed_sector->next;
-	doom->game_design.ed_sector->next = ft_memalloc(sizeof(t_ed_sector));
+	doom->game_design.ed_sector->next = (t_ed_sector*)ft_memalloc(sizeof(t_ed_sector));
 	if (!doom->game_design.ed_sector->next)
 		doom_exit_failure(doom, "error: malloc sector in editor\n");
 	prev = doom->game_design.ed_sector;

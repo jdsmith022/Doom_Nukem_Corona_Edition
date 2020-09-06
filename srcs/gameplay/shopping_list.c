@@ -45,9 +45,8 @@ static t_item	new_item(uint8_t type, int i)
 	return (item);
 }
 
-void			default_shopping_list(t_doom *doom)
+void			default_shopping_list(t_doom *doom, t_item *s_list)
 {
-	t_item		*s_list;
 	uint8_t		shopping_list_len;
 	uint8_t		i;
 

@@ -92,10 +92,8 @@ void			add_sidedef(t_doom *doom, int x, int y)
 
 	editor = &doom->game_design;
 	editor->edit_sector = FALSE;
-	printf("%f %f\n", editor->draw_line.start.x, editor->draw_line.start.y);
 	if (editor->draw_line.start.x == -1)
 	{
-		printf("start\n");
 		editor->draw_line.start.x = x;
 		editor->draw_line.start.y = y;
 		editor->start_sector = editor->draw_line.start;

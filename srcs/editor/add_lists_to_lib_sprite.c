@@ -25,7 +25,6 @@ static void		set_sector_sprite_values(t_sector *sector, int *spr_index,\
 {
 	sector->i_objects = *spr_index;
 	sector->n_objects = index - *spr_index;
-	*sc_index += 1;
 	*spr_index = -1;
 }
 
@@ -46,13 +45,15 @@ static void		sort_sprite_per_sector(t_doom *doom, t_lib lib)
 			spr_index = index;
 		if (ed_sprite->sector == sc_index)
 			set_sprite_values(doom, &lib.sprites[index], ed_sprite, &index);
-		ed_sprite = ed_sprite->next;
-		if (ed_sprite == NULL && sc_index < doom->game_design.sc_len)
+		if (ed_sprite->next == NULL)
 		{
 			set_sector_sprite_values(&doom->lib.sector[sc_index], \
 				&spr_index, &sc_index, index);
 			ed_sprite = doom->game_design.sp_head->next;
+			sc_index++;
 		}
+		else
+			ed_sprite = ed_sprite->next;
 	}
 }
 
@@ -64,7 +65,6 @@ void			set_sprite_lib(t_doom *doom)
 	int			sc_index;
 	int			spr_index;
 
-	printf("add list sector = %d, sidedef %d, sprite %d\n",  doom->game_design.sc_len,  doom->game_design.sd_len,  doom->game_design.spr_len);
 	lib.sprites = \
 		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
 	if (lib.sprites == NULL)

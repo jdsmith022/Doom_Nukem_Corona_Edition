@@ -55,7 +55,9 @@ static void			set_groceries_in_level(t_doom *doom, t_item *t_types)
 	i = 0;
 	j = 0;
 	len = doom->game_design.sd_len;
-	doom->groceries = ft_memalloc(sizeof(t_groceries));
+	doom->groceries = (t_groceries*)ft_memalloc(sizeof(t_groceries));
+	if (!doom->groceries)
+		doom_exit_failure(doom, "error: saving groceries in editor");
 	doom->groceries->num_of_groceries = 0;
 	while (i < len)
 	{
@@ -68,7 +70,9 @@ static void			set_groceries_in_level(t_doom *doom, t_item *t_types)
 		i++;
 	}
 	doom->groceries->groceries_in_level =
-		ft_memalloc(sizeof(t_item) * doom->groceries->num_of_groceries);
+		(t_item*)ft_memalloc(sizeof(t_item) * doom->groceries->num_of_groceries);
+	if (!doom->groceries->groceries_in_level)
+		doom_exit_failure(doom, "error: saving groceries in editor");
 	ft_memcpy(
 		doom->groceries->groceries_in_level,
 		groceries, sizeof(t_item) * doom->groceries->num_of_groceries);
