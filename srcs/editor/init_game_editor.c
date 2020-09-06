@@ -13,18 +13,18 @@ static void			init_editor_sprites(t_doom *doom)
 
 static void			init_sidedef_textures(t_doom *doom)
 {
-	doom->game_design.sd_tex_index[0] = 15; 
+	doom->game_design.sd_tex_index[0] = 15;
 	doom->game_design.sd_tex_index[1] = 16;
-	doom->game_design.sd_tex_index[2] = 19; //APPLE
-	doom->game_design.sd_tex_index[3] = 62; //BACON
-	doom->game_design.sd_tex_index[4] = 28; //CHERRY
-	doom->game_design.sd_tex_index[5] = 39; //JAM
-	doom->game_design.sd_tex_index[6] = 64; //SODA
-	doom->game_design.sd_tex_index[7] = 74; //WATER
-	doom->game_design.sd_tex_index[8] = 75;//WINE
-	doom->game_design.sd_tex_index[9] = 27; //CHEESE
-	doom->game_design.sd_tex_index[10] = 34; //COOKIE
-	doom->game_design.sd_tex_index[11] = 23; //BREAD
+	doom->game_design.sd_tex_index[2] = 19;
+	doom->game_design.sd_tex_index[3] = 62;
+	doom->game_design.sd_tex_index[4] = 28;
+	doom->game_design.sd_tex_index[5] = 39;
+	doom->game_design.sd_tex_index[6] = 64;
+	doom->game_design.sd_tex_index[7] = 74;
+	doom->game_design.sd_tex_index[8] = 75;
+	doom->game_design.sd_tex_index[9] = 27;
+	doom->game_design.sd_tex_index[10] = 34;
+	doom->game_design.sd_tex_index[11] = 23;
 }
 
 static void			init_lists(t_doom *doom)
