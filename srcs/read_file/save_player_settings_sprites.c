@@ -6,11 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/06 11:52:36 by jesmith       #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2020/09/06 18:00:02 by mminkjan      ########   odam.nl         */
-=======
-/*   Updated: 2020/09/06 20:15:05 by jesmith       ########   odam.nl         */
->>>>>>> JS_sprite_checkout_action
+/*   Updated: 2020/09/06 20:23:28 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
