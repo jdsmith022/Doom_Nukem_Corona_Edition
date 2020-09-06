@@ -51,6 +51,7 @@ typedef struct		s_font_lib
 	TTF_Font		*font_22;
 	TTF_Font		*font_20;
 	TTF_Font		*font_18;
+	TTF_Font		*font_16;
 	t_limit			limit_x;
 	t_limit			limit_y;
 	int				setting_font_len;

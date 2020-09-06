@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:57 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/28 15:10:58 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 16:53:43 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ void		set_font_style(t_doom *doom)
 	doom->lib.font_lib.font_18 = \
 		TTF_OpenFont("srcs/font/font_style/JosefinSans-Bold.ttf", 18);
 	if (doom->lib.font_lib.font_18 == NULL)
+		doom_exit_failure(doom, "SLD_TFF lib error\n");
+	doom->lib.font_lib.font_16 = \
+		TTF_OpenFont("srcs/font/font_style/Cicle_Semi.ttf", 16);
+	if (doom->lib.font_lib.font_16 == NULL)
 		doom_exit_failure(doom, "SLD_TFF lib error\n");
 }

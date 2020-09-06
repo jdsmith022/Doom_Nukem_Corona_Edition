@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/02 11:59:06 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 10:43:35 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ static void		put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
 	{
 		if (screen_y >= 0 /* && clip_top(doom, index_sp, stripe, screen_y) == -1*/)
 		{
+			sprite_light(doom, doom->lib.sprites[index_sp], screen_y);
 			index = (Uint32)(screen_y * doom->surface->pitch) +\
 			(int)(stripe * doom->surface->format->BytesPerPixel);
 			tex.y = find_y(doom, sprite, index_sp, screen_y);
@@ -128,7 +129,6 @@ void			draw_stripes(t_doom *doom, t_line *sprite, int index_sp)
 		if (doom->stripe_distance[stripe] >\
 		doom->lib.sprites[index_sp].distance)
 		{
-			sprite_light(doom, doom->lib.sprites[index_sp]);
 			put_stripe_sprite(doom, stripe, sprite, index_sp);
 		}
 		stripe++;

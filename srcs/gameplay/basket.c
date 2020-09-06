@@ -21,6 +21,13 @@ static bool		valid_input(uint8_t type, t_list **head)
 	return (true);
 }
 
+static void		create_next_item(t_doom *doom, t_list *temp, t_item item)
+{
+	temp->next = ft_lstnew(&item, sizeof(t_item));
+	if (temp->next == NULL)
+		doom_exit_failure(doom, "error: creating shopping list");
+}
+
 void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 {
 	t_list		*temp;
@@ -31,10 +38,11 @@ void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 		return ;
 	item = init_item(doom, type);
 	doom->own_event.groc_pickup = TRUE;
-	if (!temp)
+	if (!*head)
 	{
-		temp = ft_lstnew(&item, sizeof(t_item));
-		*head = temp;
+		*head = ft_lstnew(&item, sizeof(t_item));
+		if (head == NULL)
+			doom_exit_failure(doom, "error: creating shopping list");
 		return ;
 	}
 	while (!is_in_basket((t_item *)temp->content, type))
@@ -47,7 +55,7 @@ void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	if (is_in_basket((t_item *)temp->content, type))
 		change_amount((t_item *)temp->content, 1);
 	else if (get_basket_len(head) < MAX_BASKET_LEN)
-		temp->next = ft_lstnew(&item, sizeof(t_item));
+		create_next_item(doom, temp, item);
 }
 
 bool			remove_item_from_basket(t_list **head, uint8_t type)

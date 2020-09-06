@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 15:28:54 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 13:29:15 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		select_action(t_doom *doom)
 	t_sidedef poster;
 
 	poster = doom->lib.sidedef[doom->i_sidedef];
-	if ((doom->own_event.select == TRUE && doom->own_event.mouse_press) \
+	if ((doom->own_event.select && doom->own_event.mouse_press) \
 	|| (doom->own_event.mouse_pointer))
 	{
 		groceries(doom);

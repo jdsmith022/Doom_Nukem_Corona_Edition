@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:15 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 16:53:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 11:20:37 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(void)
 	ft_bzero(&doom, sizeof(t_doom));
 	sdl_init(&doom);
 	save_font_libraries(&doom);
+	save_player_sprites(&doom);
 	doom_start(&doom);
 	save_libraries(&doom);
 	doom_init(&doom);

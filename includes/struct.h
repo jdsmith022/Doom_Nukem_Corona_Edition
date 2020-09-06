@@ -280,6 +280,8 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
+	SDL_Surface		**player_lib;
+	int				len_player_lib;
 	t_font_lib		font_lib;
 	int				portal_ceiling;
 	int				len_sky_lib;
@@ -405,7 +407,6 @@ typedef struct		s_doom {
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
-
 	int				obj_height;
 	int				visible_sprites;
 	int				total_sprites;

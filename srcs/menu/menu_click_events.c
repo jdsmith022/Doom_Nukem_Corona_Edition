@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 16:54:56 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 12:00:54 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static void		difficulty_setting(t_doom *doom, int x, int y)
 	else if (x >= 475 && x <= 500 && y >= 300 && y <= 330)
 		doom->game.difficulty = 2;
 	else if (x >= 530 && x <= 550 && y >= 300 && y <= 330)
+	{
+		doom->game.light = FALSE;
 		doom->game.difficulty = 3;
+	}
 	doom->menu->state = start_game;
 }
 

@@ -6,20 +6,47 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:11 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/01 11:11:45 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/05 17:53:58 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void	sprite_light(t_doom *doom, t_sprite sprite)
+void	sprite_light2(t_doom *doom, t_sprite sprite, int x, int y)
+{
+	double dist;
+
+	dist = sprite.distance;
+	doom->lib.light = 1.0 / ((float)sprite.distance / 70.0);
+	if (x > WIDTH / 2)
+		doom->lib.light -= \
+			(x - (float)WIDTH / 2.0) * 1.0 / (float)WIDTH;
+	else
+		doom->lib.light = \
+		+ doom->lib.light - \
+		((float)WIDTH / 2.0 - x) * 1.0 / (float)WIDTH;
+	if (y > HEIGHT / 2)
+		doom->lib.light -= \
+		(y - (float)HEIGHT / 2.0) * 1.0 / (float)HEIGHT;
+	else
+		doom->lib.light = \
+		+ doom->lib.light - \
+		((float)HEIGHT / 2.0 - y) * 1.0 / (float)HEIGHT;
+	// if (doom->lib.light > 1.9)
+	// 	doom->lib.light = 1.9;
+	if (doom->lib.light < 0.01)
+		doom->lib.light = 0.01;
+}
+
+void	sprite_light(t_doom *doom, t_sprite sprite, int y)
 {
 	int		half_width;
 	int		x;
 
 	half_width = 0;
 	x = sprite.sprite_x;
-	if (doom->game.light == TRUE)
+	if (doom->game.light == TRUE || \
+	doom->lib.sector[sprite.sector].action == OUTSIDE)
 	{
 		if (doom->lib.sector[sprite.sector].light == TRUE)
 			doom->lib.light = doom->lib.sector[sprite.sector].light_level;
@@ -27,15 +54,5 @@ void	sprite_light(t_doom *doom, t_sprite sprite)
 			doom->lib.light = 0.15;
 	}
 	else
-	{
-		half_width = (float)WIDTH / 2;
-		doom->lib.light = 1 / (sprite.distance / 70);
-		if (sprite.sprite_x > half_width)
-			doom->lib.light -= (x - half_width) * 1.0 / (float)WIDTH;
-		else
-		{
-			doom->lib.light =\
-			+doom->lib.light - (half_width - x) * 1.0 / (float)WIDTH;
-		}
-	}
+		sprite_light2(doom, sprite, x, y);
 }
