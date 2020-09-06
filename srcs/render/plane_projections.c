@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 18:16:28 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 19:53:00 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ static bool			in_range(int nb, int min, int max)
 	return (FALSE);
 }
 
-static int			same_sidedef(t_clip *sidedef_value, int id)
+static t_clip			*same_sidedef(t_clip *head_node, int id)
 {
 	t_clip		*temp;
 
-	temp = sidedef_value;
-	while (temp->next != NULL)
+	temp = head_node;
+	while (temp != NULL)
 	{
 		if (temp->sidedef == id)
-			return (1);
+			return (temp);
 		temp = temp->next;
 	}
-	return (-1);
+	return (NULL);
 }
 
 static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
@@ -70,29 +70,38 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	t_clip		*node;
 	t_clip		*node_bottom;
 	t_clip		*top;
+	t_clip		*temp;
 
 	if (sidedef.opp_sector != -1 && sidedef.action != 6)
 	{
+		temp = same_sidedef(doom->clip->head_mid_bottom, sidedef.id);
 		//SAVE MID BOTTOM VALUES IN LINKED LIST
 		//de eerste line wordt opgeslagen
-		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
-		doom->clip->prev_mid_bottom != sidedef.id &&\
-		same_sidedef(doom->clip->head_mid_bottom, sidedef.id) == -1)
+		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) && temp == NULL)
 		{
-			doom->clip->prev_mid_bottom = sidedef.id;
-			// while (doom->clip->mid_bottom->next != NULL)
-			// 	doom->clip->mid_bottom = doom->clip->mid_bottom->next;
-			node = new_clip_start(sidedef.sector, x, plane.mid_texture_bottom);
+			// printf("Y\n");
+			// doom->clip->prev_mid_bottom = sidedef.id;
+			while (doom->clip->mid_bottom->next != NULL)
+			{
+				doom->clip->mid_bottom = doom->clip->mid_bottom->next;
+			}
+			// printf("B\n");
+			node = new_clip_start(sidedef.sector, x, plane.mid_texture_bottom, sidedef.id);
 			//protect
-			node->next = NULL;
-			node->sidedef = sidedef.id;
+			// node->next = NULL;
+			// printf("C\n");
+			printf("node: %d\n", node->sidedef);
 			doom->clip->mid_bottom->next = node;
+			// printf("D\n");
 		}
-		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
-		doom->clip->prev_mid_bottom == sidedef.id)
+		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) && temp != NULL)
 		{
-			doom->clip->mid_bottom->next->line.end.x = x;
-			doom->clip->mid_bottom->next->line.end.y =\
+			// printf("X\n");
+			temp->line.end.x = x;
+			temp->line.end.y = plane.mid_texture_bottom;
+			doom->clip->mid_bottom->next->line.end = temp->line.end;
+			// doom->clip->mid_bottom->next->line.end.x = x;
+			// doom->clip->mid_bottom->next->line.end.y =\
 			plane.mid_texture_bottom;
 		}
 		// BOTTOM
@@ -100,7 +109,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 		doom->clip->prev_bottom != sidedef.id)
 		{
 			doom->clip->prev_bottom = sidedef.id;
-			node_bottom = new_clip_start(sidedef.sector, x, plane.sidedef_bottom);
+			node_bottom = new_clip_start(sidedef.sector, x, plane.sidedef_bottom, sidedef.id);
 			//protect
 			node_bottom->next = NULL;
 			node_bottom->sidedef = sidedef.id;
@@ -118,7 +127,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 		doom->clip->prev_top != sidedef.id)
 		{
 			doom->clip->prev_top = sidedef.id;
-			top = new_clip_start(sidedef.sector, x, plane.sidedef_top);
+			top = new_clip_start(sidedef.sector, x, plane.sidedef_top, sidedef.id);
 			//protect
 			top->next = NULL;
 			top->sidedef = sidedef.id;
@@ -142,7 +151,9 @@ void			project_on_plane(t_doom *doom, t_sidedef sidedef, int x)
 	plane.x = x;
 	sector = doom->lib.sector[sidedef.sector];
 	set_properties_plane(doom, sidedef, &plane, &sector);
+	// printf("before\n");
 	set_values_clipping_sprites(doom, plane, sidedef, x);
+	// printf("after\n");
 	if (sidedef.opp_sector == -1)
 		draw_onesided_sidedef(doom, plane, sidedef, x);
 	else if (sidedef.action == WINDOW)

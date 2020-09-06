@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 19:56:11 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 19:21:23 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static void		init_sprites(t_doom *doom)
 		doom->lib.sprite_height[i] = i;
 		i++;
 	}
-	doom->clip = (t_clip_lists*)malloc(sizeof(t_clip_lists) * 1);
+	doom->clip = (t_clip_lists*)ft_memalloc(sizeof(t_clip_lists));
 	//protect
 	
 	//BOTTOM
 	// printf("before bottom\n");
 	doom->clip->prev_bottom = -1;
-	doom->clip->bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	doom->clip->bottom = (t_clip*)ft_memalloc(sizeof(t_clip));
 	//protect
 	// printf("after bottom\n");
 	doom->clip->bottom->next = NULL;
@@ -45,7 +45,7 @@ static void		init_sprites(t_doom *doom)
 	// printf("before top\n");
 	//TOP
 	doom->clip->prev_top = -1;
-	doom->clip->top = (t_clip*)malloc(sizeof(t_clip) * 1);
+	doom->clip->top = (t_clip*)ft_memalloc(sizeof(t_clip));
 	// printf("after malloc top\n");
 	//protect
 	doom->clip->top->next = NULL;
@@ -53,7 +53,7 @@ static void		init_sprites(t_doom *doom)
 	
 	//MID BOTTOM
 	doom->clip->prev_mid_bottom = -1;
-	doom->clip->mid_bottom = (t_clip*)malloc(sizeof(t_clip) * 1);
+	doom->clip->mid_bottom = (t_clip*)ft_memalloc(sizeof(t_clip));
 	//protect
 	doom->clip->mid_bottom->next = NULL;
 	doom->clip->head_mid_bottom = doom->clip->mid_bottom;
