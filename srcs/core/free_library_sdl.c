@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:45:30 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 12:03:10 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ void			free_sdl_lib(t_doom *doom)
 	{
 		lib = doom->lib.sky_lib;
 		len = doom->lib.len_sky_lib;
+		free_sld_libs(lib, len);
+	}
+	if (doom->lib.player_lib)
+	{
+		lib = doom->lib.player_lib;
+		len = doom->lib.len_player_lib;
 		free_sld_libs(lib, len);
 	}
 }
