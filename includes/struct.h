@@ -388,6 +388,7 @@ typedef struct		s_render
 typedef struct		s_clip
 {
 	int				id;
+	int				sidedef;
 	t_line			line;
 	struct s_clip	*next;
 }					t_clip;

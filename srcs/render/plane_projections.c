@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 21:19:53 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 12:00:16 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ static bool			in_range(int nb, int min, int max)
 	return (FALSE);
 }
 
+static int			same_sidedef(t_clip *sidedef_value, int id)
+{
+	t_clip		*temp;
+
+	temp = sidedef_value;
+	while (temp->next != NULL)
+	{
+		if (temp->sidedef == id)
+			return (1);
+		temp = temp->next;
+	}
+	return (-1);
+}
+
 static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 				t_sidedef sidedef, int x)
 {
@@ -57,19 +71,21 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	t_clip		*node_bottom;
 	t_clip		*top;
 
-	if (sidedef.opp_sector != -1)
+	if (sidedef.opp_sector != -1 && sidedef.action != 6)
 	{
 		//SAVE MID BOTTOM VALUES IN LINKED LIST
 		//de eerste line wordt opgeslagen
 		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
-		doom->clip->prev_mid_bottom != sidedef.id)
+		doom->clip->prev_mid_bottom != sidedef.id &&\
+		same_sidedef(doom->clip->head_mid_bottom, sidedef.id) == -1)
 		{
 			doom->clip->prev_mid_bottom = sidedef.id;
-			// if (doom->clip->mid_bottom->next != NULL)
-				// doom->clip->mid_bottom = doom->clip->mid_bottom->next;
+			if (doom->clip->mid_bottom->next != NULL)
+				doom->clip->mid_bottom = doom->clip->mid_bottom->next;
 			node = new_clip_start(sidedef.sector, x, plane.mid_texture_bottom);
 			//protect
 			node->next = NULL;
+			node->sidedef = sidedef.id;
 			doom->clip->mid_bottom->next = node;
 		}
 		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
