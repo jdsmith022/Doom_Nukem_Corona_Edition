@@ -12,7 +12,6 @@ static void		free_sectors(t_doom *doom, int del_sector)
 		sector = sector->next;
 	doom->game_design.ed_sector = sector;
 	del = sector->next;
-	printf("sector %d - id = %d\n", del_sector, del->id);
 	sector->next = NULL;
 	while (del)
 	{
@@ -41,7 +40,6 @@ static void		reset_values(t_doom *doom)
 {
 	t_gamedesign *editor;
 
-	printf("reset\n");
 	editor = &doom->game_design;
 	doom->game_design.ed_sidedef->id = 0;
 	doom->game_design.ed_sector->id = 0;
