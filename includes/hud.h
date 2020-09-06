@@ -26,11 +26,11 @@ typedef enum			e_event_state
 typedef struct			s_hud
 {
 	bool				start;
-	int_fast16_t		update;
-	int_fast16_t		hold_time;
-	int_fast16_t		curr_time;
-	int_fast16_t		corona_level;
-	int_fast16_t		sanitizer_level;
+	int					update;
+	int					hold_time;
+	int					curr_time;
+	int					corona_level;
+	int					sanitizer_level;
 }						t_hud;
 
 void					update_hud(t_doom *doom);
