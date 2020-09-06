@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 17:19:23 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 20:03:28 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		init_player(t_doom *doom)
 static void		init_settings(t_doom *doom)
 {
 	doom->game.is_running = TRUE;
-	doom->game.light = TRUE;
+	doom->game.light = doom->game.difficulty != 3 ? TRUE : FALSE;
 	doom->game.hud_display = TRUE;
 	doom->game.start_timer = FALSE;
 	doom->cast.poster = FALSE;
