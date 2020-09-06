@@ -403,10 +403,6 @@ typedef struct		s_clip_lists
 	t_clip			*head_mid_bottom;
 	t_clip			*mid_top;
 	t_clip			*head_mid_top;
-	int				prev_mid_bottom;
-	int				prev_bottom;
-	// int				prev_mid_top;
-	int				prev_top;
 }					t_clip_lists;
 
 typedef struct		s_doom {

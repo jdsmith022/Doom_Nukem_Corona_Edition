@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 20:33:09 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 20:37:54 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 	t_clip		*top;
 	t_clip		*temp;
 	t_clip		*temp2;
+	t_clip		*temp3;
 
 	if (sidedef.opp_sector != -1 && sidedef.action != 6)
 	{
 		temp = same_sidedef(doom->clip->head_mid_bottom, sidedef.id);
 		temp2 = same_sidedef(doom->clip->head_bottom, sidedef.id);
+		temp3 = same_sidedef(doom->clip->head_top, sidedef.id);
 		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) && temp == NULL)
 		{
 			while (doom->clip->mid_bottom->next != NULL)
@@ -110,22 +112,19 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 			plane.sidedef_bottom;
 		}
 		//TOP
-		if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
-		doom->clip->prev_top != sidedef.id)
+		if (in_range(plane.sidedef_top, 0, HEIGHT) && temp3 == NULL)
 		{
-			doom->clip->prev_top = sidedef.id;
+			while (doom->clip->top->next != NULL)
+				doom->clip->top = doom->clip->top->next;
 			top = new_clip_start(sidedef.sector, x, plane.sidedef_top, sidedef.id);
 			//protect
-			top->next = NULL;
-			top->sidedef = sidedef.id;
 			doom->clip->top->next = top;
 		}
-		else if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
-		doom->clip->prev_top == sidedef.id)
+		else if (in_range(plane.sidedef_top, 0, HEIGHT) && temp3 != NULL)
 		{
-			doom->clip->top->next->line.end.x = x;
-			doom->clip->top->next->line.end.y =\
-			plane.sidedef_top;
+			temp3->line.end.x = x;
+			temp3->line.end.y = plane.sidedef_top;
+			doom->clip->top->next->line.end = temp3->line.end;
 		}
 	}
 }
