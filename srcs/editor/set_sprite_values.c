@@ -5,7 +5,7 @@
 static void  set_spr_scissor_lift(t_sprite *sprite)
 {
 	sprite->index = SCISSOR_LIFT;
-	sprite->size = MEDIUM;
+	sprite->size = X_LARGE;
 	sprite->textures[0] = 7;
 	sprite->textures[1] = 8;
 	sprite->textures[2] = 7;
@@ -42,7 +42,7 @@ static void	set_spr_face_mask(t_sprite *sprite)
 }
 
 void		set_sprite_values(t_doom *doom, t_sprite *sprite,
-				t_ed_sprite *ed_sprite)
+				t_ed_sprite *ed_sprite, int *index)
 {
 	sprite->amount = 4;
 	sprite->pos = ed_sprite->pos;
@@ -64,4 +64,5 @@ void		set_sprite_values(t_doom *doom, t_sprite *sprite,
 		set_spr_corona(sprite);
 	else if (ed_sprite->type == SPR_CHECKOUT)
 		set_spr_checkout(sprite);
+	*index += 1;
 }

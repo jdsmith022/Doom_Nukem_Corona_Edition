@@ -37,13 +37,27 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				set_ceiling_limit set_properties_plane draw_window img
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
-			 set_texture_type create_sidedef
-EDITOR_FILES = game_editor draw_bar sector sidedefs add_lists_to_libs \
-				mouse_events_game_editor draw_edit_console init_game draw_sidedef_object \
-				draw_sidedef_object2 sprites put_textures set_sprite_values \
-				put_textures2 mouse_event_sidedef check_sector_in_sector \
-				set_utilities check_sidedef_connection set_sprite_lib \
-				set_sprite_values_2 set_sector_lib add_player
+			 set_texture_type create_sidedef bmp_safe_exit save_player_settings_sprites
+EDITOR_FILES = 	game_editor \
+				add_lists_to_lib\
+				add_lists_to_lib_sidedef\
+				add_lists_to_lib_sector\
+				add_lists_to_lib_sprite\
+				draw_bar sector\
+				sidedefs\
+				mouse_events_game_editor\
+				draw_edit_console\
+				init_game \
+				draw_map_sidedef\
+				draw_map_sprite \
+				sprites put_textures \
+				set_sprite_values \
+				put_textures2 \
+				mouse_event_sidedef \
+				check_sector_in_sector \
+				set_utilities \
+				check_sidedef_connection \
+				set_sprite_values_2
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \

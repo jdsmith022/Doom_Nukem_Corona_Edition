@@ -31,6 +31,7 @@ void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
 void				init_events(t_event *event);
 void				init_audio(t_doom *doom);
+void				init_player_sprite(t_doom *doom);
 void				init_window(t_doom *doom);
 void				game_loop(t_doom *doom);
 void				set_to_window(t_doom *doom);

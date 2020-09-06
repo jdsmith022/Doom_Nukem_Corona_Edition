@@ -26,13 +26,13 @@ void		set_spr_lines(t_sprite *sprite, int length)
 void	set_spr_checkout(t_sprite *sprite)
 {
 	sprite->index = SPR_CHECKOUT;
-	sprite->size = 96;
-	sprite->textures[0] = 14;
-	sprite->textures[1] = 14;
-	sprite->textures[2] = 14;
-	sprite->textures[3] = 14;
-	sprite->block = NO_BLOCK;
-	sprite->action = 50;
+	sprite->size = X_LARGE;
+	sprite->textures[0] = 114;
+	sprite->textures[1] = 117;
+	sprite->textures[2] = 114;
+	sprite->textures[3] = 117;
+	sprite->block = BLOCK;
+	sprite->action = 0;
 	set_spr_lines(sprite, LENGTH_LARGE);
 }
 

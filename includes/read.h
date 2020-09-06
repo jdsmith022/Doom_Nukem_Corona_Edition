@@ -7,7 +7,10 @@
 
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
 SDL_Surface			**save_objects(t_doom *doom, int fd, int *len);
+void				save_player_sprites(t_doom *doom);
 SDL_Surface			**save_sky(t_doom *doom, t_line **sky_sd);
+SDL_Surface			**read_from_line(t_doom *doom, char *line,
+						int map_fd, int len);
 int					open_file(t_doom *doom, char *filename);
 t_sector			*save_sectors(t_doom *doom, int fd, int *len);
 t_sidedef			*save_walls(t_doom *doom, int fd, int *len);

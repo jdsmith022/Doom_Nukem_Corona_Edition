@@ -280,6 +280,8 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
+	SDL_Surface		**player_lib;
+	int				len_player_lib;
 	t_font_lib		font_lib;
 	int				portal_ceiling;
 	int				len_sky_lib;
@@ -302,15 +304,17 @@ typedef struct		s_gamedesign {
 	bool			edit_sector;
 	bool			place_checkout;
 	bool			open_connection;
+	bool			custom_level;
+	bool			pl_pos;
 	t_ed_sector		*ed_sector;
 	t_ed_sector		*sc_head;
 	t_ed_sidedef	*ed_sidedef;
 	t_ed_sidedef	*sd_head;
 	t_ed_sprite		*ed_sprite;
 	t_ed_sprite		*sp_head;
-	double			floor_height;
-	double			ceiling_height;
-	double			light_level;
+	int				cur_sector;
+	int				sd_tex_index[12];
+	int				ed_spr_index[7];
 	int				cur_sd;
 	int				cur_sprite;
 	int				spr_tex;
@@ -319,9 +323,10 @@ typedef struct		s_gamedesign {
 	int				spr_len;
 	int				n_sprites;
 	int				i_sprites;
-	int				sd_tex_index[12];
-	int				ed_spr_index[7];
 	int				tex_index;
+	double			floor_height;
+	double			ceiling_height;
+	double			light_level;
 	t_line			draw_line;
 	t_point			start_sector;
 
@@ -329,15 +334,8 @@ typedef struct		s_gamedesign {
 	int				w_len;
 	int				w_size;
 	t_sprite		*object;
-	int				cur_sec;
-	int				pl_pos;
-	int				pl_x;
-	int				pl_y;
-	int				pl_sec;
 	int				object_bar;
 	int				sidedef_bar;
-	bool			custom_level;
-	bool			player_placed;
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
@@ -410,7 +408,6 @@ typedef struct		s_doom {
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
-
 	int				obj_height;
 	int				visible_sprites;
 	int				total_sprites;

@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-void			set_sidedef_values(t_doom *doom, t_line line)
+void			set_ed_sidedef_values(t_doom *doom, t_line line)
 {
 	t_ed_sidedef	*prev;
 	int				id;
@@ -19,7 +19,7 @@ void			set_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.ed_sidedef->opp_sector = -1;
 	doom->game_design.ed_sidedef->texture = \
 		doom->game_design.sd_tex_index[doom->game_design.tex_index];
-	doom->game_design.ed_sidedef->sector = doom->game_design.cur_sec;
+	doom->game_design.ed_sidedef->sector = doom->game_design.sc_len;
 	doom->game_design.ed_sidedef->line = line;
 	doom->game_design.ed_sidedef->next = NULL;
 	doom->game_design.cur_sd = id;
@@ -32,8 +32,8 @@ void			delete_sidedef(t_doom *doom)
 	t_ed_sidedef *previous;
 
 	sidedef = doom->game_design.ed_sidedef;
-	if (sidedef->sector == doom->game_design.cur_sec && \
-	doom->game_design.sd_len > 1)
+	if (sidedef->sector == doom->game_design.sc_len && \
+	doom->game_design.sd_len > 1 && sidedef->opp_sector == -1)
 	{
 		previous = sidedef->previous;
 		previous->next = NULL;
@@ -46,6 +46,8 @@ void			delete_sidedef(t_doom *doom)
 		doom->game_design.draw_line.end.y = -1;
 		doom->game_design.ed_sidedef = previous;
 	}
+	if (sidedef->opp_sector != -1)
+		doom->game_design.open_connection = TRUE;
 }
 
 void			add_sidedef(t_doom *doom, int x, int y)
@@ -73,11 +75,11 @@ void			add_sidedef(t_doom *doom, int x, int y)
 		&editor->draw_line.end) == TRUE)
 		{
 			editor->edit_sector = TRUE;
-			set_sidedef_values(doom, editor->draw_line);
-			set_sector_values(doom);
+			set_ed_sidedef_values(doom, editor->draw_line);
+			set_ed_sector_values(doom);
 		}
 		else
-			set_sidedef_values(doom, editor->draw_line);
+			set_ed_sidedef_values(doom, editor->draw_line);
 		editor->draw_line.start = editor->draw_line.end;
 		editor->draw_line.end.x = -1;
 		editor->draw_line.end.y = -1;

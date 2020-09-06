@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:28 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 09:43:21 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/06 11:58:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		doom_start(t_doom *doom)
 {
 	init_menu(doom);
 	init_audio(doom);
+	init_player_sprite(doom);
 	doom->game.difficulty = 1;
 	while (doom->menu->state != start_game)
 	{

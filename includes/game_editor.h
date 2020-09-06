@@ -232,27 +232,24 @@ typedef struct			s_angle_line {
 
 /*game editor*/
 void					open_game_editor(t_doom *doom, double dt);
-void					set_sidedef_values(t_doom *doom, t_line line);
-void					set_sector_values(t_doom *doom);
+void					set_ed_sidedef_values(t_doom *doom, t_line line);
 bool					snap_close_sector(t_point start, t_point *end);
 void					check_connection(t_doom *doom, int x, int y);
 void					add_sidedef(t_doom *doom, int x, int y);
 void					delete_sector(t_doom *doom);
 void					add_sector(t_doom *doom);
+void					set_ed_sector_values(t_doom *doom);
 bool					check_sector_in_sector(t_doom *doom, t_point pos);
 t_sector				*light_correction(t_sector *sector, int len);
 void					mouse_press_game_editor(t_doom *doom, int x, int y);
 void					bars(Uint32 **pixels, t_doom *doom);
 void					draw_images(Uint32 *pixels, t_doom *doom);
 void					init_game_design(t_doom *doom);
-void					draw_lines(t_doom *doom, Uint32 **pixels, t_ed_sidedef *ed_sidedef);
-void					add_object(t_doom *doom, int x, int y);
-void					set_angle(t_angle_line *angle, double *i);
-void					set_pixels(Uint32 **pixels, t_angle_line angle, int color);
-void					draw_object(t_doom *doom, Uint32 **pixels);
+void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels, t_ed_sidedef *ed_sidedef);
+void					add_sprite(t_doom *doom, int x, int y);
+void					draw_ed_sprite(t_doom *doom, Uint32 **pixels);
 void					draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void 					add_lists_to_libs(t_doom *doom);
-void					add_player(t_doom *doom, int x, int y);
 void					put_images(int x, int y, int index, t_doom *doom);
 void					put_textures(int x, int y, int index, t_doom *doom);
 void					put_textures_sidedef(int x, int y, int index, t_doom *doom);
@@ -267,6 +264,7 @@ void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
 
 void					set_sector_lib(t_doom *doom);
+void					set_sidedef_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
 void					set_spr_corona(t_sprite *sprite);
 void					set_spr_health_pack(t_sprite *sprite);
@@ -274,9 +272,8 @@ void					set_spr_health_pack_pl(t_sprite *sprite);
 void					set_spr_checkout(t_sprite *sprite);
 void					set_spr_lines(t_sprite *sprite, int lenght);
 void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
-							t_ed_sprite *ed_sprite);
+							t_ed_sprite *ed_sprite, int *index);
 
-void					add_player(t_doom *doom, int x, int y);
 // void					add_obj_lines(int x, int y, t_gamedesign gd, t_line **ln);
 // void					object_texture(t_doom *doom, int change);
 // void					sidedef_object(t_doom *doom);
