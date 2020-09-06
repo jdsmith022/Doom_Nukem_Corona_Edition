@@ -1,19 +1,6 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-static void	set_spr_scissor_lift(t_sprite *sprite)
-{
-	sprite->index = SCISSOR_LIFT;
-	sprite->size = X_LARGE;
-	sprite->textures[0] = 7;
-	sprite->textures[1] = 8;
-	sprite->textures[2] = 7;
-	sprite->textures[3] = 8;
-	sprite->block = BLOCK;
-	sprite->action = 7;
-	set_spr_lines(sprite, LENGTH_LARGE);
-}
-
 static void	set_spr_shopper(t_sprite *sprite)
 {
 	sprite->index = SHOPPER;
@@ -49,8 +36,6 @@ void		set_sprite_values(t_doom *doom, t_sprite *sprite,
 	sprite->textures = (int*)ft_memalloc(sizeof(int) * 4);
 	if (sprite->textures == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
-	if (ed_sprite->type == SCISSOR_LIFT)
-		set_spr_scissor_lift(sprite);
 	else if (ed_sprite->type == SHOPPER)
 		set_spr_shopper(sprite);
 	else if (ed_sprite->type == FACE_MASK)

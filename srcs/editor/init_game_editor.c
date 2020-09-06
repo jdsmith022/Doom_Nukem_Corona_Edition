@@ -3,13 +3,12 @@
 
 static void			init_editor_sprites(t_doom *doom)
 {
-	doom->game_design.ed_spr_index[0] = SCISSOR_LIFT;
-	doom->game_design.ed_spr_index[1] = SHOPPER;
-	doom->game_design.ed_spr_index[2] = FACE_MASK;
-	doom->game_design.ed_spr_index[3] = HEALTH_PACK_PLUS;
-	doom->game_design.ed_spr_index[4] = HEALTH_PACK;
-	doom->game_design.ed_spr_index[5] = CORONA;
-	doom->game_design.ed_spr_index[6] = SPR_CHECKOUT;
+	doom->game_design.ed_spr_index[0] = SHOPPER;
+	doom->game_design.ed_spr_index[1] = FACE_MASK;
+	doom->game_design.ed_spr_index[2] = HEALTH_PACK_PLUS;
+	doom->game_design.ed_spr_index[3] = HEALTH_PACK;
+	doom->game_design.ed_spr_index[4] = CORONA;
+	doom->game_design.ed_spr_index[5] = SPR_CHECKOUT;
 }
 
 static void			init_sidedef_textures(t_doom *doom)
@@ -17,15 +16,15 @@ static void			init_sidedef_textures(t_doom *doom)
 	doom->game_design.sd_tex_index[0] = 15; 
 	doom->game_design.sd_tex_index[1] = 16;
 	doom->game_design.sd_tex_index[2] = 19; //APPLE
-	doom->game_design.sd_tex_index[3] = 1; //BACON
-	doom->game_design.sd_tex_index[4] = 3; //CHERRY
-	doom->game_design.sd_tex_index[5] = 46; //JAM
+	doom->game_design.sd_tex_index[3] = 62; //BACON
+	doom->game_design.sd_tex_index[4] = 28; //CHERRY
+	doom->game_design.sd_tex_index[5] = 39; //JAM
 	doom->game_design.sd_tex_index[6] = 64; //SODA
-	doom->game_design.sd_tex_index[7] = 6; //WATER
+	doom->game_design.sd_tex_index[7] = 74; //WATER
 	doom->game_design.sd_tex_index[8] = 75;//WINE
 	doom->game_design.sd_tex_index[9] = 27; //CHEESE
 	doom->game_design.sd_tex_index[10] = 34; //COOKIE
-	doom->game_design.sd_tex_index[11] = 26; //BREAD
+	doom->game_design.sd_tex_index[11] = 23; //BREAD
 }
 
 static void			init_lists(t_doom *doom)
