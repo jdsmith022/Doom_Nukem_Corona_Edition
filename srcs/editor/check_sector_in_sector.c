@@ -24,7 +24,7 @@ bool			check_sector_in_sector(t_doom *doom, t_point pos)
 	t_ray			ray;
 	int				counter;
 	t_ed_sidedef	*sidedef;
-	t_point			distance;
+	t_point			distance; 
 
 	counter = 0;
 	sidedef = doom->game_design.sd_head->next;
@@ -32,6 +32,9 @@ bool			check_sector_in_sector(t_doom *doom, t_point pos)
 	distance.y = INFINITY;
 	while (sidedef != NULL)
 	{
+		if (doom->game_design.edit_sector ==  FALSE &&\
+			sidedef->id == doom->game_design.ed_sidedef->id)
+			break ;
 		intersect = check_line_intersection(ray.line, sidedef->line);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
 		{

@@ -30,7 +30,7 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	(editor.edit_sector == TRUE || editor.place_checkout == TRUE))
 		put_sprite(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.edit_sector == FALSE && editor.open_connection == TRUE)
+		editor.edit_sector == FALSE && editor.open_connection == TRUE)
 		check_connection(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.edit_sector == FALSE && editor.open_connection == FALSE)
