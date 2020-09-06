@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 15:09:37 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/05 21:14:46 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void		put_window_texture(t_doom *doom, t_point pixel, t_plane plane,
 	Uint32	tex_dex;
 	double	wall_y;
 	int		bpp;
+
 
 	tex_dex = sidedef.txt_2;
 	wall_y = (double)(doom->cast.texture_height / plane.height_standard) *\

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 13:32:09 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/05 18:47:01 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static void		mouse_handler(t_doom *doom)
 
 	if (doom->menu->settings == TRUE)
 	{
+		printf("test mouse_handler1\n");
 		rect1 = doom->lib.font_lib.setting_menu_font[13].font_rect;
 		setting_menu_click_event(doom, rect1);
+		printf("test mouse_handler2\n");
 	}
 	else if (doom->menu->state == menu)
 	{
