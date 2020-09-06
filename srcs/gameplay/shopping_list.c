@@ -87,11 +87,12 @@ void			custom_shopping_list(t_doom *doom, t_item *s_list)
 	}
 }
 
-void			generate_shopping_list(t_doom *doom, t_item *s_list)
+void			generate_shopping_list(t_doom *doom)
 {
 	uint32_t	curr_texture;
 	uint8_t		shopping_list_len;
 	uint8_t		i;
+	t_item 		*s_list;
 
 	shopping_list_len = doom->groceries->shopping_list_len;
 	if (!shopping_list_len)
