@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 #checks if homebrew is installed
 if test ! $(which brew); then
@@ -14,7 +14,7 @@ function osInstall {
 	brew install gcc
     brew install SDL2
     brew install SDL2_ttf
-    brew install SDL2_mixer	
+    brew install SDL2_mixer
 }
 
 OS_NAME=`uname -s`
