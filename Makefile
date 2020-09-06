@@ -3,7 +3,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom-nukem
-FLAGS = -Wall -Wextra -Werror -O2 -Wpedantic -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -O2 -Wpedantic
 LIBFT = libft
 SDL = sdl
 BMP = bmp
@@ -37,7 +37,7 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				set_ceiling_limit set_properties_plane draw_window img
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
-			 set_texture_type create_sidedef
+			 set_texture_type create_sidedef bmp_safe_exit save_player_settings_sprites
 EDITOR_FILES = 	game_editor \
 				add_lists_to_lib\
 				add_lists_to_lib_sidedef\
