@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 17:37:34 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 18:16:28 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 			node_bottom = new_clip_start(sidedef.sector, x, plane.sidedef_bottom);
 			//protect
 			node_bottom->next = NULL;
-			node->sidedef = sidedef.id;
+			node_bottom->sidedef = sidedef.id;
 			doom->clip->bottom->next = node_bottom;
 		}
 		else if (in_range(plane.sidedef_bottom, 0, HEIGHT) &&\
