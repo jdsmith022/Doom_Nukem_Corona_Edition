@@ -13,7 +13,7 @@ int			open_file(t_doom *doom, char *filename)
 
 void		modified(t_doom *doom, char *file_name)
 {
-	struct stat filestat;
+	// struct stat filestat;
 
 	// stat(file_name, &filestat);
 	// if ((long long)filestat.st_mtime != (long long)filestat.st_birthtime)

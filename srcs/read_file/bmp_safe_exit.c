@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_player_sprite.c                              :+:    :+:            */
+/*   bmp_safe_exit.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 11:52:27 by jesmith       ########   odam.nl         */
+/*   Created: 2020/09/06 11:09:44 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/06 11:10:17 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../../includes/menu.h"
-#include "../../includes/render.h"
+#include "../../includes/read.h"
 
-void	print_player_sprite(t_doom *doom)
+void			bmp_safe_exit(t_doom *doom, t_bmp *images)
 {
-	SDL_Rect coord;
-
-	coord.x = 250;
-	coord.y = 5;
-	draw_img(doom->lib.player_lib[1], doom, coord);
-	coord.x += 150;
-	draw_img(doom->lib.player_lib[2], doom, coord);
-	coord.x += 150;
-	draw_img(doom->lib.player_lib[0], doom, coord);
+	doom_exit_lib_failure(images, MALLOC_ERR);
+	doom_exit_failure(doom, "error: bmp reader");
 }
