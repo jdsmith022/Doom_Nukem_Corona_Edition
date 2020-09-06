@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 20:37:54 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 22:05:36 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,89 +43,14 @@ void			set_properties_plane(t_doom *doom, t_sidedef sidedef,
 	set_sector_properties(doom, sidedef, sector, plane);
 }
 
-static bool			in_range(int nb, int min, int max)
-{
-	if (nb > min && nb < max)
-		return (TRUE);
-	return (FALSE);
-}
-
-static t_clip			*same_sidedef(t_clip *head_node, int id)
-{
-	t_clip		*temp;
-
-	temp = head_node;
-	while (temp != NULL)
-	{
-		if (temp->sidedef == id)
-			return (temp);
-		temp = temp->next;
-	}
-	return (NULL);
-}
-
-static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
+void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 				t_sidedef sidedef, int x)
 {
-	t_clip		*node;
-	t_clip		*node_bottom;
-	t_clip		*top;
-	t_clip		*temp;
-	t_clip		*temp2;
-	t_clip		*temp3;
-
 	if (sidedef.opp_sector != -1 && sidedef.action != 6)
 	{
-		temp = same_sidedef(doom->clip->head_mid_bottom, sidedef.id);
-		temp2 = same_sidedef(doom->clip->head_bottom, sidedef.id);
-		temp3 = same_sidedef(doom->clip->head_top, sidedef.id);
-		if (in_range(plane.mid_texture_bottom, -1, HEIGHT) && temp == NULL)
-		{
-			while (doom->clip->mid_bottom->next != NULL)
-				doom->clip->mid_bottom = doom->clip->mid_bottom->next;
-			node = new_clip_start(sidedef.sector, x, plane.mid_texture_bottom, sidedef.id);
-			//protect
-			doom->clip->mid_bottom->next = node;
-		}
-		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) && temp != NULL)
-		{
-			temp->line.end.x = x;
-			temp->line.end.y = plane.mid_texture_bottom;
-			doom->clip->mid_bottom->next->line.end = temp->line.end;
-		}
-		
-		if (in_range(plane.sidedef_bottom, -1, HEIGHT) && temp2 == NULL)
-		{
-			while (doom->clip->bottom->next != NULL)
-				doom->clip->bottom = doom->clip->bottom->next;
-			node_bottom = new_clip_start(sidedef.sector, x, plane.sidedef_bottom, sidedef.id);
-			//protect
-			doom->clip->bottom->next = node_bottom;
-		}
-		else if (in_range(plane.sidedef_bottom, -1, HEIGHT) && temp2 != NULL)
-		{
-			temp2->line.end.x = x;
-			temp2->line.end.y = plane.mid_texture_bottom;
-			doom->clip->bottom->next->line.end = temp2->line.end;
-			// doom->clip->bottom->next->line.end.x = x;
-			// doom->clip->bottom->next->line.end.y =\
-			plane.sidedef_bottom;
-		}
-		//TOP
-		if (in_range(plane.sidedef_top, 0, HEIGHT) && temp3 == NULL)
-		{
-			while (doom->clip->top->next != NULL)
-				doom->clip->top = doom->clip->top->next;
-			top = new_clip_start(sidedef.sector, x, plane.sidedef_top, sidedef.id);
-			//protect
-			doom->clip->top->next = top;
-		}
-		else if (in_range(plane.sidedef_top, 0, HEIGHT) && temp3 != NULL)
-		{
-			temp3->line.end.x = x;
-			temp3->line.end.y = plane.sidedef_top;
-			doom->clip->top->next->line.end = temp3->line.end;
-		}
+		set_top(doom, plane, sidedef, x);
+		set_mid_bottom(doom, plane, sidedef, x);
+		set_bottom(doom, plane, sidedef, x);
 	}
 }
 

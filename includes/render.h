@@ -98,7 +98,12 @@ void				add_tint_to_color(Uint32 *color, int tint, int mask);
 
 t_ray				init_ray(t_doom *doom, int x);
 double				clamp_angle(double angle);
-t_clip				*new_clip_start(int id, int x, int y, int sidedef);
+t_clip				*new_clip_start(int sector_id, int x, int y, int sidedef);
 void				free_clipping_values(t_doom *doom, t_clip *list);
+void				set_values_clipping_sprites(t_doom *doom, t_plane plane,\
+					t_sidedef sidedef, int x);
+void				set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
+void				set_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
+void				set_top(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 
 #endif
