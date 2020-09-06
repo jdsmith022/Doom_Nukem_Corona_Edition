@@ -48,7 +48,7 @@ typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
-typedef struct s_ed_sidedef t_ed_sidedef;
+typedef struct s_ed_sidedef	t_ed_sidedef;
 typedef struct s_ed_sector	t_ed_sector;
 typedef struct s_ed_sprite	t_ed_sprite;
 
@@ -185,9 +185,9 @@ typedef struct		s_event {
 typedef struct		s_object
 {
 	int				n_textures;
-	int*			textures;
-	int*			face_ang;
-	char*			name;
+	int				*textures;
+	int				*face_ang;
+	char			*name;
 	int				action;
 	t_line			location;
 }					t_object;
