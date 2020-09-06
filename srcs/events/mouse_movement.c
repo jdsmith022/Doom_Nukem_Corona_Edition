@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 13:59:15 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/06 22:10:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void		set_pitch(t_doom *doom, SDL_MouseMotionEvent *motion, double dt,
 	}
 	else
 	{
-		limit_pos = 300;
-		limit_neg = -300;
+		limit_pos = 350;
+		limit_neg = -350;
 	}
 	event->y_pitch = event->y_pitch > limit_pos ? limit_pos : event->y_pitch;
 	event->y_pitch = event->y_pitch < limit_neg ? limit_neg : event->y_pitch;

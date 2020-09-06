@@ -34,5 +34,4 @@ void			init_groceries(t_doom *doom)
 	generate_shopping_list(doom);
 	doom->groceries->basket = NULL;
 	doom->groceries->font = doom->lib.font_lib.font_16;
-	printf("hier\n");
 }

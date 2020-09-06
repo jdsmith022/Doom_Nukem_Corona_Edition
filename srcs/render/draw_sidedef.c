@@ -6,28 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:56 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 20:13:26 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/06 21:46:11 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/render.h"
-
-void			put_portal_pixel(t_doom *doom, t_point pixel,
-					int tint, int mask)
-{
-	Uint32	*pixels;
-	Uint32	color;
-
-	if (pixel.x >= 0 && pixel.x < WIDTH && pixel.y >= 0 && pixel.y < HEIGHT)
-	{
-		pixels = doom->surface->pixels;
-		color = pixels[((int)pixel.y * WIDTH) + (int)pixel.x];
-		if (tint != 0)
-			add_tint_to_color(&color, tint, mask);
-		pixels[((int)pixel.y * WIDTH) + (int)pixel.x] = color;
-	}
-}
 
 static void		find_texture_index(t_doom *doom, t_point pixel, t_plane plane,
 					t_sidedef sidedef)
@@ -61,6 +45,17 @@ static void		put_texture_sidedef(t_doom *doom, t_sidedef sidedef,
 	find_texture_index(doom, pixel, plane, sidedef);
 }
 
+static void		draw_portal_sidedef_2(t_doom *doom, t_sidedef sidedef,
+					t_plane plane, t_point pixel)
+{
+	while (pixel.y < plane.sidedef_bottom && pixel.y < HEIGHT)
+	{
+		sidedef.txt_2 = sidedef.txt_3;
+		put_texture_sidedef(doom, sidedef, plane, pixel);
+		pixel.y++;
+	}
+}
+
 void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x)
 {
@@ -72,7 +67,8 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 	pixels = doom->surface->pixels;
 	if (doom->game.light == FALSE && \
 	doom->lib.sector[sidedef.sector].action != OUTSIDE)
-		calculate_ceiling_dist(doom, pixel.x, pixel.y, doom->lib.sector[sidedef.sector]);
+		calculate_ceiling_dist(doom, pixel.x, pixel.y, \
+		doom->lib.sector[sidedef.sector]);
 	while (pixel.y < plane.mid_texture_top)
 	{
 		sidedef.txt_2 = sidedef.txt_1;
@@ -84,12 +80,7 @@ void			draw_portal_sidedef(t_doom *doom, t_plane plane,
 		put_portal_pixel(doom, pixel, 0, WINDOW_MASK);
 		pixel.y++;
 	}
-	while (pixel.y < plane.sidedef_bottom && pixel.y < HEIGHT)
-	{
-		sidedef.txt_2 = sidedef.txt_3;
-		put_texture_sidedef(doom, sidedef, plane, pixel);
-		pixel.y++;
-	}
+	draw_portal_sidedef_2(doom, sidedef, plane, pixel);
 }
 
 void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
@@ -98,12 +89,11 @@ void			draw_onesided_sidedef(t_doom *doom, t_plane plane,
 	t_point	pixel;
 	char	*pixels;
 
-
 	pixel.y = plane.sidedef_top;
 	pixel.x = x;
 	if (doom->game.light == FALSE && \
 	doom->lib.sector[sidedef.sector].action != OUTSIDE && \
-	sidedef.action != 4 && sidedef.action != 8)	
+	sidedef.action != 4 && sidedef.action != 8)
 		calculate_ceiling_dist(doom, pixel.x, pixel.y, \
 		doom->lib.sector[sidedef.sector]);
 	while (pixel.y < plane.sidedef_bottom)
