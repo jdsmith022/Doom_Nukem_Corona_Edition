@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/05 10:59:34 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/06 12:18:39 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 17:30:03 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void		free_clipping_values(t_clip *list)
 	node = list->next;
 	//standard free function for t_clip linked list
 	if (node == NULL)
+	{
+		printf("return\n");
 		return ;
-	while (node->next != NULL)
+	}
+	while (node != NULL)
 	{
 		temp = node->next;
 		printf("free #%d S#%d (%f;%f)-(%f;%f)\n", node->id, node->sidedef, node->line.start.x, node->line.start.y, node->line.end.x, node->line.end.y);
@@ -31,6 +34,7 @@ void		free_clipping_values(t_clip *list)
 		free(node);
 		node = temp;
 	}
+	list->next = NULL;
 	//end standard free function for t_clip
 }
 

@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:07 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/05 19:08:51 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 17:34:44 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void		sprite_render(t_doom *doom)
 		sort_sprites_window(doom->lib.sprite_order, doom->i_sector,\
 		doom->visible_sprites, doom->lib.sprites);
 	draw_sprite(doom, doom->lib.sprite_order);
-	free_clipping_values(doom->clip->mid_bottom);
-	free_clipping_values(doom->clip->bottom);
-	free_clipping_values(doom->clip->top);
+	free_clipping_values(doom->clip->head_mid_bottom);
+	free_clipping_values(doom->clip->head_bottom);
+	free_clipping_values(doom->clip->head_top);
 	doom->clip->prev_mid_bottom = -1;
 	doom->clip->prev_bottom = -1;
 	doom->clip->prev_top = -1;

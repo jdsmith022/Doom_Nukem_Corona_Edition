@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 16:19:30 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/06 17:37:34 by rsteigen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 		same_sidedef(doom->clip->head_mid_bottom, sidedef.id) == -1)
 		{
 			doom->clip->prev_mid_bottom = sidedef.id;
-			// if (doom->clip->mid_bottom->next != NULL)
+			// while (doom->clip->mid_bottom->next != NULL)
 			// 	doom->clip->mid_bottom = doom->clip->mid_bottom->next;
 			node = new_clip_start(sidedef.sector, x, plane.mid_texture_bottom);
 			//protect
@@ -88,7 +88,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 			node->sidedef = sidedef.id;
 			doom->clip->mid_bottom->next = node;
 		}
-		else if (in_range(plane.mid_texture_bottom, 0, HEIGHT) &&\
+		else if (in_range(plane.mid_texture_bottom, -1, HEIGHT) &&\
 		doom->clip->prev_mid_bottom == sidedef.id)
 		{
 			doom->clip->mid_bottom->next->line.end.x = x;
@@ -103,6 +103,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 			node_bottom = new_clip_start(sidedef.sector, x, plane.sidedef_bottom);
 			//protect
 			node_bottom->next = NULL;
+			node->sidedef = sidedef.id;
 			doom->clip->bottom->next = node_bottom;
 		}
 		else if (in_range(plane.sidedef_bottom, 0, HEIGHT) &&\
@@ -120,6 +121,7 @@ static void			set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 			top = new_clip_start(sidedef.sector, x, plane.sidedef_top);
 			//protect
 			top->next = NULL;
+			top->sidedef = sidedef.id;
 			doom->clip->top->next = top;
 		}
 		else if (in_range(plane.sidedef_top, 0, HEIGHT) &&\
