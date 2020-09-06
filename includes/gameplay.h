@@ -50,7 +50,7 @@ bool					change_amount(t_item *item, int8_t amount);
 void					del_node(t_list **head, t_list *node);
 void					del_groceries(t_groceries *groc);
 void					print_basket(t_list **basket);
-void					generate_shopping_list(t_doom *doom, t_item *s_list);
+void					generate_shopping_list(t_doom *doom);
 bool					checkout(t_groceries *groceries);
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
 void					draw_shopping_ui(t_doom *doom, t_groceries *groceries);
