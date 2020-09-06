@@ -6,16 +6,14 @@
 #include "doom.h"
 
 typedef struct s_doom		t_doom;
+typedef struct s_ray		t_ray;
 typedef struct s_line		t_line;
+typedef struct s_point		t_point;
 typedef struct s_sector		t_sector;
-typedef struct s_plane		t_plane;
 typedef struct s_sidedef	t_sidedef;
 typedef struct s_sprite		t_sprite;
 typedef struct s_lib		t_lib;
-typedef struct s_point		t_point;
-typedef struct s_ray		t_ray;
-typedef struct s_point		t_point;
-typedef struct s_line		t_line;
+typedef struct s_item		t_item;
 
 # define LEVEL_SPRITE_LEN 5
 
@@ -256,6 +254,7 @@ void					delete_sprites_in_sector(t_doom *doom, int sector);
 void					set_sector_lib(t_doom *doom);
 void					set_sidedef_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
+void					set_groceries_in_level(t_doom *doom, t_item *t_types);
 void					set_spr_corona(t_sprite *sprite);
 void					set_spr_health_pack(t_sprite *sprite);
 void					set_spr_health_pack_pl(t_sprite *sprite);

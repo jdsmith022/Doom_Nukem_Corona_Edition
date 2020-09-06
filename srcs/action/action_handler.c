@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 13:29:15 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/06 18:32:32 by mminkjan      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void		shoot_action(t_doom *doom)
 		doom->own_event.mist = TRUE;
 		check_sprite_hit(doom);
 	}
+	doom->own_event.mouse_press = FALSE;
 }
 
 static void		select_action(t_doom *doom)
@@ -36,6 +37,7 @@ static void		select_action(t_doom *doom)
 	|| (doom->own_event.mouse_pointer))
 	{
 		groceries(doom);
+		doom->own_event.mouse_press = FALSE;
 		check_sprite_hit(doom);
 	}
 	if (doom->own_event.groc_pickup == 0 && doom->own_event.mouse_pointer == 0)

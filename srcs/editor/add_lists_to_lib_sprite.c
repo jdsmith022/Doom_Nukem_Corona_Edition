@@ -17,7 +17,6 @@ static void		delete_list(t_doom *doom)
 		free(ed_sprite);
 		ed_sprite = next;
 	}
-	// free(doom->game_design.sp_head);
 }
 
 static void		set_sector_sprite_values(t_sector *sector, int *spr_index,\
@@ -70,7 +69,7 @@ void			set_sprite_lib(t_doom *doom)
 	if (lib.sprites == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
 	sort_sprite_per_sector(doom, lib);
-	// delete_list(doom);
+	delete_list(doom);
 	doom->lib.sprites = lib.sprites;
 	doom->total_sprites = doom->game_design.spr_len;
 }

@@ -3,7 +3,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom-nukem
-FLAGS = -g -Wall -Wextra -Werror -O3 -Wpedantic
+FLAGS = -g -Wall -Wextra -Werror -O3 -Wpedantic -fsanitize=address
 LIBFT = libft
 SDL = sdl
 BMP = bmp
@@ -61,7 +61,8 @@ EDITOR_FILES = 	game_editor \
 				add_lists_to_lib\
 				add_lists_to_lib_sidedef\
 				add_lists_to_lib_sector\
-				add_lists_to_lib_sprite
+				add_lists_to_lib_sprite \
+				add_lists_to_lib_groceries
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \

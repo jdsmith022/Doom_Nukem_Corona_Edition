@@ -17,7 +17,7 @@ void			delete_sprite(t_doom *doom)
 	doom->game_design.cur_sprite = doom->game_design.ed_sprite->id;
 }
 
-void				delete_sprites_in_sector(t_doom *doom, int sector)
+void			delete_sprites_in_sector(t_doom *doom, int sector)
 {
 	t_ed_sprite *sprite;
 	t_ed_sprite *next;
