@@ -29,6 +29,7 @@ void			init_groceries(t_doom *doom)
 {
 	uint8_t		num_of_groceries;
 
+	doom->groceries = NULL;
 	if (!doom->game_design.custom_level)
 		init_default_groceries(doom);
 	num_of_groceries = doom->groceries->num_of_groceries;
@@ -41,5 +42,4 @@ void			init_groceries(t_doom *doom)
 	generate_shopping_list(doom, doom->groceries->shopping_list);
 	doom->groceries->basket = NULL;
 	doom->groceries->font = doom->lib.font_lib.font_16;
-	printf("test\n");
 }
