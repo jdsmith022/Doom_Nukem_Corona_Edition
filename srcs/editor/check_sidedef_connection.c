@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   check_sidedef_connection.c                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 17:51:05 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
@@ -25,7 +37,11 @@ bool			line_intersect(t_doom *doom, t_point start, int x, int y)
 
 static void		get_connection_sidedef(t_doom *doom, t_line line)
 {
-	if (check_sector_in_sector(doom, line.end) == TRUE)
+	t_line	ray;
+
+	ray.start = line.end;
+	ray = set_ray(doom, ray);
+	if (check_sector_in_sector(doom, ray) == TRUE)
 		return ;
 	set_ed_sidedef_values(doom, line);
 	doom->game_design.draw_line.start = line.end;

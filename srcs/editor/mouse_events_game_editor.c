@@ -1,17 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   mouse_events_game_editor.c                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 17:35:27 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
 static void		add_player(t_doom *doom, int x, int y)
 {
-	t_point	pos;
+	t_line	ray;
 
-	pos.x = x;
-	pos.y = y;
-	if (check_sector_in_sector(doom, pos) == TRUE)
+	ray.start.x = x;
+	ray.start.y = y;
+	ray = set_ray(doom, ray);
+	if (check_sector_in_sector(doom, ray) == TRUE)
 	{
+		save_current_sector(doom, ray);
 		doom->i_sector = doom->game_design.cur_sector;
-		doom->pos = pos;
+		doom->pos = ray.start;
 		doom->game_design.place_checkout = TRUE;
 		doom->game_design.edit_sector = FALSE;
 		doom->game_design.spr_tex = 5;
@@ -30,7 +44,7 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 	(editor.edit_sector == TRUE || editor.place_checkout == TRUE))
 		put_sprite(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.edit_sector == FALSE && editor.open_connection == TRUE)
+		editor.edit_sector == FALSE && editor.open_connection == TRUE)
 		check_connection(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	editor.edit_sector == FALSE && editor.open_connection == FALSE)

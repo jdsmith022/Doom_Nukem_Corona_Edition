@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   set_sprite_values_2.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 17:35:50 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
@@ -32,7 +44,7 @@ void		set_spr_checkout(t_sprite *sprite)
 	sprite->textures[2] = 114;
 	sprite->textures[3] = 117;
 	sprite->block = BLOCK;
-	sprite->action = 0;
+	sprite->action = 13;
 	set_spr_lines(sprite, LENGTH_LARGE);
 }
 
