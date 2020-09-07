@@ -4,14 +4,17 @@
 
 static void		add_player(t_doom *doom, int x, int y)
 {
-	t_point	pos;
+	t_line	ray;
 
-	pos.x = x;
-	pos.y = y;
-	if (check_sector_in_sector(doom, pos) == TRUE)
+	ray.start.x = x;
+	ray.start.y = y;
+	ray.end.y = y;
+	ray.end.x = x + + doom->cast.max_ray;
+	if (check_sector_in_sector(doom, ray) == TRUE)
 	{
 		doom->i_sector = doom->game_design.cur_sector;
-		doom->pos = pos;
+		printf("set player %d\n", doom->i_sector);
+		doom->pos = ray.start;
 		doom->game_design.place_checkout = TRUE;
 		doom->game_design.edit_sector = FALSE;
 		doom->game_design.spr_tex = 5;

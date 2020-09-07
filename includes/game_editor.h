@@ -227,7 +227,7 @@ void					add_sidedef(t_doom *doom, int x, int y);
 void					delete_sector(t_doom *doom);
 void					add_sector(t_doom *doom);
 void					set_ed_sector_values(t_doom *doom);
-bool					check_sector_in_sector(t_doom *doom, t_point pos);
+bool					check_sector_in_sector(t_doom *doom, t_line ray);
 t_sector				*light_correction(t_sector *sector, int len);
 void					mouse_press_game_editor(t_doom *doom, int x, int y);
 void					bars(Uint32 **pixels, t_doom *doom);

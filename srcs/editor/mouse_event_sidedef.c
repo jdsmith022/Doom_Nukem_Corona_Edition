@@ -21,7 +21,6 @@ static void		create_portal(t_doom *doom)
 	t_ed_sidedef	*sidedef;
 	t_ed_sector		*sector;
 
-	printf("create portal\n");
 	sidedef = doom->game_design.ed_sidedef;
 	sidedef->opp_sector = doom->game_design.sc_len;
 	set_ed_sidedef_values(doom, sidedef->line);

@@ -54,15 +54,17 @@ static void			set_ed_sprite(t_doom *doom, t_point pos)
 
 void				put_sprite(t_doom *doom, int x, int y)
 {
-	t_point		pos;
+	t_line		ray;
 	int			id;
 	t_ed_sprite *prev;
 
-	pos.x = x;
-	pos.y = y;
-	if (check_sector_in_sector(doom, pos) == TRUE && \
-	enough_dist_to_sprites(doom, pos) == TRUE && \
-	check_enough_dist_to_sidedef(doom, pos) == TRUE)
+	ray.start.x = x;
+	ray.start.y = y;
+	ray.end.x = x + doom->cast.max_ray;
+	ray.end.y = y;
+	if (check_sector_in_sector(doom, ray) == TRUE && \
+	enough_dist_to_sprites(doom, ray.start) == TRUE && \
+	check_enough_dist_to_sidedef(doom, ray.start) == TRUE)
 	{
 		while (doom->game_design.ed_sprite->next != NULL)
 			doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
@@ -73,7 +75,7 @@ void				put_sprite(t_doom *doom, int x, int y)
 		prev = doom->game_design.ed_sprite;
 		doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 		doom->game_design.ed_sprite->previous = prev;
-		set_ed_sprite(doom, pos);
+		set_ed_sprite(doom, ray.start);
 		doom->game_design.ed_sprite->next = NULL;
 		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
 			doom->game.editor = FALSE;
