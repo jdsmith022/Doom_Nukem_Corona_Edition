@@ -57,13 +57,10 @@ void			generate_shopping_list(t_doom *doom)
 		set_sprite(doom, s_list[0].type, &s_list[0]);
 		s_list[0].position = get_position(0, WIDTH - 35, 60);
 	}
-	printf("Shopping list: \n");
 	while (i < (shopping_list_len))
 	{
 		curr_texture = rand() % (doom->groceries->num_of_groceries - 1);
-		printf("(%d) ", curr_texture);
 		s_list[i].type = get_next_grocery(doom, &curr_texture);
-		printf("type: %d ", s_list[i].type);
 		s_list[i].amount = (rand() % 5) + 1;
 		set_sprite(doom, s_list[i].type, &s_list[i]);
 		s_list[i].position = get_position(i, WIDTH - 35, 60);

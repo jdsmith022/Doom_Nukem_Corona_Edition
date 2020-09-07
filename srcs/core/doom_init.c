@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 20:39:05 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/07 11:10:40 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,39 +30,7 @@ static void		init_sprites(t_doom *doom)
 		doom->lib.sprite_height[i] = i;
 		i++;
 	}
-	doom->clip = (t_clip_lists*)ft_memalloc(sizeof(t_clip_lists));
-	//protect
-	
-	//BOTTOM
-	// printf("before bottom\n");
-	doom->clip->bottom = (t_clip*)ft_memalloc(sizeof(t_clip));
-	//protect
-	// printf("after bottom\n");
-	doom->clip->bottom->next = NULL;
-	doom->clip->head_bottom = doom->clip->bottom;
-
-	// printf("before top\n");
-	//TOP
-	doom->clip->top = (t_clip*)ft_memalloc(sizeof(t_clip));
-	// printf("after malloc top\n");
-	//protect
-	doom->clip->top->next = NULL;
-	doom->clip->head_top = doom->clip->top;
-	
-	//MID BOTTOM
-	doom->clip->mid_bottom = (t_clip*)ft_memalloc(sizeof(t_clip));
-	//protect
-	doom->clip->mid_bottom->next = NULL;
-	doom->clip->head_mid_bottom = doom->clip->mid_bottom;
-
-
-	// doom->clip->head_mid_top = (t_clip*)malloc(sizeof(t_clip) * 1);
-	// //if (!doom->clip)
-	// //exit?
-	// //set content to NULL
-	// //and content size to ZERO
-	// //else malloc for content (not necessary)
-	// doom->clip->head_mid_top->next = NULL;
+	init_clipping(doom);
 }
 
 static void		init_render(t_doom *doom)

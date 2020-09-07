@@ -6,13 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/05 20:58:08 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/07 10:54:24 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-int		check_y_side_line(t_line line, int x, int y)
+static int		check_y_side_line(t_line line, int x, int y)
 {
 	t_point		compare;
 	int			diff;
@@ -20,8 +20,6 @@ int		check_y_side_line(t_line line, int x, int y)
 
 	compare.x = line.start.x;
 	compare.y = line.start.y + 1;
-	//if it is under the line return -1
-	//if it is above the line return 1
 	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
 			(y - line.start.y) * (line.end.x - line.start.x);
 	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
@@ -33,9 +31,9 @@ int		check_y_side_line(t_line line, int x, int y)
 		return (1);
 }
 
-int		check_sector_values(t_sprite sprite, int id)
+static int		check_sector_values(t_sprite sprite, int id)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (i < sprite.n_sector)
@@ -47,7 +45,7 @@ int		check_sector_values(t_sprite sprite, int id)
 	return (-1);
 }
 
-int		clip_top(t_doom *doom, int index_sp, int x, int screen_y)
+int				clip_top(t_doom *doom, int index_sp, int x, int screen_y)
 {
 	t_clip		*top;
 	t_sprite	sprite;
@@ -56,7 +54,7 @@ int		clip_top(t_doom *doom, int index_sp, int x, int screen_y)
 	top = doom->clip->head_top->next;
 	while (top != NULL)
 	{
-		if (check_sector_values(sprite, top->id) == 1)
+		if (check_sector_values(sprite, top->sector_id) == 1)
 		{
 			if (x > top->line.start.x && x < top->line.end.x)
 			{
@@ -69,7 +67,17 @@ int		clip_top(t_doom *doom, int index_sp, int x, int screen_y)
 	return (-1);
 }
 
-int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
+static int		check_mid_bottom_lines(t_clip *mid_bottom, int x)
+{
+	if ((x >= mid_bottom->line.start.x && x <= mid_bottom->line.end.x) ||\
+	(mid_bottom->line.start.y <= 15 && x <= mid_bottom->line.start.x) ||\
+	(mid_bottom->line.end.y <= 15 && x >= mid_bottom->line.end.x))
+		return (1);
+	return (-1);
+}
+
+int				no_clipping_region(int screen_y, t_sprite sprite,\
+				t_doom *doom, int x)
 {
 	t_clip	*mid_bottom;
 	t_clip	*bottom;
@@ -78,9 +86,9 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	bottom = doom->clip->head_bottom->next;
 	while (mid_bottom != NULL)
 	{
-		if (check_sector_values(sprite, mid_bottom->id) == 1)
+		if (check_sector_values(sprite, mid_bottom->sector_id) == 1)
 		{
-			if (x > mid_bottom->line.start.x && x < mid_bottom->line.end.x)
+			if (check_mid_bottom_lines(mid_bottom, x) == 1)
 			{
 				if (check_y_side_line(mid_bottom->line, x, screen_y) == -1)
 					return (-1);
@@ -90,7 +98,7 @@ int		no_clipping_region(int screen_y, t_sprite sprite, t_doom *doom, int x)
 	}
 	while (bottom != NULL)
 	{
-		if (check_sector_values(sprite, bottom->id) == 1)
+		if (check_sector_values(sprite, bottom->sector_id) == 1)
 		{
 			if (x > bottom->line.start.x && x < bottom->line.end.x)
 			{

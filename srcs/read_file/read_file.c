@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:44:12 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 16:58:35 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/07 11:29:10 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_sector			*save_sectors(t_doom *doom, int fd, int *len)
 	get_line(doom, &line, fd, 1);
 	*len = ft_atoi(line);
 	free(line);
-	printf("len: %d\n", *len);
 	sect = (t_sector*)ft_memalloc(sizeof(t_sector) * (*len));
 	if (sect == NULL)
 		doom_exit_failure(doom, MALLOC_ERR);
