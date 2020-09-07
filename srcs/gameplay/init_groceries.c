@@ -19,6 +19,7 @@ uint8_t			get_num_of_groceries(t_doom *doom)
 
 static void		init_default_groceries(t_doom *doom)
 {
+	doom->groceries = NULL;
 	doom->groceries = (t_groceries *)ft_memalloc(sizeof(t_groceries));
 	if (doom->groceries == NULL)
 		doom_exit_failure(doom, "error: groceries malloc");
@@ -38,8 +39,7 @@ void			init_groceries(t_doom *doom)
 		doom->groceries->shopping_list_len = MAX_SL_LEN;
 	doom->groceries->shopping_list =
 		ft_memalloc(sizeof(t_item) * doom->groceries->shopping_list_len);
-	generate_shopping_list(doom, doom->groceries->shopping_list);
+	generate_shopping_list(doom);
 	doom->groceries->basket = NULL;
 	doom->groceries->font = doom->lib.font_lib.font_16;
-	printf("test\n");
 }

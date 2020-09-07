@@ -4,7 +4,7 @@
 # include <stdlib.h>
 
 # define GROC_COUNT				52
-# define GROC_TYPES				49
+# define GROC_TYPES				47
 
 typedef enum					e_groc_types {
 	APPLE = 1, BACON, CHERRY, JAM,
@@ -49,7 +49,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 		CHERRY
 	},
 	{
-		"assets/textures/shelves/jar6.bmp",
+		"assets/textures/shelves/jam.bmp",
 		"assets/sprites/groceries/jam.bmp",
 		JAM
 	},
