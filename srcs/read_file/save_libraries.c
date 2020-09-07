@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 23:42:29 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 09:31:52 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void		save_libraries(t_doom *doom)
 {
 	int fd;
 
-	// if (argc != 1)
-	//     error("Please run program in this fashion: ./duke_nukem", 0);
 	modified(doom, "srcs/read_file/start_skybox_full");
 	fd = open_file(doom, "srcs/read_file/start_skybox_full");
 	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
