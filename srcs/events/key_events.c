@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 12:37:23 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:40:57 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "../../includes/events.h"
 #include "../../includes/game_editor.h"
 
-static void		key_handler_2(t_doom *doom)
+static void		key_handler_2(t_doom *doom, t_event *event)
 {
 	if (event->scissor_lift_up == TRUE)
 		scissor_lift_up(doom);
@@ -51,7 +51,7 @@ void			key_handler(t_doom *doom, t_event *event, double dt)
 		event->fall = FALSE;
 	}
 	else
-		key_handler_2(doom);
+		key_handler_2(doom, event);
 }
 
 void			key_release(t_event *event, SDL_KeyboardEvent *key)
