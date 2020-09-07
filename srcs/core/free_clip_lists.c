@@ -22,14 +22,14 @@ static void	delete_clip_list(t_doom *doom, t_clip *list)
 
 void		free_clip_lists(t_doom *doom)
 {
-	if (doom->clip->bottom)
-		delete_clip_list(doom, doom->clip->head_bottom);
-	if (doom->clip->mid_bottom)
-		delete_clip_list(doom, doom->clip->head_mid_bottom);
-	if (doom->clip->top)
-		delete_clip_list(doom, doom->clip->head_top);
 	if (doom->clip)
 	{
+		if (doom->clip->bottom)
+			delete_clip_list(doom, doom->clip->head_bottom);
+		if (doom->clip->mid_bottom)
+			delete_clip_list(doom, doom->clip->head_mid_bottom);
+		if (doom->clip->top)
+			delete_clip_list(doom, doom->clip->head_top);
 		ft_bzero(doom->clip, sizeof(doom->clip));
 		free(doom->clip);
 	}
