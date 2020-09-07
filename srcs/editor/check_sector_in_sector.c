@@ -14,7 +14,7 @@ static bool		get_current_sector(t_doom *doom, t_line dist_to_sd,
 		if (sidedef->opp_sector == -1)
 		{
 			doom->game_design.cur_sector = sidedef->sector;
-			printf("checkout = %d\n", doom->game_design.cur_sector);
+			printf("sector = %d, sidedef = %d\n", doom->game_design.cur_sector, sidedef->id);
 			return (TRUE);
 		}
 		*prev_distance = distance;
@@ -53,13 +53,14 @@ void 			save_current_sector(t_doom *doom, t_line ray)
 			line.end = intersect;
 			valid_sector = get_current_sector(doom, line,\
 				sidedef, &distance);
-			if (valid_sector == FALSE)
-			{
-				distance = INFINITY;
-				save_current_sector(doom, set_ray(doom, ray));
-			}
 		}
 		sidedef = sidedef->next;
+		if (valid_sector == FALSE && sidedef == NULL)
+		{
+			distance = INFINITY;
+			sidedef =  doom->game_design.sd_head->next;
+			ray = set_ray(doom, ray);
+		}
 	}
 }
 

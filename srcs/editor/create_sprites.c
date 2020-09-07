@@ -78,6 +78,9 @@ void				put_sprite(t_doom *doom, int x, int y)
 		set_ed_sprite(doom, ray.start);
 		doom->game_design.ed_sprite->next = NULL;
 		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
+		{
+			printf("checkout sector = %d\n", doom->game_design.ed_sprite->sector);
 			doom->game.editor = FALSE;
+		}
 	}
 }
