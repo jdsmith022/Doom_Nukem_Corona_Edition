@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 10:38:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:33:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 
-static void	sanitizer_pause(t_doom *doom)
+void	sanitizer_pause(t_doom *doom)
 {
 	int diff;
 
@@ -55,11 +55,5 @@ void		sanitizer_refill(t_doom *doom)
 		if (doom->own_event.sanitizer_refills < 3 \
 		&& doom->own_event.sanitizer_refills > 0)
 			doom->hud->update = sanitizer;
-		doom->own_event.mouse_press = FALSE;
-	}
-	if (doom->own_event.refill == TRUE && doom->own_event.mouse_press == FALSE)
-	{
-		if (doom->own_event.sanitizer_refills > 3)
-			sanitizer_pause(doom);
 	}
 }
