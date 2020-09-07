@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:32:47 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 20:54:39 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,66 @@ void			set_ed_sector_values(t_doom *doom)
 	doom->game_design.ed_sector->next = NULL;
 	doom->game_design.open_connection = TRUE;
 	doom->game_design.sc_len++;
+}
+
+static void		create_mid_points(t_line *line)
+{
+	t_point center;
+
+	center.x = (line->start.x + line->end.x) / 2;
+	center.y = (line->start.y + line->end.y) / 2;
+	if (line->start.x == line->end.x)
+	{
+		line->start.x = center.x;
+		line->start.y = center.y + 5;
+		line->end.x = center.x;
+		line->end.y = center.y - 5;
+	}
+	else
+	{
+		line->start.x = center.x + 5;
+		line->start.y = center.y;
+		line->end.x = center.x - 5;
+		line->end.y = center.y;
+	}
+}
+
+static bool		get_portal(t_doom *doom, t_line *line)
+{
+	t_ed_sidedef *sidedef;
+
+	sidedef = doom->game_design.ed_sidedef;
+	while (sidedef != NULL && sidedef->opp_sector == -1)
+		sidedef = sidedef->previous;
+	if (sidedef == NULL || sidedef->line.start.x == 0)
+		return (FALSE);
+	*line = sidedef->line;
+	return (TRUE);
+}
+
+bool			snap_close_sector(t_doom *doom, t_point start, t_point *end)
+{
+	double		distance;
+	t_line		line;
+	t_line		ray;
+
+	get_portal(doom, &line);
+	create_mid_points(&line);
+	ray.start = line.start;
+	ray = set_ray(doom, ray);
+	if (check_sector_in_sector(doom, ray) == FALSE && \
+	doom->game_design.sc_len > 0)
+		return (FALSE);
+	ray.start = line.end;
+	ray = set_ray(doom, ray);
+	if (check_sector_in_sector(doom, ray) == FALSE && \
+	doom->game_design.sc_len > 0)
+		return (FALSE);
+	distance = point_distance(start, *end);
+	if (distance < 10)
+	{
+		*end = start;
+		return (TRUE);
+	}
+	return (FALSE);
 }
