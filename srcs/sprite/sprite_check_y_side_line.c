@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   sprite_check_y_side_line.c                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: JessicaSmith <JessicaSmith@student.coda      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/09/07 12:53:28 by JessicaSmit   #+#    #+#                 */
-/*   Updated: 2020/09/07 12:53:42 by JessicaSmit   ########   odam.nl         */
+/*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 12:56:50 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

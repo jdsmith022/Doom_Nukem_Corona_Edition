@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/06 21:00:38 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 12:43:36 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:56:32 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void			set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,
 	}
 }
 
-void			set_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void			set_bottom(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x)
 {
 	t_clip		*bottom;
 	t_clip		*temp;
