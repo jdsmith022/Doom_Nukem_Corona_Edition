@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 13:24:36 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 18:15:12 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void			mouse_press(t_doom *doom, SDL_MouseButtonEvent *button,
 	}
 	if (doom->game.editor == TRUE)
 		mouse_press_game_editor(doom, button->x, button->y);
-	if (doom->own_event.shoot == TRUE)
+	else if (doom->own_event.shoot == TRUE)
 		shoot_action(doom);
 	else
 		select_action(doom);
