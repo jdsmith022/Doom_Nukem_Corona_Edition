@@ -43,7 +43,6 @@ void			custom_shopping_list(t_doom *doom, t_groceries *groceries)
 		while (is_duplicate(groc_in_lvl[random_index].type, s_list, i))
 			random_index = rand() % (doom->groceries->num_of_groceries);
 		s_list[i] = new_item(groc_in_lvl[random_index].type, i);
-		printf("type: %d amount %d\n", s_list[i].type, s_list[i].amount);
 		set_sprite(doom, s_list[i].type, &s_list[i]);
 		i++;
 	}

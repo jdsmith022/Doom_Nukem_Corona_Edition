@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:49:35 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 22:49:55 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 static void		set_gameplay_settings(t_doom *doom)
 {
-	doom->i_sector = doom->i_sector;
 	doom->pos = doom->pos;
 	doom->lib.sector = light_correction(\
 		doom->lib.sector, doom->game_design.sc_len);
@@ -59,4 +58,5 @@ void			add_lists_to_libs(t_doom *doom)
 	set_sidedef_lib(doom);
 	set_gameplay_settings(doom);
 	init_groceries(doom);
+	printf("start sector = %d\n", doom->i_sector);
 }
