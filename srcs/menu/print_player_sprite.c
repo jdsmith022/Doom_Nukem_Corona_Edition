@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/30 09:34:41 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 11:52:27 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	print_player_sprite(t_doom *doom)
 
 	coord.x = 250;
 	coord.y = 5;
-	draw_img(doom->lib.obj_lib[103], doom, coord);
+	draw_img(doom->lib.player_lib[1], doom, coord);
 	coord.x += 150;
-	draw_img(doom->lib.obj_lib[105], doom, coord);
+	draw_img(doom->lib.player_lib[2], doom, coord);
 	coord.x += 150;
-	draw_img(doom->lib.obj_lib[29], doom, coord);
+	draw_img(doom->lib.player_lib[0], doom, coord);
 }

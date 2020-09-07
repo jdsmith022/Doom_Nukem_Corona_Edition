@@ -6,14 +6,14 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:03 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/01 15:44:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 23:52:31 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/menu.h"
 
-void		draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
+void			draw_font(t_doom *doom, t_font *font_lib, uint8_t len)
 {
 	Uint32	index;
 

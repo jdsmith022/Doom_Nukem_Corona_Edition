@@ -22,11 +22,7 @@ typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
 
-/*
-** core functions
-*/
-
-int					main(void);
+int					main(int argc, char **argv);
 void				game_init(t_doom *doom);
 void				doom_init(t_doom *doom);
 void				sdl_init(t_doom *doom);
@@ -34,6 +30,7 @@ void				init_menu(t_doom *doom);
 void				init_hud(t_doom *doom);
 void				init_events(t_event *event);
 void				init_audio(t_doom *doom);
+void				init_player_sprite(t_doom *doom);
 void				init_window(t_doom *doom);
 void				init_clipping(t_doom *doom);
 void				game_loop(t_doom *doom);

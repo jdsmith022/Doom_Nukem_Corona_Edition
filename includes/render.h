@@ -105,5 +105,7 @@ void				set_values_clipping_sprites(t_doom *doom, t_plane plane,\
 void				set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void				set_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
 void				set_top(t_doom *doom, t_plane plane, t_sidedef sidedef, int x);
+void				calculate_ceiling_dist(t_doom *doom, int x, int y,
+					t_sector sector);
 
 #endif

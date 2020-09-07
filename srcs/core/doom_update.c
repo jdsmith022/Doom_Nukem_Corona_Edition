@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 10:15:14 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 23:42:58 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ static void	core_gameplay_loop(t_doom *doom, double dt)
 	audio(doom, &doom->own_event);
 }
 
-void	sdl_poll_events(t_doom *doom, double dt)
+void		sdl_poll_events(t_doom *doom, double dt)
 {
 	SDL_Event event;
 
 	event = doom->event;
-	// doom->own_event.mouse_press = FALSE;
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)

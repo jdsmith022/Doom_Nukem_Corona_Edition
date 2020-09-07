@@ -1,7 +1,7 @@
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-bool		line_intersect(t_doom *doom, t_point start, int x, int y)
+bool			line_intersect(t_doom *doom, t_point start, int x, int y)
 {
 	t_ed_sidedef	*sidedef;
 	t_line			line1;
@@ -27,7 +27,7 @@ static void		get_connection_sidedef(t_doom *doom, t_line line)
 {
 	if (check_sector_in_sector(doom, line.end) == TRUE)
 		return ;
-	set_sidedef_values(doom, line);
+	set_ed_sidedef_values(doom, line);
 	doom->game_design.draw_line.start = line.end;
 	doom->game_design.open_connection = FALSE;
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 16:57:27 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 23:43:31 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/hud.h"
 #include "../../includes/menu.h"
 
-void		init_menu(t_doom *doom)
+void	init_menu(t_doom *doom)
 {
 	doom->menu = (t_menu*)ft_memalloc(sizeof(t_menu));
 	if (doom->menu == NULL)
@@ -25,7 +25,7 @@ void		init_menu(t_doom *doom)
 	doom->game.editor = FALSE;
 }
 
-void		init_hud(t_doom *doom)
+void	init_hud(t_doom *doom)
 {
 	doom->hud = (t_hud*)ft_memalloc(sizeof(t_hud));
 	if (doom->hud == NULL)
@@ -35,4 +35,10 @@ void		init_hud(t_doom *doom)
 	doom->hud->corona_level = 0;
 	doom->hud->hold_time = 600;
 	doom->hud->curr_time = 600;
+}
+
+void	init_player_sprite(t_doom *doom)
+{
+	doom->player.handed = left;
+	doom->player.character = player_1;
 }

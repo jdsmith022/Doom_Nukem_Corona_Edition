@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/02 13:04:31 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/07 11:39:31 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 #include "../../includes/font.h"
 #include "../../includes/action.h"
 #include "../../includes/sprites.h"
+#include "../../includes/menu.h"
+#include "../../includes/gameplay.h"
 
 static int	sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
 	int		value;
 
 	value = 0;
+	if (sprite.action == 13)
+	{
+		get_game_over_info(doom);
+		doom->menu->state = finished;
+		return (-1);
+	}
 	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE)\
 	|| sprite.action == 9 || sprite.action == 12)
 		value = 15;
@@ -40,14 +48,12 @@ void		exit_scissor_lift(t_doom *doom)
 	doom->lib.sprites[doom->save_scissor_lift].pos);
 	if (distance > 60)
 	{
-		printf("exit scissor lift\n");
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
 		doom->own_event.scissor_lift_down = FALSE;
 	}
 	else
 	{
-		printf("too close\n");
 		doom->own_event.parked_too_close = TRUE;
 		doom->lib.font_lib.bools.text = TRUE;
 	}
@@ -55,7 +61,6 @@ void		exit_scissor_lift(t_doom *doom)
 
 static void	activate_scissor_lift(t_doom *doom, int index)
 {
-	printf("activate scissor lift\n");
 	doom->own_event.scissor_lift = TRUE;
 	doom->lib.font_lib.bools.text = TRUE;
 	doom->lib.font_lib.bools.scissor_lift = TRUE;

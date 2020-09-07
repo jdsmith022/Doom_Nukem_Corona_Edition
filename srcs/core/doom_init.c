@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 11:10:40 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 11:41:02 by rooscocolie   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,12 @@ static void		init_player(t_doom *doom)
 	doom->player.height = PLAYER_HEIGHT;
 	doom->player.std_height = PLAYER_HEIGHT;
 	doom->i_sector = 0;
-	doom->player.handed = left;
-	doom->player.character = player_1;
 }
 
 static void		init_settings(t_doom *doom)
 {
 	doom->game.is_running = TRUE;
-	doom->game.light = TRUE;
+	doom->game.light = doom->game.difficulty != 3 ? TRUE : FALSE;
 	doom->game.hud_display = TRUE;
 	doom->game.start_timer = FALSE;
 	doom->cast.poster = FALSE;
@@ -64,7 +62,8 @@ static void		init_settings(t_doom *doom)
 
 void			doom_init(t_doom *doom)
 {
-	init_groceries(doom);
+	if (doom->game.editor == FALSE)
+		init_groceries(doom);
 	init_player(doom);
 	init_settings(doom);
 	init_render(doom);

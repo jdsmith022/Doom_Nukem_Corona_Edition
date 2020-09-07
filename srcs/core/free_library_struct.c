@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/02 10:16:31 by mminkjan      ########   odam.nl         */
+/*   Updated: 2020/09/06 23:45:10 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,5 @@ void			free_struct_lib(t_doom *doom)
 		void_free_lib(doom->hud);
 	if (doom->menu)
 		void_free_lib(doom->menu);
-	// if (doom->game_design.sector)
-	// 	void_free_lib(doom->game_design.sector);
-	// if (doom->game_design.sidedef)
-	// 	void_free_lib(doom->game_design.sidedef);
 	free_font_lib(doom);
 }
