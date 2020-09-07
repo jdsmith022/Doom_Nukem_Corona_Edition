@@ -56,7 +56,6 @@ void			default_shopping_list(t_doom *doom, t_groceries *groceries)
 	i = 1;
 	s_list[0] = new_item(TOILET, 0);
 	set_sprite(doom, s_list[0].type, &s_list[0]);
-	printf("type: %d amount %d\n", s_list[i].type, s_list[i].amount);
 	while (i < shopping_list_len)
 	{
 		s_list[i] = new_item(get_next_grocery(doom), i);

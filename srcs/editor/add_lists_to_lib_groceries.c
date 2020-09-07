@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 21:27:39 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/07 22:39:30 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ static bool			is_valid_type(uint8_t type, t_item *tex_types, int len)
 	while ((i + 1) < len)
 	{
 		if (tex_types[i + 1].type == type)
-		{
-			printf("%d is a Duplicate\n", type);
 			return (false);
-		}
 		i++;
 	}
 	return (true);
