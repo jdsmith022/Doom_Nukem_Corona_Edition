@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:35:27 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 23:12:13 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,47 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
+static void		find_middle_of_sector(t_doom *doom)
+{
+	t_ed_sidedef	*sidedef;
+	int			x;
+	int			y;
+	int			y_2;
+
+	sidedef = doom->game_design.sd_head->next;
+	while (sidedef->opp_sector == -1)
+	{
+		sidedef = sidedef->next;
+		if (sidedef->opp_sector != -1)
+		{
+			doom->pos.x = ((sidedef->line.start.x + sidedef->line.end.x) / 2) + 1;
+			doom->pos.y = ((sidedef->line.start.y + sidedef->line.end.y) / 2) + 1;
+			doom->i_sector = sidedef->sector;
+			doom->game_design.place_checkout = TRUE;
+			doom->game_design.edit_sector = FALSE;
+			doom->game_design.spr_tex = 5;
+			break ;
+		}
+	}
+}
+
 static void		add_player(t_doom *doom, int x, int y)
 {
 	t_line	ray;
 
-	ray.start.x = x;
-	ray.start.y = y;
-	ray = set_ray(doom, ray);
-	if (check_sector_in_sector(doom, ray) == TRUE)
-	{
-		save_current_sector(doom, ray);
-		doom->i_sector = doom->game_design.cur_sector;
-		doom->pos = ray.start;
-		doom->game_design.place_checkout = TRUE;
-		doom->game_design.edit_sector = FALSE;
-		doom->game_design.spr_tex = 5;
-	}
+	find_middle_of_sector(doom);
+	// ray.start.x = x;
+	// ray.start.y = y;
+	// ray = set_ray(doom, ray);
+	// if (check_sector_in_sector(doom, ray) == TRUE)
+	// {
+	// 	save_current_sector(doom, ray);
+	// 	doom->i_sector = doom->game_design.cur_sector;
+	// 	doom->pos = ray.start;
+	// 	doom->game_design.place_checkout = TRUE;
+	// 	doom->game_design.edit_sector = FALSE;
+	// 	doom->game_design.spr_tex = 5;
+	// }
 }
 
 static void		mouse_press_map(t_doom *doom, int x, int y)

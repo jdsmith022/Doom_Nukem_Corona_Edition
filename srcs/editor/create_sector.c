@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 20:54:39 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 22:53:04 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ bool			snap_close_sector(t_doom *doom, t_point start, t_point *end)
 	doom->game_design.sc_len > 0)
 		return (FALSE);
 	distance = point_distance(start, *end);
-	if (distance < 10)
+	if (distance < 20)
 	{
 		*end = start;
 		return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:46:27 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 23:31:39 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,30 @@ static void			set_sprite_ray(t_doom *doom, t_line *ray, int x, int y)
 	*ray = set_ray(doom, *ray);
 }
 
+static void			set_checkout_sprite(t_doom *doom)
+{
+	t_ed_sidedef	*sidedef;
+	t_point			sprite_pos;
+	int			y_2;
+
+	printf("hello there\n");
+	sidedef = doom->game_design.sd_head->next;
+	while (sidedef->next != NULL)
+		sidedef = sidedef->next;
+	while (sidedef->opp_sector != -1)
+	{
+		sidedef = sidedef->previous;
+		if (sidedef->opp_sector != -1)
+		{
+			sprite_pos.x = ((sidedef->line.start.x + sidedef->line.end.x) / 2) + 1;
+			sprite_pos.y = ((sidedef->line.start.y + sidedef->line.end.y) / 2) + 1;
+			set_ed_sprite(doom, sprite_pos);
+			doom->game.editor = FALSE;
+			break ;
+		}
+	}
+}
+
 void				put_sprite(t_doom *doom, int x, int y)
 {
 	t_line		ray;
@@ -95,6 +119,6 @@ void				put_sprite(t_doom *doom, int x, int y)
 		set_ed_sprite(doom, ray.start);
 		doom->game_design.ed_sprite->next = NULL;
 		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
-			doom->game.editor = FALSE;
+			set_checkout_sprite(doom);
 	}
 }
