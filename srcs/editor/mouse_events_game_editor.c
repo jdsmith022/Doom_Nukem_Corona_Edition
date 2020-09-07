@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 23:12:13 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 00:08:05 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@
 static void		find_middle_of_sector(t_doom *doom)
 {
 	t_ed_sidedef	*sidedef;
-	int			x;
-	int			y;
-	int			y_2;
+	t_line			line;
+	t_line			ray;
 
 	sidedef = doom->game_design.sd_head->next;
-	while (sidedef->opp_sector == -1)
-	{
+	while (sidedef->id != 0)
 		sidedef = sidedef->next;
-		if (sidedef->opp_sector != -1)
-		{
-			doom->pos.x = ((sidedef->line.start.x + sidedef->line.end.x) / 2) + 1;
-			doom->pos.y = ((sidedef->line.start.y + sidedef->line.end.y) / 2) + 1;
-			doom->i_sector = sidedef->sector;
-			doom->game_design.place_checkout = TRUE;
-			doom->game_design.edit_sector = FALSE;
-			doom->game_design.spr_tex = 5;
-			break ;
-		}
-	}
+	line.start = sidedef->line.start;
+	line.end = sidedef->line.end;
+	create_mid_points(&line);
+	ray.start = line.start;
+	ray = set_ray(doom, ray);
+	if (check_sector_in_sector(doom, ray) == TRUE)
+		doom->pos = ray.start;
+	else
+		doom->pos = ray.end;
+	doom->game_design.place_checkout = TRUE;
+	doom->game_design.edit_sector = FALSE;
+	doom->game_design.spr_tex = 5;
+	doom->i_sector = 0;
 }
 
 static void		add_player(t_doom *doom, int x, int y)

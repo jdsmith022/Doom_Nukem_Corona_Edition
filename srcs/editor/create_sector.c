@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 22:53:04 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 00:03:10 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			set_ed_sector_values(t_doom *doom)
 	doom->game_design.sc_len++;
 }
 
-static void		create_mid_points(t_line *line)
+void		create_mid_points(t_line *line)
 {
 	t_point center;
 
