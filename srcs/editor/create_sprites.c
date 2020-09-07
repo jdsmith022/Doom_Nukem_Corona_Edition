@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   create_sprites.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 17:46:27 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
@@ -52,15 +64,20 @@ static void			set_ed_sprite(t_doom *doom, t_point pos)
 		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
 }
 
+static void			set_sprite_ray(t_doom *doom, t_line *ray, int x, int y)
+{
+	ray->start.x = x;
+	ray->start.y = y;
+	*ray = set_ray(doom, *ray);
+}
+
 void				put_sprite(t_doom *doom, int x, int y)
 {
 	t_line		ray;
 	int			id;
 	t_ed_sprite *prev;
 
-	ray.start.x = x;
-	ray.start.y = y;
-	ray = set_ray(doom, ray);
+	set_sprite_ray(doom, &ray, x, y);
 	if (check_sector_in_sector(doom, ray) == TRUE && \
 	enough_dist_to_sprites(doom, ray.start) == TRUE && \
 	check_enough_dist_to_sidedef(doom, ray.start) == TRUE)
@@ -78,9 +95,6 @@ void				put_sprite(t_doom *doom, int x, int y)
 		set_ed_sprite(doom, ray.start);
 		doom->game_design.ed_sprite->next = NULL;
 		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
-		{
-			printf("checkout sector = %d\n", doom->game_design.ed_sprite->sector);
 			doom->game.editor = FALSE;
-		}
 	}
 }

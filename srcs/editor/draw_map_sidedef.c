@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_map_sidedef.c                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 17:36:13 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
@@ -46,9 +58,9 @@ void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels,
 	angle = calc_angle(ed_sidedef->line, doom);
 	i = 0.0;
 	if (ed_sidedef->opp_sector != -1 && \
-	doom->game_design.ed_sidedef->id!= ed_sidedef->id)
+	doom->game_design.ed_sidedef->id != ed_sidedef->id)
 		color = 0xffFFA07A;
-	else if (doom->game_design.ed_sidedef->id!= ed_sidedef->id)
+	else if (doom->game_design.ed_sidedef->id != ed_sidedef->id)
 		color = 0x8c3cde6;
 	else
 		color = 0xff4287f5;
