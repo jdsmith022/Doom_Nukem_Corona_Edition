@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 23:30:37 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 23:36:28 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void			set_ed_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.ed_sidedef->next = NULL;
 	doom->game_design.sd_len++;
 }
-
 
 static void		set_sidef_line(t_doom *doom, int x, int y)
 {

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 22:56:51 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 23:35:58 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool		get_current_sector(t_doom *doom, t_line dist_to_sd,
 	{
 		if (sidedef->opp_sector == -1)
 		{
-			doom->game_design.cur_sector =sidedef->sector;
+			doom->game_design.cur_sector = sidedef->sector;
 			return (TRUE);
 		}
 		*prev_distance = distance;
