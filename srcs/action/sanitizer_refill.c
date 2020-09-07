@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 12:33:56 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:09:54 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 
-void	sanitizer_pause(t_doom *doom)
+void			sanitizer_pause(t_doom *doom)
 {
 	int diff;
 
@@ -36,7 +36,7 @@ void	sanitizer_pause(t_doom *doom)
 	}
 }
 
-static void	check_poster(t_doom *doom)
+static void		check_poster(t_doom *doom)
 {
 	if (doom->lib.sidedef[doom->i_sidedef].action == 8)
 	{
@@ -45,7 +45,7 @@ static void	check_poster(t_doom *doom)
 	}
 }
 
-void		sanitizer_refill(t_doom *doom)
+void			sanitizer_refill(t_doom *doom)
 {
 	if (doom->own_event.refill == FALSE)
 		check_poster(doom);

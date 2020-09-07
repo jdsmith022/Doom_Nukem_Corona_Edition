@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 12:33:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:10:54 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ static void		select_action(t_doom *doom)
 	}
 }
 
-void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
+void			mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 {
 	if (button->button == SDL_BUTTON_LEFT)
 		doom->own_event.mouse_press = FALSE;
 }
 
-void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
+void			mouse_press(t_doom *doom, SDL_MouseButtonEvent *button,
+					t_event event)
 {
 	if (button->button == SDL_BUTTON_LEFT)
 	{

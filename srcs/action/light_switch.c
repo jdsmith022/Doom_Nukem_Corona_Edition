@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:50 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 12:33:50 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:09:41 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
 
-void		light_timer(t_doom *doom, int *flag)
+void			light_timer(t_doom *doom, int *flag)
 {
 	int diff;
 	int	sector;
@@ -41,7 +41,7 @@ void		light_timer(t_doom *doom, int *flag)
 	}
 }
 
-void		change_sector_light(t_doom *doom)
+void			change_sector_light(t_doom *doom)
 {
 	t_sector	*sector;
 	int			id;
