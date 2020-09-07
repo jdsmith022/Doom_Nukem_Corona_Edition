@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:15 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 17:25:03 by nde-wild      ########   odam.nl         */
+/*   Updated: 2020/09/07 09:44:10 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,20 @@
 #include "../../includes/audio.h"
 #include "../../includes/font.h"
 
-int	main(void)
+static void		argument_check(int argc, char **argv)
+{
+	if (argc != 1)
+	{
+		ft_putendl("Please run program in this fashion: ./duke_nukem");
+		exit(0);
+	}
+}
+
+int				main(int argc, char **argv)
 {
 	t_doom	doom;
 
+	argument_check(argc, argv);
 	ft_bzero(&doom, sizeof(t_doom));
 	sdl_init(&doom);
 	save_font_libraries(&doom);
