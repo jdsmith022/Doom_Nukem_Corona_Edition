@@ -6,19 +6,17 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 23:42:58 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:18:14 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
 #include "../../includes/events.h"
-#include "../../includes/menu.h"
-#include "../../includes/font.h"
-#include "../../includes/sprites.h"
 #include "../../includes/audio.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/game_editor.h"
+#include "../../includes/sprites.h"
 
 static void	core_gameplay_loop(t_doom *doom, double dt)
 {
