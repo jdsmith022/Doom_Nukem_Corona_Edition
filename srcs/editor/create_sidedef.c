@@ -6,12 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:32:51 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 21:32:00 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
+#include "../../includes/render.h"
 
 void			delete_sidedef(t_doom *doom)
 {
@@ -60,18 +61,6 @@ void			set_ed_sidedef_values(t_doom *doom, t_line line)
 	doom->game_design.sd_len++;
 }
 
-static bool		snap_close_sector(t_point start, t_point *end)
-{
-	double		distance;
-
-	distance = point_distance(start, *end);
-	if (distance < 10)
-	{
-		*end = start;
-		return (TRUE);
-	}
-	return (FALSE);
-}
 
 static void		set_sidef_line(t_doom *doom, int x, int y)
 {
@@ -79,7 +68,7 @@ static void		set_sidef_line(t_doom *doom, int x, int y)
 			doom->game_design.sd_tex_index[doom->game_design.tex_index];
 	doom->game_design.draw_line.end.x = x;
 	doom->game_design.draw_line.end.y = y;
-	if (snap_close_sector(doom->game_design.start_sector, \
+	if (snap_close_sector(doom, doom->game_design.start_sector, \
 	&doom->game_design.draw_line.end) == TRUE)
 	{
 		doom->game_design.edit_sector = TRUE;

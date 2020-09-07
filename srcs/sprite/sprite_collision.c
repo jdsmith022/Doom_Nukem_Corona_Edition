@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 11:39:31 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 22:06:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@ static int	sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 	int		value;
 
 	value = 0;
-	if (sprite.action == 13)
-	{
-		get_game_over_info(doom);
-		doom->menu->state = finished;
-		return (-1);
-	}
 	if ((sprite.action == 7 && doom->own_event.scissor_lift == FALSE)\
 	|| sprite.action == 9 || sprite.action == 12)
 		value = 15;

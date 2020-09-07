@@ -224,6 +224,8 @@ void					open_game_editor(t_doom *doom, double dt);
 void					set_ed_sidedef_values(t_doom *doom, t_line line);
 void					check_connection(t_doom *doom, int x, int y);
 void					add_sidedef(t_doom *doom, int x, int y);
+bool					snap_close_sector(t_doom *doom, t_point start, \
+							t_point *end);
 void					delete_sector(t_doom *doom);
 void					add_sector(t_doom *doom);
 void					set_ed_sector_values(t_doom *doom);

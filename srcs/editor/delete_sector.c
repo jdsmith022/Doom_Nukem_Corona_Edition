@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:33:01 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 21:26:21 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ static void		reset_values(t_doom *doom)
 	doom->game_design.ed_sector->height_ceiling = 0;
 	doom->game_design.ed_sector->height_floor = 0;
 	doom->game_design.ed_sector->id = 0;
-	doom->game_design.open_connection = FALSE;
+	if (doom->game_design.sc_len > 0)
+		doom->game_design.open_connection = TRUE;
+	else
+		doom->game_design.open_connection = FALSE;
 	doom->game_design.edit_sector = FALSE;
 }
 
