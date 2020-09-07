@@ -50,4 +50,5 @@ void		add_light_to_pixel(t_doom *doom, t_sector sector, int x, int y)
 	}
 	else
 		add_light_to_pixel_2(doom, sector, x, y);
+	 
 }
