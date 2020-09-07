@@ -6,11 +6,12 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 12:53:26 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:01:53 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
+#include "../../includes/sprites.h"
 
 static int		check_sector_values(t_sprite sprite, int id)
 {

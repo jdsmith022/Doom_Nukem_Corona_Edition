@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 11:40:47 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:06:21 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			doom_exit_success(t_doom *doom)
 {
 	SDL_Quit();
 	free_lists(doom);
+	free_clip_lists(doom);
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
 	ft_bzero(doom, sizeof(doom));
