@@ -41,6 +41,7 @@ int					virus_move(int bottom, int height, int move_value,\
 					int sprite_index);
 int					no_clipping_region(int screen_y, t_sprite sprite,\
 					t_doom *doom, int x);
+int					check_y_side_line(t_line line, int x, int y);
 int					clip_top(t_doom *doom, int index_sp, int x, int screen_y);
 void				sprite_light(t_doom *doom, t_sprite sprite, int y);
 void				check_sprite_distance(t_doom *doom, int index);

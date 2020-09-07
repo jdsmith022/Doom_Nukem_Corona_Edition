@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:50 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/07 13:09:41 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/action.h"
 #include "../../includes/gameplay.h"
 
-static void		light_timer(t_doom *doom, int *flag)
+void			light_timer(t_doom *doom, int *flag)
 {
 	int diff;
 	int	sector;
@@ -41,7 +41,7 @@ static void		light_timer(t_doom *doom, int *flag)
 	}
 }
 
-static void		change_sector_light(t_doom *doom)
+void			change_sector_light(t_doom *doom)
 {
 	t_sector	*sector;
 	int			id;
@@ -67,13 +67,6 @@ static void		check_poster_location(t_doom *doom, t_sidedef poster)
 
 void			light_switch(t_doom *doom, t_sidedef poster)
 {
-	if (doom->own_event.light_switch == FALSE && poster.distance < 40.0 \
-	&& doom->own_event.mouse_press)
+	if (doom->own_event.light_switch == FALSE && poster.distance < 40.0)
 		check_poster_location(doom, poster);
-	if (doom->own_event.light_switch == TRUE)
-	{
-		if (doom->own_event.click_light == -1)
-			change_sector_light(doom);
-		light_timer(doom, &doom->own_event.sd_action);
-	}
 }

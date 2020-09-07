@@ -6,21 +6,21 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/06 21:00:38 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 11:07:32 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:56:32 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/render.h"
 
-static bool				in_range(int nb, int min, int max)
+static bool		in_range(int nb, int min, int max)
 {
 	if (nb > min && nb < max)
 		return (TRUE);
 	return (FALSE);
 }
 
-static t_clip			*same_sidedef(t_clip *head_node, int id)
+static t_clip	*same_sidedef(t_clip *head_node, int id)
 {
 	t_clip		*temp;
 
@@ -34,8 +34,8 @@ static t_clip			*same_sidedef(t_clip *head_node, int id)
 	return (NULL);
 }
 
-void		set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,\
-			int x)
+void			set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,
+					int x)
 {
 	t_clip		*mid_bottom;
 	t_clip		*temp;
@@ -61,7 +61,8 @@ void		set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,\
 	}
 }
 
-void		set_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void			set_bottom(t_doom *doom, t_plane plane,
+					t_sidedef sidedef, int x)
 {
 	t_clip		*bottom;
 	t_clip		*temp;
@@ -87,7 +88,7 @@ void		set_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 	}
 }
 
-void		set_top(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
+void			set_top(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 {
 	t_clip		*top;
 	t_clip		*temp;

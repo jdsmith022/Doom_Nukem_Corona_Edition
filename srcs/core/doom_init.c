@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 14:44:09 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/07 16:47:50 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 static void		init_sprites(t_doom *doom)
 {
-	int i;
-	t_sector *sector;
+	t_sector	*sector;
+	int			i;
 
 	i = 0;
 	doom->visible_sprites = 0;

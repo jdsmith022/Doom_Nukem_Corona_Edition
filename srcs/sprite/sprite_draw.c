@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 11:39:00 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:52:01 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/render.h"
 #include "../../includes/hud.h"
 
-void			put_pixel_tex(t_doom *doom, Uint32 pix_dex,\
+void			put_pixel_tex(t_doom *doom, Uint32 pix_dex,
 			Uint32 index, int i)
 {
 	char	*pixels;
@@ -43,7 +43,7 @@ void			put_pixel_tex(t_doom *doom, Uint32 pix_dex,\
 	}
 }
 
-static int		find_x(t_doom *doom, t_line *sprite,\
+static int		find_x(t_doom *doom, t_line *sprite,
 		int index_sp, int stripe)
 {
 	int		i_sprite;
@@ -88,7 +88,7 @@ static int		find_y(t_doom *doom, t_line *sprite, int index_sp, int screen_y)
 	return (tex_y);
 }
 
-static void		put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
+static void		put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,
 		int index_sp)
 {
 	Uint32		index;
@@ -110,9 +110,8 @@ static void		put_stripe_sprite(t_doom *doom, int stripe, t_line *sprite,\
 			index = (Uint32)(screen_y * doom->surface->pitch) +\
 			(int)(stripe * doom->surface->format->BytesPerPixel);
 			tex.y = find_y(doom, sprite, index_sp, screen_y);
-			pix_dex = ((int)tex.y *\
-			doom->lib.obj_lib[sprite_i]->pitch) + ((int)tex.x *\
-			doom->lib.obj_lib[sprite_i]->format->BytesPerPixel);
+			pix_dex = ((int)tex.y * doom->lib.obj_lib[sprite_i]->pitch) + \
+			((int)tex.x * doom->lib.obj_lib[sprite_i]->format->BytesPerPixel);
 			put_pixel_tex(doom, pix_dex, index, sprite_i);
 		}
 		screen_y++;
