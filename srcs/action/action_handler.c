@@ -6,13 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:05:59 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 12:34:05 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:34:35 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
-#include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"

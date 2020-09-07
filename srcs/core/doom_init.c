@@ -6,13 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 13:09:07 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:37:39 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
-#include "../../includes/hud.h"
 
 static void		init_sprites(t_doom *doom)
 {

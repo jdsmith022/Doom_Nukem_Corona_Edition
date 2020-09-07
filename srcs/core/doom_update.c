@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:38 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 12:18:14 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:35:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../../includes/action.h"
 #include "../../includes/events.h"
 #include "../../includes/audio.h"
-#include "../../includes/gameplay.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 

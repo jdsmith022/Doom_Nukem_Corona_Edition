@@ -6,12 +6,11 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 13:06:21 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 13:37:57 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../../includes/menu.h"
 
 void			doom_exit_lib_failure(t_bmp *bmp,
 					const char *exit_meassge)
