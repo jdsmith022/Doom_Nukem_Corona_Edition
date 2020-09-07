@@ -4,7 +4,7 @@
 # include <stdlib.h>
 
 # define GROC_COUNT				52
-# define GROC_TYPES				49
+# define GROC_TYPES				47
 
 typedef enum					e_groc_types {
 	APPLE = 1, BACON, CHERRY, JAM,
