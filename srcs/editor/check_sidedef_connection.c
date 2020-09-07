@@ -28,8 +28,7 @@ static void		get_connection_sidedef(t_doom *doom, t_line line)
 	t_line 	ray;
 
 	ray.start = line.end;
-	ray.end = line.end;
-	ray.end.x = line.end.x + doom->cast.max_ray;
+	ray = set_ray(doom, ray);
 	if (check_sector_in_sector(doom, ray) == TRUE)
 		return ;
 	set_ed_sidedef_values(doom, line);

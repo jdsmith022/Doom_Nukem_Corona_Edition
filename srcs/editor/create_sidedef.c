@@ -6,7 +6,7 @@ void			delete_sidedef(t_doom *doom)
 	t_ed_sidedef *sidedef;
 	t_ed_sidedef *previous;
 
-	sidedef = doom->game_design.ed_sidedef->next;
+	sidedef = doom->game_design.ed_sidedef;
 	if (sidedef->sector == doom->game_design.sc_len && \
 	doom->game_design.sd_len > 1 && sidedef->opp_sector == -1)
 	{

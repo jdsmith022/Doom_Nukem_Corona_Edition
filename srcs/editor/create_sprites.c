@@ -60,12 +60,12 @@ void				put_sprite(t_doom *doom, int x, int y)
 
 	ray.start.x = x;
 	ray.start.y = y;
-	ray.end.x = x + doom->cast.max_ray;
-	ray.end.y = y;
+	ray = set_ray(doom, ray);
 	if (check_sector_in_sector(doom, ray) == TRUE && \
 	enough_dist_to_sprites(doom, ray.start) == TRUE && \
 	check_enough_dist_to_sidedef(doom, ray.start) == TRUE)
 	{
+		save_current_sector(doom, ray);
 		while (doom->game_design.ed_sprite->next != NULL)
 			doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 		doom->game_design.ed_sprite->next =\
