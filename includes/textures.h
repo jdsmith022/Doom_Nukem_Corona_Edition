@@ -49,7 +49,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 		CHERRY
 	},
 	{
-		"assets/textures/shelves/jar6.bmp",
+		"assets/textures/shelves/jam.bmp",
 		"assets/sprites/groceries/jam.bmp",
 		JAM
 	},
