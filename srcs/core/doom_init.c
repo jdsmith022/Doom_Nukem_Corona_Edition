@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 11:41:02 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 14:44:09 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ static void		init_settings(t_doom *doom)
 
 void			doom_init(t_doom *doom)
 {
-	if (doom->game.editor == FALSE)
-		init_groceries(doom);
+	init_groceries(doom);
 	init_player(doom);
 	init_settings(doom);
 	init_render(doom);

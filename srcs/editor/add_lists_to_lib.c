@@ -40,11 +40,11 @@ static void		flush_sector_list_info(t_doom *doom)
 
 void			add_lists_to_libs(t_doom *doom)
 {
-	// del_groceries(doom->groceries);
+	del_groceries(doom->groceries);
 	flush_sector_list_info(doom);
 	set_sector_lib(doom);
 	set_sprite_lib(doom);
 	set_sidedef_lib(doom);
 	set_gameplay_settings(doom);
-	// iqnit_groceries(doom);
+	init_groceries(doom);
 }

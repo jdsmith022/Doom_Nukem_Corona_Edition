@@ -16,7 +16,7 @@ static t_item	init_item(t_doom *doom, uint8_t type)
 
 static bool		valid_input(uint8_t type, t_list **head)
 {
-	if (!type || type > GROC_COUNT)
+	if (!type || type > GROC_TYPES)
 		return (false);
 	return (true);
 }

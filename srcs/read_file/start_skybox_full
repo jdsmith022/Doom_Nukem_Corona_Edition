@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-123
+125
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -326,7 +326,7 @@ assets/sprites/groceries/whiskey.bmp
 #55
 assets/sprites/groceries/moonshine.bmp
 #56
-assets/sprites/groceries/red_wine.bmp
+assets/sprites/groceries/wine1.bmp
 #57
 assets/sprites/groceries/wine1.bmp
 #58
@@ -458,7 +458,11 @@ assets/sprites/groceries/lemon_pie.bmp
 #121
 assets/sprites/groceries/shrimp.bmp
 #122
-assets/sprites/groceries/wine3.bmp
+assets/sprites/groceries/wine1.bmp
+#123
+assets/sprites/groceries/milk1.bmp
+#124
+assets/sprites/groceries/tart.bmp
 
 #ADD LEFT HAND AND RIGHT HAND
 
