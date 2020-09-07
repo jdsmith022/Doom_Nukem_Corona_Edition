@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/05 10:59:34 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 11:29:53 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:47:25 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		init_clipping(t_doom *doom)
 	if (!doom->clip->mid_bottom)
 		doom_exit_failure(doom, "error: failed malloc\n");
 	doom->clip->mid_bottom->next = NULL;
-	doom->clip->head_mid_bottom = doom->clip->mid_bottom;	
+	doom->clip->head_mid_bottom = doom->clip->mid_bottom;
 }
 
 void		free_clipping_values(t_doom *doom, t_clip *list)

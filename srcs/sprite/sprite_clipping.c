@@ -6,30 +6,11 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 10:54:24 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/07 12:53:26 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-
-static int		check_y_side_line(t_line line, int x, int y)
-{
-	t_point		compare;
-	int			diff;
-	int			diff_compare;
-
-	compare.x = line.start.x;
-	compare.y = line.start.y + 1;
-	diff = (x - line.start.x) * (line.end.y - line.start.y) -\
-			(y - line.start.y) * (line.end.x - line.start.x);
-	diff_compare = (compare.x - line.start.x) * (line.end.y - line.start.y) -\
-					(compare.y - line.start.y) * (line.end.x - line.start.x);
-	if ((diff < 0 && diff_compare < 0) || (diff > 0 && diff_compare > 0)\
-		|| diff == 0)
-		return (-1);
-	else
-		return (1);
-}
 
 static int		check_sector_values(t_sprite sprite, int id)
 {
@@ -76,6 +57,24 @@ static int		check_mid_bottom_lines(t_clip *mid_bottom, int x)
 	return (-1);
 }
 
+static int		bottom_clipping_region(t_clip *bottom, t_sprite sprite, int x,
+					int screen_y)
+{
+	while (bottom != NULL)
+	{
+		if (check_sector_values(sprite, bottom->sector_id) == 1)
+		{
+			if (x > bottom->line.start.x && x < bottom->line.end.x)
+			{
+				if (check_y_side_line(bottom->line, x, screen_y) == -1)
+					return (-1);
+			}
+		}
+		bottom = bottom->next;
+	}
+	return (1);
+}
+
 int				no_clipping_region(int screen_y, t_sprite sprite,\
 				t_doom *doom, int x)
 {
@@ -96,17 +95,5 @@ int				no_clipping_region(int screen_y, t_sprite sprite,\
 		}
 		mid_bottom = mid_bottom->next;
 	}
-	while (bottom != NULL)
-	{
-		if (check_sector_values(sprite, bottom->sector_id) == 1)
-		{
-			if (x > bottom->line.start.x && x < bottom->line.end.x)
-			{
-				if (check_y_side_line(bottom->line, x, screen_y) == -1)
-					return (-1);
-			}
-		}
-		bottom = bottom->next;
-	}
-	return (1);
+	return (bottom_clipping_region(bottom, sprite, x, screen_y));
 }

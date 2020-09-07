@@ -51,7 +51,7 @@ SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \
 				sprite_hud_scale find_prev_sectors sprite_set_player_sprites\
 				sprite_light sprite_clipping sprite_collision sprite_distance\
-				list_clipping set_nodes_clipping
+				list_clipping set_nodes_clipping sprite_check_y_side_line
 GAMEPLAY_FILES = groceries checkout basket node search shopping_list \
 				 find_shelf init_groceries grocery_ui \
 				 position gameplay game_over timer sprite_hit \
