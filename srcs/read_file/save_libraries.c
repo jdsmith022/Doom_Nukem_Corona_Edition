@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 23:07:06 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/09 00:33:59 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int			open_file(t_doom *doom, char *filename)
 
 void		modified(t_doom *doom, char *file_name)
 {
-	// struct stat filestat;
+	struct stat filestat;
 
-	// stat(file_name, &filestat);
-	// if ((long long)filestat.st_mtime != (long long)filestat.st_birthtime)
-	// 	doom_exit_failure(doom, "error: file has been modified");
+	stat(file_name, &filestat);
+	if ((long long)filestat.st_mtime != (long long)filestat.st_birthtime)
+		doom_exit_failure(doom, "error: file has been modified");
 }
 
 void		save_libraries(t_doom *doom)
