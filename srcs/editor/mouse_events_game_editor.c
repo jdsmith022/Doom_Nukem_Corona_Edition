@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 22:56:10 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 00:07:38 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		add_player(t_doom *doom, int x, int y)
 	{
 		save_current_sector(doom, ray);
 		doom->i_sector = doom->game_design.cur_sector;
-		printf("start player = %d\n", doom->i_sector);
+		printf("in add player %d\n", doom->i_sector);
 		doom->pos = ray.start;
 		doom->game_design.place_checkout = TRUE;
 		doom->game_design.edit_sector = FALSE;
