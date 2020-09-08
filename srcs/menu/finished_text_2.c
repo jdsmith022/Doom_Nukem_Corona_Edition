@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:43 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 21:59:51 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 22:11:56 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char		*successful_shop(t_doom *doom, t_font *lib)
 {
 	char *status;
 
+	lib[1].font_rect.x = WIDTH / 7.6;
 	status = "Well done! You found all you're groceries";
 	lib[1].font_color = doom->lib.font_lib.font_color.blue;
 	lib[2].str = "without contracting Covid-19!";
