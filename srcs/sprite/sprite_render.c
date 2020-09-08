@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:07 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 11:38:24 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/08 20:20:53 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void		sprite_render(t_doom *doom)
 	}
 	doom->lib.sprite_order = sort_sprite_array(doom->lib.sprites,\
 	doom->visible_sprites, doom->total_sprites);
+	if (doom->lib.sprite_order == NULL)
+		doom_exit_failure(doom, "error: sprite lib malloc");
 	if (doom->own_event.window == TRUE)
 		sort_sprites_window(doom->lib.sprite_order, doom->i_sector,\
 		doom->visible_sprites, doom->lib.sprites);

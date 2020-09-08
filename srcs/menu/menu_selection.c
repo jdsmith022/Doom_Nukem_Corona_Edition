@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 12:59:21 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 21:10:33 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../includes/menu.h"
 #include "../../includes/audio.h"
 #include "../../includes/hud.h"
+#include "../../includes/gameplay.h"
 
 static void		menu_settings(t_doom *doom)
 {
@@ -24,14 +25,51 @@ static void		menu_settings(t_doom *doom)
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 }
 
+static void		get_missing_groceries(t_doom *doom, int *empty, int *list)
+{
+	char		*score;
+	t_item		*info;
+	size_t		index;
+
+	index = 0;
+	while (list[index])
+	{
+		list[index] = -1;
+		index++;
+	}
+	info = doom->groceries->info.groceries_to_display;
+	info->position.y = HEIGHT - 200;
+	info->position.x = WIDTH / doom->groceries->shopping_list_len - 25;
+	index = 0;
+	while (index < doom->groceries->shopping_list_len)
+	{
+		info->position.x += 100;
+		if (info[index].amount != 0)
+			list[index] = index;
+		if (info[index].amount == 0)
+			*empty += 1;
+		index++;
+	}
+}
+
 static void		finished_menu(t_doom *doom)
 {
+	int	list[doom->groceries->shopping_list_len];
+	int	empty;
+
+	empty = -1;
 	stop_sounds();
 	play_sound(doom->audio->sounds[LVL_FINISH], -1);
-	add_score_to_sdl_text(doom);
+	if (doom->groceries)
+	{
+		if (doom->groceries->info.won == FALSE && \
+		doom->menu->state == finished)
+			get_missing_groceries(doom, &empty, list);
+	}
+	add_score_to_sdl_text(doom, empty);
 	menu_settings(doom);
 	while (doom->menu->state == finished)
-		menu_print_loop(doom);
+		menu_print_loop(doom, empty);
 }
 
 static void		pause_menu(t_doom *doom)
@@ -44,7 +82,7 @@ static void		pause_menu(t_doom *doom)
 	while (doom->menu->state == game_paused)
 	{
 		Mix_PauseMusic();
-		menu_print_loop(doom);
+		menu_print_loop(doom, -1);
 	}
 	resume_music();
 	clock_gettime(doom->game.play_time, &curr_time);
