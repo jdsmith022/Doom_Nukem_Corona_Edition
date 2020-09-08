@@ -6,13 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:35:32 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 14:55:25 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
-#include "../../includes/sprites.h"
 #include "../../includes/render.h"
 
 static void	set_points_textures(t_doom *doom, t_point *i,

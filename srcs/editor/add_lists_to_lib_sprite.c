@@ -6,15 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 11:09:08 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 14:51:40 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
-#include "../../includes/menu.h"
-#include "../../includes/gameplay.h"
-#include "../../includes/menu.h"
 
 static void		delete_list(t_doom *doom)
 {

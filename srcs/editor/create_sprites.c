@@ -6,13 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 10:37:49 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 14:52:24 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
-#include "../../includes/sprites.h"
 
 static bool			check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
 {

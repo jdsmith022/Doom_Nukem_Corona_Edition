@@ -6,14 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:35:39 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 14:55:38 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
-#include "../../includes/sprites.h"
-#include "../../includes/render.h"
 
 void		draw_screen_colors(Uint32 *pixels, t_doom *doom)
 {

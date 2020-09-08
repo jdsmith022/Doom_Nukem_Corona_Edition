@@ -6,15 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 13:14:31 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 15:00:31 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
-#include "../../includes/sprites.h"
 #include "../../includes/render.h"
-#include "../../includes/font.h"
 
 static void		draw_sector_images(t_doom *doom, Uint32 *pixels)
 {

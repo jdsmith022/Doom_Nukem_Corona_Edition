@@ -6,12 +6,11 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 11:52:27 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 15:06:35 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../../includes/menu.h"
 #include "../../includes/render.h"
 
 void	print_player_sprite(t_doom *doom)

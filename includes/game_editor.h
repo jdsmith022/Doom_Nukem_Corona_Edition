@@ -269,4 +269,6 @@ void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
 							t_ed_sprite *ed_sprite, int *index);
 void					create_mid_points(t_line *line, int diff);
 void					place_checkout(t_doom *doom);
+void					check_placement(t_doom *doom, t_ed_sidedef *sidedef,
+							t_line line);
 #endif

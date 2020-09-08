@@ -6,14 +6,13 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:30 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 12:52:01 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 15:12:04 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"
-#include "../../includes/hud.h"
 
 void			put_pixel_tex(t_doom *doom, Uint32 pix_dex,
 			Uint32 index, int i)

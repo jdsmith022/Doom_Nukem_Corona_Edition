@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 13:36:40 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 14:54:15 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
-static void			check_placement(t_doom *doom,
-						t_ed_sidedef *sidedef, t_line line)
+void				check_placement(t_doom *doom, t_ed_sidedef *sidedef,
+						t_line line)
 {
 	if (point_line_distance(doom->game_design.ed_sprite->pos, \
 		sidedef->line) < 10.0)
