@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 23:00:36 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/08 23:40:48 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ void		del_node(t_list **head, t_list *node)
 	prev = *head;
 	if (prev->content == node->content)
 	{
+		printf("Freed first node\n");
 		if (node->next)
 			*head = node->next;
-		else
+		else {
 			*head = NULL;
+			printf("List empty: head pointed to null\n");
+		}
 		free(node);
 		return ;
 	}
@@ -31,8 +34,11 @@ void		del_node(t_list **head, t_list *node)
 		prev = prev->next;
 	if (node->next)
 		prev->next = node->next;
-	else
+	else {
+		printf("Deleted last node; pointed to null\n");
 		prev->next = NULL;
+	}
+	printf("Freed non-first node\n");
 	free(node);
 }
 
