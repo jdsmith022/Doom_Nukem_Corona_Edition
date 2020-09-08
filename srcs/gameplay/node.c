@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 23:40:48 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/08 23:43:42 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		del_node(t_list **head, t_list *node)
 	while (prev->next->content != node->content)
 		prev = prev->next;
 	if (node->next)
-		prev->next = node->next;
+		prev = node->next;
 	else {
 		printf("Deleted last node; pointed to null\n");
 		prev->next = NULL;
