@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/06 21:00:38 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 12:56:32 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 16:06:12 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static t_clip	*same_sidedef(t_clip *head_node, int id)
 void			set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,
 					int x)
 {
-	t_clip		*mid_bottom;
 	t_clip		*temp;
 
 	temp = same_sidedef(doom->clip->head_mid_bottom, sidedef.id);
@@ -45,11 +44,10 @@ void			set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,
 	{
 		while (doom->clip->mid_bottom->next != NULL)
 			doom->clip->mid_bottom = doom->clip->mid_bottom->next;
-		mid_bottom = new_clip_start(sidedef.sector, x,\
+		doom->clip->mid_bottom->next = new_clip_start(sidedef.sector, x,\
 		plane.mid_texture_bottom, sidedef.id);
-		if (!mid_bottom)
+		if (!doom->clip->mid_bottom->next)
 			doom_exit_failure(doom, "error: failed malloc\n");
-		doom->clip->mid_bottom->next = mid_bottom;
 	}
 	else if (in_range(plane.mid_texture_bottom, 0, HEIGHT) && temp != NULL)
 	{
@@ -64,7 +62,6 @@ void			set_mid_bottom(t_doom *doom, t_plane plane, t_sidedef sidedef,
 void			set_bottom(t_doom *doom, t_plane plane,
 					t_sidedef sidedef, int x)
 {
-	t_clip		*bottom;
 	t_clip		*temp;
 
 	temp = same_sidedef(doom->clip->head_bottom, sidedef.id);
@@ -72,11 +69,10 @@ void			set_bottom(t_doom *doom, t_plane plane,
 	{
 		while (doom->clip->bottom->next != NULL)
 			doom->clip->bottom = doom->clip->bottom->next;
-		bottom = new_clip_start(sidedef.sector,\
+		doom->clip->bottom->next = new_clip_start(sidedef.sector,\
 		x, plane.sidedef_bottom, sidedef.id);
-		if (!bottom)
+		if (!doom->clip->bottom->next)
 			doom_exit_failure(doom, "error: failed malloc\n");
-		doom->clip->bottom->next = bottom;
 	}
 	else if (in_range(plane.sidedef_bottom, -1, HEIGHT) && temp != NULL)
 	{
@@ -90,7 +86,6 @@ void			set_bottom(t_doom *doom, t_plane plane,
 
 void			set_top(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 {
-	t_clip		*top;
 	t_clip		*temp;
 
 	temp = same_sidedef(doom->clip->head_top, sidedef.id);
@@ -98,11 +93,10 @@ void			set_top(t_doom *doom, t_plane plane, t_sidedef sidedef, int x)
 	{
 		while (doom->clip->top->next != NULL)
 			doom->clip->top = doom->clip->top->next;
-		top = new_clip_start(sidedef.sector, x,\
+		doom->clip->top->next = new_clip_start(sidedef.sector, x,\
 		plane.sidedef_top, sidedef.id);
-		if (!top)
+		if (!doom->clip->top->next)
 			doom_exit_failure(doom, "error: failed malloc\n");
-		doom->clip->top->next = top;
 	}
 	else if (in_range(plane.sidedef_top, 0, HEIGHT) && temp != NULL)
 	{
