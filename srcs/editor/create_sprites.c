@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:46:27 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 10:37:49 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ static void			set_ed_sprite(t_doom *doom, t_point pos)
 
 	id = doom->game_design.spr_len;
 	doom->game_design.ed_sprite->id = id;
-	doom->game_design.ed_sprite->pos = pos;
 	doom->game_design.ed_sprite->sector = doom->game_design.cur_sector;
 	doom->game_design.cur_sprite = id;
 	doom->game_design.spr_len++;
 	doom->game_design.ed_sprite->type = \
 		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
+	doom->game_design.ed_sprite->pos = pos;
 }
 
 static void			set_sprite_ray(t_doom *doom, t_line *ray, int x, int y)
@@ -94,7 +94,5 @@ void				put_sprite(t_doom *doom, int x, int y)
 		doom->game_design.ed_sprite->previous = prev;
 		set_ed_sprite(doom, ray.start);
 		doom->game_design.ed_sprite->next = NULL;
-		if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
-			doom->game.editor = FALSE;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 00:07:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 12:50:18 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,29 @@
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
 
-static void		add_player(t_doom *doom, int x, int y)
+static void		add_player(t_doom *doom)
 {
-	t_line	ray;
+	t_ed_sidedef	*sidedef;
+	t_line			line;
+	t_line			ray;
 
-	ray.start.x = x;
-	ray.start.y = y;
+	sidedef = doom->game_design.sd_head->next;
+	while (sidedef->id != 0)
+		sidedef = sidedef->next;
+	line.start = sidedef->line.start;
+	line.end = sidedef->line.end;
+	create_mid_points(&line, 10);
+	ray.start = line.start;
 	ray = set_ray(doom, ray);
 	if (check_sector_in_sector(doom, ray) == TRUE)
-	{
-		save_current_sector(doom, ray);
-		doom->i_sector = doom->game_design.cur_sector;
-		printf("in add player %d\n", doom->i_sector);
-		doom->pos = ray.start;
-		doom->game_design.place_checkout = TRUE;
-		doom->game_design.edit_sector = FALSE;
-		doom->game_design.spr_tex = 5;
-	}
+		doom->pos = line.start;
+	else
+		doom->pos = line.end;
+	doom->game_design.place_checkout = TRUE;
+	doom->game_design.edit_sector = FALSE;
+	doom->game_design.spr_tex = 5;
+	doom->i_sector = 0;
+	place_checkout(doom);
 }
 
 static void		mouse_press_map(t_doom *doom, int x, int y)
@@ -39,9 +45,6 @@ static void		mouse_press_map(t_doom *doom, int x, int y)
 
 	editor = doom->game_design;
 	if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
-	editor.pl_pos == TRUE && editor.edit_sector == TRUE)
-		add_player(doom, x, y);
-	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
 	(editor.edit_sector == TRUE || editor.place_checkout == TRUE))
 		put_sprite(doom, x, y);
 	else if (x > SIDEBAR_SECTOR && x < SIDEBAR_SIDEDEF && \
@@ -75,7 +78,7 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 	else if (x > CROSS_P_X && x < CROSS_P_X + FRAME_WIDTH && \
 	y > CROSS_P_Y && y < CROSS_P_Y + FRAME_HEIGHT && \
 	doom->game_design.place_checkout == FALSE)
-		doom->game_design.pl_pos = doom->game_design.pl_pos == 0 ? 1 : 0;
+		add_player(doom);
 }
 
 static void		mouse_press_object(t_doom *doom, int x, int y)

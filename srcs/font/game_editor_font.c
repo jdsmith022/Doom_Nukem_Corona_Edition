@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/05 08:56:34 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 10:33:19 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	set_editor_text_2(t_doom *doom, t_font *lib)
 	lib[8].font_rect.x = 670;
 	lib[8].font_rect.y = 300;
 	lib[8].font_color = doom->lib.font_lib.font_color.black;
-	lib[9].str = "Place player";
+	lib[9].str = "Start game";
 	lib[9].font_rect.x = 665;
 	lib[9].font_rect.y = 475;
 	lib[9].font_color = doom->lib.font_lib.font_color.black;

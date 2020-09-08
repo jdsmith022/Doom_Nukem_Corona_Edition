@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/05 09:13:50 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 18:17:43 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 11:09:49 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static void	delete_sprite_list(t_doom *doom, t_ed_sprite *ed_sprite)
 
 void		free_lists(t_doom *doom)
 {
-	if (doom->game_design.ed_sprite)
-		delete_sprite_list(doom, doom->game_design.ed_sprite);
-	if (doom->game_design.ed_sector)
-		delete_sector_list(doom, doom->game_design.ed_sector);
-	if (doom->game_design.ed_sidedef)
-		delete_sidedef_list(doom, doom->game_design.ed_sidedef);
+	if (doom->game_design.sp_head)
+		delete_sprite_list(doom, doom->game_design.sp_head);
+	if (doom->game_design.sc_head)
+		delete_sector_list(doom, doom->game_design.sc_head);
+	if (doom->game_design.sd_head)
+		delete_sidedef_list(doom, doom->game_design.sd_head);
 }

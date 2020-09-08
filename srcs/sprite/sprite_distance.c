@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 15:02:29 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 22:08:42 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/07 22:37:18 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	check_walking(t_doom *doom, t_sprite shopper)
 	}
 }
 
-static void check_checkout_action(t_doom *doom, int index)
+static void	check_checkout_action(t_doom *doom, int index)
 {
 	if (doom->lib.sprites[index].action == 13)
 	{

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 00:17:59 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 12:50:49 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			set_ed_sector_values(t_doom *doom)
 	doom->game_design.sc_len++;
 }
 
-static void		create_mid_points(t_line *line)
+void			create_mid_points(t_line *line, int diff)
 {
 	t_point center;
 
@@ -69,15 +69,15 @@ static void		create_mid_points(t_line *line)
 	if (line->start.x == line->end.x)
 	{
 		line->start.x = center.x;
-		line->start.y = center.y + 5;
+		line->start.y = center.y + diff;
 		line->end.x = center.x;
-		line->end.y = center.y - 5;
+		line->end.y = center.y - diff;
 	}
 	else
 	{
-		line->start.x = center.x + 5;
+		line->start.x = center.x + diff;
 		line->start.y = center.y;
-		line->end.x = center.x - 5;
+		line->end.x = center.x - diff;
 		line->end.y = center.y;
 	}
 }
@@ -102,7 +102,7 @@ bool			snap_close_sector(t_doom *doom, t_point start, t_point *end)
 	t_line		ray;
 
 	get_portal(doom, &line);
-	create_mid_points(&line);
+	create_mid_points(&line, 5);
 	ray.start = line.start;
 	ray = set_ray(doom, ray);
 	if (check_sector_in_sector(doom, ray) == FALSE && \
@@ -114,7 +114,7 @@ bool			snap_close_sector(t_doom *doom, t_point start, t_point *end)
 	doom->game_design.sc_len > 0)
 		return (FALSE);
 	distance = point_distance(start, *end);
-	if (distance < 10)
+	if (distance < 20)
 	{
 		*end = start;
 		return (TRUE);
