@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 00:23:27 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 10:37:49 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,6 @@ static bool			enough_dist_to_sprites(t_doom *doom, t_point pos)
 	return (TRUE);
 }
 
-static void			force_checkout(t_doom *doom)
-{
-	t_ed_sidedef	*sidedef;
-	t_line			line;
-	t_line			ray;
-
-	sidedef = doom->game_design.sd_head->next;
-	while (sidedef->next != NULL)
-		sidedef = sidedef->next;
-	sidedef = sidedef->previous;
-	line.start = sidedef->line.start;
-	line.end = sidedef->line.end;
-	create_mid_points(&line);
-	ray.start = line.start;
-	ray = set_ray(doom, ray);
-	if (check_sector_in_sector(doom, ray) == TRUE)
-		doom->game_design.ed_sprite->pos = ray.start;
-	else
-		doom->game_design.ed_sprite->pos = ray.end;
-	doom->game.editor = FALSE;
-}
-
 static void			set_ed_sprite(t_doom *doom, t_point pos)
 {
 	int id;
@@ -83,10 +61,7 @@ static void			set_ed_sprite(t_doom *doom, t_point pos)
 	doom->game_design.spr_len++;
 	doom->game_design.ed_sprite->type = \
 		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
-	if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
-		force_checkout(doom);
-	else
-		doom->game_design.ed_sprite->pos = pos;
+	doom->game_design.ed_sprite->pos = pos;
 }
 
 static void			set_sprite_ray(t_doom *doom, t_line *ray, int x, int y)
@@ -118,8 +93,6 @@ void				put_sprite(t_doom *doom, int x, int y)
 		doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 		doom->game_design.ed_sprite->previous = prev;
 		set_ed_sprite(doom, ray.start);
-		// if (doom->game_design.ed_sprite->type == SPR_CHECKOUT)
-		// 	force_checkout(doom);
 		doom->game_design.ed_sprite->next = NULL;
 	}
 }

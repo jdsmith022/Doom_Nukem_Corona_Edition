@@ -267,5 +267,6 @@ void					set_spr_checkout(t_sprite *sprite);
 void					set_spr_lines(t_sprite *sprite, int lenght);
 void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
 							t_ed_sprite *ed_sprite, int *index);
-void					create_mid_points(t_line *line);
+void					create_mid_points(t_line *line, int diff);
+void					place_checkout(t_doom *doom);
 #endif

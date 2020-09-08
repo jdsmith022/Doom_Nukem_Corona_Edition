@@ -45,7 +45,7 @@ EDITOR_FILES = 	game_editor init_game_editor draw_bar draw_edit_console \
 				set_sprite_values put_textures2 check_sector_in_sector \
 				set_utilities check_sidedef_connection set_sprite_values_2\
 				add_lists_to_lib add_lists_to_lib_sidedef add_lists_to_lib_sector\
-				add_lists_to_lib_sprite add_lists_to_lib_groceries
+				add_lists_to_lib_sprite add_lists_to_lib_groceries place_checkout
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \

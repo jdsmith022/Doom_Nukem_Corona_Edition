@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:33:17 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 11:24:48 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,4 @@ void			draw_images(Uint32 *pixels, t_doom *doom)
 	if (doom->game_design.edit_sector == TRUE && \
 	doom->game_design.place_checkout == FALSE)
 		draw_sector_images(doom, pixels);
-	else if (doom->game_design.place_checkout == TRUE)
-		place_checkout_sprite(doom);
 }
