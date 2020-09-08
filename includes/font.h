@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   font.h                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:51:13 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FONT_H
 # define FONT_H
 
@@ -78,7 +90,6 @@ typedef struct		s_font_lib
 	int				random_index;
 }					t_font_lib;
 
-/*font functions*/
 void				save_font(t_doom *doom, int *len);
 void				font_to_screen(t_doom *doom);
 void				save_font_libraries(t_doom *doom);

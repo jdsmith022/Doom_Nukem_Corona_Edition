@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   events.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:50:56 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EVENTS_H
 # define EVENTS_H
 
 # include "doom.h"
 # include "struct.h"
 
-/*events functions*/
 void				key_press(t_doom *doom, t_event *event,\
 						SDL_KeyboardEvent *key);
 void				key_select_and_shoot(t_doom *doom, t_event *event,

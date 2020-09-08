@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   read.h                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:51:20 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef READ_H
 # define READ_H
 
-#include "doom.h"
-
-/*read functions*/
+# include "doom.h"
 
 SDL_Surface			**save_textures(t_doom *doom, int fd, int *len);
 SDL_Surface			**save_objects(t_doom *doom, int fd, int *len);
