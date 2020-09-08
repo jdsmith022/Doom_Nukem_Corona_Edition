@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 21:10:33 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 22:05:01 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,16 @@ static void		menu_settings(t_doom *doom)
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 }
 
-static void		get_missing_groceries(t_doom *doom, int *empty, int *list)
+static void		get_missing_groceries(t_doom *doom, int *empty)
 {
 	char		*score;
 	t_item		*info;
 	size_t		index;
 
 	index = 0;
-	while (list[index])
-	{
-		list[index] = -1;
-		index++;
-	}
 	info = doom->groceries->info.groceries_to_display;
-	info->position.y = HEIGHT - 200;
-	info->position.x = WIDTH / doom->groceries->shopping_list_len - 25;
-	index = 0;
 	while (index < doom->groceries->shopping_list_len)
 	{
-		info->position.x += 100;
-		if (info[index].amount != 0)
-			list[index] = index;
 		if (info[index].amount == 0)
 			*empty += 1;
 		index++;
@@ -54,7 +43,6 @@ static void		get_missing_groceries(t_doom *doom, int *empty, int *list)
 
 static void		finished_menu(t_doom *doom)
 {
-	int	list[doom->groceries->shopping_list_len];
 	int	empty;
 
 	empty = -1;
@@ -64,7 +52,7 @@ static void		finished_menu(t_doom *doom)
 	{
 		if (doom->groceries->info.won == FALSE && \
 		doom->menu->state == finished)
-			get_missing_groceries(doom, &empty, list);
+			get_missing_groceries(doom, &empty);
 	}
 	add_score_to_sdl_text(doom, empty);
 	menu_settings(doom);
