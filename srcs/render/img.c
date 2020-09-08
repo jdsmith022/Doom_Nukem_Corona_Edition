@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 14:02:28 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 18:37:41 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static void		put_pixel_from_img(char *img_pixels, t_doom *doom,
 					uint32_t index)
 {
 	char		*pixels;
-	t_rgb		rgb;
+	t_rgb		color;
 
 	pixels = doom->surface->pixels;
-	rgb.r = *img_pixels;
-	rgb.g = *(img_pixels + 1);
-	rgb.b = *(img_pixels + 2);
-	if (rgb.r == (Uint8)255 && rgb.b == (Uint8)255 && rgb.g == (Uint8)255)
+	color.r = *img_pixels;
+	color.g = *(img_pixels + 1);
+	color.b = *(img_pixels + 2);
+	if (color.r == 255 && color.b == 255 && color.g == 255)
 		return ;
-	ft_memcpy(doom->surface->pixels + index, &rgb, sizeof(t_rgb));
+	ft_memcpy(doom->surface->pixels + index, &color, sizeof(t_rgb));
 }
 
 void			draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect coord)
@@ -35,10 +35,10 @@ void			draw_img(SDL_Surface *texture, t_doom *doom, SDL_Rect coord)
 	uint16_t	sx;
 	uint32_t	screen_index;
 
-	prev_x = coord.x;
-	sx = 0;
 	if (!texture)
 		return ;
+	prev_x = coord.x;
+	sx = 0;
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
 	while (sx < (texture->h * texture->w))
 	{

@@ -34,7 +34,7 @@ RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
 				draw_skybox_sky draw_skybox_sidedefs \
 				render_sky_box set_offsets draw_poster add_light_to_pixel \
 				draw_floor draw_ceiling set_floor_limit \
-				set_ceiling_limit set_properties_plane draw_window draw_img
+				set_ceiling_limit set_properties_plane draw_window img
 READ_FILES = add_info_to_lib error read_file save_libraries save_sdl malloc_lib \
 			sector_inf sidedef_inf obj_inf save_bmp_to_sdl save_sky \
 			 set_texture_type create_sidedef bmp_safe_exit save_player_settings_sprites
