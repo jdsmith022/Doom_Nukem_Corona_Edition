@@ -8,7 +8,7 @@ LIBFT = libft
 SDL = sdl
 BMP = bmp
 SDL_FLAGS = `sdl2-config --cflags --libs`
-LIBS = -L $(LIBFT) bmp/lib_bmp.a bmp/libft/libft.a -lSDL2_mixer -lSDL2_ttf -lft
+LIBS = -L $(LIBFT) bmp/lib_bmp.a -lSDL2_mixer -lSDL2_ttf -lft
 
 CORE = srcs/core/
 EVENTS = srcs/events/
@@ -112,8 +112,8 @@ ADD_FILES = Makefile textures
 
 all: $(NAME)
 
-$(NAME): libft/libft.a bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
-	@make re -C $(LIBFT)
+$(NAME): bmp/lib_bmp.a $(O_FILES_DIRS) $(O_FILES)
+	@make -C $(LIBFT)
 	@gcc -o $@ $(O_FILES) $(LIBS) $(FLAGS) $(SDL_FLAGS)
 	@echo "$(GREEN)[√]$(WHITE) compiling done!"
 
@@ -167,9 +167,6 @@ $(ACTION).objects/%.o: $(ACTION)%.c $(HEADERS)
 
 %/.objects:
 	@mkdir $@
-
-libft/libft.a:
-	@make -C libft
 
 bmp/lib_bmp.a:
 	@make -C bmp

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 21:03:10 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 18:48:40 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 19:05:31 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdint.h>
-# include "../libft/src/libft.h"
+# include "../../libft/libft.h"
 
 # pragma pack(push, 1)
 
