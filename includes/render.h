@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:45:07 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 18:05:00 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_ray		t_ray;
 typedef struct s_point		t_point;
 typedef struct s_line		t_line;
 
-/*render functions*/
 void				sidedef_render(t_doom *doom, t_ray ray,\
 						int sector, int prev_sector);
 void				init_sliding_door(t_doom *doom, t_sidedef *sidedef);
