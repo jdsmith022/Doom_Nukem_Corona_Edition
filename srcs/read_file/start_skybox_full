@@ -104,7 +104,7 @@ assets/textures/shelves/jar-wall.bmp
 #41
 assets/textures/shelves/jar1.bmp
 #42
-assets/textures/shelves/jar2.bmp
+assets/textures/shelves/jar1.bmp
 #43
 assets/textures/shelves/jar3.bmp
 #44
@@ -336,7 +336,7 @@ assets/sprites/groceries/white_onion.bmp
 #60
 assets/sprites/groceries/watermelon.bmp
 #61
-assets/sprites/groceries/yellow_paprika.bmp
+assets/sprites/groceries/red_pepper.bmp
 #62
 assets/sprites/groceries/swee_potatoe.bmp
 #63
@@ -400,9 +400,9 @@ assets/sprites/groceries/potato.bmp
 #92
 assets/sprites/groceries/spray_bottle.bmp
 #93
-assets/sprites/groceries/red_pepper.bmp
+assets/sprites/groceries/cherry_pie.bmp
 #94
-assets/sprites/groceries/red_paprika.bmp
+assets/sprites/groceries/red_pepper.bmp
 #95
 assets/sprites/groceries/butter.bmp
 #96
@@ -9312,9 +9312,9 @@ assets/sprites/groceries/tart.bmp
 576
 864
 0
-16
-16
-16
+28
+28
+28
 222
 
 #sidedefs
@@ -9348,9 +9348,9 @@ assets/sprites/groceries/tart.bmp
 1248
 864
 0
-28
-28
-28
+59
+59
+59
 225
 
 #sidedefs
@@ -9506,9 +9506,9 @@ assets/sprites/groceries/tart.bmp
 736
 744
 0
-16
-16
-16
+72
+72
+72
 238
 
 #sidedefs

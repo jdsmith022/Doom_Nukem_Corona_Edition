@@ -3,22 +3,20 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				52
-# define GROC_TYPES				47
+# define GROC_COUNT				51
+# define GROC_TYPES				48
 
 typedef enum					e_groc_types {
-	APPLE = 1, BACON, CHERRY, JAM,
-	SODA, WATER, WINE, CHEESE,
-	COOKIE, BREAD, POTATO, MELON,
-	SOAP, ONION, PEPPER, CHICKEN,
-	FISH, MEAT, CEREAL, CORNFLAKES,
-	TEA, GRAPES, TOILET, LEMON,
-	TART, BUTTER, PIE_CHERRY, PIE_LEMON,
-	KETCHUP, TOMATO, CHOCOLATE, KIWI,
-	OLIVE, CUCUMBER, PAPRIKA, MARMELADE,
-	STEAK, BROWNIE, MILK, SPRAY,
-	JARS1, JARS2, JARS3, HONEY,
-	SHRIMP, ALCOHOL, BRINTA
+	APPLE = 1, BACON, CHERRY, JAM, SODA,
+	WATER, WINE, CHEESE, COOKIE, BREAD,
+	POTATO, MELON, SOAP, ONION, PEPPER,
+	CHICKEN, FISH, MEAT, CEREAL, CORNFLAKES,
+	TEA, GRAPES, TOILET, LEMON, TART,
+	BUTTER, PIE_CHERRY, PIE_LEMON, KETCHUP,
+	TOMATO, CHOCOLATE, KIWI, OLIVE, CUCUMBER,
+	PAPRIKA, MARMELADE, STEAK, BROWNIE, SPRAY,
+	HONEY, JARS1, JARS2, JARS3, BRINTA,
+	SHRIMP, ALCOHOL, JAR6
 }								t_groc_types;
 
 typedef struct s_doom			t_doom;
@@ -234,21 +232,6 @@ static const t_grocery_paths	g_groc_paths[] = {
 		BROWNIE
 	},
 	{
-		"assets/textures/shelves/milk.bmp",
-		"assets/sprites/groceries/milk1.bmp",
-		MILK
-	},
-	{
-		"assets/textures/shelves/milk2.bmp",
-		"assets/sprites/groceries/milk1.bmp",
-		MILK
-	},
-	{
-		"assets/textures/shelves/milk3.bmp",
-		"assets/sprites/groceries/milk1.bmp",
-		MILK
-	},
-	{
 		"assets/textures/shelves/spray_bottles.bmp",
 		"assets/sprites/groceries/spray_bottle.bmp",
 		SPRAY
@@ -292,6 +275,16 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/breakfast.bmp",
 		"assets/sprites/groceries/brinta.bmp",
 		BRINTA
+	},
+	{
+		"assets/textures/shelves/pie3.bmp",
+		"assets/sprites/groceries/pie.bmp",
+		TART
+	},
+	{
+		"assets/textures/shelves/jar6.bmp",
+		"assets/sprites/groceries/round_jar2.bmp",
+		JAR6
 	}
 };
 
