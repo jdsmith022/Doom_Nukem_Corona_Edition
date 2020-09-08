@@ -6,14 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 21:03:10 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 21:04:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 18:48:40 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BMP_H
 # define BMP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
