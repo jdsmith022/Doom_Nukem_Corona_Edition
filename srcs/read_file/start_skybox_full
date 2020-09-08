@@ -104,7 +104,7 @@ assets/textures/shelves/jar-wall.bmp
 #41
 assets/textures/shelves/jar1.bmp
 #42
-assets/textures/shelves/jar2.bmp
+assets/textures/shelves/jar1.bmp
 #43
 assets/textures/shelves/jar3.bmp
 #44
@@ -212,7 +212,7 @@ assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-123
+125
 #0
 assets/sprites/groceries/bacon.bmp
 #1
@@ -326,7 +326,7 @@ assets/sprites/groceries/whiskey.bmp
 #55
 assets/sprites/groceries/moonshine.bmp
 #56
-assets/sprites/groceries/red_wine.bmp
+assets/sprites/groceries/wine1.bmp
 #57
 assets/sprites/groceries/wine1.bmp
 #58
@@ -336,7 +336,7 @@ assets/sprites/groceries/white_onion.bmp
 #60
 assets/sprites/groceries/watermelon.bmp
 #61
-assets/sprites/groceries/yellow_paprika.bmp
+assets/sprites/groceries/red_pepper.bmp
 #62
 assets/sprites/groceries/swee_potatoe.bmp
 #63
@@ -400,9 +400,9 @@ assets/sprites/groceries/potato.bmp
 #92
 assets/sprites/groceries/spray_bottle.bmp
 #93
-assets/sprites/groceries/red_pepper.bmp
+assets/sprites/groceries/cherry_pie.bmp
 #94
-assets/sprites/groceries/red_paprika.bmp
+assets/sprites/groceries/red_pepper.bmp
 #95
 assets/sprites/groceries/butter.bmp
 #96
@@ -458,7 +458,11 @@ assets/sprites/groceries/lemon_pie.bmp
 #121
 assets/sprites/groceries/shrimp.bmp
 #122
-assets/sprites/groceries/wine3.bmp
+assets/sprites/groceries/wine1.bmp
+#123
+assets/sprites/groceries/milk1.bmp
+#124
+assets/sprites/groceries/tart.bmp
 
 #ADD LEFT HAND AND RIGHT HAND
 
@@ -1429,9 +1433,9 @@ assets/sprites/groceries/wine3.bmp
 0
 768
 0
-16
-16
-16
+25
+25
+25
 35
 
 #sidedefs
@@ -3149,9 +3153,9 @@ assets/sprites/groceries/wine3.bmp
 736
 1248
 0
-16
-16
-16
+35
+35
+35
 86
 
 #sidedef
@@ -7185,22 +7189,22 @@ assets/sprites/groceries/wine3.bmp
 16
 1
 4
-58
+57
 330
 2440
 335
 2440
-58
+57
 335
 2440
 335
 2460
-58
+57
 335
 2460
 330
 2460
-58
+57
 330
 2460
 330
@@ -7301,22 +7305,22 @@ assets/sprites/groceries/wine3.bmp
 16
 1
 4
-58
+57
 415
 2445
 425
 2445
-58
+57
 425
 2445
 425
 2455
-58
+57
 425
 2455
 415
 2455
-58
+57
 415
 2455
 415
@@ -7394,22 +7398,22 @@ assets/sprites/groceries/wine3.bmp
 16
 1
 4
-55
+54
 305
 2635
 315
 2635
-55
+54
 315
 2635
 315
 2645
-55
+54
 315
 2645
 305
 2645
-55
+54
 305
 2645
 305
@@ -7423,22 +7427,22 @@ assets/sprites/groceries/wine3.bmp
 16
 1
 4
-55
+54
 330
 2635
 340
 2635
-55
+54
 340
 2635
 340
 2645
-55
+54
 340
 2645
 330
 2645
-55
+54
 330
 2645
 330
@@ -7452,22 +7456,22 @@ assets/sprites/groceries/wine3.bmp
 16
 1
 4
-55
+54
 345
 2640
 355
 2640
-55
+54
 355
 2640
 355
 2660
-55
+54
 355
 2660
 345
 2660
-55
+54
 345
 2660
 345
@@ -9308,9 +9312,9 @@ assets/sprites/groceries/wine3.bmp
 576
 864
 0
-16
-16
-16
+28
+28
+28
 222
 
 #sidedefs
@@ -9344,9 +9348,9 @@ assets/sprites/groceries/wine3.bmp
 1248
 864
 0
-28
-28
-28
+59
+59
+59
 225
 
 #sidedefs
@@ -9502,9 +9506,9 @@ assets/sprites/groceries/wine3.bmp
 736
 744
 0
-16
-16
-16
+72
+72
+72
 238
 
 #sidedefs

@@ -161,9 +161,9 @@ typedef enum		e_game_editor_im
 	arrow_down,
 	garbage,
 	player
-}
-					t_game_editor_im;
-typedef struct 			s_ed_sprite
+}					t_game_editor_im;
+
+typedef struct			s_ed_sprite
 {
 	int					id;
 	int					type;
@@ -185,7 +185,7 @@ typedef struct			s_ed_sector
 	struct s_ed_sector	*previous;
 }						t_ed_sector;
 
-typedef struct 			s_ed_sidedef
+typedef struct			s_ed_sidedef
 {
 	int					id;
 	t_line				line;
@@ -224,10 +224,14 @@ void					open_game_editor(t_doom *doom, double dt);
 void					set_ed_sidedef_values(t_doom *doom, t_line line);
 void					check_connection(t_doom *doom, int x, int y);
 void					add_sidedef(t_doom *doom, int x, int y);
+bool					snap_close_sector(t_doom *doom, t_point start, \
+							t_point *end);
 void					delete_sector(t_doom *doom);
 void					add_sector(t_doom *doom);
 void					set_ed_sector_values(t_doom *doom);
-bool					check_sector_in_sector(t_doom *doom, t_point pos);
+t_line					set_ray(t_doom *doom, t_line ray);
+bool					check_sector_in_sector(t_doom *doom, t_line ray);
+void					save_current_sector(t_doom *doom, t_line ray);
 t_sector				*light_correction(t_sector *sector, int len);
 void					mouse_press_game_editor(t_doom *doom, int x, int y);
 void					bars(Uint32 **pixels, t_doom *doom);
@@ -238,7 +242,7 @@ void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels, \
 void					add_sprite(t_doom *doom, int x, int y);
 void					draw_ed_sprite(t_doom *doom, Uint32 **pixels);
 void					draw_screen_colors(Uint32 *pixels, t_doom *doom);
-void 					add_lists_to_libs(t_doom *doom);
+void					add_lists_to_libs(t_doom *doom);
 void					put_images(int x, int y, int index, t_doom *doom);
 void					put_textures_sidedef(int x, int y, int index, \
 							t_doom *doom);
@@ -247,7 +251,8 @@ void					put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 void					mouse_press_sidedef_txt(t_doom *doom, int x, int y);
 void					mouse_press_sidedef(t_doom *doom, int x, int y);
 void					put_sprite(t_doom *doom, int x, int y);
-bool					line_intersect(t_doom *doom, t_point start, int x, int y);
+bool					line_intersect(t_doom *doom, t_point start, int x, \
+							int y);
 void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
 void					delete_sprites_in_sector(t_doom *doom, int sector);
@@ -262,4 +267,6 @@ void					set_spr_checkout(t_sprite *sprite);
 void					set_spr_lines(t_sprite *sprite, int lenght);
 void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
 							t_ed_sprite *ed_sprite, int *index);
+void					create_mid_points(t_line *line, int diff);
+void					place_checkout(t_doom *doom);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 23:47:17 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 12:56:58 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static void		put_window_texture(t_doom *doom, t_point pixel, t_plane plane,
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
-	put_window_pixel(doom, pixel, tex_dex, pixel_dex);
+	if (pixel.x >= 0 && pixel.x < WIDTH && \
+	pixel.y >= 0 && pixel.y < HEIGHT)
+		put_window_pixel(doom, pixel, tex_dex, pixel_dex);
 }
 
 void			save_window(t_doom *doom, t_plane plane,
@@ -90,7 +92,7 @@ void			draw_window_as_sprite(t_doom *doom)
 	t_plane	plane;
 
 	x = doom->lib.window.x_start;
-	while (x <= doom->lib.window.x_end)
+	while (x < doom->lib.window.x_end)
 	{
 		plane.height_standard = doom->lib.window.height_standard[x];
 		plane.wall_offset = doom->lib.window.wall_offset[x];

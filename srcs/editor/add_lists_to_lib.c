@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   add_lists_to_lib.c                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 13:18:38 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/menu.h"
@@ -5,7 +17,6 @@
 
 static void		set_gameplay_settings(t_doom *doom)
 {
-	doom->i_sector = doom->i_sector;
 	doom->pos = doom->pos;
 	doom->lib.sector = light_correction(\
 		doom->lib.sector, doom->game_design.sc_len);
@@ -40,11 +51,11 @@ static void		flush_sector_list_info(t_doom *doom)
 
 void			add_lists_to_libs(t_doom *doom)
 {
-	// del_groceries(doom->groceries);
+	del_groceries(doom->groceries);
 	flush_sector_list_info(doom);
 	set_sector_lib(doom);
 	set_sprite_lib(doom);
 	set_sidedef_lib(doom);
 	set_gameplay_settings(doom);
-	// iqnit_groceries(doom);
+	init_groceries(doom);
 }

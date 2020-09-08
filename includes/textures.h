@@ -3,22 +3,20 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				49
-# define GROC_TYPES				47
+# define GROC_COUNT				51
+# define GROC_TYPES				48
 
 typedef enum					e_groc_types {
-	APPLE = 1, BACON, CHERRY, JAM,
-	SODA, WATER, WINE, CHEESE,
-	COOKIE, BREAD, POTATO, MELON,
-	SOAP, ONION, PEPPER, CHICKEN,
-	FISH, MEAT, CEREAL, TEA,
-	GRAPES, TOILET, LEMON, ALCOHOL,
-	WINE2, WINE3, TART, BUTTER,
-	PIE_CHERRY, PIE_LEMON, KETCHUP, TOMATO,
-	CHOCOLATE, KIWI, OLIVE, CUCUMBER,
-	PAPRIKA, MARMELADE, STEAK, BROWNIE,
-	MILK, SPRAY, JARS1, JARS2,
-	JARS3, HONEY, SHRIMP
+	APPLE = 1, BACON, CHERRY, JAM, SODA,
+	WATER, WINE, CHEESE, COOKIE, BREAD,
+	POTATO, MELON, SOAP, ONION, PEPPER,
+	CHICKEN, FISH, MEAT, CEREAL, CORNFLAKES,
+	TEA, GRAPES, TOILET, LEMON, TART,
+	BUTTER, PIE_CHERRY, PIE_LEMON, KETCHUP,
+	TOMATO, CHOCOLATE, KIWI, OLIVE, CUCUMBER,
+	PAPRIKA, MARMELADE, STEAK, BROWNIE, SPRAY,
+	HONEY, JARS1, JARS2, JARS3, BRINTA,
+	SHRIMP, ALCOHOL, JAR6
 }								t_groc_types;
 
 typedef struct s_doom			t_doom;
@@ -49,7 +47,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 		CHERRY
 	},
 	{
-		"assets/textures/shelves/jar6.bmp",
+		"assets/textures/shelves/jam.bmp",
 		"assets/sprites/groceries/jam.bmp",
 		JAM
 	},
@@ -125,7 +123,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 	},
 	{
 		"assets/textures/shelves/cereal.bmp",
-		"assets/sprites/groceries/cereal.bmp",
+		"assets/sprites/groceries/cereal2.bmp",
 		CEREAL
 	},
 	{
@@ -155,13 +153,13 @@ static const t_grocery_paths	g_groc_paths[] = {
 	},
 	{
 		"assets/textures/shelves/wine1.bmp",
-		"assets/sprites/groceries/wine2.bmp",
-		WINE2
+		"assets/sprites/groceries/wine1.bmp",
+		WINE
 	},
 	{
 		"assets/textures/shelves/wine2.bmp",
 		"assets/sprites/groceries/wine3.bmp",
-		WINE3
+		WINE
 	},
 	{
 		"assets/textures/shelves/tarts.bmp",
@@ -234,21 +232,6 @@ static const t_grocery_paths	g_groc_paths[] = {
 		BROWNIE
 	},
 	{
-		"assets/textures/shelves/milk.bmp",
-		"assets/sprites/groceries/milk1.bmp",
-		MILK
-	},
-	{
-		"assets/textures/shelves/milk2.bmp",
-		"assets/sprites/groceries/milk1.bmp",
-		MILK
-	},
-	{
-		"assets/textures/shelves/milk3.bmp",
-		"assets/sprites/groceries/milk1.bmp",
-		MILK
-	},
-	{
 		"assets/textures/shelves/spray_bottles.bmp",
 		"assets/sprites/groceries/spray_bottle.bmp",
 		SPRAY
@@ -282,6 +265,26 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/fish2.bmp",
 		"assets/sprites/groceries/shrimp.bmp",
 		SHRIMP
+	},
+	{
+		"assets/textures/shelves/cereal2.bmp",
+		"assets/sprites/groceries/cereal.bmp",
+		CORNFLAKES
+	},
+	{
+		"assets/textures/shelves/breakfast.bmp",
+		"assets/sprites/groceries/brinta.bmp",
+		BRINTA
+	},
+	{
+		"assets/textures/shelves/pie3.bmp",
+		"assets/sprites/groceries/pie.bmp",
+		TART
+	},
+	{
+		"assets/textures/shelves/jar6.bmp",
+		"assets/sprites/groceries/round_jar2.bmp",
+		JAR6
 	}
 };
 

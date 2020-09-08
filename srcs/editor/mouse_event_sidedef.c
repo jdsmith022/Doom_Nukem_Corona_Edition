@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   mouse_event_sidedef.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 10:02:11 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
@@ -22,11 +34,15 @@ static void		create_portal(t_doom *doom)
 	t_ed_sector		*sector;
 
 	sidedef = doom->game_design.ed_sidedef;
-	sidedef->opp_sector = doom->game_design.sc_len;
-	set_ed_sidedef_values(doom, sidedef->line);
-	doom->game_design.ed_sidedef->opp_sector = sidedef->sector;
-	doom->game_design.edit_sector = FALSE;
-	doom->game_design.open_connection = TRUE;
+	if (point_distance(sidedef->line.start, sidedef->line.end) > 30.0 &&
+	sidedef->opp_sector == -1)
+	{
+		sidedef->opp_sector = doom->game_design.sc_len;
+		set_ed_sidedef_values(doom, sidedef->line);
+		doom->game_design.ed_sidedef->opp_sector = sidedef->sector;
+		doom->game_design.edit_sector = FALSE;
+		doom->game_design.open_connection = TRUE;
+	}
 }
 
 static void		set_sidedef_to_prev(t_doom *doom)

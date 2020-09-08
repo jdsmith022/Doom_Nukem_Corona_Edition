@@ -51,6 +51,8 @@ void					del_node(t_list **head, t_list *node);
 void					del_groceries(t_groceries *groc);
 void					print_basket(t_list **basket);
 void					generate_shopping_list(t_doom *doom);
+void					custom_shopping_list(t_doom *doom,
+											t_groceries *groceries);
 bool					checkout(t_groceries *groceries);
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
 void					draw_shopping_ui(t_doom *doom, t_groceries *groceries);
