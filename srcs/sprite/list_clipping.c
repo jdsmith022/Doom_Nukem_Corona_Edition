@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/05 10:59:34 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/07 12:47:25 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 16:57:36 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		free_clipping_values(t_doom *doom, t_clip *list)
 	node = list->next;
 	if (node == NULL)
 		return ;
-	while (node->next != NULL)
+	while (node != NULL)
 	{
 		temp = node->next;
 		ft_bzero(node, sizeof(t_clip));
@@ -57,18 +57,15 @@ t_clip		*new_clip_start(int sector_id, int x, int y, int sidedef)
 {
 	t_clip	*new;
 
-	new = (t_clip*)malloc(sizeof(t_clip));
+	new = (t_clip*)ft_memalloc(sizeof(t_clip));
 	if (!new)
 		return (NULL);
-	else
-	{
-		new->sector_id = sector_id;
-		new->line.start.x = x;
-		new->line.start.y = y;
-		new->line.end.x = WIDTH;
-		new->line.end.y = 0;
-		new->sidedef = sidedef;
-	}
+	new->sector_id = sector_id;
+	new->line.start.x = x;
+	new->line.start.y = y;
+	new->line.end.x = WIDTH;
+	new->line.end.y = 0;
+	new->sidedef = sidedef;
 	new->next = NULL;
 	return (new);
 }
