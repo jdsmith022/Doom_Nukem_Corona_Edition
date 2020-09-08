@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:56 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 11:40:00 by rooscocolie   ########   odam.nl         */
+/*   Updated: 2020/09/08 11:59:52 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ static void		put_texture_sidedef(t_doom *doom, t_sidedef sidedef,
 	t_sector	sector;
 
 	sector = doom->lib.sector[sidedef.sector];
-	add_light_to_pixel(doom, sector, pixel.x, pixel.y);
-	find_texture_index(doom, pixel, plane, sidedef);
+	if (pixel.x >= 0 && pixel.x < WIDTH && \
+	pixel.y >= 0 && pixel.y < HEIGHT)
+	{
+		add_light_to_pixel(doom, sector, pixel.x, pixel.y);
+		find_texture_index(doom, pixel, plane, sidedef);
+	}
 }
 
 static void		draw_portal_sidedef_2(t_doom *doom, t_sidedef sidedef,
