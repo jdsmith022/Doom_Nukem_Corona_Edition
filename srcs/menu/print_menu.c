@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 21:09:36 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/09 01:07:16 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			menu_print_loop(t_doom *doom, int empty)
 	if (doom->groceries)
 	{
 		if (doom->groceries->info.won == FALSE && \
-		doom->menu->state == finished && empty != -1)
+		doom->menu->state == finished && empty == -1)
 			print_missing_groceries(doom);
 	}
 	font_to_screen(doom);

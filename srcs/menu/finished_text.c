@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:43 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 21:54:49 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/09 01:08:46 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ static	char	*win_lose_status(t_doom *doom, t_font *lib,
 		status = successful_shop(doom, lib);
 	else if (doom->groceries->info.won == FALSE)
 	{
-		status = "You didn't find all you're groceries! \
-		Try again!";
+		status = "You didn't find all you're groceries! Try again!";
 		lib[1].font_color = doom->lib.font_lib.font_color.red;
 		lib[1].font_rect.x = WIDTH / 12;
 		lib[1].font_rect.y = HEIGHT / 2.5;
