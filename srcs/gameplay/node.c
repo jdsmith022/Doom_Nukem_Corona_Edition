@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:28:38 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/08 23:00:36 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,19 @@ void		del_node(t_list **head, t_list *node)
 	prev = *head;
 	if (prev->content == node->content)
 	{
-		*head = node->next;
+		if (node->next)
+			*head = node->next;
+		else
+			*head = NULL;
 		free(node);
 		return ;
 	}
 	while (prev->next->content != node->content)
 		prev = prev->next;
-	prev->next = node->next;
+	if (node->next)
+		prev->next = node->next;
+	else
+		prev->next = NULL;
 	free(node);
 }
 

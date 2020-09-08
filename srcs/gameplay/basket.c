@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:27:54 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/08 22:49:38 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ bool			remove_item_from_basket(t_list **head, uint8_t type)
 	change_amount(item, -1);
 	if (item->amount == 0)
 		del_node(head, temp);
+	if (!get_basket_len(head))
+		*head = NULL;
 	return (true);
 }
