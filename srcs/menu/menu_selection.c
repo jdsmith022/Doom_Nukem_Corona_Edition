@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 12:59:21 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 22:07:22 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../includes/menu.h"
 #include "../../includes/audio.h"
 #include "../../includes/hud.h"
+#include "../../includes/gameplay.h"
 
 static void		menu_settings(t_doom *doom)
 {
@@ -24,14 +25,39 @@ static void		menu_settings(t_doom *doom)
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 }
 
+static void		get_missing_groceries(t_doom *doom, int *empty)
+{
+	char		*score;
+	t_item		*info;
+	size_t		index;
+
+	index = 0;
+	info = doom->groceries->info.groceries_to_display;
+	while (index < doom->groceries->shopping_list_len)
+	{
+		if (info[index].amount == 0)
+			*empty += 1;
+		index++;
+	}
+}
+
 static void		finished_menu(t_doom *doom)
 {
+	int	empty;
+
+	empty = -1;
 	stop_sounds();
 	play_sound(doom->audio->sounds[LVL_FINISH], -1);
-	add_score_to_sdl_text(doom);
+	if (doom->groceries)
+	{
+		if (doom->groceries->info.won == FALSE && \
+		doom->menu->state == finished)
+			get_missing_groceries(doom, &empty);
+	}
+	add_score_to_sdl_text(doom, empty);
 	menu_settings(doom);
 	while (doom->menu->state == finished)
-		menu_print_loop(doom);
+		menu_print_loop(doom, empty);
 }
 
 static void		pause_menu(t_doom *doom)
@@ -44,7 +70,7 @@ static void		pause_menu(t_doom *doom)
 	while (doom->menu->state == game_paused)
 	{
 		Mix_PauseMusic();
-		menu_print_loop(doom);
+		menu_print_loop(doom, -1);
 	}
 	resume_music();
 	clock_gettime(doom->game.play_time, &curr_time);
