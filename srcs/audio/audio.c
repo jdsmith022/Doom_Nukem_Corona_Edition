@@ -40,7 +40,7 @@ static void	play_movement_sounds(t_audio *audio, t_event *event)
 	if (event->jump && !audio->event->jump_toggled)
 	{
 		pause_sound(audio->sounds[FOOTSTEPS], 6);
-		play_sound(audio->sounds[JUMP], 2);
+		play_sound(audio->sounds[JUMP], 4);
 		audio->event->jump_toggled = TRUE;
 	}
 }
@@ -48,7 +48,7 @@ static void	play_movement_sounds(t_audio *audio, t_event *event)
 static void	play_action_sounds(t_doom *doom, t_audio *audio, t_event *event)
 {
 	if (event->shoot && event->mouse_press && doom->hud->sanitizer_level > 0)
-		play_sound(audio->sounds[GUNSHOT], -1);
+		play_sound(audio->sounds[GUNSHOT], 4);
 	if (event->fall && !audio->event->prev_fall_state)
 	{
 		play_sound(audio->sounds[SCREAM], -1);
@@ -72,9 +72,13 @@ static void	play_combat_sounds(t_doom *doom, t_audio *audio, int state)
 {
 	if (state == corona_hit)
 		play_sound(audio->sounds[HIT], -1);
-	if (state == sanitizer && doom->cast.poster == refill_station \
+	if (state == sanitizer && doom->cast.poster == refill_station
 	&& doom->hud->sanitizer_level < 100)
-		play_sound(audio->sounds[POWERUP], -1);
+		play_sound(audio->sounds[POWERUP], 6);
+	else if (state == health_pack)
+		play_sound(audio->sounds[POWERUP], 6);
+	else if (state == facemask)
+		play_sound(audio->sounds[POWERUP], 6);
 }
 
 void		audio(t_doom *doom, t_event *event)

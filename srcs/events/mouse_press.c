@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 14:30:33 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 16:57:08 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void		shoot_action(t_doom *doom)
 		doom->own_event.mist = TRUE;
 		check_sprite_hit(doom);
 	}
-	doom->own_event.mouse_press = FALSE;
 }
 
 void			select_action_default_level(t_doom *doom)

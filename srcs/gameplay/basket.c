@@ -11,6 +11,7 @@ static t_item	init_item(t_doom *doom, uint8_t type)
 	set_sprite(doom, type, &item);
 	if (!item.sprite)
 		ft_putstr("Sprite not found\n");
+	doom->own_event.groc_pickup = TRUE;
 	return (item);
 }
 
@@ -37,7 +38,6 @@ void			add_item_to_basket(t_doom *doom, t_list **head, uint8_t type)
 	if (!valid_input(type, head))
 		return ;
 	item = init_item(doom, type);
-	doom->own_event.groc_pickup = TRUE;
 	if (!*head)
 	{
 		*head = ft_lstnew(&item, sizeof(t_item));

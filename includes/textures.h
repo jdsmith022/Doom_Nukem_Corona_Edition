@@ -3,8 +3,8 @@
 
 # include <stdlib.h>
 
-# define GROC_COUNT				51
-# define GROC_TYPES				48
+# define GROC_COUNT				50
+# define GROC_TYPES				47
 
 typedef enum					e_groc_types {
 	APPLE = 1, BACON, CHERRY, JAM, SODA,
@@ -14,9 +14,9 @@ typedef enum					e_groc_types {
 	TEA, GRAPES, TOILET, LEMON, TART,
 	BUTTER, PIE_CHERRY, PIE_LEMON, KETCHUP,
 	TOMATO, CHOCOLATE, KIWI, OLIVE, CUCUMBER,
-	PAPRIKA, MARMELADE, STEAK, BROWNIE, SPRAY,
-	HONEY, JARS1, JARS2, JARS3, BRINTA,
-	SHRIMP, ALCOHOL, JAR6
+	MARMELADE, STEAK, BROWNIE, SPRAY, HONEY,
+	JARS1, JARS2, JARS3, BRINTA, SHRIMP,
+	ALCOHOL, JAR6
 }								t_groc_types;
 
 typedef struct s_doom			t_doom;
@@ -210,11 +210,6 @@ static const t_grocery_paths	g_groc_paths[] = {
 		"assets/textures/shelves/veggies3.bmp",
 		"assets/sprites/groceries/cucumber.bmp",
 		CUCUMBER
-	},
-	{
-		"assets/textures/shelves/paprika.bmp",
-		"assets/sprites/groceries/red_paprika.bmp",
-		PAPRIKA
 	},
 	{
 		"assets/textures/shelves/jar5.bmp",
