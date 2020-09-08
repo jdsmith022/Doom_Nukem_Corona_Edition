@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 22:49:55 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 13:18:38 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,4 @@ void			add_lists_to_libs(t_doom *doom)
 	set_sidedef_lib(doom);
 	set_gameplay_settings(doom);
 	init_groceries(doom);
-	printf("start sector = %d\n", doom->i_sector);
 }

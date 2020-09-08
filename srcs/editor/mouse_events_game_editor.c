@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 12:50:18 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 13:18:18 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ static void		add_player(t_doom *doom)
 		doom->pos = line.start;
 	else
 		doom->pos = line.end;
+	if (point_line_distance(doom->pos, sidedef->line) < 10.0)
+	{
+		doom->pos.x += 10;
+		doom->pos.y += 10;
+	}
 	doom->game_design.place_checkout = TRUE;
 	doom->game_design.edit_sector = FALSE;
 	doom->game_design.spr_tex = 5;

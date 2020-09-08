@@ -6,13 +6,36 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 11:12:38 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 13:36:40 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
+
+static void			check_placement(t_doom *doom,
+						t_ed_sidedef *sidedef, t_line line)
+{
+	if (point_line_distance(doom->game_design.ed_sprite->pos, \
+		sidedef->line) < 10.0)
+	{
+		if (line.start.x == line.end.x)
+		{
+			if (doom->game_design.ed_sprite->pos.x == line.start.x)
+				doom->game_design.ed_sprite->pos.y -= 10;
+			else
+				doom->game_design.ed_sprite->pos.y += 10;
+		}
+		else
+		{
+			if (doom->game_design.ed_sprite->pos.y == line.start.y)
+				doom->game_design.ed_sprite->pos.x -= 10;
+			else
+				doom->game_design.ed_sprite->pos.x += 10;
+		}
+	}
+}
 
 static void			set_checkout_location(t_doom *doom)
 {
@@ -34,6 +57,7 @@ static void			set_checkout_location(t_doom *doom)
 		doom->game_design.ed_sprite->pos = line.start;
 	else
 		doom->game_design.ed_sprite->pos = line.end;
+	check_placement(doom, sidedef, line);
 	doom->game.editor = FALSE;
 }
 
@@ -68,5 +92,4 @@ void				place_checkout(t_doom *doom)
 	doom->game_design.ed_sprite = doom->game_design.ed_sprite->next;
 	doom->game_design.ed_sprite->previous = prev;
 	set_checkout_sprite(doom);
-	printf("len: %d\n", doom->game_design.spr_len);
 }

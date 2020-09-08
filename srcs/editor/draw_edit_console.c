@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 12:57:50 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 13:14:31 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,6 @@
 #include "../../includes/sprites.h"
 #include "../../includes/render.h"
 #include "../../includes/font.h"
-
-static void		place_checkout_sprite(t_doom *doom)
-{
-	TTF_Font	*font;
-	t_font		lib;
-	SDL_Rect	texture;
-
-	texture.h = 8;
-	texture.w = 8;
-	texture.x = TEX_SPR_X;
-	texture.y = TEX_SPR_Y;
-	draw_img(doom->lib.obj_lib[SPR_CHECKOUT], doom, texture);
-	font = doom->lib.font_lib.font_18;
-	lib.str = "Place checkout";
-	lib.font_color = doom->lib.font_lib.font_color.black;
-	lib.font_rect.x = 24;
-	lib.font_rect.y = 480;
-	single_font_to_sdl(doom, lib, font);
-}
 
 static void		draw_sector_images(t_doom *doom, Uint32 *pixels)
 {
