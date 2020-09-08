@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   game_editor.h                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:51:44 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GAME_EDITOR_H
 # define GAME_EDITOR_H
 
-// # include <stdint.h>
-
-#include "doom.h"
+# include "doom.h"
 
 typedef struct s_doom		t_doom;
 typedef struct s_ray		t_ray;
@@ -219,7 +229,6 @@ typedef struct			s_angle_line {
 	t_point				start;
 }						t_angle_line;
 
-/*game editor*/
 void					open_game_editor(t_doom *doom, double dt);
 void					set_ed_sidedef_values(t_doom *doom, t_line line);
 void					check_connection(t_doom *doom, int x, int y);

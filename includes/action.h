@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   action.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:51:02 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ACTION_H
 # define ACTION_H
 
@@ -6,7 +18,6 @@
 
 typedef struct s_doom	t_doom;
 
-/*action functions */
 void				action_handler(t_doom *doom);
 void				light_switch(t_doom *doom, t_sidedef poster);
 void				light_timer(t_doom *doom, int *flag);

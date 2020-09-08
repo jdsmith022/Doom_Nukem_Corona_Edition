@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
 /*   Updated: 2020/09/08 17:36:17 by elkanfrank    ########   odam.nl         */
+=======
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:44:52 by JessicaSmit   ########   odam.nl         */
+>>>>>>> JS_draw_img
 /*                                                                            */
 /* ************************************************************************** */
 

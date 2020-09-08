@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   struct.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:47:05 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
 # define STRUCT_H
 
@@ -52,7 +64,7 @@ typedef struct s_ed_sidedef	t_ed_sidedef;
 typedef struct s_ed_sector	t_ed_sector;
 typedef struct s_ed_sprite	t_ed_sprite;
 
-typedef enum			e_settings
+typedef enum		e_settings
 {
 	player_1,
 	player_2,
@@ -64,66 +76,66 @@ typedef enum			e_settings
 	light,
 	light_click,
 	set
-}						t_settings;
+}					t_settings;
 
 # pragma pack(push, 1)
 
-typedef struct			s_rgb {
-	Uint8				r;
-	Uint8				g;
-	Uint8				b;
-}						t_rgb;
+typedef struct		s_rgb {
+	Uint8			r;
+	Uint8			g;
+	Uint8			b;
+}					t_rgb;
 
 # pragma pack(pop)
 
-typedef struct			s_rgb_d {
-	double				r;
-	double				g;
-	double				b;
-}						t_rgb_d;
+typedef struct		s_rgb_d {
+	double			r;
+	double			g;
+	double			b;
+}					t_rgb_d;
 
-typedef struct			s_coord {
-	uint16_t			x;
-	uint16_t			y;
-}						t_coord;
+typedef struct		s_coord {
+	uint16_t		x;
+	uint16_t		y;
+}					t_coord;
 
-typedef struct			s_point {
-	double				x;
-	double				y;
-}						t_point;
+typedef struct		s_point {
+	double			x;
+	double			y;
+}					t_point;
 
-typedef struct			s_line {
-	t_point				start;
-	t_point				end;
-}						t_line;
+typedef struct		s_line {
+	t_point			start;
+	t_point			end;
+}					t_line;
 
-typedef struct			s_sprite {
-	int					index;
-	int					amount;
-	t_point				pos;
-	t_point				sprite_begin;
-	double				size;
-	t_line				*lines;
-	int					action;
-	int					*textures;
-	int					block;
-	int					sector;
-	int					n_sector;
-	double				width;
-	double				height;
-	double				sprite_x;
-	double				sprite_y;
-	int					visible;
-	double				distance;
-	int					prev_sectors[50];
-}						t_sprite;
+typedef struct		s_sprite {
+	int				index;
+	int				amount;
+	t_point			pos;
+	t_point			sprite_begin;
+	double			size;
+	t_line			*lines;
+	int				action;
+	int				*textures;
+	int				block;
+	int				sector;
+	int				n_sector;
+	double			width;
+	double			height;
+	double			sprite_x;
+	double			sprite_y;
+	int				visible;
+	double			distance;
+	int				prev_sectors[50];
+}					t_sprite;
 
-typedef struct			s_ray {
-	t_line				line;
-	double				angle;
-	double				plane_x;
-	int					filter;
-}						t_ray;
+typedef struct		s_ray {
+	t_line			line;
+	double			angle;
+	double			plane_x;
+	int				filter;
+}					t_ray;
 
 typedef struct		s_event {
 	bool			mouse_press;

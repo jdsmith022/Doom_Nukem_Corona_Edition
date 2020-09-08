@@ -5,8 +5,13 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
+<<<<<<< HEAD
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
 /*   Updated: 2020/09/08 17:35:55 by elkanfrank    ########   odam.nl         */
+=======
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:49:17 by JessicaSmit   ########   odam.nl         */
+>>>>>>> JS_draw_img
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,10 +300,15 @@ static const t_grocery_paths	g_groc_paths[] = {
 	}
 };
 
+<<<<<<< HEAD
 void							set_sprite(
 		t_doom *doom,
 		uint8_t type,
 		t_item *item
 );
+=======
+void							set_sprite(t_doom *doom, \
+									uint8_t type, t_item *item);
+>>>>>>> JS_draw_img
 
 #endif
