@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 18:00:02 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 18:03:34 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,15 +295,10 @@ static const t_grocery_paths	g_groc_paths[] = {
 	}
 };
 
-<<<<<<< HEAD
 void							set_sprite(
 		t_doom *doom,
 		uint8_t type,
 		t_item *item
 );
-=======
-void							set_sprite(t_doom *doom, \
-									uint8_t type, t_item *item);
->>>>>>> JS_draw_img
 
 #endif

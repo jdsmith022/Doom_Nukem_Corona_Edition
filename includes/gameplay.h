@@ -5,13 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-<<<<<<< HEAD
-/*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:36:17 by elkanfrank    ########   odam.nl         */
-=======
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:44:52 by JessicaSmit   ########   odam.nl         */
->>>>>>> JS_draw_img
+/*   Updated: 2020/09/08 18:04:22 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +83,6 @@ bool					search_basket(t_item *itema, t_list **head);
 bool					search_basket_for_item(t_item *itema, t_list **head);
 void					get_game_over_info(t_doom *doom);
 void					timer(t_doom *doom);
-/*
-**						Shooting
-*/
 
 void					check_sprite_hit(t_doom *doom);
 void					check_select_spray_sprite(t_doom *doom);
