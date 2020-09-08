@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 18:31:43 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/08 14:30:33 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static void		select_action(t_doom *doom)
 	}
 	if (doom->game_design.custom_level)
 		return ;
-	select_action_default_level(doom);
+	if (doom->own_event.select)
+		select_action_default_level(doom);
 }
 
 void			mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
