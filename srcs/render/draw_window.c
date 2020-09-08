@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/06 23:47:17 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 11:58:59 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void			draw_window_as_sprite(t_doom *doom)
 	t_plane	plane;
 
 	x = doom->lib.window.x_start;
-	while (x <= doom->lib.window.x_end)
+	while (x < doom->lib.window.x_end)
 	{
 		plane.height_standard = doom->lib.window.height_standard[x];
 		plane.wall_offset = doom->lib.window.wall_offset[x];

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:02 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:24:07 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 12:46:28 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ static void		finished_menu(t_doom *doom)
 	stop_sounds();
 	play_sound(doom->audio->sounds[LVL_FINISH], -1);
 	add_score_to_sdl_text(doom);
+	doom->game.hud_display = FALSE;
+	SDL_SetRelativeMouseMode(SDL_FALSE);
+	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
+	SDL_SetCursor(doom->cursor);
+	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	while (doom->menu->state == finished)
 		menu_print_loop(doom);
 }
@@ -30,6 +35,11 @@ static void		pause_menu(t_doom *doom)
 	struct timespec curr_time;
 
 	clock_gettime(doom->game.play_time, &hold_time);
+	doom->game.hud_display = FALSE;
+	SDL_SetRelativeMouseMode(SDL_FALSE);
+	doom->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);
+	SDL_SetCursor(doom->cursor);
+	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
 	while (doom->menu->state == game_paused)
 	{
 		Mix_PauseMusic();
