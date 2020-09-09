@@ -6,7 +6,7 @@
 #    By: jesmith <jesmith@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                  #
-#    Updated: 2020/09/09 00:41:08 by JessicaSmit   ########   odam.nl          #
+#    Updated: 2020/09/09 02:55:48 by JessicaSmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom-nukem
-FLAGS = -Wall -Wextra -Werror -O3 -Wpedantic -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -O3 -Wpedantic
 LIBFT = libft
 SDL = sdl
 BMP = bmp

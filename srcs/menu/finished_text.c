@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:43 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/09 01:08:46 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/09 02:49:54 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 static void		missing_groceries(t_doom *doom, t_font *lib)
 {
-	lib[2].str = "What you missed:";
-	lib[2].font_rect.x = WIDTH / 2.7;
+	lib[2].str = "What you didn't get or took too many of:";
+	lib[2].font_rect.x = WIDTH / 7.2;
 	lib[2].font_rect.y = HEIGHT / 3 * 1.7;
 	lib[2].font_color = doom->lib.font_lib.font_color.blue;
 }
@@ -32,16 +32,17 @@ static	char	*win_lose_status(t_doom *doom, t_font *lib,
 	lib[1].font_rect.y = HEIGHT / 2 - 25;
 	lib[2].font_rect.x = WIDTH / 3.8;
 	lib[2].font_rect.y = HEIGHT / 2 + 25;
-	if (empty != -1 && empty == doom->groceries->shopping_list_len - 1)
+	if (empty != -1 && empty == doom->groceries->shopping_list_len - 1 \
+	&& doom->groceries->info.won == FALSE)
 		status = set_greedy_font(doom, lib);
 	else if (doom->groceries->info.won == TRUE && \
 	doom->hud->corona_level < 75)
 		status = successful_shop(doom, lib);
 	else if (doom->groceries->info.won == FALSE)
 	{
-		status = "You didn't find all you're groceries! Try again!";
+		status = "You didn't fill your basket right. Try again!";
 		lib[1].font_color = doom->lib.font_lib.font_color.red;
-		lib[1].font_rect.x = WIDTH / 12;
+		lib[1].font_rect.x = WIDTH / 9.7;
 		lib[1].font_rect.y = HEIGHT / 2.5;
 		if (doom->groceries)
 			missing_groceries(doom, lib);
