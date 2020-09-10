@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 22:16:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:55:17 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void			set_ed_sprite(t_doom *doom, int x, int y)
 	doom->game_design.cur_sprite = id;
 	doom->game_design.len_spr++;
 	doom->game_design.ed_sprite->type = \
-		ed_sprites[doom->game_design.i_spr_tex];
+		g_ed_sprites[doom->game_design.i_spr_tex];
 	doom->game_design.ed_sprite->pos.x = x;
 	doom->game_design.ed_sprite->pos.y = y;
 }

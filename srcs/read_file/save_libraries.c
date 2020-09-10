@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 23:36:46 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:38:51 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		modified(t_doom *doom, char *file_name)
 		doom_exit_failure(doom, "error: file has been modified");
 }
 
-static void save_custom_level_file(t_doom *doom)
+static void	save_custom_level_file(t_doom *doom)
 {
 	int fd;
 

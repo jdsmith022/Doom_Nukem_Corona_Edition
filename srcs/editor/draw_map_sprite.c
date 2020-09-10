@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 20:00:16 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:55:45 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void				highlight_curr_sector(t_doom *doom)
 	t_line		bound;
 	t_point		pixel;
 
-	bound = sc_lines[doom->game_design.i_sector];
+	bound = g_sc_lines[doom->game_design.i_sector];
 	pixel.x = bound.start.x;
 	while (pixel.x < bound.end.x)
 	{

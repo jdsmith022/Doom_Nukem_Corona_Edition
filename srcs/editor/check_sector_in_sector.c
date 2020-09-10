@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 18:17:00 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:55:45 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			save_current_sector(t_doom *doom, int x, int y)
 	index = 0;
 	while (index < doom->lib.n_sectors)
 	{
-		sector = sc_lines[index];
+		sector = g_sc_lines[index];
 		if (x > sector.start.x && x < sector.end.x && \
 		y > sector.start.y && y < sector.end.y)
 		{

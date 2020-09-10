@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 22:02:42 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:55:30 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void		set_sidedef_texture(t_doom *doom)
 {
 	doom->lib.sidedef[doom->game_design.i_sd].txt_2 = \
-		ed_textures[doom->game_design.i_sd_tex];
+		g_ed_textures[doom->game_design.i_sd_tex];
 }
 
 static void		set_sidedef_to_prev(t_doom *doom)

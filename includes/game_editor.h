@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 22:56:12 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:54:57 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ typedef struct s_item		t_item;
 # define LENGTH_SMALL 5
 # define LENGTH_LARGE 10
 
-static const t_line sc_lines[] = {
+static const t_line g_sc_lines[] = {
 	{{165, 5}, {261, 101}},
 	{{261, 5}, {453, 293}},
 	{{453, 101}, {613, 197}},
@@ -136,7 +136,7 @@ static const t_line sc_lines[] = {
 	{{389, 453}, {453, 595}}
 };
 
-static const int ed_sprites[] = {
+static const int g_ed_sprites[] = {
 	SHOPPER,
 	CORONA,
 	FACE_MASK,
@@ -146,7 +146,7 @@ static const int ed_sprites[] = {
 	SPR_CHECKOUT,
 };
 
-static const int ed_textures[] = {
+static const int g_ed_textures[] = {
 	14,
 	17,
 	15,

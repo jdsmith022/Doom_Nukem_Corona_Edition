@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 23:28:49 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:39:57 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void			save_groceries_in_level(t_doom *doom, t_item *groceries)
 		sizeof(t_item) * doom->groceries->num_of_groceries);
 }
 
-static uint8_t			get_groc_type(SDL_Surface *surface)
+static uint8_t		get_groc_type(SDL_Surface *surface)
 {
 	uint8_t		type;
 
@@ -52,7 +52,7 @@ static uint8_t			get_groc_type(SDL_Surface *surface)
 		return (0);
 }
 
-static void				set_tex_types(t_doom *doom, t_item *tex_types)
+static void			set_tex_types(t_doom *doom, t_item *tex_types)
 {
 	int i;
 
@@ -65,7 +65,7 @@ static void				set_tex_types(t_doom *doom, t_item *tex_types)
 	}
 }
 
-void					set_groceries_in_level(t_doom *doom)
+void				set_groceries_in_level(t_doom *doom)
 {
 	int				i;
 	int				j;
