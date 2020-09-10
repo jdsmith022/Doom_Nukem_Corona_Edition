@@ -6,13 +6,24 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 13:52:06 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 16:55:24 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 #include "../../includes/sprites.h"
+
+static void		set_sector_settings(t_doom *doom)
+{
+	int sector;
+
+	sector = doom->lib.sidedef[doom->game_design.i_sd].sector;
+	doom->lib.sector[sector].light_level = doom->game_design.light_level / 10;
+	doom->lib.sector[sector].light = TRUE;
+	doom->lib.sector[sector].height_ceiling = doom->game_design.ceiling_height;
+	doom->lib.sector[sector].height_floor = doom->game_design.floor_height;
+ }
 
 static void		mouse_press_sector(t_doom *doom, int x, int y)
 {
@@ -31,6 +42,9 @@ static void		mouse_press_sector(t_doom *doom, int x, int y)
 		if (doom->game_design.light_level > 15)
 			doom->game_design.light_level = 15;
 	}
+	else if (x > CROSS_SC_X && x < CROSS_SC_X + FRAME_WIDTH && \
+	y > CROSS_SC_Y && y < CROSS_SC_Y + FRAME_HEIGHT)
+		set_sector_settings(doom);
 }
 
 static void		mouse_press_object(t_doom *doom, int x, int y)

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 15:13:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 15:49:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,12 @@ void		highlight_curr_sector(t_doom *doom)
 	pixel.x = bound.start.x;
 	while (pixel.x < bound.end.x)
 	{
-		// printf("color??\n");
 		pixel.y = bound.start.y;
 		while (pixel.y < bound.end.y)
 		{
 			put_pixel_object(doom, pixel.x, pixel.y, 0x7e7f81);
-			pixel.y++;
+			pixel.y += 4;
 		}
-		pixel.x++;
+		pixel.x += 4;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 13:50:00 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 16:42:14 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@ static void		draw_sector_images(t_doom *doom, Uint32 *pixels)
 	texture.y = TEX_SPR_Y;
 	index = doom->game_design.i_spr_tex;
 	bars(&pixels, doom);
-	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
-	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
-	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
-	put_images(RM_SD_X, RM_SC_Y, garbage, doom);
 	put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 	put_images(AR_RIGHT_X, AR_LEFT_Y, arrow_right, doom);
+	put_images(CROSS_SC_X, CROSS_SC_Y, plus, doom);
 	draw_img(doom->lib.obj_lib[index], doom, texture);
 }
 
 static void		draw_sidedef_images(t_doom *doom)
 {
+	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
+	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
+	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
+	put_images(PLUS_P_X, PLUS_P_Y, plus, doom);
+	put_images(RM_SD_X, RM_SC_Y, garbage, doom);
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	put_textures_sidedef(TEX_S2_X, TEX_S2_Y, \

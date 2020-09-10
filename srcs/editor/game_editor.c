@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 15:14:21 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 16:18:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@
 static void		set_draw_sidedef(t_doom *doom, Uint32 **pixels)
 {
 	t_sidedef 	sidedef;
+	t_sidedef	i_sidedef;
 	int			index;
 
 	index = 0;
 	while (index < doom->lib.len_sidedef)
 	{
 		sidedef = doom->lib.sidedef[index];
+		if (sidedef.id == doom->game_design.i_sd)
+			i_sidedef = sidedef;
 		draw_ed_sidedef(doom, pixels, &sidedef);
 		index++;
 	}
+	draw_ed_sidedef(doom, pixels, &i_sidedef);
 }
 
 void			open_game_editor(t_doom *doom, double dt)

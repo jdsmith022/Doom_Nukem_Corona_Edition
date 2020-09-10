@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 14:38:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 17:05:34 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels,
 	angle = calc_angle(sidedef->line, doom);
 	i = 0.0;
 	if (sidedef->opp_sector != -1)
-		color = 0x000000;
-	else if (doom->game_design.i_sd == sidedef->id)
-		color = 0xff4287f5;
+		return ;
 	else
 		color = 0x8c3cde6;
+	if (doom->game_design.i_sd == sidedef->id)
+		color = 0xff4287f5;
 	while ((int)i < abs(angle.diff.x) + abs(angle.diff.y))
 	{
 		if ((int)angle.start.x < SIDEBAR_SIDEDEF && \

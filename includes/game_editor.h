@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 15:12:56 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 18:30:41 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,15 @@ typedef struct s_item		t_item;
 # define AR_RIGHT_S_X 739
 # define AR_RIGHT_S_Y 150
 
-# define CROSS_P_X 714
+# define CROSS_P_X 704
 # define CROSS_P_Y 500
+# define CROSS_SC_X 65
+# define CROSS_SC_Y 65
 
-# define RM_SD_X 714
+# define PLUS_P_X 704
+# define PLUS_P_Y 300
+
+# define RM_SD_X 704
 # define RM_SD_Y 320
 # define RM_SC_Y 420
 
@@ -97,27 +102,12 @@ typedef struct s_item		t_item;
 # define LL_HEIGHT 5
 # define LL_LEN 160.0
 
-static const t_line sc_lines[] = {
-	{{165, 5}, {261, 101}},
-	{{261, 5}, {453, 293}},
-	{{453, 101}, {613, 197}},
-	{{453, 197}, {635, 453}},
-	{{453, 453}, {571, 549}},
-	{{389, 389}, {453, 453}},
-	{{325, 293}, {389, 453}},
-	{{165, 293}, {325, 549}},
-	{{165, 101}, {261, 293}},
-	{{165, 549}, {389, 595}},
-	{{389, 453}, {453, 595}}
-};
-
-# define SCISSOR_LIFT 7
-# define SHOPPER 9
-# define FACE_MASK 13
-# define HEALTH_PACK_PLUS 14
-# define HEALTH_PACK 15
-# define CORONA 19
-# define SPR_CHECKOUT 112
+# define SHOPPER 0
+# define FACE_MASK 1
+# define HEALTH_PACK_PLUS 2
+# define HEALTH_PACK 3
+# define CORONA 4
+# define SPR_CHECKOUT 5
 
 # define SMALL 16
 # define MEDIUM 32
@@ -131,6 +121,20 @@ static const t_line sc_lines[] = {
 
 # define LENGTH_SMALL 5
 # define LENGTH_LARGE 10
+
+static const t_line sc_lines[] = {
+	{{165, 5}, {261, 101}},
+	{{261, 5}, {453, 293}},
+	{{453, 101}, {613, 197}},
+	{{453, 197}, {635, 453}},
+	{{453, 453}, {571, 549}},
+	{{389, 389}, {453, 453}},
+	{{325, 293}, {389, 453}},
+	{{165, 293}, {325, 549}},
+	{{165, 101}, {261, 293}},
+	{{165, 549}, {389, 595}},
+	{{389, 453}, {453, 595}}
+};
 
 typedef enum		e_game_editor_im
 {
@@ -201,9 +205,8 @@ typedef struct			s_angle_line {
 
 void					open_game_editor(t_doom *doom, double dt);
 void					add_sector(t_doom *doom);
-t_line					set_ray(t_doom *doom, t_line ray);
-bool					check_sector_in_sector(t_doom *doom, t_line ray);
-void					save_current_sector(t_doom *doom, t_line ray);
+bool					check_sector_in_sector(t_doom *doom, int x, int y);
+void					save_current_sector(t_doom *doom, int x, int y);
 t_sector				*light_correction(t_sector *sector, int len);
 void					mouse_press_game_editor(t_doom *doom, int x, int y);
 void					bars(Uint32 **pixels, t_doom *doom);

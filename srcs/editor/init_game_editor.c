@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 13:50:14 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 16:36:57 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void			init_lists(t_doom *doom)
 void				init_game_design(t_doom *doom)
 {
 	doom->game_design.i_sd = 0;
+	doom->game_design.i_sd_tex = 1;
 	doom->game_design.i_sector = 0;
 	doom->game_design.i_sprites = 0;
-	doom->game_design.i_sd_tex = 0;
 	doom->game_design.i_spr_tex = 0;
 	doom->game_design.len_spr = 0;
 	doom->game_design.light_level = 10;

@@ -46,7 +46,7 @@ assets/textures/floors_ceiling/floor_spots.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-6
+10
 
 #0
 assets/sprites/shoppers/shopper_front.bmp
@@ -59,7 +59,15 @@ assets/sprites/health/health_pack.bmp
 #04
 assets/sprites/corona/corona.bmp
 #05
-assets/textures/checkout/checkout_font.bmp
+assets/textures/checkout/checkout_font_3.bmp
+#06
+assets/sprites/shoppers/shopper_side_left.bmp
+#07
+assets/sprites/shoppers/shopper_side_right.bmp
+#08
+assets/sprites/shoppers/shopper_back.bmp
+#09
+assets/textures/checkout/checkout_side_3.bmp
 
 
 #number of sectors
@@ -135,8 +143,8 @@ assets/textures/checkout/checkout_font.bmp
 8
 3
 
-## SECTOR 2 ###############################################
-#sector[2]
+## SECTOR 1 ###############################################
+#sector[1]
 10
 0
 15
@@ -148,7 +156,7 @@ assets/textures/checkout/checkout_font.bmp
 -1
 9
 0
-2
+1
 0
 
 #sidedefs4 ## PORTAL TO SECTOR 0 ##

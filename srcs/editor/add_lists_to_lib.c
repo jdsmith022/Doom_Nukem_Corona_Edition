@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 15:24:38 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 17:03:19 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 static void		set_gameplay_settings(t_doom *doom)
 {
 	doom->pos = doom->pos;
-	// doom->lib.sector = light_correction(\
-	// 	doom->lib.sector, doom->lib.n_sectors);
 	doom->player.height = PLAYER_HEIGHT \
 		+ doom->lib.sector[doom->i_sector].height_floor;
 	doom->game.light = TRUE;

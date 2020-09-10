@@ -6,37 +6,36 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 14:13:09 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 19:18:31 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
-static void		delete_list(t_doom *doom)
-{
-	t_ed_sprite *ed_sprite;
-	t_ed_sprite *next;
+// static void		delete_list(t_doom *doom)
+// {
+// 	t_ed_sprite *ed_sprite;
+// 	t_ed_sprite *next;
 
-	ed_sprite = doom->game_design.sp_head;
-	while (ed_sprite)
-	{
-		next = ed_sprite->next;
-		ft_bzero(ed_sprite, sizeof(t_ed_sprite));
-		free(ed_sprite);
-		ed_sprite = next;
-	}
-}
+// 	ed_sprite = doom->game_design.sp_head;
+// 	while (ed_sprite)
+// 	{
+// 		next = ed_sprite->next;
+// 		ft_bzero(ed_sprite, sizeof(t_ed_sprite));
+// 		free(ed_sprite);
+// 		ed_sprite = next;
+// 	}
+// }
 
 static void		set_sector_sprite_values(t_sector *sector, int *spr_index,\
 				int *sc_index, int index)
 {
 	sector->i_objects = *spr_index;
-	sector->n_objects = index - *spr_index;
 	*spr_index = -1;
 }
 
-static void		sort_sprite_per_sector(t_doom *doom, t_lib lib)
+static void		sort_sprite_per_sector(t_doom *doom, t_sprite *sprites)
 {
 	t_ed_sprite *ed_sprite;
 	int			index;
@@ -52,7 +51,7 @@ static void		sort_sprite_per_sector(t_doom *doom, t_lib lib)
 		if (ed_sprite->sector == sc_index && spr_index == -1)
 			spr_index = index;
 		if (ed_sprite->sector == sc_index)
-			set_sprite_values(doom, &lib.sprites[index], ed_sprite, &index);
+			set_sprite_values(doom, &sprites[index], ed_sprite, &index);
 		if (ed_sprite->next == NULL)
 		{
 			set_sector_sprite_values(&doom->lib.sector[sc_index], \
@@ -68,17 +67,16 @@ static void		sort_sprite_per_sector(t_doom *doom, t_lib lib)
 void			set_sprite_lib(t_doom *doom)
 {
 	t_ed_sprite *ed_sprite;
-	t_lib		lib;
+	t_sprite	*sprites;
 	int			index;
 	int			sc_index;
 	int			spr_index;
 
-	lib.sprites = \
+	sprites = \
 		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.len_spr);
-	if (lib.sprites == NULL)
+	if (sprites == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
-	sort_sprite_per_sector(doom, lib);
-	delete_list(doom);
-	doom->lib.sprites = lib.sprites;
+	sort_sprite_per_sector(doom, sprites);
+	doom->lib.sprites = sprites;
 	doom->total_sprites = doom->game_design.len_spr;
 }

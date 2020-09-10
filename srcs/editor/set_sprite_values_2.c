@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 21:37:55 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 19:15:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void		set_spr_checkout(t_sprite *sprite)
 {
 	sprite->index = SPR_CHECKOUT;
 	sprite->size = X_LARGE;
-	sprite->textures[0] = 114;
-	sprite->textures[1] = 117;
-	sprite->textures[2] = 114;
-	sprite->textures[3] = 117;
+	sprite->textures[0] = 5;
+	sprite->textures[1] = 9;
+	sprite->textures[2] = 5;
+	sprite->textures[3] = 9;
 	sprite->block = BLOCK;
 	sprite->action = 13;
 	set_spr_lines(sprite, LENGTH_LARGE);
@@ -52,10 +52,10 @@ void		set_spr_health_pack_pl(t_sprite *sprite)
 {
 	sprite->index = HEALTH_PACK_PLUS;
 	sprite->size = SMALL;
-	sprite->textures[0] = 14;
-	sprite->textures[1] = 14;
-	sprite->textures[2] = 14;
-	sprite->textures[3] = 14;
+	sprite->textures[0] = 2;
+	sprite->textures[1] = 2;
+	sprite->textures[2] = 2;
+	sprite->textures[3] = 2;
 	sprite->block = NO_BLOCK;
 	sprite->action = 1;
 	set_spr_lines(sprite, LENGTH_SMALL);
@@ -65,10 +65,10 @@ void		set_spr_health_pack(t_sprite *sprite)
 {
 	sprite->index = HEALTH_PACK;
 	sprite->size = SMALL;
-	sprite->textures[0] = 15;
-	sprite->textures[1] = 15;
-	sprite->textures[2] = 15;
-	sprite->textures[3] = 15;
+	sprite->textures[0] = 3;
+	sprite->textures[1] = 3;
+	sprite->textures[2] = 3;
+	sprite->textures[3] = 3;
 	sprite->block = NO_BLOCK;
 	sprite->action = 2;
 	set_spr_lines(sprite, LENGTH_SMALL);
@@ -78,10 +78,10 @@ void		set_spr_corona(t_sprite *sprite)
 {
 	sprite->index = CORONA;
 	sprite->size = SMALL;
-	sprite->textures[0] = 19;
-	sprite->textures[1] = 19;
-	sprite->textures[2] = 19;
-	sprite->textures[3] = 19;
+	sprite->textures[0] = 4;
+	sprite->textures[1] = 4;
+	sprite->textures[2] = 4;
+	sprite->textures[3] = 4;
 	sprite->block = NO_BLOCK;
 	sprite->action = 4;
 	set_spr_lines(sprite, LENGTH_SMALL);
