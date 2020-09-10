@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/05 09:13:50 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 13:37:45 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:32:25 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	delete_sprite_list(t_doom *doom, t_ed_sprite *ed_sprite)
 {
-	ed_sprite = doom->game_design.sp_head->next;
+	ed_sprite = ed_sprite->next;
 	while (ed_sprite)
 	{
 		ft_bzero(ed_sprite->previous, sizeof(t_ed_sprite));

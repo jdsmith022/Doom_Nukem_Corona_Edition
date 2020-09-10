@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 20:50:10 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:36:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 static void			init_lists(t_doom *doom)
 {
+	if (doom->lib.sprites != NULL)
+	{
+		ft_bzero(doom->lib.sprites, sizeof(doom->lib.sprites));
+		free(doom->lib.sprites);
+		doom->lib.sprites = NULL;
+	}
 	doom->game_design.ed_sprite = \
 		(t_ed_sprite*)ft_memalloc(sizeof(t_ed_sprite));
 	if (!doom->game_design.ed_sprite)
@@ -32,7 +38,7 @@ static void			init_lists(t_doom *doom)
 void				init_game_design(t_doom *doom)
 {
 	doom->game_design.i_sd = 0;
-	doom->game_design.i_sd_tex = 1;
+	doom->game_design.i_sd_tex = 2;
 	doom->game_design.i_sector = 0;
 	doom->game_design.i_sprites = 0;
 	doom->game_design.i_spr_tex = 0;

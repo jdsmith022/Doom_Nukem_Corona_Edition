@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 13:56:54 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 21:57:15 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void		put_textures_sidedef(int x, int y, int index, t_doom *doom)
 	SDL_Surface		*texture;
 
 	save_x = x;
-	index = doom->game_design.i_sd_tex;
 	texture = doom->lib.tex_lib[index];
 	shift = texture->format->BitsPerPixel == 24 ? 3 : 4;
 	set_points_textures(doom, &i, &change, texture);

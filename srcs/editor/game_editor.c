@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 16:18:48 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:14:05 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void		set_draw_sidedef(t_doom *doom, Uint32 **pixels)
 {
-	t_sidedef 	sidedef;
+	t_sidedef	sidedef;
 	t_sidedef	i_sidedef;
 	int			index;
 

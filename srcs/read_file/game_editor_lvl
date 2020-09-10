@@ -9,66 +9,460 @@ assets/symbols/garbage.bmp
 assets/symbols/player.bmp
 
 #texture library
-16
+89
 
+## OUTSIDE ASSETS##
 #0
-assets/textures/floors_ceiling/ceiling_clean.bmp
-#01
-assets/textures/walls/plane_sector_walls.bmp
-#02
-assets/textures/walls/empty_shelf.bmp
-#03
-assets/textures/shelves/apple.bmp
-#04
-assets/textures/shelves/breakfast.bmp
-#05
-assets/textures/shelves/cheese.bmp
-#06
-assets/textures/shelves/cherry_strawberry.bmp
-#07
-assets/textures/shelves/cookies.bmp
-#08
-assets/textures/shelves/jam.bmp
-#09
-assets/textures/shelves/sausage_bacon.bmp
+assets/textures/outside/outside_store.bmp
+#1
+assets/textures/outside/outside_floor.bmp
+#2
+assets/textures/outside/bank_1.bmp
+#3
+assets/textures/outside/bank_2.bmp
+#4
+assets/textures/outside/bank_3.bmp
+#5
+assets/textures/outside/spa.bmp
+#6
+assets/textures/outside/spa_1.bmp
+#7
+assets/textures/outside/spa_2.bmp
+#8
+assets/textures/outside/fresh_food.bmp
+#9
+assets/textures/outside/closing_down.bmp
 #10
-assets/textures/shelves/soda.bmp
+assets/textures/outside/closing_down_sides.bmp
 #11
-assets/textures/shelves/water.bmp
+assets/textures/poster/fill_up.bmp
 #12
-assets/textures/shelves/wine.bmp
+assets/textures/outside/enter_here.bmp
 #13
-assets/textures/shelves/wine1.bmp
+assets/textures/outside/fresh_food_reverse.bmp
+
+
+##FLOOR AND CEILING ASSETS##
 #14
-assets/textures/shelves/wine2.bmp
+assets/textures/floors_ceiling/ceiling_clean.bmp
 #15
-assets/textures/floors_ceiling/floor_spots.bmp
+assets/textures/walls/plane_sector_walls.bmp
+#16
+assets/textures/walls/empty_shelf.bmp
+#17
+assets/textures/floors_ceiling/spots.bmp
+
+
+
+##SHELF ASSETS##
+#18
+assets/textures/shelves/alcohol.bmp
+#19
+assets/textures/shelves/apple.bmp
+#20
+assets/textures/shelves/beef.bmp
+#21
+assets/textures/shelves/boxes.bmp
+#22
+assets/textures/shelves/bread.bmp
+#23
+assets/textures/shelves/breakfast.bmp
+#24
+assets/textures/shelves/butter.bmp
+#25
+assets/textures/shelves/cereal.bmp
+#26
+assets/textures/shelves/cereal2.bmp
+#27
+assets/textures/shelves/cheese.bmp
+#28
+assets/textures/shelves/cherry_strawberry.bmp
+#29
+assets/textures/shelves/chicken.bmp
+#30
+assets/textures/shelves/chocolate.bmp
+#31
+assets/textures/shelves/citrus-wall.bmp
+#32
+assets/textures/shelves/citrus.bmp
+#33
+assets/textures/shelves/citrus2.bmp
+#34
+assets/textures/shelves/cookies.bmp
+#35
+assets/textures/shelves/fish.bmp
+#36
+assets/textures/shelves/fish2.bmp
+#37
+assets/textures/shelves/fruit.bmp
+#38
+assets/textures/shelves/grapes.bmp
+#39
+assets/textures/shelves/jam.bmp
+#40
+assets/textures/shelves/jar-wall.bmp
+#41
+assets/textures/shelves/jar1.bmp
+#42
+assets/textures/shelves/jar1.bmp
+#43
+assets/textures/shelves/jar3.bmp
+#44
+assets/textures/shelves/jar4.bmp
+#45
+assets/textures/shelves/jar5.bmp
+#46
+assets/textures/shelves/jar6.bmp
+#47
+assets/textures/shelves/meat.bmp
+#48
+assets/textures/shelves/melon.bmp
+#49
+assets/textures/walls/empty_shelf.bmp
+#50
+assets/textures/shelves/milk.bmp
+#51
+assets/textures/shelves/milk2.bmp
+#52
+assets/textures/shelves/milk3.bmp
+#53
+assets/textures/shelves/onions.bmp
+#54
+assets/textures/shelves/paprika.bmp
+#55
+assets/textures/shelves/peppers.bmp
+#56
+assets/textures/shelves/pie1.bmp
+#57
+assets/textures/shelves/pie2.bmp
+#58
+assets/textures/shelves/pie3.bmp
+#59
+assets/textures/shelves/potatoes.bmp
+#60
+assets/textures/shelves/round_jars.bmp
+#61
+assets/textures/shelves/sauces.bmp
+#62
+assets/textures/shelves/sausage_bacon.bmp
+#63
+assets/textures/shelves/soaps.bmp
+#64
+assets/textures/shelves/soda.bmp
+#65
+assets/textures/shelves/spray_bottles.bmp
+#66
+assets/textures/shelves/sweets.bmp
+#67
+assets/textures/shelves/tarts.bmp
+#68
+assets/textures/shelves/tea.bmp
+#69 need to make full shelves
+assets/textures/shelves/toiletpaper.bmp
+#70
+assets/textures/shelves/veggies.bmp
+#71
+assets/textures/shelves/veggies2.bmp
+#72
+assets/textures/shelves/veggies3.bmp
+#73
+assets/textures/shelves/warehouse_shelf.bmp
+#74
+assets/textures/shelves/water.bmp
+#75
+assets/textures/shelves/wine.bmp
+#76
+assets/textures/shelves/wine1.bmp
+#77
+assets/textures/shelves/wine2.bmp
+
+
+#PORTAL TEXTURE ASSETS
+#78
+assets/textures/floors_ceiling/floor.bmp
+
+
+##CHECKOUT ASSETS##
+#79
+assets/textures/checkout/card_only.bmp
+#80
+assets/textures/checkout/keep_distance.bmp
+#81
+assets/textures/checkout/lottery.bmp
+#82
+assets/textures/checkout/tabacco.bmp
+#83
+assets/textures/checkout/checkout.bmp
+
+##EASTER TEXTURES##
+#84
+assets/textures/shelves/toiletpaper_full_wall.bmp
+
+###POSTERS
+#85
+assets/textures/poster/light_switch_off.bmp
+#86
+assets/textures/poster/light_switch_on.bmp
+#87
+assets/textures/poster/fill_up_clean.bmp
+
+##GLASS DOOR
+#88
+assets/textures/window/glass_doors.bmp
 
 
 #object library #trolley and trolle handle bar needs to be added
-10
-
+125
 #0
+assets/sprites/groceries/bacon.bmp
+#1
+assets/sprites/groceries/red_apple.bmp
+#2
+assets/sprites/groceries/cherry.bmp
+#3
+assets/sprites/groceries/cereal.bmp
+#4
+assets/sprites/groceries/wine1.bmp
+#5
+assets/sprites/groceries/cola.bmp
+#6
+assets/sprites/groceries/water.bmp
+#7
+assets/sprites/scissor_lift/scissor_lift.bmp
+#8
+assets/sprites/scissor_lift/scissor_lift_side.bmp
+#9
 assets/sprites/shoppers/shopper_front.bmp
-#01
-assets/sprites/health/facemask_2.bmp
-#02
-assets/sprites/health/health_pack_plus.bmp
-#03
-assets/sprites/health/health_pack.bmp
-#04
-assets/sprites/corona/corona.bmp
-#05
-assets/textures/checkout/checkout_font_3.bmp
-#06
+#10
 assets/sprites/shoppers/shopper_side_left.bmp
-#07
+#11
 assets/sprites/shoppers/shopper_side_right.bmp
-#08
+#12
 assets/sprites/shoppers/shopper_back.bmp
-#09
+#13
+assets/sprites/health/facemask_2.bmp
+#14
+assets/sprites/health/health_pack_plus.bmp
+#15
+assets/sprites/health/health_pack.bmp
+#16
+assets/sprites/health/refill.bmp
+#17
+assets/sprites/corona/corona_virus_red.bmp
+#18
+assets/sprites/corona/corona_virus.bmp
+#19
+assets/sprites/corona/corona.bmp
+#20
+assets/sprites/misc/box.bmp
+#21
+assets/sprites/misc/crate.bmp
+#22
+assets/sprites/groceries/apple_tart.bmp
+#23
+assets/sprites/groceries/brownie.bmp
+#24
+assets/sprites/groceries/cucumber.bmp
+#25
+assets/sprites/groceries/chicken.bmp
+#26
+assets/sprites/groceries/bread.bmp
+#27
+assets/sprites/groceries/toiletpaper.bmp
+#28
+assets/sprites/scissor_lift/scissor_lift_bar.bmp
+#29
+assets/sprites/player/spray_hand_2.bmp
+#30
+assets/sprites/player/spraying_hand_2.bmp
+#31
+assets/sprites/player/basket_side.bmp
+#32
+assets/sprites/player/basket_back.bmp
+#33
+assets/sprites/player/shopping_cart.bmp
+#34
+assets/sprites/plants/plant_1.bmp
+#35
+assets/sprites/plants/plant_2.bmp
+#36
+assets/sprites/plants/plant_3.bmp
+#37
+assets/sprites/health/clock.bmp
+#38
+assets/sprites/groceries/glass_jar1.bmp
+#39 glas jar 2 does not work
+assets/sprites/groceries/glass_jar3.bmp
+#40
+assets/sprites/groceries/glass_jar3.bmp
+#41
+assets/sprites/groceries/glass_jar4.bmp
+#42
+assets/sprites/groceries/glass_jar5.bmp
+#43
+assets/sprites/groceries/glass_jar6.bmp
+#44
+assets/sprites/groceries/glass_jar7.bmp
+#45
+assets/sprites/groceries/glass_jar8.bmp
+#46
+assets/sprites/groceries/jam.bmp
+#47
+assets/sprites/groceries/jam2.bmp
+#48
+assets/sprites/groceries/jam3.bmp
+#49
+assets/sprites/groceries/tony1.bmp
+#50
+assets/sprites/groceries/tony2.bmp
+#51
+assets/sprites/groceries/orange_tart.bmp
+#52
+assets/sprites/groceries/toiletpaper2.bmp
+#53
+assets/sprites/groceries/steak.bmp
+#54
+assets/sprites/groceries/whiskey.bmp
+#55
+assets/sprites/groceries/moonshine.bmp
+#56
+assets/sprites/groceries/wine1.bmp
+#57
+assets/sprites/groceries/wine1.bmp
+#58
+assets/sprites/groceries/wine2.bmp
+#59
+assets/sprites/groceries/white_onion.bmp
+#60
+assets/sprites/groceries/watermelon.bmp
+#61
+assets/sprites/groceries/red_pepper.bmp
+#62
+assets/sprites/groceries/swee_potatoe.bmp
+#63
+assets/sprites/groceries/red_apple.bmp
+#64
+assets/sprites/groceries/red_grapes.bmp
+#65
+assets/sprites/groceries/peach.bmp
+#66
+assets/sprites/groceries/olive.bmp
+#67
+assets/sprites/groceries/kiwi.bmp
+#68
+assets/sprites/groceries/garlic.bmp
+#69
+assets/sprites/groceries/round_jar.bmp
+#70
+assets/sprites/groceries/round_jar2.bmp
+#71
+assets/sprites/groceries/ketchup.bmp
+#72
+assets/sprites/groceries/pickled_eggs.bmp
+#73
+assets/sprites/groceries/glass_jar1.bmp
+#74
+assets/sprites/player/left_hand_reaching.bmp
+#75
+assets/sprites/player/right_hand_reaching.bmp
+#76
+assets/sprites/player/cross_hairs.bmp
+#77
+assets/sprites/groceries/lemon.bmp
+#78
+assets/sprites/groceries/brinta.bmp
+#79
+assets/sprites/groceries/Cookie.bmp
+#80
+assets/sprites/groceries/tomato.bmp
+#81
+assets/sprites/groceries/cereal.bmp
+#82
+assets/sprites/groceries/cereal2.bmp
+#83
+assets/sprites/groceries/cereal3.bmp
+#84
+assets/sprites/groceries/steak.bmp
+#85
+assets/sprites/groceries/cereal2.bmp
+#86
+assets/sprites/groceries/Cheese.bmp
+#87
+assets/sprites/groceries/jerky.bmp
+#88
+assets/sprites/groceries/soap.bmp
+#89
+assets/sprites/groceries/coffee.bmp
+#90
+assets/sprites/groceries/tea.bmp
+#91
+assets/sprites/groceries/potato.bmp
+#92
+assets/sprites/groceries/spray_bottle.bmp
+#93
+assets/sprites/groceries/cherry_pie.bmp
+#94
+assets/sprites/groceries/red_pepper.bmp
+#95
+assets/sprites/groceries/butter.bmp
+#96
+assets/sprites/groceries/pickled_eggs.bmp
+#97
+assets/sprites/groceries/fish.bmp
+#98
+assets/sprites/player/left_hand_reaching_0.bmp
+#99
+assets/sprites/player/right_hand_reaching_0.bmp
+#100
+assets/sprites/player/left_hand_reaching_1.bmp
+#101
+assets/sprites/player/right_hand_reaching_1.bmp
+#102
+assets/sprites/player/spray_right_hand_0.bmp
+#103
+assets/sprites/player/spray_left_hand_0.bmp
+#104
+assets/sprites/player/spray_right_hand_1.bmp
+#105
+assets/sprites/player/spray_left_hand_1.bmp
+#106
+assets/sprites/player/spray_right_hand_2.bmp
+#107
+assets/sprites/player/spraying_left_hand_0.bmp
+#108
+assets/sprites/player/spraying_right_hand_0.bmp
+#109
+assets/sprites/player/spraying_left_hand_1.bmp
+#110
+assets/sprites/player/spraying_right_hand_1.bmp
+#111
+assets/sprites/player/spraying_right_hand_2.bmp
+#112
+assets/textures/checkout/checkout_font.bmp
+#113
+assets/textures/checkout/checkout_font_2.bmp
+#114
+assets/textures/checkout/checkout_font_3.bmp
+#115
+assets/textures/checkout/checkout_side.bmp
+#116
+assets/textures/checkout/checkout_side_2.bmp
+#117
 assets/textures/checkout/checkout_side_3.bmp
-
+#118
+assets/sprites/groceries/honey.bmp
+#119
+assets/sprites/groceries/red_onion.bmp
+#120
+assets/sprites/groceries/lemon_pie.bmp
+#121
+assets/sprites/groceries/shrimp.bmp
+#122
+assets/sprites/groceries/wine1.bmp
+#123
+assets/sprites/groceries/milk1.bmp
+#124
+assets/sprites/groceries/tart.bmp
 
 #number of sectors
 11
@@ -83,11 +477,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[0]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 4
@@ -103,7 +497,7 @@ assets/textures/checkout/checkout_side_3.bmp
 5
 0
 8
-2
+16
 8
 0
 
@@ -115,7 +509,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 1
 
@@ -127,7 +521,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 2
 
@@ -139,7 +533,7 @@ assets/textures/checkout/checkout_side_3.bmp
 5
 0
 8
-2
+16
 8
 3
 
@@ -147,11 +541,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[1]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 9
@@ -167,7 +561,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 4
 
@@ -179,7 +573,7 @@ assets/textures/checkout/checkout_side_3.bmp
 5
 0
 8
-2
+16
 8
 5
 
@@ -191,7 +585,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 6
 
@@ -203,7 +597,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 7
 
@@ -215,7 +609,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 8
 
@@ -227,7 +621,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 9
 
@@ -239,7 +633,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 10
 
@@ -251,7 +645,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 11
 
@@ -263,7 +657,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 12
 
@@ -271,11 +665,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[2]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 5
@@ -291,7 +685,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 13
 
@@ -303,7 +697,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 14
 
@@ -315,7 +709,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 15
 
@@ -327,7 +721,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 16
 
@@ -339,7 +733,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 17
 
@@ -347,11 +741,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[3]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 9
@@ -367,7 +761,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 18
 
@@ -379,7 +773,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 19
 
@@ -391,7 +785,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 20
 
@@ -403,7 +797,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 21
 
@@ -415,7 +809,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 22
 
@@ -427,7 +821,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 23
 
@@ -439,7 +833,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 24
 
@@ -451,7 +845,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 25
 
@@ -463,7 +857,7 @@ assets/textures/checkout/checkout_side_3.bmp
 197
 0
 8
-2
+16
 8
 26
 
@@ -471,11 +865,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[4]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 5
@@ -491,7 +885,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 27
 
@@ -503,7 +897,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 28
 
@@ -515,7 +909,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 29
 
@@ -527,7 +921,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 30
 
@@ -539,7 +933,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 31
 
@@ -547,11 +941,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[5]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 4
@@ -567,7 +961,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 32
 
@@ -579,7 +973,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 33
 
@@ -591,7 +985,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 34
 
@@ -603,7 +997,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 35
 
@@ -611,11 +1005,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[6]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 6
@@ -631,7 +1025,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 36
 
@@ -643,7 +1037,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 37
 
@@ -655,7 +1049,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 38
 
@@ -667,7 +1061,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 39
 
@@ -679,7 +1073,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 40
 
@@ -691,7 +1085,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 41
 
@@ -699,11 +1093,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[7]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 9
@@ -719,7 +1113,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 42
 
@@ -731,7 +1125,7 @@ assets/textures/checkout/checkout_side_3.bmp
 389
 0
 8
-2
+16
 8
 43
 
@@ -743,7 +1137,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 44
 
@@ -755,7 +1149,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 45
 
@@ -767,7 +1161,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 46
 
@@ -779,7 +1173,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 47
 
@@ -791,7 +1185,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 48
 
@@ -803,7 +1197,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 48
 
@@ -815,7 +1209,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 49
 
@@ -823,11 +1217,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[8]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 6
@@ -843,7 +1237,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 50
 
@@ -855,7 +1249,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 51
 
@@ -867,7 +1261,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 52
 
@@ -879,7 +1273,7 @@ assets/textures/checkout/checkout_side_3.bmp
 101
 0
 8
-2
+16
 8
 53
 
@@ -891,7 +1285,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 54
 
@@ -903,7 +1297,7 @@ assets/textures/checkout/checkout_side_3.bmp
 293
 0
 8
-2
+16
 8
 55
 
@@ -911,11 +1305,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[9]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 5
@@ -931,7 +1325,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 56
 
@@ -943,7 +1337,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 57
 
@@ -955,7 +1349,7 @@ assets/textures/checkout/checkout_side_3.bmp
 595
 0
 8
-2
+16
 8
 58
 
@@ -967,7 +1361,7 @@ assets/textures/checkout/checkout_side_3.bmp
 595
 0
 8
-2
+16
 8
 59
 
@@ -979,7 +1373,7 @@ assets/textures/checkout/checkout_side_3.bmp
 549
 0
 8
-2
+16
 8
 60
 
@@ -987,11 +1381,11 @@ assets/textures/checkout/checkout_side_3.bmp
 #sector[10]
 10
 0
-15
+17
 0
 -1
 0
-0
+14
 0
 -1
 5
@@ -1007,7 +1401,7 @@ assets/textures/checkout/checkout_side_3.bmp
 595
 0
 8
-2
+16
 8
 61
 
@@ -1019,7 +1413,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 62
 
@@ -1031,7 +1425,7 @@ assets/textures/checkout/checkout_side_3.bmp
 453
 0
 8
-2
+16
 8
 63
 
@@ -1043,7 +1437,7 @@ assets/textures/checkout/checkout_side_3.bmp
 595
 0
 8
-2
+16
 8
 65
 
@@ -1055,6 +1449,6 @@ assets/textures/checkout/checkout_side_3.bmp
 595
 0
 8
-2
+16
 8
 66

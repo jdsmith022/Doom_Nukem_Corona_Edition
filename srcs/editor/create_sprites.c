@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 19:28:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:16:09 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool			enough_dist_to_sprites(t_doom *doom, int x, int y)
 
 	pos.x = x;
 	pos.y = y;
-	sprite = doom->game_design.sp_head->next;
+	sprite = doom->game_design.sp_head;
 	while (sprite != NULL)
 	{
 		distance = point_distance(sprite->pos, pos);
@@ -66,7 +66,7 @@ static void			set_ed_sprite(t_doom *doom, int x, int y)
 	doom->game_design.cur_sprite = id;
 	doom->game_design.len_spr++;
 	doom->game_design.ed_sprite->type = \
-		doom->game_design.i_spr_tex;
+		ed_sprites[doom->game_design.i_spr_tex];
 	doom->game_design.ed_sprite->pos.x = x;
 	doom->game_design.ed_sprite->pos.y = y;
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 17:03:19 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:36:19 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ static void		set_gameplay_settings(t_doom *doom)
 
 void			add_lists_to_libs(t_doom *doom)
 {
-	// del_groceries(doom->groceries);
+	t_item			tex_types[doom->lib.len_sidedef];
+
+	del_groceries(doom->groceries);
 	set_sprite_lib(doom);
+	set_groceries_in_level(doom, tex_types);
 	set_gameplay_settings(doom);
-	// init_groceries(doom);
+	init_groceries(doom);
 }

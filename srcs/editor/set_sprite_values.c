@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 20:14:18 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:27:27 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	set_spr_shopper(t_sprite *sprite)
 {
 	sprite->index = SHOPPER;
 	sprite->size = X_LARGE;
-	sprite->textures[0] = 0;
-	sprite->textures[1] = 6;
-	sprite->textures[2] = 7;
-	sprite->textures[3] = 8;
+	sprite->textures[0] = 9;
+	sprite->textures[1] = 10;
+	sprite->textures[2] = 11;
+	sprite->textures[3] = 12;
 	sprite->block = BLOCK;
 	sprite->action = 9;
 	set_spr_lines(sprite, LENGTH_LARGE);
@@ -30,10 +30,10 @@ static void	set_spr_face_mask(t_sprite *sprite)
 {
 	sprite->index = FACE_MASK;
 	sprite->size = SMALL;
-	sprite->textures[0] = 1;
-	sprite->textures[1] = 1;
-	sprite->textures[2] = 1;
-	sprite->textures[3] = 1;
+	sprite->textures[0] = 13;
+	sprite->textures[1] = 13;
+	sprite->textures[2] = 13;
+	sprite->textures[3] = 13;
 	sprite->block = NO_BLOCK;
 	sprite->action = 3;
 	set_spr_lines(sprite, LENGTH_SMALL);
@@ -59,7 +59,7 @@ void		set_sprite_values(t_doom *doom, t_sprite *sprite,
 		set_spr_health_pack(sprite);
 	else if (ed_sprite->type == CORONA)
 		set_spr_corona(sprite);
-	else if (ed_sprite->type == CHECKOUT)
+	else if (ed_sprite->type == SPR_CHECKOUT)
 		set_spr_checkout(sprite);
 	*index += 1;
 }
