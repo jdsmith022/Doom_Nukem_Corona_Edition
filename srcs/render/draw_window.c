@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/09 00:49:52 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:14:16 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,3 @@ void			draw_window_as_sprite(t_doom *doom)
 	}
 	init_window(doom);
 }
-
