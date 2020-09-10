@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 16:55:24 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:14:18 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		set_sector_settings(t_doom *doom)
 	doom->lib.sector[sector].light = TRUE;
 	doom->lib.sector[sector].height_ceiling = doom->game_design.ceiling_height;
 	doom->lib.sector[sector].height_floor = doom->game_design.floor_height;
- }
+}
 
 static void		mouse_press_sector(t_doom *doom, int x, int y)
 {

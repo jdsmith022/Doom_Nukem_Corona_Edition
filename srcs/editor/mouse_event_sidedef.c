@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 16:34:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 19:47:56 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		set_sidedef_to_prev(t_doom *doom)
 		doom->game_design.i_sd--;
 	doom->game_design.i_sd--;
 	if (doom->game_design.i_sd < 0)
-		doom->game_design.i_sd  = doom->lib.len_sidedef - 1;
+		doom->game_design.i_sd = doom->lib.len_sidedef - 1;
 	doom->game_design.i_sector = \
 		doom->lib.sidedef[doom->game_design.i_sd].sector;
 }
@@ -63,5 +63,4 @@ void			mouse_press_sidedef(t_doom *doom, int x, int y)
 	y > AR_RIGHT_TS2_Y && y < AR_RIGHT_TS2_Y + FRAME_HEIGHT &&\
 	doom->game_design.i_sd_tex + 1 < 15)
 		doom->game_design.i_sd_tex++;
-
 }

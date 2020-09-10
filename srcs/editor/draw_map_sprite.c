@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 15:49:28 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:00:16 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void				draw_ed_sprite(t_doom *doom, Uint32 **pixels)
 	}
 }
 
-void		highlight_curr_sector(t_doom *doom)
+void				highlight_curr_sector(t_doom *doom)
 {
 	t_line		bound;
 	t_point		pixel;

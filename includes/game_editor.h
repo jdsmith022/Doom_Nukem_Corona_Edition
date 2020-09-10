@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 18:30:41 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:04:55 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ typedef struct s_item		t_item;
 # define AR_DOWN_M_Y 0
 
 # define AR_LEFT_X 0
-# define AR_LEFT_Y 400
+# define AR_LEFT_Y 490
 # define AR_RIGHT_X 128
 # define TEX_SPR_X 50
-# define TEX_SPR_Y 380
+# define TEX_SPR_Y 470
 
 # define AR_LEFT_S_X 669
 # define AR_LEFT_S_Y 150
@@ -59,10 +59,10 @@ typedef struct s_item		t_item;
 # define CROSS_P_X 704
 # define CROSS_P_Y 500
 # define CROSS_SC_X 65
-# define CROSS_SC_Y 65
+# define CROSS_SC_Y 380
 
 # define PLUS_P_X 704
-# define PLUS_P_Y 300
+# define PLUS_P_Y 330
 
 # define RM_SD_X 704
 # define RM_SD_Y 320
