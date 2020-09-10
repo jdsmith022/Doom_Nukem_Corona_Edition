@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 19:12:11 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:14:18 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		set_sprite_values(t_doom *doom, t_sprite *sprite,
 		set_spr_health_pack(sprite);
 	else if (ed_sprite->type == CORONA)
 		set_spr_corona(sprite);
-	else if (ed_sprite->type == SPR_CHECKOUT)
+	else if (ed_sprite->type == CHECKOUT)
 		set_spr_checkout(sprite);
 	*index += 1;
 }

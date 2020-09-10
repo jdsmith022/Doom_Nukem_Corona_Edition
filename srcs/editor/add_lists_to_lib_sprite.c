@@ -6,27 +6,12 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 19:18:31 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 20:50:38 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
-
-// static void		delete_list(t_doom *doom)
-// {
-// 	t_ed_sprite *ed_sprite;
-// 	t_ed_sprite *next;
-
-// 	ed_sprite = doom->game_design.sp_head;
-// 	while (ed_sprite)
-// 	{
-// 		next = ed_sprite->next;
-// 		ft_bzero(ed_sprite, sizeof(t_ed_sprite));
-// 		free(ed_sprite);
-// 		ed_sprite = next;
-// 	}
-// }
 
 static void		set_sector_sprite_values(t_sector *sector, int *spr_index,\
 				int *sc_index, int index)
@@ -45,7 +30,7 @@ static void		sort_sprite_per_sector(t_doom *doom, t_sprite *sprites)
 	index = 0;
 	sc_index = 0;
 	spr_index = -1;
-	ed_sprite = doom->game_design.sp_head->next;
+	ed_sprite = doom->game_design.sp_head;
 	while (sc_index < doom->lib.n_sectors && ed_sprite)
 	{
 		if (ed_sprite->sector == sc_index && spr_index == -1)
@@ -56,7 +41,7 @@ static void		sort_sprite_per_sector(t_doom *doom, t_sprite *sprites)
 		{
 			set_sector_sprite_values(&doom->lib.sector[sc_index], \
 				&spr_index, &sc_index, index);
-			ed_sprite = doom->game_design.sp_head->next;
+			ed_sprite = doom->game_design.sp_head;
 			sc_index++;
 		}
 		else
