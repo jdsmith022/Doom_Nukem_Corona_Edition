@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 22:00:51 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:56:12 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,7 +256,7 @@ void					put_sprite(t_doom *doom, int x, int y);
 void					delete_sprite(t_doom *doom);
 void					set_sector_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
-void					set_groceries_in_level(t_doom *doom, t_item *t_types);
+void					set_groceries_in_level(t_doom *doom);
 void					set_spr_corona(t_sprite *sprite);
 void					set_spr_health_pack(t_sprite *sprite);
 void					set_spr_health_pack_pl(t_sprite *sprite);
