@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 15:00:31 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 13:50:00 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ static void		draw_sector_images(t_doom *doom, Uint32 *pixels)
 	texture.w = 8;
 	texture.x = TEX_SPR_X;
 	texture.y = TEX_SPR_Y;
-	index = doom->game_design.ed_spr_index[doom->game_design.spr_tex];
+	index = doom->game_design.i_spr_tex;
 	bars(&pixels, doom);
 	put_images(CROSS_P_X, CROSS_P_Y, player, doom);
 	put_images(AR_LEFT_S_X, AR_LEFT_S_Y, arrow_left, doom);
 	put_images(AR_RIGHT_S_X, AR_RIGHT_S_Y, arrow_right, doom);
 	put_images(RM_SD_X, RM_SC_Y, garbage, doom);
-	put_images(DEL_SECTOR_X, DEL_SECTOR_Y, garbage, doom);
-	put_images(PORTAL_X, PORTAL_Y, plus, doom);
 	put_images(AR_LEFT_X, AR_LEFT_Y, arrow_left, doom);
 	put_images(AR_RIGHT_X, AR_LEFT_Y, arrow_right, doom);
 	draw_img(doom->lib.obj_lib[index], doom, texture);
@@ -41,15 +39,11 @@ static void		draw_sidedef_images(t_doom *doom)
 	put_images(AR_LEFT_TS2_X, AR_LEFT_TS2_Y, arrow_left, doom);
 	put_images(AR_RIGHT_TS2_X, AR_RIGHT_TS2_Y, arrow_right, doom);
 	put_textures_sidedef(TEX_S2_X, TEX_S2_Y, \
-	doom->game_design.tex_index, doom);
-	put_images(RM_SD_X, RM_SD_Y, garbage, doom);
+	doom->game_design.i_sd_tex, doom);
 }
 
 void			draw_images(Uint32 *pixels, t_doom *doom)
 {
-	if (doom->game_design.place_checkout == FALSE)
-		draw_sidedef_images(doom);
-	if (doom->game_design.edit_sector == TRUE && \
-	doom->game_design.place_checkout == FALSE)
-		draw_sector_images(doom, pixels);
+	draw_sidedef_images(doom);
+	draw_sector_images(doom, pixels);
 }

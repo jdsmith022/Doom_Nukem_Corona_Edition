@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:51:44 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 15:12:56 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,20 @@ typedef struct s_item		t_item;
 # define AR_DOWN_M_X 400
 # define AR_DOWN_M_Y 0
 
-# define DEL_SECTOR_X 65
-# define DEL_SECTOR_Y 550
-
 # define AR_LEFT_X 0
 # define AR_LEFT_Y 400
 # define AR_RIGHT_X 128
 # define TEX_SPR_X 50
 # define TEX_SPR_Y 380
 
-# define AR_LEFT_S_X 664
-# define AR_LEFT_S_Y 160
-# define AR_RIGHT_S_X 744
-# define AR_RIGHT_S_Y 160
+# define AR_LEFT_S_X 669
+# define AR_LEFT_S_Y 150
+# define AR_RIGHT_S_X 739
+# define AR_RIGHT_S_Y 150
 
 # define CROSS_P_X 714
 # define CROSS_P_Y 500
 
-# define PORTAL_X 714
-# define PORTAL_Y 240
 # define RM_SD_X 714
 # define RM_SD_Y 320
 # define RM_SC_Y 420
@@ -71,51 +66,12 @@ typedef struct s_item		t_item;
 # define DEL_OBJ_X 714
 # define DEL_OBJ_Y 225
 
-# define AR_LEFT_SC_X 664
-# define AR_LEFT_SC_Y 300
-# define AR_RIGHT_SC_X 744
-# define AR_RIGHT_SC_Y 300
-
-# define AR_LEFT_TF_X 0
-# define AR_LEFT_TF_Y 375
-# define TEX_FL_X 56
-# define TEX_FL_Y 375
-# define AR_RIGHT_TF_X 128
-# define AR_RIGHT_TF_Y 375
-
-# define AR_LEFT_TC_X 0
-# define AR_LEFT_TC_Y 450
-# define TEX_CE_X 56
-# define TEX_CE_Y 450
-# define AR_RIGHT_TC_X 128
-# define AR_RIGHT_TC_Y 450
-
-# define AR_LEFT_TS1_X 640
-# define AR_LEFT_TS1_Y 375
-# define TEX_S1_X 696
-# define TEX_S1_Y 375
-# define AR_RIGHT_TS1_X 768
-# define AR_RIGHT_TS1_Y 375
-
 # define AR_LEFT_TS2_X 640
-# define AR_LEFT_TS2_Y 80
+# define AR_LEFT_TS2_Y 240
 # define TEX_S2_X 696
-# define TEX_S2_Y 80
+# define TEX_S2_Y 230
 # define AR_RIGHT_TS2_X 768
-# define AR_RIGHT_TS2_Y 80
-
-# define AR_LEFT_TS3_X 640
-# define AR_LEFT_TS3_Y 525
-# define TEX_S3_X  696
-# define TEX_S3_Y 525
-# define AR_RIGHT_TS3_X 768
-# define AR_RIGHT_TS3_Y 525
-
-# define SIDEDEF_BUTTON_X 640
-# define SIDEDEF_BUTTON_Y 568
-
-# define SECTOR_BUTTON_X 768
-# define SECTOR_BUTTON_Y 568
+# define AR_RIGHT_TS2_Y 240
 
 # define HF_MAX 20
 # define HF_MIN -20
@@ -140,6 +96,20 @@ typedef struct s_item		t_item;
 # define LL_Y 300
 # define LL_HEIGHT 5
 # define LL_LEN 160.0
+
+static const t_line sc_lines[] = {
+	{{165, 5}, {261, 101}},
+	{{261, 5}, {453, 293}},
+	{{453, 101}, {613, 197}},
+	{{453, 197}, {635, 453}},
+	{{453, 453}, {571, 549}},
+	{{389, 389}, {453, 453}},
+	{{325, 293}, {389, 453}},
+	{{165, 293}, {325, 549}},
+	{{165, 101}, {261, 293}},
+	{{165, 549}, {389, 595}},
+	{{389, 453}, {453, 595}}
+};
 
 # define SCISSOR_LIFT 7
 # define SHOPPER 9
@@ -230,14 +200,7 @@ typedef struct			s_angle_line {
 }						t_angle_line;
 
 void					open_game_editor(t_doom *doom, double dt);
-void					set_ed_sidedef_values(t_doom *doom, t_line line);
-void					check_connection(t_doom *doom, int x, int y);
-void					add_sidedef(t_doom *doom, int x, int y);
-bool					snap_close_sector(t_doom *doom, t_point start, \
-							t_point *end);
-void					delete_sector(t_doom *doom);
 void					add_sector(t_doom *doom);
-void					set_ed_sector_values(t_doom *doom);
 t_line					set_ray(t_doom *doom, t_line ray);
 bool					check_sector_in_sector(t_doom *doom, t_line ray);
 void					save_current_sector(t_doom *doom, t_line ray);
@@ -247,9 +210,10 @@ void					bars(Uint32 **pixels, t_doom *doom);
 void					draw_images(Uint32 *pixels, t_doom *doom);
 void					init_game_design(t_doom *doom);
 void					draw_ed_sidedef(t_doom *doom, Uint32 **pixels, \
-							t_ed_sidedef *ed_sidedef);
+							t_sidedef *sidedef);
 void					add_sprite(t_doom *doom, int x, int y);
 void					draw_ed_sprite(t_doom *doom, Uint32 **pixels);
+void					highlight_curr_sector(t_doom *doom);
 void					draw_screen_colors(Uint32 *pixels, t_doom *doom);
 void					add_lists_to_libs(t_doom *doom);
 void					put_images(int x, int y, int index, t_doom *doom);
@@ -257,16 +221,10 @@ void					put_textures_sidedef(int x, int y, int index, \
 							t_doom *doom);
 void					put_symbol(t_doom *doom, Uint32 tex_dex, Uint32 index,
 							Uint32 pixel_dex);
-void					mouse_press_sidedef_txt(t_doom *doom, int x, int y);
 void					mouse_press_sidedef(t_doom *doom, int x, int y);
 void					put_sprite(t_doom *doom, int x, int y);
-bool					line_intersect(t_doom *doom, t_point start, int x, \
-							int y);
-void					delete_sidedef(t_doom *doom);
 void					delete_sprite(t_doom *doom);
-void					delete_sprites_in_sector(t_doom *doom, int sector);
 void					set_sector_lib(t_doom *doom);
-void					set_sidedef_lib(t_doom *doom);
 void					set_sprite_lib(t_doom *doom);
 void					set_groceries_in_level(t_doom *doom, t_item *t_types);
 void					set_spr_corona(t_sprite *sprite);
@@ -276,8 +234,4 @@ void					set_spr_checkout(t_sprite *sprite);
 void					set_spr_lines(t_sprite *sprite, int lenght);
 void					set_sprite_values(t_doom *doom, t_sprite *sprite, \
 							t_ed_sprite *ed_sprite, int *index);
-void					create_mid_points(t_line *line, int diff);
-void					place_checkout(t_doom *doom);
-void					check_placement(t_doom *doom, t_ed_sidedef *sidedef,
-							t_line line);
 #endif

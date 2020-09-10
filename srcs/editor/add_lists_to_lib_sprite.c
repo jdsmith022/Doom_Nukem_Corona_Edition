@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 14:51:40 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 14:13:09 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		sort_sprite_per_sector(t_doom *doom, t_lib lib)
 	sc_index = 0;
 	spr_index = -1;
 	ed_sprite = doom->game_design.sp_head->next;
-	while (sc_index < doom->game_design.sc_len && ed_sprite)
+	while (sc_index < doom->lib.n_sectors && ed_sprite)
 	{
 		if (ed_sprite->sector == sc_index && spr_index == -1)
 			spr_index = index;
@@ -74,11 +74,11 @@ void			set_sprite_lib(t_doom *doom)
 	int			spr_index;
 
 	lib.sprites = \
-		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.spr_len);
+		(t_sprite*)ft_memalloc(sizeof(t_sprite) * doom->game_design.len_spr);
 	if (lib.sprites == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
 	sort_sprite_per_sector(doom, lib);
 	delete_list(doom);
 	doom->lib.sprites = lib.sprites;
-	doom->total_sprites = doom->game_design.spr_len;
+	doom->total_sprites = doom->game_design.len_spr;
 }

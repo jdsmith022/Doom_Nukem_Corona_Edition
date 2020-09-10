@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 23:35:58 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 14:09:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../includes/render.h"
 
 static bool		get_current_sector(t_doom *doom, t_line dist_to_sd,
-					t_ed_sidedef *sidedef, double *prev_distance)
+					t_sidedef sidedef, double *prev_distance)
 {
 	double			distance;
 	t_line			ray;
@@ -23,9 +23,9 @@ static bool		get_current_sector(t_doom *doom, t_line dist_to_sd,
 	distance = point_distance(dist_to_sd.start, dist_to_sd.end);
 	if (distance < *prev_distance)
 	{
-		if (sidedef->opp_sector == -1)
+		if (sidedef.opp_sector == -1)
 		{
-			doom->game_design.cur_sector = sidedef->sector;
+			doom->game_design.i_sector = sidedef.sector;
 			return (TRUE);
 		}
 		*prev_distance = distance;
@@ -53,29 +53,30 @@ static void		reset_ray(t_doom *doom, double *distance, t_line *ray)
 
 void			save_current_sector(t_doom *doom, t_line ray)
 {
-	t_ed_sidedef	*sidedef;
 	t_point			intersect;
 	t_line			line;
+	int				index;
 	bool			valid_sector;
 	double			distance;
 
-	sidedef = doom->game_design.sd_head->next;
 	distance = INFINITY;
-	while (sidedef != NULL)
+	index = 0;
+	while (index < doom->lib.len_sidedef)
 	{
-		intersect = check_line_intersection(ray, sidedef->line);
+		intersect = check_line_intersection(ray, \
+			doom->lib.sidedef[index].line);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
 		{
 			line.start = ray.start;
 			line.end = intersect;
 			valid_sector = get_current_sector(doom, line,\
-				sidedef, &distance);
+				doom->lib.sidedef[index], &distance);
 		}
-		sidedef = sidedef->next;
-		if (valid_sector == FALSE && sidedef == NULL)
+		index++;
+		if (valid_sector == FALSE && index == doom->lib.len_sidedef)
 		{
 			reset_ray(doom, &distance, &ray);
-			sidedef = doom->game_design.sd_head->next;
+			index = 0;
 		}
 	}
 }
@@ -84,20 +85,18 @@ bool			check_sector_in_sector(t_doom *doom, t_line ray)
 {
 	t_point			intersect;
 	int				counter;
-	t_ed_sidedef	*sidedef;
+	int				index;
+	t_sidedef		sidedef;
 	bool			sector;
 
 	counter = 0;
-	sidedef = doom->game_design.sd_head->next;
-	while (sidedef != NULL)
+	while (index < doom->lib.len_sidedef)
 	{
-		if (doom->game_design.edit_sector == FALSE &&\
-			sidedef->id == doom->game_design.ed_sidedef->id)
-			break ;
-		intersect = check_line_intersection(ray, sidedef->line);
+		sidedef = doom->lib.sidedef[index];
+		intersect = check_line_intersection(ray, sidedef.line);
 		if (isnan(intersect.x) == 0 && isnan(intersect.y) == 0)
 			counter++;
-		sidedef = sidedef->next;
+		index++;
 	}
 	if (counter % 2 == 0)
 		return (FALSE);

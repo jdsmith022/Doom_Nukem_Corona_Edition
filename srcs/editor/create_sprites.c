@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 14:52:24 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 13:56:04 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 static bool			check_enough_dist_to_sidedef(t_doom *doom, t_point pos)
 {
-	t_ed_sidedef	*sidedef;
+	t_sidedef		sidedef;
 	double			distance;
 	double			min_distance;
+	int				index;
 
-	sidedef = doom->game_design.sd_head;
+	sidedef = doom->lib.sidedef[doom->game_design.i_sd];
 	min_distance = INFINITY;
-	while (sidedef != NULL)
+	while (index < doom->lib.len_sidedef)
 	{
-		distance = point_line_distance(pos, sidedef->line);
+		distance = point_line_distance(pos, sidedef.line);
 		if (distance < min_distance)
 			min_distance = distance;
-		sidedef = sidedef->next;
+		index++;
 	}
 	if (min_distance > 20.0)
 		return (TRUE);
@@ -53,13 +54,13 @@ static void			set_ed_sprite(t_doom *doom, t_point pos)
 {
 	int id;
 
-	id = doom->game_design.spr_len;
+	id = doom->game_design.len_spr;
 	doom->game_design.ed_sprite->id = id;
-	doom->game_design.ed_sprite->sector = doom->game_design.cur_sector;
+	doom->game_design.ed_sprite->sector = doom->game_design.i_sector;
 	doom->game_design.cur_sprite = id;
-	doom->game_design.spr_len++;
+	doom->game_design.len_spr++;
 	doom->game_design.ed_sprite->type = \
-		doom->game_design.ed_spr_index[doom->game_design.spr_tex];
+		doom->game_design.ed_spr_index[doom->game_design.i_spr_tex];
 	doom->game_design.ed_sprite->pos = pos;
 }
 

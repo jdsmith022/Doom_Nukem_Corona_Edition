@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:33:27 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 15:13:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,25 @@ void				draw_ed_sprite(t_doom *doom, Uint32 **pixels)
 	{
 		draw_sprite_pos(doom, pixels, sprite, side);
 		sprite = sprite->next;
+	}
+}
+
+void		highlight_curr_sector(t_doom *doom)
+{
+	t_line		bound;
+	t_point		pixel;
+
+	bound = sc_lines[doom->game_design.i_sector];
+	pixel.x = bound.start.x;
+	while (pixel.x < bound.end.x)
+	{
+		// printf("color??\n");
+		pixel.y = bound.start.y;
+		while (pixel.y < bound.end.y)
+		{
+			put_pixel_object(doom, pixel.x, pixel.y, 0x7e7f81);
+			pixel.y++;
+		}
+		pixel.x++;
 	}
 }

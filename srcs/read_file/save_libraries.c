@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/09 00:33:59 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 14:31:57 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,23 @@ void		modified(t_doom *doom, char *file_name)
 		doom_exit_failure(doom, "error: file has been modified");
 }
 
-void		save_libraries(t_doom *doom)
+static void save_custom_level_file(t_doom *doom)
+{
+	int fd;
+
+	// modified(doom, "srcs/read_file/game_editor_lvl");
+	fd = open_file(doom, "srcs/read_file/game_editor_lvl");
+	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
+	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
+	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
+	doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
+	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
+	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
+	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
+	close(fd);
+}
+
+static void	save_level_file(t_doom *doom)
 {
 	int fd;
 
@@ -41,13 +57,20 @@ void		save_libraries(t_doom *doom)
 	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
-	if (doom->game.editor == FALSE)
-	{
-		doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
-		doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
-		doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
-		doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
-		add_inf_to_lib(doom, doom->lib.n_sectors, fd);
-	}
+	doom->lib.sky_lib = save_sky(doom, &doom->lib.sky_sd);
+	doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
+	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
+	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
+	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
 	close(fd);
+}
+
+void		save_libraries(t_doom *doom)
+{
+	int fd;
+
+	if (doom->game.editor == FALSE)
+		save_level_file(doom);
+	else if (doom->game.editor == TRUE)
+		save_custom_level_file(doom);
 }

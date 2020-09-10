@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 22:39:30 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 14:13:42 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void				set_groceries_in_level(t_doom *doom, t_item *t_types)
 
 	i = 0;
 	j = 0;
-	len = doom->game_design.sd_len;
+	len = doom->lib.len_sidedef;
 	doom->groceries = (t_groceries*)ft_memalloc(sizeof(t_groceries));
 	if (!doom->groceries)
 		doom_exit_failure(doom, "error: malloc editor groceries");
