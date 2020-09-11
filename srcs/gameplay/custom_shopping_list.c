@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   custom_shopping_list.c                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 23:09:47 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/textures.h"
@@ -46,4 +58,5 @@ void			custom_shopping_list(t_doom *doom, t_groceries *groceries)
 		set_sprite(doom, s_list[i].type, &s_list[i]);
 		i++;
 	}
+	free(groceries->groceries_in_level);
 }

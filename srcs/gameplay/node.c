@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   node.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/09 00:01:28 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 
@@ -8,13 +20,21 @@ void		del_node(t_list **head, t_list *node)
 	prev = *head;
 	if (prev->content == node->content)
 	{
-		*head = node->next;
+		if (node->next)
+			*head = node->next;
+		else
+			*head = NULL;
+		free(node->content);
 		free(node);
 		return ;
 	}
 	while (prev->next->content != node->content)
 		prev = prev->next;
-	prev->next = node->next;
+	if (node->next)
+		prev->next = node->next;
+	else
+		prev->next = NULL;
+	free(node->content);
 	free(node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 16:02:24 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/04 09:19:35 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/08 21:53:36 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ void					setting_menu_click_event(t_doom *doom, SDL_Rect rect);
 void					start_menu_click_event(t_doom *doom, SDL_Rect rect1,\
 							SDL_Rect rect2, SDL_Rect rect3);
 void					instruction_window(t_doom *doom);
-void					add_score_to_sdl_text(t_doom *doom);
+void					add_score_to_sdl_text(t_doom *doom, int empty);
 void					print_background(t_doom *doom, Uint32 color);
 void					menus(t_doom *doom);
 void					game_over_menu(t_doom *doom);
-void					menu_print_loop(t_doom *doom);
+void					menu_print_loop(t_doom *doom, int empty);
 void					print_player_sprite(t_doom *doom);
 
+char					*corona_level_too_height(t_doom *doom, t_font *lib);
+char					*set_greedy_font(t_doom *doom, t_font *lib);
+char					*successful_shop(t_doom *doom, t_font *lib);
 #endif

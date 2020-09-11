@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 12:56:58 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/09 00:49:52 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ static void		put_window_texture(t_doom *doom, t_point pixel, t_plane plane,
 	bpp = doom->lib.tex_lib[tex_dex]->format->BytesPerPixel;
 	pixel_dex = (((int)wall_y * doom->lib.tex_lib[tex_dex]->pitch) +\
 		(sidedef.offset * bpp));
-	if (pixel.x >= 0 && pixel.x < WIDTH && \
-	pixel.y >= 0 && pixel.y < HEIGHT)
-		put_window_pixel(doom, pixel, tex_dex, pixel_dex);
+	put_window_pixel(doom, pixel, tex_dex, pixel_dex);
 }
 
 void			save_window(t_doom *doom, t_plane plane,
@@ -92,7 +90,7 @@ void			draw_window_as_sprite(t_doom *doom)
 	t_plane	plane;
 
 	x = doom->lib.window.x_start;
-	while (x < doom->lib.window.x_end)
+	while (x <= doom->lib.window.x_end)
 	{
 		plane.height_standard = doom->lib.window.height_standard[x];
 		plane.wall_offset = doom->lib.window.wall_offset[x];
@@ -100,8 +98,6 @@ void			draw_window_as_sprite(t_doom *doom)
 		pixel.y = doom->lib.window.y_pixel_top[x];
 		pixel.x = x;
 		pixels = doom->surface->pixels;
-		calculate_ceiling_dist(doom, pixel.x, pixel.y, \
-			doom->lib.sector[doom->lib.window.curr_sector]);
 		while (pixel.y < doom->lib.window.y_pixel_bottom[x])
 		{
 			calculate_window_pixels(doom, pixel, plane, x);
@@ -111,3 +107,4 @@ void			draw_window_as_sprite(t_doom *doom)
 	}
 	init_window(doom);
 }
+

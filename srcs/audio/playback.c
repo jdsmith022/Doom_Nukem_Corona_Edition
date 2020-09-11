@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   playback.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/09 00:01:42 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 
@@ -16,7 +28,6 @@ void	resume_music(void)
 void	play_sound(Mix_Chunk *sample, int channel)
 {
 	Mix_PlayChannel(channel, sample, 0);
-	SDL_Log("Played channel %d\n", channel);
 }
 
 void	loop_sound(Mix_Chunk *sample, int channel)

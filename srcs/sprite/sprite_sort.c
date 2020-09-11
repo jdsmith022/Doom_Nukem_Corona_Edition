@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:53:46 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:53:47 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/08 20:20:15 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int			*sort_sprite_array(t_sprite *sprite, int visible_sprites,\
 {
 	int		*sprite_order;
 
-	sprite_order = (int*)malloc(sizeof(int) * visible_sprites);
+	sprite_order = (int*)ft_memalloc(sizeof(int) * visible_sprites);
 	init_sprite_order_array(sprite, sprite_order, visible_sprites,\
 	total_sprites);
 	sort_sprites(sprite, sprite_order, visible_sprites);

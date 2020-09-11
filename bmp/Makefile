@@ -25,6 +25,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f libft/libft.a
 	@echo "removed $(NAME)"
 
 re: fclean all

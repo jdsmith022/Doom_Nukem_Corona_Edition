@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:15:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 12:47:13 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/09 02:22:46 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ static void		print_missing_groceries(t_doom *doom)
 	}
 }
 
-void			menu_print_loop(t_doom *doom)
+void			menu_print_loop(t_doom *doom, int empty)
 {
 	mouse_settings(doom);
 	print_background(doom, 0x00002E);
 	if (doom->groceries)
 	{
 		if (doom->groceries->info.won == FALSE && \
-		doom->menu->state == finished)
+		doom->menu->state == finished && \
+		empty != doom->groceries->shopping_list_len - 1)
 			print_missing_groceries(doom);
 	}
 	font_to_screen(doom);

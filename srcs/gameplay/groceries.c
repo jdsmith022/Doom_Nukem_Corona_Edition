@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   groceries.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 22:48:59 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 #include "../../includes/events.h"
@@ -19,7 +31,7 @@ static bool		mouse_in_range(int mouse_x, int mouse_y, SDL_Rect pos)
 		return (false);
 }
 
-static bool			click_on_basket(t_list **b, uint8_t *type, int x, int y)
+static bool		click_on_basket(t_list **b, uint8_t *type, int x, int y)
 {
 	t_list		*temp;
 	t_item		*item;
