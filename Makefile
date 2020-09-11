@@ -6,7 +6,7 @@
 #    By: jesmith <jesmith@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                  #
-#    Updated: 2020/09/10 14:10:57 by jessicasmit   ########   odam.nl          #
+#    Updated: 2020/09/11 11:48:04 by JessicaSmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ ACTION = srcs/action/
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line \
 			calculations_point doom_update exit free_library_struct \
 			free_library_sdl update_screen doom_init_events doom_init_ui \
-			doom_init_window free_lists free_clip_lists
+			doom_init_window free_lists free_clip_lists free_font_lib
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff key_select_and_shoot
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
