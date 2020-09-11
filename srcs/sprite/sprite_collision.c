@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/08 15:11:08 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 15:17:32 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		exit_scissor_lift(t_doom *doom)
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
 		doom->own_event.scissor_lift_down = FALSE;
+		doom->own_event.parked_too_close = FALSE;
 	}
 	else
 	{

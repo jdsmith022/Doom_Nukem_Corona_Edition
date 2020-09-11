@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:41:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/03 18:33:29 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/11 15:07:34 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static void	set_instruction_text_2(t_doom *doom, t_font *lib)
 	lib[5].font_rect.x = WIDTH / 2 - 180;
 	lib[5].font_rect.y = HEIGHT / 2 + 5;
 	lib[5].font_color = doom->lib.font_lib.font_color.white;
-	lib[6].str = "Exit = Return scissor lift to lowest level and press X.";
-	lib[6].font_rect.x = WIDTH / 2 - 200;
+	lib[6].str = "Exit = Hold down down arrow until at lowest level and \
+	press X.";
+	lib[6].font_rect.x = WIDTH / 2 - 260;
 	lib[6].font_rect.y = HEIGHT / 2 + 27;
 	lib[6].font_color = doom->lib.font_lib.font_color.white;
 	lib[7].str = "You're too close to the wall! Move and try again.";
