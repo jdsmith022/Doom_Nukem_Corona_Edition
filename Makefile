@@ -15,7 +15,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom-nukem
-FLAGS = -Wall -Wextra -Werror -O3 -Wpedantic
+FLAGS = -Wall -Wextra -Werror
 LIBFT = libft
 SDL = sdl
 BMP = bmp
