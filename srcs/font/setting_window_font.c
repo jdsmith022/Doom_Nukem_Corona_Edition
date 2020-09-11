@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:40:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/11 12:10:13 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 13:06:54 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ static void	set_text_2(t_doom *doom, t_font *lib, int start)
 	lib[6].font_rect.y = start * 7;
 	lib[6].font_color = doom->lib.font_lib.font_color.black;
 	lib[7].str = "To remove item from basket, press T to activate remove mode.\
-		Left mouse click";
+		Left mouse";
 	lib[7].font_rect.x = WIDTH / 20;
 	lib[7].font_rect.y = start * 8;
 	lib[7].font_color = doom->lib.font_lib.font_color.black;
-	lib[8].str = "item to remove. Press T to exit remove mode.";
+	lib[8].str = "click on item to remove it. Press T to exit remove mode.";
 	lib[8].font_rect.x = WIDTH / 20;
 	lib[8].font_rect.y = start * 8.5;
 	lib[8].font_color = doom->lib.font_lib.font_color.black;
