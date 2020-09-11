@@ -11,7 +11,6 @@ function osInstall {
     # Update homebrew
     brew update
     #install dependencies
-	brew install gcc
     brew install SDL2
     brew install SDL2_ttf
     brew install SDL2_mixer

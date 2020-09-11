@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 18:03:34 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 15:01:46 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ static const t_grocery_paths	g_groc_paths[] = {
 	},
 	{
 		"assets/textures/shelves/jar6.bmp",
-		"assets/sprites/groceries/round_jar2.bmp",
+		"assets/sprites/groceries/jam3.bmp",
 		JAR6
 	}
 };

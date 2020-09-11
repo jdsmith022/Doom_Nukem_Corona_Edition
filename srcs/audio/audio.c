@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 20:09:02 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/11 15:09:52 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	play_scissor_sounds(t_audio *audio, t_event *event)
 	if (event->scissor_lift != audio->event->prev_scissor_state)
 	{
 		if (event->scissor_lift)
-			loop_sound(audio->sounds[ENGINE], 4);
+			loop_sound(audio->sounds[ENGINE], 7);
 		else
-			pause_sound(audio->sounds[ENGINE], 4);
+			pause_sound(audio->sounds[ENGINE], 7);
 		audio->event->prev_scissor_state = event->scissor_lift;
 	}
 	if (event->scissor_lift_up)
@@ -86,11 +86,13 @@ static void	play_combat_sounds(t_doom *doom, t_audio *audio, int state)
 		play_sound(audio->sounds[HIT], -1);
 	if (state == sanitizer && doom->cast.poster == refill_station
 	&& doom->hud->sanitizer_level < 100)
-		play_sound(audio->sounds[POWERUP], 6);
+		play_sound(audio->sounds[POWERUP], 5);
+	else if (state == health_pack_plus)
+		play_sound(audio->sounds[POWERUP], 5);
 	else if (state == health_pack)
-		play_sound(audio->sounds[POWERUP], 6);
+		play_sound(audio->sounds[POWERUP], 5);
 	else if (state == facemask)
-		play_sound(audio->sounds[POWERUP], 6);
+		play_sound(audio->sounds[POWERUP], 5);
 }
 
 void		audio(t_doom *doom, t_event *event)

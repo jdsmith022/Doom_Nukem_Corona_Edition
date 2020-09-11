@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:27:32 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2020/09/11 14:57:09 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static void			set_audio_event(t_doom *doom)
 
 void				init_audio(t_doom *doom)
 {
-	{
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio));
 	if (doom->audio == NULL)
 		doom_exit_failure(doom, "error: audio malloc");
@@ -94,10 +93,11 @@ void				init_audio(t_doom *doom)
 	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format,
 		&doom->audio->channels);
 	Mix_AllocateChannels(CHANNELS);
-	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	Mix_Volume(4, MIX_MAX_VOLUME / 9);
 	Mix_Volume(5, MIX_MAX_VOLUME / 4);
 	Mix_Volume(6, MIX_MAX_VOLUME / 4);
+	Mix_Volume(7, MIX_MAX_VOLUME / 4);
+	Mix_Volume(8, MIX_MAX_VOLUME / 4);
 	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);
 	load_audio(doom, doom->audio);
