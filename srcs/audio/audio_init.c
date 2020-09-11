@@ -68,6 +68,7 @@ static void			set_audio_event(t_doom *doom)
 
 void				init_audio(t_doom *doom)
 {
+	{
 	doom->audio = (t_audio *)ft_memalloc(sizeof(t_audio));
 	if (doom->audio == NULL)
 		doom_exit_failure(doom, "error: audio malloc");
@@ -83,6 +84,7 @@ void				init_audio(t_doom *doom)
 	Mix_AllocateChannels(CHANNELS);
 	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	Mix_Volume(4, MIX_MAX_VOLUME / 9);
+	Mix_Volume(5, MIX_MAX_VOLUME / 4);
 	Mix_Volume(6, MIX_MAX_VOLUME / 4);
 	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);
