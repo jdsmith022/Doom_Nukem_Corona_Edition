@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/11 11:53:10 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 14:38:38 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void		free_font_lib_2(t_doom *doom)
 	}
 }
 
-void		free_font_lib(t_doom *doom)
+void			free_font_lib(t_doom *doom)
 {
 	if (doom->lib.font_lib.game_editor_font)
 	{

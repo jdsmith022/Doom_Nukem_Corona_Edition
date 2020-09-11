@@ -6,13 +6,13 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:25 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/11 12:05:27 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 14:38:46 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 
-void		void_free_lib(void *lib)
+void			void_free_lib(void *lib)
 {
 	ft_bzero(lib, sizeof(lib));
 	free(lib);
