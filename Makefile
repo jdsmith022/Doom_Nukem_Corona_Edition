@@ -6,7 +6,7 @@
 #    By: jesmith <jesmith@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/28 15:14:36 by jesmith       #+#    #+#                  #
-#    Updated: 2020/09/09 02:55:48 by JessicaSmit   ########   odam.nl          #
+#    Updated: 2020/09/11 11:48:04 by JessicaSmit   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")
 
 NAME = doom-nukem
-FLAGS = -Wall -Wextra -Werror -O3 -Wpedantic
+FLAGS = -Wall -Wextra -Werror
 LIBFT = libft
 SDL = sdl
 BMP = bmp
@@ -39,7 +39,7 @@ ACTION = srcs/action/
 CORE_FILES = main doom_init sdl_init  game_loop calculations_line \
 			calculations_point doom_update exit free_library_struct \
 			free_library_sdl update_screen doom_init_events doom_init_ui \
-			doom_init_window free_lists free_clip_lists
+			doom_init_window free_lists free_clip_lists free_font_lib
 EVENTS_FILES = key_events move_position mouse_movement mouse_press \
 				check_diff key_select_and_shoot
 RENDER_FILES = doom_render sidedef_render plane_projections draw_sidedef \
@@ -54,13 +54,13 @@ READ_FILES = add_info_to_lib error read_file save_libraries save_sdl \
 				save_player_settings_sprites
 EDITOR_FILES = 	game_editor init_game_editor draw_bar draw_edit_console \
 				draw_map_sidedef draw_map_sprite mouse_event_sidedef \
-				mouse_events_game_editor create_sector delete_sector\
-				delete_sprite create_sidedef create_sprites put_textures \
+				mouse_events_game_editor \
+				delete_sprite create_sprites put_textures \
 				set_sprite_values put_textures2 check_sector_in_sector \
-				set_utilities check_sidedef_connection set_sprite_values_2 \
-				add_lists_to_lib add_lists_to_lib_sidedef \
-				add_lists_to_lib_sector add_lists_to_lib_sprite \
-				add_lists_to_lib_groceries place_checkout
+				set_utilities set_sprite_values_2 \
+				add_lists_to_lib \
+				add_lists_to_lib_sprite \
+				add_lists_to_lib_groceries
 AUDIO_FILES = audio audio_init playback helpers stop_sounds
 SPRITE_FILES = sprite_check sprite_draw sprite_scale sprite_render \
 				sprite_sort sprite_reset sprite_hud_draw \

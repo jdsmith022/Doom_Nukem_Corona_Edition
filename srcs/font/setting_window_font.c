@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/23 15:40:14 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/29 17:59:23 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 13:06:54 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	set_text_3(t_doom *doom, t_font *lib, int start)
 	lib[10].font_rect.x = WIDTH / 20;
 	lib[10].font_rect.y = start * 1.5;
 	lib[10].font_color = doom->lib.font_lib.font_color.blue;
-	lib[11].str = "LEVEL EDITOR: To save game editor, press B to save, then\
-	N to exit.";
+	lib[11].str = "SCISSOR LIFT: To exit scissor lift, return to lowest level\
+	and press X.";
 	lib[11].font_rect.x = WIDTH / 20;
 	lib[11].font_rect.y = start * 9.5;
 	lib[11].font_color = doom->lib.font_lib.font_color.black;
@@ -45,21 +45,21 @@ static void	set_text_2(t_doom *doom, t_font *lib, int start)
 	lib[4].font_rect.x = WIDTH / 20;
 	lib[4].font_rect.y = start * 5.5;
 	lib[4].font_color = doom->lib.font_lib.font_color.black;
-	lib[5].str = "To spray sanitizer, press E to activate spray mode.\
+	lib[5].str = "To spray sanitizer, press R to activate spray mode.\
 		Press left mouse key to";
 	lib[5].font_rect.x = WIDTH / 20;
 	lib[5].font_rect.y = start * 6.5;
 	lib[5].font_color = doom->lib.font_lib.font_color.black;
-	lib[6].str = "spray. Press E to exit spray mode.";
+	lib[6].str = "spray. Press R to exit spray mode.";
 	lib[6].font_rect.x = WIDTH / 20;
 	lib[6].font_rect.y = start * 7;
 	lib[6].font_color = doom->lib.font_lib.font_color.black;
 	lib[7].str = "To remove item from basket, press T to activate remove mode.\
-		Press left mouse key on";
+		Left mouse";
 	lib[7].font_rect.x = WIDTH / 20;
 	lib[7].font_rect.y = start * 8;
 	lib[7].font_color = doom->lib.font_lib.font_color.black;
-	lib[8].str = "item to remove. Press T to exit remove mode.";
+	lib[8].str = "click on item to remove it. Press T to exit remove mode.";
 	lib[8].font_rect.x = WIDTH / 20;
 	lib[8].font_rect.y = start * 8.5;
 	lib[8].font_color = doom->lib.font_lib.font_color.black;

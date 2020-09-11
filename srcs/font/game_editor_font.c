@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/22 14:40:40 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 10:33:19 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 19:57:01 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 static void	set_editor_text_3(t_doom *doom, t_font *lib)
 {
-	lib[10].str = "Select wall and";
-	lib[10].font_rect.x = 645;
-	lib[10].font_rect.y = 140;
+	lib[10].str = "confirm settings:";
+	lib[10].font_rect.x = 5;
+	lib[10].font_rect.y = 340;
 	lib[10].font_color = doom->lib.font_lib.font_color.black;
 	lib[11].str = "Delete object";
-	lib[11].font_rect.x = 660;
+	lib[11].font_rect.x = 655;
 	lib[11].font_rect.y = 400;
 	lib[11].font_color = doom->lib.font_lib.font_color.black;
-	lib[12].str = "Delete Sector";
-	lib[12].font_rect.x = 24;
-	lib[12].font_rect.y = 525;
+	lib[12].str = "confirm texture:";
+	lib[12].font_rect.x = 645;
+	lib[12].font_rect.y = 300;
 	lib[12].font_color = doom->lib.font_lib.font_color.black;
+	lib[13].str = "Select wall:";
+	lib[13].font_rect.x = 665;
+	lib[13].font_rect.y = 120;
+	lib[13].font_color = doom->lib.font_lib.font_color.black;
 }
 
 static void	set_editor_text_2(t_doom *doom, t_font *lib)
@@ -36,16 +40,8 @@ static void	set_editor_text_2(t_doom *doom, t_font *lib)
 	lib[5].font_color = doom->lib.font_lib.font_color.black;
 	lib[6].str = "Select object";
 	lib[6].font_rect.x = 22;
-	lib[6].font_rect.y = 340;
+	lib[6].font_rect.y = 430;
 	lib[6].font_color = doom->lib.font_lib.font_color.black;
-	lib[7].str = "make new sector";
-	lib[7].font_rect.x = 640;
-	lib[7].font_rect.y = 215;
-	lib[7].font_color = doom->lib.font_lib.font_color.black;
-	lib[8].str = "Delete wall";
-	lib[8].font_rect.x = 670;
-	lib[8].font_rect.y = 300;
-	lib[8].font_color = doom->lib.font_lib.font_color.black;
 	lib[9].str = "Start game";
 	lib[9].font_rect.x = 665;
 	lib[9].font_rect.y = 475;
@@ -63,13 +59,13 @@ static void	set_editor_text(t_doom *doom, t_font *lib, int len)
 	lib[0].font_rect.x = 45;
 	lib[0].font_rect.y = 20;
 	lib[0].font_color = doom->lib.font_lib.font_color.black;
-	lib[1].str = "Select Wall";
-	lib[1].font_rect.x = 670;
+	lib[1].str = "Wall:";
+	lib[1].font_rect.x = 690;
 	lib[1].font_rect.y = 20;
 	lib[1].font_color = doom->lib.font_lib.font_color.black;
-	lib[2].str = "texture:";
-	lib[2].font_rect.x = 685;
-	lib[2].font_rect.y = 50;
+	lib[2].str = "Select texture:";
+	lib[2].font_rect.x = 650;
+	lib[2].font_rect.y = 200;
 	lib[2].font_color = doom->lib.font_lib.font_color.black;
 	lib[3].str = "Floor Height";
 	lib[3].font_rect.x = 25;
@@ -86,7 +82,7 @@ void		save_game_editor_font(t_doom *doom, int *len)
 {
 	TTF_Font	*font;
 
-	*len = 13;
+	*len = 14;
 	doom->lib.font_lib.game_editor_font = \
 		(t_font*)ft_memalloc(sizeof(t_font) * (*len));
 	if (doom->lib.font_lib.game_editor_font == NULL)

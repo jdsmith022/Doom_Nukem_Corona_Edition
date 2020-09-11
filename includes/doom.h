@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 18:12:47 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 11:52:09 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void				free_sdl_lib(t_doom *doom);
 void				free_struct_lib(t_doom *doom);
 void				free_lists(t_doom *doom);
 void				free_clip_lists(t_doom *doom);
+void				free_font_lib(t_doom *doom);
+void				void_free_lib(void *lib);
 int					line_num(int i);
 
 #endif

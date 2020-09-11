@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 13:18:38 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:55:29 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 static void		set_gameplay_settings(t_doom *doom)
 {
 	doom->pos = doom->pos;
-	doom->lib.sector = light_correction(\
-		doom->lib.sector, doom->game_design.sc_len);
 	doom->player.height = PLAYER_HEIGHT \
 		+ doom->lib.sector[doom->i_sector].height_floor;
 	doom->game.light = TRUE;
@@ -41,21 +39,11 @@ static void		set_gameplay_settings(t_doom *doom)
 	SDL_UpdateWindowSurface(doom->window);
 }
 
-static void		flush_sector_list_info(t_doom *doom)
-{
-	doom->game_design.ed_sector->light_level = doom->game_design.light_level;
-	doom->game_design.ed_sector->height_floor = doom->game_design.floor_height;
-	doom->game_design.ed_sector->height_ceiling = \
-		doom->game_design.ceiling_height;
-}
-
 void			add_lists_to_libs(t_doom *doom)
 {
 	del_groceries(doom->groceries);
-	flush_sector_list_info(doom);
-	set_sector_lib(doom);
 	set_sprite_lib(doom);
-	set_sidedef_lib(doom);
+	set_groceries_in_level(doom);
 	set_gameplay_settings(doom);
 	init_groceries(doom);
 }

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/08 17:47:05 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 13:46:51 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,33 +309,21 @@ typedef struct		s_lib {
 }					t_lib;
 
 typedef struct		s_gamedesign {
-	bool			edit_sector;
-	bool			place_checkout;
-	bool			open_connection;
 	bool			custom_level;
-	bool			pl_pos;
-	t_ed_sector		*ed_sector;
-	t_ed_sector		*sc_head;
-	t_ed_sidedef	*ed_sidedef;
-	t_ed_sidedef	*sd_head;
 	t_ed_sprite		*ed_sprite;
 	t_ed_sprite		*sp_head;
-	int				cur_sector;
-	int				sd_tex_index[12];
+	int				i_sd;
+	int				i_sector;
+	int				i_sprites;
+	int				i_sd_tex;
+	int				i_spr_tex;
 	int				ed_spr_index[7];
 	int				cur_sprite;
-	int				spr_tex;
-	int				sd_len;
-	int				sc_len;
-	int				spr_len;
+	int				len_spr;
 	int				n_sprites;
-	int				i_sprites;
-	int				tex_index;
 	double			floor_height;
 	double			ceiling_height;
 	double			light_level;
-	t_line			draw_line;
-	t_point			start_sector;
 
 	int				s_size;
 	int				w_len;

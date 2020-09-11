@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 22:39:30 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 23:39:57 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,42 @@ static void			save_groceries_in_level(t_doom *doom, t_item *groceries)
 		sizeof(t_item) * doom->groceries->num_of_groceries);
 }
 
-void				set_groceries_in_level(t_doom *doom, t_item *t_types)
+static uint8_t		get_groc_type(SDL_Surface *surface)
+{
+	uint8_t		type;
+
+	type = *(uint8_t *)surface->userdata;
+	if (type >= 1 && type <= GROC_TYPES)
+		return (type);
+	else
+		return (0);
+}
+
+static void			set_tex_types(t_doom *doom, t_item *tex_types)
+{
+	int i;
+
+	i = 0;
+	while (i < doom->lib.len_sidedef)
+	{
+		tex_types[i].type = \
+		get_groc_type(doom->lib.tex_lib[doom->lib.sidedef[i].txt_2]);
+		i++;
+	}
+}
+
+void				set_groceries_in_level(t_doom *doom)
 {
 	int				i;
 	int				j;
 	int				len;
 	t_item			groceries[GROC_TYPES];
+	t_item			t_types[doom->lib.len_sidedef];
 
 	i = 0;
 	j = 0;
-	len = doom->game_design.sd_len;
+	set_tex_types(doom, t_types);
+	len = doom->lib.len_sidedef;
 	doom->groceries = (t_groceries*)ft_memalloc(sizeof(t_groceries));
 	if (!doom->groceries)
 		doom_exit_failure(doom, "error: malloc editor groceries");

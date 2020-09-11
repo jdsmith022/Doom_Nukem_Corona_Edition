@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: JessicaSmith <JessicaSmith@student.coda      +#+                      #
+#                                                    +#+                       #
+#    Created: 2020/09/11 00:04:23 by JessicaSmit   #+#    #+#                  #
+#    Updated: 2020/09/11 00:04:25 by JessicaSmit   ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
 GREEN = $(shell printf "\e[38;5;10m")
 WHITE = $(shell printf "\e[39m")
 RED = $(shell printf "\033[0;31m")

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/07 17:35:45 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/10 22:27:27 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		set_sprite_values(t_doom *doom, t_sprite *sprite,
 	sprite->amount = 4;
 	sprite->pos = ed_sprite->pos;
 	sprite->sector = ed_sprite->sector;
+	sprite->visible = -1;
 	sprite->textures = (int*)ft_memalloc(sizeof(int) * 4);
 	if (sprite->textures == NULL)
 		doom_exit_failure(doom, "error: saving game editor info");
