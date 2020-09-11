@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 23:38:51 by JessicaSmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 12:18:56 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	save_custom_level_file(t_doom *doom)
 {
 	int fd;
 
-	modified(doom, "srcs/read_file/game_editor_lvl");
+	// modified(doom, "srcs/read_file/game_editor_lvl");
 	fd = open_file(doom, "srcs/read_file/game_editor_lvl");
 	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);

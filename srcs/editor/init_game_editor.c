@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/09/10 22:36:56 by jessicasmit   ########   odam.nl         */
+/*   Updated: 2020/09/11 12:32:32 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void			init_lists(t_doom *doom)
 		doom_exit_failure(doom, "error: malloc sprite in editor\n");
 	doom->game_design.ed_sprite->id = 0;
 	doom->game_design.ed_sprite->type = SPR_CHECKOUT;
-	doom->game_design.ed_sprite->pos.x = 421;
-	doom->game_design.ed_sprite->pos.y = 485;
+	doom->game_design.ed_sprite->pos.x = 430;
+	doom->game_design.ed_sprite->pos.y = 495;
 	doom->game_design.ed_sprite->sector = 10;
 	doom->game_design.sp_head = doom->game_design.ed_sprite;
 	doom->lib.sector[10].n_objects = 1;

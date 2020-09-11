@@ -496,9 +496,9 @@ assets/sprites/groceries/tart.bmp
 261
 5
 0
-8
+15
 16
-8
+17
 0
 
 #sidedefs1 ## PORTAL TO SECTOR 1 ##
@@ -508,9 +508,9 @@ assets/sprites/groceries/tart.bmp
 261
 101
 0
-8
+15
 16
-8
+17
 1
 
 #sidedefs2
@@ -520,9 +520,9 @@ assets/sprites/groceries/tart.bmp
 165
 101
 0
-8
+15
 16
-8
+17
 2
 
 #sidedefs3
@@ -532,9 +532,9 @@ assets/sprites/groceries/tart.bmp
 165
 5
 0
-8
+15
 16
-8
+17
 3
 
 ## SECTOR 1 ###############################################
@@ -560,9 +560,9 @@ assets/sprites/groceries/tart.bmp
 261
 101
 0
-8
+15
 16
-8
+17
 4
 
 #sidedefs5
@@ -572,9 +572,9 @@ assets/sprites/groceries/tart.bmp
 453
 5
 0
-8
+15
 16
-8
+17
 5
 
 #sidedefs6
@@ -584,9 +584,9 @@ assets/sprites/groceries/tart.bmp
 453
 101
 0
-8
+15
 16
-8
+17
 6
 
 #sidedefs7 ## PORTAL TO SECTOR 2 ##
@@ -596,9 +596,9 @@ assets/sprites/groceries/tart.bmp
 453
 197
 0
-8
+15
 16
-8
+17
 7
 
 #sidedefs8
@@ -608,9 +608,9 @@ assets/sprites/groceries/tart.bmp
 453
 293
 0
-8
+15
 16
-8
+17
 8
 
 #sidedefs9
@@ -620,9 +620,9 @@ assets/sprites/groceries/tart.bmp
 389
 293
 0
-8
+15
 16
-8
+17
 9
 
 #sidedefs10 ## PORTAL TO SECTOR 6##
@@ -632,9 +632,9 @@ assets/sprites/groceries/tart.bmp
 325
 293
 0
-8
+15
 16
-8
+17
 10
 
 #sidedefs11
@@ -644,9 +644,9 @@ assets/sprites/groceries/tart.bmp
 261
 293
 0
-8
+15
 16
-8
+17
 11
 
 #sidedefs12
@@ -656,9 +656,9 @@ assets/sprites/groceries/tart.bmp
 261
 101
 0
-8
+15
 16
-8
+17
 12
 
 ## SECTOR 2 ###############################################
@@ -684,9 +684,9 @@ assets/sprites/groceries/tart.bmp
 453
 197
 0
-8
+15
 16
-8
+17
 13
 
 #sidedefs14
@@ -696,9 +696,9 @@ assets/sprites/groceries/tart.bmp
 613
 101
 0
-8
+15
 16
-8
+17
 14
 
 #sidedefs15
@@ -708,9 +708,9 @@ assets/sprites/groceries/tart.bmp
 613
 197
 0
-8
+15
 16
-8
+17
 15
 
 #sidedefs16 ## PORTAL TO SECTOR 3 ##
@@ -720,9 +720,9 @@ assets/sprites/groceries/tart.bmp
 549
 197
 0
-8
+15
 16
-8
+17
 16
 
 #sidedefs17
@@ -732,9 +732,9 @@ assets/sprites/groceries/tart.bmp
 453
 197
 0
-8
+15
 16
-8
+17
 17
 
 ## SECTOR 3 ###############################################
@@ -760,9 +760,9 @@ assets/sprites/groceries/tart.bmp
 549
 197
 0
-8
+15
 16
-8
+17
 18
 
 #sidedefs19
@@ -772,9 +772,9 @@ assets/sprites/groceries/tart.bmp
 635
 197
 0
-8
+15
 16
-8
+17
 19
 
 #sidedefs20
@@ -784,9 +784,9 @@ assets/sprites/groceries/tart.bmp
 635
 453
 0
-8
+15
 16
-8
+17
 20
 
 #sidedefs21
@@ -796,9 +796,9 @@ assets/sprites/groceries/tart.bmp
 571
 453
 0
-8
+15
 16
-8
+17
 21
 
 #sidedefs22 ## PORTAL TO SECTOR 4 ##
@@ -808,9 +808,9 @@ assets/sprites/groceries/tart.bmp
 507
 453
 0
-8
+15
 16
-8
+17
 22
 
 #sidedefs23
@@ -820,9 +820,9 @@ assets/sprites/groceries/tart.bmp
 453
 453
 0
-8
+15
 16
-8
+17
 23
 
 #sidedefs24 ## PORTAL TO SECTOR 5 ##
@@ -832,9 +832,9 @@ assets/sprites/groceries/tart.bmp
 453
 389
 0
-8
+15
 16
-8
+17
 24
 
 #sidedefs25
@@ -844,9 +844,9 @@ assets/sprites/groceries/tart.bmp
 453
 197
 0
-8
+15
 16
-8
+17
 25
 
 #sidedefs26
@@ -856,9 +856,9 @@ assets/sprites/groceries/tart.bmp
 549
 197
 0
-8
+15
 16
-8
+17
 26
 
 ## SECTOR 4 ###############################################
@@ -884,9 +884,9 @@ assets/sprites/groceries/tart.bmp
 507
 453
 0
-8
+15
 16
-8
+17
 27
 
 #sidedefs28
@@ -896,9 +896,9 @@ assets/sprites/groceries/tart.bmp
 571
 549
 0
-8
+15
 16
-8
+17
 28
 
 #sidedefs29
@@ -908,9 +908,9 @@ assets/sprites/groceries/tart.bmp
 453
 549
 0
-8
+15
 16
-8
+17
 29
 
 #sidedefs30
@@ -920,9 +920,9 @@ assets/sprites/groceries/tart.bmp
 453
 453
 0
-8
+15
 16
-8
+17
 30
 
 #sidedefs31
@@ -932,9 +932,9 @@ assets/sprites/groceries/tart.bmp
 507
 453
 0
-8
+15
 16
-8
+17
 31
 
 ## SECTOR 5 ###############################################
@@ -960,9 +960,9 @@ assets/sprites/groceries/tart.bmp
 453
 389
 0
-8
+15
 16
-8
+17
 32
 
 #sidedefs33
@@ -972,9 +972,9 @@ assets/sprites/groceries/tart.bmp
 389
 453
 0
-8
+15
 16
-8
+17
 33
 
 #sidedefs34 ## PORTAL TO SECTOR 6 ##
@@ -984,9 +984,9 @@ assets/sprites/groceries/tart.bmp
 389
 389
 0
-8
+15
 16
-8
+17
 34
 
 #sidedefs35
@@ -996,9 +996,9 @@ assets/sprites/groceries/tart.bmp
 453
 389
 0
-8
+15
 16
-8
+17
 35
 
 ## SECTOR 6 ###############################################
@@ -1024,9 +1024,9 @@ assets/sprites/groceries/tart.bmp
 325
 293
 0
-8
+15
 16
-8
+17
 36
 
 #sidedefs37
@@ -1036,9 +1036,9 @@ assets/sprites/groceries/tart.bmp
 389
 389
 0
-8
+15
 16
-8
+17
 37
 
 #sidedefs38 ## PORTAL TO SECTOR 5 ##
@@ -1048,9 +1048,9 @@ assets/sprites/groceries/tart.bmp
 389
 389
 0
-8
+15
 16
-8
+17
 38
 
 #sidedefs39
@@ -1060,9 +1060,9 @@ assets/sprites/groceries/tart.bmp
 325
 453
 0
-8
+15
 16
-8
+17
 39
 
 #sidedefs40 ## PORTAL TO SECTOR 7 ##
@@ -1072,9 +1072,9 @@ assets/sprites/groceries/tart.bmp
 325
 389
 0
-8
+15
 16
-8
+17
 40
 
 #sidedefs41
@@ -1084,9 +1084,9 @@ assets/sprites/groceries/tart.bmp
 325
 293
 0
-8
+15
 16
-8
+17
 41
 
 ## SECTOR 7 ###############################################
@@ -1112,9 +1112,9 @@ assets/sprites/groceries/tart.bmp
 325
 389
 0
-8
+15
 16
-8
+17
 42
 
 #sidedefs43 ## PORTAL TO SECTOR 6 ##
@@ -1124,9 +1124,9 @@ assets/sprites/groceries/tart.bmp
 325
 389
 0
-8
+15
 16
-8
+17
 43
 
 #sidedefs44
@@ -1136,9 +1136,9 @@ assets/sprites/groceries/tart.bmp
 325
 549
 0
-8
+15
 16
-8
+17
 44
 
 #sidedefs45
@@ -1148,9 +1148,9 @@ assets/sprites/groceries/tart.bmp
 229
 549
 0
-8
+15
 16
-8
+17
 45
 
 #sidedefs46 ## PORTAL TO SECTOR 9 ##
@@ -1160,9 +1160,9 @@ assets/sprites/groceries/tart.bmp
 165
 549
 0
-8
+15
 16
-8
+17
 46
 
 #sidedefs47
@@ -1172,9 +1172,9 @@ assets/sprites/groceries/tart.bmp
 165
 293
 0
-8
+15
 16
-8
+17
 47
 
 #sidedefs48
@@ -1184,9 +1184,9 @@ assets/sprites/groceries/tart.bmp
 197
 293
 0
-8
+15
 16
-8
+17
 48
 
 #sidedefs49 ## PORTAL TO SECTOR 8 ##
@@ -1196,9 +1196,9 @@ assets/sprites/groceries/tart.bmp
 229
 293
 0
-8
+15
 16
-8
+17
 48
 
 #sidedefs49
@@ -1208,9 +1208,9 @@ assets/sprites/groceries/tart.bmp
 325
 293
 0
-8
+15
 16
-8
+17
 49
 
 ## SECTOR 8 ###############################################
@@ -1236,9 +1236,9 @@ assets/sprites/groceries/tart.bmp
 229
 293
 0
-8
+15
 16
-8
+17
 50
 
 #sidedefs51
@@ -1248,9 +1248,9 @@ assets/sprites/groceries/tart.bmp
 165
 293
 0
-8
+15
 16
-8
+17
 51
 
 #sidedefs52
@@ -1260,9 +1260,9 @@ assets/sprites/groceries/tart.bmp
 165
 101
 0
-8
+15
 16
-8
+17
 52
 
 #sidedefs53
@@ -1272,9 +1272,9 @@ assets/sprites/groceries/tart.bmp
 261
 101
 0
-8
+15
 16
-8
+17
 53
 
 #sidedefs54
@@ -1284,9 +1284,9 @@ assets/sprites/groceries/tart.bmp
 261
 293
 0
-8
+15
 16
-8
+17
 54
 
 #sidedefs55
@@ -1296,9 +1296,9 @@ assets/sprites/groceries/tart.bmp
 229
 293
 0
-8
+15
 16
-8
+17
 55
 
 ## SECTOR 9 ###############################################
@@ -1324,9 +1324,9 @@ assets/sprites/groceries/tart.bmp
 165
 549
 0
-8
+15
 16
-8
+17
 56
 
 #sidedefs57
@@ -1336,9 +1336,9 @@ assets/sprites/groceries/tart.bmp
 389
 549
 0
-8
+15
 16
-8
+17
 57
 
 #sidedefs58 ## PORTAL TO SECTOR 10 ###
@@ -1348,9 +1348,9 @@ assets/sprites/groceries/tart.bmp
 389
 595
 0
-8
+15
 16
-8
+17
 58
 
 #sidedefs59
@@ -1360,9 +1360,9 @@ assets/sprites/groceries/tart.bmp
 165
 595
 0
-8
+15
 16
-8
+17
 59
 
 #sidedefs60
@@ -1372,9 +1372,9 @@ assets/sprites/groceries/tart.bmp
 165
 549
 0
-8
+15
 16
-8
+17
 60
 
 ## SECTOR 10 ###############################################
@@ -1400,9 +1400,9 @@ assets/sprites/groceries/tart.bmp
 389
 595
 0
-8
+15
 16
-8
+17
 61
 
 #sidedefs62
@@ -1412,9 +1412,9 @@ assets/sprites/groceries/tart.bmp
 389
 453
 0
-8
+15
 16
-8
+17
 62
 
 #sidedefs63
@@ -1424,9 +1424,9 @@ assets/sprites/groceries/tart.bmp
 453
 453
 0
-8
+15
 16
-8
+17
 63
 
 #sidedefs65
@@ -1436,9 +1436,9 @@ assets/sprites/groceries/tart.bmp
 453
 595
 0
-8
+15
 16
-8
+17
 65
 
 #sidedefs66
@@ -1448,7 +1448,7 @@ assets/sprites/groceries/tart.bmp
 389
 595
 0
-8
+15
 16
-8
+17
 66
