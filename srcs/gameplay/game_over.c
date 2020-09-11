@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   game_over.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:28:19 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
 
@@ -12,21 +24,13 @@ static bool			basket_is_empty(t_doom *doom, t_game_over *info)
 	return (FALSE);
 }
 
-static void			check_item_from_basket(t_item *item, t_item *list,
-						int i, t_item g)
+static void			check_item_from_basket(t_item item, t_item list, t_item *g)
 {
-	if (!item)
-	{
-		ft_memcpy(&g, &list[i], sizeof(t_item));
-	}
-	else if (item->amount != list->amount)
-	{
-		if (item->amount > list[i].amount)
-			item->amount -= list[i].amount;
-		else
-			item->amount = list[i].amount - item->amount;
-		ft_memcpy(&g, item, sizeof(t_item));
-	}
+	if (item.amount > list.amount)
+		item.amount -= list.amount;
+	else
+		item.amount = list.amount - item.amount;
+	ft_memcpy(g, &item, sizeof(t_item));
 }
 
 static void			assign_missing(t_doom *doom, t_game_over *info, t_item *g)
@@ -38,11 +42,16 @@ static void			assign_missing(t_doom *doom, t_game_over *info, t_item *g)
 
 	i = 0;
 	j = 0;
-	list = &doom->groceries->shopping_list[i];
+	list = doom->groceries->shopping_list;
 	while (i < doom->groceries->shopping_list_len)
 	{
 		item = get_item_from_basket(list[i].type, &doom->groceries->basket);
-		check_item_from_basket(item, list, i, g[j]);
+		if (!item)
+			ft_memcpy(&g[j], &list[i], sizeof(t_item));
+		else if (item->amount != list[i].amount)
+			check_item_from_basket(*item, list[i], &g[j]);
+		else
+			j = j > 0 ? j - 1 : j;
 		j++;
 		i++;
 	}

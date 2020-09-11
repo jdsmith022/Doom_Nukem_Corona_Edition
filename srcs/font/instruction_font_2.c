@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:10:35 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 10:04:28 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/11 15:09:52 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ static void	set_instruction_text_7(t_doom *doom, t_font *lib)
 	lib[27].font_rect.x = WIDTH / 2 - 130;
 	lib[27].font_rect.y = HEIGHT / 2 + 165;
 	lib[27].font_color = doom->lib.font_lib.font_color.white;
+	lib[28].str = "Get ready! Your time slot is almost open...";
+	lib[28].font_rect.x = WIDTH / 2 - 180;
+	lib[28].font_rect.y = HEIGHT / 2;
+	lib[28].font_color = doom->lib.font_lib.font_color.white;
 }
 
 static void	set_instruction_text_6(t_doom *doom, t_font *lib)
@@ -74,7 +78,7 @@ static void	set_instruction_text_5(t_doom *doom, t_font *lib)
 	lib[18].font_rect.x = WIDTH / 2 - 145;
 	lib[18].font_rect.y = HEIGHT / 2 + 105;
 	lib[18].font_color = doom->lib.font_lib.font_color.white;
-	lib[19].str = "Make sure to checkout before your time runs out!";
+	lib[19].str = "Take care to checkout before your time runs out!";
 	lib[19].font_rect.x = WIDTH / 4.5;
 	lib[19].font_rect.y = HEIGHT / 2 + 135;
 	lib[19].font_color = doom->lib.font_lib.font_color.red;

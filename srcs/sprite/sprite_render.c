@@ -6,7 +6,7 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:07 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/08/30 21:54:08 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/10 19:17:28 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,16 @@ void		sprite_render(t_doom *doom)
 	}
 	doom->lib.sprite_order = sort_sprite_array(doom->lib.sprites,\
 	doom->visible_sprites, doom->total_sprites);
+	if (doom->lib.sprite_order == NULL)
+		doom_exit_failure(doom, "error: sprite lib malloc");
 	if (doom->own_event.window == TRUE)
 		sort_sprites_window(doom->lib.sprite_order, doom->i_sector,\
 		doom->visible_sprites, doom->lib.sprites);
 	draw_sprite(doom, doom->lib.sprite_order);
+	free_clipping_values(doom, doom->clip->head_mid_bottom);
+	doom->clip->mid_bottom = doom->clip->head_mid_bottom;
+	free_clipping_values(doom, doom->clip->head_bottom);
+	doom->clip->bottom = doom->clip->head_bottom;
+	free_clipping_values(doom, doom->clip->head_top);
+	doom->clip->top = doom->clip->head_top;
 }

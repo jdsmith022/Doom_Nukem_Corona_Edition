@@ -6,13 +6,15 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 15:02:29 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/01 11:12:21 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/07 22:37:18 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/hud.h"
 #include "../../includes/sprites.h"
+#include "../../includes/menu.h"
+#include "../../includes/gameplay.h"
 
 static void	check_walking(t_doom *doom, t_sprite shopper)
 {
@@ -32,6 +34,15 @@ static void	check_walking(t_doom *doom, t_sprite shopper)
 		doom->own_event.sprite_collision = FALSE;
 		doom->own_event.sprite_collision_dist = -1;
 		doom->own_event.sprite_index = -1;
+	}
+}
+
+static void	check_checkout_action(t_doom *doom, int index)
+{
+	if (doom->lib.sprites[index].action == 13)
+	{
+		get_game_over_info(doom);
+		doom->menu->state = finished;
 	}
 }
 
@@ -59,6 +70,7 @@ static void	check_sprite_distance2(t_doom *doom, int index)
 			doom->own_event.fall = TRUE;
 		}
 	}
+	check_checkout_action(doom, index);
 }
 
 void		check_sprite_distance(t_doom *doom, int index)

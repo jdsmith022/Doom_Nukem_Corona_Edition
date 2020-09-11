@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   save_libraries.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/11 15:34:42 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/read.h"
 
-int				open_file(t_doom *doom, char *filename)
+int			open_file(t_doom *doom, char *filename)
 {
 	int		fd;
 
@@ -11,23 +23,36 @@ int				open_file(t_doom *doom, char *filename)
 	return (fd);
 }
 
-static void		modified(void)
+void		modified(t_doom *doom, char *file_name)
 {
 	struct stat filestat;
 
-	stat("srcs/read_file/start_skybox_full", &filestat);
-	/* turn on and add the last modified date before handing in*/
-	// if (ft_strcmp(ctime(&filestat.st_mtime), "Tue Jul 21 11:47:15 2020\n") != 0)
-	//     error("file has been modified", 0);
+	stat(file_name, &filestat);
+	if ((long long)filestat.st_mtime != (long long)filestat.st_birthtime)
+		doom_exit_failure(doom, "error: file has been modified");
 }
 
-void			save_libraries(t_doom *doom)
+static void	save_custom_level_file(t_doom *doom)
 {
 	int fd;
 
-	// if (argc != 1)
-	//     error("Please run program in this fashion: ./duke_nukem", 0);
-	modified();
+	modified(doom, "srcs/read_file/game_editor_lvl");
+	fd = open_file(doom, "srcs/read_file/game_editor_lvl");
+	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
+	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
+	doom->lib.obj_lib = save_objects(doom, fd, &doom->lib.len_obj_lib);
+	doom->lib.sector = save_sectors(doom, fd, &doom->lib.n_sectors);
+	doom->lib.sidedef = save_walls(doom, fd, &doom->lib.len_sidedef);
+	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
+	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
+	close(fd);
+}
+
+static void	save_level_file(t_doom *doom)
+{
+	int fd;
+
+	modified(doom, "srcs/read_file/start_skybox_full");
 	fd = open_file(doom, "srcs/read_file/start_skybox_full");
 	doom->game_design.sym_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
 	doom->lib.tex_lib = save_textures(doom, fd, &doom->lib.len_tex_lib);
@@ -38,4 +63,14 @@ void			save_libraries(t_doom *doom)
 	doom->lib.sprites = save_sprites(doom, fd, &doom->total_sprites);
 	add_inf_to_lib(doom, doom->lib.n_sectors, fd);
 	close(fd);
+}
+
+void		save_libraries(t_doom *doom)
+{
+	int fd;
+
+	if (doom->game.editor == FALSE)
+		save_level_file(doom);
+	else if (doom->game.editor == TRUE)
+		save_custom_level_file(doom);
 }

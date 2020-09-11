@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 22:03:16 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:42:46 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/05 14:30:02 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		set_floor_limit(t_doom *doom, t_plane *plane, t_sidedef sidedef,
 			doom->cast.texture_height / sidedef.prev_sidedef.distance\
 			* doom->cast.dist_to_plane;
 		scale = plane->height_standard / doom->cast.texture_height;
-		height_floor = sector->height_floor / \
+		height_floor = fabs(sector->height_floor) / \
 			sidedef.prev_sidedef.distance * doom->cast.dist_to_plane;
 		plane_bottom = ((HEIGHT / 2) + (doom->player.height * scale)) - \
 			(doom->own_event.y_pitch + height_floor);

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:44:53 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 16:57:08 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,55 @@
 #include "../../includes/events.h"
 #include "../../includes/game_editor.h"
 
-void	mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
+static void		shoot_action(t_doom *doom)
+{
+	if (doom->hud->sanitizer_level > 0)
+	{
+		doom->hud->update = sanitizer_shooting;
+		doom->own_event.mist = TRUE;
+		check_sprite_hit(doom);
+	}
+}
+
+void			select_action_default_level(t_doom *doom)
+{
+	t_sidedef poster;
+
+	if (doom->own_event.groc_pickup == FALSE && \
+	doom->own_event.mouse_pointer == FALSE)
+	{
+		poster = doom->lib.sidedef[doom->i_sidedef];
+		if (poster.action == 4 && doom->cast.poster == light_click)
+			light_switch(doom, poster);
+		if (poster.action == 8 && doom->cast.poster == refill_station \
+		&& poster.distance < 50.0)
+			sanitizer_refill(doom);
+	}
+}
+
+static void		select_action(t_doom *doom)
+{
+	if (doom->own_event.select || doom->own_event.mouse_pointer)
+	{
+		groceries(doom);
+		if (doom->own_event.groc_pickup == TRUE)
+			doom->own_event.mouse_press = FALSE;
+		check_sprite_hit(doom);
+	}
+	if (doom->game_design.custom_level)
+		return ;
+	if (doom->own_event.select)
+		select_action_default_level(doom);
+}
+
+void			mouse_release(t_doom *doom, SDL_MouseButtonEvent *button)
 {
 	if (button->button == SDL_BUTTON_LEFT)
 		doom->own_event.mouse_press = FALSE;
 }
 
-void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
+void			mouse_press(t_doom *doom, SDL_MouseButtonEvent *button,
+					t_event event)
 {
 	if (button->button == SDL_BUTTON_LEFT)
 	{
@@ -33,12 +75,8 @@ void	mouse_press(t_doom *doom, SDL_MouseButtonEvent *button, t_event event)
 	}
 	if (doom->game.editor == TRUE)
 		mouse_press_game_editor(doom, button->x, button->y);
-}
-
-bool	handle_mouse_state(t_doom *doom)
-{
-	if (doom->own_event.mouse_state_switched)
-		return (FALSE);
-	doom->own_event.mouse_state_switched = TRUE;
-	return (TRUE);
+	else if (doom->own_event.shoot == TRUE)
+		shoot_action(doom);
+	else
+		select_action(doom);
 }

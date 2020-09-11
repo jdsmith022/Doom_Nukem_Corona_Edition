@@ -1,10 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   init_groceries.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:28:34 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
-
-void			set_grocery_font(TTF_Font **font)
-{
-	*font = TTF_OpenFont("srcs/font/font_style/Cicle_Semi.ttf", 16);
-}
 
 uint8_t			get_num_of_groceries(t_doom *doom)
 {
@@ -22,22 +29,29 @@ uint8_t			get_num_of_groceries(t_doom *doom)
 	return (num_of_groceries);
 }
 
-void			init_groceries(t_doom *doom)
+static void		init_default_groceries(t_doom *doom)
 {
-	uint8_t		num_of_groceries;
-	int			i;
-
-	i = 0;
+	doom->groceries = NULL;
 	doom->groceries = (t_groceries *)ft_memalloc(sizeof(t_groceries));
 	if (doom->groceries == NULL)
 		doom_exit_failure(doom, "error: groceries malloc");
 	doom->groceries->num_of_groceries = get_num_of_groceries(doom);
+}
+
+void			init_groceries(t_doom *doom)
+{
+	uint8_t		num_of_groceries;
+
+	if (!doom->game_design.custom_level)
+		init_default_groceries(doom);
+	num_of_groceries = doom->groceries->num_of_groceries;
 	if (doom->groceries->num_of_groceries < MAX_SL_LEN)
 		doom->groceries->shopping_list_len = num_of_groceries;
 	else
 		doom->groceries->shopping_list_len = MAX_SL_LEN;
+	doom->groceries->shopping_list =
+		ft_memalloc(sizeof(t_item) * doom->groceries->shopping_list_len);
 	generate_shopping_list(doom);
 	doom->groceries->basket = NULL;
-	doom->groceries->tp = FALSE;
-	set_grocery_font(&doom->groceries->font);
+	doom->groceries->font = doom->lib.font_lib.font_16;
 }

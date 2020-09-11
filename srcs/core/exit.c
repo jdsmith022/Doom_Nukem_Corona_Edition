@@ -6,12 +6,11 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:45:34 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/11 11:47:51 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../../includes/menu.h"
 
 void			doom_exit_lib_failure(t_bmp *bmp,
 					const char *exit_meassge)
@@ -41,6 +40,7 @@ void			doom_exit_read_failure(t_doom *doom, const char *exit_message,
 	SDL_Quit();
 	ft_putnbr(line);
 	ft_putendl(exit_message);
+	free_font_lib(doom);
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
 	ft_bzero(doom, sizeof(doom));
@@ -52,6 +52,9 @@ void			doom_exit_failure(t_doom *doom,
 {
 	SDL_Quit();
 	ft_putendl(exit_message);
+	free_lists(doom);
+	free_clip_lists(doom);
+	free_font_lib(doom);
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
 	ft_bzero(doom, sizeof(doom));
@@ -61,6 +64,9 @@ void			doom_exit_failure(t_doom *doom,
 void			doom_exit_success(t_doom *doom)
 {
 	SDL_Quit();
+	free_lists(doom);
+	free_font_lib(doom);
+	free_clip_lists(doom);
 	free_sdl_lib(doom);
 	free_struct_lib(doom);
 	ft_bzero(doom, sizeof(doom));

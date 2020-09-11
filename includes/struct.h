@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   struct.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/10 13:46:51 by jessicasmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
 # define STRUCT_H
 
@@ -24,7 +36,7 @@
 
 # define PLAYER_HEIGHT 50
 # define MOVE_SPEED 100
-# define SENSITIVITY 0.2
+# define SENSITIVITY 0.4
 # define GRAVITY -2
 # define VELOCITY  5
 
@@ -48,8 +60,11 @@ typedef struct s_audio		t_audio;
 typedef struct s_groceries	t_groceries;
 typedef struct s_menu		t_menu;
 typedef struct s_hud		t_hud;
+typedef struct s_ed_sidedef	t_ed_sidedef;
+typedef struct s_ed_sector	t_ed_sector;
+typedef struct s_ed_sprite	t_ed_sprite;
 
-typedef enum			e_settings
+typedef enum		e_settings
 {
 	player_1,
 	player_2,
@@ -61,66 +76,66 @@ typedef enum			e_settings
 	light,
 	light_click,
 	set
-}						t_settings;
+}					t_settings;
 
 # pragma pack(push, 1)
 
-typedef struct			s_rgb {
-	Uint8				r;
-	Uint8				g;
-	Uint8				b;
-}						t_rgb;
+typedef struct		s_rgb {
+	Uint8			r;
+	Uint8			g;
+	Uint8			b;
+}					t_rgb;
 
 # pragma pack(pop)
 
-typedef struct			s_rgb_d {
-	double				r;
-	double				g;
-	double				b;
-}						t_rgb_d;
+typedef struct		s_rgb_d {
+	double			r;
+	double			g;
+	double			b;
+}					t_rgb_d;
 
-typedef struct			s_coord {
-	uint16_t			x;
-	uint16_t			y;
-}						t_coord;
+typedef struct		s_coord {
+	uint16_t		x;
+	uint16_t		y;
+}					t_coord;
 
-typedef struct			s_point {
-	double				x;
-	double				y;
-}						t_point;
+typedef struct		s_point {
+	double			x;
+	double			y;
+}					t_point;
 
-typedef struct			s_line {
-	t_point				start;
-	t_point				end;
-}						t_line;
+typedef struct		s_line {
+	t_point			start;
+	t_point			end;
+}					t_line;
 
-typedef struct			s_sprite {
-	int					index;
-	int					amount;
-	t_point				pos;
-	t_point				sprite_begin;
-	double				size;
-	t_line				*lines;
-	int					action;
-	int					*textures;
-	int					block;
-	int					sector;
-	int					n_sector;
-	double				width;
-	double				height;
-	double				sprite_x;
-	double				sprite_y;
-	int					visible;
-	double				distance;
-	int					prev_sectors[50];
-}						t_sprite;
+typedef struct		s_sprite {
+	int				index;
+	int				amount;
+	t_point			pos;
+	t_point			sprite_begin;
+	double			size;
+	t_line			*lines;
+	int				action;
+	int				*textures;
+	int				block;
+	int				sector;
+	int				n_sector;
+	double			width;
+	double			height;
+	double			sprite_x;
+	double			sprite_y;
+	int				visible;
+	double			distance;
+	int				prev_sectors[50];
+}					t_sprite;
 
-typedef struct			s_ray {
-	t_line				line;
-	double				angle;
-	double				plane_x;
-	int					filter;
-}						t_ray;
+typedef struct		s_ray {
+	t_line			line;
+	double			angle;
+	double			plane_x;
+	int				filter;
+}					t_ray;
 
 typedef struct		s_event {
 	bool			mouse_press;
@@ -145,7 +160,7 @@ typedef struct		s_event {
 	int				step_down;
 	double			velocity;
 	int				y_pitch;
-	int				virus_hit_index;
+	int				hit_index;
 	bool			virus_red;
 	int				virus_red_i;
 	bool			corona_hit;
@@ -182,9 +197,9 @@ typedef struct		s_event {
 typedef struct		s_object
 {
 	int				n_textures;
-	int*			textures;
-	int*			face_ang;
-	char*			name;
+	int				*textures;
+	int				*face_ang;
+	char			*name;
 	int				action;
 	t_line			location;
 }					t_object;
@@ -230,7 +245,6 @@ typedef struct		s_sidedef {
 	int				id;
 	int				action;
 	int				sector;
-	int				opp_sidedef;
 	int				opp_sector;
 	double			offset;
 	int				dir;
@@ -265,10 +279,6 @@ typedef struct		s_sector {
 	int				txt_floor;
 	int				diff_x;
 	int				diff_y;
-	int				bottom[WIDTH];
-	int				top[WIDTH];
-	int				mid_bottom[WIDTH];
-	int				mid_top[WIDTH];
 }					t_sector;
 
 typedef struct		s_lib {
@@ -278,6 +288,8 @@ typedef struct		s_lib {
 	int				len_obj_lib;
 	SDL_Surface		**sky_lib;
 	t_line			*sky_sd;
+	SDL_Surface		**player_lib;
+	int				len_player_lib;
 	t_font_lib		font_lib;
 	int				portal_ceiling;
 	int				len_sky_lib;
@@ -289,7 +301,6 @@ typedef struct		s_lib {
 	int				cur_len_infection;
 	int				tot_len_infection;
 	t_sprite		*sprites;
-	int				n_mov_sprites;
 	t_window		window;
 	int				*sprite_order;
 	double			light;
@@ -298,29 +309,28 @@ typedef struct		s_lib {
 }					t_lib;
 
 typedef struct		s_gamedesign {
-	t_sector		*sector;
-	int				s_len;
+	bool			custom_level;
+	t_ed_sprite		*ed_sprite;
+	t_ed_sprite		*sp_head;
+	int				i_sd;
+	int				i_sector;
+	int				i_sprites;
+	int				i_sd_tex;
+	int				i_spr_tex;
+	int				ed_spr_index[7];
+	int				cur_sprite;
+	int				len_spr;
+	int				n_sprites;
+	double			floor_height;
+	double			ceiling_height;
+	double			light_level;
+
 	int				s_size;
-	t_sidedef		*sidedef;
 	int				w_len;
 	int				w_size;
 	t_sprite		*object;
-	int				o_len;
-	int				o_size;
-	int				cur_tex;
-	int				index_obj;
-	int				cur_sec;
-	int				cur_sd;
-	int				cur_obj;
-	int				portal_sd;
-	int				portal_sec;
-	int				pl_pos;
-	int				pl_x;
-	int				pl_y;
-	int				pl_sec;
 	int				object_bar;
 	int				sidedef_bar;
-	bool			custom_level;
 	SDL_Surface		**sym_lib;
 }					t_gamedesign;
 
@@ -372,6 +382,24 @@ typedef struct		s_render
 	double			min_distance;
 }					t_render;
 
+typedef struct		s_clip
+{
+	int				sector_id;
+	int				sidedef;
+	t_line			line;
+	struct s_clip	*next;
+}					t_clip;
+
+typedef struct		s_clip_lists
+{
+	t_clip			*bottom;
+	t_clip			*head_bottom;
+	t_clip			*top;
+	t_clip			*head_top;
+	t_clip			*mid_bottom;
+	t_clip			*head_mid_bottom;
+}					t_clip_lists;
+
 typedef struct		s_doom {
 	t_line			tests;
 	SDL_Window		*window;
@@ -393,12 +421,12 @@ typedef struct		s_doom {
 	int				i_sidedef;
 	int				i_sector;
 	int				prev_sector;
-
 	int				obj_height;
 	int				visible_sprites;
 	int				total_sprites;
 	double			stripe_distance[WIDTH];
 	int				save_scissor_lift;
+	t_clip_lists	*clip;
 }					t_doom;
 
 #endif

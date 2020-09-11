@@ -6,20 +6,19 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/27 21:03:10 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/27 21:04:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 19:05:31 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BMP_H
 # define BMP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdint.h>
-# include "../libft/src/libft.h"
+# include "../../libft/libft.h"
 
 # pragma pack(push, 1)
 

@@ -6,14 +6,14 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:01:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:33:25 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/08 12:39:36 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/render.h"
 
-void			put_pixel_slope(t_doom *doom, Uint32 index, int x, int y)
+void			put_pixel_slope(t_doom *doom, int x, int y)
 {
 	Uint32 *pixels;
 
@@ -61,7 +61,11 @@ void			row_calculations(t_doom *doom, double dist, Uint32 index,
 	floor.y += doom->pos.y;
 	texture.x = (int)floor.x % doom->cast.texture_width;
 	texture.y = (int)floor.y % doom->cast.texture_height;
-	pixel_dex = (((int)texture.y * lib->pitch)\
+	if (texture.x >= 0 && texture.x < WIDTH && \
+	texture.y >= 0 && texture.x < HEIGHT)
+	{
+		pixel_dex = (((int)texture.y * lib->pitch)\
 		+ ((int)texture.x * bpp));
-	put_row(doom, lib, index, pixel_dex);
+		put_row(doom, lib, index, pixel_dex);
+	}
 }

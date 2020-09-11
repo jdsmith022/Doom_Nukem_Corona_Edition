@@ -2,5 +2,8 @@
 .vscode
 .objects
 doom
+doom-nukem
+doom-nukem 2
+doom-nukem 3
 *.a
 *.o

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   font.h                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 21:12:05 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FONT_H
 # define FONT_H
 
@@ -51,6 +63,7 @@ typedef struct		s_font_lib
 	TTF_Font		*font_22;
 	TTF_Font		*font_20;
 	TTF_Font		*font_18;
+	TTF_Font		*font_16;
 	t_limit			limit_x;
 	t_limit			limit_y;
 	int				setting_font_len;
@@ -77,7 +90,6 @@ typedef struct		s_font_lib
 	int				random_index;
 }					t_font_lib;
 
-/*font functions*/
 void				save_font(t_doom *doom, int *len);
 void				font_to_screen(t_doom *doom);
 void				save_font_libraries(t_doom *doom);
@@ -98,6 +110,7 @@ void				set_instruction_text_4(t_doom *doom, t_font *lib);
 void				save_pause_font(t_doom *doom, int *len);
 
 void				font_timer(t_doom *doom);
+void				draw_font(t_doom *doom, t_font *font_lib, uint8_t len);
 void				font_timer_box_short(t_doom *doom, bool *flag,
 						int start_dex, int end_dex);
 void				font_timer_box_long(t_doom *doom, bool *flag,

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:21:17 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/02 12:36:58 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void		font_timer_box_short(t_doom *doom, bool *flag,
 		diff = find_time_difference(doom, doom->lib.font_lib.timer.tv_sec);
 		if (diff <= 2)
 			print_vanishing_text_box(doom, start_dex, end_dex);
+		else
+		{
+			if (start_dex == 26)
+				doom->lib.font_lib.bools.facemask = FALSE;
+			else if (start_dex == 25)
+				doom->lib.font_lib.bools.health_pack = FALSE;
+		}
 	}
 }
 

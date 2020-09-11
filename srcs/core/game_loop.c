@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:20 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:45:21 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/07 13:43:48 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/menu.h"
 #include "../../includes/gameplay.h"
 
-static void		set_to_window(t_doom *doom)
+void			set_to_window(t_doom *doom)
 {
 	SDL_UpdateWindowSurface(doom->window);
 	ft_bzero(doom->surface->pixels, sizeof(doom->surface->pixels));
@@ -38,18 +38,21 @@ void			game_loop(t_doom *doom)
 {
 	long			last_frame_time;
 	double			dt;
+	int				i;
 
 	last_frame_time = 0;
+	i = 0;
 	dt = get_timeframe(&last_frame_time);
 	while (doom->game.is_running == TRUE)
 	{
-		timer(doom);
 		dt = get_timeframe(&last_frame_time);
 		doom_update(doom, dt);
+		timer(doom);
 		if (doom->game.editor == FALSE && doom->menu->state == start_game)
 			doom_render(doom);
 		update_screen(doom);
 		set_to_window(doom);
+		i++;
 	}
 	doom_exit_success(doom);
 }

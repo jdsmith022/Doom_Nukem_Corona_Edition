@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_bar.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:45:33 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/07 17:33:12 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/game_editor.h"
 
@@ -59,7 +71,7 @@ static void		height_floor_bar(t_doom *doom, Uint32 **pixels)
 	bar.height = HF_HEIGHT;
 	bar.len = HF_LEN;
 	bar.cur_height = \
-	doom->game_design.sector[doom->game_design.cur_sec].height_floor;
+		doom->game_design.floor_height;
 	draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
 }
@@ -76,7 +88,7 @@ static void		height_ceiling_bar(t_doom *doom, Uint32 **pixels)
 	bar.height = HC_HEIGHT;
 	bar.len = HC_LEN;
 	bar.cur_height = \
-	doom->game_design.sector[doom->game_design.cur_sec].height_ceiling;
+	doom->game_design.ceiling_height;
 	draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
 }
@@ -95,7 +107,7 @@ void			bars(Uint32 **pixels, t_doom *doom)
 	bar.height = LL_HEIGHT;
 	bar.len = LL_LEN;
 	bar.cur_height = \
-	doom->game_design.sector[doom->game_design.cur_sec].light_level;
+	doom->game_design.light_level;
 	draw_bar(pixels, bar);
 	draw_bar_point(pixels, bar);
 }

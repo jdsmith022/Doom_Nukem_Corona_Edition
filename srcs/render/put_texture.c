@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/29 14:02:42 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:33:25 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 15:35:25 by nde-wild      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ void		add_saturation(Uint8 *r, Uint8 *g, Uint8 *b, double light)
 	b1 = (double)*b;
 	light_correct(&r1, &g1, &b1, light);
 	if (r1 < 0.0)
-		r1 = 0;
+		r1 = 0.1;
 	if (g1 < 0.0)
-		g1 = 0;
+		g1 = 0.1;
 	if (b1 < 0.0)
-		b1 = 0;
+		b1 = 0.1;
 	if (r1 > 255.0)
 		r1 = 255.0;
 	if (g1 > 255.0)
 		g1 = 255.0;
 	if (b1 > 255.0)
 		b1 = 255.0;
-	*r = r1;
-	*g = g1;
-	*b = b1;
+	*r = (Uint8)r1;
+	*g = (Uint8)g1;
+	*b = (Uint8)b1;
 }
 
 void		put_texture(t_doom *doom, Uint32 tex_dex, Uint32 index,

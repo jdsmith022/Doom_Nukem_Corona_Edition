@@ -6,16 +6,15 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 16:17:29 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:22:16 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/07 13:38:55 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/action.h"
-#include "../../includes/gameplay.h"
 #include "../../includes/hud.h"
 
-static void	sanitizer_pause(t_doom *doom)
+void			sanitizer_pause(t_doom *doom)
 {
 	int diff;
 
@@ -36,7 +35,7 @@ static void	sanitizer_pause(t_doom *doom)
 	}
 }
 
-static void	check_poster(t_doom *doom)
+static void		check_poster(t_doom *doom)
 {
 	if (doom->lib.sidedef[doom->i_sidedef].action == 8)
 	{
@@ -45,7 +44,7 @@ static void	check_poster(t_doom *doom)
 	}
 }
 
-void		sanitizer_refill(t_doom *doom)
+void			sanitizer_refill(t_doom *doom)
 {
 	if (doom->own_event.refill == FALSE)
 		check_poster(doom);
@@ -55,11 +54,5 @@ void		sanitizer_refill(t_doom *doom)
 		if (doom->own_event.sanitizer_refills < 3 \
 		&& doom->own_event.sanitizer_refills > 0)
 			doom->hud->update = sanitizer;
-		doom->own_event.mouse_press = FALSE;
-	}
-	if (doom->own_event.refill == TRUE && doom->own_event.mouse_press == FALSE)
-	{
-		if (doom->own_event.sanitizer_refills > 3)
-			sanitizer_pause(doom);
 	}
 }

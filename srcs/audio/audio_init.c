@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   audio_init.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/11 14:57:09 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/doom.h"
 #include "../../includes/audio.h"
 
@@ -38,7 +50,7 @@ static void			load_audio(t_doom *doom, t_audio *audio)
 	while (i < NUM_OF_SOUNDS)
 	{
 		path = ft_strjoin(audio->path, g_audio_paths[i]);
-		audio->sounds[i] = \
+		audio->sounds[i] =
 			Mix_LoadWAV(path);
 		free(path);
 		i++;
@@ -81,9 +93,11 @@ void				init_audio(t_doom *doom)
 	Mix_QuerySpec(&doom->audio->sample_rate, &doom->audio->format,
 		&doom->audio->channels);
 	Mix_AllocateChannels(CHANNELS);
-	Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 	Mix_Volume(4, MIX_MAX_VOLUME / 9);
+	Mix_Volume(5, MIX_MAX_VOLUME / 4);
 	Mix_Volume(6, MIX_MAX_VOLUME / 4);
+	Mix_Volume(7, MIX_MAX_VOLUME / 4);
+	Mix_Volume(8, MIX_MAX_VOLUME / 4);
 	Mix_VolumeMusic(MIX_MAX_VOLUME / 5);
 	init_paths(doom);
 	load_audio(doom, doom->audio);

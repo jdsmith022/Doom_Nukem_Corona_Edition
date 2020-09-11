@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   gameplay.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 18:04:22 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GAMEPLAY_H
 # define GAMEPLAY_H
 
@@ -30,13 +42,13 @@ typedef struct			s_game_over {
 
 typedef struct			s_groceries {
 	uint8_t				num_of_groceries;
+	t_item				*groceries_in_level;
 	t_item				*shopping_list;
 	uint8_t				shopping_list_len;
-	t_list				*basket;
 	uint8_t				basket_len;
+	t_list				*basket;
 	TTF_Font			*font;
 	t_game_over			info;
-	bool				tp;
 }						t_groceries;
 
 void					init_groceries(t_doom *doom);
@@ -48,8 +60,11 @@ bool					remove_item_from_basket(t_list **head, uint8_t item);
 bool					is_in_basket(t_item *item, uint8_t type);
 bool					change_amount(t_item *item, int8_t amount);
 void					del_node(t_list **head, t_list *node);
+void					del_groceries(t_groceries *groc);
 void					print_basket(t_list **basket);
 void					generate_shopping_list(t_doom *doom);
+void					custom_shopping_list(t_doom *doom,
+											t_groceries *groceries);
 bool					checkout(t_groceries *groceries);
 void					draw_basket_ui(t_doom *doom, t_groceries *groceries);
 void					draw_shopping_ui(t_doom *doom, t_groceries *groceries);
@@ -68,13 +83,9 @@ bool					search_basket(t_item *itema, t_list **head);
 bool					search_basket_for_item(t_item *itema, t_list **head);
 void					get_game_over_info(t_doom *doom);
 void					timer(t_doom *doom);
-/*
-**						Shooting
-*/
 
 void					check_sprite_hit(t_doom *doom);
 void					check_select_spray_sprite(t_doom *doom);
-int						sprite_in_shooting_area(t_doom *doom, int sprite_i);
 int						sprite_in_range(t_doom *doom, t_ray ray, int sprite_i,
 						int prev_sector);
 

@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/28 15:14:55 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:21:40 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 23:50:42 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static void		difficulty_setting(t_doom *doom, int x, int y)
 	else if (x >= 475 && x <= 500 && y >= 300 && y <= 330)
 		doom->game.difficulty = 2;
 	else if (x >= 530 && x <= 550 && y >= 300 && y <= 330)
+	{
+		doom->game.light = FALSE;
 		doom->game.difficulty = 3;
+	}
 	doom->menu->state = start_game;
 }
 
@@ -74,7 +77,9 @@ void			start_menu_click_event(t_doom *doom, SDL_Rect rect1,
 	}
 	else if (x >= (rect2.x) && x <= (rect2.x + 200) && \
 	y >= (rect2.y) && y <= (rect2.y + 25))
+	{
 		doom->menu->settings = TRUE;
+	}
 	else if (x >= (rect3.x) && x <= (rect3.x + 200) && \
 	y >= (rect3.y) && y <= (rect3.y + 25))
 	{

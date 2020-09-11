@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:44:48 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:44:49 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 22:10:47 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,26 @@ static void		cam_movement(t_doom *doom, SDL_MouseMotionEvent *motion,
 	set_pitch(doom, motion, dt, event);
 }
 
+static void		check_mouse_parameters(t_doom *doom)
+{
+	t_event *event;
+
+	event = &doom->own_event;
+	if (event->hold_x < 0)
+		event->hold_x = 0;
+	else if (event->hold_x > WIDTH)
+		event->hold_x = WIDTH;
+	if (event->hold_y < 0)
+		event->hold_y = 0;
+	else if (event->hold_y > HEIGHT)
+		event->hold_y = HEIGHT;
+}
+
 void			move_cam_direction(t_doom *doom, SDL_MouseMotionEvent *motion,
-	double dt, t_event *event)
+					double dt, t_event *event)
 {
 	SDL_GetMouseState(&doom->own_event.hold_x, &doom->own_event.hold_y);
+	check_mouse_parameters(doom);
 	if (event->mouse_pointer == TRUE)
 		SDL_SetRelativeMouseMode(FALSE);
 	else

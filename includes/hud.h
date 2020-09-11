@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   hud.h                                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:44:56 by JessicaSmit   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HUD_H
 # define HUD_H
 
@@ -26,11 +38,11 @@ typedef enum			e_event_state
 typedef struct			s_hud
 {
 	bool				start;
-	int_fast16_t		update;
-	int_fast16_t		hold_time;
-	int_fast16_t		curr_time;
-	int_fast16_t		corona_level;
-	int_fast16_t		sanitizer_level;
+	int					update;
+	int					hold_time;
+	int					curr_time;
+	int					corona_level;
+	int					sanitizer_level;
 }						t_hud;
 
 void					update_hud(t_doom *doom);

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   gameplay.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: elkanfrank <elkanfrank@student.codam.nl      +#+                     */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/08/29 20:02:50 by elkanfrank    #+#    #+#                 */
-/*   Updated: 2020/08/31 15:49:05 by jesmith       ########   odam.nl         */
+/*   Created: 2020/08/31 17:44:35 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/08 17:31:21 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/gameplay.h"
 #include "../../includes/menu.h"
 
-void				groceries(t_doom *doom)
+void	groceries(t_doom *doom)
 {
 	if (!doom->groceries)
 		return ;

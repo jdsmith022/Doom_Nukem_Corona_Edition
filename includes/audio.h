@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   audio.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/08/29 14:02:27 by jesmith       #+#    #+#                 */
+/*   Updated: 2020/09/11 14:36:44 by elkanfrank    ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AUDIO_H
 # define AUDIO_H
 
@@ -12,7 +24,7 @@
 # define ON				1
 
 # define NUM_OF_SOUNDS	15
-# define CHANNELS		8
+# define CHANNELS	16
 
 # define BUTTON 		0
 # define FOOTSTEPS 		1

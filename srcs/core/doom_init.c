@@ -6,28 +6,30 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/31 17:45:44 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/31 17:47:32 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/09 21:48:03 by jessicasmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
 #include "../../includes/gameplay.h"
-#include "../../includes/hud.h"
 
 static void		init_sprites(t_doom *doom)
 {
-	int i;
+	t_sector	*sector;
+	int			i;
 
 	i = 0;
 	doom->visible_sprites = 0;
 	doom->save_scissor_lift = -1;
 	doom->lib.sprite_order = NULL;
+	sector = doom->lib.sector;
+	doom->lib.move = 0;
 	while (i < 20)
 	{
 		doom->lib.sprite_height[i] = i;
 		i++;
 	}
-	doom->lib.move = 0;
+	init_clipping(doom);
 }
 
 static void		init_render(t_doom *doom)
@@ -45,18 +47,16 @@ static void		init_player(t_doom *doom)
 	doom->player.height = PLAYER_HEIGHT;
 	doom->player.std_height = PLAYER_HEIGHT;
 	doom->i_sector = 0;
-	doom->player.handed = left;
-	doom->player.character = player_1;
 }
 
 static void		init_settings(t_doom *doom)
 {
 	doom->game.is_running = TRUE;
-	doom->game.light = TRUE;
+	doom->game.light = doom->game.difficulty != 3 ? TRUE : FALSE;
 	doom->game.hud_display = TRUE;
-	doom->game.editor = FALSE;
 	doom->game.start_timer = FALSE;
 	doom->cast.poster = FALSE;
+	clock_gettime(doom->game.play_time, &doom->lib.font_lib.timer);
 }
 
 void			doom_init(t_doom *doom)
@@ -64,8 +64,6 @@ void			doom_init(t_doom *doom)
 	init_groceries(doom);
 	init_player(doom);
 	init_settings(doom);
-	init_audio(doom);
-	init_menu(doom);
 	init_render(doom);
 	init_sprites(doom);
 	init_events(&doom->own_event);

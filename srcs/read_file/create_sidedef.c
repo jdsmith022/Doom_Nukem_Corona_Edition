@@ -6,7 +6,7 @@
 /*   By: jesmith <jesmith@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/25 10:43:52 by jesmith       #+#    #+#                 */
-/*   Updated: 2020/08/25 10:43:53 by jesmith       ########   odam.nl         */
+/*   Updated: 2020/09/06 23:40:26 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,11 @@ static void		moving_sidedef(t_doom *doom, t_sidedef *sidedef, int k, int i)
 	doom->lib.sector[i].n_sidedefs++;
 }
 
-static void		set_col_lib(t_doom *doom, int *k, int *total_sd_index, int i)
+static void		set_col_lib(t_doom *doom, int k, int *total_sd_index, int i)
 {
-	if (!*k)
-	{
-		*k = 0;
-		*total_sd_index = 0;
-	}
-	else
-		*total_sd_index += doom->lib.sector[i].i_sidedefs;
-	doom->lib.sector[i].i_sidedefs = *total_sd_index;
+	if (k != 0)
+		total_sd_index += doom->lib.sector[i].i_sidedefs;
+	doom->lib.sector[i].i_sidedefs = k;
 }
 
 static void		set_sidedef_slope(t_doom *doom, int k, int i)
@@ -40,6 +35,15 @@ static void		set_sidedef_slope(t_doom *doom, int k, int i)
 		doom->lib.sector[i].slope_ceiling_id = doom->lib.sidedef[k].id;
 }
 
+static void		set_index(int *k, int *total_sd_index)
+{
+	if (!*k)
+	{
+		*k = 0;
+		*total_sd_index = 0;
+	}
+}
+
 void			create_sidedef(t_doom *doom, int fd, int len,
 					int i)
 {
@@ -47,8 +51,9 @@ void			create_sidedef(t_doom *doom, int fd, int len,
 	static int	total_sd_index;
 	int			sidedef_in_sector;
 
+	set_index(&k, &total_sd_index);
 	doom->lib.sector[i] = sector_inf(doom, fd, doom->lib.len_tex_lib);
-	set_col_lib(doom, &k, &total_sd_index, i);
+	set_col_lib(doom, k, &total_sd_index, i);
 	sidedef_in_sector = 0;
 	while (sidedef_in_sector < doom->lib.sector[i].n_sidedefs)
 	{

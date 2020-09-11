@@ -6,15 +6,14 @@
 /*   By: rsteigen <rsteigen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/30 21:54:33 by rsteigen      #+#    #+#                 */
-/*   Updated: 2020/09/01 11:17:00 by rsteigen      ########   odam.nl         */
+/*   Updated: 2020/09/11 15:17:32 by JessicaSmit   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/doom.h"
-#include "../../includes/hud.h"
-#include "../../includes/font.h"
 #include "../../includes/action.h"
 #include "../../includes/sprites.h"
+#include "../../includes/gameplay.h"
 
 static int	sprite_is_hit(t_doom *doom, t_line movement, t_sprite sprite)
 {
@@ -43,6 +42,7 @@ void		exit_scissor_lift(t_doom *doom)
 		doom->save_scissor_lift = -1;
 		doom->own_event.scissor_lift = FALSE;
 		doom->own_event.scissor_lift_down = FALSE;
+		doom->own_event.parked_too_close = FALSE;
 	}
 	else
 	{
