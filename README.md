@@ -1,6 +1,6 @@
 # DOOM-NUKEM CORONA EDITION
 Codam Coding College final project
-
+![Demo of doom-nukem-corona-edition]()
 
 ## Description
 
@@ -10,7 +10,7 @@ We used SDL2, SDL2_mixer and SDL2_tff libraries to support our game, perfering t
 
 For full pdf of project requirements click [here]().
 
-###Installation
+### Installation
 From terminal, the program can be install with git clone with the project repository, followed by the name of the directory you wish to download the repository to.
 
 Example
@@ -18,7 +18,7 @@ Example
 $ git clone git@github.com:jdsmith022/doom-nukem.git [directory-name]
 ```
 
-###Dependencies
+### Dependencies
 This program was written on LinuxOS and complies with a Makefile.
 
 To install dependencies go to repo directory, run: 
@@ -31,7 +31,7 @@ bash uninstall.bash
 ```
 
 
-###Usage
+### Usage
 In terminal, go into the project directory. First install dependencies if you have not already. Run:
 ```
 bash install.bash
@@ -55,12 +55,17 @@ $ make fclean
 ```
 
 
-###Gameplay
+### Gameplay
 
-The objective of the game is to get all the items on your grocery list and checkout before your time runs out and without catching the Corona virus. To combat the virus, you will have sanitizing spray that you can fill up through the grocery store. But make sure you keep your 1.5 meter distance from shoppers!
+The objective of the game is to get all the items on your grocery list and checkout before your time runs out and without catching the Corona virus. To combat the virus, you will have sanitizing spray that you can fill up as well as healthpacks and facemaks to collect through the grocery store to increase your health level. But make sure you keep your 1.5 meter distance from shoppers!
 
-###Settings
+### Settings
 Settings and instructions can be found and some changed in the Settings menu on the home screen.
+![Demo of doom-nukem-corona-edition]()
+
+### Game Editor
+In the game editor, a player may select the textures to go on the pre-made layout of the grocery store. The player may also add shoppers, viruses, and healthpacks to the game to increase difficulty.
+![Demo of doom-nukem-corona-edition]()
 
 ### Collaborator
 This project was a group effort with:
