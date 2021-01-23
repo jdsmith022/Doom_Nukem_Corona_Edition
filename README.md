@@ -1,5 +1,7 @@
 # DOOM-NUKEM CORONA EDITION
 Codam Coding College final project
+
+
 ![Demo of doom-nukem-corona-edition](https://github.com/jdsmith022/doom_corona_edition/blob/master/git_assets/start-doom.gif)
 
 ## Description
@@ -63,10 +65,13 @@ The objective of the game is to get all the items on your grocery list and check
 
 ### Settings
 Settings and instructions can be found and some changed in the Settings menu on the home screen.
+
 ![Demo of doom-nukem-corona-edition](https://github.com/jdsmith022/doom_corona_edition/blob/master/git_assets/settings-doom.gif)
 
 ### Game Editor
 In the game editor, a player may select the textures to go on the pre-made layout of the grocery store. The player may also add shoppers, viruses, and healthpacks to the game to increase difficulty.
+
+
 ![Demo of doom-nukem-corona-edition](https://github.com/jdsmith022/doom_corona_edition/blob/master/git_assets/game-editor.gif)
 
 ### Collaborator
