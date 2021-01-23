@@ -10,24 +10,28 @@ We used SDL2, SDL2_mixer and SDL2_tff libraries to support our game, perfering t
 
 For full pdf of project requirements click [here]().
 
-
-##Dependencies
-This program was written on LinuxOS and complies with a Makefile.
-
-To install dependencies, run: 
-```
-bash install.bash
-```
-
-##Installation
+###Installation
 From terminal, the program can be install with git clone with the project repository, followed by the name of the directory you wish to download the repository to.
 
 Example
 ```
-$ git clone git@github.com:jdsmith022/Wolfenstein3D.git [directory-name]
+$ git clone git@github.com:jdsmith022/doom-nukem.git [directory-name]
 ```
 
-Usage
+###Dependencies
+This program was written on LinuxOS and complies with a Makefile.
+
+To install dependencies go to repo directory, run: 
+```
+bash install.bash
+```
+To uninstall dependencies go to repo directory, run:
+```
+bash uninstall.bash
+```
+
+
+###Usage
 In terminal, go into the project directory. First install dependencies if you have not already. Run:
 ```
 bash install.bash
@@ -51,14 +55,14 @@ $ make fclean
 ```
 
 
-##Gameplay
+###Gameplay
 
 The objective of the game is to get all the items on your grocery list and checkout before your time runs out and without catching the Corona virus. To combat the virus, you will have sanitizing spray that you can fill up through the grocery store. But make sure you keep your 1.5 meter distance from shoppers!
 
-#Settings
+###Settings
 Settings and instructions can be found and some changed in the Settings menu on the home screen.
 
-## Collaborator
+### Collaborator
 This project was a group effort with:
 [Malou](https://github.com/mminkjan)
 [Roos](https://github.com/RoosCocolien)
