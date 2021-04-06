@@ -6,7 +6,7 @@ Codam Coding College final project
 
 ## Description
 
-Doom-Nukem is the final graphics branch product of the first part of the curriculum at Codam Coding College. My four teammates and myself wrote are products entirely from scratch and in C. As we started and finished this project at the beginning of the COVID-19 pandemic, we made a creative decision to them our Doom inspired game around COVID-19. 
+Doom-Nukem is the final graphics branch product of the first part of the curriculum at Codam Coding College. My four teammates and myself wrote our project entirely from scratch and in C. As we started this project at the beginning of the COVID-19 pandemic, we made a creative decision to theme our game around COVID-19. 
 
 We used SDL2, SDL2_mixer and SDL2_tff libraries to support our game, perfering to use SDL over miniLibX. As with previous projects from Codam, the goals of this project included: rigor, C, commonly used algorithms, information search, literature analysis, etc. However, as a graphic programming project, Doom-Nukem focus was to strengthen my teams knowledge in these particular field: windows, images, events, filling in forms, etc.
 
